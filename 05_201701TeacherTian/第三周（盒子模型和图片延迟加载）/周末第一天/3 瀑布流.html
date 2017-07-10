@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+        }
+        ul{
+            width: 30%;
+            float: left;
+        }
+        ul:nth-child(2){
+
+        }
+        ul.middle{
+            margin: 0 5%;
+        }
+        ul li{
+            width: 100%;
+            margin: 3px 0;
+        }
+        .btn{
+            position: fixed;
+            left: 20px;
+            bottom : 20px;
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #000;
+            background: #fff;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <ul></ul>
+    <ul class="middle" ></ul>
+    <ul></ul>
+    <a class="btn" href="javascript:void 0">顶</a>
+</body>
+</html>
+<script src="utils_weekend.js"></script>
+<script>
+    var uls = document.getElementsByTagName('ul'); // [ul,ul,ul]
+    var btn = document.getElementsByClassName('btn')[0];
+    function appendLiToUl(){
+        for(var i = 0; i < 50; i++){
+            // 添加50个li
+            var li = document.createElement('li');
+            utils.css(li,'height',utils.getRandom(100,200)); // 随机高度
+            li.style.background = 'rgb('+ utils.getRandom(0,255) +','+ utils.getRandom(0,255) +','+ utils.getRandom(0,255) +')'; // 随机背景色
+            // toFixed(n)
+            // 添加到哪个ul中
+            var ulsAry = utils.listToArray(uls);
+            ulsAry.sort(function (ul1,ul2){
+                return ul1.offsetHeight - ul2.offsetHeight; // 按照ul的offsetHeight属性去排序.
+            });
+            ulsAry[0].appendChild(li);
+        }
+    }
+    appendLiToUl();
+    var flag = true;
+    // 给浏览器绑定滚动条滚动事件 => 只要滚动条动就会触发这个事件
+    window.onscroll = fn;
+    function fn(){
+        if(flag){
+            var winScrollTop = utils.win('scrollTop'); // 获取窗口滚动出去的高度
+            if(winScrollTop > document.body.scrollHeight - 1000){
+                appendLiToUl(); // 当符合这个条件就再添加50个li
+            }
+            //// 当滚动出去的高度超过一个屏的高度按钮出现
+            var winHeight = utils.win('clientHeight');
+            if(winScrollTop > winHeight){
+                btn.style.display = 'block';
+            }else{
+                btn.style.display = 'none';
+            }
+        }
+    }
+
+    btn.onclick = function (){
+         btn.timer && window.clearInterval(btn.timer);
+         btn.timer = window.setInterval(function (){
+            var val = utils.win('scrollTop');
+            if(val <= 0){ // 到达顶部
+                window.clearInterval(btn.timer);
+                // window.onscroll
+                //window.onscroll = fn;
+                flag = true;
+                return;
+            }
+            val -= 5;
+            utils.win('scrollTop',val);
+        },10);
+        btn.style.display = 'none';
+        flag = false;
+        // window.onscroll = null;
+    }
+
+
+</script>

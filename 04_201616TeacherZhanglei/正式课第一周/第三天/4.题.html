@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var msg='hello';
+    function great(name,attr){
+        name='david';
+        var greating=msg+name+'!';
+        var msg='您好';
+        for(var i=0; i<10; i++){
+            var next=msg+'您的id是'+i*2+i;
+        }
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(greating)
+        console.log(next)
+    }
+    great('Tom')
+//David        undefined      undefinedDavid！  "你好，您的id是189"
+</script>
+</body>
+</html>

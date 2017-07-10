@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //=  赋值
+//    ==  比较
+//    val1==val2
+//    1.相同数据类型，直接比较
+//    1==1
+//    'zf'=='zf'
+//    1)对象==对象  false
+//    []==[] false
+
+//    2.不同数据类型比较，会默认执行数据类型之间的转换，转为相同的数据类型，再比较
+//    1）对象==字符串  对象先转为字符串（.toString()），然后再比较
+        []==''
+//    [].toString()  --》""
+//    ""==""    true
+
+//    2)对象==布尔  对象先转为字符串(.toString())再转为数字（Number()），布尔直接转为数字
+        []==false  //true
+
+//    [].toString()  -->""
+//    Number("")   --> 0
+//    Number(false)  -->0
+
+//    3)对象==数字  对象先转为字符串(.toString())再转为数字（Number()）
+
+    []==1   //false
+//    [].toSting()  ''
+//    Number('')   0
+
+//    4)布尔==字符串   都转为数字
+    false==''  //true
+    Number(false)  //0
+    Number('')   //0
+
+//    5）布尔==数字 布尔转数字
+    false==0   //true
+    Number(false)  //0
+
+//    6)字符串==数字  字符串转数字
+    ''==0  //true
+    Number('')   //0
+
+//    7)null==undefined   true
+//    8）null或者undefined和其他任何类型比较返回的都是false
+
+//    === 严格比较：数据类型和值必须完全相同 返回true，只要有一个不同 返回false
+    1==1
+
+//    ==  ===
+//    switch case 每种case的情况是几个等号的比较
+
+
+</script>
+
+</body>
+</html>

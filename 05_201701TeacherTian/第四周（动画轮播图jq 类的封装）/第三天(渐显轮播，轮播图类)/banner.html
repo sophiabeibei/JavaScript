@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐显</title>
+    <link rel="stylesheet" href="banner.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="inner">
+            <!--<img src="images/1.png" alt="">
+            <img src="images/2.png" alt="">
+            <img src="images/3.png" alt="">
+            <img src="images/4.png" alt="">-->
+        </div>
+        <ul class="focusList">
+            <!--<li class="cur"></li>
+            <li></li>
+            <li></li>
+            <li></li>-->
+        </ul>
+        <a class="left" href="javascript:void 0">L</a>
+        <a class="right" href="javascript:void 0">R</a>
+    </div>
+    <!---->
+    <div class="wrap">
+        <div class="inner">
+            <!--<img src="images/1.png" alt="">
+            <img src="images/2.png" alt="">
+            <img src="images/3.png" alt="">
+            <img src="images/4.png" alt="">-->
+        </div>
+        <ul class="focusList">
+            <!--<li class="cur"></li>
+            <li></li>
+            <li></li>
+            <li></li>-->
+        </ul>
+        <a class="left" href="javascript:void 0">L</a>
+        <a class="right" href="javascript:void 0">R</a>
+    </div>
+
+</body>
+</html>
+<script src="../utils.js"></script>
+<script src="../animate.js"></script>
+<!--<script src="banner.js"></script>-->
+<script src="bannerClass.js"></script>
+<script>
+    var wraps = utils.getElementsByClass('wrap');
+    for(var i = 0; i < wraps.length; i++){
+        console.log(new Banner(wraps[i],'data.txt'));
+    }
+
+    // autoMove 实例
+
+    function f(){
+        console.log(this); // body
+    }
+    var fun = f.bind(document.body); // fun是函数
+    //var fun = processThis(f,document.body);
+    fun();
+
+
+
+    function processThis(fn,context){ // f , body
+        return function (){
+            fn.call(context);
+        }
+    }
+
+
+
+
+</script>

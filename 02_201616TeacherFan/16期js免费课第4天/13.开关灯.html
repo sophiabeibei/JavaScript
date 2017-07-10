@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body id="box" style="width: 100%;background-color: white">
+
+<script>
+    //分析思路
+//    1、获取要操作的元素，body
+//    document.getElementById('box')
+
+//    获取元素的范围 在整个文档中，通过元素的id值获取一个元素
+
+//    2、给body绑定一个点击的事件
+//    格式
+//    某一个元素.onclick = function(){
+//        点击时执行的操作
+//    }
+
+//    3、点击时换背景颜色
+
+//    1、获取要操作的元素，body
+    var oBody = document.getElementById('box');
+//    2、给body绑定一个点击的事件
+    oBody.onclick = function(){
+//        alert('ok');
+//    3、点击时换背景颜色
+//        1)获取当前的背景颜色
+//        2）判断
+//        body的行内样式的宽度
+//        console.log(oBody.style.width)
+//        console.log(oBody.style.backgroundColor)
+
+//        background-color   backgroundColor
+
+        var bg = oBody.style.backgroundColor;
+//        console.log(bg);//var bg='white'
+        if(bg=='white'){
+//            将body行内样式的背景颜色 重新设置为黑色
+           oBody.style.backgroundColor = 'black';
+        }else{
+            oBody.style.backgroundColor = 'white';
+        }
+
+    }
+
+
+
+
+</script>
+
+
+</body>
+</html>

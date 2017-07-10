@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则创建方式区别</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *   区别 : 实例和字面量
+    *       1 如果使用实例创建，特殊元字符\d需要在创建的时刻在前面添加一个"\"  new RegExp('\\d')
+    *       2 实例创建，new的过程中的第二个参数就是修饰符
+    *       3 只要正则中有需要变量的时刻，那么就只能使用实例的创建方式
+    *
+    *       修饰符 :   /\d/i => 匹配的时候忽略大小写
+    *           i : ignoreCase 忽略大小写
+    *           m : multiline  多行匹配
+    *           g : global    全局全文(一般用于捕获exec)
+    *
+    * */
+    var reg = /a/i; // i修饰符
+    //var reg = /\d/;
+    //var reg = new RegExp('a');
+    var reg = new RegExp('\\d',"i"); // 特殊元字符创建方式
+    console.log(reg.test('6'));
+
+    ////////////////////////////////////
+    var name = 'zf';
+    var reg1 = /name/; // name就是name，不是变量
+    console.log(reg1.test('name')); // true
+
+
+    //////////////////////////////////////
+
+
+    var reg2 = new RegExp(name,'i');
+    console.log(reg2.test('name')); // false
+
+    //////////////////////////////////////////身份证
+    "2112 24(1986)(0210)82(1)0";  // => 数据库 birthday : 括号1   gender : 括号3
+
+    var reg = /^\d{17}(\d|X)$/; // exec
+
+
+
+
+
+
+</script>

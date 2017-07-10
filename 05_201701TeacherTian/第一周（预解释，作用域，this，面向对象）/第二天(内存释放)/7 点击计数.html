@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击计数</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.8);
+            color: #fff;
+            font-size: 500px;
+            text-align: center;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" style="width: 200px; height: 200px; background: lime; font-size: 30px; color: red">0</div>
+</body>
+</html>
+<script>
+    // 1
+//    ;(function (){
+//        var count = 0; // 1
+//        document.body.onclick = function (){
+//            count++;
+//            this.innerHTML = count;
+//        }
+//    })();
+
+    // 2
+//    document.body.onclick = (function (){
+//        var count = 0;
+//        return function (){
+//            document.body.innerHTML = ++count;
+//        }
+//    })();
+
+    // 3 自定义属性的方式 => 一般配合事件中的this => 给谁绑定事件自定义属性就添加给谁
+//    document.body.count = 0;
+//    document.body.onclick = function (){
+//        this.count++;
+//        this.innerHTML = this.count;
+//    }
+
+    // 4 innerHTML
+    var div1 = document.getElementById('div1');
+    div1.onclick = function (){
+        //++this.innerHTML;
+        //div1.innerHTML = div1.innerHTML/1 + 1;
+        div1.innerHTML = ++div1.innerHTML; // ++i也有强制转化为数字的默认行为
+    }
+
+
+</script>

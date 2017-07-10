@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sort</title>
+
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li> <!--lis[1].innerHTML-->
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+</html>
+<script>
+    Array.prototype.sort;
+    Array.prototype.slice;
+    Array.prototype.unique = function () {
+        this; // 就是你要去重那个数组
+        for (var i = 0; i < this.length - 1; i++) {
+            // i = 0; 把第一项1拿出来和1后面的所有项去比较
+            for (var j = i + 1; j < this.length; j++) {
+                if (this[i] === this[j]) {
+                    this.splice(j, 1);
+                    j--;
+                }
+            }
+        }
+        return this;
+    }
+
+    var ary = [1, 2, 3, 2, 1];
+    console.log(ary.unique()); // 返回一个去重之后的原数组
+
+    //
+    var a = [1, 5, 4, 3, 2];
+    a.sort(function (a, b) {
+        //console.log(a,b); // 就是正在比较的那数组中两项
+        return (a - b); // return的这个值就是是否交换位置的依据
+    });
+    console.log(a);
+    ////////////////////////////////////////////////
+    var a1 = [
+        {age: 5, name: 'a', o: {val: 8}},
+        {age: 6, name: 'c', o: {val: 9}},
+        {age: 3, name: 'b', o: {val: 7}},
+        {age: 2, name: 'd', o: {val: 6}}
+    ];
+    a1.sort(function (x, y) {
+        return x.name.localeCompare(y.name);
+        return x.o.val - y.o.val;
+    });
+    console.log(a1);
+
+    //
+
+
+</script>

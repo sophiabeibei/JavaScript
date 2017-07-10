@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom2事件</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            line-height: 100px;
+            text-align: center;
+            margin: 10px auto;
+        }
+        #div2{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+</body>
+</html>
+<script>
+    /*
+    *   addEventListener(type,fn,false)
+    *       type : 事件类型  字符串
+    *       fn :  函数
+    *       false : 是否使用捕获  => 先捕获,target,再冒泡
+    *
+    *       DOM 0 : 不支持捕获
+    *
+    * */
+    var body = document.body;
+    var div1 = document.getElementById('div1');
+    var div2 = document.getElementById('div2');
+
+    // div1.onclick = function (){} // DOM 0
+    // DOM 2
+    div1.addEventListener('click',fn1,true);
+
+    div2.addEventListener('click',fn2,false);
+
+    body.addEventListener('click',fn3,false);
+
+    function fn1(){ console.log('div1') }
+    function fn2(){ console.log('div2') }
+    function fn3(){ console.log('body') }
+
+
+
+
+</script>

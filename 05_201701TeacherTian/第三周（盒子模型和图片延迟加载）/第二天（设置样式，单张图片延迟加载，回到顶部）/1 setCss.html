@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script>
+    // width height margin padding top left right bottom marginLeft fontSize
+    var div1 = document.getElementById('div1');
+    setCss(div1,'width',100);
+    setCss(div1,'height',100);
+    setCss(div1,'background','red');
+
+    function setCss(ele, attr, val) {
+        if(attr == 'opacity'){
+            ele.style.opacity = val;
+            ele.style.filter = 'alpha(opacity='+ val*100 +')';
+            return;
+        }
+        if(attr == 'float'){
+            ele.style.cssFloat = val;
+            ele.style.styleFloat = val; // ieLow
+            return;
+        }
+        var reg = /width|height|top|left|right|bottom|(margin|padding)(Left|Right|Top|Bottom)?/;
+        if(reg.test(attr)){ // 如果验证属性名字通过，就是来设置width等属性
+            if(!isNaN(val)){
+                val += 'px';
+            }
+        }
+        ele.style[attr] = val;
+    }
+
+
+
+
+
+</script>

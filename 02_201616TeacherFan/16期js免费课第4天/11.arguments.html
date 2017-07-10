@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //arguments 函数中天生自带的属性
+//    表示形参的集合
+    function a(){
+        console.log(arguments);
+//        [10, 2, 3]   类数组：类似于数组，但是不能用真正数组中的方法
+//        arguments 也有索引  0、1、2
+//                      length 长度
+//                      callee  代表函数本身
+        console.log(arguments.length)
+        console.log(arguments.callee);
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(arguments[2]);
+
+    }
+    a(10,2,3);
+
+//    函数执行时传递的参数--》实参
+
+
+</script>
+
+</body>
+</html>

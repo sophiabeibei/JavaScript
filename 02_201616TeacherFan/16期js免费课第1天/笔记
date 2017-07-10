@@ -1,0 +1,115 @@
+1、
+    在js中，每句代码末尾都要分号;
+2、div标签：
+        <div></div>
+   div元素：
+        <div id="div1" class="box">我是一个div</div>
+
+3、在js中不区分双引号或者单引号 ""  ''
+
+4、js的组成
+     1）ECMAScript（5、6）：js的核心部分：规定js中命名规范、变量、基本语法、操作语句...
+     2)DOM  document object model  文档对象模型
+        js中提供了操作html元素的属性和方法
+
+     3)BOM  browser object model  浏览器对象模型
+        js中提供了操作浏览器的一些属性和方法
+
+5、变量：
+    1.变量的作用：存储值和代表制
+    2.声明一个变量:  var
+        var 变量名 = 变量值;
+        变量名:随便起名字 但是，遵循js的命名规范
+    3.=  赋值操作
+    4.可以通过var  声明任何类型的变量
+
+6、什么是字符串？
+    只要是用引号 引起来的就叫做字符串，并且在js中不区分双引号和单引号，一般我们用单引号
+    "zfpx"
+    'zfpx'
+7、正确的或者相等  true
+   错误的或者不相等  false
+8、返回  返回值： 结果
+
+9、Number：
+    方法：
+        1.isNaN() 判断是不是有效数字，如果不是有效数字，返回true，如果是有效数字 返回false
+
+        2.Number()  强制转换：只要有一个字符不是数字 返回NaN
+        3.parseInt()  整数
+        4.parseFloat()  可以多识别一个点
+
+
+                            返回值（结果）
+        isNaN()             true、false
+        Number()            数字、NaN
+        parseInt()          数字、NaN
+        parseFloat()        数字、NaN
+
+
+
+10、Boolean：true(真) false(假)
+                    返回值：
+    1.!              true false
+    2.!!             true false
+    3.Boolean()      true false
+
+    规律：将任意的内容转为布尔类型，只有0、NaN、""、null、undefined 这五个值为false，其余都为true
+
+11、
+    ctrl+/  注释一行
+    ctrl+shift+/  注释多行
+
+12、js中的计算
+    + - * /
+
+13、
+    1.三元运算符
+    条件?条件成立执行的代码:条件不成立执行的代码;
+     void 0; 补位 用来占位置，没有其他的作用
+    2.
+      格式
+         switch (变量){
+               case 值1:
+                    变量与值1比较成立，执行的代码;
+                    break;  --》阻断代码的作用，遇到break 后面的代码不再执行
+               case 值2:
+                    变量与值2比较成立，执行的代码;
+                    break;
+               case 值3:
+                    变量与值3比较成立，执行的代码;
+                    break;
+               default:
+                    相当于else
+                    以上条件都不成立执行的代码
+        }
+
+
+
+14、object
+    创建方式
+        1.var obj = {name:'zfpx'};  字面量创建方式
+        2.var obj = new Object();  实例创建方式
+
+    1.增加一组属性
+        obj.age = 9;
+    2.修改属性名对应的属性值
+        obj.age = 8;
+    3.获取属性名对应的属性值
+        obj.age
+    4.删除属性
+        1）假删除
+            obj.age = null
+        2)真删除
+            delete obj.age
+
+        obj.age
+        obj['age']
+
+
+15、什么情况下返回NaN
+    1.转换不成功
+    2.计算不成功
+
+
+

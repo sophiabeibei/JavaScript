@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div id="div1" style="width: 100px; height: 100px; background: lime;"></div>
+</body>
+</html>
+<script>
+    // 全局变量 私有变量 全局作用域（打开） 私有作用域(函数执行) 堆内存 栈内存
+    function fn(){
+        var num = 1;
+        return function (){
+            console.log(++num);
+        }
+    }
+    var f = fn();
+    //div1.onclick = fn();
+
+    function fn(){
+        var num = 1;
+        //div1.onclick = function (){}
+    }
+    fn();
+    // 闭包
+
+
+    /////////////////////////////////////////////////////////////////////
+    /*
+    *   this的用法:  全局作用域下的this是window
+    *
+    *       1 绑定事件函数中的this,那么当事件被触发的时刻，函数中的this就是把事件绑定给哪个dom元素this就是谁
+    *
+    *       2 函数执行时候的this，就看函数执行时刻'.'前面是谁，如有有this就是它，如果没有this就是window  ps： 函数定义的时候this是不能确定的，只有执行的时刻才能确定
+    *
+    *       3 自运行函数中的this是window
+    *
+    *       4 定时器函数中的this是window
+    *
+    *       /////////
+    *       5 构造函数中的this是当前实例
+    *
+    *       6  call、apply、bind可以强制改变this
+    *
+    *       ps: this只要被其他函数包含，那么this也随之改变了
+    *
+    * */
+
+    // 1 事件中的this
+    console.log(this); // window
+    var div1 = document.getElementById('div1');
+    div1.index = 0;  // lis[i].index = i;
+    div1.onclick = function (){
+        this.index;
+    }
+
+    // 2  函数执行时刻函数中的this
+
+    function print(){
+        console.log(this);
+    }
+
+    var obj = {
+        name : 'zf',
+        fun : print
+    };
+
+
+    var ary = [print]; // ary[0]()
+
+    window.print(); //this => window
+    obj.fun(); // this => obj
+    ary[0](); // this => ary
+
+    // 3  自运行函数中的this是window
+
+    ;(function (){
+        console.log(this); // window
+    })();
+
+    var obj = {
+        num : 1,
+        fn : (function (){
+            //alert();
+            console.log(this);
+            return function (){};
+        })()
+    };
+    obj.fn();
+
+    // 定时器
+    function fn(){
+        console.log(this);
+    }
+    //fn();
+    //obj.fn();
+    var obj = { fn : fn };
+    window.setInterval(obj.fn,1000);
+
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

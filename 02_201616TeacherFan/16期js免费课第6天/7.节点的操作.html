@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>标题</h3>
+<ul><!-- 注释-->
+    <li>1</li>
+    <li>2</li>
+    <li>3</li></ul><script>
+    //节点包括：元素、注释、文字、空格、回车...
+    var oUl = document.getElementsByTagName('ul')[0];
+//    console.log(oUl.nodeType)
+//    console.log(oUl.nodeName)
+//    console.log(oUl.nodeValue)
+//    console.log(document.body.nodeType);
+
+//    1.parentNode  父节点
+    console.log(oUl.parentNode);
+
+//    2.childNodes  所有的子节点
+    console.log(oUl.childNodes);
+
+//    3.children   所有的元素子节点   【不兼容】
+    console.log(oUl.children);
+
+//    4.上一个哥哥节点
+
+    console.log(oUl.previousSibling);
+
+//    5.下一个弟弟节点
+    console.log(oUl.nextSibling);
+
+//    6.第一个子节点
+    console.log(oUl.firstChild);
+//    7.最后一个子节点
+    console.log(oUl.lastChild);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

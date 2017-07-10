@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="list">
+        <li price="25"><span>价格</span><i>25</i></li>
+        <li price="15"><span>价格</span><i>15</i></li>
+        <li price="05"><span>价格</span><i>05</i></li>
+        <li price="20"><span>价格</span><i>20</i></li>
+    </ul>
+</body>
+</html>
+<script>
+    var obj1 = {
+        name : 'tian',
+        age : 31
+    };
+
+    var obj2 = {
+        name : 'wang',
+        age : 18
+    };
+
+    var obj3 = {
+        name : 'xiao',
+        age : 17
+    };
+
+    var obj4 = {
+        name : 'zf',
+        age : 40
+    }
+
+    var ary = [obj1,obj2,obj3,obj4];
+
+    ary.sort(function (a,b){
+        // a , b分别就是数组中要比较的相邻两项
+        // a : {name : 'tian',age : 31}  b : {name : 'wang', age : 18}
+        //return a - b; // return的这个a-b的差就是是否交换位置的依据
+        return a.name.localeCompare(b.name); // 字符串排序
+        return a.age - b.age;
+    });
+
+    console.log(ary);
+
+    /////////////////////////////////////////////////
+
+    var a = [1,3,2,5,4];
+
+    a.sort(function (x,y){
+        return -1;
+    });
+    console.log(a); // 1,2,3,4,5
+
+
+    ////////////////////////////////////////////////////
+
+    var list = document.getElementById('list');
+    var lis = list.getElementsByTagName('li'); // [li,li,li,li]
+    // 如何把一个类数组转化成数组 ??
+    var ary = [];
+    for(var i = 0, len = lis.length; i < len; i++){
+        ary.push(lis[i]);
+    }
+    //封装一个函数 => 把类数组转化成数组 ?? 作业
+
+
+    // ary : [li,li,li,li]
+    // 定义在标签内的行内属性
+    // getAttribute('price')
+    // setAttribute('price','val')
+    // removeAttribute('price')
+    ary.sort(function (li1,li2){
+        return li1.getAttribute('price') - li2.getAttribute('price');
+    });
+    console.log(ary);
+    // .... 如何把已经排好序的这个数组和页面中的li元素结合起来  dom映射
+
+    Array.prototype.slice;
+    var a = [1,2];
+    var b = [3,4];
+    a.slice(); // slice方法中的this就是数组a => 在slice方法中就是要克隆this
+    b.slice(); //
+    /*
+    *   try{
+    *       先尝试执行这里的代码,如果报错那么执行catch内的代码
+*       }catch(e){
+*           e是一个对象，e.message属性保存着报错的信息
+*       }
+    *
+    * */
+
+    function listToArray(list){
+        try{
+            // 把slice方法中的this修成成list类数组，因为slice中的this就是要克隆的那个数组。把this改成list后，就变成了克隆list并且返回。ie8-不兼容
+            return Array.prototype.slice.call(list,0);
+        }catch(e){
+            console.log(e.message);
+            var ary = [];
+            for(var i = 0; i < list.length; i++){
+                ary.push(list[i]);
+            }
+            return ary;
+        }/*finally {
+
+        }*/
+    }
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1" style="width: 100px; height: 100px; background: lime"></div>
+</body>
+</html>
+<script>
+    // 内存释放 :  只要这个堆(栈)内存没有被占用就可以释放
+
+    // 堆内存释放
+    var obj = {
+        name : 'zf',
+        age : 8
+    };
+    //obj = null;
+
+    // 栈内存(函数执行)释放
+    // 函数执行的时候会形成一个私有作用域，并且定义在函数中的一部分(引用数据类型)被函数外的变量或者(对象的属性)所占用。那么就符合作用域不释放的条件。其实就是这个函数执行的时候产生的那个作用域不被释放。所以在这个作用域内定义的私有变量仍然会被保存下来。
+
+    function sum(num){
+        var num = 10;
+        return function (){
+            num++;
+            console.log(num);
+        }
+    }
+    var f = sum(); // 全局变量f占用
+    // 以上代码:  sum在执行的时候会形成一个作用域，定义在sum函数中的return后的匿名函数(引用数据类型)被sum函数外的全局变量f占用。那么就符合sum执行形成的这个作用域不被释放的条件。所以在这个作用域内定义的私有变量sum就会被保存下来。
+    obj.xxx = sum(); // obj的xxx属性占用
+
+    var div1 = document.getElementById('div1');
+
+    div1.xxx = sum(); // dom对象div1的xxx属性占用
+
+    div1.onclick = sum(); // dom对象div1的onclick属性占用
+
+    //div1.onclick = function (){} // 把一个函数的引用地址赋值给dom对象div1的onclick事件属性
+    //div1.onclick = clickHandler; // 也符合事件绑定 =>
+
+    function clickHandler(){
+
+    }
+
+
+    ////////////////////////////////////////////////////////////
+
+    function fun() {
+        var num = 10;
+        return function (n){
+            console.log(n + ++num);
+        }
+    }
+    fun()(2); // 13
+    fun()(2); // 13
+
+
+
+    /*
+    *  作用域不释放 :
+    *    1 用全局变量或者对象的属性去占用一个函数执行返回的引用数据类型值  return
+    *    2 用一个dom对象的事件属性去占用一个定义在函数执行内部的引用数据类型值
+    *           (function (){
+    *               document.body.onclick = function (){}
+    *               // 虽然没有return这个匿名函数，但是仍然符合占用关系
+    *           })()
+    *    3 暂时不释放   函数执行结束返回的函数立刻执行  fn()()
+    *
+    * */
+
+    // this几种用法  面向对象 单例模式  构造函数模式   原型模式
+
+
+
+
+
+
+
+
+
+</script>

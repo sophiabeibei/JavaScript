@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary = [9, 3, 6, 5, 2, 7, 1];
+
+    function quickSort(ary) {
+        if (ary.length <= 1) {
+            return ary;
+        }
+//        中间一项的索引
+        var cen = Math.floor(ary.length / 2);
+//       获取中间一项的值
+        var cenVal = ary.splice(cen, 1)[0];
+        var left = [];
+        var right = [];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if (cur < cenVal) {
+                left.push(cur);
+            } else {
+                right.push(cur);
+            }
+        }
+        return quickSort(left).concat([cenVal], quickSort(right))
+
+    }
+    quickSort(ary)
+
+
+</script>
+
+</body>
+</html>

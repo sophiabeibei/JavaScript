@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 900px;
+            height: 270px;
+            border: 1px solid orange;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -450px;
+            margin-top: -135px;
+        }
+        li{
+            height: 30px;
+        }
+        li span{
+            width: 100px;
+            height: 30px;
+            float: left;
+            line-height: 30px;
+            text-align: center;
+            /*font-size: 18px;*/
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <!-- li:行   span 列-->
+    <!--<ul>
+        <li>
+            <span>1*1=1</span>
+        </li>
+        <li>
+            <span>1*2=2</span>
+            <span>2*2=4</span>
+        </li>
+    </ul>-->
+</div>
+<script>
+    //字符串拼接
+    var str = '';  //容器 初始值
+//    str+=  在str原有基础上加
+    str+='<ul>';
+        for(var i=1;i<=9;i++){
+            str+='<li>';
+//            每一个li 有多少个span
+//            i=1 第一个li中有1个span
+//            i=2 第二个li中有2个span
+//            i=3 第三个li中有3个span
+//            是第几个li i=几 就有几个span
+//            循环 循环i次
+                for(var j=1;j<=i;j++){
+                    str+='<span>';
+                        str += j+' * '+i+' = '+j*i;
+//                    +  连接的作用
+//                    j=1  i=1
+//                            '1*1=1 '
+                    str+='</span>';
+                }
+
+            str+='</li>';
+        }
+    str+='</ul>';
+//    console.log(str);
+    var oBox = document.getElementById('box');
+    oBox.innerHTML = str;
+//    document.write(str);
+
+
+
+    var a = 10;
+    a+=2;
+    console.log(a);
+
+    var str1 = 10;
+    str1=2;
+    console.log(str1);
+
+    i++
+    i+=1
+    i=i+1
+
+//    i++=1
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function sum(){
+        var total=null;
+        for(var i=0;i<arguments.length;i++){
+            var cur=parseInt(arguments[i]);
+            if(!isNaN(cur)){
+                total+=cur;
+            }
+
+           /* var cur=arguments[i];
+            if(parseInt(cur)){
+                total+=parseInt(cur);
+            }*/
+
+        }
+        return total;
+    }
+    console.log(sum(1,2,3,4,'10px','asd'));
+
+</script>
+
+</body>
+</html>

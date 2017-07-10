@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        ul li{
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            float: left;
+            border: 1px solid blue;
+            cursor: pointer;
+        }
+        .box{
+            width: 350px;
+            margin: 20px auto;
+        }
+        .box div{
+            width: 350px;
+            height: 200px;
+            border: 1px solid deepskyblue;
+            display: none;
+            margin-top: -1px;
+            position: relative;
+        }
+        li.active{
+            background: -webkit-linear-gradient(top left,pink,plum);
+        }
+        .box div.active{
+            display: block;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <ul>
+        <li class="active">选项一</li>
+        <li>选项二</li>
+        <li>选项三</li>
+    </ul>
+    <div class="active">1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+<script>
+    //1、获取要操作的元素 li div
+//    2、给每一个li绑定鼠标移入的事件
+//    3、鼠标移入时，当前的li变亮，对应的div显示。其他的li和其他的div去掉active类名
+    var oBox = document.getElementById('box');
+    var lis = oBox.getElementsByTagName('li');
+    var divs = oBox.getElementsByTagName('div');
+
+    for(var i=0;i<lis.length;i++){
+        var li = lis[i];
+        li.zfpx = i;
+//        lis[0].zfpx = 0
+//        lis[1].zfpx = 1
+//        lis[2].zfpx = 2
+        li.onmouseover = function(){
+//            鼠标移入：1.将所有的li和div去掉active类名 2.当前的li和对应的div设置active类名
+            for(var j=0;j<lis.length;j++){
+                lis[j].className = '';
+                divs[j].className = '';
+            }
+            this.className = 'active';
+            divs[this.zfpx].className = 'active';
+        }
+
+    }
+
+
+</script>
+
+</body>
+</html>

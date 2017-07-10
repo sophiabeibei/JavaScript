@@ -1,0 +1,18 @@
+1rem = 根节点的字体大小   html{  font-size : 100px }   50px
+
+1rem = 100px
+
+width : 1rem    100px  =>   640像素  设计稿内  盒子的宽度是100px
+height : 1rem   100px  =>   320设备里                      50px
+
+=> 根据设备的宽度来改变html的fontSize
+
+document.documentElement.clientWidth || document.body.clientWidth 窗口宽度
+
+设计稿                        设备
+
+640 PSD     盒子 100px        320           盒子50px
+
+320/640 = 50/100
+
+375/640 = ?/100

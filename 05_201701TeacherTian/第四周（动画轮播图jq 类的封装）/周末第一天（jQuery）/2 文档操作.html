@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档操作</title>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    var $div1 = $('#div1');
+
+    var $p = $('<p></p>'); // 创建元素
+    $div1.append($p); // append父元素添加子元素
+
+    var $span = $('<span></span>');
+    $span.appendTo($div1); // 子元素添加到父元素中
+
+    var $h3 = $('<h3></h3>');
+    $div1.prepend($h3);  // prepend 添加到开头
+
+    // insertBefore
+
+    // insertAfter
+
+    // after, before
+    $div1.after('<i></i>'); // after ： 在div1后添加了一个元素
+
+    // wrap, unwrap
+    $div1.wrap('<h2></h2>'); // 给div1添加一个包裹元素
+
+    // remove
+    $div1.remove(); // 移除元素
+
+    // replaceWidth replaceAll 替换
+
+
+
+
+</script>

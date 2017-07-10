@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box"></div>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    //获取一个元素
+    document.getElementById('box');
+//    获取一组元素
+    document.getElementsByTagName('li');
+//    获取所有标签名为ul的一个类数组
+    var oUl = document.getElementsByTagName('ul');
+//    var oUl = document.getElementsByTagName('ul')[0];  获取的是ul这个元素
+//    类数组
+    console.log(oUl);  //[ul]
+//  0:ul
+
+//    oUl.onclick  错误的
+    console.log(oUl[0])
+
+
+    var lis = document.getElementsByTagName('li');
+    console.log(lis);
+//    [li, li, li]
+//    0:li
+//    1:li
+//    2:li
+
+//    类数组中的属性名：索引--》索引是从0开始的，用来表示元素的位置，索引为0表示第一个li，索引为1表示第二个li
+
+//    给第一个li绑定事件
+    lis[0].onclick = function(){
+
+    }
+
+    lis[1].onclick = function(){
+
+    }
+
+    lis[2].onclick = function(){
+
+    }
+
+//    给某一个元素绑定一个点击的事件,
+// 注意：不能给类数组绑定点击事件
+//    元素.onclick = function(){
+//
+//    }
+
+//    css：margin-left
+//    js：marginLeft
+
+//     []==true  //false
+//    对象==布尔
+//    [].toString()  //''
+//    Number('')   -->0
+
+//    Number(true)  1
+//    0==1  false
+
+
+    ![]==true  //false
+//    !优先级大于==
+//    先取反   false
+//    false==true   false
+
+
+    for(var i=0;i<5;i++){
+        alert(i);
+    }
+
+    var i=0;
+    while(i<5){
+        alert(i);
+        i++;  //无限循环
+    }
+
+
+//    1)初始值 2)条件  3）{循环体}  4）累加
+
+//    i=i+1 i+=1  i++ 在i原有基础上加1
+//    i+=2    i=i+2
+//     i+=  在i原有的基础上加
+
+//    循环体中：break  continue
+
+    for(var i=3;i<10;i++){
+        if(i<6){
+            i+=5;
+            continue;
+            console.log(i);
+        }
+        i+=2;
+        break;
+        console.log(i);
+    }
+    console.log(i);
+
+    var obj = {
+        name:'zf',
+        age:8
+    };
+
+//    for(var 属性名 in 对象名)
+    for(var name in obj){
+//        console.log(name);//属性名
+        console.log(obj[name]);//属性值  不能用点的形式，有可能属性名为数字
+    }
+
+
+</script>
+
+
+</body>
+</html>

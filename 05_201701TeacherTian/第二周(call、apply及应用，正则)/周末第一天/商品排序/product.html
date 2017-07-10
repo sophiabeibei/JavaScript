@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>product</title>
+    <style>
+        html,body,div,p,ul,li,img,a{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .productList{
+            width: 1000px;
+            margin: 10px auto;
+            padding: 10px;
+            box-shadow: 5px 5px 10px #000;
+        }
+        .productList .btnBar{
+            height: 30px;
+            padding: 5px 0;
+            background: lightblue;
+            font-size: 0;
+        }
+        .btnBar a{
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            border: 1px solid #ccc;
+            line-height: 28px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .btnBar a:hover{
+            color: red;
+            border-color: red;
+        }
+        .productList ul {
+
+        }
+        .clearFix:after{
+            content: '';
+            display: block;
+            clear: both;
+            height: 0;
+            /*...*/
+        }
+        .productList ul li{
+            width: 200px;
+            height: 260px;
+            float: left;
+        }
+        .productList ul li img{
+            display: block;
+            width: 200px;
+            height: 200px;
+            border: none;
+            vertical-align: top;
+        }
+        .productList ul li p{
+            height: 30px;
+            line-height: 30px;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="productList" class="productList">
+        <div class="btnBar">
+            <a btnName="ok" href="javascript:void 0">成交量</a>
+            <a btnName="price" href="javascript:void 0">价格</a>
+        </div>
+        <ul class="clearFix">
+            <li price="9888" ok="100">
+                <img src="images/phone1.jpg" >
+                <p>价格:￥9888</p>
+                <p>成交数:100</p>
+            </li>
+
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var productList = document.getElementById('productList');
+    var btns = productList.getElementsByTagName('a'); // 价格成交数 [a,a]
+    var ul = productList.getElementsByTagName('ul')[0];
+    var lis = ul.getElementsByTagName('li'); //要排序的商品
+    var data = null; // 暂时没有
+
+    // JSON 数据格式  如何发请求ajax
+
+    /*
+    *   ajax 简单步骤 :  async异步的 javascript and xml
+    *       1 new XMLHttpRequest() 让谁去
+    *       2 xhr.open('get/post','url接口',false/true) 怎么去，到哪去，原地等
+    *       3 xhr.onreadystatechange 约定暗号  readyState == 4 && status==200
+    *       4 xhr.send() 出发
+    *       ps : xhr.responseText 获取数据保存在这个属性上
+    *
+    * */
+    // 获取数据
+    var xhr = new XMLHttpRequest(); // 异步对象 => 跑路的
+
+    xhr.open('get','data.txt',false);
+
+    // 方式get/post(后端)，接口URL(到哪去拿数据后台)，同步 false
+    xhr.onreadystatechange = function (){
+        // 成功返回数据
+        if(xhr.readyState == 4 && xhr.status == 200){
+            // 200 成功
+            // 404 找不到页面
+            // 500 服务端
+            // 304 缓存
+            data = JSON.parse(xhr.responseText); // 响应文本 => 从接口后台返回的数据 => 把返回的数据拼凑成html或者元素添加到页面中
+        }
+    }
+
+    xhr.send(); // 真正出发
+
+    console.log(data); // 只要ajax成功那么data就不再是null，保存着获取回来的数据
+
+    // 绑定数据 => 把数据拼接成dom结构添加到页面中
+    if(data && data.length){
+        var str = '';
+        for(var i = 0; i < data.length; i++){
+        // <img src="images/phone1.jpg" >
+        // <p>价格:￥9888</p>
+        // <p>成交数:100</p>
+            str += '<li price="'+ data[i].price +'" ok="'+ data[i].ok +'">' ;
+            str += '<img src="'+ data[i].src +'" >';
+            str += '<p>价格:￥'+ data[i].price +'</p>';
+            str += '<p>成交数:'+ data[i].ok +'</p>';
+            str += '</li>';
+        }
+        ul.innerHTML = str;
+    }
+
+    // 绑定点击事件
+    for(var i = 0; i < btns.length; i++){
+        btns[i].flag = -1;
+        btns[i].onclick = function (){
+            this; // 就是点击的那个按钮，按照this去排序
+            // 事件触发时刻我们需要排序
+            sort.call(this); // => 我要把sort函数中的this修改成为当前事件函数中的this
+        }
+    }
+    function sort(){
+        // this => 点击的那个按钮 => 按照哪个按钮排序
+        console.log(this); // 成功修改为点击的按钮
+        console.log(this.getAttribute('btnName')); // "price" /"ok"
+        var btnName = this.getAttribute('btnName');
+        var lisAry = Array.prototype.slice.call(lis,0); // ie8-不兼容
+        // lisAry : [li,li,li,li.....]
+        var _this = this; //
+        _this.flag *= -1;
+        lisAry.sort(function (li1,li2){
+            var a = li1.getAttribute(/*'price'*/btnName);
+            var b =  li2.getAttribute(btnName);
+
+            return (a - b)*_this.flag; // 就用来做顺序切换
+        });
+        var frg = document.createDocumentFragment();
+        for(var i = 0; i < lisAry.length; i++){
+            frg.appendChild(lisAry[i]);
+        }
+        ul.appendChild(frg);
+        frg = null;
+    }
+
+    function listToArray(likeAry){
+        try{
+            return Array.prototype.slice.call(likeAry);
+            // error
+        }catch(e){ // e.message保存着try中的报错信息
+            var ary = [];
+            for(var i = 0; i < likeAry.length; i++){
+                ary.push(likeAry[i]);
+            }
+            return ary;
+        }
+        // 如果try中的代码报错才执行catch中的代码
+    }
+
+
+
+
+
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*css的代码  内嵌式*/
+    </style>
+    <!-- 外链式-->
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<!--1、css的引入方式
+    1）行内式
+-->
+<div style="width: 200px;height: 200px;background: red;border-radius: 50%" onclick="alert(123)"></div>
+<!-- onclick="alert(123)"  ---js的代码
+     点击当前div时执行的操作="弹出123"
+-->
+
+<!--2）内嵌式
+    3）外链式
+-->
+
+
+<!--js的引入方式
+    1）行内式：写在标签内部
+    <div onclick="alert(123)"></div>
+
+    2）内嵌式：写到script标签块中
+    <script>
+        alert('第十六期免费课开始啦~~~')
+    </script>
+
+    3）外链式：引入一个js文件
+    <script src="js文件的路径"></script>
+
+
+    document.write('<script src="2.js"></script>')
+
+-->
+<script type="text/javascript">
+    //这里写的是js的代码
+    alert('第十六期免费课开始啦~~~')
+</script>
+
+<script src="js/1.js">
+    //alert('哈哈')  在这里的js代码 不执行，但也不会报错
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 120px;
+            height: 50px;
+            border: 2px solid aqua;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    //获取四位不重复的验证
+//    1.获取四位 [0,61]之间的随机数  索引
+//    2.通过索引找对应位置的字符
+
+    var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890'
+
+    function getCode(){
+        var code = '';//验证码
+        for(var i=0;i<4;i++){
+//            rand 索引
+            var rand = Math.round(Math.random()*61);
+//            cur 通过索引找字符
+            var cur = str.charAt(rand);
+//            添加到code  字符串拼接
+            if(code.indexOf(cur)===-1){
+                code+=cur;
+            }else{
+                i--; //如果重复了，再重新获取一次
+            }
+        }
+        var box = document.getElementsByTagName('div')[0];
+        box.innerText = code;
+    }
+    getCode()
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var a=9;//a=0; a=1; a=0; a=1; a=2;
+    function fn(){
+        a=0;
+        return function(b){ return b+a++; }
+    }
+    var f=fn()
+    var m=f(5);alert(m);//5
+    var n=fn()(5);alert(n);//5
+    var x=f(5);alert(x);//6
+    alert(a);//2
+
+    /*var foo='hello';
+    (function(foo){//var foo=hello
+        console.log(foo);//hello
+        var foo=foo||'world';
+        console.log(foo);//hello
+    })(foo);
+    console.log(foo);*/
+
+    /*var a=4;
+    function b(x,y,a) {//var x=1,y=2,a=10
+        alert(a);//3
+        arguments[2]=10;
+        alert(a);//10
+    }
+    a=b(1,2,3);   alert(a);//undefined*/
+
+    //var a; window.a=undefined
+    /*if(!("a" in window)){
+        var a=1;
+    }
+    alert(a);*/
+    /*var a=10,b=11,c=12;//a=10 b=11 c=3;
+    function test(a){//var a=1;
+        a=1;var b=2;c=3;
+    }
+    test(a);
+    alert(a);  alert(b);   alert(c);*/
+    /*var n=0;
+    function a(){
+        var n=10;
+        function b(){
+            n++;
+            alert(n);
+        }
+        b();
+        return b;
+    }
+    var c=a();//11
+    c();//12
+    alert(n);//0*/
+
+    /*
+    * var fn=>alert('奇数')
+    * var n;
+    * 代码执行的时候
+    * n=18;
+    *
+    * */
+    /*var n=18;
+    if(n%2==0){
+        function fn(){
+            alert('偶数')
+        }
+        fn()
+    }else{
+        function fn(){
+            alert('奇数')
+        }
+        fn()
+    }*/
+   /* function fn(){
+        fn2()
+        fn1()
+        return function fn1(){
+            alert(123)
+        }
+        function fn2(){
+            alert(456)
+        }
+    }
+    fn();*/
+    /*var foo=1;
+    function bar(){
+        //var foo; !foo=undefined: 条件判断语句，在各大浏览器下预解释的时候，是不同的；所以不要在条件判断语句中，写函数的定义阶段
+        if(!foo){
+            var foo=10;
+        }
+        console.log(foo);
+    }
+    bar();*/
+    /*console.log(a);//报错
+    a=12;
+    function fn(){
+        console.log(a);
+        a=13;
+    }
+    fn();
+    console.log(a); // 输出的三次分别是多少*/
+
+    /*console.log(a);//undefined
+    var a=12;
+    function fn(){
+        console.log(a);//12
+        a=13;
+    }
+    fn();
+    console.log(a);//13*/
+
+    /*console.log(a);//undefined
+    var a=12;
+    function fn(){
+        console.log(a);//undefined
+        var a=13;
+    }
+    fn();
+    console.log(a);//12
+    //输出的三次分别是多少*/
+
+</script>
+</body>
+</html>

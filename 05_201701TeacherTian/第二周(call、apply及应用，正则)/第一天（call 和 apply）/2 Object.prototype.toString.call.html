@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    Object.prototype.toString.call([]);
+    // 相当于call把toString方法中的this修改成了这个数组，而原型上方法中的this一般是实例。已经把this更改成了这个数组。那么toString就被数组偷偷的调用了一次。
+    // Object原型上的toString方法打印"[object Object]"这样的字符串。后半部分就是标记当前实例所属于的类
+
+    //判断当前数据是不是{}的对象???  => "[object Object]"
+
+    var obj = {
+        "name" : 'zf',
+        age : 8
+    }
+    for(var key in obj){
+        console.log(typeof key); // 'string'
+    }
+
+    ////////////////////////////////////////////////
+
+    // 可枚举
+    function Human(){
+        this.name = 'abc';
+    }
+    Human.prototype.cry = function (){} // constructor
+
+    var h1 = new Human();
+    for(var key in h1){
+        if(h1.hasOwnProperty(key)){ //  propertyIsEnumerable
+            console.log(key);
+        }
+    }
+
+
+
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//   时间的单位是ms  毫秒
+//    window.setTimeout(函数,时间s);  //等待一段时间 执行函数,只执行一次
+//    window.setInterval(函数,时间); //每隔一段时间，执行函数
+
+//    window.setTimeout(function(){
+//        console.log(1);
+//    },1000)
+
+//    var n = 0;
+//    window.setTimeout(function(){
+//        n++;
+//        console.log(n);
+//    },1000)
+
+//    var n = 0;
+//    window.setInterval(function(){
+//        n++;
+//        console.log(n);
+//    },1000)
+
+
+//    每个定时器 都会有返回值:数字 ，代表是第几个定时器
+
+    var timer1 = window.setTimeout(function(){
+//        console.log(999)
+    },1000);
+
+
+    var timer2 = window.setTimeout(function(){
+
+    },1000);
+    var timer3 = window.setInterval(function(){
+
+    },1000);
+    console.log(timer1,timer2,timer3);//2
+
+//    清除定时器
+
+//    var timer = null;
+//    timer = window.setTimeout(function(){
+//        console.log(888);
+//        clearTimeout(timer);
+//    },1000);
+
+
+//    1-10
+   /* var count = 0; //计数
+    var timer = null;//初始值
+    timer = window.setInterval(function(){
+        count++;
+        console.log(count);
+//        结束
+        if(count==10){
+            clearInterval(timer);//关闭定时器
+        }
+    },1000)
+    */
+
+//  输出10之后 停止执行--》关闭定时器
+    var n = 0;
+    var timer = null;
+    timer = window.setInterval(function(){
+        n++;
+        console.log(n);
+        if(n==10){
+            clearInterval(timer);
+        }
+    },1000)
+
+
+
+
+</script>
+
+</body>
+</html>

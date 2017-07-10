@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script src="../utils.js"></script>
+<script src="../animate.js"></script>
+<script>
+    var div1 = document.getElementById('div1');
+    animate({
+        ele : div1,
+        target : {
+            left : 300,
+            top : 300,
+            width : 200,
+            height : 200,
+        },
+        effect : "Bounce,easeIn"
+    })
+</script>

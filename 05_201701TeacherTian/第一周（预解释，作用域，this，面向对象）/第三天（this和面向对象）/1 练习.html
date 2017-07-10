@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 如果函数名字和变量重名，在预解释阶段以最后一个函数为准，当代码执行到变量赋值的哪一行，以这个变量为准
+    fn(); // 2
+    function fn(){ console.log(1); }
+    fn(); // 2
+    var fn = 5; // 代码执行到这一行fn这个变量再也不会代表打印2这个函数了
+    typeof fn == 'function' && fn(); //  fn is not a function
+    // cannot set property 'className' of undefined , lis[i].className = 'active'
+    function fn(){ console.log(2); }
+    if(typeof fn == 'function'){ fn(); } // 不打印
+
+    ////////////////////////////////////////////////////////////////////////////////
+    // 上一级作用域  顶级作用域是window
+    function foo(m){
+        // var m = 5   6     7
+        return function (n){ // 4
+            console.log(n + ++m);  // 4 + 6    3  + 7
+        }
+    }
+    var f = foo(5); // f占用这个foo第一次执行返回的匿名函数
+    f(4);  // 10
+    var f1 = f; // f代表foo(第一次)执行返回的匿名函数 => f 和 f1 (共同引用)第一次执行foo返回匿名函数
+    //f = null; // 即使f不占用这个匿名函数，f1仍然在占用
+    f(3); // 10
+    f1(2); // 10
+    foo(3)(2);  //6
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

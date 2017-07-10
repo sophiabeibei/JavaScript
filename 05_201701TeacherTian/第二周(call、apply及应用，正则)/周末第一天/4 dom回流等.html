@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom回流和重绘</title>
+    <style>
+        html,body,ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width: 300px;
+            border: 5px solid deepskyblue;
+            padding: 10px;
+        }
+        ul li{
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            background: lime;
+            margin: 2px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>3</li>
+        <li>4</li>
+        <li>2</li>
+    </ul>
+</body>
+</html>
+<script>
+    var ul = document.getElementById('ul');
+    var lis = ul.getElementsByTagName('li'); // [li,li,li,li]  类数组 集合
+
+    for(var i = 0; i < lis.length; i++){
+        lis[i].onmouseover = function (){
+            this.style.backgroundColor = 'red';
+        }
+        // lis[0]第一个li.onmouseover = function eeefff111 给li的事件属性赋值个函数
+        lis[i].onmouseout = function (){
+            this.style.backgroundColor = 'lime';
+        }
+    }
+    // lis里的每个li的onmouseover和onmouseout属性全都被赋值一个函数
+
+
+    // 把这些li都导入到一个数组中
+    var ary = []; // [li,li,li,li]
+    for(var i = 0; i < lis.length; i++){
+        ary.push(lis[i]);
+    }
+
+    // 就可以使用sort方法
+    ary.sort(function (li1,li2){ // [li,li,li,li]
+        return li1.innerHTML - li2.innerHTML;
+    });
+
+    //
+    for(var i = 0; i < ary.length; i++){
+        ul.appendChild(ary[i]);
+//        ul.appendChild(ary[1]);
+//        ul.appendChild(ary[2]);
+//        ul.appendChild(ary[3]);
+
+    }
+
+    /*
+    *   DOM映射 :  页面中的元素通过dom方法获取到的集合(lis)，这个集合仍然和页面中的元素存在这种一一对应关系，这个集合会随着页面内元素的增加而增加，减少而减少，我们叫做DOM映射.
+    *   DOM回流 : 页面中元素位置的改变或者元素增加和删除都会引起DOM回流
+    *   DOM重绘 : 页面中元素样式的改变会引起重绘
+    *   ps : 尽量去避免回流，相对于重绘而言回流更浪费性能
+    * */
+
+    // 在lis绑定的事件，在回填到页面的时候仍然还存在，验证如果新增加4个li会不会影响原来的4个li的事件 ???
+    var frg = document.createDocumentFragment(); // 相当于创建了一个dom容器 文档碎片
+    for(var i = 5; i <= 8; i++){
+        var li = document.createElement('li');
+        li.innerHTML = i;
+        //ul.appendChild(li);
+        frg.appendChild(li);
+    }
+    ul.appendChild(frg); // 把这个临时容器文档碎片添加到页面，就避免了多次回流
+    // 新增加的元素并不会影响原有li的事件, 但是引起4次回流，尽量避免回流 innerHTML
+
+    // 使用innerHTML的方式来继续添加两个li => 会影响原来已经存在的元素，事件丢失
+    var str = '';
+    for(var i = 9; i <= 10; i++){
+        str += '<li>'+ i +'</li>';
+    }
+    ul.innerHTML += str; // ul.innerHTML = ul.innerHTML + str;
+
+    // 模板引擎 => .... ejs   字符串
+
+
+    /*
+    *   动态添加 ： appendChild / insertBefore
+    *       麻烦并且有可能引起多次回流
+    *
+    *   innerHTML的方式 : 拼接字符串
+    *       简便但是会影响页面已经存在的元素
+    *       ps: 如果页面内不存在元素使用拼接字符串的方式
+    *
+    * */
+
+
+
+
+
+
+
+
+
+
+
+</script>

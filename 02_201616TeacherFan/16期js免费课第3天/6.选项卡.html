@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #box{
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        ul{
+            overflow: hidden;
+            padding-left: 20px;
+        }
+        li{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #000;
+            float: left;
+            background: paleturquoise;
+        }
+
+        #box div{
+            width: 400px;
+            height: 200px;
+            background: orange;
+            font-size: 36px;
+            color: #fff;
+            display: none;
+            margin-top: -1px;
+            position: relative;
+        }
+        li.active{
+            background: plum;
+        }
+        #box div.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="active">选项一</li>
+        <li>选项二</li>
+        <li>选项三</li>
+    </ul>
+    <div class="active">1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+<script>
+    //分析思路
+//    1、获取要操作的元素
+//    2、给每一个li绑定 鼠标移入的事件，
+//    3、移入时，让当前li变亮（设置active类名），对应的div显示（设置active的类名）出来，其他的li和div 去掉active这个类名
+
+    var oBox = document.getElementById('box');
+    var lis = oBox.getElementsByTagName('li');
+    var divs = oBox.getElementsByTagName('div');
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].index = i;
+//        2、
+        lis[i].onmouseover = function(){
+//            每次鼠标移入时，先将所有的li和所有div 去掉active这个类名，然后再将当前的li和对应的div 设置active的类名
+//            循环每一个li
+            for(var j=0;j<lis.length;j++){
+//                去掉所有的li的类名
+                lis[j].className = '';
+                divs[j].className = '';
+            }
+            this.className = 'active';
+            divs[this.index].className = 'active';
+        }
+    }
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单张图片延迟加载</title>
+    <style>
+        html,body,div,img{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 600px;
+            height: 400px;
+            margin: 1000px auto;
+            border: 10px solid #000000;
+            background: url("timg.gif") no-repeat center;
+        }
+        .wrap img{
+            width: 100%;
+            height: 100%;
+            border: none;
+            vertical-align: top;
+            opacity: 0;/*淡入效果*/
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap j-wrap"><img src="" real="2.jpg" ></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    /*
+    *   图片延迟加载 ：
+    *       img的src属性会去默认加载src对应的资源，当图片已经完全进入到可视窗口内再去加载这张图片。=> 当图片完全进入窗口内在给img的src属性赋值
+    *       => 如何判断图片是否已经完全进入的窗口内 ??
+    *
+    * */
+    var img = document.getElementsByClassName('wrap')[0].getElementsByTagName('img')[0]; // 获取图片
+
+    window.onscroll = function (){ // 给浏览器绑定滚动条滚动事件
+        // 当滚动触发的时刻要时刻计算图片是否完全进入到窗口内
+
+        var _a = utils.win('clientHeight') + utils.win('scrollTop');
+        // 浏览器窗口的高度 + 浏览器已经滚动出去的高度
+        var _b = img.parentNode.offsetHeight + utils.offset(img.parentNode).top;
+        // 包含图片的div的高度 + div的距离body的上偏移量
+        if(_a > _b ){
+            if(img.isLoaded){ return; } // 如果加载过就会有这个属性那么就直接return掉了
+            // 符合这个条件图片完全进入到窗口内
+            // 保证real上的图片资源有效性 => 如何验证一个图片资源是否有效 ?
+            // onload => 加载成功 =》 资源有效
+            var tempImg = document.createElement('img'); //创建一个临时图片
+            tempImg.src = img.getAttribute('real'); // 让这个临时图片去加载真实图片的资源
+            tempImg.onload = function (){ // 只要图片的src被赋值就会立刻去加载资源，当加载成功就会触发onload事件
+                img.src = this.src; // img.getAttribute('real')  304
+                fadeIn(img); // 让img淡入
+            }
+            img.isLoaded = true; // 标记当前自己已经加载过了,即使在滚动条滚动的过程中再次符合条件也没有必要去加载第二次 => 标识变量
+        }
+    }
+
+    function fadeIn(ele){
+        window.clearInterval(ele.timer);
+        ele.timer = window.setInterval(function (){
+            var val = utils.getCss(ele,'opacity'); // 获取当前ele的透明度样式  0
+            if(val >= 1){
+                window.clearInterval(ele.timer);
+                return;
+            }
+            val += 0.01; // 累加
+            utils.setCss(ele,'opacity',val);//把累加之后的透明度值生效
+        },10);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</script>

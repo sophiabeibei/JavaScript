@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 300%;
+        }
+    </style>
+</head>
+<body>
+<audio src=""></audio>
+<video src=""></video>
+<select name="" id="select">
+    <option value="0">沈阳</option>
+    <option value="1">大连</option>
+    <option value="2">鞍山</option>
+    <option value="3">抚顺</option>
+    <option value="4">本溪</option>
+</select>
+<input type="text" id="input">
+<textarea name="" id="" cols="30" rows="10"></textarea>
+
+</body>
+</html>
+<script>
+    var select = document.getElementById('select');
+    select.onchange = function (){
+        console.log(this.value);
+    }
+
+    var input = document.getElementById('input');
+    input.oninput = function (){
+        console.log(this.value);
+    }
+
+    window.onresize = function (){
+        console.log(1);
+    }
+
+    window.onscroll = function (){
+        console.log(2);
+    }
+
+
+    /*
+    *   onfocus : 获得焦点
+    *   onblur : 失去焦点
+    *
+    *   oncanplay : 用于媒体文件可以播放
+    *
+    *   onchange : select
+    *
+    *   ondblclick : 双击
+    *
+    *   onload :  加载成功  img的src属性就是去加载一个图片
+    *   onerror :  加载失败
+    *
+    *   oninput : 表单输入时候
+    *
+    *   onkeydown : 键按下
+    *
+    *   onkeyup : 键弹起
+    *
+    *   onmousedown : 鼠标按下
+    *
+    *   onmouseup : 鼠标弹起
+    *
+    *   onmousemove : 鼠标移动
+    *
+    *   onmouseover : 鼠标悬停
+    *
+    *   onmouseout : 鼠标离开
+    *
+    *   onmouseenter : onmouseover
+    *   onmouseleave : onmouseout
+    *
+    *   onmousewheel : 鼠标滚轮 => 判断滚轮的方向
+    *
+    *   onprogress : 进度条
+    *
+    *   onresize :  window.onresize 浏览器窗口大小改变   文本域
+    *
+    *   onscroll : 滚动条滚动
+    *
+    *   onreadystatechange   DOMContentLoaded ...
+    *
+    *
+    * */
+</script>

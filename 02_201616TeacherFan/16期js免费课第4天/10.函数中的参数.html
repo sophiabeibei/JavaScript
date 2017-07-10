@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //函数的参数：
+//    形参：一个入口
+
+//    x y  相当于函数的入口
+    function a(x,y){
+//        console.log(x);
+//        console.log(y);
+    }
+
+//    a(1);   实参：执行时传递的参数 //x=1   y=undefined
+//    a(1,2);//x=1  y=2
+//    如果形参没有传递具体的值  默认为undefined
+    a();
+
+
+
+//    函数的返回值，函数的结果
+    function fn(x){
+        console.log(x);
+        console.log(123);
+        var a = 1;
+        return a;  //返回值：函数执行的结果
+    }
+    console.log(fn(100));  // 如果函数没有返回值  输出undefined
+
+//    第32行：
+//   1. fn() 只要遇到函数名()   函数执行，
+//   2. console.log(函数执行的结果)  输出函数执行的结果
+
+//    返回值：
+//     1）如果函数没有返回值  输出undefined
+//     2）return 后面的代码不再执行
+
+
+    function a(){
+        var a = 100;
+        return a;  //阻断代码  后面的代码不再执行
+        alert(123);
+    }
+    a();
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var num = 5;
+    var obj = {
+        num: 10,
+        fn: (function (num) {
+            this.num *= 3;
+            num += 10;
+            return function () {
+                this.num *= 3;
+                num += 1;
+                console.log(num);
+            }
+        })(num)
+    };
+    var fn = obj.fn;
+    fn();//16
+    obj.fn();//17
+    console.log(window.num, obj.num);//45 30
+    /*function fn() {
+        var i = 10;
+        return function (n) {
+            console.log(n * (++i));
+        }
+    }
+    var f = fn();
+    f(15);//165
+    f(20);//240
+    fn()(15);//165
+    fn()(20);//220
+    fn()(30);//330
+    f(30);//390*/
+</script>
+</body>
+</html>

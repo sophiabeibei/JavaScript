@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //{}  []  //
+//    由多组属性名和属性值组成的 键值对 key:value
+    var obj = {
+        name:'zfpx',
+//      属性名:属性值
+        age:8,
+        add:'北京'
+    }
+    var ary = [1,2,3];
+//    能看到的是属性值
+//    数组的属性名: 索引 （从0开始的数字）
+    console.log(ary);
+
+//    创建一个对象
+//    1.字面量
+    var obj = {name:'zfpx'};
+//    2.实例创建方试
+    var obj = new Object();
+//            new:新建 创建
+//            Object  对象类
+
+//   增删改查
+//    1）增加一组属性   name:'zf'   index:3  zf:'bg1'
+    obj.name = 'zf'
+    obj.index = 3;
+    obj.zf = 'bg1';
+
+//    2)修改属性名对应的属性值 对象中的属性名不能出现重复的，之前没有就是增加，之前有就是修改
+    obj.name = 'zfpx';
+    console.log(obj);
+//     {name: "zfpx", index: 3, zf: "bg1"}
+
+//    3)获取属性名对应的属性值
+    console.log(obj.zf)
+
+//    4)删除
+//    1.直接赋值为空null
+    obj.index = null;
+    console.log(obj);
+//    {name: "zfpx", index: null, zf: "bg1"}
+//    2.直接删除属性
+    delete obj.index;
+    console.log(obj);
+//     {name: "zfpx", zf: "bg1"}
+
+//    obj.name
+//    obj['name']
+//    但是属性名为数字 只能用中括号的形式
+
+    var obj1 = {
+        name:'zfpx',
+        age:8,
+        1:2017
+    }
+
+//    获取2017
+    console.log(obj1[1])
+//    console.log(obj1.1)  错误的
+
+//    对象、类、实例的区别
+//    在js中万物皆对象，类是对对象的具体的细分，实例是类中的一个具体的事物
+
+//    Object（对象类）  Array（数组类） RegExp（正则类） Date（时间类）
+
+//    Object（对象类）  {name:'zf'}、{}、{age:9}、{a:'b'}
+//    Array（数组类）   []、[1,2,3]、[100,200]
+
+//    /\d/  /\w/
+//    对象数据类型（object）： Object（对象类）  Array（数组类） RegExp（正则类） Date（时间类）中的具体的实例才是对象数据类型的
+
+
+
+</script>
+
+</body>
+</html>

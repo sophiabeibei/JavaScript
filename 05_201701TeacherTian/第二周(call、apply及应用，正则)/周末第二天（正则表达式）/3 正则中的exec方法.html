@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exec</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    var reg = /\d+/g;
+    var str = 'zhu2017feng20000';
+    // 第一次捕获   ["2017", index: 3, input: "zhu2017feng20000"]
+    var result1 = reg.exec(str);
+    console.log(result1);
+    console.log(reg.lastIndex); // 7
+    // 第二次捕获  ["20000", index: 11, input: "zhu2017feng20000"]
+    var result2 = reg.exec(str);
+    console.log(result2);
+    console.log(reg.lastIndex); // 16
+    // 第三次捕获  null
+    var result3 = reg.exec(str);
+    console.log(result3);
+    console.log(reg.lastIndex); //
+    // 第四次捕获 ["2017", index: 3, input: "zhu2017feng20000"]
+    var result4 = reg.exec(str);
+    console.log(result4);
+
+
+
+    /*
+    *   exec捕获结果 :
+    *       1 返回一个数组
+    *       [正则捕获回来的结果  index: 捕获开始位置的索引,input : 原有字符串 ]
+    *       2 reg.lastIndex属性 => 下一次捕获从哪个索引位置开始, 当捕获结果为null这个属性值机会重新赋值为0，然后就又从开始开始捕获了
+    *   match :  1 返回一个数组
+    *            2 会把所有符合要求的一次性捕获回来
+    *
+    * */
+
+    var reg1 = /\d+/g;
+    var str = "zf2017xyz20000";
+    var result = reg1.exec(str); // [2017, index:   input : ]
+    var ary = [];
+    while (result){ // result : [2017],[20000],null
+        ary.push(result[0]);
+        result = reg1.exec(str); // [20000,index :  input: ]
+    }
+    console.log(ary); // [2017,20000]
+
+    //match/////////////////////////////////////////////////////
+    var str2 = 'a222b333';
+    var reg2 = /\d+/g;
+    var res2 = str2.match(reg2);
+    console.log(res2);
+
+
+
+</script>

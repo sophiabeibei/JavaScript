@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom映射</title>
+    <style>
+        html,body,ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #list{
+            width: 300px;
+            border: 3px solid blue;
+        }
+        #list li{
+            width: 300px;
+            height: 30px;
+            background: lime;
+            margin: 1px 0;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li price="1">1</li><!--getAttribute-->
+        <li price="3">3</li>
+        <li price="2">2</li>
+        <li price="4">4</li>
+    </ul>
+</body>
+</html>
+<script src="../utils.js"></script>
+<script>
+    var list = document.getElementById('list');
+    var lis = list.getElementsByTagName('li'); // [li,li,li,li]
+    for(var i = 0; i < lis.length; i++){ // 循环嵌套事件绑定在绑定函数中的i有问题
+        lis[i].onmouseover = function (){
+            this.style.backgroundColor = 'yellow';
+        }
+        lis[i].onmouseout = function (){
+            this.style.backgroundColor = 'lime';
+        }
+        lis[i].xxxx = 10000000;
+    }
+    // 这个循环执行结束之后每个li的onmouseover和onmouseout属性都被赋值一个函数
+
+    // 通过dom方法获取回来的集合
+    console.log(lis); // HTMLCollection 类数组集合
+    // 把集合转化成数组
+    var lisAry = utils.listToArray(lis);
+    console.log(lisAry); // 数组集合 => 仍然和页面内的li元素存在这种一一对应关系
+    // 把数组排序
+    lisAry.sort(function (a,b){ // localeCompare
+        return a.innerHTML - b.innerHTML;
+    });
+    console.log(lisAry);
+
+    //循环把已经排序好的这些li重新添加到页面中 => 页面中多了元素还是原有元素调换位置??
+    var frg = document.createDocumentFragment(); // 创建一个文档碎片，dom临时容器
+    for(var i = 0; i < lisAry.length; i++){
+        //debugger;
+        //list.appendChild(lisAry[i]); // 把这些li添加到list中
+        frg.appendChild(lisAry[i]); // 暂时先把这些li添加到文档碎片中
+    }
+    list.appendChild(frg); // 把包含所有 li的文档碎片添加到list列表中
+    frg = null; // 主动释放文档碎片
+
+
+    // 经过验证就是把原有元素重新调换位置 ?? 那些增加的属性onmouseover和onmouseout还有xxxx属性还存在不??  => 说明使用appendChild(动态添加)的方式不会影响元素的任何属性,曾经绑定过的事件现在还存在
+
+    /*
+    *   dom映射 : 页面中的元素通过DOM方法来获取回来的集合。这个集合仍然和页面中的元素存在这种一一对应的关系就是DOM映射. 并且即使这个元素暂时不存在那么这个变量lis集合仍然会随着页面内li的增加而增加，减少而减少
+    *   dom回流 : 页面中元素位置的改变或者增加和删除元素都会引起DOM回流.
+    *   dom重绘 :  一般就是元素样式的改变会引起重绘
+    *
+    * */
+
+    // 我想在页面中原有的基础上增加4个  动态创建
+    for(var i = 5; i <= 8; i++){
+        var li = document.createElement('li');
+        li.innerHTML = i;
+        list.appendChild(li);
+    }
+
+    // innerHTML的方式 => 会破坏原有元素的属性。
+//    var str = '';
+//    for(var i = 9; i <= 10; i++){
+//        str += '<li>' + i + '</li>';
+//    }
+//    list.innerHTML = list.innerHTML + str;
+    //list.innerHTML += str;
+
+    /*
+    *   总结 : 动态创建和innerHTML
+    *       动态创建的方式并不会影响原有元素的任何属性,但是操作不便还有可能引起多次回流
+    *       innerHTML的方式操作起来比较简便，但是它会破坏原有元素的属性。不存在任何元素用比较合适 => 模板引擎
+    *
+    *
+    * */
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //取最大值
+    console.log(Math.max(1,2,3));
+//    最小值
+    console.log(Math.min(1,2,3));
+//    向下取整
+    console.log(Math.floor(1.2));
+//    向上取整
+    console.log(Math.ceil(1.2));
+//    取绝对值  正数
+    console.log(Math.abs(-1));
+//    四舍五入
+    console.log(Math.round(4.2));
+//    幂次方  10的3次方
+    console.log(Math.pow(10,3));
+//    开平方
+    console.log(Math.sqrt(100));
+
+//    取0到1之间的随机数 [0,1)  包括0 不包括1
+    console.log(Math.random());
+
+//    0-100之间的随机整数   [0,100]
+    Math.round(Math.random()*100)
+//    100-200  【100,200】
+
+    Math.round(Math.random()*100+100)
+
+//    [n,m] n到m之间的随机整数
+//    Math.round(Math.random()*(m-n)+n);
+
+//    获取【12,60】 之间的随机整数
+    Math.round(Math.random()*48+12);
+
+//    获取[0,61]四位不重复的随机整数
+//    indexOf(内容)  索引，如果找不到-1
+    var ary = [];
+    for(var i=0;i<4;i++){
+//        获取0,61之间随机整数
+        var rand = Math.round(Math.random()*61);
+        if(ary.indexOf(rand)===-1){
+//            如果不存在
+            ary.push(rand);
+        }else{
+//            如果ary中存在了
+            i--;//放弃这次机会，再循环一次 i-- i++   i的值不变
+        }
+    }
+    document.write(ary);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

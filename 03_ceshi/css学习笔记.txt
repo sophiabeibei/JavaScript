@@ -1,0 +1,496 @@
+2016.4.12	周二
+1.如何使用css控制多重网页和布局？
+
+范例：
+body{
+    background-color:#ffffff;}
+h1{
+    color:orange;
+    text-align;center;}
+p{
+    font-family:"Times New Roman"
+    font-size:20px;}
+
+2.什么是CSS？
+3.查看CSS是如何工作的？
+4.样式解决了一个很大的问题！
+5.样式表定义如何显示HTML元素。
+就像HTML3.2的字体标签和颜色属性所起的作用那样。
+6.样式通常保存在外部的.css文件中。
+通过编辑一个简单的CSS文档，外部样式表同时改变站点中所有页面的布局和外观。
+7.CSS规则由选择器、以及一条或多条声明构成。
+8.选择器，需要改变样式的HTML元素。
+9.声明：由属性和值构成。
+10.CSS声明总是以分号（；）结束。
+11.声明组以大括号（{}）括起来。p{color:red;text-align:center;}
+12.css注释：解释代码，用（/*.......*/）表示。
+13. id选择器：以（#）定义。
+id选择器，可以为，标有特定id的HTML元素，指定特定的样式。
+范例：
+#paral{
+    text-align:center;
+    dolor:red;}
+备注：id属性只能以字母开头，不能以数字开头。
+14.class选择器：以（.）定义。
+class选择器用于描述一组元素的样式。区别于id选择器，可以在多个元素中使用。
+class选择器在HTML中以class属性表示。在CSS中，类选择器以一个点（.）号显示。
+范例：
+所有拥有center类的HTML元素均为居中。
+.center{text-align:center;}
+也可以指定，特定的HTML元素，使用class。
+范例：
+所有P元素使用class="center"让该元素的文本居中。
+p.center{text-align:center;}
+备注：类名的第一个字符，不能使用数字！
+15.如何插入样式表？
+三种：1.外部样式表；2.内部样式表；3.内联样式；4.多重样式；5.多重样式将层叠为一个；
+16.外部样式表
+当样式应用于很多页面时，外部样式表是理想的选择。
+当使用外部样式表，可以通过改变一个文件来改变整个站点的外观。
+每个页面使用<link>标签链接到样式表。<link>标签在头部。
+范例：
+<head><link rel="stylesheet" type="text/css" href="mystyle.css"></head>
+浏览器会从mystyle.css中读到样式声明，并根据它来格式文档。
+外部样式表可以在任何文本编辑器中进行编辑。
+文件不能包含任何的html标签。
+样式表以.css扩展名进行保存。
+范例：
+hr{color:sienna;}
+p{margin-left:20px;}
+body{background-image:url("/images/back40.gif");}
+不要在属性值与单位之间有空格，比如：20 px;应该是20px;
+17.内部样式表
+单个文档适合特殊的样式，用内部样式表；
+可以使用<style>标签在头部定义内部样式表。
+范例：
+<head>
+<style>
+hr{color:sienna;}
+p{margin-left:20px;}
+body{background-image:url("/images/back40.gif");}
+</style>
+</head>
+18.内联样式
+当样式仅需要在一个元素上应用时，可以使用内联样式。
+P.S：由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势。慎用！
+要使内联样式，需要在相关的标签内使用样式（style）属性。
+style属性可以包含任何CSS属性。
+范例：
+<p style="color:sienna; margin-left:20px;">This is a paragraph.</p>
+19.多重样式
+如果某些属性，在不同的样式表中，被同样的选择器定义，那么属性值，将从，更具体的样式表中，继承过来！
+范例：
+外部样式表拥有针对h3选择器的三个属性：
+h3{color:red; text-align:left; font-size:8px;}
+内部样式表拥有针对h3选择器的两个属性：
+h3{text-align:right; font-size:20px;}
+如果拥有内部样式表的这个页面同时与外部样式表链接，那么h3得到的样式是：
+color:red; text-align:right; font-size:20px;
+即：颜色属性，被继承于外部样式表。而，文字排列、字体尺寸会被内部样式表的规则取代。
+20.多重样式将层叠为一个
+样式表允许以多种方式，规定样式信息。样式，可以规定在，单个的HTML元素中。
+在HTML页的头元素中，或在一个外部的，CSS文件中。甚至可以在，同一个HTML文档内部，引用多个外部样式表。
+层叠次序：
+当同一个HTML元素被，不止一个样式，定义时，会使用，哪个样式？
+1.所有的样式，会根据，下面的规则，层叠于一个，新的虚拟样式表中。
+其中数字4拥有最高的优先权。
+浏览器缺省设置 ＞ 外部样式表 ＞ 内部样式表(位于<head>标签内部) ＞ 内联样式(在html元素内部)
+提示：在使用的外部文件样式中使用了内联样式，则在HTML元素中，内部样式会取代外部文件的样式，因为内部样式拥有最高的优先权。
+21.css backgrounds（背景）
+定义HTML元素的背景。
+css属性定义背影效果：background-color;background-image;background-repeat;background-attachment;background-position;
+21.背景颜色
+background-color，定义了元素的背景颜色。
+范例：
+页面的背景颜色使用在body的选择器中body{background-color:#fff;}
+22.背景图像
+background-image，定义了元素的背景图像。
+范例：
+默认，平铺重复显示，以覆盖整个元素实体。body{background-image:url("paper.gif");}
+23.背景图像-水平或垂直平铺
+默认情况下，background-image属性，在页面中水平或垂直方向平铺。
+body{background-image:url("gradient2.png");
+     background-repeat:repeat-x;}水平平铺
+     background-repeat:repeat-y; 垂直平铺
+24.背景图像-设置定位与不平铺
+让背景图像不影响文本的排版。
+background-repeat属性。设置不平铺。
+body{background-image:url("img_tree.png");
+     background-repeat:no-repeat;}不平铺
+以上范例，背景图像与文本，显示在同一个位置。为了让页面排版更合理，不允许文本的阅读，我们可以改变图像的位置。
+background-position属性，改变图像在背景中的位置。
+body{background-image:url("img_tree.png");
+     background-repeat:no-repeat;/*图像不平铺*/
+     background-position:right top;}
+25.背景-简写属性
+当背景颜色通过很多属性来控制的时候，我们可以简化这些代码，将属性合并在同一个属性中。
+背景颜色的简写属性：background
+范例：
+body{background:#ffffff url("img_tree.png") no-repeat right top;}
+26.简写属性值的顺序，怎么排序？
+27.固定的背景图像
+如何设置固定的背景图像？让图像不会随着页面的其他部分滚动！
+28.css背景属性（总结）
+background：简写属性，作用是将背景属性设置在一个声明中。
+background-attachment：背景图像是否固定或者随着页面的其余部分滚动。
+background-color：设置元素的背景颜色。
+background-image：把图像设置为背景。
+background-position：设置背景图像的起始位置。
+background-repeat：设置背景图像是否及如何重复。
+29.CSS Text(文本)
+Text-color
+颜色属性。被用来设置文字的颜色。
+颜色是通过css最经常的指定。
+一个网页的背景颜色，是指在主体内的选择。
+body{color:blue;}
+h1{color:#000000;}
+h2{color:rgb(255,0,0);}
+30.文本的对齐方式
+文本排列属性。用来设置文本的水平对齐方式。
+文本可居中，可左可右对齐，可两端对齐。
+当text-align设置为"justify"，每一行，被展开为宽度相等，左右外边距是对齐。
+h1{text-align:enter;}
+p.date{text-align:right;}
+p.main{text-align:justify;}
+31.文本修饰
+text-decoration属性用来设置或删除文本的装饰。
+从设计的角度来看，text-decoration主要用来删除链接的下划线。
+范例：
+a{text-decoration:none;}
+也可以这样装饰文字：
+h1{text-decoration:overline;}
+h2{text-decoration:line-through;}
+h3{text-decoration:underline;}
+32.文本转换
+文本转换属性。用来指定在一个文本中的大写和小写字母。
+可用于所有字句，变成大写或小写字母，或每个单词的首字母大写。
+p.uppercase{text-transform:uppercase;}
+p.lowercase{text-transform:lowercase;}
+p.capitalize{text-transform:capitalize;}
+33.文本缩进
+文本缩进属性。用来指定文本的第一行的缩进。
+p{text-indent:50px;}
+另：
+指定字符之间的空间。（如何增加或减少字符之间的空间）
+指定行与行之间的空间。（如何指定在一个段落中行之间的空间）
+设置元素的文本方向。（如何改变元素的文本方向）
+增加单词之间的空白间距。（如何增加一个段落中的单词之间的空白空间）
+在元素内禁用文字环绕。（如何禁用一个元素内的文字环绕）
+垂直对齐图像。（如何设置文本的垂直对齐图像）
+添加文本阴影。（如何设置文本阴影）
+34.所有css文本属性
+color：设置文本颜色。
+direction：设置文本方向。
+setter-spacing：设置字符间距。
+line-height：设置行高。
+text-align：对齐元素中的文本。
+text-decoration：向文本添加修饰。
+text-indent：缩进元素中文本的首行。
+text-shadow：设置文本阴影。
+text-transform：控制元素中的字母。
+unicode-bidi：无解释。
+vertical-align：设置元素的垂直对齐。
+white-space：设置元素中空白的处理方式。
+word-spacing：设置字间距。
+35.CSS字体属性（CSS fonts）
+定义字体，加粗，大小，文字样式。
+36.字体系列
+font-family属性。设置文本的字体系列。
+多个字体系列，用一个逗号分隔指明。
+范例：
+p{font-family:"Times New Roman",Times,serif;}
+37.字体样式
+主要用于指定斜体文字的字体样式属性。
+这个属性有三个值：
+p.normal{font-style:normal;}
+p.italic{font-style:italic;}
+p.oblique{font-style:oblique;}
+38.字体大小
+font-size
+管理字体大小在网页中很重要。不能通过调整字体大小使段落看上去像标题。或者使标题看上去像段落。请务必使用正确的HTML标签。就像<h1>-<h6>表示标题，<p>表示段落。
+如果不指定字体大小，默认是16px。16像素=1em。
+39.设置字体大小像素
+范例：
+h1{font-size:40px;}
+h2{font-size:30px;}
+p{font-size:14px;}
+上面的例子可以在inernet Explorer9,Firefox,Chrome,Opera,和Safari调整文本大小。
+注意：以上实例不能在IE9以前的版本运行。
+虽然可以通过浏览器的缩放工具调整文本大小，但是，这种调整是整个页面，而不仅仅是文本。
+40.用em来设置字体大小
+为了避免internet Explorer中无法调整文本的问题，许多开发者使用em单位代替像素。
+em的尺寸单位由W3C建议。
+1em和当前字体大小相等。在浏览器中默认的文字大小使16px。
+因此，1em的默认大小是16px。可以通过下面这个公式将像素转换为em：px/16=em
+h1{font-size:2.5em;}/*40px/16=2.5em*/
+h2{font-size:1.875em;}/*30px/16=1.875em*/
+p{font-size:0.875em;}/*14px/16=0.875em*/
+在上面的例子，em的文字大小是与前面的例子中像素一样。不过，如果使用em单位，则可以在所有浏览器中调整文本大小。
+不幸的是，仍然是IE浏览器的问题。调整文本的大小时，会比正常的尺寸更大或更小。
+41.使用百分比和EM组合
+在所有浏览器的解决方案中，设置<body>元素的默认字体大小的是百分比：
+body{font-size:100%;}
+h1{font-size:2.5em;}
+h2{font-size:1.875em;}
+p{font-size:0.875em;}
+em在所有的浏览器中，显示相同的文本大小，并允许所有浏览器缩放文本的大小。
+42.更多范例
+设置字体加粗。（如何设置字体的加粗）
+设置字体的转变。（如何设置字体的转变）
+（如何使用简写属性将字体属性设置在一个声明之内）
+43.所有css字体属性
+font：在一个声明中设置所有的字体属性。
+font-family：指定文本的字体系列。
+font-size：指定文本的字体大小。
+font-style：指定文本的字体样式。
+font-variant：以小型大写字体或者正常字体显示文本。
+font-weight：指定字体的粗细。
+44.css链接
+链接样式，可以用任何css属性（颜色，字体，背景等）
+特别的链接。
+四个链接状态：
+a:link{color:#ffffff;}/*unvisited link*/
+a:visited{color:fffffff;}/*visited link*/
+a:hover{color:ffffff;}/*mouse over link*/
+a:active{color:#ffffff;}/*selected link*/
+当设置为若干链路状态的样式，也有一些顺序规则：
+45.常见的链接样式
+根据上述链接的颜色变化范例，看它是在什么状态。让我们通过一些其他常见的方式转到链接样式：
+文本修饰
+text-decoration属性主要用于删除链接中的下划线：
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;}
+a:active{text-decoration:underline;}
+背景颜色
+背景颜色属性指定链接背景色：
+a:link{background-color:#ffffff;}
+a:visited{background-color:#ffffff;}
+a:hover{background-color:#ffffff;}
+a:active{background-color:#ffffff;}
+More Examples
+添加不同样式的超链接（如何为超链接添加其他样式）
+高级-创建链接框（结合若干css属性显示为方框）
+46.css列表样式（URL）
+css列表属性作用如下：
+在HTML中，有两种类型的列表：
+使用css，可以列出进一步的样式，并可用图像作列表项标记。
+不同的列表项标记
+list-style-type属性，指定列表项标记的类型是：
+ul.a{list-style-type:circle;}
+ul.b{list-style-type:square;}
+ol.c{list-style-type:upper-roman;}
+ol.d{list-style-type:alpha;}
+一些值是无序列表，以及有些事有序列表。
+作为列表项标记的图像
+要指定列表项标记的图像，使用列表样式图像属性：
+ul{list-style-image:url("aqpurple.gif");}
+上面的例子在所有浏览器中显示并不相同，IE和Opera显示图像标记比火狐，Chrome和Safari更高一点点。
+如果你想在所有的浏览器放置同样的形象标志，就应使用浏览器兼容性解决方案，过程如下：
+浏览器兼容性解决方案
+同样在所有的浏览器，下面的例子会显示的图像标记：
+ul{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+    }
+ul li{
+    background-image:url("sqperple.gif");
+    background-repeat:no-repeat;
+    background-position:0px 5px;
+    padding-left:14px;
+    }
+例子解释：
+列表-缩写属性
+在单个属性中可以指定所有的列表属性。这就是所谓的缩写属性。
+为列表使用缩写属性，列表样式属性设置如下：
+ul{
+    list-style:aquare url("sqperple.gif");
+    }
+如果使用缩写属性值的顺序是：没了。
+所有不同的列表项标记（都有哪些不同的css列表项标记）
+47.所有的css列表属性
+list-style：简写属性。用于把所有用于列表的属性设置于一个声明中。
+list-style-image：将图像设置为列表项标志。
+list-style-position：设置列表中列表项标志的位置。
+list-style-type：设置列表项标志的类型。
+48.css table（表格）
+指定css表格边框，使用border属性。
+下面的例子指定了一个表格的Th和TD元素的黑色边框：
+table,th,td{
+    border:1px solid black;}
+请注意，在上面的例子中的表格有双边框。这是因为表和th/td元素有独立的边界。
+为了显示一个表的单个边框，使用border-collapse属性。
+折叠边框
+border-collapse属性。设置表格的边框是否被折叠成一个单一的边框或隔开：
+table{
+    border-collapse:collapse;
+    }
+    table,th,td{
+    border:1px solid black;
+    }
+表格宽度和高度
+Width和height属性定义表格的宽度和高度。
+下面的例子是设置100%的宽度，50像素的th元素的高度的表格：
+table{
+    text-align:right;
+    }
+垂直对齐属性。设置垂直对齐，比如顶部，底部，中间。
+td{
+    padding:15px;
+    }
+表格颜色
+下面的例子。指定边框的颜色，和th元素的文本和背景颜色。
+table,th,td{
+    border:1px solid green;
+    }
+    th{
+    background-color:green;
+    color:white;
+    }
+更多实例
+制作一个个性表格。（如何制作一个个性表格）
+设置表格标题的位置。（如何设置表格标题的位置）
+49.css框模型
+css框模型（Box Mode）
+所有HTML元素可以看做盒子，在css中，"box model"这一术语是用来设计和布局时使用。
+css盒模型本质上是一个盒子，封装周围的很太麻木了元素，它包括：边距，边框，填充，和实际内容。
+盒模型允许我们在其它元素和周围元素边框之间的空间放置元素。
+下面的图片说明了框模型(Box Model)
+                                    margin
+                                    border
+                                    padding
+                                    content
+margin border padding content                 content padding border margin
+                                    content
+                                    padding
+                                    border
+                                    margin
+不同部分的说明：
+为了在素有浏览器的元素的宽度和高度设置正确的话，你需要知道的盒模型是如何工作的。
+元素的宽度和高度
+重要：当您指定一个css元素的宽度和高度属性时，你只是设置内容区域的宽度和高度。要知道，完全大小的元素，你还必须添加填充，边框，边距。
+下面的例子中的元素的总宽度为300px：
+width:250px;padding:10px;border:5px solid gray;margin:10px;
+让我们自己算算：250px（宽）+20px（left+右填充）+10px（left+右边框）+20px（left+右边距）=300px
+试想一下，你只有250像素的空间。让我们设置总宽度为250像素的元素：
+width:220px;
+padding:10px;
+border:5px solid gray;
+margin:0px;
+最终元素的总宽度计算公式是这样的：
+总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距
+元素的最终总高度计算公式是这样的：
+总元素的高度：高度+顶部填充+底部填充+上边框+下边框+上边距+下边距
+浏览器的兼容性问题
+一旦为页面设置了恰当的DTD,大多数浏览器都会按照上面的图示来呈现内容。然而IE5和6的呈现却是不正确的。根据W3C的规范，元素内容占据的空间是由width属性设置的，而内容周围的padding和border值是另外计算的。不幸的是，IE5.X和6在怪异模式中使用自己的非标准模型。这些浏览器的width属性不是内容的宽度，而是内容、内边距、边框的宽度的总和。
+虽然有方法解决这个问题，但目前组号的解决方案是回避这个问题。
+也就是，不要给元素添加具有指定宽度的内边距，而是尝试将内边距或外边距添加到元素的父元素和子元素。
+IE8及更早IE版本不支持填充的宽度和边框的宽度属性值。
+解决IE8及更早版本不兼容问题可以在HTML页面声明<!DOCTYPE html>即可。
+50.css Border(边框)
+css边框属性。允许你指定一个元素边框的样式和颜色。
+边框样式
+边框样式属性。指定要显示什么样的边界。
+border-style属性。定义边框的样式。
+border-style值：
+none：默认无边框。
+dotted：定义一个点线框。
+dashed：定义一个虚线框。
+solid：定义实线边界。
+double：定义两个边界。两个边界的宽度和border-width的值相同。
+groove：定义3D沟槽边界。效果取决于边界的颜色值。
+ridge：定义3D脊边界。效果取决于边界的颜色值。
+inset：定义一个3D的嵌入边框。效果取决于边界的颜色值。
+outset：定义一个3D突出边框。效果取决于边界的颜色值。
+（尝试一下，设置边框样式）
+边框宽度
+您可以通过border-width属性为边框指定宽度。
+为边框指定宽度有两种方法：可以指定长度值，比如2px或0.1em；
+或者使用3个关键字之一，它们分别是thin、medium（默认值）和thick。
+注意：css没有定义3个关键字的具体宽度，所以一个用户代理可能把thin、medium和thick分别设置为等于5px、3px、2px，而另一个用户代理分别设置为3px、2px、1px。
+p.one{
+    border-style:sollid;
+    border-width:5px;
+    }
+p.two{
+    border-style:solid;
+    border-width:medium;
+    }
+边框颜色
+border-color属于。用于设置边框的颜色。
+HIA可以设置边框的颜色为"transparent"。
+注意：border-color单独使用是不起作用的，必须得先使用border-color来设置边框样式。
+p.one{
+    border-style:solid;
+    border-width:red;
+    }
+p.two{
+    border-style:solid;
+    border-color:#ffffff;
+    }
+边框-单独设置各边
+在css中，可以指定不同的侧面不同的边框：
+p{
+    border-top-style:dotted;
+    border-right-style:solid;
+    border-bottom-style:dotted;
+    border-left-style:solid;
+    }
+上面的例子也可以设置一个单一属性：
+border-style:dotted solid;
+border-style属性可以有1-4个值：
+上面的例子，用了border-style。然而，它也可以和border-width、border-color一起使用。
+边框-简写属性
+上面的例子，用了很多属性来设置边框。
+T你也可以在一个属性中设置边框。
+你可以在"border"属性中设置：
+border:5px solid red;
+更多实例
+所有边框属性在一个声明之中，本例演示用简写属性来将所有四个边框属性设置于同一声明中。
+设置下边框的样式。（如何设置下边框的样式）
+设置左边框的宽度。（如何设置左边框的宽度）
+设置四个边框的颜色。（如何设置四个边框的颜色）
+设置有边框的颜色。（如何设置有边框的颜色）
+51.css边框属性（汇总）
+border：简写属性，用于把针对四个边的属性设置在一个声明。
+border-style：用于设置元素所有边框的样式，或者单独地为各边设置边框样式。
+border-width：简写属性，用于为元素的所有边框设置宽度，或者单独地为各边边框设置宽度。
+border-color：简写属性，设置元素的所有边框中可见部分的颜色，或为4个边分别设置颜色。
+border-bottom：简写属性，用于把下边框的所有属性设置到一个声明中。
+border-bottom-color：设置元素的下边框的颜色。
+border-bottom-style：设置元素的下边框的样式。
+border-bottom-width：设置元素的下边框的宽度。
+border-left：简写属性，用于把左边框的所有属性设置到一个声明中。
+border-left-color：设置元素的左边框的颜色。
+border-left-style：设置元素的左边框的样式。
+border-left-width：设置元素的左边框的宽度。
+border-right：简写属性，用于把有边框的所有属性设置到一个声明中。
+border-right-color：设置元素的右边框的颜色。
+border-right-style：设置元素的右边框的样式。
+border-right-width：设置元素的有边框的宽度。
+border-top：简写属性，用于把上边框的所有属性设置到一个声明中。
+border-top-color：设置元素的上边框的颜色。
+border-top-style：设置元素的上边框的样式。
+border-top-width：设置元素的上边框的宽度。
+52.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

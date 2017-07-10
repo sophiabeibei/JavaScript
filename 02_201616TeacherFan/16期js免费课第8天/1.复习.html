@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div></div>
+<script>
+//    splice(n,0,x)
+//    slice(n,m)
+//    [第n项,第m项] ，原数组不变
+//    slice(n-1,m)
+
+//    第n项的索引：n-1
+//    第m项的索引：m-1
+//
+
+//    向数组末尾添加一项
+//    push
+//    splice(ary.length,0,x)
+//    ary[ary.length]=x
+
+//    删除最后一项
+//     pop
+//    ary.length--;
+//    ary.length-=1;
+//    ary.length=ary.length-1;
+//    splice(ary.length-1,1)
+
+//    克隆
+//    splice(0)
+//    slice(0)  slice()
+//    ary.concat()
+
+//    indexOf(内容)  -》索引 ，内容不存在返回-1
+//    lastIndexOf(内容) -》索引 最后一次出现
+    var ary = [100,200,300];
+    var res = ary.forEach(function(item,index){
+//        item 值
+//        index  索引
+//        console.log(a);  //属性值
+//        console.log(b);//索引
+
+        return index;
+    });
+    console.log(res);
+
+    var res = ary.map(function(item,index){
+//        item 值
+//        index 索引
+        console.log(index)
+        return index
+    })
+    console.log(res)
+
+//    map 有返回值
+//    forEach 没有返回值
+
+
+//    排序和翻转
+    var ary = [2,5,6,3,2,7,9,1];
+    var res = ary.sort(function(a,b){
+//        从小到大
+//        return a-b;
+        return b-a;//从大到小
+    })
+    console.log(res);
+    var ary = [2,5,6,3,2,7,9,1];
+    console.log(ary.reverse())
+
+//    转字符串
+//   1.toString   []-->''
+    var ary = [2,5,6,3,2,7,9,1];
+    console.log(ary.toString());//'2,5,6,3,2,7,9,1'
+//    2.join(分隔符)   ,-->分隔符
+    console.log(ary.join('-'));
+//    '2-5-6-3-2-7-9-1'
+//    eval()  把字符串变为js代码执行
+    var ary = [2,5,6,3,2,7,9,1];
+    var res = eval(ary.join('+'))
+    console.log(res);
+
+//   字符串
+//    1.charAt(索引)  字符
+//      charCodeAt(索引)  字符对应的unicode编码
+//    2.indexOf(字符)  索引，找不到返回-1
+//      lastIndexOf(字符)  索引，找不到返回-1
+//    3.search(字符)   索引
+//    4.split('分隔符')  再转为数组  分隔符-->逗号
+
+    var str = 'assdjffif';
+    console.log(str.split('d'));  //["ass", "jffif"]
+
+//    5.截取
+//       substr(n,m个)
+//       substring(n,索引为m处)  不包括m
+//       slice(n,索引为m处)   不包括m
+
+    var str = 'assdjffif';
+    console.log(str.length)//9
+    console.log(str.substr(1,2))
+    console.log(str.substring(4,6))  //jf
+    console.log(str.slice(-3,-1))  // 9-3=6 9-1=8
+//    (6,8)
+
+//    6. toUpperCase()  转大写
+//       toLowerCase()  转小写
+//    7.替换  replace('旧','新')
+
+    var str = 'assdjffif';
+    console.log(str.replace('a','A'))
+
+//    8.捕获   match()
+    var str = 'assdjffif';
+    console.log(str.match('s'));
+     //["s", index: 1, input: "assdjffif"]
+
+
+    var oDiv = document.getElementsByTagName('div')[0];
+//    对象增加属性
+    oDiv.zfpx = 'bg1'
+
+//    {name:'zf'}
+    oDiv.setAttribute('name','zf');
+    oDiv.getAttribute('name');
+//    oDiv.removeAttribute('name');
+
+    oDiv.className = 'bg1'
+
+</script>
+
+</body>
+</html>

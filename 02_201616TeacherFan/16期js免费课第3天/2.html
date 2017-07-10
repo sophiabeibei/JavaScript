@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="变宽" id="changeW">
+<input type="button" value="变高" id="changeH">
+<input type="button" value="变色" id="changeC">
+<input type="button" value="还原" id="huanYuan">
+<div id="box" style="width: 100px;height: 100px;background-color: blue;"></div>
+<script>
+    //1、获取要操作的元素
+
+    var box = document.getElementById('box');
+    var base = box.style.cssText;
+//    console.log(base);
+    var w = document.getElementById('changeW');
+    var h = document.getElementById('changeH');
+    var c = document.getElementById('changeC');
+    var hy = document.getElementById('huanYuan');
+
+//    2、添加点击事件
+//    元素.onclick = function(){
+//        3、点击时执行的操作
+//    }
+
+    w.onclick = function () {
+        box.style.width = '300px';
+//      div的行内样式的宽度  赋值（修改） 为300px
+
+    }
+    h.onclick = function () {
+        box.style.height = '300px';
+    }
+    c.onclick = function () {
+        box.style.backgroundColor = 'lawngreen';
+    }
+    hy.onclick = function () {
+        box.style.cssText = base;
+    }
+</script>
+
+</body>
+</html>

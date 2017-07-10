@@ -1,0 +1,106 @@
+1、变量
+    1）作用：存储值和代表值
+    2）声明一个变量 var
+    3）格式  var 变量名 = 变量值;
+    4) =  赋值
+    5）var 声明任何类型的变量
+
+2、数据类型
+    1）基本数据类型
+        number、string、boolean、null、undefined
+    2）引用数据类型
+        object：{} []  //、function
+3、number
+    包括：正数、负数、小数、0、NaN
+    NaN==NaN  false
+
+    方法：
+    1）isNaN()  检测是不是有效数字，不是有效数字返回true，是有效数字返回false
+    2）Number()  强制转换，只要有一个子符不是有效数字 直接返回NaN
+    3）parseInt()
+    4）parseFloat()   可以多识别一个点.
+
+    什么情况下得到NaN
+    1）转换不成功
+    2）数学运算 *-/
+    1-'2px'
+
+
+4、boolean： true false
+    方法：
+    1)!
+    2)!!
+    3)Boolean()
+
+    false:undefined、0、''、NaN、null
+
+    ==  比较：true false
+
+    1)对象==对象  false
+    2)对象==字符串   对象转字符串
+    3）null==undefined  true
+    4）null或者undefined和其他任何类型比较 返回false
+
+    对象--》字符串--》数字
+    字符串--》数字
+    布尔--》数字
+
+    转为字符串   要转换的内容.toString()
+    转为数字     Number()
+
+   Number():==  isNaN()
+5)函数数据类型 function
+    1）创建函数
+        function 函数名(){
+            函数体
+        }
+        1、开辟一个空间地址
+        2、将函数体中的代码以‘字符串’的形式存储到空间中
+        3、将地址赋值给函数名
+
+    2）执行函数
+
+        函数名();
+
+        1、形成私有作用域
+        2、把函数体中的字符串变为js代码从上到下执行
+
+函数的参数
+
+    function 函数名(形参){
+        函数体：arguments--》用来存储形参的一个集合，类数组
+    }
+    函数名(实参);
+
+
+函数返回值：函数执行的结果
+    function a(){
+        return 返回值;
+    }
+
+    console.log(a());
+
+    如果函数没有返回值，返回undefined
+    return 阻断代码，return后面的代码不执行
+
+函数 匿名函数：没有名字的
+     有名字的函数
+
+     function a(){
+
+     }
+
+     元素.onclick = function(){
+
+     }
+
+自执行函数：
+        + - ~ ! ;
+     ;(function(){
+
+     })()
+
+
+6)基本数据类型 操作的是一个值
+  引用数据类型 操作的是同一个空间地址
+

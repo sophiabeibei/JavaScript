@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件基础</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin:  50px;
+        }
+    </style>
+</head>
+<body>
+     <div id="div1"></div>
+     <div id="div2" class="c"></div>
+     <a id="link" href="http://www.baidu.com">百度</a>
+     <a href="javascript:void 0">haha</a><!--阻止a的默认跳转行为-->
+     <input id="input" type="text">
+</body>
+</html>
+<script>
+    /*
+    *   鼠标事件对象 :
+    *        e出现位置 => 绑定事件的那个函数的参数（默认行为）  chrome
+    *                =>  ie8-  window.event
+    *
+    *         e.clientX
+    *         e.clientY
+    *
+    *         e.pageX
+    *         e.pageY
+    *
+    *         e.type
+    *
+    *         e.target || e.srcElement
+    *
+    *         e.preventDefault()     e.returnValue = false;   return false;
+    *
+    *         e.stopPropagation()    e.cancelBubble = true;
+    *
+    *
+    * */
+    var div1 = document.getElementById('div1');
+    div1.onclick = function (e) {
+        e = e || window.event; // 处理事件对象e的兼容性问题
+
+        console.log(e.clientX); // 鼠标点击位置相对于窗口的X坐标 (相对窗口偏移量)
+        console.log(e.clientY); // 鼠标点击位置相对于窗口的Y坐标
+
+        e.pageX = e.pageX || e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+        // 处理e.pageX兼容问题，就是在e.clientX基础上累加滚出去的宽度
+        e.pageY = e.pageY || e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+
+        console.log(e.pageX); //  鼠标点击位置相对于页面的X坐标  (相对于页面偏移量)
+        console.log(e.pageY); //  鼠标点击位置相对于页面的Y坐标
+
+        console.log(e.type); //  事件类型 => "click"   "mouseover"   "mouseenter"
+
+        // 阻止事件传播兼容处理
+        e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+        
+        
+    }
+
+
+
+    // 事件冒泡 => 常用，委托， 事件传播
+    document.onclick = function (e){
+        e = e || window.event;
+        e.target = e.target || e.srcElement; // 处理事件源的兼容性问题
+        console.log(e.target); // 事件源 => 真正事件发生的那个元素
+        if(e.target.nodeName == 'DIV' && e.target.className == 'c'){
+            // 用类似这样的判断，把所有的点击事件，委托给祖先元素处理 => 事件委托
+        }
+
+
+
+    }
+
+
+    var link = document.getElementById('link');
+    link.onclick = function (e){
+        e = e || window.event;
+        // 处理阻止默认行为的兼容问题 => 默认行为： a默认跳转
+
+        return false; // 也可以阻止a的默认跳转行为
+
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    }
+
+    /**************************************************************************/
+
+
+
+
+    // 键盘事件  => KeyBoardEvent
+
+    var input = document.getElementById('input');
+    input.onkeyup = function (e){
+        e = e || window.event;
+        console.log(e);
+        /*
+        *   e.keyCode :  按键编码
+        *      Enter : 13,
+        *      space : 32
+        *      backspace : 8
+        *      left : 37
+        *      top : 38
+        *      right : 39
+        *      bottom : 40
+        *      0-9 : 48 - 57
+        *   key :  按键 "j"...
+        * */
+
+        if(e.keyCode == 13){
+            //$('div1').on('click',function (){}).trigger('click'); // 主动触发事件
+        }
+    }
+
+
+
+
+
+
+
+
+
+</script>

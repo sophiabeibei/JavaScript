@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script>
+    /*
+    *   单例模式  :  其实就是一个对象，用对象作为一个模块的划分。命名空间  nameSpace
+    *        ps : 单例模式中属性和属性之间的调用使用this就可以  （最常用）
+    * */
+
+    var news = {
+        num : 100,
+        fn : function (){
+            this.add(); // news.add()
+        },
+        add : function (){
+            this.num;
+        }
+    };
+
+    news.fn();
+
+    var caijing = {
+        fn : function (){
+
+        }
+    };
+    caijing.fn();
+
+    /*
+    *   构造函数(类)模式 :
+    *
+    *   类 : 其实就是一个函数 => 定义一个类和定义一个函数都用关键字function
+    *
+    *   实例 ： 就是具体到这个类的某一个 => 创建一个实例用关键字 new Tab()
+    *
+    *   instanceof 是判断一个实例是否属于一个类
+    *
+    *   函数角色 : 普通函数、构造函数(类)、Function这个函数内置类的实例
+    *
+    *   当作构造函数(new方式执行)那么会有默认返回实例的动作
+    *
+    *   每个实例都是一个对象数据类型
+    *
+    *   如果在构造函数中return一个引用数据类型那么会破坏实例的默认返回动作 return this
+    *
+    *   构造函数中的this就是当前实例(正在使用new运算的这个实例)
+    *
+    * */
+
+    //内置类 :  Number String Boolean Array数组 Object对象 RegExp Date Function
+
+    // typeof  instanceof constructor Object.prototype.toString.call()
+
+    function Tab(){// 定义了一个叫做Tab选项卡类
+        // alert() 弹出说明Tab在new的过程中是执行的
+        this.x = 100; // 每个实例都会增加的私有属性
+        this.y = 200;
+
+    }
+
+    Tab(); // 普通函数
+    Tab instanceof Function; // Tab是Function的一个实例
+    var tab1 = new Tab(); // 当作构造函数运行
+    console.log(tab1); // 打印tab1不是undefined,说明当作类来执行有默认返回实例的动作
+
+    var tab2 = new Tab();
+    console.log(tab2);
+
+
+    function FE(name,money){ // front engineer  RD  PM  AM CEO CTO  QA
+
+        this.name = name; // 私有属性
+        this.money = money;
+        this.coding = function () { // 公有属性
+
+        }
+
+        return this;
+    }
+    var fe1 = new FE('yuanmeng',10000);
+    var fe2 = new FE('yutong',20000);
+    console.log(fe1);
+    console.log(fe2);
+
+
+    /*
+    *   原型模式 :  比如,有的方法不应该作为私有属性。就像FE前端工程师就应该会写代码一样。
+    *       1 任何一个函数天生自带一个属性叫做prototype,属性值仍然是一个对象，并且这个对象也天生自带一个属性叫做constructor它的属性值是函数本身。
+    *          FE.prototype.constructor === FE
+    *       2 任何一个实例天生自带一个属性__proto__,属性值就是这个实例所属类(构造函数)的原型
+    *         FE.prototype === fe1.__proto__
+    *
+    *       ps : 由于每个实例都会天生自带__proto__属性，那么每个实例都可以通过这个属性来访问自己所属类的原型，这个原型相对于每个实例来说就是一个公共的区域，那么公共区域内的属性也随之变成了公有属性。实例.__proto__.属性其中这个获取方式"__proto__"可以省略
+    *
+    *         FE.prototype.coding = function (){} 在原型上添加了一个coding属性
+    *         fe1.__proto__.coding === FE.prototype.coding
+    *
+    *      ps : 以后直接添加公有方法就在构造函数(类)的原型(prototype)属性上即可
+    *
+    *      ps : 任何一个引用数据类型都天生自带__proto__属性,并且这个属性永远指向 所属类的原型
+    *      ps : 定义在类的原型上的方法，一般由实例来调用。那么函数中的this一般就是这个实例
+    *
+    *
+    *
+    * */
+    function FE(name,age){
+        this.name = name;
+        this.age = age;
+        //this.coding = function (){}
+    }
+    FE.prototype.coding = function (){
+        console.log(this); // 一般情况实例
+    }
+
+    FE.prototype.a = function (){}
+    FE.prototype.b = function (){}
+    // ...
+
+    FE.prototype = {
+        constructor : FE,
+        a : function (){},
+        b : function (){}
+    }
+    // FE.xxxx = 1000; 只要是引用数据类型就可以在其上添加任何自定义属性,函数也不例外
+    console.dir(FE);
+
+    var fe1 = new FE('tianxi',31);
+    console.dir(fe1);
+
+    var fe2 = new FE('yuanmeng',20);
+
+    fe1.coding();
+    fe2.coding();
+    new FE().coding();
+
+
+    //fe1 === fe2; //
+    //fe1.__proto__ === fe2.__proto__; //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

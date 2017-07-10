@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[98,88,16,4,33,28];
+    /*思路：
+    * 1.先拎出一个数组； ary.splice(0,1)=>[98]
+    * 2.遍历ary数组中的每一项；分别跟[4,16,28,88,98]数组进行比较：
+    * 插排的核心：拿ary数组中的每一项，跟left数组从后往前的比较，比他小，继续往前比较，比他大，放到他下一项的前面；
+    * */
+    function insertSort(ary){
+        //1.先拎出一个数组；
+        var left=ary.splice(0,1);
+        //2.拿ary数组中的每一项，跟left数组从后往前的比较，比他小，继续往前比较，比他大，放到他下一项的前面；
+        for(var i=0; i<ary.length; i++){
+            var cur=ary[i];
+            for(var j=left.length-1; j>=0;){
+                if(cur<left[j]){
+                    j--;
+                    //判断比到头了
+                    if(j==-1){
+                        left.unshift(cur);
+                    }
+                }else{
+                    left.splice(j+1,0,cur);
+                    break;
+                }
+            }
+        }
+        return left;
+    }
+    console.log(insertSort(ary))
+</script>
+</body>
+</html>

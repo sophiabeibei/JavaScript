@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预解释</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *   预解释 :  在代码执行之前浏览器会先把所有带var和function的提前声明。
+    *    区别 : 用var声明的变量只声明没有赋值。浏览器默认赋值undefined，用function定义的函数，既声明又赋值。
+    *
+    *
+    *
+    * */
+
+
+    //console.dir(document.body);
+    console.log(color); //  undefined
+    console.log(sum); //  打印的就是sum这个函数本身
+    //function fn(){}
+    var fn = function (){};
+    fn();
+
+    var color = document.body.style.backgroundColor; // 'red' 'green'
+    var color = 'aaa';
+    //color = 'red';
+
+    var style = document.body.style; //
+    style.backgroundColor = 'green';
+
+    //document.body.style.backgroundColor = 'red';
+
+    // typeof instanceof constructor Object.prototype.toString.call
+
+    function sum(){
+        arguments; // [1,2]
+        var total = null;
+        for(var i = 0; i < arguments.length; i++){
+            total += Number(arguments[i]);
+        }
+        return total;
+    }
+    sum(1,2)
+
+
+
+
+</script>

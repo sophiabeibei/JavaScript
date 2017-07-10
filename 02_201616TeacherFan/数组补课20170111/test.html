@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[12,56,32,48];
+    ary.sort(function(a,b){
+        return (a-b);//从小到大排；
+        //return b-a; 从大到小排；
+    })
+    /*console.log(ary.reverse());
+    console.log(ary)*/
+    //console.log(eval(ary.join('+')))
+    /*console.log(ary.toString());
+    console.log(ary);*/
+    //var ary1=ary.slice();//1：克隆：ary.slice(0)/ary.slice();
+    //var ary1=ary.splice(0);/:2：splice的返回值可以作为克隆的结果；
+    //console.log(ary.concat('zhufeng',[78,99,888]))//写算法的时候会用到；
+    //console.log(ary.concat())//3：克隆
+    /*var res=ary.splice(2,2,'新年','快乐');
+    console.log(ary)
+    console.log(res)*/
+    //删除功能：
+    /*var res=ary.splice(2,0,'zhufeng','lala');
+    console.log(ary)
+    console.log(res)*/
+    //console.log('我是原始数组'+ary)
+    //var res=ary.push(20,59,99);
+    //console.log(res)
+    /*var res=ary.unshift(20,59,99)
+    console.log('我是新数组'+ary)*/
+    //var res=ary.pop();//返回值：是删除的最后一项的数据对应的数据类型；
+    /*console.log(res);
+    console.log(ary);*/
+    //var res=ary.pop().push('xixi');//能否进行链式操作，取决于前面函数执行完成后的返回值；
+</script>
+</body>
+</html>

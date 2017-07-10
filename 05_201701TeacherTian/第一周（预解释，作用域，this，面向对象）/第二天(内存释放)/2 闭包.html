@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 闭包 ： *当函数执行的时候，就会形成一个私有作用域(栈),这个私有作用域保护私有变量不受外界干扰的这种机制就叫闭包
+    function fn(){
+        var num = 10;
+    }
+    fn(); //fn在执行的时候形成了一个私有作用域，并且这个作用域把var num = 10保护起来了，形成了一个闭包 => 闭包形成的前提条件得有函数执行
+    /////////////////////////////////////////////////////////////////
+
+
+    function sum(){
+        //console.log(haha);
+        haha = 50; // 如果是一个赋值过程，最不济也能赋值成全局变量。如果是取值过程，到全局变量还没有获取到，那么就报错了。
+        //var haha;
+        window.x = 100; // 多了叫做x的全局变量，并且值为100
+    }
+    sum();
+    console.log(haha); // 50
+    console.log(window.haha); // 50  所有的全局变量都可以认为是window对象的一个属性
+
+    ///////////////////////////////////////////////////////////////////////
+
+    var total = 1200;
+    function foo(){
+        var total = 120;
+        return function (){
+            var total = 12;
+            console.log(total);
+        }
+    }
+    var f = foo(); // 赋值过程先准备值
+    f();
+
+
+
+
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var o = {
+        name : 'zf',
+        age : 8
+    };
+
+    for(var key in o){
+        console.log(typeof key); // "string"
+    }
+
+    var jsonO = { // JSON格式的对象
+        "name" : "zf",
+        "age" : 8
+    };
+
+    /*
+    *   JSON和普通对象区别 :
+    *       属性名字需要用双引号来包含，属性值如果是字符串也用双引号
+    *
+    * */
+
+    /*
+    *   JSON 是定义在全局一个变量  window.JSON  ie7-不支持
+    *       方法 :
+    *       JSON.parse : 把JSON格式的字符串转化为JSON格式的对象 => 去双引号  eval
+    *       JSON.stringify : 把JSON格式的对象转化为JSON格式的字符串 => 加双引号
+    *
+    * */
+    var res = JSON.stringify(jsonO);
+    console.log(res);
+    var res1 = JSON.parse(res);
+    console.log(res1);
+
+    // in运算符  => 判断一个属性是否属于一个对象 => 布尔值  => 属性名字都是字符串
+
+    var obj = {
+        name : 'zf'
+    }
+    'name' in obj; // true
+
+    Math.max;
+    'max' in Math; // true
+
+    window.setTimeout;
+    'setTimeout' in window; // true
+
+    'push' in Array.prototype; // true
+
+    'JSON' in window; // true    => ie7-不行
+
+    function jsonParse(jsonstr){
+        // 简单处理兼容问题的方法
+        return 'JSON' in window ? JSON.parse(jsonstr) : eval('('+jsonstr+')');
+    }
+
+    window.navigator.userAgent;
+    // "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+    // Firefox
+    // MSIE 6/7/8
+    // Chrome
+
+    // indexOf lastIndexOf => 索引  -1 => 如何判断当前浏览器是不是ie8
+
+    function isIE8(){
+        // ...
+        return
+    }
+
+    function isLowIE(){
+        // 6 7 8   或者 ||
+
+    }
+
+
+
+
+
+
+
+
+</script>

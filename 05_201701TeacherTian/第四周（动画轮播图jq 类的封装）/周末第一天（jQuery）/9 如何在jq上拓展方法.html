@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拓展方法</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    /*
+    *   jQuery :
+    *   jQuery.prototype :
+    *
+    *   $.extend({   => 拓展在jq本身
+    *       fn : function(){}
+    *   })
+    *
+    *
+    *   $.fn.extend({ => 拓展在原型上的
+    *       fn : function (){}
+    *   })
+    *
+    *
+    * */
+
+    function fn1(){
+        console.log(1);
+    }
+    function fn2(){
+        console.log(2);
+    }
+
+    $.extend({
+        a : fn1
+    });
+
+
+
+    $.fn.extend({
+        b : fn2
+    });
+
+
+    function jQuery(){}
+
+    jQuery.extend = function (obj){
+        // { a : fn1}
+        for(var key in obj){
+            this[key] = obj[key];
+        }
+    }
+    jQuery.extend();
+
+    // 渐显轮播图 jQ
+
+    // 拓展到jQ上
+
+    // qqMusic jq
+
+    // 正则表达式
+
+
+
+
+
+</script>

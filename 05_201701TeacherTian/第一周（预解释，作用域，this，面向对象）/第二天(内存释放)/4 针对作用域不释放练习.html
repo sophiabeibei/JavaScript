@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fn(n){
+        function foo(){
+            n += n; // n*=2  n = n + n
+            console.log(n);
+        }
+        return foo;
+    }
+
+    var f = fn(5); // 这个f占用的是fn(第一次)执行的返回值
+    f(); // 10
+    var f1 = fn(10); // 这个f占用fn(第二次)执行的返回值
+    f1(); // 20
+    var f2 = fn(5);
+    f2(); // 10
+    f(); // 20
+
+    f = fn(5); // 从这行代码开始f占用第四次fn执行返回值,和第一次已经脱离关系
+    f();
+    f = f1;
+    f(); // 40
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+
+    function sum(){
+        var num = 10; // 15
+        return function (){
+            num += 5;
+            console.log(num); // 15
+        }
+    }
+
+    var fx = sum(); // sum函数第一次执行返回的那个匿名函数
+    fx(); // 15
+
+    var fy = fx; // 把fx拿到的第一次那个匿名函数的地址偷偷告诉fy一个。
+    fy(); // 此刻fy函数执行和fx执行的效果完全一样
+
+    ///////////////////////////////////////////////////////////////////////
+
+    //var num = 5;
+    var obj = {
+        num : 6,
+        fn : (function (){
+            var n = 5; // 6
+            return function (){
+                n += 1;
+                console.log(n);
+            }
+        })()
+    };
+
+    obj.fn(); // 6
+    obj.fn(); // 7
+    var f = obj.fn;
+    f(); // 8
+    var f1 = f;
+    f1(); // 9
+
+
+
+
+
+
+
+
+
+
+
+</script>

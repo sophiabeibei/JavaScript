@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class=" a b c "></div> [a,b,c] a  var reg = /(^| +)[a,b]( +|$)/
+    <div class="a"></div>
+    <div class="b">
+        <span class="c b a "></span>
+    </div>
+    <p class="a b"></p>
+
+</body>
+</html>
+<script>
+    // div1.getElementsByClassName(' a b ');
+    // context                    className
+
+    console.log(getElesByClass('a b'));
+
+    function getElesByClass(className,context){ // context : 上下文,范围
+        context = context || document; // 给context一个默认值
+        if(context.getElementsByClassName){
+            return context.getElementsByClassName(className);
+        }
+        // for ie low
+        // 去掉首尾空格，并且把类字符串拆分成一个数组
+        var classNameAry = className.replace(/(^ +| +$)/g,"").split(/ +/); // [a,b]
+        var tags = context.getElementsByTagName('*'); // 获取context范围内所有的标签
+        // 过滤每一个tags，然后比较每一个tag的className是否可以和classNameAry中对比上
+        var ary = []; //准备的容器
+        for(var i = 0; i < tags.length; i++){ // 过滤每一个标签
+            var curTag = tags[i];  // 每一个元素标签
+            var isGoodTag = true;
+            for(var j = 0; j < classNameAry.length; j++){ // 循环类名字
+                var curClass = classNameAry[j]; // 每一个必须包含的类  a,b
+                // 就看curTag(当前正在过滤的元素)的className上是否包含curClass
+                var reg = new RegExp('(^| +)'+curClass+'( +|$)');
+                if(!reg.test(curTag.className)){
+                    // 在所有传进来的类名字中，只要有一个类名字在元素中没有，那么这个元素假设的条件就不成立。也没有必要继续去验证后面的类名字了。
+                    isGoodTag = false;
+                    break;
+                }
+            }
+            if(isGoodTag){
+                ary.push(curTag);
+            }
+        }
+
+        return ary;
+    }
+
+
+</script>

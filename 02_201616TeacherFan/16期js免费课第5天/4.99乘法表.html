@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        div{
+            width: 900px;
+            height: 270px;
+            border: 1px solid red;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -135px;
+            margin-left: -450px;
+            overflow: hidden;
+        }
+        ul li{
+            height: 30px;
+        }
+        ul li span{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+        }
+        .bg1{
+            background: aquamarine;
+        }
+        .bg2{
+            background: lightblue;
+        }
+        .bg3{
+            background: plum;
+        }
+        /*li:hover{*/
+            /*background: orange;*/
+        /*}*/
+        .bg4{
+            background: orange;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <!-- li  行     span 列-->
+    <!--<ul>
+        <li>
+            <span>1 * 1 = 1</span>
+        </li>
+        <li>
+            <span>1 * 2 = 2</span>
+            <span>2 * 2 = 4</span>
+        </li>
+    </ul>-->
+</div>
+<script>
+    //字符串拼接  连接符+
+//    innerHTML  向指定的元素中添加内容
+
+//    var a = 10;
+//    var str = a+'<ul>';  //10+'<ul>'
+//    console.log(str);//'10<ul>'
+//    console.log(typeof str);
+
+    var str = '';  //拼接好的在字符串  初始值
+    str+='<ul>';
+        for(var i=1;i<=9;i++){
+            str+='<li>';
+//            循环i次  i:行  j：列
+                for(var j=1;j<=i;j++){
+                    str +='<span>';
+                        str+= j+'x'+i+'='+j*i;
+                    str +='</span>';
+                }
+
+            str+='</li>';
+        }
+
+    str+='</ul>';
+
+    console.log(str);
+
+    var oDiv = document.getElementsByTagName('div')[0];
+    oDiv.innerHTML = str;
+
+//    隔行变色：保证页面中加载完html代码
+
+    var lis = document.getElementsByTagName('li');
+    for(var i=0;i<lis.length;i++){
+        var li = lis[i];
+        li.index = i;
+        /*if(i%3==0){
+            li.className = 'bg1';
+        }else if(i%3==1){
+            li.className = 'bg2';
+        }else{
+            li.className = 'bg3';
+        }*/
+//        i%2==0?li.className = 'bg1':li.className = 'bg2';
+        li.className = 'bg'+(i%3+1);
+        li.onmouseover = function(){
+            this.zfpx = this.className;
+            this.className = 'bg4';
+        };
+        li.onmouseout = function(){
+            this.className = this.zfpx;
+        };
+        li.onclick = function(){
+            alert('我是第'+(this.index+1)+'行');
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

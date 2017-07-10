@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 600px;
+            border: 1px solid red;
+            border-radius: 20px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        li{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: orange;
+        }
+        .bg1{
+            background: darkblue;
+        }
+        .bg2{
+            background: aquamarine;
+        }
+        .bg3{
+            background: whitesmoke;
+        }
+        /*li:hover{
+            background: red;
+        }*/
+        .bg4{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<!--ul>li{$}*12-->
+<ul>
+    <li class="bg1">1</li>
+    <li class="bg2">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+</ul>
+<script>
+    //1、获取要操作的元素  li
+//    var aLis = document.getElementsByTagName('li');
+//    console.log(aLis);
+//    [li.bg1, li.bg2, li, li, li, li, li, li, li, li, li, li]
+//     类数组
+//    在整个文档中.通过元素的标签名 获取一组元素
+
+//    2、给li设置类名
+//        奇偶行变色
+//       奇数行  设置class='bg1'   索引：偶数
+//       偶数行  设置class='bg2'   索引：奇数
+//       判断索引为奇数还是偶数
+//    %  取模，取余数
+//    13%4  13除以4的余数
+
+//    索引%2  --》0  偶数
+//    索引%2  --》1  奇数
+
+    var aLis = document.getElementsByTagName('li');
+    console.log(aLis);
+
+//    i:0~11   相当于索引
+    for(var i=0;i<aLis.length;i++){
+//        自定义属性
+//        obj.name = 'zf'
+        aLis[i].index = i;
+
+//        表示每一个li
+//        aLis[i]
+//        if(i%3==0){
+//            aLis[i].className = 'bg1';
+//        }else if(i%3==1){
+//            aLis[i].className = 'bg2';
+//        }else{
+//            aLis[i].className = 'bg3';
+//        }
+
+        aLis[i].className = 'bg'+(i%3+1);
+
+//        this  当前操作的元素
+//        鼠标移入
+        aLis[i].onmouseover = function(){
+            this.zf = this.className;
+            this.className = 'bg4';
+        }
+//        鼠标移出
+        aLis[i].onmouseout = function(){
+            this.className = this.zf;
+        }
+
+        aLis[i].onclick = function(){
+            alert('我是第'+(this.index+1)+'个li');
+        }
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            width:606px;
+            height:300px;
+            margin:40px auto;
+        }
+        .box ul{
+            width:100%;
+            height:40px;
+        }
+        .box ul li{
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            background: #ccc;
+            text-align: center;
+            border:1px solid #000;
+            border-bottom: none;
+        }
+        .box ul li.on{
+            background: lightgreen;
+        }
+        .box div{
+            width: 100%;
+            height: 100%;
+            background: lightgreen;
+            display: none;
+            font-size: 30px;
+        }
+        .box div.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li class="on">按钮1</li>
+        <li>按钮2</li>
+        <li>按钮3</li>
+    </ul>
+    <div class="show">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</div>
+<script>
+    /*
+    * 1.通过循环，给每个按钮，都添加上点击事件
+    * 2.让所有的按钮都变灰，就让当前按钮变亮；
+    * 3.让所有的div都隐藏，就让当前按钮对应的div显示；
+    * */
+    //1.获取所有的按钮
+    var oDiv=document.getElementsByTagName('div')[0];//当我们给tagName[0]说明获取的是一个元素
+    var aBtn=oDiv.getElementsByTagName('li');//通过tagName获取的是一组元素；
+    //注意：即使页面中只有一个元素，只要是通过tagName来获取，拿到的都是一组元素；如果想单独操作该元素，必须加[];
+    var aDiv=oDiv.getElementsByTagName('div');
+    //1.通过循环，给每个按钮，都添加上点击事件
+    for(var i=0; i<aBtn.length; i++){
+        //alert(i)
+        (function(index){//形参
+            aBtn[i].onclick=function(){
+                //2.让所有的按钮都变灭，让当前的按钮变亮
+                //3.让所有的内容框都隐藏，让当前按钮对应的内容框显示；
+                for(var i=0; i<aBtn.length; i++){
+                    aBtn[i].className='';
+                    aDiv[i].className='';
+                }
+                this.className='on';
+                //让当前按钮对应的内容框显示；
+                aDiv[index].className='show';
+            }
+        })(i)//实参
+    }
+
+
+</script>
+</body>
+</html>

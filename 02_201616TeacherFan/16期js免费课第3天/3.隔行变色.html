@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            border: 1px solid orchid;
+            width: 500px;
+            margin: 20px auto;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        li{
+            height: 30px;
+            line-height: 30px;
+            padding-left: 30px;
+            color: orange;
+        }
+        .bg1{
+            background: darkblue;
+        }
+        .bg2{
+            background: lightblue;
+        }
+        .bg3{
+            background: red;
+        }
+        /*li:hover{*/
+            /*background: red;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<!--ul>li{$}*10-->
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+
+<script>
+    //分析思路：
+//    按照奇偶行的规律，给奇数行 设置一个类名为bg1，给偶数行 设置一个类名为bg2
+//    区分奇偶行：每一个li 都有一个索引
+//    第一个li 索引：0
+//    第二个li 索引：1
+//    第三个li  索引：2
+
+//    奇数行 索引：0 2 4   偶数  设置一个类名 class="bg1"
+//    偶数行 索引：1 3 5   奇数  设置一个类名  class="bg2"
+
+//    索引是奇数还是偶数
+//    运算符  % 取模，取余数（整除的余数）
+//    10%2
+
+//    1、获取要操作的元素  li
+    var aLis = document.getElementsByTagName('li');
+//    console.log(aLis.length);
+//    i:0~9    相当于li的索引
+    for(var i=0;i<aLis.length;i++){
+//        表示每一个li
+//        aLis[i]
+//        2、判断索引为奇数还是偶数，添加类名class
+        if(i%2==0){
+//            索引为偶数  --》奇数行
+            aLis[i].className = 'bg1';
+            aLis[i].zf = 'bg1';
+//            <li class='bg1'></li>
+        }else{
+            aLis[i].className = 'bg2';
+            aLis[i].zf = 'bg2';
+        }
+
+//        给每一个li绑定鼠标移入的事件
+        aLis[i].onmouseover = function(){
+            this.className = 'bg3';
+        }
+//        给每一个li绑定鼠标移出的事件
+        aLis[i].onmouseout  = function(){
+//            变回原来的类名
+            this.className = this.zf;
+        }
+    }
+
+//    在for循环 中函数体中的i值 有问题
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 就是一种数据格式
+    var obj = { // js对象
+        name : 'zf',
+        age : 8
+    };
+
+    var jsonObj = { // json格式的对象
+        "name" : "zf",
+        "age" : 8
+    };
+
+    console.log(window.JSON); // JSON对象
+
+    /*
+    *   JSON格式 : 属性名字用双引号包含，属性值如果是字符串也用双引号包含
+    * */
+
+
+    /*
+    *   JSON.parse :  把json格式的字符串转化成json格式的对象 eval
+    *   JSON.stringify : 把json格式的对象转化成一个json格式的字符串
+    *   ps : 在IE7-不兼容
+    * */
+
+    var res = JSON.stringify(jsonObj);
+    console.log(res);
+
+    var res1 = JSON.parse(res);
+    console.log(res1);
+
+    // JSON.parse() => eval
+    function jsonParse(jsonStr){
+        // 处理兼容问题
+//        if(window.JSON){ // 对象 undefined
+//            return JSON.parse(jsonStr);
+//        }else{ // ie7-
+//            return eval('('+jsonStr+')');
+//        }
+
+        return window.JSON ? JSON.parse(jsonStr) : eval('('+jsonStr+')');
+        return "JSON" in window ? JSON.parse(jsonStr) : eval('('+jsonStr+')');
+    }
+
+    /*
+    *   in :  "setInterval" in window 真
+    *       判断一个属性是否属于一个对象，返回布尔值。
+    *       ps : 公有属性如果能调用也是真,判断属性名字要用字符串
+    *
+    * */
+
+
+
+</script>

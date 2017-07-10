@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div0{
+            width: 200px;
+            height: 200px;
+            border: 5px solid #000;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+
+      <div id="div0">
+          <div id="div1"></div>
+          <a id="link" href="http://www.baidu.com">百度</a>
+          <span>点我</span>
+      </div>
+
+
+</body>
+</html>
+<script>
+    /*
+    *   鼠标事件对象 :
+    *       产生 : 绑定事件对应的那个函数中，并且可以作为参数传递
+    *       ps : 标准浏览器中事件对象e存在于绑定的函数中，在ie8-中这个事件对象在window.event属性上。  =>    e = e || window.event;
+    *       clientX :  鼠标点击位置相对于窗口的X轴坐标
+    *       clientY :  鼠标点击位置相对于窗口的Y轴坐标
+    *
+    *       e.pageX :  鼠标位置相对于页面的X轴坐标
+    *       e.pageY :  鼠标位置相对于页面的Y轴坐标
+    *
+    *       e.preventDefault() : 阻止默认行为  函数
+     *      e.returnValue = false    for IE8-
+     *      return false; 也能处理默认行为
+     *
+     *      e.type : 当前事件类型  "click"      重要
+     *
+     *      事件冒泡 :  点击当前元素会触发所有祖先的对应事件
+     *
+     *      e.target : 事件源
+     *      e.srcElement  for IE8-
+     *
+     *      阻止事件传播 :
+     *      e.stopPropagation()
+     *      e.cancelBubble = true;
+    *
+    *
+    * */
+    var div1 = document.getElementById('div1');
+    div1.onclick = fn;
+
+    function fn(e){
+
+        // 事件对象兼容处理
+        e = e || window.event;
+
+        console.log(e.clientX);
+        console.log(e.clientY);
+
+        // e.pageX兼容处理
+        e.pageX = e.pageX || e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+        e.pageY = e.pageY || e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+
+
+        console.log(e.pageX);
+        console.log(e.pageY);
+        //foo(e);
+
+        console.log(e.type);
+    }
+
+
+    function foo(w){
+        //console.log(w);
+    }
+
+
+    //
+    var link = document.getElementById('link');
+    link.onclick = function (e){
+        e = e || window.event;
+
+        // 处理阻止默认行为的兼容性问题
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+        e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true; // 阻止事件传播
+
+        return false;
+    }
+
+    var div0 = document.getElementById('div0');
+    div0.onclick = function (e){
+
+        e = e || window.event;
+
+        e.target = e.target || e.srcElement;
+
+        console.log(e.target);
+    }
+
+
+    //
+    document.body.onclick = function (e){
+        e = e || window.event;
+        e.clientX;
+        e.pageX; // IE8-
+        e.target; // e.srcElement
+        e.type; // click
+        e.preventDefault; // e.returnValue = false
+        e.stopPropagation; // e.cancalBubble = true
+    }
+
+
+
+</script>

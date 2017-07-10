@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+
+<script>
+
+    //点击按钮弹出对应的索引
+
+    var aBtns = document.getElementsByTagName('input');
+    for(var i=0;i<aBtns.length;i++){
+//        增加一组自定义属性  属性名为zf 属性值：对应的索引i
+//        自定义属性zf作用：用来保存一个正确的i值 索引
+        aBtns[i].zf = i;  //{zf:0}  this.zf
+        aBtns[i].onclick = function(){
+            alert(this.zf);
+        }
+//        没有点击按钮时，函数没有执行--》创建函数
+    }
+
+//    给对象增加一组属性
+    obj.name = 'zfpx'
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

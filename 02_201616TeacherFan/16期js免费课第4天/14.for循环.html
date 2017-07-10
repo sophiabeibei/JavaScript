@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //每轮循环 执行四步
+//    1）设置初始值  var i=0;
+//    2)设置循环执行的条件 i<5
+//    3)执行{循环体}中的代码
+//    4）执行累加的操作 i++
+
+//    i++  i=i+1  i+=1
+//    循环5次  i：0~4
+//    for(var i=0;i<5;i++){
+//        console.log(i);
+//    }
+//    console.log(i);
+
+//    第一轮循环  i=0  0<5    输出0    i++
+//    第二轮循环  i=1  1<5    输出1    i++
+//
+
+
+//    循环结束：不满足循环执行的条件
+
+//    循环体中 break  continue
+//    break：跳出整个循环 循环结束
+//    continue： 本轮循环循环体后面的代码不再执行，继续执行第四步的累加，继续下一轮循环
+
+//    for(var i=3;i<6;i++){
+//        break;
+//        console.log(i);
+//    }
+//    console.log(i);
+
+//    i++   i+=20
+
+    for(var i=3;i<10;i+=4){
+        if(i>8){
+            i+=4;
+            continue;
+            console.log(i)
+        }else{
+            i+=3;
+            break;
+            console.log(i);
+        }
+        console.log(i);
+    }
+    console.log(i);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <style>
+        #div1 p{
+            width: 200px;
+            transition: all 1s;
+        }
+        #div1 p.animate{
+            width :300px;
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">
+        <div class="c1" id="c1">
+            <div id="div1" class="div">
+                <p>原蒙</p>
+                <span class="span1"><b class="a"></b></span>
+                <span class="span2" xxx="abc">郭</span>
+                <span class="span3">雨</span>
+                <span class="span4">童</span>
+                <li price="100"></li>
+                <li price="200"></li>
+                <li price="100"></li>
+                <li price="200"></li>
+                <li price="200"></li>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="div2" xx="abc"></div>
+
+
+    <input type="text">
+    <input type="radio" checked>
+    <input type="radio">
+    <input type="checkbox" name="a" disabled>
+    <input type="checkbox" name="b">
+    <input type="checkbox" name="c">
+    <input type="button">
+    <input type="file">
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // var div1 = document.getElementById('div1'); // dom对象
+    var div1 = jQuery('#div1'); // [ 0 : div1 context : document, selector : '' ]
+
+    function zQuery(selector,context){
+        var ary = [];
+        // selector => '#div1'
+        var val = /^#(\w+)/.exec(selector)[1]; // div1
+        var ele  = document.getElementById(val);
+        ary.push(ele);
+        ary.context = context || document;
+        ary.selector = selector;
+        return ary;
+    }
+
+    /*
+    *   选择器 :  =>  使用jQuery获取元素返回的是一个jQuery对象。才能够调用jQuery原型上的方法.
+    *
+    *       id :  #id
+    *       class : .class
+    *       tag : tag
+    *
+    *
+    *   如何把一个jQ对象转化为一个原生dom对象呢 ？ => 通过索引值来获取 / get(index)
+    *
+    * */
+    // 基本
+    var $res = $('#div1');
+    var $res = $('.div');
+    var $res = $('div');
+
+    // 层级
+    var $res = $('#div1 p').get(0); // 转化成原生对象
+    var $res = $('#div1 *'); // *匹配所有
+    var $res = $('#div1,#div2'); // 同时获取多个选择器
+
+    //
+    var $res = $('#div1 p+'); // 获取的是p元素的弟弟元素
+    var $res = $('#div1 p~'); // 获取p元素所有的弟弟们
+
+    // 筛选
+    var $res = $('#div1 span:first'); // 第一个元素
+    var $res = $('#div1 span:last'); // 最后一个元素
+    var $res = $('#div1 span:not(.span3)'); // 除了.span3类的其他
+    var $res = $('#div1 span:odd'); // 索引为奇数的元素
+    var $res = $('#div1 span:even'); // 索引为偶数的元素
+    var $res = $('#div1 span:eq(0)'); // 索引等于
+    var $res = $('#div1 span:gt(0)'); // 大于索引值
+    var $res = $('#div1 span:lt(0)'); // 小于索引值
+
+    // 内容过滤
+    var $res = $('#div1 span:contains(珠)'); // 获取内容包含具体某个字的
+    var $res = $('#div1 span:empty'); // 获取内容为空的
+    var $res = $('#div1 span:has(.a)'); // 获取所有span中包含一个.a的span
+
+    // 表单元素属性过滤
+
+    var $res = $('input:text'); // 属性过滤
+    var $res = $('input:radio'); // 属性过滤
+
+    // 属性过滤
+    var $res = $('input[type=checkbox][name=b]'); // input:checkbox
+    var $res = $('div[xx=abc]');
+
+    //
+    var $res = $('input:checked');
+    var $res = $('input:disabled');
+
+    // 筛选方法
+    $('#div1').hasClass('div'); // 返回一个布尔值，#div1是否包含div这个class => 作为一个判断的条件
+    $('#div1').children('.c1'); // 获取div1内所有元素子节点中包含.c1这个类样式的
+    $('#div1').parent(); // 获取div1的父元素
+    $('#div1').siblings(); // 获取所有的兄弟节点
+    $('#div1').prev(); // 获取哥哥节点
+    $('#div1').next(); // 获取弟弟节点
+    $('#div1').nextAll(); // 所有弟弟
+    $('#div1').prevAll(); // 所有哥哥
+
+
+    // filter   find   closest  记住
+
+    // find : 先获取一个父元素,然后在这个范围内继续获取一般采用find方法
+    var $div1 = $('#div1');
+    $('#div1 p');
+    $('#div1 span');
+    $div1.find('p');
+    $div1.find('span');
+
+    // closest : 在所有祖先元素中获取和当前最近的哪一个
+    var $res = $div1.closest('.c1');
+
+    // filter : 属性过滤
+    var price = '100';
+    var $res = $div1.find('span').filter('[a=b][price='+ price +']');
+    // [].slice().splice().concat().reverse().sort().push()
+
+    // end() ？？？
+
+
+
+    console.log($res);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

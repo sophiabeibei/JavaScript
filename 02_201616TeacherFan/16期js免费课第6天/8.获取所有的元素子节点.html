@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <!-- 注释-->
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <p></p>
+</ul>
+<script>
+    //获取所有的元素子节点
+//    var oUl = document.getElementsByTagName('ul')[0];
+//    console.log(oUl.children);
+//    1.childNodes  获取所有子节点
+//    2.nodeType为1  --》元素节点
+//    3.数组
+//    4.向数组末尾添加一项  push()
+
+//    1.先获取要操作的元素
+//    2.获取所有的子节点
+//    3.判断拿到的每一个子节点的nodeType
+
+    var oUl = document.getElementsByTagName('ul')[0];
+    var ary = [];//存储所有的元素子节点
+//    所有的子节点
+    var nodes = oUl.childNodes;
+//    遍历每一个子节点
+    for(var i=0;i<nodes.length;i++){
+//        每一个子节点
+        var node = nodes[i];
+//        判断是否为元素子节点
+        if(node.nodeType===1){
+//            元素子节点 ，向ary的末尾增加这一个节点
+            ary.push(node);
+        }
+    }
+    console.log(ary);
+
+    /**
+     * getChild:获取某一个元素下的所有元素子节点
+     * @param ele：某一个元素
+     * @return :获取的所有元素子节点
+     */
+    function getChild(ele){
+        var ary = [];//存储所有的元素子节点
+//    所有的子节点
+        var nodes = ele.childNodes;
+//    遍历每一个子节点
+        for(var i=0;i<nodes.length;i++){
+//        每一个子节点
+            var node = nodes[i];
+//        判断是否为元素子节点
+            if(node.nodeType===1){
+//            元素子节点 ，向ary的末尾增加这一个节点
+                ary.push(node);
+            }
+        }
+        return ary;
+
+    }
+    console.log(getChild(oUl))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>堆栈内存释放</title>
+</head>
+<body>
+    <div id="div1" style="width: 100px; height: 100px; background: red; "></div>
+</body>
+</html>
+<script>
+    // 只要这个内存还在被占用，那么就不能被释放
+
+    // 堆内存释放
+    var obj = { // obj就在占用这个对象的堆内存地址，所以这个堆不能释放
+        name : 'zhufeng',
+        age : 8
+    };
+    obj = null; // obj这个变量再也不占用对象的堆内存地址。
+
+
+
+
+    // 栈(作用域)释放
+    // 1) 全局变量f占用return出来的匿名函数，符合fn执行形成的作用域不被释放的条件
+    function fn(c){
+        var total = 120; //这个tatal=120就被保存下来了 => 那么能不能修改呢?
+        return function (){
+            console.log(total); // 120
+            total += 100; // fn函数中的120既然被保存下来了，那么就可以被修改。
+            console.log(total); // 220
+        }
+    }
+    var f = fn();
+    f();
+
+    // 2) 如果不return出来，那么可以到函数内部去占用这个返回值
+    function fxx(){
+        var xx = 1000;
+        function fyy(){
+
+        }
+        window.yy = fyy;
+    }
+    fxx();
+
+    // 3) 在绑定事件过程中，也有可能和作用域不释放参合在一起
+    var div1 = document.querySelector('#div1'); // dom对象
+    // typeof div1
+    function fzz(){
+        var count  = 0; // 1
+        function zz(){
+            count++; // 自身累加1
+            console.log(count); // 1
+        }
+        div1.onclick = zz; // div1的onclick属性占用fzz函数中zz函数 => fzz函数执行的时候形成的作用域没有释放 => count的值就被保存下来了
+    }
+    fzz();
+    div1.onclick(); // 1  => 主动触发这个事件
+    div1.onclick(); // 2
+    div1.onclick(); // 3
+    // 点击的时刻可以继续执行下去
+
+    div1.onclick = (function (){
+        var index = 0;
+
+        return function (){
+            console.log(++index);
+        }
+
+    })();
+
+    // 4)  不立刻释放作用域
+    function fun(){
+        var i = 0;
+        return function (){
+            console.log(++i);
+        }
+    }
+    fun()(); // 1
+    fun()(); // 1
+    var f = fun();
+    f(); // 1
+    f(); // 2
+    fun()(); // 1
+    f(); // 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    *   栈内存不被释放：
+    *       函数执行的时候(fn),会形成一个私有作用域，如果函数中的(fn)一部分(必须是引用数据类型值return后面的函数)被函数外(fn外)变量(f)或者对象属性占用，那么fn执行形成的作用域就符合不被释放的条件。=> 从而在这个作用域内的私有变量(total=120)甚至形参(c)都能保存下来。
+    *
+    * */
+
+
+
+
+</script>

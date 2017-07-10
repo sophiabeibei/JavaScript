@@ -1,0 +1,7 @@
+免费课 : 数组方法  字符串
+第一周 :  预解释，this，面向对象 单例 构造类 实例  原型  闭包 作用域不释放
+第二周 :  call apply bind ajax json 同步异步 缓存 排序 dom映射  正则
+第三周 :  盒子模型 多张图片延迟加载 花瓣 es6  utils  class css
+第四周 :  动画 动画库封装 回调 轮播图 渐显 jq 渐显 轮播图类 extend qqmusic rem
+第五周 :  事件对象 属性 dom2兼容处理 事件委托 鼠标滚轮 整屏滚动 wheel.js 拖拽
+...

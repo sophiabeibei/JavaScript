@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animate</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: lime;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script src="../utils.js"></script>
+<script>
+    var div1 = document.getElementById('div1');
+
+    var maxLeft = utils.win('clientWidth') - div1.offsetWidth;
+
+
+    // 匀速运动
+    /*div1.timer = window.setInterval(function (){
+        var l = utils.css(div1,'left'); // 获取已经生效的left
+        if(l + 5 >= maxLeft){
+            window.clearInterval(div1.timer);
+            utils.css(div1,'left',maxLeft);
+            return;
+        }
+        l += 5;
+        utils.css(div1,'left',l);
+    },10);*/
+
+    // 匀速运动
+
+
+//    var begin = {
+//        left : utils.css(div1,'left'),
+//        top : utils.css(div1,'top'),
+//        width : utils.css(div1,'width')
+//    };
+    //var begin = utils.css(div1,'left'); // 起点 当前生效的样式
+    //var begin_top = utils.css(div1,'top'); //
+
+    var time = 0; // 花费的时间
+    var target = {
+        left : 300,
+        top : 300,
+        opacity : 0.2
+    };
+    var begin = {};
+    var change = {};
+    for(var key in target){
+        // key : left, top, width, opacity, height
+        begin[key] = utils.css(div1,key); // begin.left/ begin.top ...
+        change[key] = target[key] - begin[key];
+    }
+    var duration = 2000; // 规定完成动画的时间
+    //var target = maxLeft; // 终点
+    //var target_top = 500; // 给top准备的终点
+//    var change = {
+//        left : target.left - begin.left,
+//        top : target.top - begin.top,
+//        width : target.width - begin.width
+//    };
+    //var change = target - begin; // 改变的距离
+    //var change_top = target_top - begin_top;
+    div1.timer = window.setInterval(function (){
+        time += 10;
+        if(time >= duration){ // 如果花费的时间大于规定时间那么一定到达终点了
+            window.clearInterval(div1.timer);
+            //utils.css(div1,'left',target); // 到达终点之后主动设置到目标值
+            //utils.css(div1,'top',target_top);
+            utils.css(div1,target); // target是一个包含所有终点值得对象
+            return;
+        }
+        for(var key in change){
+            // key : left,top
+            var val = time/duration * change[key] + begin[key]; // l,t
+            utils.css(div1,key,val);
+        }
+        //var l = time/duration*change + begin; // 计算出来应该出现的位置left值
+        //var l = time/duration * change['left'] + begin['left'];
+        //var t = time/duration*change_top + begin_top;
+        //var t = time/duration * change['top']+ begin['top'];
+
+        //utils.css(div1,'left',l);
+        //utils.css(div1,'top',t);
+    },10);
+
+    /*
+    *   完成一个动画需要准备:
+    *       1 t : time 花费的时间 =>  花费的时间越来越多，位置也会越来越远
+    *       2 b : begin 起始位置 =>   运动开始之前已经生效的样式
+    *       3 c : change 运动距离 =>   终点 - 起点  target - begin
+    *       4 d : duration  规定时间 => 这个值决定动画的快慢
+    *
+    *       target : 当前元素要运动到哪
+    * */
+
+    function Linear(t,b,c,d){
+        return t/d*c + b;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

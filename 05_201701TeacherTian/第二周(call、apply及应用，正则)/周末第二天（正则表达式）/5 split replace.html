@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *   split的用法:
+    *       split的参数可以是一个正则，拆分字符串的时刻会把正则匹配到的位置全部拆分.
+    * */
+    var str = 'a b-c d';
+    var res = str.split(/[ -]/);
+    console.log(res); // [a,b,c,d]
+
+
+    /*
+    *   replace用法:
+    *       1 replace返回一个新的替换好的字符串 str = str.replace()
+    *       2 如果第二个参数是一个函数，是这个函数的返回值return来替换第一个参数所匹配到的内容 => 函数执行的次数取决于第一个参数正则成功匹配的次数
+    *       3 第二个参数函数中的arguments :
+    *           [总正则在当次执行匹配到的内容，从第二项开始分别分组n...,index,input]
+    *       4 当第二个参数是"$1"字符串，如果有分组那么代表就是分组1
+    * */
+    //insertBefore(new,old)
+    //replace(old,new)
+    //replaceChild(new,old)
+    var str = 'zhu2018feng2017peixun';
+    //str = str.replace('zhu','珠');
+    var reg = /(\d+)/g;
+    str = str.replace(reg,function (res,$1,index,input){
+        console.log(arguments); // []
+        return '主';
+    });
+
+    console.log(str);
+
+    ////////////////////////////////////////////////
+
+    var str = 'abcdefg'; // 遍历字符串
+    str.replace(/(\w)/g,function (){
+        console.log(arguments[1])
+    });
+
+    var str = '1324134'; //=> "伍叁壹贰肆"
+    var str1 = '零壹贰叁肆伍陆柒捌玖';
+    str = str.replace(/\d/g,function (){
+        return str1[arguments[0]]; // 5 => '伍'  4 => '肆'
+    });
+    console.log(str);
+
+    ////////////////////////////////////////
+    var str = '2015zhufeng';
+    var reg = /(\d+)/g;
+    str = str.replace(reg,'$1'+'￥');
+    str.replace(reg,function (){
+        return arguments[1] + '￥';
+    });
+    console.log(str);
+
+
+
+
+
+
+
+</script>

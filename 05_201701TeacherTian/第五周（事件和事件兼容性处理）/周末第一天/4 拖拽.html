@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: lime;
+            position: absolute;
+        }
+        #div1 img{
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <img src="images/iphone.jpg" alt="">
+    </div>
+
+</body>
+</html>
+<script>
+    var div1 = document.getElementById('div1');
+    /*
+    *   拖拽 :  mousedown  mousemove   mouseup
+    *   ps:  当mousedown事件被触发的那一刻再绑定mousemove和mouseup事件
+    *   鼠标按下 ： 记录当前鼠标位置相对于元素的偏移量 => 鼠标移动用
+    *   鼠标移动 : 实时计算盒子新的left和top的值并且生效
+    *   鼠标松开 : 把mousemove事件还有mouseup事件全部移除掉
+    *
+    * */
+
+    div1.onmousedown = function (e){
+        e = e || window.event;
+        this.l = e.clientX - this.offsetLeft;
+        this.t = e.clientY - this.offsetTop;
+        if(div1.setCapture){
+            // dom元素的setCapture方法就是让鼠标和元素绑定一起  forIE
+            div1.setCapture();
+            div1.onmousemove = function (e){
+                e = e || window.event;
+                var l = e.clientX - this.l;
+                var t = e.clientY - this.t;
+                this.style.left = l + 'px';
+                this.style.top = t + 'px';
+                e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            }
+            div1.onmouseup = function (e){
+                div1.releaseCapture(); // 释放绑定
+                this.onmousemove = null;
+                this.onmouseup = null;
+            }
+        }else{ // chrome 让事件委托给document处理，当document的move事件触发在移动盒子
+            document.onmousemove = function (e){
+
+                var l = e.clientX - div1.l; // this => document
+                var t = e.clientY - div1.t;
+
+                div1.style.left = l + 'px';
+                div1.style.top = t + 'px';
+                // 图片拖拽的默认行为
+                e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            }
+            document.onmouseup = function (e){
+                this.onmousemove = null;
+                this.onmouseup = null;
+            }
+        }
+    }
+
+
+    /*
+    *   onmousedown => 计算l和t   绑定move和up事件
+    *   onmousemove => 计算实施位置并且生效
+    *   onmouseup => 移除事件
+    *
+    *   ps :  setCapture IE  chrome : 事件绑定document
+    *   ps :  chrome : 事件绑定给document => this就改变了
+    *   ps :  mousemove 阻止默认行为
+    *
+    *
+    * */
+
+
+
+
+
+</script>

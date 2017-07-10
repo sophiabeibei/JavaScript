@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #div2{
+            width: 50px;
+            height: 50px;
+            background: yellow;
+            position: absolute;
+            left: 150px;
+            top : 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+</html>
+<script src="../utils.js"></script>
+<script>
+    var div1 = document.getElementById('div1');
+    var div2 = document.getElementById('div2');
+
+/*
+    animate(div2,{left : 400},1000,function (){
+        //div2.innerHTML = '到了';
+        animate(this,{top : 400}, function (){
+            console.log('完成');
+        })
+
+    });
+*/
+
+    animate({
+        ele : div1,
+        target : {
+            left : 300,
+            top : 300,
+            width : 50,
+            height : 50
+        },
+        callback : function (){
+            this.innerHTML = '哈哈';
+        }
+    });
+
+
+
+
+    function animate(opt/*,ele,target,duration,callback*/){
+        // t,b,c,d => time(花费) begin(开始) change(改变) duration(规定)
+        // var div1 = document.getElementById('div1');
+        var time = 0;
+        // var duration = 1000;
+        var duration = opt.duration || 1000;
+        var target = opt.target;
+        var ele = opt.ele;
+        var callback = opt.callback;
+//        var target = { // 我只想在这么多维度上动画
+//            left : 300,
+//            top : 500,
+//            width : 50,
+//            height : 50
+//        };
+        var begin = {};
+        var change = {};
+        for(var key in target){
+            begin[key] = utils.css(/*div1*/ele,key); // key : left, top  ...
+            change[key] = target[key] - begin[key];
+        }
+        window.clearInterval(/*div1*/ele.timer);
+        /*div1*/ele.timer = window.setInterval(function (){
+            time += 10;
+            if(time >= duration){
+                window.clearInterval(/*div1*/ele.timer);
+                utils.css(/*div1*/ele,target);
+                // 如果到达终点之后还想做什么...
+                // div1.style.background = 'lime';
+                //div2.innerHTML = '到了';
+                if(typeof callback == 'function'){
+                    callback.call(ele); // 把回调函数中的this修改成运动那个元素ele
+                }
+                return;
+            }
+            for(var key in change){
+                if(change[key]){ // 如果在当前维度上没有改变那么就没有必要动画
+                    var val = Linear(time,begin[key],change[key],duration);
+                    utils.css(/*div1*/ele,key,val);
+                }
+            }
+        },10);
+
+        function Linear(t,b,c,d){
+            return t/d*c + b;
+        }
+
+    }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .bg1{
+            background: red;
+        }
+        .bg2{
+            background: aqua;
+        }
+        .bg3{
+            background: orange;
+        }
+        .bg{
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+</ul>
+<script>
+//    1.获取到li
+//    2.遍历每一个li，给每一个li设置类名
+    var lis = document.getElementsByTagName('li');
+    for(var i=0;i<lis.length;i++){
+        lis[i].index = i;
+//        lis[i]
+//        if(i%3===0){
+//            lis[i].className = 'bg1';
+//        }else if(i%3===1){
+//            lis[i].className = 'bg2';
+//        }else{
+//            lis[i].className = 'bg3';
+//        }
+//        字符串拼接
+        lis[i].className = 'bg'+(i%3+1);
+//        鼠标移入
+        lis[i].onmouseover = function(){
+            this.zfpx = this.className;
+            this.className = 'bg';
+        }
+//        鼠标移出
+        lis[i].onmouseout = function(){
+            this.className = this.zfpx;
+        }
+        lis[i].onclick = function(){
+            alert('我是第'+(this.index+1)+'个li')
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

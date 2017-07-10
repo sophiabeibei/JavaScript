@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom2事件兼容处理</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script>
+    /*
+    *   DOM2标准浏览器 ：
+    *       1 顺序仍然按照绑定的顺序
+    *       2 this也仍然和dom0的this一样
+    *       3 重复绑定不允许的
+    *
+    * */
+    var div1 = document.getElementById('div1');
+
+//    div1.addEventListener('click',fn1,false);
+//    div1.addEventListener('click',fn1,false);
+//    div1.addEventListener('click',fn2,false);
+//    div1.addEventListener('click',fn3,false);
+//    div1.addEventListener('click',fn4,false);
+//    div1.addEventListener('click',fn5,false);
+//    div1.addEventListener('click',fn6,false);
+//    div1.addEventListener('click',fn7,false);
+//    div1.addEventListener('click',fn8,false);
+//    div1.addEventListener('click',fn9,false);
+
+//    div1.removeEventListener('click',fn9,false); // 移除事件
+
+    function fn1(){ console.log(1); console.log(this == div1); }
+    function fn2(){ console.log(2) }
+    function fn3(){ console.log(3) }
+    function fn4(){ console.log(4) }
+    function fn5(){ console.log(5) }
+    function fn6(){ console.log(6) }
+    function fn7(){ console.log(7) }
+    function fn8(){ console.log(8) }
+    function fn9(){ console.log(9) }
+
+    /*
+    *   DOM2 IE8- :    事件类型type需要 +"on"   "onclick"
+    *       1  顺序问题 乱
+    *       2  this问题  window
+    *       3  重复绑定问题
+    *
+    * */
+
+//    div1.attachEvent('onclick',fn1);
+//    div1.attachEvent('onclick',fn1);
+//
+//    div1.attachEvent('onclick',fn2);
+//    div1.attachEvent('onclick',fn3);
+//    div1.attachEvent('onclick',fn4);
+//    div1.attachEvent('onclick',fn5);
+//    div1.attachEvent('onclick',fn6);
+//    div1.attachEvent('onclick',fn7);
+//    div1.attachEvent('onclick',fn8);
+//    div1.attachEvent('onclick',fn9);
+//
+//    div1.detachEvent('onclick',fn9);  // 移除事件
+
+    /**
+     * @param ele  给哪个元素绑定
+     * @param type 事件类型
+     * @param fn   函数
+     */
+    function on(ele,type,fn){
+        if(ele.addEventListener){ // chrome
+            ele.addEventListener(type,fn);
+        }else{ // ie8-
+            // div1.AAAclick = []; if(div1.AAAclick){}
+            // 如果div1上不存在这个属性那么就赋值一个数组，如果存在那么直接跳过
+            if(!ele['AAA'+type]){
+                // 同一个元素ele的同一个事件type这个条件只能成立一次
+                ele['AAA'+type] = [];
+                ele.attachEvent('on'+type,run); // 同一个元素ele的同一个事件type只能绑定一个run。事件触发的时刻真正执行的是run方法，run方法在执行的时候再去获取放在在自定义属性数组AAAclick中的fn1-fn5。并且按照顺序执行
+            }
+            // 把fn1-fn5添加到这个自定义属性数组中，事件发生的时刻让run方法能获取到这个数组里的所有函数，并且按照顺序执行
+            var a = ele['AAA'+type];
+            // 如果数组中存在这个fn，那么就没有必要添加了。
+            for(var i = 0; i < a.length; i++){
+                if(a[i] === fn){
+                    return;
+                }
+            }
+            a.push(fn);
+        }
+    }
+
+    function run(e){ // 执行的时候负责获取到自定义属性数组，但是一定要对应好
+        // click发生 => ele.AAAclick : [fn1,fn2 ...]
+        // mouseover发生 => ele.AAAmouseover : [fn1 ...]
+        e = window.event; //
+        e.target = e.srcElement;
+        // e.target   e.type
+        // div1['AAA'+'click']; //
+        var a = e.target['AAA'+e.type]; // [fn1,fn2,fn3,fn4,fn5]
+        if(a && a.length){
+            for(var i = 0; i < a.length; i++){
+                if(typeof a[i] == 'function'){
+                    a[i].call(e.target); // fn1,fn2,fn3,fn4,fn5
+                }
+            }
+        }
+    }
+
+
+
+
+    // div1.AAAclick = [fn1,fn2,fn3,fn4,fn5]
+     on(div1,'click',fn1); // fn1 =>
+
+     on(div1,'click',fn1); // fn1 =>
+
+     on(div1,'click',fn2);
+     on(div1,'click',fn3);
+     on(div1,'click',fn4);
+     on(div1,'click',fn5);
+
+    // div1.AAAmouseout = [fn3,fn4,fn5]
+    on(div1,'mouseout',fn3);
+    on(div1,'mouseout',fn4);
+    on(div1,'mouseout',fn5);
+
+
+
+
+
+</script>

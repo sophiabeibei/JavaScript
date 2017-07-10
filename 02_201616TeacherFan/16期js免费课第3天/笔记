@@ -1,0 +1,5 @@
+1、书写顺序
+    html结构
+    css
+    js 一般写在body最后面，因为js是用来操作html元素的，先保证html加载完之后，再加载js
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: relative;
+            width: 350px;
+            height: 350px;
+            box-shadow:3px 3px 5px #000;
+            margin: 10px;
+        }
+        #box img{
+            width: 100%;
+            height: 100%;
+            border: none;
+            vertical-align: top;
+        }
+        #box #mask{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            width: 175px;
+            height: 175px;
+            background: orange;
+            opacity: 0.6;
+            cursor: move;
+        }
+        #show{
+            display: none;
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            left: 380px;
+            top: 10px;
+            box-shadow: 3px 3px 5px #000;
+            overflow: hidden;
+        }
+
+        #show div{
+            width: 700px;
+            height: 700px;
+            position: absolute;
+
+        }
+        #show div img{
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+            border: none;
+        }
+    </style>
+    <script>
+        // 网页内的dom元素渲染结束，并且img.src等资源也加载成功时候触发
+        window.onload = function (){
+            //  onmouseenter 和 onmouseleave 就是阻止子元素和父元素的冒泡行为
+
+            var box = document.getElementById('box');
+            var mask = document.getElementById('mask');
+            var show = document.getElementById('show');
+            var div = show.getElementsByTagName('div')[0];
+            box.onmouseenter  = function (e){
+                console.log('over');
+                mask.style.display = 'block';
+                show.style.display = 'block';
+            }
+
+            box.onmousemove = function (e){
+                e = e || window.event;
+                // 计算出即将要生效的left和top的值
+                var l = e.clientX - box.offsetLeft - mask.offsetWidth/2;
+                var t = e.clientY - box.offsetTop -mask.offsetHeight/2;
+                // 过界判断
+                var minL = 0, minT = 0;
+                var maxL = box.offsetWidth - mask.offsetWidth;
+                var maxT = box.offsetHeight- mask.offsetHeight;
+
+                l = l < minL ? minL : l > maxL ? maxL : l;
+                t = t > maxT ? maxT : t < minT ? minT : t;
+
+                mask.style.left = l + 'px';
+                mask.style.top = t + 'px';
+
+                // 显示区域跟随鼠标移动
+                div.style.left =  -2*l + 'px';
+                div.style.top = -2*t + 'px';
+            }
+
+            box.onmouseleave = function (){
+                console.log('out')
+                mask.style.display = 'none';
+                show.style.display = 'none';
+            }
+        }
+
+        // $(function (){ 当需要加载的资源全部加载完毕 => jq代码可以放在这个位置  })
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <img src="images/iphone.jpg">
+        <div id="mask"></div>
+    </div>
+
+    <div id="show">
+        <div><img src="images/iphone_big.jpg"></div>
+    </div>
+</body>
+</html>
+<script>
+
+
+</script>

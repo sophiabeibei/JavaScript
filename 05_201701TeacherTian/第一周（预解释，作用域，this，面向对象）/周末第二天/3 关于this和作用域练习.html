@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var num = 5; // 7 10
+    var obj = {
+        num : 4, // 7
+        fn : (function (num){ // 只在obj的赋值过程执行一次
+            // var num = 6 7 8
+            this.num += 2; // window.num += 2;
+            num++;
+            return function (){
+                this.num += 3; // window.num += 3     obj.num += 3;
+                num++;
+                console.log(num);
+            }
+        })(this.num)
+    };
+    // 对象赋值的过程中，全局变量num修改成了7，私有作用域内的num变成6
+    var fn = obj.fn; // 全局变量fn和obj.fn共同引用自运行函数的返回值。
+    fn(); // 7
+    obj.fn();// 8
+    console.log(this.num,obj.num); // 10 7
+
+    ////////////////////////////////////////////////////////////////////
+
+    var ary = [100,200,300,400];//[/*100*//*,200*//*,300*//*,400*/];  eeefff000
+    var obj = {
+        ary : [100,200] // [100]
+    };
+    obj.fun = fun(ary); //obj.fn = eeefff111
+    function fun(ary) {
+        // var ary = eeefff000;
+        this.ary = ary; // window.ary = ary;
+        ary.length--;
+        return function (){ // eeefff111
+            this.ary.length--; // window.ary.length--
+            ary.length--; //
+            console.log(ary); // [100] []
+        }
+    }
+    var f = obj.fun; // f = eeefff111
+    f(); // this => window
+    obj.fun();
+    console.log(ary,obj.ary); // [], [100]
+
+
+
+
+
+
+
+
+
+</script>

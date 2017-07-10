@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //1、向数组末尾添加一项  push
+//    2、删除索引为n的一项  原数组改变,返回值：被删除的一项以一个数组返回
+//    splice(n,1)
+//    var ary = [9, 3, 6, 5, 2, 7, 1];
+//            [9, 3, 6, 2, 7, 1]
+//    var res = ary.splice(3,1); //删除索引为3的那一项
+//    console.log(ary,res);
+
+//    递归
+//    function fn(){
+//        console.log(1);
+//        fn();
+//    }
+//    fn();
+
+
+//    1.先拿到数组中间的一项（基准点）
+//    2.数组这种剩下的每一项 和基准点比较，如果比基准点小，把它放到左边的盒子里，如果比基准点大，把它放到右边的盒子里
+    var ary = [9, 3, 6, 5, 2, 7, 1 ];
+
+
+    function quickSort(ary){
+//        终止条件
+        if(ary.length<=1){
+            return ary;
+        }
+        //    中间一项的索引
+        var cen = Math.floor(ary.length/2);
+//    中间那一项的值   原数组改变，返回被删除的内容 返回值是一个数组
+        var cenVal = ary.splice(cen,1)[0];
+//        1)在原数组中删除中间这一项
+//        2）获取中间这一项的值
+
+        var left  = []; //左边的盒子
+        var right = []; //右边的盒子
+//    拿数组中的每一项和中间项比较
+//    循环数组中剩下的的每一项
+        for(var i=0;i<ary.length;i++){
+            var cur = ary[i];//当前项
+            if(cur<cenVal){
+                left.push(cur)
+            }else{
+                right.push(cur);
+            }
+        }
+        return quickSort(left).concat([cenVal],quickSort(right))
+
+    }
+    var res = quickSort(ary);
+    console.log(res);
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

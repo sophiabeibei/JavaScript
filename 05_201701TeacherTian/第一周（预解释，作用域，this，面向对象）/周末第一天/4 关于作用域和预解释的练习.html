@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *   函数执行过程 : 1 先形成一个私有作用域（栈）
+    *                 2 形参赋值 => 就是把实参代表的值赋值给形参一份，如果是引用数据类型那么就是把这个引用类型值的堆内存地址赋值给形参一份
+    *                   ps : 形参相当于定义在函数体内的私有变量
+    *                   ps : 形参和私有变量重名，私有变量前面的var没用
+    *                 3 预解释 => 当前函数体内带var和function
+     *                4 执行代码
+    *
+    *
+    * */
+    var num = 6;
+    function fn(/*x*/){ // x相当于定义在函数体内的私有变量
+        //var x = 5;
+        // console.log(x); //
+        // var x = 6; // 由于这个x和形参一样，所以这个var没用。形参赋值先于预解释
+        console.log(num); // undefined
+        num++; // num = num + 1;
+        var num;
+        console.log(num); // NaN
+    }
+    fn(5); // 函数的执行过程 ???
+
+    console.log(num); // 6
+
+    /////////////////////////////////////////////////////////////////////
+    /*
+    * 作用域链 : 如果当前私有作用域内不存在这个变量，那么到上一级作用域去查找，如果上一级作用域也没有，那么还会继续向上查找。如果查找到顶级作用域window还没有，那么报错。
+    * ps : 如果当前作用域内存在私有变量那么就不会到其他作用域去查找了。
+    *
+    * */
+
+    var x = 1000; // x is not defined
+    // x is not a function
+    function fx(){
+        //var x = 100;
+        return function (/*x*/){ // eeefff000
+            console.log(x);
+            //var x;
+            x = 10000;
+        }
+    }
+
+    var f = fx(); // f =  eeefff000
+    f(); // 100
+
+    ///////////////////////////////////////////////////////////////////
+
+
+    var z = [1,2]; // [1] => []
+    function foo(z){
+
+        z.length--;
+        z = z.splice(0); // [1]
+        z[z.length] = 3; // [1,3]
+        //var z;
+        console.log(z);
+    }
+    foo(z);
+    console.log(z);
+
+    // [1,3] []
+
+    /*
+    *  闭包 :  函数执行就会形成一个私有作用域，而私有作用域保护私有变量不受外界干扰这种机制就叫闭包。
+    *
+    * */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

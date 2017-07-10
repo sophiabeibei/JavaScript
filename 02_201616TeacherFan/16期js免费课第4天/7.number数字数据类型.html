@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //number数字数据类型：包括  正数、负数、小数、0、NaN
+
+//    NaN   not a number 不是一个有效数字
+//    =   赋值
+//    == 比较
+
+//    100==100   true
+//    1==2       false
+//    NaN==NaN   false
+
+
+//    相等  true    不相等 false
+
+
+//    number中的方法
+//    1、isNaN(要检测的内容)  检测一个内容是不是有效数字，如果不是一个有效数字 返回true，如果是有效数字 返回false
+
+    isNaN(100);  //false
+    isNaN('珠峰培训');  //true
+
+    isNaN('100');   //false
+//    如果要检测的内容  不是数字数据类型的，浏览器会先默认将其转为数字数据类型（Number()） 然后再判断
+
+//    首先，执行Number('100')   100
+//    然后，再执行判断   100  是数字--》false
+
+//    2、转为数字数据类型的方法
+//    1）强制转换  Number()  内容必须全部都是数字才可以转换，只要有一字符不是有效数字，直接返回NaN
+    Number('100');  //100
+    Number('100px');
+
+//    2）非强制转换  parseInt()  parseFloat()
+//      作用： 从左到右一个字符一个字符的查找，是数字继续查找，只要遇到一个字符不是数字，直接返回之前找到的数字
+//      只要第一个字符不是有效数字，直接返回NaN
+    parseInt('100px');  //100
+    parseInt('px100px');  //NaN
+
+//    parseFloat() 但是可以多识别一个小数点.
+    parseFloat('100.5px')  //100.5
+    parseFloat('100.5.6px')  //100.5
+    parseFloat('abc100.5.6px')   //NaN
+
+//    number:正数 负数 小数  0 NaN
+//    NaN==NaN   false
+//    方法
+//    isNaN()     返回值  true  false
+//    Number()
+//    parseInt()
+//    parseFloat()
+
+
+
+
+
+    var a = Number('100px');
+    if(a==100){
+        console.log('100');
+    }else if(a==NaN){
+        console.log('NaN');
+    }else{
+        console.log('不告诉你！');
+    }
+
+
+
+</script>
+
+</body>
+</html>

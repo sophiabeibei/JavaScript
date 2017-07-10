@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 原型继承 => 公有
+    function A(){ // 父类
+        this.x = 100;
+        this.y = 200;
+    }
+    A.prototype.getX = function (){
+        //alert();
+    }
+
+    function B(){
+
+    }
+    B.prototype = new A();
+    B.prototype.constructor = B;
+
+    var b = new B();
+    b.getX();
+
+    // call继承
+
+    function C(){
+        this.x = 100; // d.x = 100;
+        this.y = 200; // d.y = 200;
+    }
+    C.prototype.getX = function (){}
+
+    function D(){
+        // this => d
+        C.call(this); //要把C函数中的this修改成d实例
+    }
+    var d = new D();
+    console.dir(d); //
+
+
+    // 混合继承  原型继承+call继承 ...
+
+
+
+
+
+</script>

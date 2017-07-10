@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq轮播</title>
+    <link rel="stylesheet" href="css/banner.css">
+</head>
+<body>
+    <div class="banner">
+        <div class="inner">
+            <!--<img src="images/1.png" real="">-->
+            <!--<img src="images/2.png" real="">-->
+            <!--<img src="images/3.png" real="">-->
+            <!--<img src="images/4.png" real="">-->
+        </div>
+        <ul>
+            <!--<li class="cur"></li>-->
+            <!--<li></li>-->
+            <!--<li></li>-->
+            <!--<li></li>-->
+        </ul>
+        <a class="left" href="javascript:void 0">L</a>
+        <a class="right" href="javascript:void 0">R</a>
+    </div>
+    <div class="banner banner1">
+        <div class="inner">
+            <!--<img src="images/1.png" real="">-->
+            <!--<img src="images/2.png" real="">-->
+            <!--<img src="images/3.png" real="">-->
+            <!--<img src="images/4.png" real="">-->
+        </div>
+        <ul>
+            <!--<li class="cur"></li>-->
+            <!--<li></li>-->
+            <!--<li></li>-->
+            <!--<li></li>-->
+        </ul>
+        <a class="left" href="javascript:void 0">L</a>
+        <a class="right" href="javascript:void 0">R</a>
+    </div>
+
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/banner.js"></script><!--引入了一个banner函数-->
+<script>
+
+    //banner($('.banner'),'data.txt');
+    // $.banner($('.banner'),'data.txt');
+    //$('.banner').banner(/*$('.banner'),*/'data.txt');
+
+    $('.banner1').banner('data.txt');
+    // ...
+</script>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 300px;
+            height: 300px;
+            background: lime;
+            padding: 100px;
+            margin-left: 50px;
+            _position: relative;
+        }
+        #outer #middle{
+            width: 100px;
+            height: 100px;
+            padding: 100px;
+            border: 10px solid #000;
+            background: deepskyblue;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="middle" >公安部近期破获的一起盗卖公民信息的特大案件中，泄漏50亿条公民信息的一名嫌疑犯被传是京东网络安全部员工，其监守自盗，与黑客长期相互勾结公安部近期破获的一起盗卖公民信息的特大案件中，泄漏50亿条公民信息的一名嫌疑犯被传是京东网络安全部员工，其监守自盗，与黑客长期相互勾结
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    /*
+    *   clientWidth : 内容宽度 + 左右padding
+     *   clientHeight : 内容高度 + 上下padding
+     *   clientLeft : 左边框的宽度
+     *   clientTop : 上边框的宽度
+    *
+    *   offsetWidth : clientWidth + 左右border
+    *   offsetHeight : clientHeight + 上下border
+    *   offsetLeft : 取决于offsetParent是谁，盒子自己的外边框相对于offsetParent的内边框的左偏移量
+    *   offsetTop :  盒子的外边框距离offsetparent的内边框上偏移量
+    *   offsetParent : offsetParent取决于祖先元素是否包含定位属性（relative, absolute, fixed）,如果没有那么就按照层级关系一直向上查找，如果查找到body还没有定位，那么offsetParent就默认为body了.
+    *
+    *   body.offsetParent = null
+    *   body.offsetLeft = 0
+    *
+    *   scrollWidth : 如果内容溢出那么就是 左padding+内容宽度
+    *   scrollHeight : 内容溢出   上padding + 内容高度
+    *   scrollTop :  内容滚动出去的高度
+    *   scrollLeft : 内容滚动出去的宽度
+    *
+    *   ps : scrollTop 和 scrollLeft 支持赋值 => 滚动条可以根据值的变化变换位置
+    *
+    *
+    * */
+    var middle = document.getElementById('middle');
+    console.dir(middle);
+    // document.documentElement.clientWidth || document.body.clientWidth
+    console.log(middle.clientWidth); // 300
+    console.log(middle.clientHeight); // 300
+    console.log(middle.clientTop); // 10
+    console.log(middle.clientLeft);// 10
+
+    console.log(middle.scrollWidth);
+    console.log(middle.scrollHeight);
+    console.log(middle.scrollLeft);
+    console.log(middle.scrollTop);
+
+
+    // clientWidth  clientHeight  clientLeft clientTop
+    // offsetWidth  offsetHeight  offsetLeft offsetTop  offsetParent
+    // scrollWidth  scrollHeight  scrollLeft scrollTop
+
+    //  获取元素相对于页面的偏移量
+    function offset(ele){
+        var l = null, t = null;
+        // 先累加自己的偏移量
+        l += ele.offsetLeft;
+        t += ele.offsetTop;
+        // 如果存在offsetParent就累加offsetParent的边框和offsetParent的offsetLeft
+        var par = ele.offsetParent;
+        while (par){
+            l += par.clientLeft + par.offsetLeft;
+            t += par.clientTop + par.offsetTop;
+            par = par.offsetParent; // 迭代循环的条件
+        }
+         return {left : l, top : t};
+    }
+
+    // 如何判断当前浏览器是不是ie8 ???
+    window.navigator.userAgent; // Chrome  MSIE 6/7/8
+
+    function isLowIE(){
+        return /MSIE (6|7|8)/.test(window.navigator.userAgent);
+    }
+
+
+
+
+
+</script>

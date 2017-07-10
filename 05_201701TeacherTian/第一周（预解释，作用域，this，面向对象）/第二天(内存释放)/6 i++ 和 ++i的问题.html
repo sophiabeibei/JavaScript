@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    var i = 0;
+    i++;
+    //++i;
+    console.log(i); // 1
+
+    // i++ 和 ++i 没有和其他值做运算效果都是自身累加1
+    // i++是先运算后累加  ++i先累加后运算
+    var k = 0; //
+    console.log(2 + k++); // 2
+    console.log(2 + ++k); // 3
+    console.log(k); // 1
+
+/////////////////////////////////////////////////////////////////////////////
+    var j = 0; // 1 2  3  4  5
+    console.log(2 + j++ /*2*/+ ++j /*4*/+ ++j /*7*/+ j++ /*10*/ + ++j/*15*/); // 15
+    console.log(j); // 5
+
+
+</script>

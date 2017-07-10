@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 120px;
+            height: 50px;
+            border: 2px solid aqua;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    //随机生成四位不重复验证码
+//    获取0-61在之间的随机整数
+    Math.round(Math.random()*61)
+
+//    字符串的长度62
+//    字符串的索引 0-61
+//    通过索引获取对应的字符
+
+
+//    1.先找到4位 0-61之间的随机数
+//    2.通过随机数（相当于索引）找到对应的字符
+
+//    charAt(索引)  -》字符
+//    是否存在 indexOf(字符)  -->索引，找不到 返回-1
+
+    var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890'
+
+//    console.log(str.length)
+    function getCode(){
+        var code = ''//容器，用来存储验证码
+        for(var i=0;i<4;i++){
+//            获取【0,61】之间的数--》索引
+            var rand = Math.round(Math.random()*61);
+//            通过索引 找到对应的字符
+            var cur = str.charAt(rand);
+            if(code.indexOf(cur)===-1){
+                code+=cur;
+            }else{
+                i--;//放弃这次机会  i-- i++ 重新循环一次
+            }
+        }
+        var box = document.getElementsByTagName('div')[0];
+        box.innerHTML = code;
+    }
+    getCode();
+
+
+</script>
+
+
+</body>
+</html>

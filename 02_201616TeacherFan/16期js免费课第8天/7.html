@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // "2017-1-12 12:8:5"
+//    "2017年1月12日 12时08分05秒"
+    var str = "2017-1-12 12:8:5";
+    var ary = str.split(' ');
+//    console.log(ary);  //["2017-1-12", "12:8:5"]
+    var ary1 = ary[0].split('-');
+    console.log(ary1);//["2017", "1", "12"]
+    var ary2 = ary[1].split(':');
+    console.log(ary2);  //["12", "8", "5"]
+
+    var newStr = ary1[0]+'年'+zero(ary1[1])+'月'+zero(ary1[2])+'日 '+zero(ary2[0])+'时'+zero(ary2[1])+'分'+zero(ary2[2])+'秒';
+    console.log(newStr)
+
+//    补0的方法
+    function zero(value){
+        return value<10?'0'+value:value;
+    }
+    console.log(zero(20))
+
+
+    var str = "2017-1-12 12:8:5";
+    var res= str.replace('2017-1-12 12:8:5','2017年01月12日 12时08分05秒');
+    console.log(res);
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

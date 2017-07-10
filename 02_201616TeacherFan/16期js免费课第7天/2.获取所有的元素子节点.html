@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    <!-- 注释-->
+    <p></p>
+    <p>元素</p>
+    <!-- 注释-->
+    <p id="art"></p>
+    <span></span>
+    <h3></h3>
+</div>
+<script>
+    //向数组末尾添加一项 push
+//    获取所有的子节点  childNodes
+//    节点的类型   nodeType  元素节点1
+//toUpperCase()  转为大写
+    /**
+     * getChild:获取某个元素下的所有元素子节点
+     * @param ele：某个元素
+     * @param tagName：指定的元素
+     */
+    function getChild(ele,tagName){
+        var ary = [];//存储所有元素子节点
+        var nodes = ele.childNodes;//所有的子节点
+        for(var i=0;i<nodes.length;i++){
+            var node = nodes[i];//每一个子节点
+            if(node.nodeType===1&&node.nodeName==tagName.toUpperCase()){
+                ary.push(node);
+            }
+        }
+        return ary;
+    }
+    var oBox = document.getElementById('box');
+    var a = getChild(oBox,'p');
+    console.log(a);
+
+
+//    获取上一个哥哥元素节点
+    var art = document.getElementById('art');
+    var pre = art.previousSibling;  //上一个哥哥节点
+    /*if(pre.nodeType!==1){
+        pre = pre.previousSibling;
+        if(pre.nodeType!==1){
+
+        }
+
+    }*/
+//    （条件）  如果条件成立，继续循环，如果条件不成立，结束循环
+    while(pre.nodeType!==1){ //不是元素节点
+//        继续往上找
+        pre = pre.previousSibling;
+    }
+    console.log(pre);
+
+//    下一个弟弟元素节点
+//    1.先找到下一个弟弟节点
+//    2.判断nodeType
+    var art = document.getElementById('art');
+    var next = art.nextSibling;//art 的下一个弟弟节点
+    /*if(next.nodeType!==1){
+        next = next.nextSibling;
+        if(next.nodeType!==1){
+            next = next.nextSibling;
+        }
+    }*/
+    while(next.nodeType!==1){
+        next = next.nextSibling;
+    }
+    console.log(next);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

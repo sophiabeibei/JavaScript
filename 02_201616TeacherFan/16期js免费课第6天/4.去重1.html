@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary = [1,2,3,2,1,3,2,4,3,2];
+//    对象的键值对方法
+//    把数组中的每一项，以对象的属性名和属性值 存储到对象
+//    var obj = {1:1,2:2,3:3};  //2
+//    obj[2]
+//
+//    obj[1] = 1;
+//    obj[2] = 2;
+//    obj[3] = 3;
+//
+////    存储之前 先判断obj中 是否存在这一项-->说明数组中 2这一项是重复的  在数组这种把2这一项删除
+//    console.log(obj[2]);//2
+//    console.log(obj[4]);//undefined
+//
+//    ary.splice(n,1) //删除索引为n的那一项
+
+    var ary = [1, 2, 3, 2, 1, 3, 2, 4, 3, 2];
+    var obj = {};//存储数组中的值
+    for(var i=0;i<ary.length;i++){
+//        循环的当前项 cur
+        var cur = ary[i];
+        if(obj[cur]==cur){
+            ary.splice(i,1);
+            i--;
+        }else{
+            obj[cur] = cur;
+        }
+//        {cur:cur}
+    }
+    console.log(ary);
+
+
+
+    var ary = [1, 2, 3, 2, 1, 3, 2, 4, 3, 2];
+    var obj = {};//存储数组中的值,把数组中的每一项 以对象的属性名和属性值存储起来
+    for(var i=0;i<ary.length;i++){
+//        循环的当前项 cur
+        var cur = ary[i];
+//        如果obj中已经存在这个值了，那我们在数组中删除这一项
+        if(obj[cur]==cur){
+//            重复的
+//            把当前的重复的这一项 替换为数组中最后一项
+//            数组这种最后一项的索引  ary.length-1
+//            数组中最后一项  ary[ary.length-1]
+            ary[i] = ary[ary.length-1];
+//            删除最后一项
+//            ary.pop();
+            ary.length--;
+            i--;
+        }else{
+            obj[cur] = cur;
+        }
+//        {cur:cur}
+    }
+    console.log(ary);
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

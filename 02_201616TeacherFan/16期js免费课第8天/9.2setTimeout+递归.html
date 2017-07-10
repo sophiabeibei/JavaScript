@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 120px;
+            height: 50px;
+            border: 2px solid aqua;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+<script>
+    // 获取四位不重复的 0-9之间的随机数
+    //    1.空容器 存放验证码
+    //    2.获取四次【0,9】随机数
+    //    3.判断是否重复，如果不重复，通过字符串拼接的方法，放到空盒子中
+    //    4.随机数 放到指定的div中
+    var box = document.getElementsByTagName('div')[0];
+    function getCode(){
+        var code = '';//验证码
+        while(code.length<4){
+//            获取一位【0,9】之间的随机整数
+            var num = Math.round(Math.random()*9);
+            if(code.indexOf(num)===-1){
+//                不重复
+                code+=num;
+            }
+        }
+        box.innerHTML = code;
+    }
+    getCode();
+
+    //    每隔一秒生成一次随机数，十秒之后停止
+
+    var n = 0; //计数器
+    var timer = null;
+    function fn(){
+        clearTimeout(timer);
+        getCode();
+        n++;
+        if(n==10){
+            return;
+        }
+//        timer = window.setTimeout(fn,500)
+        timer = window.setTimeout(arguments.callee,500)
+    }
+    fn();
+
+
+</script>
+
+</body>
+</html>

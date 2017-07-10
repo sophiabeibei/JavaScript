@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *   全局变量和私有变量 : 没有任何函数包含的变量就是全局变量，否则就是私有变量
+    *
+    *   全局作用域和私有作用域 : 全局变量定义在全局作用域内（打开网页的那一刻就会产生一个全局作用域一般用window表示），所谓的作用域就是代码执行时刻浏览器提供的一个场地，其实也就是内存空间，这个空间就是供代码运行使用的。而函数执行的时候，也会有代码执行，那么也需要一个场地，所以函数每次执行都会形成一个私有作用域。私有变量就是定义在私有作用域内的。
+    *
+    *   堆内存和栈内存 : 堆内存是用来存引用数据类型值，栈内存就是给代码运行提供的场地其实也就是那个作用域。
+    *
+    * */
+
+
+
+    console.log(num); // undefined
+    console.log(fn);  // fn函数本身
+    // console.log(x); // undefined
+
+    var num = 5; // 全局
+
+    function fn(){
+        var x = 100; // 私有
+        function y(){}
+    }
+
+    fn();
+
+
+
+</script>

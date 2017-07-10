@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工具</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $.ajax;
+    // $.toArray()
+    $.isArray; // 判断是否是数组
+    $.isPlainObject; // 判断是否是{}的对象
+    $.isEmptyObject; //
+    $.trim(' a  '); // 去首尾空格
+    $.makeArray(); // listToArray
+
+    // 遍历
+    var ary = ['a','b','c'];
+    // forEach(回调, context);
+    ary.forEach(function (item,index){
+        console.log(item,index); //a,b,c
+        console.log(this);
+    },document.body);
+
+    // jq => 循环遍历操作
+    $.each(ary,function (index,item){
+        console.log(this);
+    });
+
+
+
+    var $lis = $('ul li');
+
+    $.each($lis,function (index,item){
+        console.log(this);
+        $(this).html(index+1);
+    });
+
+    $('ul li').each(function (index,item){
+        $(this).html('a');
+    });
+
+    /*
+    *   each :
+    *       $.each 定义在jQuery.each 定义在$本身上的 => 遍历数组等集合
+    *
+    *
+    *       $('div').each 定义在jQuery.prototype上的 => 直接遍历获取回来jq对象用的
+    *
+    *       => 总结 :  jq定义方法，一个是在自己本身添加属性，另外一个在prototype原型上添加属性, 例如css、html等方法依赖jq元素对象的定义在原型上，ajax、each等不以来元素的定义在本身上
+    *
+    *
+    * */
+
+
+
+
+
+
+
+
+</script>

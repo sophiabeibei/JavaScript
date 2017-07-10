@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    var 变量名 = 变量值
+
+//    var：声明变量
+//    变量名（变量）：用来存储值和代表值
+//    = ： 赋值
+
+    var a =  100;
+//    只声明不赋值 不知道变量的类型
+
+
+    console.log()
+
+
+//   数据类型：
+//    检测数据类型
+//    typeof 要检测的内容
+    typeof 123 //"number"
+    typeof null//"object"
+
+//    返回值为“object”
+//    instanceof
+//    constructor
+//    Object.prototype.toString.call()
+
+
+//    number：正数、负数、0、小数、NaN
+//    NaN：不是一个数
+//    NaN==NaN  false
+//    方法：
+//    isNaN() 检测内容是否为有效数字，是有效数字返回false，不是有效数字返回true
+
+//    如果内容不是number类型，会默认先转数字数据类型（Number()），然后再判断
+
+//    Number():强制转换，只要有一个字符不是有效数字，返回NaN
+
+//    parseInt() --整数
+//   parseFloat()---小数、整数
+//    如果第一个字符就不是数字，直接返回NaN
+
+//    boolean 布尔数据类型
+//    包括：true false
+//    !内容   取反：先转为布尔类型 再取反
+//    !! 等价于 Boolean()  转为布尔类型
+
+//    false:0、NaN、''、null、undefined
+
+//    对象数据类型：{} [] /\d/
+
+//    var obj = {
+//        name:'zfpx',
+////        属性名:属性值  每组属性之间用逗号隔开
+//        age:8
+//    }
+
+    var ary = [100,200,300,'zfpx',{name:'zfpx'}];
+//    属性值
+//    数组的属性名：索引 （从0开始的数字）
+//   索引：表示位置
+    console.log(ary);//变量所代表的值
+
+
+//    创建一个对象
+//    字面量
+    var obj = {};
+//    实例
+    var obj = new Object();
+//      obj：实例   new 新建  Object 对象类
+
+//    1.增加属性  name:'zfpx'
+    obj.name = 'zfpx';
+    obj['age'] = 8;
+    console.log(obj);
+
+//    2.修改属性值
+    obj.name = 'zf';
+    obj['age'] = 9;
+    console.log(obj);  //{name: "zf", age: 9}
+
+//    3.获取属性值
+    console.log(obj.name);
+    console.log(obj['name']);
+
+//    4.删除属性
+    obj.name = null;
+    console.log(obj);//{name: null, age: 9}
+
+    delete obj.name;
+    console.log(obj);   //{age: 9}
+
+    obj.age
+    obj['age']
+
+//    属性名是数字只能用中括号的形式
+    obj[1]
+//    obj[数字]
+
+
+//    判断
+//    if else
+//    三元运算符
+//    switch case
+
+    /*if(条件1){
+        条件1成立执行的代码
+    }else if(条件2){
+        条件2成立执行的代码
+    }else if(条件3){
+        条件3成立执行的代码
+    }else if(条件4){
+        条件4成立执行的代码
+    }else{
+
+    }*/
+
+//    if(1-'2px'){
+//        alert('欢迎来到珠峰培训！');
+//    }
+
+//    运算符  +-*/
+//    一个值：直接判断真假  假：0、NaN、''、null、undefined、false
+//    ||  或者  只要有一个条件为真整体即为真
+//    &&  并且  两个条件必须都为真  整体才为真
+//    == 比较
+
+//    if(NaN){
+//        alert('欢迎来到珠峰培训！');
+//    }else{
+//        alert(100);
+//    }
+
+
+//    三元运算符
+//    格式：
+//    条件?条件成立执行的代码:条件不成立执行的代码;
+//    NaN?alert('欢迎来到珠峰培训！'):alert(100);
+
+    if(NaN){
+        alert('欢迎来到珠峰培训！');
+    }
+    NaN?alert('欢迎来到珠峰培训！'):void 0;
+
+    var val = 1>0?'a':'b'
+    console.log(val);  //"a"
+
+//    优先级最高
+//    1.括号
+//    2.三元运算符
+//    3.赋值=
+
+
+(1+1)*2
+
+//switch case:不同值情况的判断
+
+    var a = 10;
+   /* if(a==0){
+        alert(0)
+    }else if(a==5){
+        alert(5)
+    }else if(a==10){
+        alert(10)
+    }else{
+        alert(100)
+    }*/
+   switch (a){
+       case 0:
+           alert(0);
+           break;
+       case 5:
+           alert(5);
+           break;
+       case 10:
+           alert(10);
+           break;
+       default:
+           alert(100);
+
+   }
+
+
+</script>
+<!--<script src="引入文件的路径"></script>-->
+
+
+</body>
+</html>

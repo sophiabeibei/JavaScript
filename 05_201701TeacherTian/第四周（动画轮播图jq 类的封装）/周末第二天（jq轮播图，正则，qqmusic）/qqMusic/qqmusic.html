@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>qqmusic</title>
+    <!--meta:vp-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        var winWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        document.documentElement.style.fontSize = winWidth / 640 * 100 + 'px';
+        // 计算出来的这个值就是1rem的px
+        window.htmlFontSize = winWidth / 640 * 100;
+    </script>
+</head>
+<body>
+<div class="music">
+    <div class="bg"></div>
+    <audio src="images/demo.m4a" preload="none" style="display: none;"></audio>
+    <!--preload = none 暂时不会去预加载-->
+    <!--头部-->
+     <div class="header">
+         <div class="song-info">
+             <div class="logo"><img src="images/poster.jpg" ></div>
+             <div class="title">
+                 <p>模特</p>
+                 <p>李荣浩</p>
+             </div>
+         </div>
+         <div class="btn-box">
+             <a class="play J-play" href="javascript:void 0"></a>
+             <a class="pause" href="javascript:void 0"></a>
+         </div>
+     </div>
+    <!--歌词-->
+    <div class="main">
+        <div class="lyric">
+            <p class="cur">模特</p>
+            <p>词 : 周耀辉</p>
+            <p>曲 : 李荣浩</p>
+        </div>
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <div class="collection">
+            <a href="javascript:void 0"></a>
+        </div>
+        <div class="progress">
+            <div class="curTime">01:30</div>
+            <div class="bar"><span></span></div>
+            <div class="totalTime">05:55</div>
+        </div>
+        <div class="download">
+            <a href="javascript:void 0">下载这首音乐</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/zepto.min.js"></script><!--移动端jQuery-->
+<script src="js/index.js"></script>

@@ -1,0 +1,2 @@
+[n,m] n到m之间的随机整数
+Math.round(Math.random()*(m-n)+n);

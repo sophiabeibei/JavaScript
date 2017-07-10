@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Fn(){
+        this.x = 100;
+    }
+    Fn.prototype.y = 200;
+    Fn.prototype.getX = function (){
+        console.log(this.x + this.y);
+    }
+    var f1 = new Fn();
+    f1.getX(); // 300
+    f1.__proto__.getX(); // un... n
+    Fn.prototype.getX(); // 300 n
+    console.log(f1.__proto__ === new Fn().__proto__); // t
+    console.log(f1.constructor); // ?
+
+    // [1,2,3,3,1].unique() => [1,2,3]  ???
+
+
+
+
+</script>

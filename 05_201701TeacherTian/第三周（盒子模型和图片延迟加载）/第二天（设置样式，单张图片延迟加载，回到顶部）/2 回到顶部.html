@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body,img{
+            margin: 0;
+            padding: 0;
+        }
+        body,img{
+            width: 100%;
+        }
+        .btn{
+            text-decoration: none;
+            color: #fff;
+            display: none;
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            left: 15px;
+            bottom : 60px;
+            background: #5e4a4a;
+            font-size: 12px;
+            line-height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <img src="1.png">
+    <img src="1.png">
+    <img src="1.png">
+    <a class="btn" href="javascript:void 0">顶</a>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var btn = document.getElementsByClassName('btn')[0]; // 按钮
+    var canScroll = true; // 可以触发滚动事件
+    window.onscroll = fn;
+    function fn(){ // 给浏览器绑定滚动条滚动事件
+        if(canScroll){
+            var scrolllTop = utils.win('scrollTop'); // 在滚动的过程中不断的去获取滚出去的高度,判断这个高度是否超过一个屏的高度。如果超过按钮出现
+            var winHeight = utils.win('clientHeight'); // 窗口高度
+            if(scrolllTop > winHeight){
+                utils.setCss(btn,'display','block');
+            }
+        }
+    }
+
+    btn.onclick = function (){ //给按钮绑定点击事件
+        // 每次点击都会启动一个定时器，这样就有可能同时存在多个定时器同时工作。效果就是越点击越快。所以每次点击开始无论上一次定时器是否到达终点都要把上一次的定时器清掉
+        window.clearInterval(btn.timer);// 清除上一次的定时器 => 定时器的累积问题
+        btn.timer = window.setInterval(function (){
+            // 获取当前已经生效的scrollTop的值，然后减去5px,然后减去之后的值在赋值回去
+            var curSrollTop = utils.win('scrollTop');
+            if(curSrollTop <= 0){ // 如果scrollTop的值已经小于0那么就可以停止定时器
+                window.clearInterval(btn.timer);
+                canScroll = true;
+                //window.onscroll = fn; // 到达顶部之后重新绑定事件
+                return;
+            }
+            curSrollTop -= 5;
+            utils.win('scrollTop',curSrollTop);
+        },10);
+
+        this.style.display = 'none'; // 点击之后就会消失
+        canScroll = false;
+        //window.onscroll = null; // 由于定时去在驱动滚动条回顶部的过程中又触发了 window.onscroll事件。又把按钮显示出来了。=> 当点击事件发生之后让window.onscroll事件移除。
+    }
+
+    // 异步 : ajax  定时器  事件 回调函数
+
+    // 事件拦截 : 借助第三方变量，然后不断去修改一个条件。当事件触发的时候这个条件作为是否执行的代码的依据 => 开关 IO
+
+
+
+
+
+
+</script>

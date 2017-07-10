@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则基础</title>
+</head>
+<body>
+<input id="input" type="text">  <!--value属性-->
+
+</body>
+</html>
+<script>
+    /*
+    *  正则用法:  1 验证字符串是否符合正则所制定的规则 => 注册输入用户名密码
+    *            2  把符合规则的字符串部分从字符串捕获 => 从名字中获取到姓
+    *           ps: 基本就是用来操作字符串的
+    *           验证 :  reg.test('')
+    *           捕获 :  reg.exec('')
+    *
+    *
+    * */
+    var reg = new RegExp(); // 实例
+    var reg = /a/; // 字面量 => 只要字符串中包含字母a就可以
+    var str = '1234567bcdA';
+    var res = reg.test(str);
+    console.log(res); //
+
+    /*
+    *   特殊元字符:
+    *       \d : 0到9之间的任意一个数字
+    *       \w : 数字字母下划线中的一个   0-9  a-z A-Z _
+    *       \s : 空格或者空白等
+    *       \b :  边界 => 不占位，字符串开始和结束，一些特殊字符的两边
+    *       \n :  匹配一个换行
+     *       . :  匹配任意字符除了\n
+     *      ^  :  以什么开始
+     *      $  :  以什么结束
+     *      ps :  如果^和$同时出现，那么对这个字符串的个数就限制了
+     *      \. :  "."本身
+     *      \  :  转义  => 把特殊意义的字符转变成本来的意思
+     *      \D :  除了\d
+     *      \W :  除了\w
+     *      \S :  除了\s
+    * */
+    // \d
+    var reg = /\d\d/; // 必须有两个连续出现的数字
+    console.log(reg.test('a65dsf6'));
+    // \w
+    var reg = /\w\d/; //
+    console.log(reg.test('1rasdf1asdfasdf'));
+    // \s
+    var reg = /\s/;  // 空格空白
+    console.log(reg.test(" "));
+    // \b
+    var reg = /\d\b/;
+    console.log(reg.test("6-a"));
+
+    // .
+    var reg = /./;
+    console.log(reg.test(''));
+
+    // ^ $
+    var reg = /^\d\w\d$/;
+    console.log(reg.test('1t1'));
+
+    //手机号正则
+    var phoneReg = /^\d{11}$/;
+    var str = '18800019819';
+    console.log(phoneReg.test(str));
+
+    /*
+    *   量词  :  位置放在要修饰元字符的后面 => 修饰前面的元字符出现的次数
+    *       + : 1到多个  至少1个
+    *       * : 0到多个
+    *       ? : 0-1个   要么出现要么不出现
+    *       {n} : 出现n个
+    *       {n,} : 至少n个
+    *       {n,m} : 出现n到m个
+    *
+    *
+    * */
+
+    /*
+    *   正则中的或者 :
+    *       1 x|y   x或者y中的一个    x|y|z  由于或者关系是满足其中一个就可以，所以处理或者关系的时候我们不妨用()去改变运算的优先级
+    *       2 [xyz] x或者y或者z中的一个
+    *       3 [^xyz] 只要字符串中有一个字符不是x也不是y也不是z就可以
+    *       4 [+-]  "+"或者"-"中的一个
+    *       5 [\d\w] 数字字母中还有下划线中的一个
+     *      6 \w :   [0-9a-zA-Z_]  "-"在[]代表的是到的意思
+    *       7 [.]  代表不是任意字符，"."本身
+    *
+    *
+    * */
+    var reg = /^(18|19)$/;
+    var str = '19';
+    console.log(reg.test(str));
+    //  或者
+    var reg = /[xyzasdfasdf]/;
+    console.log(reg.test('a'));
+
+    var reg = /[^xyz]/; // false : 字符串中只能有xyz
+    console.log(reg.test('xyzxyzxy'));
+
+    // 简单的有效数字验证 ???
+    // +5  5  -5  0.5  0.05 0.005  +0.005 -0.005  55.5  -5555.5555
+    var reg = /^[+-]?\d+(\.\d+)?$/;
+    console.log(reg.test("0.555"));
+
+    // 非空验证
+    var reg = /^\s*$/; // 必须记住
+    var input = document.getElementById('input');
+    // 获得焦点 光标  onfocus
+    //  失去焦点      onblur
+    input.onblur = function (){ // 失去焦点判断是否输入
+        //console.log(this.value); // value属性就是获取的输入到文本框的内容
+        if(reg.test(this.value)){
+            alert('输入不能为空');
+        }
+    }
+
+    // 邮箱
+    //  121170784@qq.com
+    //  abcd@163.com
+    //  tianxi@cmcm.com
+    //  tianxi@sina.com.cn
+    //  tianxi@aaa.gov
+    //  tianxi@aaa.edu
+    //  tianxi@aaa.org
+    //  tianxi@aaa.hk
+    //  _tianxi@aaa.jp
+
+    var reg = /^\w{1,16}@[0-9a-zA-Z]{2,20}(\.[a-zA-Z]{2,3}){1,2}$/;
+
+
+
+
+
+
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //1.方法的作用
+//    2.参数
+//    3.方法的返回值
+//    4.原数组是否改变
+
+    var ary = [100,200,300];
+//    1）增加、删除、替换 ：原数组改变
+
+//    1.push(增加的内容)  向数组末尾在增加一项
+//    返回值：返回新增后数组的长度
+//    原数组改变
+//    var res = ary.push(1000);
+//    console.log(ary,res);
+
+//    {ary.length:1000}
+//    ary[ary.length] = 1000;
+//    console.log(ary);
+
+//    2.pop()  删除数组最后一项
+//    返回值：被删除的一项
+//    原数组改变
+    var ary = [100,200,300];
+//    var res = ary.pop();
+//    console.log(ary,res);
+
+//    delete ary[ary.length-1]
+    ary.length--;
+    ary.length-=1;
+    ary.length = ary.length-1;
+    console.log(ary);
+
+//    i++  i--
+//    i++ i+=1 i=i+1
+//    i-- i-=1  i=i-1  在i原有基础减1
+
+//    3.unshift(增加的内容)  向数组开头增加一项
+//    返回值：新增后数组的长度
+//    原数组改变
+
+    var ary = [100,200,300];
+//    var res = ary.unshift(1000);
+//    console.log(ary,res);
+
+//    4.shift()  删除第一项
+//    返回值：被删除的一项
+//    原数组改变
+    var res = ary.shift();
+    console.log(ary,res);
+
+//    5.splice()  删除 替换 增加
+//    splice(n,m)  从索引n开始删除m项
+//    返回值：被删除的内容以一个新数组返回
+
+//    var ary = [100,200,300,400,500];
+//    var res = ary.splice(1,3);
+//    console.log(ary,res);
+
+//    splice(n)  从索引n开始删除到最后
+//    splice(0)  克隆数组
+//    splice()  原数组没有改变
+
+    var ary = [100,200,300,400,500];
+    var res = ary.splice();
+    console.log(ary,res);
+
+//    splice(n,m,x)  从索引n开始删除m个 用x替换删除的内容
+    var ary = [100,200,300,400,500];
+    var res = ary.splice(1,3,999);
+    console.log(ary,res);
+
+//    splice(n,0,x) 从索引n前面增加一项
+    var ary = [100,200,300,400,500];
+    var res = ary.splice(1,0,999);
+    console.log(ary,res);
+
+    var ary = [100,200,300,400,500];
+//    var res = ary.slice(1,4);
+//    console.log(ary,res);
+
+    var res = ary.slice();
+    console.log(ary,res);
+
+
+    var ary = [100,200,300,400,500];
+//    var ary1 = [888,999];
+//    var res = ary.concat(ary1);
+    var res = ary.concat();
+    console.log(ary,res);
+//    [100, 200, 300, 400, 500, 888, 999]
+
+    var ary1 = [100,200];
+    var ary2 = [300,400];
+    var ary3 = [500,600];
+
+    var res = ary1.concat(ary2,ary3);
+    console.log(res);
+
+    var ary = [100,200,300,400,200,200];
+//    var res = ary.indexOf(1000);
+    var res = ary.lastIndexOf(999);
+    console.log(res);
+
+//    判断内容是否存在
+    var ary = [100,200,300,400];
+    if(ary.indexOf(300)===-1){
+        console.log('不存在');
+    }else{
+        console.log('存在');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

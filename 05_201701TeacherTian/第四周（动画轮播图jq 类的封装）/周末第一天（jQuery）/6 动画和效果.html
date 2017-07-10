@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animate</title>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    /*
+    *   animate方法 :
+    *       $(div).animate({},300,'linear',function (){})
+    *       param 1 : 终点 对象  {width : 200, opacity : 1}
+    *       param 2 : 完成时间  duration
+    *       param 3 : 效果 默认linear匀速
+    *       param 4 : 回调 => 动画完成之后要做什么...
+    *
+    *   ps : 在调用animate方法之前我们可以先stop(),防止动画累积问题
+    *
+    *
+    * */
+    $('#div1').css({
+        width : 100,
+        height : 100,
+        background : 'red',
+        position : 'absolute',
+        left : 0,
+        top : 0
+    }).on('click',function (){
+            // $(this).hide(300).show(300).slideUp('slow').slideDown('fast').slideToggle().slideToggle().fadeIn().fadeOut().fadeToggle()
+        $(this).stop().animate({
+            width : 200,
+            left : 200
+        },300,'linear',function (){
+            // 回调函数 => 动画完成之后你要做什么
+            $(this).html('finish');
+        });
+
+
+    });
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getElesByClass</title>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <div id="box2">
+        <i class="c2 c1 c2"></i>  /(^| +)c2( +|$)/
+        <b class="c2 c3"></b>
+        <em class="c3 c4"></em>
+    </div>
+
+    <p class="c1 c2 c3"></p>
+    <span class="c2 c3"></span>
+    <h3 class="c3 c4"></h3>
+</body>
+</html>
+<script>
+    //document.getElementsByClassName('c2 c3');
+    function getElesByClass(className, context) {
+        context = context || document; // 参数默认值
+        if(context.getElementsByClassName){
+            return context.getElementsByClassName(className);
+        }
+        // for ie8-
+        var allTags = context.getElementsByTagName('*'); // [p span ...]
+        var classAry = className.replace(/(^ +| +$)/g,'').split(/ +/); // [c2,c3]
+        var ary = [];
+        for(var i = 0; i < allTags.length; i++){
+            // 遍历所有的标签，然后这些标签的className上是否包含传进来的参数
+            var curTag = allTags[i];
+            var isGoodTag = true;
+            // curTag.className分别验证[c2,c3]所组合成的正则
+            for(var j = 0; j < classAry.length; j++){
+                var curClass = classAry[j]; // c2   c3
+                var reg = new RegExp('(^| +)'+curClass+'( +|$)'); // (^| +)c2( +|$)
+                if(!reg.test(curTag.className)){
+                    isGoodTag = false;
+                    break;
+                }
+            }
+            if(isGoodTag){
+                ary.push(curTag);
+            }
+        }
+        return ary;
+    }
+
+    var res = getElesByClass('   c2  c3    ');
+    //getElesByClass('c2',box1);
+    console.log(res);
+
+</script>

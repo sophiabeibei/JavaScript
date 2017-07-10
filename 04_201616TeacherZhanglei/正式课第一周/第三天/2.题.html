@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function func1(){
+        var n=99;
+        nAdd=function(){
+            this.n+=1;
+            console.log(this.n);
+        };
+        function func2(){
+            console.log(n);
+        }
+        return func2;
+    }
+    var result=func1();
+    result(); //99
+    nAdd();//NaN  undefined+1;
+    result();//99
+</script>
+</body>
+</html>

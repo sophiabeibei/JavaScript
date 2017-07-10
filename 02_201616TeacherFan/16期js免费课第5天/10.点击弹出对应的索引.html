@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="button" value="按钮1"/>wenzi
+    <input type="button" value="按钮2"/>
+    <input type="button" value="按钮3"/>
+<script>
+    var btns = document.getElementsByTagName('input');
+    for(var i=0;i<btns.length;i++){
+//        btns[i].zf = i;
+        ;(function(index){
+            btns[i].onclick = function(){
+                alert(index);
+            }
+        })(i)
+    }
+
+   /* ;(function(index){
+        btns[i].onclick = function(){
+            alert(index);
+        }
+    })(0)
+
+    ;(function(index){
+        btns[i].onclick = function(){
+            alert(index);
+        }
+    })(1)
+
+    ;(function(index){
+        btns[i].onclick = function(){
+            alert(index);
+        }
+    })(2)*/
+
+//    ;(function(){
+//        alert(123);
+//    })()
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滚轮事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div1"  style="width: 100px; height: 100px; background: green"></div>
+
+</body>
+</html>
+<script>
+    var body = document.body;
+    // window.onscroll => 滚动条滚动
+    // 鼠标滚轮
+
+    /*
+    *   WheelEvent :
+    *
+    *
+    *
+    * */
+    // chrome ie
+   /* body.onmousewheel = function (e){
+        e = e || window.event;
+        /!*
+        *   e.wheelDelat > 0 向上滚动   < 0 向下滚动
+        *
+        *
+        * *!/
+        console.log(e.wheelDelta);
+    }
+
+    // firefox
+    document.body.addEventListener('DOMMouseScroll',function (e){
+        /!*
+        *   e.detail > 0  向下    < 0 向上滚动
+        *
+        * *!/
+        console.log(e.detail);
+    })
+*/
+
+
+
+    // 专门处理滚轮事件的兼容性问题
+    // MSIE 8   Chrome Firefox
+    function addWheelEventListener(ele,fn){
+
+        if(window.navigator.userAgent.toLowerCase().indexOf('firefox') == -1){ //chrome/ie
+            ele.onmousewheel = handler/*fn*/;
+
+        }else{ // firefox
+            ele.addEventListener('DOMMouseScroll',handler/*fn*/);
+        }
+
+
+        function handler(e){ // 由于真正绑定的是handler函数，所以事件对象e一定是在这个位置产生。真正的本意是把事件绑定给回调函数fn，所以需要把e传给fn
+            e = e || window.event;
+            var isDown = null;
+            if(e.wheelDelta){ // ie chrome
+                isDown = e.wheelDelta < 0;
+            }else{ // firefox
+                isDown = e.detail > 0;
+            }
+
+            // isDown这个变量在任何浏览器中向下滚动就是true
+
+            fn.call(ele,isDown,e);
+
+            // 处理滚动条随之滚动的默认行为
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    addWheelEventListener(document.body,fn1);
+
+
+    function fn1(isDown,e){
+        console.log(isDown); // => down : true  up : false
+
+    }
+
+    var div1 = document.getElementById('div1');
+    addWheelEventListener(div1,function (isDown,e){
+        if(isDown){ // down
+
+        }else{ // up
+
+        }
+    })
+
+
+    
+
+
+
+
+
+
+</script>

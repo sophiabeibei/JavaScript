@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //包括：只有两个值  true(真) false(假)
+    var a = 'true';  //字符串类型
+    var b = true;    //布尔数据类型
+
+//    方法
+//    !   一个叹号  作用：取反，先转为布尔类型 然后再取反
+    //!3
+
+//    首先，先将3转为布尔类型  Boolean(3)  true
+//    然后,true--》false
+
+//    将任意的内容 转为布尔类型 只有0、NaN、null、undefined、''这五个值为false  其余都为true
+
+    //![]
+
+//    !!  相当于Boolean()   直接转为布尔类型
+    //!!3
+    //    将3转为布尔类型   --》true
+
+//    boolean :true false
+//    方法
+//    !
+//    !!  等同于 Boolean()
+//    将任意的内容 转为布尔类型 只有0、NaN、null、undefined、''这五个值为false  其余都为true
+
+
+//    =  赋值
+//    ==  比较
+//    1.相同数据类型 直接比较
+//    1==1
+//     1)对象==对象  false
+//    2.不同数据类型之间的比较，会默认执行在转换规则
+
+//            要转换的内容.toString()
+//            Number(要转换的内容)
+
+//     1)对象==字符串  对象先转为字符串（执行.toString()）
+//         []==''  //true
+//      [].toString()   ''
+//      ''==''
+//     2)对象==布尔    对象先转为字符串（执行.toString()）再转为数字（Number()） 布尔直接转数字
+            //[]==false  //true
+//    [].toString()    ""
+//    Number('')      0
+//    Number(false)   0
+
+//    3)对象==数字  对象先转为字符串（执行.toString()）再转为数字（Number()）
+    //[]==0
+//    ''  0
+
+//    4)数字==布尔   布尔转数字
+    //0==false  //true
+//    Number(false)   0
+//    5)字符串==布尔   都转数字
+    //''==false
+//    6)数字==字符串   字符串转数字
+    //0==''   //true
+//    7)null==undefined  true
+//    8)null或者undefined和其他任何类型比较 返回false
+
+
+</script>
+
+</body>
+</html>

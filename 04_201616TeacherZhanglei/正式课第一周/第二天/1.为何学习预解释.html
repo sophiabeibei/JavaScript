@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮1">
+<input type="button" value="按钮2">
+<input type="button" value="按钮3">
+<input type="button" value="按钮4">
+<script>
+    var aBtn=document.getElementsByTagName('input');
+    //需求：点击任何一个按钮，所有按钮都变红
+    for(var i=0; i<aBtn.length; i++){
+        aBtn[i].index=i;
+        aBtn[i].onclick=function(){
+            //alert(i)//事件中的i是最大值4；
+            //alert(i)//undefined
+            //alert(i) 4
+            for(i=0; i<aBtn.length; i++){
+                aBtn[i].style.background='red';
+            }
+        }
+    }
+</script>
+</body>
+</html>

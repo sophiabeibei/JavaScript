@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 500px;
+            height: 200px;
+            border: 3px solid blue;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    //1、alert()  在页面中弹出一个层
+//    alert('弹框');
+
+//    2、在控制台中输出内容、一般用于代码的调试
+//    右键检查 console：显示输出的内容，也会显示代码的报错（红色字体）
+    console.log('第十六期js免费课开始啦');
+
+//    box ：表示id为box的元素
+//    在js中获取到的html元素 都是对象数据类型的
+
+//     console.dir  输出对象的详细信息：包括属性和方法
+    console.dir(box);
+    console.log(box);
+
+    console.error('报错');
+
+    console.warn('警告');
+
+    console.info('信息');
+
+//    以表格的形式输出内容:嵌套两层或者两层以上
+    var ary = [1,2,3,{name:'zf',age:8,add:'昌平区'}];
+    console.table(ary)
+
+    console.clear();  //Console was cleared
+//    在控制台console中  右键  clear console 清空控制台
+
+//    3、document.write()  在页面中直接显示  显示在script标签后面  在页面中不停的显示  --》可以识别html标签
+    document.write('<h1>输出方式</h1>');
+//    document.write('输出方式1');
+//    document.write('输出方式2');
+
+//    4、innerHTML innerText 向指定的元素中添加内容
+//    向id为box的元素中添加内容
+//    innerHTML  可以识别html标签
+//    innerText  不能识别html标签
+    box.innerHTML = '<h1>珠峰培训</h1>';
+
+
+</script>
+<h1></h1>
+
+</body>
+</html>

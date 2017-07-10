@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1">
+    <div id="Box">我是一个盒子1</div>
+</div>
+<div class="box2"></div>
+<ul class="box">
+    <li class="active">1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<input type="radio" name="sex"/>
+<input type="radio" name="sex"/>
+<script>
+    //DOM
+//    获取html中的元素的方法
+
+//    1. document.getElementById('box')  ’一个元素‘
+//    如果id重复了，默认获取的是第一个
+//    获取的范围 必须是document
+//    在ie6、ie7下id不区分大小写，注意：不要用id的大小写区分元素
+    var oDiv = document.getElementById('div1');
+    var oBox = document.getElementById('box');
+
+//    console.log(oBox.tagName); //元素的标签名
+
+//    2.document.getElementsByTagName   '一组元素'
+    var oUl = document.getElementsByTagName('ul')[0];
+    console.log(oUl);
+    var lis = oUl.getElementsByTagName('li');
+    console.log(lis);
+
+//    3.document.getElementsByClassName('类名')  '一组元素'
+//    在ie6~ie8中会报错
+    var oBox1 = document.getElementsByClassName('box')[0];
+    console.log(oBox1);
+
+//    4.document.getElementsByName('name值')  一组元素'
+//    通常用于表单元素中，其他元素的在ie中不兼容
+    var sex1 = document.getElementsByName('sex');
+    console.log(sex1);
+
+//    5.document.documentElement  获取html元素
+//      document.body  获取body元素
+    console.log(document.documentElement);
+    console.log(document.body);
+
+//    6.获取可视窗口的宽度
+    var w = document.documentElement.clientWidth||document.body.clientWidth;
+    var h = document.documentElement.clientHeight||document.body.clientHeight;
+    console.log(w,h);
+
+//    7.移动端:css选择器
+//    document.querySelector('')   获取一个元素
+//    var a = document.querySelector('.box');
+//    var a = document.querySelector('#div1');
+//    var a = document.querySelector('ul');
+    var a = document.querySelector('ul .active');
+    console.log(a);
+
+//    document.querySelectorAll('')  获取一组元素
+
+    var divs = document.querySelectorAll('.box');
+    var divs = document.querySelectorAll('ul li');
+    console.log(divs);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

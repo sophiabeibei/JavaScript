@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab</title>
+    <style>
+        html,body,div,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .tab{
+            width: 300px;
+            margin: 10px auto;
+        }
+        .tab ul{
+            width: 300px;
+            height: 40px;
+        }
+        .tab ul li{
+            float: left;
+            width: 50px;
+            height: 40px;
+            margin-left: 10px;
+            background: lime;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+        }
+        .tab ul li.active{
+            background: peachpuff;
+        }
+        .tab div{
+            height: 200px;
+            background: peachpuff;
+            display: none;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+        }
+        .tab div.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="active">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+    <div class="tab">
+        <ul>
+            <li >1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+    <div class="tab">
+        <ul>
+            <li >1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
+<!--<script src="../utils_weekend.js"></script>-->
+<!--<script src="tab.js"></script>-->
+<script src="jquery-1.11.3.js"></script>
+<script>
+//    var tabs = utils.getElesByClass('tab'); // [tab,tab,tab]
+//    for(var i = 0; i < tabs.length; i++){
+//        tabChange(tabs[i],i); // 0 1 2
+//    }
+
+    $('.tab').eq(0).find('li').on('click',function (){
+        var index = $(this).index(); // 索引值
+        $(this).addClass('active').siblings().removeClass('active').end().parent().nextAll().eq(index).addClass('active').siblings().removeClass('active');
+    });
+
+
+
+</script>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            width:606px;
+            height:300px;
+            margin:40px auto;
+        }
+        .box ul{
+            width:100%;
+            height:40px;
+        }
+        .box ul li{
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            background: #ccc;
+            text-align: center;
+            border:1px solid #000;
+            border-bottom: none;
+        }
+        .box ul li.on{
+            background: lightgreen;
+        }
+        .box div{
+            width: 100%;
+            height: 100%;
+            background: lightgreen;
+            display: none;
+            font-size: 30px;
+        }
+        .box div.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <ul>
+        <li class="on">按钮1</li>
+        <li>按钮2</li>
+        <li>按钮3</li>
+    </ul>
+    <div class="show">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</div>
+<div class="box" style="margin-top:50px;" id="box1">
+    <ul>
+        <li class="on">按钮1</li>
+        <li>按钮2</li>
+        <li>按钮3</li>
+    </ul>
+    <div class="show">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</div>
+<script>
+    //封装：1）把已经写好的函数，放在一个函数体中；2）把可变的部分，作为形参；
+    /*
+    * 1.通过循环，给每个按钮，都添加上点击事件
+    * 2.点击时：让所有的按钮都变灰，就让当前按钮变亮；
+    * 3.让所有的div都隐藏，就让当前按钮对应的div显示；
+    * */
+    function tab(id){
+        //获取所有的按钮
+        var oDiv=document.getElementById(id);//当我们给tagName[0]说明获取的是一个元素
+        var aBtn=oDiv.getElementsByTagName('li');//通过tagName获取的是一组元素；
+        var aDiv=oDiv.getElementsByTagName('div');
+        //1.通过循环，给每个按钮，都添加上点击事件
+        for(var i=0; i<aBtn.length; i++){
+            (function(index){
+                //当发生点击事件的时候，闭包中的index值就是正确的索引
+                aBtn[i].onclick=function(){
+                    for(var i=0; i<aBtn.length; i++){
+                        aBtn[i].className='';
+                        aDiv[i].className='';
+                    }
+                    this.className='on';
+                    aDiv[index].className='show';
+                }
+            })(i);
+        }
+    }
+    tab('box');
+    tab('box1');
+</script>
+</body>
+</html>

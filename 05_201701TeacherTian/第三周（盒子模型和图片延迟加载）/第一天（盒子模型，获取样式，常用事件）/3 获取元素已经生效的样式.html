@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: red;
+            opacity: 0.5;
+            filter: alpha(opacity=30);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+    </div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+
+    //var res = window.getComputedStyle(box); // 标准
+    //var res = box.currentStyle; // ie8-
+
+    function getCss(ele,attr){
+        var val = null;
+        //throw  new Error('haha');
+        if(window.getComputedStyle){
+            val =  window.getComputedStyle(ele)[attr];
+        }else{ // ie8-
+            if(attr == 'opacity'){ // 说明来获取透明度
+                val = ele.currentStyle.filter;  // alpha(opacity=30)  ""
+                var reg = /alpha\(opacity=(\d+(?:\.\d+)?)\)/;
+                val = reg.test(val) ? reg.exec(val)[1]/100 : 1;
+            }else{
+                val = ele.currentStyle[attr];
+            }
+        }
+        // "100px" => 100
+        // "block"
+        // "left"
+        // 100px  100.5px -100px  100.55px "1"
+        var reg = /^-?\d+(\.\d+)?(px)?$/;
+        // 如果验证能通过就去掉引号和单位否则什么也不做
+        return reg.test(val) ? parseFloat(val) : val;
+    }
+    console.log(getCss(box,'width')); // 100
+    console.log(getCss(box,'opacity')); //
+</script>

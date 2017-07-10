@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call,apply,bind</title>
+</head>
+<body>
+    <div id="div1" style="width: 100px; height: 100px; background: red;"></div>
+</body>
+</html>
+<script>
+    'use strict'; // 严格模式 => 翻阅资料
+
+    function fn() {
+
+    }
+    fn();
+    new fn();
+    fn instanceof Function;
+    // fn : prototype    __proto__
+    fn.__proto__ === Function.prototype;
+    // Function.prototype ??????   call
+    // fn.call()
+
+    //console.dir(Function.prototype); //
+
+    var ary = [];
+    ary.__proto__ === Array.prototype;
+    // Array.prototype => push,pop,splice,slice...
+    ary/*.__proto__*/.push(5);
+    ary.push();
+    ary.pop();
+
+    /*
+    *   call、apply、bind :
+    *
+    *       call :
+    *       定义的位置 : Function.prototype.call 函数这个类的原型上，相对于每个Function这个类的实例来说都是公有方法。
+    *       执行步骤 : 1 函数实例先找到定义在Function.prototype的call
+    *                 2  call方法把这个函数实例中的this修改成了call的第一个参数
+     *                3 函数实例执行
+     *                ps : call从第二个参数开始都是传给调用call的函数实例的
+     *                ps : 函数实例调用call方法之后，这个函数其实也执行结束了
+     *
+    *       apply :  和call方法的作用基本相同，apply的第二个参数是一个数组，会把数组中的每一项作为调用apply方法的函数实例的参数
+    *                ps : 和call一样，都是在修改完this之后直接把函数执行了
+    *
+*           bind :  call和apply都已经把函数执行结束，bind是返回了一个修改好this的新函数。使用bind的时候一般只修改this，返回值执行的时候再传参   不兼容
+*
+    *
+    * */
+
+    /*
+    *   严格模式和非严格模式区别 : 'use strict';
+    *        1 使用call的时刻，如果把this修改成null或者undefiend在非严格模式下是window
+    *        2 自运行函数的this和函数执行前没有"."在严格模式下this都是undefined
+    *
+    * */
+
+    //call的使用
+    function printThis(){
+        console.log(this); // window => body
+    }
+    //printThis();
+    printThis.call(document.body);
+    //printThis.call([]);
+
+    var div1 = document.getElementById('div1');
+
+    div1.onclick = function (){
+        this; // ?? div1 => body
+    }
+
+    div1.onclick =  function (){
+        // this ???
+        fn.call(document.body);
+    };
+
+    function fn(){
+        // div1 => body
+    }
+
+    ////////////////////////////////////////////////////////////////////
+
+
+    function sum(num1,num2){
+        console.log(this);
+        console.log(num1 + num2);
+
+    }
+
+    sum.call(null,100,200);
+
+    (function (){
+        console.log(this);
+    })()
+
+    fn(); // undefined
+
+
+    ////////////////////////////////////////////////////////////////////
+
+    Function.prototype.mycall = function (){
+        this();
+    }
+
+    function fx (){}
+    function fy(){}
+    fy.mycall();
+    fx.mycall();
+
+    // apply使用
+    function sum(num1,num2){
+        console.log(num1 + num2);
+    }
+    sum.apply(null,[100,200]);
+
+    var ary = [1,2,3,4,5]; // 求数组里最大值
+    // 1
+    ary.sort(function (a,b){ return b -a; });
+
+    // 2 利用就是apply这个方法特殊的传参的方式
+    Math.max.apply(null,ary); // => Math.max(1,2,3,4,5)
+
+    // 3 假设 这个假设思想
+    var max = ary[0];
+    for(var i = 1; i < ary.length; i++){
+        if(ary[i] > max){
+            max = ary[i];
+        }
+    }
+
+    // 4 eval    eval(    "Math.max(" + 1,2,3,4,5 + ")"   )
+    eval('Math.max('+ary.join()+')');
+
+
+    // bind :
+
+    function func(num1,num2){
+        console.log(this);
+        console.log(num1 + num2);
+    }
+
+    var res = func.bind(document/*,1000,2000*/);
+    //console.log(res === func);
+    res(1000,2000); // 3000
+    res(2000,3000); // 5000
+
+
+    // 思考 consider
+
+    function fn1(){ console.log(1) }
+    function fn2(){ console.log(2) }
+    fn1.call(fn2);  // fn1执行
+    //fn1.call.call(fn2); // 多个call其实就是第一个参数执行
+
+
+
+
+
+
+
+
+
+</script>

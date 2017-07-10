@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            border: 10px solid #000;
+            margin: 50px;
+            width: 300px;
+            height: 300px;
+            padding: 100px;
+            background: lime;
+            /*box-sizing: border-box;*/
+        }
+        #outer #middle{
+            width: 100px;
+            height: 100px;
+            padding: 100px;
+            background: lightblue;
+            border: 10px solid #000000;
+            overflow-y: auto;
+        }
+        #middle #inner{
+            width: 100px;
+            height: 100px;
+            background: lightpink;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="outer" style="position: relative">
+        <div id="middle" btnName="price" class="a b c" style="width: 100px;" >
+            新华网北京3月7日电 3月7日上午，中共中央总书记、国家主席、中央军委主席习近平来到十二届全国人大五次会议辽宁代表团参加审议新华网北京3月7日电 3月7日上午，中共中央总书记、国家主席、中央军委主席习近平来到十二届全国人大五次会议辽宁代表团参加审议
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var middle = document.getElementById('middle');
+    console.dir(middle);
+    middle.className;
+    middle.innerHTML;
+    middle.onclick;
+    // attributes : 行内属性
+    // classList : add  remove toggle => 添加类 和 移除类的操作
+    middle.classList.add('d');
+    middle.classList.remove('d');
+    middle.classList.toggle('d'); // 如果有就移除，如果没有就增加
+    /*
+    *   盒子模型 client:
+    *       clientWidth : 内容宽度 + 左右padding
+    *       clientHeight : 内容高度 + 上下padding
+    *       clientLeft : 左边框的宽度
+    *       clientTop :  上边框的宽度
+    *
+    *
+    *
+    * */
+    middle.draggable; // 拖拽
+    middle.localName; // 标签
+    middle.nodeName; // 大写标签名
+    middle.nodeType; // 1 3 8 9 ...
+
+
+    /*
+    *   盒子模型 offset:
+    *       offsetWidth :  clientWidth + 左右border
+    *       offsetHeight :  clientHeight + 上下border
+    *       offsetLeft : 取决于offsetParent, 获取都是当前盒子的外边框距离offsetParent的内边框的距离  => 左偏移量
+    *       offsetTop : 取决于offsetParent, 获取都是当前盒子的外边框距离offsetParent的内边框的距离  => 上偏移量
+    *       offsetParent :  如果父元素存在定位属性(relative,absolute,fixed)那么offsetParent的值就是父元素，否则继续向祖先元素查找。一直会查找到body如果还没有那么就把body作为属性值. => 父级参照物
+    *       ps : body.offsetParent = null
+    *       ps : document.parentNode = null
+    *       ps： body.offsetLeft = 0
+    *       右边框 : offsetWidth - clientWidth - clientLeft
+    * */
+
+    /**
+     * 求元素相对于body的偏移量
+     * @param ele 元素
+     * @returns {{left: 左偏移, top: 上偏移}}
+     */
+    function offset(ele){
+        var l = null;
+        var t = null;
+        l += ele.offsetLeft; // 先累加ele自己的左偏移
+        t += ele.offsetTop;  //  累加自己的上偏移
+        var par = ele.offsetParent; // 只要这个par存在那么就需要累加par的边框和par的偏移量
+        while (par){
+            l += par.clientLeft + par.offsetLeft;
+            t += par.clientTop + par.offsetTop;
+            par = par.offsetParent; // 每次都需要不断去更新par这样才能保证循环停止。
+        }
+        return {left : l ,top : t };
+    }
+    offset(middle).left;
+
+    /*
+    *   盒子模型 :
+    *       scrollWidth : 左padding + 内容的宽度(有溢出)
+    *       scrollHeight : 上padding + 内容的高度(有溢出)
+    *       scrollLeft : 滚动出去的宽度 (支持赋值)
+    *       scrollTop : 滚动出去的高度 (支持赋值)
+    *
+    * */
+    //
+    document.documentElement.clientWidth || document.body.clientWidth;
+    // 可视窗口滚出去的高度
+    var a = 'scrollTop';
+    document.documentElement.scrollTop || document.body[a];
+
+
+    function win(attr,val){
+        if(typeof val == 'undefined'){ // val没有
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+    win("scrollTop"); // => 获取到窗口滚出去的高度
+    //win('scrollTop',100); // => 我要设置滚出去的高度为100
+    win('clientWidth'); //
+
+    // offset, win, jsonParse, listToArray, getCss ...
+
+</script>

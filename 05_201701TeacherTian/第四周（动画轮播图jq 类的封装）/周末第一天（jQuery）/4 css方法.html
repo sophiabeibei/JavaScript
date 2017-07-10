@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 50px;
+            border: 10px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // width,height : 设置宽高
+    $('#div1 p').width();
+    $('#div1 p').height();
+
+    // 盒子模型 : offset() innerWidth() innerHeight() scrollTop() scrollLeft()
+
+    // offset() => 对象    utils.offset()  获取相对于body的偏移量
+
+    // innerWidth() => $('#div1').innerWidth() clientWidth
+
+    // css方法 :
+
+    $('#div1').css({
+        width : 200,
+        height : 200,
+        opacity : .7
+    }).scrollTop(200).css('width',400);
+
+
+
+    /*
+    *   css方法
+    *   innerWidth
+    *   innerHeight
+    *   ...盒子模型
+    *
+    *
+    * */
+
+
+</script>

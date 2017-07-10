@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: lime;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script src="event.js"></script>
+<script>
+    var div1 = document.getElementById('div1');
+
+    on(div1,'click',fn1);
+    on(div1,'click',fn2);
+    on(div1,'click',fn3);
+    on(div1,'click',fn4);
+    on(div1,'click',fn5);
+    on(div1,'click',fn6);
+    on(div1,'click',fn7);
+    on(div1,'click',fn8);
+    on(div1,'click',fn9);
+
+
+//    off(div1,'click',fn7);
+//    off(div1,'click',fn8);
+//    off(div1,'click',fn9);
+
+
+
+
+
+    function fn1(){ console.log(1); console.log(this == div1); }
+    function fn2(){ console.log(2) }
+    function fn3(){ console.log(3) }
+    function fn4(){ console.log(4) }
+    function fn5() {
+        console.log(5);
+        off(div1,'click',fn1);
+        off(div1,'click',fn2);
+    }
+    function fn6(){ console.log(6) }
+    function fn7(){ console.log(7) }
+    function fn8(){ console.log(8) }
+    function fn9(){ console.log(9) }
+
+</script>

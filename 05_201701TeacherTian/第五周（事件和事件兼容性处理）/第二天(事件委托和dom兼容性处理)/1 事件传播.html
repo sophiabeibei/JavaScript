@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件传播</title>
+    <style>
+        html,body,div,ul,li,span{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            display: none;
+            width: 100px;
+            height: 100px;
+            border: 5px solid #000;
+            border-radius: 50%;
+            float: left;
+            text-align: center;
+            line-height: 100px;
+        }
+        li span{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" style="display: none;" type="text">
+
+    <ul id="ul">
+        <li><span btn="del" >删除</span><sapn>哈哈</sapn></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+        <li><span>删除</span></li>
+
+    </ul>
+
+
+</body>
+</html>
+<script>
+    /*  e = e || window.event
+    *   e.clientX
+    *   e.clientY
+    *   e.pageX
+    *   e.pageY
+    *   e.target || e.srcElement
+    *   e.type
+    *
+    *   e.preventDefault()
+    *   e.returnValue = false
+    *
+    *   e.stopPropagation
+    *   e.cancelBubble = true
+    *
+    *   onmouseover onmouseout click onmousemove ...
+    *
+    * */
+
+    var input = document.getElementById('input');
+    // onfocus onblur oninput onkeyup onkeydown ...
+
+    /*
+    *   键盘事件对象 :
+    *       key : j  按键
+    *       keyCode :  按键编码
+    *       Enter : 13
+    *       BackSpace : 8
+    *       Space : 32
+    *       left : 37
+    *       top : 38
+    *       right : 39
+    *       bottom : 40
+    *       0-9 : 48 - 57
+    *
+    * */
+
+    input.onkeyup = function (e){
+        // KeyboardEvent
+        e = e || window.event;
+        console.log(e.keyCode);
+    }
+
+
+    // 事件委托
+    // 利用事件冒泡传播来完成demo
+    var ul = document.getElementById('ul');
+    var lis = ul.getElementsByTagName('li'); // [li,li,li...]
+    var index = 0;
+    window.setInterval(function (){
+        lis[index].style.display = 'block';
+        index++;
+    },1000);
+
+
+    ul.onclick = function (e) {
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        if(e.target.nodeName == 'SPAN' && e.target.getAttribute('btn') == 'del'){
+            // 符合条件span就是删除按钮
+            this;
+            e.target./*span*/parentNode./*li*/parentNode./*ul*/removeChild(e.target.parentNode);
+        }
+    }
+
+
+
+</script>

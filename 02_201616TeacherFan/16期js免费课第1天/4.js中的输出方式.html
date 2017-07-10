@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        h1 {
+            color: blue;
+            font-size: 36px;
+        }
+
+        div {
+            height: 100px;
+            border: 3px dotted plum;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+
+
+<script>
+    //1、alert(要输出的内容)  在页面中弹出一个层
+    alert(10000);
+
+    //    2、console.log(要输出的内容)  按f12或者右键--》检查 会显示出控制台，在console页卡中显示输出的内容
+    console.log('樊东来', '704072802');  //一般用调试js代码
+    //    console.log('704072802');
+    console.warn('警告');
+    console.error('报错');
+    console.info('信息');
+    console.dir('输出对象的详细信息');
+    console.table('以表格的形式输出内容');
+
+    //    console.clear();//清除控制台中console的内容
+    //    Console was cleared    相当于 右键 clear console
+
+    //   3、document.write()  在页面中不停的加内容  可以识别html标签
+    //    document.write('郭雨童');
+    //    document.write('<h1>苏玉叶</h1>');
+
+    //    4、innerHTML innerText 向指定的元素（html标签）中添加内容
+    //    innerHTML 可以识别html标签
+    //    innerText 不可以识别html标签
+
+    div1.innerHTML = '<h1>珠峰培训</h1>';
+    //    在js中获取某一个html元素.innerHTML = 内容
+    //    在js中获取某一个html元素.innerText = 内容
+
+
+</script>
+
+
+</body>
+</html>

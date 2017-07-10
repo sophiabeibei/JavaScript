@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var length = 5; // window.length
+
+    var fn = function (){
+        console.log(this.length);
+    }
+
+    var main = {
+        fn : function (fn){
+            fn(); // 5
+            arguments[0](); // 1
+        },
+        length : 10
+    }
+
+    main.fn(fn);
+
+    //////////////////////////////////////////////////////////
+
+    function fun(){
+        console.log(this); // window
+    }
+    var obj = {
+        num : 5,
+        fn : function (){
+            console.log(this); // obj
+            fun();
+            return function (){
+                console.log(this); // window
+            }
+        }
+    }
+    obj.fn();
+    var f = obj.fn();
+    f();
+
+
+
+
+
+
+
+
+</script>

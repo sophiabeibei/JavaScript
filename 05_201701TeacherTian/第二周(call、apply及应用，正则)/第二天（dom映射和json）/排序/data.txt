@@ -1,0 +1,13 @@
+[
+    {"src" : "images/phone1.jpg",  "price" : 9888, "comment" : 300 },
+    {"src" : "images/phone2.jpg",  "price" : 8888, "comment" : 290 },
+    {"src" : "images/phone3.jpg",  "price" : 7888, "comment" : 450 },
+    {"src" : "images/phone4.jpg",  "price" : 10888, "comment" : 30 },
+    {"src" : "images/phone5.jpg",  "price" : 4289,  "comment" : 21 },
+    {"src" : "images/phone6.jpg",  "price" : 5099, "comment" : 250 },
+    {"src" : "images/phone7.jpg",  "price" : 1299,   "comment" : 5 },
+    {"src" : "images/phone8.jpg",  "price" : 699,  "comment" : 800 },
+    {"src" : "images/phone9.jpg",  "price" : 199, "comment" : 10089 }
+
+]
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单张图片延迟加载</title>
+    <style>
+        html,body,div,img{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 400px;
+            height: 300px;
+            border: 2px solid #5e4a4a;
+            margin: 1000px auto;
+        }
+        .box img{
+            width: 100%;
+            height: 100%;
+            border: none;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+<!--
+    当这张图片完全进入到可视窗口内，就把real的属性值赋值给src
+-->
+    <div class="box"><img src=""  real="images/1.jpg"></div>
+</body>
+</html>
+<script src="utils_weekend.js"></script>
+<script>
+    // clientWidth clientHeight clientLeft clientTop
+    // offsetWidth offsetHeight offsetLeft offsetTop offsetParent
+    // scrollWidth scrollHeight scrollTop scrollLeft
+    var box = utils.getElesByClass('box')[0];
+    var img = box.getElementsByTagName('img')[0];
+    window.onscroll = function (){ // browser
+        // 在滚动条滚动的过程中不断去判断图片是否进入窗口内
+        var _a = utils.win('clientHeight') + utils.win('scrollTop');
+        var _b = box.offsetHeight + utils.offset(box).top;
+        if(_a > _b){ // 图片已经进入窗口
+            // 判断这个资源是否有效
+            if(img.isLoaded){ return; } // 说明以前加载过
+            var tempImg = document.createElement('img'); //new Image()
+            tempImg.src = img.getAttribute('real'); // 让这个临时的图片去加载这个真实的资源
+            tempImg.onload = function (){
+                // 图片加载成功 => 然后再让真实img去加载这个资源
+                img.src = img.getAttribute('real');
+            }
+            //tempImg.onerror = function (){}
+            img.isLoaded = true; //给img添加一个自定义属性，用来记录状态值。这个图片已经加载过
+        }
+    }
+
+    // 缓存 : 曾经加载的资源，浏览器会缓存在本地一份。然后再去加载这个资源优先读取本地缓存。=> 浏览器如何判断这个资源是否加载过，那就是比对的url地址 , 我们可以在url上做文章，让每次请求的url不同，但是又不影响我的请求。避免读取缓存了。data.txt + Math.random()      new Date().getTime()
+
+
+
+
+
+
+</script>

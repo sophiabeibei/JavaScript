@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取生效样式</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+
+    //var res = window.getComputedStyle(box).width; // chrome
+
+    //var res = box.currentStyle.width; // ie8-
+
+    function getCss(ele,attr){
+        var val = null;
+        if(window.getComputedStyle){ // 标准
+            val = window.getComputedStyle(ele,null)[attr];
+        }else{ // ie8-
+            // 处理透明度
+            if(attr == 'opacity'){
+                val = ele.currentStyle.filter; // alpha(opacity=50.5)
+                var reg = /alpha\(opacity=(\d+(?:\.\d+)?)\)/;
+                val = reg.test(val) ? reg.exec(val)[1]/100 : 1;
+            }else{
+                val = ele.currentStyle[attr];
+            }
+        }
+        //  100px -1000px -100.50px '1' 'block'
+        var reg = /^-?\d+(\.\d+)?(px)?$/; // 处理单位
+        return reg.test(val) ? parseFloat(val) : val;
+    }
+
+    //getCss(box,'opacity');
+
+
+
+    /*
+    *   常用的处理兼容问题的方式 :
+    *       1 try catch
+    *       2 'JSON' in window
+    *       3 window.JSON
+    *       4 正则
+    *
+    * */
+    //box.setCss('width',100);
+    // HTMLDivElement => HTMLElement => Element => Node => EventTarget => Object
+
+
+    function setCss(/*ele,*/ele,attr,val){
+        if(attr == 'opacity'){
+            ele.style.opacity = val;
+            ele.style.filter = 'alpha(opacity='+ val*100 +')';
+            return;
+        }
+        if(attr == 'float'){
+            ele.style.cssFloat = val;
+            ele.style.styleFloat = val; // ie
+            return;
+        }
+        // width, height, left top right bottom margin padding marginLeft ...
+        var reg = /width|height|left|top|right|bottom|(margin|padding)(Left|Right|Top|Bottom)?/;
+        //reg.test(attr) ? !isNaN(val)? val += 'px' : void 0 : void 0;
+        if(reg.test(attr)){
+            if(!isNaN(val)){
+                val += 'px';
+            }
+        }
+        ele.style[attr] = val;
+    }
+
+    //setCss(box,"width",100);
+    //setCss(box,'display','block')
+    setCss(box,"width",100);
+    setCss(box,"height",100);
+    setCss(box,'background','red');
+
+    setGroupCss(box,{
+        width : 100,
+        height : 100,
+        background : 'red'
+    });
+
+    // setGroupCss
+    function setGroupCss(ele,group){ // => {}
+        if(Object.prototype.toString.call(group) == '[object Object]'){
+            for(var key in group){
+                // key : width, height, background ...
+                // val : group[key]
+                setCss(ele,key,group[key]);
+            }
+        }
+    }
+
+    // getCss(box,"width");
+
+    // setCss(box,'width',1000);
+
+    // setGroupCss(box,{width : 100});
+    // 用一个css方法来根据参数的不同来调用不同的方法
+    function css(ele){
+        var secondParam = arguments[1];
+        var thirdParam = arguments[2];
+        if(typeof secondParam == 'string'){ // setCss getCss
+            if(typeof thirdParam == 'undefined'){ // getCss
+                return getCss(ele,secondParam);
+            }
+            setCss/*.call*/(ele,secondParam,thirdParam);
+        }
+        // setGroupCss
+        secondParam = secondParam || [];
+        if(secondParam.toString() == '[object Object]'){
+            setGroupCss(ele,secondParam);
+        }
+    }
+
+    document.documentElement.scrollTop || document.body.scrollTop;
+    document.documentElement.clientWidth || document.body.clientWidth;
+
+    function win(attr,val){
+        if(typeof val == 'undefined'){
+            return document.documentElement[attr] || document.body[attr];
+        }
+        // scrollTop和scrollLeft生效
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+    //
+    win('clientWidth'); // 获取
+    win('scrollTop');
+    win('scrollTop',500); // 设置
+
+
+
+</script>

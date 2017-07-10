@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #p1{
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+//    document.createElement('标签名')
+//  创建一个div元素
+    var oDiv = document.createElement('div');
+//  设置id
+    oDiv.id = 'div1';
+//    设置行内样式
+    oDiv.style.width = '100px';
+    oDiv.style.height = '100px';
+    oDiv.style.background = 'red';
+
+//    父容器.appendChild(要添加的元素)  向父容器末尾添加元素
+    document.body.appendChild(oDiv);
+
+//    克隆元素  要克隆的元素.cloneNode(true/false)
+//     true   子子孙孙都克隆
+//     false  只克隆表面
+    var clone = oDiv.cloneNode(true);
+    document.body.appendChild(clone);
+
+//    父容器.insertBefore(新,旧)
+
+    var oP = document.createElement('p');
+    oP.id = 'p1';
+//    document.body.insertBefore(oP,clone);
+
+
+//    替换  父容器.replaceChild(新,老)
+    document.body.replaceChild(oP,clone);
+
+//    移除  父容器.removeChild(要删除的元素)
+    document.body.removeChild(oP);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

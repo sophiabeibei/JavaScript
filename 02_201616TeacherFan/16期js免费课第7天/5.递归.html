@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //递归：函数自己调用自己
+
+//    function fn(){
+//        console.log(100);
+//        fn();
+//    }
+//    fn();
+
+
+   /* var total = null;
+    for(var i=1;i<=100;i++){
+        total+=i;
+    }
+    console.log(total);*/
+
+//    实现1-100之间的数 相加的和
+
+    function fn(n){
+//        终止条件
+        if(n===1){
+            return 1;
+        }
+        return n+fn(n-1);
+//             100+fn(99)
+//             100+99+fn(98)
+//             100+99+98+fn(97)
+//             100+99+98+..+fn(2)
+//             100+99+98+..+2+1
+    }
+    var total = fn(100)
+    console.log(total);
+
+//    实现1-100之间 所有不能被3整除的数相加的和
+
+//    function sum(n){
+////        终止条件
+//        if(n===1){
+//            return 1;
+//        }
+//        if(n%3===0){
+//            return sum(n-1);
+//        }
+//        return n+sum(n-1);
+////             100+sum(98)
+//
+////             100+sum(99)
+////             100+sum(98)
+////             100+98+sum(97)
+////             100+98+...sum(2)
+////             100+98+...2+sum(1)
+////             100+98+...2+1
+//
+//    }
+//    sum(100);
+
+ //    实现1-100之间 所有不能被3整除的数相加的和
+    function sum(n){
+//        终止条件
+        if(n===1){
+            return 1;
+        }
+        if(n%3===0){
+//            能被3整除
+            return sum(n-1);
+        }
+        return n+sum(n-1);
+//             100+sum(99)
+//             100+98+97+sum(96)
+
+    }
+    sum(100)
+
+//    1-100之间 既能被3整除也能被5除的数 相加的和
+    function fn(n){
+//        终止条件
+        /*if(n===15){
+            return 15;
+        }*/
+        if(n===1){
+            return 0;
+        }
+        if(n%3==0&&n%5==0){
+            return n+fn(n-1);
+        }
+        return fn(n-1);
+    }
+    console.log(fn(100))
+//    fn(98)
+//
+//      90+fn(89)
+//      90+fn(88)
+//      90+fn(87)
+//      90+75+...+fn(2)
+//      90+75+...+fn(1)
+//      90+75+...+0
+//    var total = 0;
+//    function sum(n){
+//        total+=n+sum(n-1);
+//    }
+//    console.log(total);
+//    sum(10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

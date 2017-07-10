@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象</title>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script>
+
+    /*
+    * 单例模式 :  其实就是一个对象，解决命名冲突的问题，模块化方便代码管理  常用
+    *            命名空间 => nameSpace
+    *            ps: 单例模式下每个属性和属性之间的调用使用this就可以
+    *            比如 : 在guonei.fn1中调用fn2就直接在fn1函数中this.fn2即可
+    *
+    * */
+
+    var guonei = {
+        num : 100, //
+        fn1 : function (){
+            //guonei.fn2();
+            this.fn2(); // this => guonei => guonei.fn2()
+        },
+        fn2 : function (){
+            this.num;
+        },
+        fx : function (){
+            this.fn2();
+        }
+    };
+
+    guonei.fn1();
+
+    var guoji = {
+        fn1 : function (){},
+        fn2 : function (){}
+    };
+
+    /*
+    *   构造函数(类) : 内置类 Number String Boolean Object Array Function ...
+    *    实例 :  具体到类中的某一个。每一个实例都是一个对象数据类型
+    *         ps:  每一个数组都是Array这个类的一个实例
+    *         ps : 每一个函数都是Function这个类的一个实例， 无论是实名还是匿名自运行
+    *         ps : 咱们每一个同学都是Chinese中国人这个类的一个实例
+    *         ps : instanceof 专门判断一个实例是否属于一个类,返回布尔值
+    *         Array instanceof Function 说明Array这个类也是一个函数
+    *         ps : 任何一个引用数据类型都是Object这个类的实例
+    *
+    *    如何定义一个类 ： function Tab(){} 定义函数相同
+    *         ps : 构造一个类尽量使用首字母大写
+    *         构造函数中的this就是当前实例 => 如果想在实例添加私有属性 this.属性名
+    *         函数函数会默认返回一个实例，但是不能再函数中再写return一个引用数据类型
+    *
+    * */
+
+    var date = new Date();
+    console.log(typeof date);
+
+    var ary = new Array();
+    console.log(typeof ary);
+
+    // 1 普通函数  2 构造函数(类) 3 Function这个类的一个实例
+    function Tab(defaultSelect){
+        this; // 构造函数中的this就是当前实例 => 也就是正在new 运算的这个实例
+        var abc = 1000;
+        this.x = 100;
+        this.y = 200;
+        this.defaultSelect = defaultSelect || 1; // 用于有默认值
+
+    }
+    var tab1 = new Tab(1);  //
+    var tab2 = new Tab(2); //
+    var tab3 = new Tab(); //
+    console.log(tab1);
+    console.log(tab2);
+
+    function Human(weight,height){
+        //var abc = 1000; // 这个私有变量不会对实例产生过影响
+        this.weight = weight/*'4kg'*/;
+        this.height = height/*'0.3m'*/;
+        //return this;
+        //return [];
+    }
+
+    var lilei = new Human('4kg','0.3m');
+    var hanmeimei = new Human('5kg','0.4m');
+
+    console.log(lilei);
+    console.log(hanmeimei);
+
+    // Object.prototype.toString.call...
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

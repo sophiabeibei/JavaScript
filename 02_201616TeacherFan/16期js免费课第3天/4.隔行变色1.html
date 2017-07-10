@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            border: 1px solid orchid;
+            width: 500px;
+            margin: 20px auto;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        li{
+            height: 30px;
+            line-height: 30px;
+            padding-left: 30px;
+            color: orange;
+        }
+        .bg1{
+            background: darkblue;
+        }
+        .bg2{
+            background: lightblue;
+        }
+        .bg3{
+            background: red;
+        }
+        /*li:hover{
+            background: red;
+        }*/
+
+    </style>
+</head>
+<body>
+<!--ul>li{$}*10-->
+<ul id="box">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+
+<script>
+    //1、
+    var oUl = document.getElementById('box');
+    var aLis = oUl.getElementsByTagName('li');
+//    2、实现奇偶行变色
+//    奇数行  设置class=‘bg1’  索引为：偶数
+//    偶数行  设置class=‘bg2’  索引：奇数
+    for(var i=0;i<aLis.length;i++){
+        aLis[i].index = i;
+
+//        判断索引为奇数还是偶数
+        if(i%2==0){
+            aLis[i].className = 'bg1';
+            aLis[i].zf = 'bg1';
+        }else{
+            aLis[i].className = 'bg2';
+            aLis[i].zf = 'bg2';
+        };
+//        鼠标移入的事件
+        aLis[i].onmouseover = function(){
+            this.className = 'bg3';
+        };
+//      创建函数：没有人为鼠标移入li时  --》函数体：字符串的形式
+//       执行函数：人为的鼠标移入到li中  --》形成私有作用域，将字符串变为js代码 从上到下执行
+        aLis[i].onmouseout = function(){
+            this.className = this.zf;
+        };
+
+//        点击的事件
+        aLis[i].onclick = function(){
+            alert('我是第'+(this.index+1)+'个li');
+        }
+    }
+
+
+//       思考： 点击时 弹出 '我是第1个li'
+//        字符串拼接
+//        1+2+'zfpx'
+
+
+
+
+</script>
+
+</body>
+</html>

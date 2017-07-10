@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary = [6, 3, 9, 5, 7, 1];
+
+//  1)向数组开头增加一项  unshift()
+//   2)向索引为n的前面在增加一项   splice(n,0,100)
+    function insertSort(ary){
+//        1.先抓一张牌 放到左手中
+//        2.循环剩下的每一项
+//        3.那剩下的每一项和左手中的牌去比较
+        var left = [];//左手
+//        先拿第一张牌,放到左手中
+        left.push(ary[0]);
+//        循环在桌子上剩下的牌
+        for(var i=1;i<ary.length;i++){
+//            当前抓到的牌
+            var cur = ary[i];
+//            循环左手中的牌left，从后往前比较
+            for(var j=left.length-1;j>=0;j--){
+                if(cur<left[j]){
+                    if(j==0){
+                        left.unshift(cur);
+                    }
+                    continue;
+                }else{
+//                    抓到的牌 比左手中的牌大，left[j] 直接放到这张牌的后面==》相当于放到这张牌 后一张牌的前面 left[j+1]
+//                    在索引为j+1的前面增加一项
+//                    splice(j+1,0,cur)
+                    left.splice(j+1,0,cur);
+                    break;
+                }
+            }
+
+        }
+        return left;
+
+    }
+    var res = insertSort(ary);
+    console.log(res);
+
+
+   /* for(var i=0;i<ary.length;i++){
+//        i:0~4
+    }
+//    倒序循环 i：4~0
+    for(var i=ary.length-1;i>=0;i--){
+
+    }*/
+
+
+
+</script>
+
+</body>
+</html>

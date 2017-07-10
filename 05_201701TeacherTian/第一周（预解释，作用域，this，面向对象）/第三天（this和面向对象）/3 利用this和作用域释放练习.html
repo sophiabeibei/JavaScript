@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    var num = 5; // window.num = 5 // 6 // 7
+    var obj = {
+        num : 4, // 5
+        fn : (function (num){
+            // num : undefined
+            num++; // num : NaN
+            this.num++; // window.num++ => 全局变量num从5修改成了6
+            var num = 2; // num : 2  3  4
+            return function (){
+                num++;
+                this.num++; // window.num++   obj.num++
+                console.log(num);
+            }
+        })()
+    }
+    // 全局变量已经从5修改成了6，自运行函数作用域没有释放里的私有num=2
+    var fn = obj.fn; // 全局fn和obj.fn共同引用同一个函数
+    fn(); //3 把自运行函数中那个私有变量num=2修改成了3，由于this是window，还把全局变量num从6修改成了7
+    obj.fn(); //4 由于和fn是同一个函数，所以同样也会把上一级也就是自运行函数中的num从3修改成了4,由于this是obj,那么把obj.num从4修改成了5
+    console.log(this.num,obj.num); // 7 5
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 120px;
+            height: 50px;
+            border: 2px solid aqua;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    //获取四位不重复的验证
+    //    1.获取四位 [0,61]之间的随机数  索引
+    //    2.通过索引找对应位置的字符
+//        3.判断是否重复  不重复-》把获取到的字符放到容器里
+
+    var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890'
+
+    function getCode(){
+        var code = '';//验证码
+//        code的长度 不足四位 继续循环
+        while(code.length<4){
+//            1.获取【0,61】 随机数
+            var rand = Math.round(Math.random()*61);
+//            2.通过索引 找字符  charAt
+            var cur = str.charAt(rand);
+//            3.判断是否存在，不存在 放到code中
+            if(code.indexOf(cur)===-1){
+//                不存在
+                code+=cur;
+            }
+        }
+        var box = document.getElementsByTagName('div')[0];
+        box.innerHTML = code;
+    }
+    getCode();
+
+//    十秒之后 停止执行
+    var timer = null;
+    var n = 0;//计数器
+    timer = window.setInterval(function(){
+        n++;
+        if(n===10){
+            clearInterval(timer);//关闭定时器
+        }
+        getCode();
+    },1000);
+
+
+//   获取四位不重复的 0-9之间的随机数
+
+//
+
+
+
+</script>
+
+</body>
+</html>

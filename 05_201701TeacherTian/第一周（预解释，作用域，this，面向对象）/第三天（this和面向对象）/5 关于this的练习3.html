@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var len = 5;
+    var fn = function (){
+
+        console.log(this/*.len*/);
+    }
+
+    var main = {
+        fn : function (fn){
+
+            fn(); // fn是获取的就是全局fn函数。那么在这里执行fn函数中的this是window。打印的就是window.len => 5
+
+            arguments[0](); //
+
+        },
+        len : 10
+    }
+
+    main.fn(fn);
+
+
+
+    function fn1(){
+        console.log(this);  // ary
+    }
+    function fn2(){}
+    function fn3(){}
+    function fn4(){}
+    var ary = [fn1,fn2,fn3,fn4];
+
+
+
+</script>

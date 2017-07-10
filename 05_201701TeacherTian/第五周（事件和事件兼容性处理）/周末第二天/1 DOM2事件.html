@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM2</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script>
+    // DOM 0 => 同一个事件只能绑定一个函数
+    // DOM 2 => 同一个事件可以绑定多个函数 $().on()
+
+    var fn1 = function (){ console.log(1); console.log(this === div1) }
+    var fn2 = function (e) {
+        console.log(2)
+    }
+    var fn3 = function (){ console.log(3)}
+    var fn4 = function (){ console.log(4) }
+    var fn5 = function (){ console.log(5) }
+    var fn6 = function (){ console.log(6) }
+    var fn7 = function (){ console.log(7) }
+    var fn8 = function (){ console.log(8) }
+    var fn9 = function (){ console.log(9) }
+
+
+    var div1 = document.getElementById('div1');
+    // DOM 0 => 不支持设置在捕获/冒泡阶段发生，默认都是冒泡阶段
+    div1.onclick = function (){} // 赋值
+    div1.onclick = null;
+    // DOM 2 => 第三个参数布尔值就是设置是否在捕获阶段发生，一般不用捕获。
+
+    // 标准
+//    div1.addEventListener('click',fn1,false);
+//    div1.addEventListener('click',fn1,false); // 重复绑定没用
+//    div1.addEventListener('click',fn2,false);
+//    div1.addEventListener('click',fn3,false);
+//    div1.addEventListener('click',fn4,false);
+//    div1.addEventListener('click',fn5,false);
+//    div1.addEventListener('click',fn6,false);
+//    div1.addEventListener('click',fn7,false);
+//    div1.addEventListener('click',fn8,false);
+//    div1.addEventListener('click',fn9,false);
+
+    // div1.removeEventListener('click',fn);
+
+    // ie8- => 不支持捕获
+//    div1.attachEvent('onclick',fn1);
+//    div1.attachEvent('onclick',fn1); // ?
+//    div1.attachEvent('onclick',fn2);
+//    div1.attachEvent('onclick',fn3);
+//    div1.attachEvent('onclick',fn4);
+//    div1.attachEvent('onclick',fn5);
+//    div1.attachEvent('onclick',fn6);
+//    div1.attachEvent('onclick',fn7);
+//    div1.attachEvent('onclick',fn8);
+//    div1.attachEvent('onclick',fn9);
+
+    // div1.detachEvent('onclick',fn9)
+
+    /*
+    *   1 : 执行顺序
+    *   2 : this问题 => window
+    *   3 : 重复绑定
+    * */
+
+    // 处理DOM2事件兼容问题
+    //ele.addEventListener(type,fn);
+    function on(ele,type,fn){
+        if(ele.addEventListener){
+            ele.addEventListener(type,fn);
+        }else{ // ie8-
+            // 如果这个属性AAAclick数组不存在那么才新赋值一个数组
+            if(!ele['AAA'+type]){
+                ele['AAA'+type] = [];
+                // 把run方法中的this修改成ele，那么就不用给run传任何参数了
+                ele.attachEvent('on'+type,function (){
+                    // this => window
+                    // 这个run方法只能绑定一次，保证run中的this是ele
+                    run.call(ele);
+                });
+            }
+            var a = ele['AAA'+type];
+            // 如果在添加fn之前遍历数组存在fn，那么fn就没有必要添加进去了 => 重复绑定问题
+            for(var i = 0; i < a.length; i++){
+                if(a[i] === fn){
+                    return;
+                }
+            }
+
+            a.push(fn); // 要绑定的fn函数，添加到自定义属性数组中
+        }
+    }
+
+
+    function run(e){ // div1(ele)  click(type) => e.type
+        //this; // window => ele div1
+        e = window.event;
+        e.target = e.srcElement;
+        e.pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+        e.pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+        e.preventDefault = function (){ e.returnValue = false; }
+        e.stopPropagation = function (){ e.cancelBubble = true; }
+
+        //e.type; // 'click' 'mouseover'
+        var a = this['AAA' + e.type];
+        if(a){
+            for(var i = 0; i < a.length; i++){ // a : [fn1,fn2,fn3,fn4]
+                a[i].call(this,e); // a[i]每一个绑定的函数中的this是ele
+            }
+        }
+    }
+
+//    div1.AAAclick = [fn1,fn2,fn3]; // click
+    on(div1,'click',fn1); // ele,type,fn => fn执行的时刻fn中的this是ele
+    on(div1,'click',fn2);
+    on(div1,'click',fn2);
+    on(div1,'click',fn3);
+    on(div1,'click',fn4);
+    on(div1,'click',fn5);
+    on(div1,'click',fn6);
+    on(div1,'click',fn7);
+    on(div1,'click',fn8);
+    on(div1,'click',fn9);
+
+
+    div1.onclick = function (e){
+        // window.event;  e.pageX  e.target  e.stopPropagation e.preventDefault
+
+
+    }
+//
+//    div1.AAAmouseover = [fn1,fn2,fn3,fn4]; // mouseover
+//    on(div1,'mouseover',fn1);
+//    on(div1,'mouseover',fn2);
+//    on(div1,'mouseover',fn3);
+//    on(div1,'mouseover',fn4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

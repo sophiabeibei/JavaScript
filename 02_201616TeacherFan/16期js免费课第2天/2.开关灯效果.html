@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            margin:0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body id="box" style="width: 100%;background-color: white">
+<script>
+    //分析思路：
+//    1、首先在js中获取body
+//    document.getElementById('id值');
+//    document 文档、文件（html）
+//    get 获取
+//    Element 一个元素
+//    By  通过
+//    Id  id值（在标签中设置的id对应的值）
+//    在整个文档中.通过元素的id值获取一个元素
+    var oBody = document.getElementById('box');
+
+//    2、给body绑定一个点击的事件
+//    元素.onclick = function(){
+//        点击时执行的操作
+//    }
+    oBody.onclick = function(){
+//        alert('ok');
+//    3、点击时改变body的背景颜色
+//        1)首先获取body当前的背景颜色
+//        2）判断背景颜色，再改变背景颜色
+        var bg = oBody.style.backgroundColor;  //"#fff"
+//         在浏览器中默认转为rgb的形式
+//        #fff --》rgb(255, 255, 255)
+        console.log(bg);
+//        var bg = "white";
+        if(bg=="white"){
+            oBody.style.backgroundColor = 'black';
+        }else{
+            oBody.style.backgroundColor = 'white';
+        }
+
+
+//        obj ={name:'white'}
+//        obj.name = 'black'
+
+
+
+//        console.log(oBody.style.width);  //获取行内样式的宽度
+//        console.log(oBody.style.backgroundColor);
+//        css background-color
+//        js   backgroundColor
+//        margin-top   marginTop
+
+
+//        .  的
+//        style 行内样式
+
+//        var obj = {name:'zfpx'}
+//        obj.name
+    }
+
+</script>
+
+</body>
+</html>

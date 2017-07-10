@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #win{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #winInner{
+            position: absolute;
+            left: 0;
+            top: 0;/*滚动的时刻要操作的*/
+            width: 100%;
+            height: 100%;
+        }
+        #winInner img{
+            display: block;
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+            border: none;
+        }
+
+        #list{
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            margin-top: -120px;
+        }
+        #list li{
+            width: 30px;
+            height: 30px;
+            background: red;
+            border-radius: 50%;
+            margin: 5px 0;
+        }
+
+        #list li.cur{
+            background: black;
+        }
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="win">
+        <div id="winInner">
+            <img src="images/1.jpg">
+            <img src="images/2.jpg">
+            <img src="images/3.jpg">
+            <img src="images/4.jpg">
+            <img src="images/5.jpg">
+            <img src="images/6.jpg">
+        </div>
+        <ul id="list">
+            <li class="cur"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="wheel.js"></script>
+<script src="jquery-1.11.3.js"></script>
+<!--vscode sublime-->
+<script>
+    // window.onload => dom结构和资源加载完毕触发
+    // DOMContendLoaded => 只要页面内的dom结构渲染结束之后就会触发
+    document.addEventListener('DOMContentLoaded',function (){});
+    window.onload = function (){ }
+
+    //
+    var win = document.getElementById('win');
+    var winInner = document.getElementById('winInner');
+    var lis = document.getElementById('list').getElementsByTagName('li');
+    var index = 0; // 当前显示图片的索引
+    var canScroll = true; // 这是一个标识，如果第一次滚动的时刻是真的，只要滚动开始那么第二次一定要等第一次已经动画到终点之后在动画第二次。在回调函数中来处理这个条件
+
+    addWheelEventListener(win,function (isDown,e){
+        if(canScroll){
+            var winHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            if(isDown){ // 下
+                if(index == lis.length-1/*5*/){
+                    return;
+                }
+                index++;
+            }else{ // 上
+                if(index == 0){
+                    return;
+                }
+                index--;
+            }
+
+            $(winInner).stop().animate({top : -index*winHeight},300,function (){
+                canScroll = true;
+            });
+
+            for(var i = 0; i < lis.length; i++){
+                lis[i].className = i == index ? 'cur' : '';
+            }
+        }
+
+        canScroll = false;
+
+    });
+
+
+
+
+
+
+
+</script>

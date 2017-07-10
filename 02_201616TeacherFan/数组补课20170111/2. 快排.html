@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[98,88,16,4,33,28];
+    //快排的思路：
+    /*
+    * 1.求出中间值的索引；
+    * 2.通过索引找到中间值；4；
+    * 3.创建两个数组：left; right;
+    * 遍历数组中的每一项，让每一项跟4中间值进行比较；比他大的，放右边，比他小的放左边；
+    * left.concat(16,right)
+    * --函数自己调用自己；--递归
+    * 停止拆分的条件：当数组的长度《=1的时候；直接返回数组；
+    * */
+    function quickSort(ary){
+        //停止拆分的条件；-如果满足停止拆分，阻断后续代码的执行
+        if(ary.length<=1){
+            return ary;//return：1）返回值 2）阻断程序执行；
+        }
+        //1.求出中间值的索引；
+        var num=Math.floor(ary.length/2);
+        //2.通过索引找到中间值；4；
+        var numValue=ary.splice(num,1)[0];
+        //3.创建两个数组：left=[]; right=[]
+        var left=[];
+        var right=[];
+        //4.遍历数组中的每一项，让每一项跟16中间值进行比较；比他大的，放右边，比他小的放左边；
+        for(var i=0; i<ary.length; i++){
+            ary[i]>numValue?right.push(ary[i]):left.push(ary[i]);
+        }
+        return quickSort(left).concat(numValue,quickSort(right));
+    }
+    console.log(quickSort(ary))
+</script>
+</body>
+</html>

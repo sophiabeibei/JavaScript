@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>replace例子</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //url :  "www.baidu.com/s  ? wd = hh & kw = xx ..."
+    var obj = {
+//        wd : 'hh',
+//        kw : 'xx'
+    };
+    var url = "www.baidu.com/s?wd=hh&kw=xx";
+    var url1 = "www.baidu.com/s?wd=hh&kw=xx";
+    var reg = /([^?=&]+)=([^?=&]+)/g;
+    url.replace(reg,function(){
+        arguments; // 1 : [x,wd,hh]  2 : [x,kw,xx]
+        obj[arguments[1]] = arguments[2];
+    });
+    console.log(obj);
+
+    String.prototype.queryParamers = function () {
+        this; // 回家自己来...
+        return; //
+    }
+    url.queryParamers(); // => {wd : hh, kw : xx}
+
+
+    ///////////////////////////////////////////////////////////////////
+    // 如何找出一个字符串中出现最多的字符 ,出现几次
+
+    var ary = [1,2,3,3,2,1,2,3]; // 数组中出现最多的项，出现几次??
+    var obj = {}; // { a : 3,b : 2, c : 2 , d : 2}
+    var str = 'aabbccdda';
+    str.replace(/\w/g,function (){
+        arguments[0]; // a a b b ...
+        if(obj[arguments[0]]){  // obj.a 第一次 undefined
+            obj[arguments[0]] += 1;
+        }else{
+            obj[arguments[0]] = 1;
+        }
+    });
+    console.log(obj);
+    // { a : 3,b : 2, c : 2 , d : 2}
+    var max = 0;
+    for(var key in obj){
+        if(obj[key] > max){
+            max = obj[key];
+        }
+    }
+    console.log(max); // 3 => ???
+    var ary = [];
+    for(var key in obj){
+        if(obj[key] == max){
+            ary.push(key);
+        }
+    }
+    console.log(ary);
+
+    /////////////////////////////////////////////////////////////
+
+    // 简单的模板引擎实现原理
+
+    var template = '{0}年{1}月{2}日，{3}点{4}分{5}秒'; // 时间格式模板
+    //            ary[0] 1   2      3    4    5
+    var str1 = '2017-03-05 18:24:40'; // 替换成如上的格式
+
+    //ary :  [2017,03,05,18,24,40]
+    var ary = str1.split(/[- :]/);
+    var reg = /{(\d)}/g;
+    var res = template.replace(reg,function (){
+        return ary[arguments[1]];
+    });
+    console.log(res);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

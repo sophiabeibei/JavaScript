@@ -1,0 +1,189 @@
+Math.max()
+Math.min()
+获取[n,m]随机整数
+    Math.round(Math.random()*(m-n)+n);
+
+复习
+     1.数据类型
+        基本数据类型和引用数据类型的本质区别：
+            基本数据类型操作的是值
+            引用数据类型操作的是空间地组织（内存地址）
+     2.检测数据类型
+        typeof
+        instanceof     ary instanceof Array
+        constructor    ary.constructor
+        Object.prototype.toString.call()
+     3.number：数字 NaN
+         NaN==NaN  false
+         isNaN()
+         Number()
+         parseInt()
+         parseFloat()
+
+         Number('')    0
+         Number(null)  0
+         Number(false) 0
+         Number(true)   1
+     4.boolean: true false
+         !
+         !!  Boolean()
+         将任意内容转布尔类型，假：0、NaN、''、null 、undefined
+
+         对象==对象  false
+         对象==字符串  对象转字符串
+         null==undefined  true
+         null或者undefined和其他比较 false
+
+         对象-》字符串->数字
+
+         []==false  true
+         ![]==false  true  (!优先级高于==)
+
+         ===  严格比较
+
+     5、函数：
+        1.定义
+
+        2.执行
+
+        function sum(形参){
+            arguments
+        }
+        sum(1,2,3)
+
+        在函数中接收外界传入的参数 方式：形参 arguments
+
+        任意数求和
+
+        return 返回值：函数中的变量值抛到函数外面
+
+    自定义属性
+    for(var i=0;i<lis.length;i++){
+        lis[i].zfpx = i;
+        lis[i].onclick = function(){
+            alert(this.zfpx);
+        }
+    }
+
+
+     6、 判断
+        1.
+            &&   并且
+            ||   或者
+
+        2.三元运算符
+
+           var value = 1<0?'ok':'no';
+           console.log(value)   ->'no'
+
+        3. switch case
+
+
+     7、运算符的优先级
+          1.括号
+          2.!
+          3.+-*/
+          4.&& > ||
+          5.==
+          6.三元运算符
+          7.赋值 =
+     8.循环
+         隔行变色
+         自定义属性
+         字符串拼接
+
+         for
+         break
+         continue
+
+         for(var 属性名 in 对象名){}
+     9.dom
+        1.获取元素
+        2.节点关系的属性
+            parentNode
+            previousSibling
+        3.动态创建元素
+            var oDiv = document.createElement('div')
+            document.body.appendChild(oDiv)
+
+     10.Math 数学函数
+
+        Math.max
+        Math.min
+
+         获取[n,m] 随机整数
+         Math.round(Math.random()*(m-n)+n)
+
+     11.字符串
+        有索引 有长度length
+         1.charAt(索引)  字符
+         2.indexOf(字符)  索引
+         3.replace('旧','新')  替换
+         4.截取
+            substr(n,m个)
+            substring(n,索引为m处)  不包括m
+            slice(n,索引为m处)      不包括m
+
+         5.转数组
+            split('分隔符')   分割符-->,逗号
+
+         获取四位不重
+         复的验证码
+
+     12.数组
+
+        数组中最后一项的索引 ary.length-1
+        1.向数组末尾添加一项
+            push()
+            ary[ary.length] = x;
+            splice(ary.length,0,x)
+
+        2.删除在最后一项
+            pop
+            ary.length--;
+            ary.length-=1;
+            ary.length=ary.length-1;
+            splice(ary.length-1,1)
+
+        3.克隆
+            splice(0)
+            slice()/slice(0)
+            ary.concat()
+
+        4.排序和翻转
+            sort(function(a,b){
+                return a-b;  //从小到大
+                return b-a;  //从大到小
+            })
+
+            reverse
+
+        5.常用但是不兼容
+              indexOf
+              遍历数组中的每一项
+              forEach
+              map
+
+        6.转为字符串  toString()
+                     join('分隔符')  ,-->分隔符
+        7.截取和拼接
+            slice(n,m)  从索引n开始截取到索引为m处，不包括m
+                数组中[第n项，第m项]，原数组不变
+                slice(n-1,m)
+            concat()
+
+
+
+     13.定时器
+
+
+
+
+
+
+
+
+
+
+
+

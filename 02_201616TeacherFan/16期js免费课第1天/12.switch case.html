@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //应用于不同值情况的判断
+
+
+    //    格式
+    //    switch (变量){
+    //          case 值1:
+    //               变量与值1比较成立，执行的代码;
+    //               break;  --》阻断代码的作用，遇到break 后面的代码不再执行
+    //          case 值2:
+    //               变量与值2比较成立，执行的代码;
+    //               break;
+    //          case 值3:
+    //               变量与值3比较成立，执行的代码;
+    //               break;
+    //          default:
+    //               以上条件都不成立执行的代码
+    //    }
+
+    var a = 2;
+    if (a == 1) {
+        console.log('今天周一');
+    } else if (a == 2) {
+        console.log('今天周二');
+    } else if (a == 3) {
+        console.log('今天周三');
+    } else {
+        console.log('今天放假');
+    }
+
+    var a = 2;
+    switch (a) {
+        case 1:
+            console.log('今天周一');
+            break;
+        case 2:
+            console.log('今天周二');
+//            break; 如果不加break；不管后面的代码是否成立都会执行
+        case 3:
+            console.log('今天周三');
+            break;
+        default :
+            console.log('今天放假');
+    }
+
+
+    //    var value = 1+2*3/2;
+    var value = 1 < 2 ? 'a' : 'b';
+    console.log(value);//变量所代表的值
+
+    var a = 10;
+    console.log(a);//变量所代表的值
+
+    //    运算符的优先级
+
+    //    1.括号()
+    //    2.三元运算符
+    //    3.*/  +-
+    //    4.= 赋值
+
+
+</script>
+
+</body>
+</html>

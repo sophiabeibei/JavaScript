@@ -1,0 +1,117 @@
+1、
+    数组最后一项的索引: ary.length-1
+    获取数组中最后一项的值：
+        ary[ary.length-1]
+2、方法
+    1）增加删除替换--》原数组改变
+        1.push(增加的内容)
+            向末尾在增加一项
+            返回值：新增后数组的长度
+        2.pop()
+            删除最后一项
+            返回值：删除的内容
+        3.unshift(增加的内容)
+            向数组开头增加一项
+            返回值：增加后数组的长度
+        4.shift() 删除第一项
+            返回值：被删除的那一项
+
+        5.splice 返回值：数组
+
+            splice(n,m)  从索引n开始 删除m个
+            splice(n)   从索引n开始 删除到最后
+            splice(0)  克隆数组（剪切）
+            splice()   数组不变，返回一个[] 没有意义
+
+            splice(n,m,x)  从索引n开始删除m个 用x替换删除的内容
+
+            splice(n,0,x)  在索引n前面增加x
+
+    2）查找和克隆  -->原数组不变
+        1.slice()
+            slice(n,m)  从索引n开始截取到索引为m处,不包括m
+                原数组不变
+            slice(n)  从索引n开始截取到末尾
+            slice(0)  克隆数组
+            slice()  克隆数组
+        2.concat()  数组拼接
+            ary.concat(ary1)  将ary和ary1拼接成一个数组
+            ary.concat()   克隆
+            ary1.concat(ary2,ary3);  拼接多个数组
+
+克隆：
+    1.splice(0)
+    2.slice(0)/slice()
+    3.ary.concat()
+
+
+    3）常用但是不兼容的
+        1.indexOf(内容)   找内容在数组中第一次出现的索引
+            如果找不到返回-1，一般用于判断某个内容是否存在
+        2.lastIndexOf(内容)   找内容在数组中最后一次出现的索引
+            如果找不到返回-1
+
+
+向数组末尾添加一项
+    ary.push(100);
+    ary[ary.length] = 100;
+    splice(ary.length,0,100);
+删除数组最后一项
+    ary.pop()
+    ary.length--;
+    ary.length-=1;
+    ary.length=ary.length-1;
+    delete ary[ary.length-1];
+数组克隆
+    ary.concat()
+    splice(0)
+    slice(0) slice()
+
+
+3、获取元素的方法
+    document.getElementById('box')
+    document.getElementsByTagName('ul')
+    document.getElementsByClassName('类名')   《不兼容》
+    document.getElementsByName('name值')
+    document.documentElement  获取html元素
+    document.body  获取body元素
+    document.querySelector('ul')
+    document.querySelectorAll('.box')
+
+    获取一个元素
+    document.getElementById('box')
+    document.querySelector('ul')
+
+4、节点      nodeType  nodeName     nodeValue
+1.元素节点     1        大写的标签名    null
+2.文本节点     3        #text          文本的内容
+3.注释节点     8        #comment       注释的内容
+4.document     9        #document       null
+
+文本节点（文字 空格）
+
+
+1.元素的动态创建
+动态创建元素：document.createElement(标签名)；
+克隆：obj.cloneNode(布尔值) true:把元素里面的子子孙孙都克隆，默认是false，只克隆当前的
+
+2.元素的动态插入
+父级.appendChild(要插入的元素); //把新元素插入到父容器的末尾；
+父级.insertBefore(newEle,oldEle);把新的元素newEle添加到老的元素oldEle之前
+
+3.元素的删除和替换
+父级.removeChild(要删除的元素) //在父容器下删除某个元素
+父级.replaceChild(newEle,oldEle);//在父容器下用新元素替换旧元素；
+
+
+动态创建元素：document.createElement(标签名)；
+父级.appendChild(要插入的元素); //把新元素插入到父容器的末尾；
+
+
+
+
+
+
+
+
+

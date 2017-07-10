@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1" class="c c2"></div> c
+</body>
+</html>
+<script>
+    var div1 = document.getElementById('div1');
+    /*
+    *   dom.classList.add('class') 增加类
+    *   dom.classList.remove('class') 移除类
+    *   dom.classList.toggle('class')  切换
+    *
+    * */
+    // 判断ele中是否包含className这个类
+    function hasClass(ele,className){
+        return new RegExp('(^| +)'+className+'( +|$)').test(ele.className);
+    }
+    // 给ele增加className这个类
+    function addClass(ele,className){
+        var classAry = className.replace(/(^ +| +$)/g,'').split(/ +/);
+        for(var i = 0; i < classAry.length; i++){ //分别增加类
+            // 如果原来存在这个类就没有必要增加了
+            if(!hasClass(ele,classAry[i])){
+                ele.className += ' ' + classAry[i]; // 在className的尾巴上追加
+            }
+        }
+    }
+
+    //addClass(div1,'c2 c3');
+
+    // removeClass...
+
+
+
+
+</script>

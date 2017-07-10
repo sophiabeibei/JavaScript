@@ -1,0 +1,10 @@
+[
+    {"country" : "中国", "capital" : "北京", "population" : 13, "GDP" : 10, "develop" : 0},
+    {"country" : "蒙古", "capital" : "乌兰巴托", "population" : 3, "GDP" : 0.1, "develop" : 0},
+    {"country" : "美国", "capital" : "华盛顿", "population" : 3, "GDP" : 11, "develop" : 1},
+    {"country" : "韩国", "capital" : "首尔", "population" : 2, "GDP" : 1, "develop" : 1},
+    {"country" : "日本", "capital" : "东京", "population" : 2.5, "GDP" : 5, "develop" : 1},
+    {"country" : "泰国", "capital" : "曼谷", "population" : 1, "GDP" : 0.5, "develop" : 0},
+    {"country" : "马来西亚", "capital" : "吉隆坡", "population" : 3, "GDP" : 1.4, "develop" : 0},
+    {"country" : "土耳其", "capital" : "伊斯坦布尔", "population" : 0.5, "GDP" : 2, "develop" : 0}
+]

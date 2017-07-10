@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.此题只能在IE10及10以下运行
+    //2.条件判断语句中,无论条件是否成立，都会进行预解释；
+    //3.自执行函数不会进行预解释，只有执行到他的时候，声明+定义+调用同步完成
+    //4.运算符的优先级：算术》比较》逻辑》赋值
+    f=function(){return true};//不带var的，不会进行预解释，赋值的时候相当于给window进行全局赋值；
+    g=function(){return false};
+    (function(){
+        if(g()&&[]==![]){
+            f=function(){return false;}
+            function g(){return true;}
+        }
+    })();
+    alert(f());
+    alert(g());
+</script>
+</body>
+</html>

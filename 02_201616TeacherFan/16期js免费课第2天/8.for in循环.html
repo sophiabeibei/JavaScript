@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //  for in循环：主要用于循环对象的属性名
+//    多组键值对  key:value
+
+    var student = {
+        name:'李日欣',
+        age:18,
+        add:'哈尔滨',
+        tel:15663863812,
+        100:2017,
+        10:104
+    }
+
+//    循环几次：有多少组属性就循环多少次
+    for(var key in student){
+//        console.log(key);//key:属性名
+        console.log(student[key]);//属性值 student[key],不能用.点的形式，
+
+    }
+//  顺序：先输出属性名为数字(从小到大的顺序)，其他按照书写顺序输出
+
+
+//    for(var 属性名 in 对象名 )
+//    in
+
+//    obj={name:'zf'}
+//    'zf'
+//    obj.name
+//    obj['name']
+
+
+
+
+</script>
+
+</body>
+</html>

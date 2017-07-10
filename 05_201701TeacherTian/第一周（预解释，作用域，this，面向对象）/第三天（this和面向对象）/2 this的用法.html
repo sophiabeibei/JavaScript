@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script>
+    //console.log(this); // window => 全局作用域中的this是window
+    var div1 = document.getElementById('div1');
+    div1.onclick = function (){
+        this; // div1
+    }
+    /*
+    * (函数中)this用法 :
+    *    1 绑定事件函数中的this就是绑定的那个元素 => 事件绑定给谁this就是谁
+    *    2 函数执行时候(函数中的this)就是调用这个函数的宿主 => '.'前面是谁这个函数中的this就是谁
+    *       ps : 只要有函数包含this那么this就一定已经发生了改变
+    *       ps : 只有函数执行的那一刻才能确定函数中的this   比如 : fn()  obj.fn()
+    *       ps : fn() 和 obj.fn() 执行的是同一个函数，由于执行方式不同导致this不同
+    *    3 自运行函数中的this就是window   (非严格模式下)
+    *    4  定时器函数中的this一般是window
+    *    ///////////
+    *    5 构造函数中的this是实例
+    *    6 call和apply&bind都可以强制修改this
+    *    7 回调函数中的this一般也是window
+    * */
+
+    function fn(){
+        console.log(this);
+        ;(function (){
+            console.log(this); // 这个this已经不是fn中的this了
+        })();
+    }
+
+    /*window.*/fn(); // 这样执行打印的是window
+
+    var obj = {
+        name : 'zf',
+        fn : fn
+    };
+
+    obj.fn(); // 这样执行fn函数中的this是obj => 也就是'.'前面的这个对象
+
+
+    /////////////////////////////////////////////////////////////////////
+    function fn(){
+        console.log(this);
+    }
+    var o = {
+        fn : function (){
+            console.log(this); // o
+            fn(); // window
+        }
+    }
+    o.fn(); //
+
+
+    ////////////////////////////////////////////
+    function fun(){
+        console.log(this);
+    }
+    var oo = {
+        fun : fun
+    }
+    window.setInterval(oo.fun,1000);
+
+
+    ///////////////////////////////////////////////////////////
+    console.log(this.xxxx); // window.xxxx
+
+
+
+</script>

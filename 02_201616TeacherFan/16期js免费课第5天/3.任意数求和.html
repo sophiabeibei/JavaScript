@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //arguments  索引 length callee
+    function sum(){
+//        console.log(arguments.callee)
+//        console.log(arguments)
+        var total = 0;
+        for(var i=0;i<arguments.length;i++){
+            var cur = parseFloat(arguments[i]);//arguments中的每一项
+            if(!isNaN(cur)){
+//                isNaN(1)-->false
+//                isNaN(NaN)-->true
+                total+=cur;
+            }
+        }
+        return total;
+    }
+    sum(1,2,3,4,5,6,7,8,9,10);
+
+    console.log(sum(1,2,3,4,'10.5px','zfpx'));
+
+
+
+
+
+
+
+
+//    '10px'  ->10
+//    'zfpx' --> NaN  ->不进行加法的运算
+
+//    1+NaN  --》NaN
+
+
+</script>
+
+</body>
+</html>

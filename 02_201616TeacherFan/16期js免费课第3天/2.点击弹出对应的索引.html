@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+
+<script>
+
+    //点击按钮弹出对应的索引
+
+    var aBtns = document.getElementsByTagName('input');
+    for(var i=0;i<aBtns.length;i++){
+//        alert(i);
+//        每一个input
+//        console.log(typeof aBtns[i]);  //html元素 都是对象数据类型 “object”
+//        增加一组属性
+//        对象的属性分为两类：内置属性（对象天生自带的属性 style） 自定义属性（自己加上的）
+//        对象.属性名 = 属性值
+        aBtns[i].zf = i;
+//        i=0     aBtns[0].zf = 0;
+//        i=1     aBtns[1].zf = 1;
+//        i=2     aBtns[2].zf = 2;
+//        获取第一个按钮的索引0
+//        aBtns[0].zf
+//        aBtns[1].zf
+//        aBtns[2].zf
+//
+        aBtns[i].onclick = function(){
+//            console.log(i);
+            alert(this.zf);
+        }
+//        没有点击按钮时，函数没有执行--》创建函数
+    }
+
+//    函数 ：1.（创建一个函数）定义
+//          2. （执行一个函数） 调用
+
+//    创建一个函数：
+//    1）开辟一个空间
+//    2）把函数体中的代码以‘字符串’形式存储在空间中
+//    3）把空间地址赋值给函数名
+
+//    function a(){
+//        console.log(100);
+//    }
+
+//    执行函数（调用函数）:函数才有意义
+//    格式：  函数名()
+//    a();
+
+//    函数执行：
+//    1.形成一个私有的作用域
+//    2.把空间中的字符串变为js代码从上到下执行
+
+//    元素.onclick = function(){
+//
+//    }
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

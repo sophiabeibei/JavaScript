@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','data.txt?_='+Math.random(),false);
+    xhr.onreadystatechange = function (){
+        if(xhr.readyState == 4 && xhr.status == 200){ // 成功
+            // 成功 之后要做什么...
+            JSON.parse(xhr.responseText); // 结果
+        }
+    }
+    xhr.send();
+
+    //
+     function ajax(type,url,async,cache,success){
+         // 获取数据
+         // 数据获取结束我要做什么方法函数... => 参数
+         // data
+         success(data);
+
+     }
+
+    //function jQuery(){}
+    $.ajax = ajax;
+
+
+    $('#div1').css()
+    $('#div1').ajax()
+
+    jQuery.prototype.css = function (){}
+    jQuery.prototype.html = function (){}
+
+
+    jQuery.ajax({
+
+    })
+
+
+    /*
+    *   $.ajax
+    *
+    *
+    *
+    * */
+
+    $.ajax({
+        type : 'get/post',
+        url : 'data.txt',
+        async : false/true,
+        cache : false/true,
+        dataType : 'json',
+        data : {sex : 1, age: 30}, //传递给后台的参数
+        success : function (result){
+            // result就是我要获取的数据
+        },
+
+        error : function (){
+            // 404  window.location.href...
+        }
+               // ...
+
+    });
+
+
+
+</script>

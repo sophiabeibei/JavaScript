@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="inp1" value="变宽">
+<input type="button" id="inp2" value="变高">
+<input type="button" id="inp3" value="变色">
+<input type="button" id="inp4" value="复原">
+<div style="width: 100px;height:100px;border: 1px solid red;"></div>
+
+    <script type="text/javascript">
+        /*
+         * 思路：
+         * 1.获取input、div元素
+         * 2.分别给input绑定点击事件。
+         * 3.点击变宽时，div宽度变为300px
+         * 4.点击变高时，div高度变为300px
+         * 5.点击变色时，div的背景颜色变为红色
+         * 6.点击复原时，div变成原来的样子
+         *
+         * */
+        var oInputs = document.getElementsByTagName("input");
+        var oDiv = document.getElementsByTagName("div")[0];
+        var oldWidth=oDiv.style.width;
+        var oldHeight=oDiv.style.height;
+        var oldBackgroundColor=oDiv.style.backgroundColor;
+        for (var i = 0; i < oInputs.length; i++) {
+            var oInput = oInputs[i];
+            oInput.meAdd = i;
+            oInput.onclick = function () {
+                switch (this.meAdd) {
+                    case 0:
+                        oDiv.style.width = "300px";
+                        break;
+                    case 1:
+                        oDiv.style.height = "300px";
+                        break;
+                    case 2:
+                        oDiv.style.backgroundColor = "red";
+                        break;
+                    default:
+                        oDiv.style.width = oldWidth;
+                        oDiv.style.height = oldHeight;
+                        oDiv.style.backgroundColor = oldBackgroundColor;
+                }
+            }
+        }
+
+
+
+
+
+    </script>
+
+</body>
+</html>

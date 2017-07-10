@@ -1,0 +1,244 @@
+1、数据类型
+    基本数据类型：
+
+    引用数据类型：
+        object：{} [] //
+        function
+2、 基本数据类型和引用数据类型的本质区别
+    基本数据类型操作的是值，引用数据类型操作是空间地址
+
+3、检测数据类型
+    typeof
+    instanceof
+    constructor
+    Object.prototype.toString.call()
+
+4、变量
+   var 变量名 = 变量值;
+   作用：存储值代表值
+
+5、number：数字 NaN
+    NaN==NaN  false
+    isNaN('100')  先转为数字（Number()），再判断
+
+    Number()
+    parseInt()
+    parseFloat()
+
+6、boolean：true  false
+    Boolean()  === !!
+    !
+    false:undefined null 0 NaN '',其余都为true
+
+    比较
+    ==
+    1）对象==对象 false
+    2)对象==字符串
+    3）null==undefined  true
+    4）null或者undefined和其他任何类型比较 返回false
+
+    其他比较都转为数字
+    .toString()
+    Number()
+
+    === 数据类型和值必须完全一致
+
+
+    ==   !=(不等于 相对两个等号)
+    ===  !==(不等于 相对三个等号)
+
+7、对象
+     创建一个对象
+     var obj = {}
+     var obj = new Object()
+     增删改查
+     1.增加一组属性
+        obj.name = 'zf'
+     2.修改属性名对应的属性值
+        obj.name = 'zfpx'
+
+     3.获取属性名对应的属性值
+        obj.name
+     4.删除
+        obj.name = null;  {name:null}
+        delete obj.name   {}
+
+8、函数数据类型  function
+     一个函数包括两部分：
+        1.创建一个函数  "字符串"
+            function 函数名(){
+
+            }
+
+
+        2.执行函数   “字符串”--》js代码
+            函数名()
+
+        函数名; //代表函数本身
+
+        事件调用
+        元素.onclick = function(){
+
+        }
+
+        (function(){})()
+
+     1、函数的参数
+        function a(形参){
+            arguments：函数天生自带
+            类数组（索引  length callee）
+             arguments.callee  函数本身
+        }
+        a(实参)
+
+        在函数中接收外部传进来的参数，有哪几种形式：形参，arguments
+     2、返回值：函数执行的结果
+
+     function a(){
+        var total = 100;
+        return total;
+     }
+     console.log(a);    -->函数本身
+     console.log(a());   -->返回值
+
+     return 在函数中阻断代码
+     break  在for循环
+
+      如果函数没有返回值，返回undefined
+
+
+     3、匿名函数
+        有名字的函数
+
+        事件函数
+        元素.事件 = function(){}
+
+        自执行函数  +-!~;
+        ;(function(){
+
+        })()
+
+9、null  undefined
+     null 以后可能会有
+     undefined 以后肯定不会有
+
+
+10、判断
+    条件
+        ||
+        &&
+        ==  ===  != !==
+        + - * /
+        一个值
+
+        运算不成功 NaN
+
+        1+undefined   --》NaN
+
+    三元运算符
+        条件?条件成立执行的代码:条件不成立执行的代码
+
+    var val = []?'true':'false';
+    console.log(val);
+
+    []==true  false
+    ![]==true  false
+
+    switch (变量){
+        case 值1:
+            变量===值1
+            break;
+        case 值2:
+            变量===值2
+            break;
+        ...
+        default:
+            以上都不成立执行的代码  else
+    }
+
+11、循环
+    for(var i=0;i<5;i++){
+        alert(i);
+    }
+    1）初始值 2）条件 3）{循环体} 4)累加
+
+    i++  i+=1 i=i+1
+
+    循环体：break  continue
+
+
+    for(var i=0;i<5;i++){
+        alert(i);
+    }
+
+    var i=0;
+    while(i<5){
+        alert(i);
+        i++;
+    }
+
+    for(var 属性名 in 对象名){
+        console.log(属性名);
+        console.log(对象名[属性名])
+    }
+
+12、
+    获取html元素的方式:
+    1)document.getElementById()
+
+    2)document.getElementsByTagName('li')
+    类数组：索引  length
+13、操作元素的行内样式
+    1.设置
+        元素.style.width = '100px'
+    2.获取
+        元素.style.width
+14.操作元素的类名
+    1.设置
+        元素.className = 'bg1'
+    2.获取
+        元素.className
+
+15、函数中的自定义属性
+    for(var i=0;i<lis.length;i++){
+        给每一个li设置一组自定义属性 {zfpx:索引}
+        lis[i].zfpx = i;
+
+        lis[i].onclick = function(){
+            alert(this.zfpx);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

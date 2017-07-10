@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    /*
+    *   jq对象.click(function)
+    *   jq对象.mouseover(function)
+    *   mouseout
+    *   focus
+    *   blur
+    *   dblclick
+    *
+    *   ...
+    *
+    *
+    * */
+    $('#div1').css({
+        width : 100,
+        height : 100,
+        background : 'red',
+        position : 'absolute',
+        left : 0,
+        top : 0
+    }).click(function (){
+        //$(this).css('width',200);
+    }).mouseover(function (){
+        console.log('mouseover');
+    }).mouseout(function (){
+        // 链式写法
+    });
+
+    // on  jq绑定事件  => 同一个事件可以绑定多个函数
+    // 如果使用on方法绑定事件，那么当需要移除事件的时候那么绑定实名函数
+    var fn1 = function (){
+        console.log(1);
+    }
+    $('#div1').on('click',fn1).on('click',function (){
+        console.log(2);
+    }).on('mouseover',function (){
+        console.log(this); // $(this)...
+    }).off('click',fn1);
+
+    // off 移除事件 : 如果移除那么需要指定具体的函数，否则就是把所有的全部移除掉。
+
+
+
+
+
+
+</script>

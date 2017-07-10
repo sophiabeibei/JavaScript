@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<div class="box" id="box" name="box"></div>
+<body>
+<script>
+    var box = document.getElementById('box');
+    var box = document.getElementsByTagName('div')[0];
+    var box = document.getElementsByClassName('box')[0];
+//    var box = document.getElementsByName('box')[0];  input
+    var box = document.querySelector('div');
+    var box = document.querySelector('.box');
+    var box = document.querySelector('#box');
+    var box = document.querySelectorAll('div')[0];
+    var box = document.querySelectorAll('.box')[0];
+    var box = document.querySelectorAll('#box')[0];
+
+
+
+    console.log(box);
+
+
+    var oP = document.createElement('p');
+//    在父容器的末尾添加元素
+    document.body.appendChild(oP);
+//移除
+    document.body.removeChild(oP);
+
+//  替换
+    document.body.replaceChild(新，旧)
+//    克隆一个元素
+    oP.cloneNode(false)
+
+//    在元素之前插入一个新元素
+    父容器.insertBefore(新，旧)
+
+//    节点关系的属性
+    oP.parentNode
+
+//    数组
+//    最后一项的索引  ary.length-1
+//    删除在最后一项
+    ary.pop()
+    ary.length--;
+    ary.length-=1;
+    ary.length = ary.length-1;
+    delete ary[ary.length-1];
+
+//    向数组末尾添加一项
+    ary.push()
+    ary[ary.length] = 100;
+    ary.splice(ary.length,0,100)
+
+//    克隆
+    slice(0) slice()
+    splice(0)
+    concat()
+
+//    slice(n,m) 从索引n开始中找到索引为m处，不包括m
+
+    splice(1,2)
+
+//    检测内容是否存在
+//    indexOf(内容)   --》索引，如果找不到返回-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //用setTimeout+递归 实现setInterval
+
+    /*var count = 0;
+    var timer = null;
+    function fn(){
+        count++;
+        console.log(count);
+        if(count==10){
+            return;//阻断代码，后面代码不执行
+        }
+        timer = window.setTimeout(fn,1000);//等待1s，执行函数
+    }
+    fn();*/
+
+
+    /*var n = 0;
+//    var timer = null;
+    function fn(){
+//        clearTimeout(timer);
+        n++;         //10
+        console.log(n);   //10
+        if(n===10){
+            return;
+        }
+        window.setTimeout(fn,1000);
+    }
+    fn();*/
+
+
+
+
+
+
+
+
+    var n = 0;
+    var timer = null;
+    function fn(){
+        n++;
+        console.log(n);
+        if(n==10){
+            return;
+        }
+        timer = window.setTimeout(fn,1000);
+    }
+    fn();
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

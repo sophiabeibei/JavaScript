@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM2</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
+<script src="event1.js"></script>
+<script>
+    var fn1 = function (){ console.log(1);  }
+    var fn2 = function (e) {
+        console.log(2)
+    }
+    var fn3 = function (){ console.log(3)}
+    var fn4 = function (){ console.log(4) }
+    var fn5 = function () {
+        console.log(5);
+        off(div1,'click',fn1);
+        off(div1,'click',fn2);
+    }
+    var fn6 = function (){ console.log(6) }
+    var fn7 = function (){ console.log(7) }
+    var fn8 = function (){ console.log(8) }
+    var fn9 = function (){ console.log(9) }
+
+    on(div1,'click',fn1);
+    on(div1,'click',fn2);
+    on(div1,'click',fn2);
+    on(div1,'click',fn3);
+    on(div1,'click',fn4);
+    on(div1,'click',fn5);
+    on(div1,'click',fn6);
+    on(div1,'click',fn7);
+    on(div1,'click',fn8);
+    on(div1,'click',fn9);
+
+    //off(div1,'click',fn9);
+</script>

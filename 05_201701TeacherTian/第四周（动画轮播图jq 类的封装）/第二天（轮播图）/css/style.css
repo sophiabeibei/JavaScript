@@ -1,0 +1,101 @@
+html, body, div, img, ul, li, a {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html, body {
+    width: 100%;
+}
+
+/*窗口*/
+.wrap {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: #edece9;
+    text-align: center;
+}
+
+/*包含图片的盒子*/
+.wrap .inner {
+    position: absolute;
+    width: 400%;
+    height: 400px;
+    left: 0;
+    top: 0;
+}
+
+.wrap .inner div {
+    width: 25%;
+    height: 400px;
+    float: left;
+}
+
+.wrap .inner div img {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    border: none;
+    opacity: 0;
+}
+
+.wrap .focusList {
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*margin-left: -60px;*/
+    /*height: 20px;*/
+    /*bottom: 10px;*/
+    display: inline-block;
+    position: relative;
+    z-index: 10;
+    height: 20px;
+    margin-top: 370px;
+
+}
+
+.wrap .focusList li {
+    width: 16px;
+    height: 16px;
+    margin: 0 5px;
+    float: left;
+    border: 2px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.wrap .focusList li.cur {
+    background: #000;
+}
+
+.wrap .left, .wrap .right {
+    display: none;
+    width: 30px;
+    height: 40px;
+    background: #000;
+    opacity: 0.7;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+}
+.wrap .left{
+    left: 0;
+}
+.wrap .right{
+    right: 0;
+}
+
+
+

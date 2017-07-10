@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //字符串 有引号
+    var str = '珠峰培训!abc1 ';
+//    有长度:有多少个字符
+//    一个字符：汉字、字母、符号、一个空格、数字
+    console.log(str.length);
+//    有索引：从0开始的数字
+    console.log(str[1]);
+
+    var str = '珠aaaA峰培训!abc1 ';
+//    方法
+//    1.charAt(索引)  通过索引找字符
+//      charCodeAt(索引)  通过索引找字符对应Unicode编码
+    console.log(str.charAt(1))
+    console.log(str.charCodeAt(1));
+
+//    2.indexOf(字符)  找到字符串第一次出现的索引位置，找不到返回-1
+//    lastIndexOf(字符) 找到字符串最后一次出现的索引位置
+    console.log(str.indexOf('f'));
+    console.log(str.lastIndexOf('f'));
+
+//    3.字符串截取
+//      substr(n,m) 从索引n开始截取m个
+//      substring(n,m)  从索引n开始 找到索引为m处  不包括m
+//      slice(n,m)  从索引n开始 找到索引为m处  不包括m  可以支持负值(长度+负值=正值的索引)
+//      以上三个方法  如果参数只有一个值 代表截取到最后
+    var str = 'aaaA珠峰培训!abc1 ';
+    console.log(str.length);  //14
+    console.log(str.substr(4,4));
+    console.log(str.substring(4,8));
+    (str.length-3,str.length-1)
+
+    console.log(str.slice(-3,-1));
+//      14-3=11
+//     14-1=13
+//    (11,13)
+
+//    4.转换大小写
+    str.toUpperCase() //所有的小写转为大写
+    str.toLowerCase() //所有的大写转为小写
+
+//    5.将字符串转为数组  split('分割符')
+//     '分隔符'--》逗号,
+//    如果分割符不存在，把在整体作为数组的一项返回
+
+    var str = 'asdfsgdhjfl';
+//    console.log(str.split('f'));
+//    ["asd", "sgdhj", "l"]
+    console.log(str.split(''));
+//    ["a", "s", "d", "f", "s", "g", "d", "h", "j", "f", "l"]
+    console.log(str.split('p'));
+    console.log(str.split(' '));
+//    ["asdfsgdhjfl"]
+
+    var str = '2017:1:11';  //'2017年1月11号'
+    var ary = str.split(':')
+//    ["2017", "1", "11"]
+    var newStr = ary[0]+'年'+ary[1]+'月'+ary[2]+'号'
+    console.log(newStr)
+
+//    6.字符串替换  replace(旧，新)  用新的替换旧的
+    var str = '2017:1:11';
+    var res = str.replace('2017:1:11','2017年1月11日');
+    console.log(res);
+
+//    7.捕获  match('字符')  返回字符的详细信息[字符，索引，原字符串]
+
+
+    var res = str.match('0');
+//    ["0", index: 1, input: "2017:1:11"]
+    var res = str.match('f');  //null
+    var res = str.match('');  //null
+    console.log(res)
+//    ["7", index: 3, input: "2017:1:11"]
+
+//    8.search(字符)  通过字符找索引，找不到返回-1
+
+    var str = 'asdfsgdhjfl';
+    console.log(str.search('t'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

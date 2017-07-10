@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body,ul,li,span,em{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .list{
+            width: 300px;
+            padding: 10px;
+            background: -webkit-linear-gradient(bottom,yellow,lime);
+        }
+        .list ul{
+            display: none;
+        }
+        .list li{
+            line-height: 30px;
+            position: relative;
+        }
+        .list li em{
+            display: block;
+            width: 18px;
+            height: 18px;
+            background: url("images/icon.png") no-repeat -58px -27px;
+            position: absolute;
+            left: 0;
+            top: 6px;
+            cursor: pointer;
+        }
+        .list li em.open{
+            background-position:-40px -27px;
+        }
+        .list li span{
+            display: inline-block;
+            margin-left: 22px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list" class="list">
+        <li>
+            <em></em><span>1-1</span>
+            <!--2-->
+            <ul>
+                <li><span>2-1</span></li>
+                <li><span>2-2</span></li>
+                <li>
+                    <em></em><span>2-3</span>
+                    <!--3-->
+                    <ul>
+                        <li><span>3-1</span></li>
+                        <li><span>3-2</span></li>
+                        <li>
+                            <em></em><span>3-3</span>
+                            <!--4-->
+                            <ul>
+                                <li><span>4-1</span></li>
+                                <li><span>4-2</span></li>
+                                <li><span>4-3</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><span>1-2</span></li>
+    </ul>
+</body>
+</html>
+<script>
+    var list = document.getElementById('list');
+    var uls = list.getElementsByTagName('ul'); // [ul,ul,ul]没有第一个
+    for(var i = 0; i < uls.length; i++){
+        uls[i].style.marginLeft = 20*(i+1) + 'px';
+    }
+    // 获取所有span标签，对于能展开的就添加一个pointer => 存在em元素哥哥，或指责存在ul的元素弟弟
+    var spans = list.getElementsByTagName('span');
+    for(var i = 0; i < spans.length; i++){
+        var pre = spans[i].previousElementSibling;
+        if(pre && pre.nodeName == 'EM'){
+            spans[i].style.cursor = 'pointer';
+            spans[i].setAttribute('ok','yes');
+        }
+    }
+
+    //
+    list.onclick = function (e){
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        if(e.target.nodeName == 'EM' || (e.target.nodeName == 'SPAN' && e.target.getAttribute('ok') == 'yes')){
+            // 点击发生的时候要做
+            var parLi = e.target.parentNode;
+            var em = parLi.firstElementChild; // +号或者-号
+            var targetUl = parLi.lastElementChild; // 事件源要操作的ul
+            var isBlock = window.getComputedStyle(targetUl,null).display == 'block';
+            if(isBlock){ // 打开
+                // 从当前节点所有后代ul元素全部关闭，并且所有后代em全部去掉open
+                var childUls = parLi.getElementsByTagName('ul');
+                var ems = parLi.getElementsByTagName('em');
+                for(var i = 0; i < childUls.length; i++){
+                    childUls[i].style.display = 'none';
+                    ems[i].className = '';
+                }
+            }else{ // 关闭
+                targetUl.style.display = 'block';
+                em.className = 'open';
+            }
+        }
+    }
+
+
+
+
+</script>

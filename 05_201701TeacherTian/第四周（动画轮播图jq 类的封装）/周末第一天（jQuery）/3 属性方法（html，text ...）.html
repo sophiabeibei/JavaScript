@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性方法</title>
+</head>
+<body>
+    <div id="div1" ></div>
+    <img src="" real="">
+    <input type="checkbox" >
+    <input id="input" type="text">
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    //var $div1 = $('#div1'); // jq对象
+
+    var div1 = document.getElementById('div1'); // dom对象
+
+    // dom对象=>jq对象 : 直接用$(dom)就ok
+
+    // html : 如果有参数就是来设置html的值，如果没有参数获取html
+
+    $(div1).html('哈哈'); //
+
+    // text : 如果有就是设置，没有获取
+
+
+    // attr : 两个参数是设置，一个参数获取
+
+    $(div1).attr('school','zf'); // 设置
+    console.log($(div1).attr('school')); // 获取
+
+    //prop : 尤其表单元素的checked等布尔操作必须要用这个方法 => 如果是原生可以使用prop，自定义属性attr
+    // prop : 如果是两个参数就是设置，一个参数就是获取 => 可以用prop('checked')去判定是否是选中状态
+
+    $('input').prop('checked',true); // property => hasOwnProperty
+
+    // addClass 添加类
+    // removeClass 移除类
+    // toggleClass 如果有这个类就删除，没有就增加
+
+    // div1.classList.add
+
+    $(div1).addClass('c1');
+
+    // val : 一般用于表单元素，如果有参数就是设置，否则获取
+
+
+    var reg = /^\s*$/; // focus blur
+    input.onblur = function (){
+        this.value; // text : 输入的内容
+    }
+
+    /*
+    *   html
+    *   text
+    *   val
+    *   attr
+    *   prop
+    *   addClass
+    *   removeClass
+    *   toggleClass
+    *
+    * */
+
+
+
+
+
+
+</script>

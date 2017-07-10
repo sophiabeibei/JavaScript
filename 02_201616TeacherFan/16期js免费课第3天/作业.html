@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+
+</head>
+<body>
+<input type="button" value="变宽"/>
+<input type="button" value="变高"/>
+<input type="button" value="变色"/>
+<input type="button" value="复原"/>
+<div style="width: 100px;height: 100px;border: 1px solid red"></div>
+<script>
+    //1、获取要操作的元素:四个按钮和div
+    var aBtns = document.getElementsByTagName('input');
+//    oBox div
+    var oBox = document.getElementsByTagName('div')[0];
+
+    console.log(aBtns);
+//    [input, input, input, input]
+//    length:长度 类数组的长度，表示有多个input
+    console.log(aBtns.length);
+
+
+//    循环四次 i:0~3   0 1 2 3  变量i相当于类数组的索引
+//    循环目的：得到每一个input
+//    for(var i=0;i<aBtns.length;i++){
+//        每一个按钮
+//        aBtns[i]
+//        i=0  aBtn[0]
+//        i=1 aBtn[1]
+//        i=2  aBtn[2]
+//        i=3  aBtn[3]
+//    2、给按钮绑定点击的事件
+        aBtns[0].onclick = function(){
+//           3、点击时执行的操作
+            oBox.style.width = '300px';
+        }
+        aBtns[1].onclick = function(){
+            oBox.style.height = '300px';
+        }
+        aBtns[2].onclick = function(){
+            oBox.style.backgroundColor = 'red';
+        }
+        aBtns[3].onclick = function(){
+            oBox.style.width = '100px';
+            oBox.style.height = '100px';
+            oBox.style.backgroundColor = 'white';
+        }
+
+//    }
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

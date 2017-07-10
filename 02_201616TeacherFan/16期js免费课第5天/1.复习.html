@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+//    ;(function(){
+//        alert(100);
+//    })()
+
+
+    function a(){
+        var num = 1+1;
+        console.log(num);
+    }
+    a();
+
+//    num++;
+//    console.log(num);
+
+//    函数执行的时候，形成一个私有作用域，保护函数体里面的变量（外界无访问也无法修改）,我们把函数执行的这种保护机制，叫做闭包
+
+//    如果想要在函数外面 访问函数体中的变量所代表的值
+
+
+    function a(){
+        var num = 1+1;
+        console.log(num);
+        return num;
+    }
+    var newNum = a();
+    newNum++;
+    console.log(newNum)
+    console.log(a())
+
+
+    for(var i=0;i<5;i++){
+        console.log(i);
+    }
+
+    var i=0;
+    while(i<5){
+        console.log(i);
+        i++;
+    }
+
+
+
+    for(var i=0;i<10;i++){
+        if(i<6){
+            i+=3;
+            continue;
+            console.log(i);
+        }
+        i+=4;
+        break;
+        console.log(i);
+    }
+    console.log(i);
+
+
+
+</script>
+
+
+
+</body>
+</html>

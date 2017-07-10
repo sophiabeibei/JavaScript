@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body,div,img{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+        .box img{
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+            border: none;
+        }
+        .box .mask{
+            position: absolute;
+            left: 150px;
+            top: 0;
+            width: 150px;
+            height: 150px;
+            background: #00b38a;
+            opacity: .7;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            line-height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        <img src="360.jpg">
+        <div class="mask">遮罩</div>
+    </div>
+    <div id="box" class="box">
+        <img src="360.jpg">
+        <div class="mask">遮罩</div>
+    </div>
+    <div id="box" class="box">
+        <img src="360.jpg">
+        <div class="mask">遮罩</div>
+    </div>
+    <div id="box" class="box">
+        <img src="360.jpg">
+        <div class="mask">遮罩</div>
+    </div>
+    <div id="box" class="box">
+        <img src="360.jpg">
+        <div class="mask">遮罩</div>
+    </div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    var boxs = document.getElementsByClassName('box');
+    for(var i = 0; i < boxs.length; i++){
+        fn(boxs[i]);
+    }
+    function fn(box){
+        //var box = document.getElementById('box');
+        var mask = box.getElementsByTagName('div')[0];
+        box.onmouseenter = function (e){
+            e = e || window.event;
+//        var linkEle = e.fromElement || e.relatedTarget;
+//        if(box.contains(linkEle)){
+//            return;
+//        }
+            // 鼠标刚进入盒子的那一刻鼠标相对于圆心的坐标
+            var x = e.clientX - box.offsetLeft - box.offsetWidth/2;
+            var y = box.offsetTop + box.offsetHeight/2 - e.clientY;
+            // ...
+            var res = getDirection(y,x);
+            // 根据方向值来移动遮罩的位置
+            switch (res){
+                case 0:
+                    mask.style.left = -150 + 'px';
+                    mask.style.top = 0 + 'px';
+                    break;
+                case 1:
+                    mask.style.left = 0 + 'px';
+                    mask.style.top = 150 + 'px';
+                    break;
+                case 2:
+                    mask.style.left = 150 + 'px';
+                    mask.style.top = 0 + 'px';
+                    break;
+                case 3:
+                    mask.style.left = 0 + 'px';
+                    mask.style.top = -150 + 'px';
+                    break;
+            }
+            // 无论从哪个方向进入都是动画到 left : 0,  top : 0的位置
+            $(mask).stop().animate({left : 0, top : 0});
+
+        }
+        box.onmouseleave = function (e){
+            e = e || window.event;
+
+            var x = e.clientX - box.offsetLeft - box.offsetWidth/2;
+            var y = box.offsetTop + box.offsetHeight/2 - e.clientY;
+            var res = getDirection(y,x);
+            var target = null;
+            switch (res){
+                case 0:
+                    target = {
+                        left : -150,
+                        top : 0
+                    };
+                    break;
+                case 1:
+                    target = {
+                        left : 0,
+                        top : 150
+                    };
+                    break;
+                case 2:
+                    target = {
+                        left : 150,
+                        top : 0
+                    };
+                    break;
+                case 3:
+                    target = {
+                        left : 0,
+                        top : -150
+                    };
+            }
+
+            $(mask).stop().animate(target);
+        }
+
+
+
+
+
+        function getDirection(y,x){ // 通过坐标值来返回一个方向值
+            var rad = Math.atan2(y,x); // 根据坐标返回一个对应坐标点的弧度值
+            // 把弧度值运算成角度值
+            var ang = 180/Math.PI*rad;
+            //console.log(ang); // [-180,180] + 180 => [0,360]  / 90 => round
+            // 角度区间是[-180,180],在原有区间的基础上加上180之后[0,360],然后再除以90，区间就变成[0,4],然后四舍五入后就变成,[0,1,2,3,4],%4之后就变成[0,1,2,3]
+            var res = Math.round((ang + 180)/90)%4; // 0 1 2 3 4
+            return res;
+        }
+
+
+    }
+
+
+</script>

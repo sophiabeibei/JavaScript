@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //typeof
+//    instanceof
+//    constructor
+//    Object.prototype.toString.call()
+
+    var a = 123;
+    var b = 'zfpx';
+
+//    typeof 要检测的内容
+    typeof null  //"object"
+//    "number"、"string"、"boolean"、"undefined"、"object"、"function"
+
+//    不能检测对象数据类型下的具体的细分
+
+//    instanceof  --》true false
+    var ary = [1,2,3,'zfpx'];
+    console.log(ary instanceof Array); //ary 是否在Array数组类
+
+
+    var reg = /\d{2}/;
+    console.log(reg instanceof RegExp);
+
+    //    constructor
+
+    var ary = [1,2,3,'zfpx'];
+    console.log(ary.constructor);  //函数名是数据类型
+//    function Array() { [native code] }
+
+    var reg = /\d{2}/;
+    console.log(reg.constructor);
+//   function RegExp() { [native code] }
+
+
+
+</script>
+
+</body>
+</html>

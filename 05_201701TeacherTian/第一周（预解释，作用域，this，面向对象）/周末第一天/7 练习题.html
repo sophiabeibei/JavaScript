@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var num = 1;
+    function fn(num){
+        num++; // 2
+        return function (){
+            num++;
+            console.log(num);
+        }
+    }
+
+    var f1 = fn(num);
+    f1(); // 3
+    var f1 = fn(num);
+    f1(); // 3
+
+    fn()(); // NaN
+    fn()(); // NaN
+
+
+
+
+
+
+
+
+</script>

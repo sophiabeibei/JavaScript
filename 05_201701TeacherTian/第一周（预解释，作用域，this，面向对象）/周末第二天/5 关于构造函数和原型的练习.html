@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    Object.prototype.haha = 1000;
+
+    function Fn(){
+        this.x = 100;
+        this.getX = function () {
+            console.log('1');
+
+        }
+    }
+    Fn.prototype.getX = function (){
+        console.log(this.x); // f1.x  Fn.prototype.x
+    }
+
+    var f1 = new Fn();
+    f1.getX(); // 100
+    f1.__proto__.getX(); // undefined
+    Fn.prototype.getX(); // undefined
+    console.log(f1.hasOwnProperty('x'));
+
+
+
+
+
+
+
+</script>

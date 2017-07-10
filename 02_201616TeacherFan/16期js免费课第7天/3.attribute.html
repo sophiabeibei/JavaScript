@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    //对象数据类型
+    var oDiv = document.getElementById('box');
+    console.log(typeof oDiv);//"object"
+
+//    增加一组自定义属性
+    oDiv.zfpx = 'bg1';
+    console.log(oDiv.zfpx);
+
+//    设置属性   setAttribute(属性名,属性值) 直接在标签中显示
+    oDiv.setAttribute('name','js学习');
+//    获取属性名对应的属性值  getAttribute(属性名)
+    console.log(oDiv.getAttribute('name'));
+//    删除属性  removeAttribute(属性名)
+    oDiv.removeAttribute('name');
+
+
+//    点和attribute不能一起使用
+//    setAttribute  不能给元素设置类名 className
+    oDiv.className = 'bg1';//只能用这种形式
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
