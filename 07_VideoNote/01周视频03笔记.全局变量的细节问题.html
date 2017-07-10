@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>全局作用下var带和不带的区别</title>
+</head>
+<body>
+<script>
+    /*
+    * 在全局作用域中,带var和不带var的关系??
+    *   区别: 带var的可以进行预解释,所以在[赋值]的[前面]执行不会报错; 不带var的是不能进行预解释的,在[赋值]的[前面]执行会报错;
+    *
+    *
+    *
+    * */
+
+    ////////////////////////////////////////////////////////////
+    /*console.log(num);//undefined
+    var num = 12;*/
+
+    ////////////////////////////////////////////////////////////
+    /*console.log(num2);//报错: UNcaught ReferenceError: num2 is not defined
+    num2 = 12;*/
+
+    ////////////////////////////////////////////////////////////
+    //关系: num2=12 =>相当于给window增加了一个叫做num2的属性名,属性值是12;(window的变量,也是window的属性)
+    //var num = 12; =>首先它相当于给全局作用域增加了一个全局变量num,但是不仅如此,它也相当于给window增加了一个属性名num,属性值是12;
+    /*var num = 12;
+    console.log(num);//12
+    num2 = 12;//注意: 这里是num2 = 12;   并不是var num2 = 12;
+    console.log(num2);//12    =>1.首先会看num2是不是全局变量;num2不是全局变量,但num2是window的属性;相当于输出的是window.num2的属性值;*/
+
+    ////////////////////////////////////////////////////////////
+    //1.提前声明并赋值0;私有作用域输出是undefined;全局作用域输出是0;
+    /*var total = 0;
+    function fn(){
+        console.log(total);//undefined
+        var total = 100;
+    }
+    fn();
+    console.log(total);//0*/
+
+    ////////////////////////////////////////////////////////////
+    //2.
+    /*var total = 0;
+    function fn(){
+        console.log(total);//0
+        total = 100;
+    }
+    fn();
+    console.log(total);//100*/
+
+    ////////////////////////////////////////////////////////////
+    //3.私有作用域中出现的一个变量不是私有的,则往上级作用域进行查找,上级没有则继续向上查找,一直找到window为止,如果window下也没有呢??
+    //1)第一种情况=>我们是获取值: console.log(total);  =>报错了
+    //2)第二种情况=>我们是设置值: total = 100;  =>相当于给window增加了一个属性名total,属性值是100;
+
+    function fn(){
+    //console.log(total);//window下也没有的情况时, =>报错: total is not defined      这里输出的是变量值;
+    total = 100;
+    }
+    fn();
+    console.log(total);//这是输出的是属性值
+
+    //JS中如果在不进行任何特殊处理的情况下,上面的代码报错,下面的代码都不再执行了;   有一种机制可以处理 =>tryCatch  下周讲;
+
+</script>
+</body>
+</html>

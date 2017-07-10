@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>关于私有作用域的预解释</title>
+</head>
+<body>
+<script>
+    //1. 如何区分私有变量和全局变量??
+    //1)全局变量: 在全局作用域下声明(预解释的时候)的变量是全局变量;
+    //2)私有变量: 在[私有作用域中声明的变量]和[函数的形参]都是私有变量;
+    //在私有作用域中,我们代码执行的时候遇到了一个变量,首先我们需要确定它是否为私有变量,如果是私有的变量,那么和外面的没有任何的关系;如果不是私有的,则往当前作用域的上级作用域进行查找,如果上级作用域也没有则继续查找,一直找到window为止; =>这就叫作用域链;
+
+    //2. 当函数执行的时候(直接目的:是让函数体中的代码执行),首先会形成一个新的私有的作用域,然后按照如下的步骤执行;
+    //1)如果有形参,先给形参赋值;
+    //2)进行私有作用域中的预解释;
+    //3)私有作用域中的代码从上到下执行;
+    //... 以后还有,暂时不讲;
+    //闭包: 函数形成一个私有作用域保护了里面的私有变量不受外界干扰(外面修改不了私有的,私有的也修改不了外面的);=>这种机制是"闭包";
+
+    /*console.log(total);
+    var total = 0;
+    function fn(num1,num2){
+        console.log(total);
+        var total = num1 + num2;
+        console.log(total);
+    }
+    fn(100,200);
+    console.log(total);*/
+
+
+////////////////////////////////////////////////////////////////
+    /*console.log(total);//undefined
+    var total = 0;
+    function fn(num1,num2){
+        console.log(total);//0  =>total不是私有的,找全局下的total,也就是在这里出现的所有的total其实应该都是全局的;
+        var total = num1 + num2;// =>全局的total=300
+        console.log(total);//300  =>全局的total
+    }
+    fn(100,200);
+    console.log(total);//300 =>全局的total值在fn()执行的时候已经发生了改变;*/
+
+
+    //////////////////////////////////////
+    var n = 9;
+    var s = 'str';
+    function fn(){
+        alert(n);//fn()函数执行   =>undefined  1.函数体内var声明过n;所以这里全部的n都是私有变量;
+        alert(s);//'str'  函数体内没有声明过s变量,所以这里的变量是全局变量;
+        n=7;//私有变量n
+        var n=6;//私有变量n
+    }
+    fn();//undefined    'str'
+
+
+</script>
+</body>
+</html>

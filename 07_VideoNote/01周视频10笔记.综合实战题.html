@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+<h2>问题:认为耿大大很丑的请狂点~~</h2>
+<div id="btn">我非常非常非常赞同以上的观点 <span id="spanNum">0</span></div>
+</div>
+<script>
+    var oBtn = document.getElementById("btn");
+    var spanNum = document.getElementById("spanNum");
+
+    //1.利用全局作用域不销毁的原理,把需要累加的数字定义为全局变量;
+    /*var count = 0;
+    oBtn.onclick = function(){
+        count++;
+        spanNum.innerHTML = count;
+    };*/
+    //这种方式能实现不销毁但有弊端:在项目中为了防止全局变量之间的冲突,我们一般是禁止或者减少使用全局变量的;
+    //除了全局作用域不下销毁,还有私有作用域也可以实现不销毁;
+
+
+    //2.自己形成一个不销毁的私有作用域来保存我们需要累加的数字;
+    //方法一:
+    /*~function(){
+        var count = 0;
+        oBtn.onclick = function(){
+            count++;
+            spanNum.innerHTML = count;
+        };
+    }();*/
+
+    //方法二:
+    /*oBtn.onclick = (function(){
+        var count = 0;
+        return function (){
+            count++;
+            spanNum.innerHTML = count;
+        }
+    })();*/
+
+    //以上两种方法都能实现作用域不销毁;
+    //弊端:有一个不销毁的私有作用域,所以占那么一丢丢的内存;
+
+
+    //3.利用innerHTML的方式处理:原理=>每一次点击的时候都先到页面中获取最新的值,然后累加,最后把累加后的结果重新放回去;
+    /*oBtn.onclick = function (){
+        //spanNum.innerHTM获取页面中的内容返回的是一个字符串
+        spanNum.innerHTML++;
+    };*/
+    //弊端:每一次都需要把页面中的内容先转化为字符串然后再累加,累加完再重新添加回去,当重新添加的时候,浏览器都要重新渲染一下;
+
+
+    //4.利用自定义属性存储(力荐使用的方法)
+    //++i的简写
+    oBtn.count = 0;//count既不是全局变量也不是私有变量,是oBtn的属性;
+    oBtn.onclick = function (){
+        //spanNum.innerHTM获取页面中的内容返回的是一个字符串
+        spanNum.innerHTML = ++this.count;
+    };
+
+    //i++的写法
+    oBtn.count = 0;//count既不是全局变量也不是私有变量,是oBtn的属性;
+    oBtn.onclick = function (){
+        //spanNum.innerHTM获取页面中的内容返回的是一个字符串
+        this.count++;
+        spanNum.innerHTML = this.count;
+    };
+
+
+</script>
+</body>
+</html>

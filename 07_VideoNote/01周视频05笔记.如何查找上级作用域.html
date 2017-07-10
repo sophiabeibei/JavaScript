@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>如何查找上级作用域</title>
+</head>
+<body>
+<script>
+    //如何查找当前作用域的上一级作用域???
+    //看当前函数是在哪个作用域下定义的,那么它的上级作用域就是谁;=>和函数在哪儿执行[没任何的关系];
+
+
+
+    /*function fn(){
+        total  = 100;
+    }
+    fn();*/
+
+    //////////////////////////////////////////////////////
+    var num = 12;
+    function fn(){
+        var num =120;
+        return  function(){
+            console.log(num);//120    120
+        }
+    }
+    var f = fn();
+    f();//120     =>小f是在window下执行的
+
+    ~function (){
+        var num =1200;//注意:自执行函数在全局作用域下不预解释,也不赋值;
+        f();//120     =>小f在自执行函数下执行;主要看这个函数上级作用域是谁,和函数在哪儿执行没任何关系;
+        console.log(num);//1200     =>输出当前函数内的私有变量
+    }();
+    console.log(num);//12  =>因为自执行函数在全作用域下不预解释也不赋值,所以这里输出全局变量num的值12;
+
+
+
+
+</script>
+
+</body>
+</html>

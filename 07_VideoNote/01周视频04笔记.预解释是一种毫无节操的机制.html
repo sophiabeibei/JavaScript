@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>预解释中的变态机制</title>
+</head>
+<body>
+<script>
+
+    //预解释是毫无节操的一种机制
+    //自从学了预解释,从此节操是路人;
+
+    //in: "num" in window 判断num是否为window这个对象的一个属性,是的话返回true,不是的话返回false;
+    /*var obj = {name:"张文静",age:17};
+    console.log("name" in obj);//true
+    console.log("eat" in obj);//false*/
+
+    //1. 预解释的时候不管你的条件是否成立,都要把带var的进行提前的声明;
+    //window的预解释: var num; =>相当于给window增加了一个属性  window.num;
+    /*if(!("num" in window)){   //num[是!]window的属性!true =>取反是 false;所以不会输出12   只能输出预解释阶段的值undefined;
+        var num = 12;//     =>代码执行之前先预解释;声明一个变量放在if判断里;
+        // 预解释的时候,[无论条件是否成立],[都要]进行[预解释];
+    }
+    console.log(num);//undefined*/
+
+
+    //////////////////////////////////////////////////////////////////////
+    //2.预解释的时候只解释等号"="左边的,等号右边的是值,不参与预解释;
+    //匿名函数之函数表达式: 把函数定义的部分当做一个值赋值给我们的变量/元素的某一个事件
+    //window下的预解释: var fn;相当于全局作用域中只声明了一个fn,没有赋值;
+    /*fn();//这里没有fn的值,相当于undefined()执行  Uncaught TypeError: fn is not a function
+    var fn = function (){//匿名函数   =>   赋值的这种方式,叫匿名函数之函数表达式;   等号左边=>变量=>声明或者声明加定义;    等号右边=>值=>不参与预解释;
+        console.log("ok");
+    };*/
+    //备注:以后尽量采用这种方式来定义变量;
+
+
+    /*fn1();//"ok"  函数的第一次执行
+    function fn1(){
+        console.log("ok");
+    }
+    fn1();//"ok" 第二次执行   两次执行没有关系*/
+
+
+    //////////////////////////////////////////////////////////////////////
+    //3.执行函数定义的那个function在全局作用域下不进行预解释,当代码执行到这个位置的时候定义和执行一起完成了;
+    //自执行函数: 定义和执行一起完成了
+    //function(num){}(100);//浏览器不允许这种方式
+    (function(num){})(100);//
+    ~function(num){}(100);
+    +function(num){}(100);
+    -function(num){}(100);
+    !function(num){}(100);
+
+
+    //////////////////////////////////////////////////////////////////////
+    //4.函数体中return[下面]的代码虽然不再执行了,但是需要进行预解释;return后面跟着的都是我们返回的值;所以不进行预解释;
+    /*function fn(){
+        //预解释: var num;
+        console.log(num);//undefined
+        return function(){//这个function是return的后面
+
+        };
+        var num = 100;//函数体中return[下面]的代码虽然不再执行了,但是需要进行预解释;   这个var num是return的下面;
+    }
+    fn();*/
+
+
+
+    //////////////////////////////////////////////////////////////////////
+    //5.在预解释的时候,若果名字已经声明过,不需要重新的声明;但是需要重新的赋值;
+    //在JS中如果变量的名字和函数的名字重复了,也算冲突;(只能保留一个fn,只不过曾经fn存的是一个数字,后来存的是函数值而已;)
+    //预解释: var fn; window.fn;    fn=xxxfff000; window.fn=xxxfff000;
+    /*var fn = 13;//变量fn     =>相当于给window增加了一个属性名    window.fn;
+    function fn(){//函数fn   =>这俩fn是一个fn!!!!!!!   =>fn=xxxfff000   也相当于给window增加了一个属性名  window.fn=xxxfff000;
+        console.log("ok");
+    }*/
+
+
+    //window预解释:
+    //声明加定义  fn=xxxfff111
+    //声明 var fn;(不需要重新声明)
+    //声明(不重复进行)+定义 fn=xxxfff222
+    //=>fn=xxxfff222
+    //只输出两次,第三次就报错;
+    /*fn();//2   执行的第二个函数
+    function fn(){console.log(1)};
+    fn();//1
+    //var fn = 10;
+    fn();//1
+    function fn(){console.log(2);};
+    fn();  //2*/
+
+
+
+    /*function fn(){
+        console.log(1);
+    }
+    fn();//这个执行,在函数内输出1;
+    var fn = 10;
+    fn();//这个执行,会报错:fn is not a function*/
+
+    //////////////////////////////////////////////
+    /*fn();//这个执行,输出2;  同是因为函数在预解释的时候,预解释和赋值同时完成;最下面的fn将会覆盖上面的fn值;
+    function fn(){
+        console.log(1);
+    }
+    fn();//这个执行,输出2;   因为函数在预解释的时候,预解释和赋值同时完成;下面的将上面的fn覆盖了
+    function fn(){
+        console.log(2);
+    }
+    fn();//这个执行,输出2;*/
+
+
+    ////////////////////////////////////////////
+    var fn = 10;
+    console.log(fn);
+    fn();//执行的时候报错:fn is not a function at 117行;
+    function fn(){
+        console.log(1);
+    }
+    fn();
+
+
+
+</script>
+</body>
+</html>

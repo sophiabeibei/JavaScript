@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>综合模拟题</title>
+</head>
+<body>
+<script>
+    var num = 20;
+    var obj = {
+        num: 30,
+        fn: (function () {
+            this.num *= 3;
+            num += 15;
+            var num = 45;
+            return function () {
+                this.num *= 4;
+                num += 20;
+                console.log(num);
+            }
+        })(num)//把全局变量num的值20赋值给了自执行函数的形参,而不是obj下的30,如果是想obj下的30,我们需要写obj.num;
+    };
+    var fn = obj.fn;
+    fn();
+
+    //在全局作用域下,自执行函数的function在window下不进行预解释;
+    //教材的倒数第二页  最后一道题;=>作业;
+
+
+</script>
+</body>
+</html>

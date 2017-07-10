@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>作用域练习题</title>
+</head>
+<body>
+<script>
+    /*function fn(){
+     var i = 10;
+     return function (n){
+     console.log(n + (++i));
+     }
+     }
+     var f = fn();
+     f(10);//21
+     f(20);//32
+     fn()(10);//21
+     fn()(20);//31*/
+
+
+    function fn(i) {
+        return function (n) {
+            console.log(n + i++);
+        }
+    }
+    var f = fn(13);//var i = 13;
+    f(12);//25   i = 14
+    f(14);//28   i = 15
+    fn(15)(12);//27   i = 16
+    fn(16)(13);//29   i = 14
+
+    //作业:
+    // 用闭包作用域的方式实现选项卡循环绑定事件的处理
+
+
+</script>
+</body>
+</html>
