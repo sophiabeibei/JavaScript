@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //  1、分组 （）把大正则分成几个小正则
+    // 1、()作用： 改变优先级
+    // 2、分组的引用
+
+//    var reg = /(\w)\1(\w)\2/;
+    // \1 ： 代表和第一个分组出现的内容一模一样 \2 : 和第二个分组出现一样的内容
+//    console.log(reg.test("rrtt"));// true
+//    console.log(reg.test("rrty"));// false
+    //3、分组的捕获
+
+//    var reg = /^(\d{2})(?:\d{4})(\d{4})(\d{2})(?:\d{2})(\d{3})(?:\d|X)$/;
+//    var str = "13042519910101181X";
+//    console.log(reg.exec(str));
+    // 捕获的时候，不仅可以把大正则内容捕获到，还可以把小正则内容捕获到
+    // ?:  在小括号中，只匹配不捕获
+
+
+    //match : 只捕获大正则的内容，小正则中内容不捕获；
+    var reg =/zhufeng(\d+)/g;
+    var str = "zhufeng123zhufeng234zhufeng345";
+    var ary = str.match(reg);
+    console.log(ary);
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            left: 10px;
+            width: 100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    // 指定时间内实现动画
+    // 总时间
+    // 总距离
+    // 运动的时间
+
+    var  oBox = document.getElementById("box");
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var oBoxW = oBox.offsetWidth;
+    var changeL = winW-oBoxW;// 盒子距离左边的最大值
+    var duration  = 3000;
+    var interval = 10;
+    // 3秒到达最右侧
+    // 计算每10毫秒走的距离
+    var step = maxL/duration*interval;
+    var time = null;
+    var begin=utils.css(oBox,"left");
+    function move() {
+        oBox.timer=setInterval(function () {
+            time +=10;
+            if(time>=duration){
+                utils.css(oBox,"left",maxL);
+                clearInterval(oBox.timer)
+                return;
+            }
+            // 走过的距离 =time/duration*maxL
+            // 走过的距离+ step
+//            var curL = utils.css(oBox,"left");
+//            curL=curL + step;
+//            var curL = time/duration*maxL+step
+            var curL = Linear(time,begin,changeL,duration);
+            utils.css(oBox,"left",curL);
+        },10)
+    };
+    oBox.onclick = move;
+    //  t 走过的时间
+    // b  开始位置
+    // c : 总距离
+    // d : 总时间
+    // 匀速运动公式
+
+    function Linear(t,b,c,d){
+        return t/d*c+b// 最新的位置
+    }
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+.box1 {
+  margin: 20px auto;
+  width: 200px;
+  height: 200px;
+  background: #000000;
+  -webkit-transition: all 3s linear 0s;
+  -moz-transition: all 3s linear 0s;
+  -ms-transition: all 3s linear 0s;
+  -o-transition: all 3s linear 0s;
+  transition: all 3s linear 0s;
+}
+.box1:hover {
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+}
+.box .gray {
+  color: #eee;
+  background: #000000;
+}
+nav ul .gray {
+  color: #eee !important;
+  background: #000000 !important;
+}

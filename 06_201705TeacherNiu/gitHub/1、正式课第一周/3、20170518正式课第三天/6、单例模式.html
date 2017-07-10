@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="index.js"></script>
+<script type="text/javascript">
+    utils.setCss();
+    // 单例模式
+    // 在js中把描述同一事物的属性或者方法放在同一个空间下面，起到了一个分组作用，即便属性名相同，它们相互之间也不冲突，那么这种分组的模式--> 单例模式
+   // （people1、people2）这个空间也叫命名空间
+    var people1 = {
+        name : "王林",
+        sex : "男",
+        height : 150
+    };
+    var people2 = {
+        name : " 徐向华",
+        sex : " 男",
+        height: "180"
+    };
+//    console.log(people1.name) // "王林"
+//    console.log(people2.name)// "徐向华"
+    // "模块化开发"
+//    var niuxiaoxin = {
+//        select : function () {
+//            var uu =100;
+//            console.log(10)
+//        },
+//        str : ""
+//    }
+    var xurenkun = {
+        choose : function () {
+
+        },
+        select : function () {
+            console.log(1)
+        }
+    }
+//    niuxiaoxin.select();
+
+    var utils = {
+        date : function () {
+
+        }
+    }
+   utils.date();
+
+
+</script>
+
+</body>
+</html>

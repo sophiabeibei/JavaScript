@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            position: absolute;
+            left :0;
+            width :100px;
+            height :100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<script type="text/javascript" src="DOM.js"></script>
+<script type="text/javascript">
+    // 单方向的运动动画
+    // 点击盒子,然后让盒子匀速运动到页面的最右边
+    // 思路： 通过定时器，改变当前盒子的left的值
+    // setInterval
+    // 递归思想
+    // setTimeout()
+    // 指定步长的动画
+    var oBox = document.getElementById("box");
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var boxW = oBox.offsetWidth;
+    var maxL = winW - boxW;
+    var timer = null;
+    var count = 0;
+
+    var time =0;
+    var duration =3000;
+    var change = maxL;
+    oBox.onclick = function () {
+        timer = setInterval(function () {
+//            if(count +8>= maxL){
+//                oBox.style.left = maxL+"px";
+//                clearInterval(timer)
+//                return;
+//            };
+//            oBox.style.left=(count +=8)+"px";
+            function linear(t,b,c,d) {
+                return t/d*c+b
+            };
+            time +=1;
+            var begin = utils.getCss(oBox,"left")
+            if(begin>=change){
+                clearInterval(timer)
+                return
+            }
+            var curPos = linear(time,begin,change,duration);
+            oBox.style.left=curPos+"px";
+        },100);
+    };
+
+
+
+
+
+
+</script>
+</body>
+</html>

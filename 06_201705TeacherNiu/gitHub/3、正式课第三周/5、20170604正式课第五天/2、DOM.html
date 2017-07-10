@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div id="first"></div>
+    <div id="second"></div>
+    <div id="third"></div>
+    <div id="forth"></div>
+    <div id="fifth"></div>
+</div>
+<script type="text/javascript">
+    // 节点         nodeType
+    // 元素节点         1
+    // 文本节点         3
+    // 注释节点         8
+    // document         9
+// 获取当前元素所在兄弟节点中的索引
+    var oDiv = document.getElementById("forth");
+    function getIndex(curEle) {
+        var index = 0;
+        var p = curEle.previousSibling;// 获取上一个哥哥节点
+        while(p){
+            if(p.nodeType ===1){
+                index++;
+            }
+            p=p.previousSibling
+        }
+        return index;
+    };
+    getIndex(oDiv);
+    // 获取所有的兄弟元素节点
+   function siblings(curEle) {
+        var nodes = curEle.parentNode.childNodes// 子节点
+        var ary =[];
+        for(var i=0;i<nodes.length;i++){
+            var curNode = nodes[i];
+            if(curNode !== curEle&&curNode.nodeType===1){
+                ary.push(curNode)
+            }
+        }
+   };
+   //获取当前元素的哥哥元素节点
+    function prevSiblings(curEle) {
+        var ary =[];
+        var p = curEle.previousSibling;
+        while(p){
+            if(p.nodeType ===1){
+                ary.unshift(p)
+            }
+            p = p.previousSibling;
+        }
+        return ary;
+          // 第二种
+//        var nodes= curEle.parentNode.childNodes;
+//        var ary =[];
+//        for(var i=0;i<nodes.length;i++){
+//            var curNode = nodes[i];
+//            if(curNode == curEle){
+//                break;
+//            }
+//            if(curNode.nodeType===1){
+//                ary.push(curNode)
+//            }
+//        }
+//        return ary;
+    };
+    // 获取所有的弟弟元素节点
+    function nextSiblings(curEle) {
+//        var ary =[];
+//        var n = curEle.nextSibling;
+//        while(n){
+//            if(n.nodeType ===1){
+//                ary.push(n)
+//            }
+//            n = n.nextSibling;
+//        }
+//        return ary;
+        // 第二种
+        var nodes= curEle.parentNode.childNodes;
+        var ary =[];
+        for(var i=nodes.length-1;i>=0;i--){
+            var curNode = nodes[i];
+            if(curNode.nodeType===1){
+                if(curNode == curEle){
+                    return ary
+                }
+                ary.unshift(curNode);
+            }
+        }
+    };
+    // 获取当前元素的上一个哥哥元素节点
+    function prev(curEle) {
+        var pre;
+        if(curEle.previousElementSibling){
+            pre = curEle.previousElementSibling;
+            return pre;
+        };
+        var p = curEle.previousSibling;
+        while (p){
+            if(p.nodeType==1){
+               return p
+            }
+            p = p.previousSibling;
+        }
+    };
+    // 获取下一个兄弟元素节点
+
+    function next(curEle) {
+        var nex;
+        if(curEle.nextElementSibling){
+            nex = curEle.nextElementSibling;
+            return nex;
+        };
+        var n = curEle.nextSibling;
+        while (n){
+            if(n.nodeType==1){
+                return n
+            }
+            n = n.nextSibling;
+        }
+    };
+    // 获取元素的元素子节点
+    // 在标准浏览器，获取元素子节点
+    // 在非标准浏览器下，children包括文本节点
+    function children(curEle) {
+        var children=curEle.children;
+        if(typeof curEle.nextElementSibling !="object"){// 判断非标准浏览器
+            var ary = [];
+            for(var i=0;i<children.length;i++){
+                var curChild = children[i];
+                if(curChild.nodeType ===1){
+                    ary.push(curChild);
+                }
+            }
+            return ary;
+        }
+        return children;
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

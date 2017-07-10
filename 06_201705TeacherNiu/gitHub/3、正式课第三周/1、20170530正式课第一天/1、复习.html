@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //面向对象：基于对象，万物皆对象
+    // 类 ：是对象的一个细分， 内置类，自定义类
+    // 内置类 ：Number Boolean String Null Undefined
+    // Array  RegExp  Object Date Function
+    function Fn(){// 自定义类
+        this.x  = 100;
+    };
+    Fn();// undefined
+    var f = new Fn;
+    // f是Fn 的一个实例,是对象数据类型的
+    f.x  =100;// 相当于给f新增x的属性，属性值100；
+    console.log(f instanceof Fn)// true;
+    //类也是函数数据类型的
+    // 函数数据类型，都天生自带一个prototype属性，这是一个对象数据类型的
+    // prototype天生自带一个constructor属性，属性值指向原型所属类
+    // 所有的对象数据类型都有一个__proto__ 的属性，属性值当前实例所属类的原型
+    // 所有的函数数据类型（普通函数、类（自定义类内置类）），都是Function的一个实例
+    // 所有的对象数据类型（普通对象、prototype、实例）都是Object的一个实例
+    // 所有的实例都是对象数据类型的
+    // 函数也是对象数据类型的
+    function  sum(){
+
+    };
+    //函数的三种角色：
+    // 1、普通函数 ：执行的时候，形成私有作用域-》形参赋值--》预解释--》 代码从上到下执行
+    // 2、类  ： 被new 之后产生实例
+    // 3、普通对象  ： 新增属性名
+    sum.name = "";
+
+    //类的继承 ：
+    // 1、原型继承
+    function A() {
+        this.x = 100;
+    };
+    function B() {
+        A.call(this);// this指向B的实例 ，把方法A中的this换成B的实例，并且让A执行
+    };
+    B.prototype = new A;
+
+    //2、call 继承: 只能继承私有的
+    // 3、混合继承
+    // call + 原型继承
+    // 4、冒充对象继承
+    // 在类B中，创建一个A的实例，A的实例有类的原型的属性，私有的属性，遍历这个对象，把属性赋值给B的实例
+    // 5、中间类继承
+    // __proto__ 在IE下是不兼容的，
+    //arguments.__proto__ = Array.prototype;
+    //arguments.slice();
+
+    //正则 ： RegExp  是一个内置的类， 是对象数据类型的；
+    // 正则 ： 是一个处理的字符串的规则
+
+    // 组成 ： 是由元字符和修饰符组成
+    // 元字符： 在反斜杠之间有意义的字符；
+    // 修饰符 ：
+    // global : "g" 全局；
+    // ignoreCase ： "i"  忽略大小写
+    // multiLine : "m"  多行匹配
+
+//    var reg  = /\d/; //包含一个0-9之间的数字
+    // . : 除了\n 以外的任意字符
+    // \ : 转义
+    // \w : 数字、字母、下划线中的任意一个
+    // \d : 0-9之间的任意一个数字
+    // \n : 匹配一个换行符
+    // ^ : 以什么开头
+    // $ : 以什么结尾
+
+    // * : 出现0到多次
+    // + : 出现一到多次
+    // ? : 出现0或一次；
+    //{n}  : 出现n次
+    // {n,} n到多次
+    // {n,m} n到m次
+
+    // x|y  : x 或y 中的一个
+    // [xyz]  : x或y或z 中的一个；
+    // [^xyz] : 除了xyz其他任意一个字符
+
+
+//    var reg = /^18|19$/;//  18 19 181 1819 189 819
+//    var reg1 = /^(18|19)$/  //18 19
+    // () 改变优先级
+
+    // []  不识别两位数
+//    var reg = [12-68];
+    // 匹配 ：test
+    // 捕获 ： exec
+    // 捕获的懒惰性
+    // lastIndex : 每一次捕获都是从0 开始，但是加上g修饰符，lastIndex每次都会更新
+
+    var reg = /zhufeng(\d+?)/g;
+    var str = "zhufeng123zhufeng456zhufeng789";
+    console.log(reg.lastIndex)
+    console.log(reg.exec(str));//
+    console.log(reg.lastIndex)//
+    console.log(reg.exec(str));//
+    // 捕获的贪婪性
+    // ? 在正则中，? 放在量词的后面，取消捕获的贪婪性
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

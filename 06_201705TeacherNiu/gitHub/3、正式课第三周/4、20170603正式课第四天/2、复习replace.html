@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // replace 字符串的方法// 原有字符串没有发生变化
+    // str.replace("oldStr","newStr");
+//    var  str = "zhufeng2017zhufeng2018";
+//    var newStr = str.replace("zhufeng","珠峰").replace("zhufeng","珠峰");
+    // 正则
+//    var newstr = str.replace(/zhufeng/g,"珠峰");
+    // 第一个参数是正则，正则替换的原理
+    // replace  执行的时候，会先对原始的字符串进行捕获，把捕获的内容进行替换
+
+//    console.log(newstr);
+
+    // 第二个参数 传进去function
+//    var  str = "zhufeng2017zhufeng2018";
+//    var newStr= str.replace(/zhufeng/g,function () {
+//        console.log(arguments)//["zhufeng", 0, "zhufeng2017zhufeng2018", callee: function, Symbol(Symbol.iterator): function]
+//        return 12;
+//    });
+//    console.log(newStr)
+    //捕获几次，那么匿名函数执行几次
+    // 匿名函数的返回值，就是要对原始字符串替换的新的内容（newStr）
+    // 需求把字符串的数字都转为大写
+
+//    var str = "20170603";
+//    var ary = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+//    var reg = /\d/g;
+//    var newStr = str.replace(reg,function () {
+//        //console.log(arguments[0])// 每次捕获到的内容的第一项
+//        return ary[arguments[0]];
+//    });
+//    console.log(newStr)
+
+    // 去空格
+    var str = "   my name  is niu xiaoxin ";
+//    console.log(str)
+    // \s
+//    var newStr = str.replace(/\s+/g,"")
+
+    //首位空格
+    var reg =/^ +| +$/g;
+    var newStr = str.replace(reg,"")
+    console.log(newStr);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

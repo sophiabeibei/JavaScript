@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    // DOM 里面的方法
+    // getCss  setCss  setGroupCss
+    // css 通过判断参数，判断参数的类型
+    // typeof 返回值是以字符串形式返回，可以检测基本数据类型，但是对对象数据类型中的具体数组、正则、时间检测不出来
+    function sum(val1,val2) {
+       // val1 =100;
+        console.log(val2)// undefined
+        if(typeof val2 === "undefined"){
+        }
+    }
+    sum(100)
+    // 数据类型检测应用；
+    if(window.getComputedStyle){
+    }
+    if("getComputedStyle" in window){
+    }
+    if(typeof window.getComputedStyle === "function"){
+    }
+    //instanceof  检测某一个实例是否属于某个类
+    //实例 instanceof  类  true 是对应的类型 false 就不是
+    // 原型继承可能导致检测结果不准确
+
+    //constructor  prototype属性上天生自带一个constructor属性，这个属性指向原型的对应那个类
+    // 原型继承可能导致检测结果不准确
+    //toString 是内置的方法
+    // Object.prototype.toString.call()
+    // 调用Object 原型上的方法，通过call改变当前方法的this关键字，返回值是字符串 “[object 所属类]”
+
+    // 可枚举和不可枚举属性
+    // 内置类的原型上的内置的方法，是不可枚举的
+    //内置类原型上新增的方法，也是可枚举的，私有的属性也是可枚举的属性
+
+    // 遍历对象  for in  会把可枚举属性全部遍历到
+    // 只遍历私有属性 ：hasOwnProperty  是定义Object 的原型上的方法
+
+    // 动画 ： 利用定时器  setInterval
+    // 不断改变据屏幕左边的距离，设置left ,指定步长
+    // oBox.timer = setInterval(function(){},10)
+
+
+    // 递归
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

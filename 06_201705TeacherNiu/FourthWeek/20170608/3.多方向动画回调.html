@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height:100px;
+            background: red;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="../../utils.js"></script>
+<script type="text/javascript" src="../../animate.js">//animate要放在utils文件后面</script>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+/*
+
+    var beginL = utils.css(oBox,"left");
+    var changeL = utils.win("clientWidth") - oBox.offsetWidth-beginL;
+    var beginTop = utils.css(oBox,"top");
+    var changeT = utils.win("clientHeight")- oBox.offsetHeight-beginTop;
+    var beginO = utils.css(oBox,"opacity");
+    var changeO = 1-beginO;
+
+    function Linear(t,b,c,d) {
+        return t/d*c+b;
+    }
+
+    var duration = 2000;
+
+    var time=null;
+    function move() {
+        clearInterval(oBox.timer);
+        oBox.timer=setInterval(function () {
+            time += 10;
+            if(time >=duration){
+                utils.css(oBox,"left",changeL+beginL);
+                utils.css(oBox,"top",changeT+beginTop);
+                utils.css(oBox,"opacity",changeO + beginO);
+                clearInterval(oBox.timer);
+                return;
+            }
+            var curL = Linear(time,beginL,changeL,duration);
+            var curT = Linear(time,beginTop,changeT,duration);
+            var curO = Linear(time,beginO,changeO,duration);
+            utils.css(oBox,"left",curL);
+            utils.css(oBox,"top",curT);
+            utils.css(oBox,"opacity",curO);
+        },10);
+    }
+    oBox.onclick= move;
+*/
+    oBox.onclick = function () {
+        //zfAnimate(oBox,{left: 1000,top: 500,opacity: .3,width: 0,height: 0},3000,0);//duration后的数值0,是运动的效果,可以选择0-3;
+        zfAnimate(oBox,{left: 1000,top: 500,opacity: .3,width: 0,height: 0},3000,["Circ","easeInOut"]);//duration后的[]是动画效果的设置属性和属性值;
+        //更多效果在zfAnimate里查找
+    };
+
+
+
+</script>
+</body>
+</html>

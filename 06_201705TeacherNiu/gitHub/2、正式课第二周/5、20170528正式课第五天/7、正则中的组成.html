@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    var  reg = /^\d*$/;  // 是一个0-9之间的数字
+//    console.log(reg.test("12"))// true
+//    console.log(reg.test("zhufe12zhufeng"))//false
+//    console.log(reg.test("1888yy81"))// false
+
+    // 正则的组成
+    // 正则都是由元字符和修饰符的
+    // 元字符 ： 在// 之间有意义的字符
+
+
+    // 具有特殊的字符
+    // \ : 转义字符 ，转译后面的字符所代表的含义
+    // ^  :  以某一个元字符开头
+    // $ : 以某一个元字符结尾
+    // \n  : 匹配一个换行符
+    //   .  : 除了\n 以外任意一个字符
+//    var reg= /^0.3$/;
+//    console.log(reg.test("0.3")); //true
+//    console.log(reg.test("0&3"));// true
+//
+//    var reg= /^0\.3$/;
+//    console.log(reg.test("0.3")); //true
+//    console.log(reg.test("0-3"));  // false
+
+
+    //量词元字符
+    //* : 出现零次到多次
+    // +  : 出现一次或多次
+    // ? : 出现零次或者一次
+    // {n} :  n 是一个非负整数， 匹配子表达式出现n次
+    // {n,} : n是一个非负整数，出现n到多次
+    // {n,m}  : n，m 是非负整数，出现n到m次
+
+//    ()括号的作用  ： 把大正则分解成几个小正则
+//    var reg =/^(\d+)zhufengd(\d+)$/;
+//    console.log(reg.test("66zhufeng66"));// true
+
+    //x|y  : x或y中的一个
+//    var reg = /^1|2$/;  // 以1 开头或者以2 结尾
+//    console.log(reg.test("1"));// true
+//    console.log(reg.test("2"));// true
+//    console.log(reg.test("221355")); // true//
+     // [xyz]  : x或y或z 中的一个字符
+    // [^xyz]  : 除了xyz 的任意一个字符
+    // [a-z]  : a 到 z 之间的任意一个字符
+    // [^a-z]  : 除了a到z之间的任意一个字符
+    // \d  : 一个0-9之间的数字  \D : 除了0-9之间的一个任意字符
+    // \b : 匹配一个边界字符
+//    var  str="zhufeng zhuden"
+    // \w  : 数字 、字母、下划线 中的任意一个字符
+    // \s : 匹配一个空白字符、空格、制表符、换页符
+
+//    var reg = /^\w$/;
+//    console.log(reg.test("W"))// true
+
+      // 手机号验证
+    var reg = /^1\d{10}$/;
+    if(reg.test(tt)){
+        alert('注册成功')
+    }else{
+        alert("您的手机号不合法")
+    };
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

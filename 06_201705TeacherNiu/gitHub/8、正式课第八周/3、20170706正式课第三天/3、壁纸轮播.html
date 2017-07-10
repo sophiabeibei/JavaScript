@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        #outer{
+            position: relative;
+            width:900px;
+            height:600px;
+            margin:auto;
+            overflow: hidden;
+        }
+        #outer div{
+            position: absolute;
+            left:0;
+            top :0;
+        }
+        #outer img{
+            width :900px;
+            height:600px;
+        }
+        #outer ul{
+            width:100%;
+            position: absolute;
+            bottom: 5px;
+            text-align: center;
+            z-index:10;
+        }
+        #outer ul li{
+            display: inline-block;
+            width:100px;
+            height:100px;
+            border: 10px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        #outer ul li img{
+            width:100%;
+            height:100%;
+        }
+        :target{
+            z-index: 5;
+        }
+        /*bg1的动画*/
+        #bg1:target{
+            animation: myTranslate 1s ease-in;
+        }
+        @keyframes myTranslate {
+            0%{
+                transform: translate(-500px);
+            }
+            15%,45%{
+                transform: translate(-150px);
+            }
+            30%,60%{
+                transform: translate(150px);
+            }
+            100%{
+                transform: translate(0);
+            }
+        }
+        @-webkit-keyframes myTranslate {
+            0%{
+                transform: translate(-500px);
+            }
+            15%,45%{
+                transform: translate(-150px);
+            }
+            30%,60%{
+                transform: translate(150px);
+            }
+            100%{
+                transform: translate(0);
+            }
+        }
+        #bg2:target{
+            animation : myScale 1s linear;
+        }
+        @keyframes myScale  {
+            from{
+                transform: scale(0) rotate(0);
+            }
+            to{
+                transform: scale(1) rotate(360deg);
+            }
+        }
+        @-webkit-keyframes myScale  {
+            from{
+                transform: scale(0) rotate(0);
+            }
+            to{
+                transform: scale(1) rotate(360deg);
+            }
+        }
+        /*bg3的动画*/
+        #bg3:target{
+            animation: mySlide 0.5s ease-in-out;
+        }
+        @keyframes mySlide  {
+            from{
+                transform: translate(0,-500px);
+            }
+            to{
+                transform: translate(0,0);
+            }
+        }
+        @-webkit-keyframes mySlide  {
+            from{
+                transform: translate(0,-500px);
+            }
+            to{
+                transform: translate(0,0);
+            }
+        }
+        /*bg4的动画*/
+        #bg4:target{
+            animation: fourScale 0.5s linear;
+        }
+        @keyframes fourScale {
+            0%{
+                transform: scale(1.9);
+                opacity: 0;
+            }
+            100%{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        /*bg5的动画*/
+       #bg5:target{
+           animation: fiveScale 0.5s linear;
+       }
+        @keyframes fiveScale  {
+            from{
+                transform: scale(0);
+                opacity:0;
+            }
+            to{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @-webkit-keyframes fiveScale  {
+            from{
+                transform: scale(0);
+                opacity:0;
+            }
+            to{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="bg1"><img src="images/1.jpg" alt=""></div>
+    <div id="bg2"><img src="images/2.jpg" alt=""></div>
+    <div id="bg3"><img src="images/3.jpg" alt=""></div>
+    <div id="bg4"><img src="images/4.jpg" alt=""></div>
+    <div id="bg5"><img src="images/5.jpeg" alt=""></div>
+    <ul>
+        <li><a href="#bg1"><img src="images/1.jpg" alt=""></a></li>
+        <li><a href="#bg2"><img src="images/2.jpg" alt=""></a></li>
+        <li><a href="#bg3"><img src="images/3.jpg" alt=""></a></li>
+        <li><a href="#bg4"><img src="images/4.jpg" alt=""></a></li>
+        <li><a href="#bg5"><img src="images/5.jpeg" alt=""></a></li>
+    </ul>
+</div>
+<script type="text/javascript">
+
+
+
+
+</script>
+</body>
+</html>

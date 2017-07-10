@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding :0;
+        }
+        #box{
+            width :100px;
+            height:100px;
+            background: #F9044E;
+            margin:30px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    // bind unbind
+    //  bind  ： 绑定的所有 方法放在这个元素对象天生自带事件池里，
+    function bind(curEle,evenType,evenFn) {
+        if(curEle.addEventListener){
+            curEle.addEventListener(evenType,evenFn,false);
+            return;
+        }
+        // 是IE678执行以下的代码
+        var tempFn = function () {
+            evenFn.call(curEle)
+        }
+        tempFn.photo = evenFn;// 新增一个属性，属性值代表当前传进来真实方法
+        // 解决重复问题，判断是否已经绑定相同的方法
+        if(!curEle["myBind"+evenType]){
+            curEle["myBind"+evenType] = [];
+        }// 加evenType这个变量，防止给不同事件行为绑定相同方法，被阻止
+        var ary = curEle["myBind"+evenType];
+        for(var i=0;i<ary.length;i++){
+            var cur = ary[i];
+            if(cur.photo === evenFn){
+                return
+            }
+        }
+        ary.push(tempFn)
+        curEle.attachEvent("on"+evenType,tempFn);
+    }
+    function unbind(curEle,evenType,evenFn) {
+        if(curEle.removeEventListener){
+            curEle.removeEventListener(evenType,evenFn,false);
+            return;
+        };
+        var ary = curEle["myBind"+evenType];
+        if(ary){
+            for(var i=0;i<ary.length;i++){
+                var cur = ary[i];
+                if(cur.photo === evenFn){
+                    curEle.detachEvent("on"+evenType,cur);
+                }
+            }
+        }
+    }
+
+    function fn1(e) {
+        console.log(1)
+    }
+    function fn2(e) {
+
+        console.log(2)
+    }
+    var  count =0;
+    function fn3() {
+//        count++;
+//        if(count >2){
+//            off(oBox,"click",fn1)
+//        }
+        console.log(3)
+    }
+    function fn4() {
+        console.log(4)
+    }
+    function fn5() {
+        console.log(5)
+    }
+    function fn6() {
+        console.log(6)
+    }
+//    bind(oBox,"click",fn1)// 浏览器给事件行为的事件池
+//    unbind(oBox,"click",fn1)
+    //
+    // on  off  run
+    on(oBox,"click",fn1);//  自己创建创建的事件池
+    on(oBox,"click",fn2);
+    on(oBox,"click",fn3);
+    on(oBox,"click",fn4);
+    on(oBox,"click",fn5);
+    on(oBox,"click",fn6);
+    off(oBox,"click",fn4);
+
+
+
+</script>
+</body>
+</html>

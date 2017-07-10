@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 高级程序设计3  JavaScript
+    //预解释的特殊情况
+    // 1、条件中的预解释
+       //不管条件成立还是不成立，都要进行预解释
+        //不管条件成立还是不成立，var function 只声明，不定义；
+//    if("b" in window){
+//        var a = "珠峰培训";
+//    };
+//    console.log(a);//undefined
+//    console.log(sum)//
+//    if([] == ![]){// true
+//        var tt=18;
+//        function sum() {
+//            var a=15;
+//        };
+//    };
+//    if([] == []){
+//        var tt=18;
+//        function sum() {
+//            var a=15;
+//        };
+//    };
+//    console.log(tt);  //undefined
+//    console.log(sum); // undefined
+//    g();
+//    function g() {
+//        console.log(10);
+//    }
+    // 2、预解释只发生在“=”的左边，右边不进行预解释
+
+//    var fn = function () {
+//        var a = 53; // a 是私有变量
+//        console.log(a)
+//    };
+//    //匿名函数之函数表达式
+////    console.log(sum)
+////    sum()
+//    fn();
+    //右边是函数，会把函数的空间地址给了左边变量
+    // 3、 函数中return 的内容不进行预解释，但是return 下面的代码需要进行预解释
+//    var total =8;
+//    function sum(){
+//        console.log(total); // undefined
+//        return function () {
+//            var total =20;
+//            console.log(total);   // 不输出
+//        };
+//        var total =28;
+//        console.log(total); // 不执行
+//    };
+//    var f=sum();
+//    f();
+//    console.log(total);  // 8;
+    //4、匿名函数不进行预解释
+    // 自执行函数本身不进行预解释，定义跟执行一块完成，但是里面的代码进行预解释
+//    var uu ="ss";
+//    (function () {
+//       var aa = "珠峰培训";
+//    })();
+    //5、预解释的时候，如果变量名字重复，不再声明，但是要重新定义；
+    fn();//  "b"
+    var fn=12;
+//    fn();  //报错
+    function fn() {
+       console.log("a")
+    }
+//    fn();// fn  not a function
+    function fn() {
+        console.log("b")
+    };
+//    fn();
+//    function fn() {
+//         console.log("b")
+//    };
+
+</script>
+</body>
+</html>

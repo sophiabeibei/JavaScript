@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            /*position: absolute;*/
+            /*left:50px;*/
+            width:100px;
+            height:100px;
+            background: red;
+            -webkit-animation:myRotate 3s linear;
+            -o-animation:myRotate 3s linear;
+            animation:myRotate 3s linear;
+        }
+        -webkit-@keyframes myRotate {
+                    0%{
+                        transform:translate(0,0);
+                        opacity: 0;
+                    }
+                    15%{
+                        transform: scale(2,0.5);
+                    }
+                    50%{
+                        transform: translate(300px,300px);
+                        opacity:0.5;
+                    }
+                    75%{
+                        transform:scale(0.3)
+                    }
+                    100%{
+                        transform:translate(0,0) scale(1);
+                        opacity: 1;
+                    }
+                }
+        @keyframes myRotate{
+            /*from{*/
+                /*transform:translate(100px,0);*/
+                /*opacity: 0;*/
+            /*}*/
+            /*to{*/
+                /*transform: translate(300px,300px);*/
+                /*opacity: 1;*/
+            /*}*/
+            0%{
+                transform:translate(0,0);
+                opacity: 0;
+            }
+            15%{
+                transform: scale(2,0.5);
+            }
+            50%{
+                transform: translate(300px,300px);
+                opacity:0.5;
+            }
+            75%{
+                transform:scale(0.3)
+            }
+            100%{
+                transform:translate(0,0) scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+
+</div>
+</body>
+</html>

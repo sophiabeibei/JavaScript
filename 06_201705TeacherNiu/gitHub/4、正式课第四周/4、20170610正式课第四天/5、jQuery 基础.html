@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div class="first">
+    <div class="second"></div>
+</div>
+<div class="first"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    // one
+//    var first = document.getElementsByClassName("first")[0];
+//    utils.addClass(first,"one");
+  // jQuery 是由原生js封装成一个库
+    // 三个版本
+    // jquery-1.xxx  第一个版本 兼容所有浏览器
+    //jquery-2.xxx  第二个版本  在ie678 是不兼容的
+    // jquery-3.xxx  第三个版本  在ie678 是不兼容的
+    // 通过class获取元素，类名前面加上点
+    // 通过id获取元素 ，id名前加上#
+    //
+    $(".first").addClass("two");
+    console.log($(".first"))// 获取到所有class带有first 这个类名的元素对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

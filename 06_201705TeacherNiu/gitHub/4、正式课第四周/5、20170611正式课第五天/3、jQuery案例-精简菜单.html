@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width :300px;
+            margin:30px auto;
+            border: 1px solid #08BECE;
+            padding :20px;
+        }
+        .box ul{
+            list-style: none;
+            margin-bottom: 20px;
+
+        }
+        .box ul li{
+            float: left;
+            width :100px;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+
+        }
+        .btn{
+            margin: 0 20px;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            background: lightcoral;
+            clear: both;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>佳能</li>
+        <li>三星</li>
+        <li>索尼</li>
+        <li>小米</li>
+        <li>苹果</li>
+        <li>华为</li>
+        <li>联想</li>
+        <li>魅族</li>
+        <li>opp</li>
+        <li>锤子</li>
+        <li>金立</li>
+        <li>步步高</li>
+        <li>诺基亚</li>
+        <li>其他品牌</li>
+    </ul>
+    <div class="btn">显示精简品牌</div>
+</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+//    var $oLi = $("ul li");// jQuery  的实例
+//    $oLi.each(function (index) {// index : 遍历的时候对应的索引
+//        //console.log(this)// 每一个li
+//        var reg = /(三星|苹果|魅族)/;
+//        if(reg.test($(this).html())){
+//            $(this).css("color","red")
+//        }
+//        // 对索引进行判断，大于5小于13让其隐藏
+//        if(index>5 && index<13){
+//            $(this).hide();
+//        }
+//    });
+//    $(".btn").click(function () {
+//        if($(this).html()=="显示全部品牌"){
+//            $("li").show();
+//            $(this).html("显示精简品牌");
+//        }else{
+//            $("li").each(function (index) {
+//                if(index>5 && index<13){
+//                    $(this).hide();
+//                }
+//            });
+//            $(this).html("显示全部品牌");
+//        }
+//    });
+    $(".btn").on("click",function () {
+        if($(this).html()=="显示精简品牌"){
+            $(this).html("显示全部品牌")
+        }else{
+            $(this).html("显示精简品牌")
+        };
+        $("ul li").each(function (index) {
+            // 有几个li ，那么回调函数就执行几次
+            if(index>5 && index<13){
+                // toggle  切换显示隐藏
+                $(this).toggle();
+            }
+        })
+    })
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+//    var ary  = [1,3,5];
+//    ary.sort(function (a,b) {
+//        console.log(this)
+//        return a-b;
+//    })
+
+
+
+
+
+
+</script>
+</body>
+</html>

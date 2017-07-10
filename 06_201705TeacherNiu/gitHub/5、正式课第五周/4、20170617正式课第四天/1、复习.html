@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+//    oBox.name = "zhufeng";
+//    oBox["name"] = "zhufeng"
+
+    //oBox  onclick  onmouseover  onmouseout...  这些时间默认的属性值null;
+    // 参数e：  包含了一些事件的信息
+    oBox.onclick = function (e) {
+        // MouseEvent: 是一个对象数据类型的
+        e = e || window.event;
+        // clientX  clientY  pageX pageY target
+        //clientX :鼠标距离可视窗口左边的距离
+        // clientY : 鼠标距离可视窗口上边的距离
+
+        // pageX : 鼠标距离整个网页左边的距离
+        e.pageX = e.pageX ||(e.clientX+ (document.documentElement.scrollLeft||document.body.scrollLeft))
+        e.pageY = e.pageY ||(e.clientY+ (document.documentElement.scrollTop||document.body.scrollTop))
+        //e.target : 事件源
+        e.target = e.target || e.srcElement;
+
+        console.log(1)
+    };
+    // 当oBox的点击事件被触发的时候，给点击事件绑定的这个方法也会执行
+
+    //事件的传播机制： 事件冒泡传播
+    // 阻止事件的冒泡传播：e.stopPropagation ? e.stopPropagation():e.cancelBubble = true;
+    // 事件委托：利用了事件冒泡传播的机制，给元素的最外层的事件绑定一个方法，结合事件源，进行不同的操作
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

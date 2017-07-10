@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解决DOM2级事件绑定时-this问题</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    /* DOM2级事件绑定方法中遇到的问题:
+     * 1)顺序问题:标准浏览器中有addEventListener方法,打印顺序--正序;
+     *           非标准浏览器中有attachEvent方法;打印顺序--倒叙;
+     * 2)this问题: 标准浏览器中this指向当前绑定的元素对象,IE6-8中的this指向window;
+     * 3)重复问题: 标准浏览器对元素的一个事件行为绑定多次一样的方法,浏览器会把重复的过滤掉,但IE6-8是不进行过滤处理,绑定了重复的方法也都会执行;
+     *
+     * */
+    var oBox = document.getElementById("box");
+    function fn1() {
+        console.log(1);
+        console.log(this===oBox);//检测this
+    }
+    function fn2() {
+        console.log(2);
+    }
+    function fn3() {
+        console.log(3);
+    }
+    function fn4() {
+        console.log(4);
+    }
+    function fn5() {
+        console.log(5);
+    }
+
+    /**
+     *
+     * @param curEle: 当前的元素对象
+     * @param evenType: 事件行为(click...mouseover... ...)
+     * @param evenFn: 指定的事件行为的方法
+     */
+    //1)解决this的问题
+    function bind(curEle, evenType, evenFn) {
+        if(document.addEventListener){
+            curEle.addEventListener(evenType,evenFn,false);//捕获阶段不容易发生,一般先解决false冒泡阶段;
+            //如果执行了这里,说明addEventListener存在,说明是标准浏览器;直接绑定事件,直接结束即可;
+            return;
+        }
+        //解决this问题
+        var tempFn = function () {
+            evenFn.call(curEle);
+        };
+
+        //如果执行了这里,说明是非标准浏览器(IE6-8);
+        curEle.attachEvent("on"+evenType,tempFn);
+    }
+    function unbind(curEle, evenType, evenFn) {
+        if(document.removeEventListener){
+            curEle.removeEventListener(evenType,evenFn,false);
+            return;
+        }
+        curEle.detachEvent("on"+evenType,evenFn);
+    }
+    bind(oBox,"click",fn1);
+    bind(oBox,"click",fn2);
+    bind(oBox,"click",fn3);
+    bind(oBox,"click",fn4);
+    bind(oBox,"click",fn5);
+
+
+
+
+
+</script>
+</body>
+</html>

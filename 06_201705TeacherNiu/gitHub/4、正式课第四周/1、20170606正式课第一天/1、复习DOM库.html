@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            /*margin:50px auto;*/
+            width :50px;
+            height :50px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="box2"></div>
+    <div class="box1"></div>
+    <div class="box yy"></div>
+</div>
+
+<script type="text/javascript" src="DOM.js"></script>
+<script type="text/javascript">
+    var  oBox = document.getElementsByClassName("box")[0];
+    var oParent = document.getElementsByClassName("parent")[0];
+//    console.log(utils.previousSiblings(oBox))
+    // document.getElementsByClassName
+//    utils.getByClass("box",oParent)
+//    utils.hasClass(oBox,"yy")
+//    utils.addClass(oBox,"ww zz")
+//    utils.setCss(oBox,"width","100px","height","200px")
+//    utils.setCss(oBox,"height","200px")
+//    utils.setCss(oBox,"opacity","0.5")
+      //  设置多个样式
+    function setGroupCss(curEle,options) {
+//        options = {width : 100,height :200,opacity : 0.5}
+        for(var attr in options){// 遍历对象中每一个属性
+            utils.setCss(curEle,attr,options[attr])
+        }
+    }
+    setGroupCss(oBox,{width:100,height:200,opacity :0.5,margin:"50px auto"})
+    //
+    function css() {
+        var  len = arguments.length,
+             curEle = arguments[0],
+             attr = null,
+             value = null,
+             options = null;
+        if(len ===3){
+            attr = arguments[1];
+            value = arguments[2];
+            utils.setCss(curEle,attr,value);
+            return;
+        }
+        if(len ===2 && typeof arguments[1] === "object"){
+            options = arguments[1];
+            setGroupCss(curEle,options);
+            return;
+        }
+        attr = arguments[1];
+        return utils.getCss(curEle,attr);
+    };
+    css(oBox,{width:100,height:200,opacity :0.5});// 设置一组样式
+    css(oBox,"width","300px")// 设置宽度
+    css(oBox,"width")// 获取宽度
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

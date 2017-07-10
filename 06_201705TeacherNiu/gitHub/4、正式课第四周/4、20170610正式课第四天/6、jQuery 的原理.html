@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="first">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+   // window.jQuery = window.$ = jQuery;
+   //  把jQuery 的这个方法赋值全局下的$ ,和全局下jQuery
+   // jQuery 是一个方法，又是一个类
+   //  采用了构造函数的思想
+    $(".first")// 是一个jQuery实例
+   $(".first").addClass("one");
+    var first = document.getElementsByClassName("first")[0];
+    // jQuery 上extend 方法 ，是用来扩展jQuery 的方法
+
+   jQuery.fn.extend({
+       aa:function () {
+            console.log(1)
+       }
+   });
+   // selector : 是个参数，选择器
+   // context : 上下文
+   $(".first li").aa()
+
+    // 选择器
+    // 事件
+    // 动画
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

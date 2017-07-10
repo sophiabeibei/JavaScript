@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    //需求: 在指定的时间内完成移动;(3秒到达最右侧)
+    //总时间是固定
+    //总距离是固定
+    //已知运动的时间
+    var oBox = document.getElementById("box");
+
+
+
+    function move() {
+
+    }
+    oBox.onclick = move;
+
+
+
+
+
+    //最新的位置
+    //t: 走过的时间    time
+    //b: 开始位置   begin
+    //c: 总距离   改变的距离change
+    //d: 总时间    duration
+    //匀速运动公式
+    /*function Linear(t, b, c, d) {
+        return t/d*c+b;
+    }*/
+
+
+
+
+
+
+</script>
+</body>
+</html>

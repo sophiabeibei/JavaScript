@@ -1,0 +1,9 @@
+.box:hover {
+  width: 100px;
+}
+.box-top {
+  height: 300px;
+}
+.box + .box-top {
+  width: 100px;
+}

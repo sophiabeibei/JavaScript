@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    // 定时器
+//    debugger
+
+    //oBox是一个元素对象，新增一个自定义属性，
+    oBox.timer=window.setTimeout(function () {//当代码执行到这一行，定时器会记下时间
+//        debugger
+//        // 等过了10毫秒然后，这个函数中的代码开始执行
+    },10)
+//
+//    window.setInterval(function () {//当代码执行到这一行，定时器会记下时间
+        // 等过了10毫秒然后,函数代码开始执行，以后每隔10毫秒都会这个函数一次
+//    },10);
+    // 定时器是异步的编程  ： 不管定时器中代码是否执行，都会执行下面的代码
+
+    //console.log()
+//     debugger
+//    debugger// 代码执行顺序
+    // 可以看到你获取的值是否正确
+
+//    for(var i=0;i<1000000;i++){
+//        console.log(i);
+////        debugger
+//    }
+    // 定时器的返回值： 当前定时器在页面中是第几个，返回值就是几
+    // 是window下的一个方法
+    function move(){
+        console.log(2)
+    }
+   setInterval(move,10);
+
+</script>
+</body>
+</html>

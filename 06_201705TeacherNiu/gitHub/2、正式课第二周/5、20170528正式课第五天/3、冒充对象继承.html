@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 冒充对象继承 ： 类B 的实例继承了类A的私有属性和公有属性，在类B中创建一个A的实例，（对象），把A的实例里面的属性名属性值，复制一份给类B的实例
+    function A() {
+        this.x =100;
+    };
+    A.prototype.getX = function () {
+        console.log(this.x)
+    };
+    function B() {
+//        this.x =200
+        var temp = new A;// 对象
+//        console.log(temp)
+        for(var key in temp){
+            this[key] = temp[key];
+            //obj.age = temp.age
+        };
+        temp =null;
+    };
+    var f = new B;
+    console.log(f.x)
+    console.log(f.getX)
+</script>
+</body>
+</html>

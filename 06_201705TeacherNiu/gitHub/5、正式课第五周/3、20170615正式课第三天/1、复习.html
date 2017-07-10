@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{
+            margin:30px auto;
+            width:100px;
+            height:100px;
+            background: #F9044E;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    // 事件 ： 一个行为  onclick  onmouseover ...,然后给这个行为绑定一个方法，当行为触发的时候，让当前绑定的这个方法执行
+    // oBox 元素对象    onclick  是一个属性名
+//    console.log(oBox.onclick) // null
+//    oBox.onclick = function (e) {// e 形参
+//        console.log(e);// 事件对象
+//    };
+    // 如果给当前元素对象的某个行为绑定一个方法，那么浏览器会把当前事件的一些信息，传给当前这个方法，方法用参数来接收这个对象（一般参数e）;
+    // 事件对象 ：
+    // clientX  : 元素行为触发的时刻，鼠标那个点距离当前可视窗口左边的距离
+    //clientY  : 元素行为触发的时刻，鼠标那个点距离当前可视窗口上边的距离
+
+    // pageX  :元素行为触发的时刻，鼠标那个点距离页面左边的距离
+    // pageY :元素行为触发的时刻，鼠标那个点距离页面顶部的距离
+    // 在IE678 是不兼容的
+    //e.pageX = e.pageX || (e.clientX  + (document.documentElement.scrollLeft || document.body.scrollLeft))
+    // e.pageY = e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop));
+    // 事件源 ： 在MouseEvent这个事件对象中，target
+var box = document.getElementById("box");
+box.onclick = function (e) {
+    e = e || window.event;
+//    if(e){
+//        e = e;
+//    }else{
+//        e= window.event;
+//    }
+    console.log(e)
+    // 在标准浏览器下的事件源 : target:事件触发的源头
+    console.log(e.target)// box
+}
+//document.body.onclick = function (e) {
+//    console.log(e)
+//    console.log(e.target)// box
+//};
+    // 阻止事件的默认行为
+   // e.preventDefault?e.preventDefault() : e.returnValue = false;
+    // 事件的冒泡传播机制
+    // 当触发当前元素的某个行为（click）的时候，它的所有上级元素对应这个行为(click)也会跟着触发
+    //阻止事件的冒泡传播
+    //e.stopPropagation?e.stopPropagation():e.cancelBubble = true;
+    // onmouseover  和 onmouseenter  的区别 ；onmouseenter 不支持事件的冒泡
+    // 放大镜
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

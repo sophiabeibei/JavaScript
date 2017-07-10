@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //arguments  是个类数组 ，不能调用数组的方法
+    //中间类继承，通过__proto__这个属性改变当前对象的指向,在IE下不兼容
+    function fn() {
+        console.log(arguments);
+//        var ary = [];
+//        ary = Array.prototype.slice.call(arguments);
+//        ary.sort(function (a,b) {
+//            return a-b
+//        });
+//        ary.pop();
+//        ary.shift();
+//        console.log(eval(ary.join("+"))/ary.length);
+        arguments.__proto__ = Array.prototype;
+        arguments.sort(function (a,b) {
+            return a-b;
+        });
+        arguments.pop();
+        arguments.shift();
+        console.log(eval(arguments.join("+"))/arguments.length);
+    };
+    fn(88,99,96,95,97,97,90);
+
+</script>
+</body>
+</html>

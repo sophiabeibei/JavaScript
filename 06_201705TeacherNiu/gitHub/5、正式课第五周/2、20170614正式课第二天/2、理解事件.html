@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+
+        *{
+            margin:0;
+            padding :0;
+        }
+        #oBox{
+            width :100px;
+            height:100px;
+            margin: 50px auto;
+            background: #08BECE;
+        }
+    </style>
+</head>
+<body>
+<div id="oBox"></div>
+<input type="text">
+<script type="text/javascript">
+    var oBox = document.getElementById("oBox");
+    // 事件 ： 浏览器天生给元素提供了一些事件，onclick onmouseover onmouseout onmouseenter  onmouseleave    onmousemove  onload  onscroll onmousewheel(鼠标滚轮滚动出发)  onfocus  (获取鼠标焦点)   onblur (失去鼠标焦点) onresize（改变窗口大小）  onmousedown  (鼠标按下) onmouseup (鼠标抬起)  onkeydown (键盘按下) onkeyup  (键盘抬起) ... ,如果没有绑定任何方法，那么事件是执行了，只是什么都没做
+      console.log(oBox.onclick) // null
+      // onclick  这个属性是元素天生就有的
+//    oBox.onclick = function () {
+//        console.log(1)
+//    }
+//    oBox.onmouseover= function () {
+//
+//    }
+    // 事件发生
+    // 1、给当前的行为绑定方法
+    // 2、触发当前的事件
+
+
+
+
+</script>
+</body>
+</html>

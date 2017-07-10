@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin :0;
+            padding : 0;
+        }
+        #box{
+            width : 200px;
+            height : 200px;
+            margin: 50px auto;
+            border: 1px solid #08BECE;
+            /*float : left;*/
+        }
+
+    </style>
+</head>
+<body>
+<div id="box" style="float:left">
+
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById("box");
+    var width = utils.getCss(oDiv,"width");
+    oDiv.style.float = "right";
+
+    // 设置css方法
+    // 参数 ： 参数1、元素对象，要给谁设置样式
+    // 参数2: 给元素的哪个属性名设置
+    // 参数3： 给属性设置的具体值
+    function setCss(curEle,attr,value) {
+        if(attr === "opacity"){
+            curEle.style["opacity"] = value;
+            // 在IE下对透明度的设置
+            curEle.style["filter"] = "alpha(opacity="+ value*100 +")";
+        };
+        if(attr==="float"){
+            //在IE下对浮动的设置
+            curEle.style["cssFloat"] = value;
+            curEle.style["styleFloat"] = value;
+        }
+        // 确保对宽高marginpadding赋值带单位
+        var reg = /^width|height|top|left|bottom|right|((margin|padding)(Top|Bottom|Left|Right)?)$/;
+        // 取匹配要修改的属性是以上几种
+        if(reg.test(attr)){
+            // 判断当前的值是否带有单位，如果没有，进行拼接
+            if(!isNaN(value)){
+                value+="px";
+            }
+        }
+        curEle.style[attr] = value;
+    };
+    setCss(oDiv,"width","300")
+    console.log(oDiv.style)
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #oDiv{
+            width :100px;
+            height:100px;
+            background: red;
+            /*transition: width 1s;*/
+            /*transition-property:执行动画属性的名称*/
+            /*transition-duration : 2s 过渡时间*/
+            /*transition-timing-function : linear ease-in ease-out ease-in-out*/
+            /*!*transition-delay: ;*!延迟时间*/
+            /*transition-property:all;*/
+            /*transition-duration : 2s;*/
+            /*transition-timing-function:linear;*/
+            /*transition-delay:2s;*/
+            -webkit-transition:all 2s ease-out ;
+            -moz-transition:all 2s linear ;
+            -ms-transition : all 2s linear;
+            -o-transition:  all 2s linear;
+            transition: all 2s ease-out;
+            /*IE9 以及以下的不兼容*/
+        }
+        #oDiv.animated{
+            width :300px;
+            height:300px;
+            background-color: green;
+            opacity: .4;
+        }
+
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById("oDiv");
+    oDiv.onclick = function () {
+//        this.style.width = 300+"px";
+//        this.style.height = 300+"px";
+//        var timer =setInterval(function () {
+//            // 获取每一次盒子宽度高度
+//            var width = utils.getCss(oDiv,"width");
+//            var height= utils.getCss(oDiv,"height");
+//            if(width>=300){
+//                clearInterval(timer);
+//                return;
+//            }
+//            oDiv.style.width = width + 5 + "px";
+//            oDiv.style.height= height + 5 + "px";
+//        },10)
+        this.className="animated";
+    }
+
+
+
+</script>
+</body>
+</html>

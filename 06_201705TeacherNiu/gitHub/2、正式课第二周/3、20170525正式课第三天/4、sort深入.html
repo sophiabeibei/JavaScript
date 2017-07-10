@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    // sort  Array 是一个内置的类，sort在Array的原型上，所以凡是数组都可以调用
+    // sort  只处理10以内的数字
+     //sort(function(a,b){return a-b})  从小到大排序
+    // sort(function(a,b){return b-a)} 从大到小排序
+//    var ary=[1,5,6,"48",8,19,88]
+//    ary.sort(function (a,b) {
+//        return a-b
+//    });
+//    console.log(ary);
+   // 回调函数 ： 把一个方法B当做方法A的参数，传给方法A，在函数A中，可以任意位置调用方法B，让方法B执行
+//    function A(B) {
+//        console.log(1);
+//        console.log(arguments[0]);
+//        B();
+//        B();
+//    };
+//    function B() {
+//        console.log(2)
+//    };
+//    A(B);
+//        var ary=[1,5,6,48,8,19,88]
+//        ary.sort(function (a,b) {
+//            console.log(a,b) // a 取当前项，b取后一项
+//            return a-b;
+//        });
+//        console.log(ary)
+        //  sort原理
+        //  升序：return a-b 如果大于0，那么我让a、b 交换位置，如果小于0，则不换位置
+       // 降序 ： return b-a  如果b-a大于0，让a、b交换位置，如果小于0，不换位置
+    var data =[
+        {name : "徐蒙",age : 18},
+        {name : "袁亚婷",age : 19},
+        {name : "赵双燕",age : 19},
+        {name : "徐仁坤",age : 12},
+        {name : "王林",age : 250}
+    ];
+//    var data =[
+//        [1,2,9],
+//        [1,2,4],
+//        [1,2,6],
+//        [1,2,0],
+//        [1,2,19],
+//        [1,2,29]
+//    ];
+    // 是二维数组
+    // 数组上有sort 这个方法
+    // 1、对年龄排序
+//    data.sort(function (a,b) {
+////        console.log(a.age);// 数组中当前项 // {name: "徐蒙", age: 18}
+////        console.log(b.age);
+//        return a.age - b.age;
+//    });
+//    console.log(data)
+    // sort  排序； 是对数组中每一项排序
+    // 2、对名字排序
+//    data.sort(function (a,b) {
+    ////        console.log(a.name,b.name)
+    //        return a.name.localeCompare(b.name);//{name: "徐蒙", age: 18}
+    //    });
+//    console.log(data)
+    //localeCompare 先把汉字转成拼音(谷歌浏览器最新版本的存在问题)
+    //'宁新' // "宁信鹏"  // Unicode 编码
+
+</script>
+</body>
+</html>

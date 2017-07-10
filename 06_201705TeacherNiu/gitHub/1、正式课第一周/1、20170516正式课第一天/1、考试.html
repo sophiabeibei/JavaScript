@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // sort
+    //ary.sort(function(a,b){return a-b})  从小到大
+    //ary.sort(function(a,b){return b-a})  从大到小
+    // splice
+    //splice (n,m)
+    //splice(n,m,x)
+    //slice(n-1、20170516正式课第一天,m)
+    //Math.round(Math.random()*(m-n)+n) 产生随机整数
+//    50-60
+    // 定时器  setTimeout   :
+    var timer1=window.setTimeout(function () {
+        console.log(10)
+    },1000)//毫秒  到了一秒执行，只执行一次就结束，但是当前定时器还没有清掉
+    var timer2=window.setInterval(function () {
+       console.log(10)
+    },1000)//每隔一秒，函数执行一次，但是当前定时器还没有清掉
+//    window.clearTimeout(timer1);
+  //window.clearInterval(timer2);
+// 第七题
+    var oDiv = document.getElementById("div1");
+    function  getCode(){
+        var str = "";
+        for(var i=0;i<4;i++){
+            str += Math.round(Math.random()*9);
+        };
+        //str+="8"
+        oDiv.innerHTML = str;
+    }
+    getCode();
+    var timer = setInterval(function () {
+        getCode();
+    },1000);
+    setTimeout(function () {
+        window.clearInterval(timer);
+    },10000);
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 1、堆内存和栈内存
+    // 栈内存 是存储基本数据类型的
+    // 堆内存 存储象数据类型，对象会把属性值属性名存进去，function 会把function里面的代码当作字符串存进去
+    // 2、全局作用域：当html加载页面的时候，会形成一个全局的作用域
+       // 私有作用域：当函数执行的时候，会形成一个私有的作用域
+    // 在全局作用域下定义的变量是全局变量
+    // 在私有作用域下定义的变量是私有变量
+    // 2（1）在当前的作用域下，会把带var 、function 进行提前的声明-- 预解释
+    //declare  : 声明
+    // define   : 定义
+    // var 在预解释的时候，只进行提前的声明，没有定义;
+     //3、在全局作用域下，如果没有被var 或function ，那么相当于给window增加一个属性名，属性值就是“=”右边的值
+    // 如果一个变量只声明，不定义，那么它的值就是undefined；
+//    console.log(num);  // undefined
+//   var num =13;//全局变量
+//    var num  = 13;
+
+//    var obj={name : "zhufeng"};  //存储的一个空间地址
+
+//    console.log(num);  // 13
+//    num = 13;
+//    console.log(str);
+    function sum(){
+        var str="";// 私有变量
+        console.log(str) //""
+        var obj1 ={};
+        return str;
+    }
+
+//    console.log(str)// str not a defined
+    sum();
+    str="shdaj";
+    console.log(sum())  // "";
+    console.log(str) //str not a defined
+//    for(var i=0;i<ary.length;i++){
+//    }
+    // 4、function的预解释 ：不仅进行提前声明，而且还进行了定义（赋值）
+//    console.log(timer)//输出整个函数体
+//  function timer(){
+//        for(var i=0;i<10;i++){
+//        }
+//     console.log(10);
+//  }
+  // 5、私有作用域  ：在私有作用域下形成的私有变量，函数保护了私有变量不受外界的干扰，函数的这种机制就叫做  ---> "闭包"
+//    6、函数执行的过程
+    // 首先形成一个私有的作用域
+    // 1)形参赋值（形参也是私有变量）
+    // 2)进行预解释 （把带var function 进行预解释）
+    // 3)代码从上到下执行
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+//@width : 100px;
+//@selector: box;
+//@name: "珠峰培训";
+//@var:name;
+// 变量不仅可以存储共用的属性值，还可以存储url 、选择器
+// 定义变量 、定义方法，并且方法可以进行引用
+
+
+// 按着shift键，右击鼠标，点击在此处打开命令行窗口
+//方法不加括号那么转译之后的css，还是会存在这个样式的，加了之后，这个样式
+//.public(){
+//  width:100px;
+//  height:100px;
+//}
+//.@{selector}{
+//  .public;
+//  background: #000000;
+//  &:hover{
+//    background: green;
+//    content:@@var;
+//  }
+//}
+//#box1 {
+//  .public;
+//  background: red;
+//}
+// public  就是命名空间，它里面的方法gray  都是这个空间下的样式，调取里面的方法， .public>.gray
+//.public{
+//   width:100px;
+//   height:100px;
+//  .gray{
+//    background: #008CD7;
+//    .center{
+//
+//    }
+//  }
+// }
+//.private{
+//  width:200px;
+//  height:200px;
+//  .gray{
+//    background: red;
+//  }
+//}
+//.box1{
+//  .public>.gray;
+//}
+// extend; 可以写到括号中，或者括号外面；引用另一个类型的样式
+//.nav:extend(.public){
+//
+//}
+//.nav{
+//  &:extend(.public);
+//}
+//
+// 在less中定义了一个命名空间，就创建一个作用域，在这个私有作用域中使用的变量首先看一下自己的作用域看有没有，没有的话，向上一级查找（类似于js作用域
+//@color:#eee;
+//.box{
+//  @color:#000;
+//  .gray{
+//    background: @color;
+//  }
+//}
+//// !important : 在方法的后面加！important ,可以让所有的属性都继承！important
+//.box{
+//  width:100px;
+//  height:100px;
+//  .gray{
+//    background: #008CD7;
+//  }
+//}
+//.public{
+//  .box !important;
+//}
+// less 的方法中也有arguments
+//.transition(@property: all,@duration: 1s,@time-function:linear,@delay:0s){
+//  //  方法中可以用arguments 这个属性
+//  transition: @arguments;
+//}
+//  首先方法不仅有参数，而且还有返回值，像js中的函数一样
+//.average(@a,@b){
+//  @result:((@a+@b)/2);
+//}
+//.box{
+//  .average(16px,20px);
+//  padding:@result;
+//}
+// 在less中，常用的条件运算符 > < >= <= = ; 在条件还可以使用一下函数  ： iscolor,isnumber,isstring,iskeyword,isurl,ispixel,ispercentage...
+//@num1:1;
+//@num2:2;
+//.min (@a,@b:1) when (isnumber(@b)){
+//  background: #008CD7;
+//}
+//
+//#box{
+//  width:100px;
+//  height:100px;
+//  .min(@a:1,@b:2)
+//}
+//.animate{
+//  transform+_: scale(1.5);
+//}
+//.box1{
+//
+//}
+//.box{
+//  .animate;
+//  width : 100px;
+//  height:100px;
+//  background: #008CD7;
+//  transform+_: rotate(360deg);
+//}
+//
+//&  : 该运算符 是让当前的选择器和父级选择器按照特定的规则进行拼接；
+.box{
+   &:hover{
+     width:100px;
+   }
+   &-top{
+     height:300px;
+   }
+   & + &-top{
+     width:100px;
+   }
+ }
+
+
+

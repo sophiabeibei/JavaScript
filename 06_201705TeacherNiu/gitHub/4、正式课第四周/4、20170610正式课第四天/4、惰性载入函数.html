@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 惰性载入函数， 是一种优化的思想
+    function getCss(curEle,attr) {
+        var val=null;
+        var flag = "getComputedStyle" in window;
+        if(flag){
+            val = window.getComputedStyle(curEle)[attr];
+        }
+        return val;
+    };
+    // 执行一次，然后对getComputedStyle进行判断一次
+    getCss(oDiv,"width");
+    getCss(oDiv,"height");
+
+
+
+
+</script>
+</body>
+</html>

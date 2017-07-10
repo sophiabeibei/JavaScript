@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    "use strict";
+    // es6  兼容各个浏览器最新的版本
+//    console.log(str); //undefined
+//    var str="zhufeng";
+//    var str = "peixun";
+    //  在es5 里面可以对同一个变量进行重复声明
+//    console.log(str);
+    //let  声明变量,
+    // 1、不存在变量提升
+//    let str1 = "zhufengpeixun";
+     // let 声明的变量，不能重复声明
+//    let str1 = "peixun";
+//    console.log(str1);
+    // const  不存在变量提升
+     // 不能被重复声明，声明的变量是一个常量
+//    const NUM =1;
+//
+//    console.log(NUM);
+//    var num = 1;
+//    let num = 2; ///报错，这样也被认为是重复声明
+//
+    // 块级作用域  被大括号包起来的代码块
+    // let  声明的变量，只在当前的作用域内有效
+//    if(true){
+//        var num1 = "hello";
+//        let num2 = "world";
+//        console.log(num1,num2)
+//    }
+//    console.log(num1);
+//    let num2 = "123"
+//    console.log(num2); // num2  is not defined
+//
+//    let num2 = "123";
+//    if(true){
+//        console.log(num2) // num2 is not defined
+//        let num2 =15;
+//    }
+    // 块级作用域可以多层嵌套
+//    let num = 16;
+//    {{
+//        console.log(num);// 16
+//    }}
+    // 在for循环中 ，用let声明的变量，不会泄露成全局的变量
+//    var ary =[];
+//    for(let i=0;i<18;i++){
+//        // 循环体  循环一次，形成一个子作用域
+//        //  let  每循环依次，会对i 进行重新的声明
+         // let i=3;
+//        ary[i] = function () {
+//            console.log(i) //
+//        }
+//    }
+//    console.log(i)// 全局下没有这个i
+//    // i   在全局下已经变成了18
+//
+//    console.log(ary)
+//    ary[3]();// 3
+    // 用let声明的变量，在for循环语句中，首先形成父作用域，循环体是子作用域
+//    var num;
+//    let str;
+    //const str1;
+    // const  在声明时候，必须声明+定义
+
+//    if(1==1){
+//        var num = 10;
+//    }
+//    fn1(); // 2
+//    function fn1() { // xxxfff111
+//        console.log(1)
+//    }
+//    fn1(); // 2
+//    function fn1() {// xxxfff222
+//        console.log(2)
+//    }
+
+//    function fn() {
+//        console.log("zhufeng")
+//    }
+    (function () {
+        //块级作用域在当前自执行函数的私有作用域中
+        if(false){// 如果浏览器兼容es6，在条件语句中，如果条件语句不成立，function 只声明，不定义；
+            function fn() {
+                console.log("peixun")
+            }
+            let num = 2;
+        }
+        console.log(fn)
+        fn();
+    })();
+    // 在严格模式下，只能在顶层作用域和函数内声明，其他情况 if代码块，for循环代码块都会报错
+
+//{
+//
+//    let num =9;
+//
+//}
+//console.log(num)
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //定时器: 异步编程,不管定时器中代码是否执行,都会执行下面的代码;
+    //只要是方法,就会有返回值;
+    //oBox是一个元素对象,新增一个自定义属性,清除时清oBox.timer即可;
+    oBox.timer = window.setTimeout(function () {},10);//当代码执行到这行时,定时器会计个10时间;{}里面的代码会在10时间之后执行
+
+
+    window.setInterval(function () {},10);//当代码执行到这行时,定时器会记10事件,{}里的代码等过了10毫秒后,函数代码开始执行,以后每隔10毫秒都会执行这个函数一次;
+
+    //回调函数
+    function move() {
+        console.log(2);
+    }
+    setInterval(move,10)//没间隔10毫秒,执行一次move方法;也可以写成以下
+
+
+
+
+    //调bug
+    // 1.通过控制台  console.log()
+    // 2.debugger : debugger打到哪儿,代码会停到哪儿;debugger会告诉程序员代码执行的顺序;还可以看到所获取的值是否正确   ......F10 : 下一行
+    //for (var i = 0; i < 100000; i++) {}
+
+
+
+</script>
+
+
+</body>
+</html>

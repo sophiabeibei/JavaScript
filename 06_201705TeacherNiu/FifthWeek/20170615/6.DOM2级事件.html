@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM2级事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    //DOM0级: 以前学的是DOM0级;例如(onclick..onmouseover...)
+    //没有DOM1级;
+    //DOM2级:
+    var oBox = document.getElementById("box");
+    oBox.onclick = function () {
+        console.log(1);
+    };
+    oBox.onclick = function () {
+        console.log(2);
+    };
+    //以上案例,同一元素对象绑定了两个不同的事件,在DOM0级中,下面的事件覆盖上面的事件;(DOM0级事件绑定在了元素对象上;)
+    //在DOM2级事件中,并不是绑定了元素对象中;(而是绑定在了当前元素对象的原型链上EventTarget类的原型上;可以给一个行为绑定多个方法并且这个方法的执行是有顺序;)
+    //参数: 第一个: 事件的行为,这个参数前面不带"on"
+    //第二个: 方法
+    //true/false
+    // 所有的元素对象,原型链上EventTarget->有个addEventListener方法和方法;
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

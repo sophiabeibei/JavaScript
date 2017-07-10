@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="aa"></div>
+<script type="text/javascript">
+    function CreatePerson(name,hobby) {// 定义一个方法
+        this.name = name;// 通过实参给了形参，形参的值又给了默认创建的对象
+        this.hobby = hobby;
+//        this.study = function () {
+//            console.log(1)
+//        }
+    }
+//    console.log(p1.study === p2.study);  //  false
+    CreatePerson.prototype.study=function () {
+        console.log(this.name + "学习js")
+    }
+
+    var p1= new CreatePerson("王林","爱吃")
+    var p2= new CreatePerson("陆晨阳","学习");
+//    p1.study();
+//    p2.study();
+    console.log(p1.study === p1.__proto__.study); // true
+    console.log(CreatePerson.prototype.constructor)
+    // 构造函数模式创建一个类，把类实例联系起来，实例与实例之间的方法或者属性都是各自私有的
+    // 原型模式 ： 解决了方法的公有的问题
+    //原型的知识 ：
+    //1、每一个函数数据类型（函数、类）都天生自带一个prototype的属性，prototype是对象数据类型的，它天生自带一个constructor 属性
+    // 2、constructor 这个属性的属性值指向当前prototype 这个原型的对应的类
+    // 3、每一个对象数据类型，天生自带一个__proto__的属性，属性值是指向当前实例所属类的原型
+
+    // 原型链模式：这样一级一级向上查找属性的方法，形成了原型链
+    // 首先查找私有的属性或者方法，如果是私有的，直接调用这个方法
+    // 如果私有中没有这个方法，那么实例会通过__proto__,去查找当前实例所属类的原型中的这个方法，如果有，就可以执行
+    // 如果当前实例所属类的原型也没有这个方法，那么会通过__proto__ 继续向上查找，直到找到Object为止
+
+
+
+
+
+
+</script>
+</body>
+</html>

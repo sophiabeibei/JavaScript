@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+     *{
+         margin:0;
+         padding : 0;
+     }
+        div{
+            position: absolute;
+            width :100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+<div id="box" style="left:0px;top:30px;background: #F9044E"></div>
+<div id="box1" style="left:0px;top:200px;background: #ffaa2a"></div>
+<div id="box2" style="background:black; left :200px;top :200px"></div>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+    //down  move  up
+    // 记录盒子位置 鼠标的位置
+    // move 盒子初始位置加上鼠标移动的距离 算出当前盒子位置
+    // 移除当前盒子绑定的onmousemove onmouseup;
+
+    var oBox = document.getElementById("box");
+    function down(e) {
+        // this -->oBox;
+        e = e || window.event;
+        // 记录盒子的位置
+        this.x= oBox.offsetLeft;
+        this.y = oBox.offsetTop;
+        // 记录鼠标的位置
+        this.mx = e.pageX;
+        this.my = e.pageY;
+        // 在IE和火狐下
+        if(this.setCapture){
+            this.setCapture();
+            oBox.onmousemove = move;
+            oBox.onmouseup = up;
+        }else{
+            //利用事件委托原理
+//            this.MOVE = move.bind(this)
+//            document.onmousemove = this.MOVE;
+            var _this = this;
+            document.onmousemove = function (e) {
+                //this
+                move.call(_this,e);
+            };
+            document.onmouseup = function (e) {
+                up.call(_this,e)
+            }
+        }
+    };
+    function move(e) {
+        e = e || window.event;
+        var changeX = e.pageX - this.mx;
+        var changeY = e.pageY - this.my;
+        oBox.style.left = this.x + changeX+ "px";
+        oBox.style.top = this.y + changeY + "px";
+    }
+    function up() {
+        if(this.releaseCapture){
+            this.releaseCapture();
+            oBox.onmousemove = null;
+            oBox.onmouseup = null;
+        }else{
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+    oBox.onmousedown = down;
+
+
+
+
+
+</script>
+</body>
+</html>

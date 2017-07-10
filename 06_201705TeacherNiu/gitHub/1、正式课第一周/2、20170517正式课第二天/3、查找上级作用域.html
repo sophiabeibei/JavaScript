@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 如何查找上级作用域
+    //上级作用域 ：  只需要看当前函数实在哪个作用域下定义的，跟在哪执行没有关系
+    //查找上级作用域，一级一级向上查找，形成了作用域链
+    var total =12;
+    function sum() {
+        total = 15;
+        return function () {
+            total ++;
+            console.log(total);
+        }
+    }
+    var f = sum();
+    f();// 16
+</script>
+</body>
+</html>

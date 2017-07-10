@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<section class="main">
+    <div class="music musicMove" id="musicMenu">
+        <audio src="audio/music.mp3" id="musicAudio" autoplay="true" loop></audio>
+    </div>
+    <!--src  : 音频的路径
+    autoplay ： 自动播放
+    preload : 音频是否进行预加载
+    play: 音频播放
+    pause： 音频停止
+    -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!--第一屏-->
+            <div class="swiper-slide page1">
+                <img src="images/page1-text1.png" alt="">
+                <img src="images/page1-text2.png" alt="">
+                <img src="images/page1-text3.png" alt="">
+                <img src="images/page1-text4.png" alt="">
+            </div>
+            <!--第二屏-->
+            <div class="swiper-slide page2">
+                <img src="images/page2-text1.png" alt="">
+                <img src="images/page2-text2.png" alt="">
+                <img src="images/page2-text3.png" alt="">
+                <img src="images/page2-text4.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="arrow"></div>
+</section>
+
+<script type="text/javascript" src="js/fastclick.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+    FastClick.attach(document.body);
+    function refreshRem() {
+        var desW =750;
+        var winW = document.documentElement.clientWidth;
+        var radio = desW/winW;
+        document.documentElement.style.fontSize = 100/radio + "px";
+    }
+    refreshRem();
+    var swiper = new Swiper(".swiper-container",{
+        loop:true,
+        direction : "vertical",
+       // 这个方法： 当这个页面已经切换成功，才执行这个方法
+        onSlideChangeEnd : function (swiper) {
+            //swiper.slides  : 获取的是一个对象数组，里面有length属性，属性值代表当前滑块的数量
+//            console.log(swiper.slides.length)// 获取到所有的滑块
+            var slides = swiper.slides;
+            var curIndex = swiper.activeIndex;  // 当前屏幕显示的滑块的索引
+            var total = slides.length;
+            var targetId = "page0";
+            // page01  对应的是第二个和第四个div
+            // page02 对应的是第一个和第三个div
+            switch(curIndex){
+                case 3:
+                    targetId+=1;
+                    break;
+                case 0 :
+                    targetId +=2;
+                    break;
+                default:
+                    targetId += curIndex;
+
+            };
+            // slice
+//            Array.prototype.forEach = function () {
+//                for(var i=0;i<slides.length;i++){
+//                }
+//            }
+            // slice
+             // 通过判断当前滑块的索引，给显示的滑块加上id
+            [].forEach.call(slides,function (item,index) {
+                if(curIndex == index){
+                    item.id = targetId;
+                }else{
+                    item.id=null;
+                }
+            })
+        }
+
+    })
+    var oMusic = document.getElementById("musicMenu");
+    var audioMusic = document.getElementById("musicAudio");
+//    setTimeout(function () {
+//        oMusic.className = "music musicMove";
+//    },1000)
+    oMusic.onclick = function () {
+        console.log(audioMusic.paused) // false  说明当前是有音乐的
+        if(audioMusic.paused){
+            audioMusic.play(); //让音乐响起来
+            oMusic.className = "music musicMove";
+        }else{
+            audioMusic.pause();//让音乐暂停
+            oMusic.className = "music";
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

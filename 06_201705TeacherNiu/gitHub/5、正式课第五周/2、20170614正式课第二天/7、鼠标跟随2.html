@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #div1{
+            position: relative;
+            width : 300px;
+            height:300px;
+            margin: 30px auto;
+            background: #08BECE;
+        }
+        #mark{
+            width :80px;
+            height:80px;
+            position: absolute;
+            left:0;
+            top :0;
+            background: #F9044E;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById("div1");
+    var boxLeft = oDiv.offsetLeft,boxTop = oDiv.offsetTop;
+    // 鼠标移入创建一个新的div
+    //onmouseenter 和onmouseover 区别 ： onmouseenter会默认阻止事件的冒泡传播机制，onmouseover划入 不对冒泡传播进行阻止
+    // onmouseout  onmouseleave 区别 ： onmouseleave 不支持事件冒泡传播，
+
+    oDiv.onmouseenter = function (e) {
+        e = e|| window.event;
+        var mark = document.createElement("div");
+        mark.id = "mark";
+        this.appendChild(mark);
+        mark.style.left = e.clientX - boxLeft +20+ "px";
+        mark.style.top = e.clientY- boxTop +20+ "px";
+    }
+    oDiv.onmousemove = function (e) {
+        e = e || window.event;
+        var mark = document.getElementById("mark");
+        mark.style.left = e.clientX - boxLeft +10+ "px";
+        mark.style.top = e.clientY- boxTop +10+ "px";
+    }
+    oDiv.onmouseleave = function () {
+        var mark = document.getElementById("mark");
+        if(mark){
+            this.removeChild(mark);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height:100px;
+            background: red;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    // 横向初始值
+    var beginL = utils.css(oBox,"left");
+    // 获取横向的最大运动距离
+    var changeL = utils.win("clientWidth") - oBox.offsetWidth-beginL;
+    // 纵向初始值
+    var beginTop = utils.css(oBox,"top");
+    // 获取纵向的运动最大距离
+    var changeT = utils.win("clientHeight")- oBox.offsetHeight-beginTop;
+    var beginO = utils.css(oBox,"opacity");
+    var changeO = 1-beginO;
+    // 匀速运动公式
+    function Linear(t,b,c,d) {
+        return t/d*c+b;
+    }
+    // 自己定义的运动总时间
+    var duration = 2000;
+    // 初始化运动时间
+    var time=null;
+    function move() {
+        clearInterval(oBox.timer);
+        oBox.timer=setInterval(function () {
+            time += 10;
+            if(time >=duration){
+                utils.css(oBox,"left",changeL+beginL);
+                utils.css(oBox,"top",changeT+beginTop);
+                utils.css(oBox,"opacity",changeO + beginO)
+                clearInterval(oBox.timer);
+                return;
+            }
+            var curL = Linear(time,beginL,changeL,duration);
+            var curT = Linear(time,beginTop,changeT,duration);
+            var curO = Linear(time,beginO,changeO,duration)
+            utils.css(oBox,"left",curL);
+            utils.css(oBox,"top",curT);
+            utils.css(oBox,"opacity",curO);
+        },10);
+    };
+    oBox.onclick= move;
+
+
+
+
+
+
+    //
+
+
+
+
+</script>
+</body>
+</html>

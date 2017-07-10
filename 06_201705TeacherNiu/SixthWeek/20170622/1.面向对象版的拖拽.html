@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象版的拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            user-select: none;
+        }
+        #box{
+            top: 10px;
+            background: orange;
+        }
+        #box1{
+            top: 150px;
+            background: yellow;
+        }
+        #box2{
+            top: 260px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<div id="box2"></div>
+<script type="text/javascript" src="../20170621/event.js"></script>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+    var oBox2 = document.getElementById("box2");
+
+    function Drag(curEle) {
+        //this -->是new之后的实例;
+        //当前类中的this还是指向实例,把当前的元素对象放在单钱实例的一个属性上;
+        this.ele = curEle;//元素对象curEle有拖拽的功能;
+        this.DOWN = this.down.bind(this);//这里的this是实例
+        on(this.ele,"mousedown",this.DOWN);//绑定了this.DOWN方法;
+        //备注: down move up 都保存在Drag这个类的原型上,只能实例去获取到
+    }
+    Drag.prototype.down = function (e) {
+        e = e || window.event;
+        console.log(this);
+        //当down的时候,记录盒子当前的位置:
+        this.ele.x = e.clientX;
+        this.ele.y = e.clientY;
+        this.ele.mx = this.ele.offsetLeft;
+        this.ele.my = this.ele.offsetTop;
+        this.MOVE = this.move.bind(this);
+        this.UP = this.up.bind(this);
+        on(document,"mousemove",this.MOVE);
+        on(document,"mouseup",this.UP);
+    };
+    Drag.prototype.move = function (e) {
+        e = e || window.event;
+        //在down方法中同时绑定move方法;
+        var changeL = e.clientX - this.ele.x;
+        var changeT = e.clientY - this.ele.y;
+        this.ele.style.left = this.ele.mx + changeL + 'px';
+        this.ele.style.top = this.ele.my + changeT + 'px';
+    };
+    Drag.prototype.up = function (e) {
+        e = e || window.event;
+        //在down的时候绑定up方法
+        off(document,"mousemove",this.MOVE);
+        off(document,"mouseup",this.UP);
+    };
+
+    new Drag(oBox);
+    new Drag(oBox1);
+    new Drag(oBox2);
+
+
+
+
+
+</script>
+</body>
+</html>

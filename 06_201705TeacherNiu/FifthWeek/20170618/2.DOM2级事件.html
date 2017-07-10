@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM2级事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    //1)在DOM0级事件中,同一个元素对象绑定了同一个事件,下面的会覆盖上面的;Dom0级移除事件方法oBox.onclick=null;
+    //2)DOM2级事件: 元素对象通过原型链找到EventTarget这个类的原型上的addEventListener
+    //2.1)addEventListener有三个参数;
+    //  参数1: 事件行为,不带"on"
+    //  参数2: 绑定的方法(可写function,也可直接赋值方法名;)
+    //  参数3: false/true区别:
+    //2.2)false 在事件冒泡传播时,进行操作控制;
+    //2.2)true 在事件捕获阶段,进行操控;
+    //3)DOM2级事件绑定的优势: 1)可以给元素对象的一个行为绑定多个方法---这就叫事件池,或者叫事件队列;
+    //3.1)DOM0级事件只操控事件冒泡传播阶段;false(DOM0级事件有true捕获阶段,但不能操作;)
+    //3.2)DOM2级事件绑定的优势: 2)能操控事件冒泡阶段,false;也能操控波或阶段,true;
+    //4)备注: 先捕获,后冒泡;---->捕获和冒泡的先后顺序;
+
+    function log1() {
+        console.log(1);
+    }
+    function log2() {
+        console.log(2);
+    }
+    function log3() {
+        console.log(3);
+    }
+    oBox.addEventListener("click",log1,false);
+    oBox.addEventListener("click",log2,false);
+    oBox.addEventListener("click",log3,true);//
+
+    //5)window.onload方法: 只有页面中HTML结构/图片/文字...等资源加载完成才会执行这个方法,在页面中只能执行一次;
+    window.onload = function () {
+        console.log(0);//页面结构图片文字所有资源加载完成后,即可输出0;
+        //5.1)window.onload--->这个方法,在特殊情况下才会用到;
+    };
+    //6)$(document).ready(): 只要页面中HTML结构加载完,就会执行这个操作;一个页面可以执行多次;不会被覆盖;
+
+    //7)在非标准浏览器IE6-8中,没有addEventListener方法;也没有removeListener方法;
+    //7.1)IE提供了attachEvent方法-绑定;(必须加"on");有detachEvent方法-移除;
+    //oBox.attachEvent("click",log1,false);//1)必须加"on";2)只有俩参数;
+    oBox.attachEvent("onclick",log1);//加了on之后,"顺序"有问题;
+    oBox.attachEvent("onclick",log2);//加了on之后,"顺序"有问题;
+    oBox.attachEvent("onclick",log3);//加了on之后,"顺序"有问题;
+
+
+</script>
+</body>
+</html>

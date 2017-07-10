@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>理解事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+事件: 浏览器给元素对象提供的一些事件;
+1.onclick<br/>
+2.onmouseover<br/>
+3.onmouseout<br/>
+4.onmouseenter(事件在鼠标指针移动到元素上时触发)<br/>
+5.onmouseleave<br/>
+6.onmousemove<br/>
+7.onload<br/>
+8.onscroll<br/>
+9.onmousewheel(鼠标滚轮滚动触发)<br/>
+10.onfocus(获取鼠标焦点)<br/>
+11.onblur(失去鼠标焦点)<br/>
+12.onresize(改变窗口打下)<br/>
+13.onmousedown(鼠标按下)<br/>
+14.onkeydown(键盘按下)<br/>
+15.onkeyup(键盘抬起)....<br/>
+如果没有绑定任何方法,那么事件是执行了,只是什么都没做;<br/>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    oBox.onclick = function () {//onclick  点击
+
+    };
+    oBox.onmouseover = function () {//onmouseover  划过
+
+    };
+    //事件发生: 1.给当前的行为绑定方法;2.触发当前的事件;
+
+</script>
+
+</body>
+</html>

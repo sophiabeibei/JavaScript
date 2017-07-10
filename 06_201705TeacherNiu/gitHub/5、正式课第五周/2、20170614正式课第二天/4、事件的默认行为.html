@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="http://www.baidu.com" id="tab">王林很帅</a>
+</body>
+<script type="text/javascript">
+    //a标签点击，实现连接自动跳转，这是a的默认的事件行为
+    // 阻止事件的默认行为
+    var aa = document.getElementById("tab");
+    aa.onclick = function (e) {
+        console.log(1)
+        // 阻止事件的默认行为发生
+        e = e || window.event;
+        // 在IE678 下面不存在preventDefault 这个方法，但是存在returnValue z这个属性
+        console.log(e.preventDefault) // MouseEvent 事件对象
+        e.preventDefault? e.preventDefault():e.returnValue=false;
+        console.log(e.returnValue);
+//        return false
+    }
+
+//
+
+
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 单例模式: js中把描述同一事物的属性和方法放在同一个空间下面，起到了分组的作用，这个空间就叫做“命名空间”
+    // 单例模式下的方法或者属性，即便名字相同，他们互不冲突
+    var obj = {
+        name : "珠峰",
+        age : 8
+    };
+    var  obj1 = {
+        name : "第五期",
+        number : 29
+    };
+    // 项目中 ： 适用于模块化开发，
+//    sum();// 1
+    var num ={
+        sum : function () {
+            console.log(2)
+        }
+    }
+    var num1 = {
+        sum : function sum() {
+            console.log(1)
+        }
+    }
+    num.sum();
+    //单例解决了不冲突的问题，但是这属于“手工作业模式”；//
+    // 工厂模式// 批量生产  函数的封装 --》“低耦合高内聚”减少代码的冗余 ；复用性： 方法或者代码实现重复的利用
+    function createPerson(name,hobby) {
+        var obj={
+            name : name,
+            hobby : hobby
+        };
+//        obj.name = name;
+//        obj.hobby = hobby;
+        return obj;
+    }
+    console.log(createPerson("王林","打游戏"));
+    console.log(createPerson("陆晨阳","学习"));
+
+
+
+</script>
+</body>
+</html>

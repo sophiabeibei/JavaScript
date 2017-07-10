@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切换城市</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        h3{
+            position: absolute;
+            left: 100px;
+            top: 30px;
+            cursor: pointer;
+        }
+        ul{
+            display: none;
+            position: absolute;
+            left: 100px;
+            top: 60px;
+            width: 600px;
+            border: 1px solid black;
+            padding: 10px;
+            overflow: hidden;
+        }
+        ul li{
+            float: left;
+            width: 20%;
+            height: 50px;
+            text-align: center;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+        ul li.select{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<h3 id="selectCity">切换城市</h3>
+<ul id="ul"></ul>
+<script type="text/javascript">
+    var oUl = document.getElementById("ul");
+    var city = document.getElementById("selectCity");
+    var cities = ['北京', '上海', '承德', '石家庄', '天津', '雄县', '赵县', '沧州', '保定', '邯郸', '磁县', '北京', '上海', '承德', '石家庄', '天津', '雄县', '赵县', '沧州', '保定', '邯郸', '磁县'];
+    var str = "";
+    for (var i = 0; i < cities.length; i++) {
+        var cur = cities[i];
+        str += "<li>"+ cur +"</li>";
+    }
+    oUl.innerHTML = str;
+    var oLis = document.getElementsByTagName("li");
+    city.flag = 1;
+    city.onclick = function () {
+        if(city.flag){
+            oUl.style.display = "block";
+            city.flag = 0;
+        }else{
+            oUl.style.display = "none";
+            city.flag = 1;
+        }
+    };
+    for (var i = 0; i < oLis.length; i++) {
+        var cur = oLis[i];
+        cur.onclick =function () {
+            city.innerHTML =  this.innerHTML;
+            city.flag = 1;
+            for (var i = 0; i < oLis.length; i++) {
+                var obj = oLis[i];
+                obj.className = null;
+            }
+            this.className = "select";
+            oUl.style.display = "none";
+        }
+    }
+    //利用事件委托的原理实现点击空白处,ul消失;
+    document.onclick = function (e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        city.flag = 1;
+        if(target.id != "selectCity" && target.id != "oUl"){
+            oUl.style.display = "none";
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

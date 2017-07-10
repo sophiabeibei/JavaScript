@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //获取平均数
+//    var ary= [12,7,8,18,19];
+    //1、循环相加法/ 数组的总长度
+//    var total =0;
+//    for(var i=0;i<ary.length;i++){
+//        total += ary[i];
+//    }
+//    console.log(total/ary.length);
+//     2、join  // 把数组中的每一项用特定字符分隔，返回一个字符串
+//    console.log(eval(ary.join("+"))/ary.length);
+    // eval  把字符串变成真正的表达式执行;
+    // 去掉最大值，最小值，取平均数
+    //取一组数的平均数
+    // arguments 函数天生自带参数集合，通过arguments获取传进来的参数
+    // 类数组 上面没有数组的sort
+   // 把类数组转化数组，可以sort排序，pop()删除最后一项，shift()删除第一项
+    // 把数组中的每一项相加求和，然后除以数组的length；
+    //
+    function getavge() {
+//        arguments.sort(function (a,b) {
+//            return a-b;
+//        })
+//        var cur=[];
+        // 1、对arguments循环，然后把每一项放进数组
+//        for(var i=0;i<arguments.length;i++){
+//            cur.push(arguments[i]);
+//        }
+           var ary = Array.prototype.slice.call(arguments);
+           [22,77].slice() // [22,77]
+//        console.log(cur);
+        // 2、 对数组进行排序
+        cur.sort(function(a,b){
+            return a-b;
+        });
+        // 3、删除最大值，最后一项，最小值，第一项
+        cur.length--;
+        cur.shift();
+        console.log(eval(cur.join("+"))/cur.length);
+    }
+    getavge(66,78,99,90,93,88,95,88,99,100,97);
+
+    //模拟数组中的slice()克隆作用
+
+    var ary=[66,78,99,90,93,88,95,88,99,100,97];
+    console.log(ary.slice());
+    Array.prototype.slice = function () {
+        var ary =[];
+        for(var i=0;i<this.length;i++){
+            ary[ary.length] = this[i];
+        }
+        return ary;
+    }
+    ary.slice();
+
+</script>
+</body>
+</html>

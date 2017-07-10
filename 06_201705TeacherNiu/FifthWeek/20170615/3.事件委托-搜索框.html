@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托案例</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        input{
+            outline: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            border: 1px solid #fff;
+        }
+        #box{
+            width: 350px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+        input{
+            display: block;
+            width: 300px;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 10px;
+            border: 1px solid #000;
+        }
+        #oUl{
+            width: 320px;
+            border: 1px solid #000;
+            border-top: none;
+        }
+        #oUl li{
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+        }
+        #oUl li:hover{
+            color: lightcoral;
+        }
+        #oUl li a{
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" id="search">
+    <ul id="oUl">
+        <li><a href="javascript:;">房天下</a></li>
+        <li><a href="javascript:;">第五期</a></li>
+        <li><a href="javascript:;">珠峰培训</a></li>
+        <li><a href="javascript:;">未来降雨</a></li>
+        <li><a href="javascript:;">量有多少呢?</a></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    //获取鼠标焦点事件: onfocus
+    //失去鼠标焦点事件: onblur
+    //键盘抬起的事件: onkeyuup
+    //键盘按下: onkeydown
+    var search = document.getElementById("search");
+    var oUl = document.getElementById("oUl");
+    var box = document.getElementById("box");
+
+    search.onfocus = function () {
+        oUl.style.display = "block";
+    };
+    search.onkeyup = function () {
+        var val = this.value.replace(/(^ +| +$)/g,"");
+        oUl.length.display = val.length > 0 ? "block" : "none";
+    };
+    document.body.onclick = function (e) {
+        //oUl.style.display = "none";
+        e = e || window.event;
+        //通过事件委托的原理,判断当前的事件源;
+        //当点击input输入框时,直接让bodyonclick,接下来的代码就不在走了
+        if(e.target === search){
+            return;
+        }
+        if(e.target.tagNage.toLocaleLowerCase() === "a"){
+            //实现了所有的内容;
+            //1.把a的标签nr给seach这个框
+            //2.隐藏ul;
+            search.value = e.target.innerHTML;
+            oUl.style.display = "none";
+            return;
+        }
+        oUl.style.display = "none";
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

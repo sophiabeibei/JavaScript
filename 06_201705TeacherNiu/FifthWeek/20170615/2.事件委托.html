@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 300px;
+            height: 300px;
+            background: red;
+            margin: 30px auto;
+        }
+        #inner{
+            width: 200px;
+            height: 200px;
+            background: orange;
+            margin: auto;
+        }
+        #center{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+1.需求: 点击当前盒子,只打印当前盒子的属性值;<br/>
+2.e.target 和通过id 获取到的元素对象是指向一个空间地址;
+<h2 style="color: orangered">事件委托的原理</h2>
+<h4>利用事件冒泡传播的机制,给最外层的元素的某个行为绑定相应的方法,当里面元素的行为触发的时候,外层对应的行为也会跟着触发;只要对当前事件源进行判断做不同的处理实现相应的功能(方法);</h4>
+委托: 前提必须存在冒泡;<br/>
+给body的click行为绑定一个方法,当body中元素的click的行为触发,那么body的click也会跟着执行,判断当前点击的事件源,输出不同的内容;<br/>
+<script type="text/javascript">
+    var outer = document.getElementById("outer");
+    var inner = document.getElementById("inner");
+    var center = document.getElementById("center");
+    outer.onclick = function (e) {
+        e = e || window.event;
+//        console.log(e.target);
+
+        if(e.target === outer){
+            console.log(outer);
+        }else if(e.target === inner){
+            console.log(inner);
+        }else if(e.target === center){
+            console.log(center);
+        }
+    };
+
+
+
+
+    //获取搜索框鼠标焦点 onfocus
+
+</script>
+</body>
+</html>

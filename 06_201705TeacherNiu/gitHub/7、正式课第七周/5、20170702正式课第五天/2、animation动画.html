@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #outer{
+            width :400px;
+            height:120px;
+            border: 1px solid green;
+            margin:auto;
+        }
+        #box{
+            width : 100px;
+            height:100px;
+            background: red;
+            /*循环次数无限*/
+            -webkit-animation: myRotate 1s cubic-bezier(.27,.97,.18,1.66) infinite;
+            -o-animation: myRotate 1s cubic-bezier(.27,.97,.18,1.66) infinite;
+            animation: myRotate 1s cubic-bezier(.27,.97,.18,1.66) infinite;
+        }
+        @-webkit-keyframes myRotate {
+            from{
+                transform: translate(0,0) rotate(0deg);
+            }
+            to{
+                transform: translate(300px,0) rotate(360deg);
+            }
+        }
+        @keyframes myRotate {
+            from{
+                 transform: translate(0,0) rotate(0deg);
+             }
+            to{
+                transform: translate(300px,0) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="box"></div>
+</div>
+<button id="oBtn">暂停/运行</button>
+<script type="text/javascript">
+    var oBtn = document.getElementById("oBtn");
+    var oBox = document.getElementById("box");
+    // 盒子是否在进行动画的属性：animationPlayState 暂停： “paused” 运行： “running”
+    oBtn.onclick = function () {
+        // 1、首先判断当前盒子动画是停止还是运行的状态
+        // 2、如果是运行就让其停止，如果是停止就让其运行
+        var state = oBox.style.animationPlayState;
+        if(state==="paused"){
+            oBox.style.animationPlayState="running"
+        }else{
+            oBox.style.animationPlayState="paused";
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

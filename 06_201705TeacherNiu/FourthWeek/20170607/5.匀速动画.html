@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    //需求: 在指定的时间内完成移动;(3秒到达最右侧)
+    //总时间是固定
+    //总距离是固定
+    var oBox = document.getElementById("box");
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var oBoxW = oBox.offsetWidth;
+    var maxL = winW - oBoxW;
+    var duration = 3000;
+    var interval = 10;
+    //3秒到达最右侧
+    var step = maxL/duration*interval;
+    var count = 0;//存储距离的长度
+    function move(){
+        oBox.timer = setInterval(function () {
+            count+=step;
+            if(count > maxL){
+                utils.css(oBox,"left",maxL);
+                clearInterval(oBox.timer);
+                return;
+            }
+            utils.css(oBox,"left",count)
+        },interval)
+    }
+    oBox.onclick = move;
+
+
+
+
+
+
+</script>
+</body>
+</html>

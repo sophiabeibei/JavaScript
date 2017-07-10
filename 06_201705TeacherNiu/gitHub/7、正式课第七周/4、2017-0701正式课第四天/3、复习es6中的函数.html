@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 参数的优化
+//    function sum(num1=0,num2=7) {
+//        console.log(num1)  // 0
+//    }
+//    sum()
+    // 函数的解构赋值
+    // 箭头函数 ；
+//    function sum(){
+//
+//    }
+//    function  sum(value) {
+//        console.log(arguments)
+//        return value;
+//    }
+    //console.log(arguments)// arguments is not defined
+//    let sum = value => 1;
+
+//    let sum =(val1,val2) =>{
+//        console.log(this)
+//    }
+//    sum()
+    // 箭头函数和普通函数的区别
+    // 1、箭头函数体中没有arguments
+    // 2、不能作为构造函数,不能被new
+    // 3、箭头函数中的this，指向函数所定义的对象
+//    obj1.name = "";
+//    obj2.name = "";
+//    var  obj1 = {name : ""};
+//    var obj2 = {name : ""};
+//
+//    function product(name,age){
+//        var obj = {};
+//        obj.name = name;
+//        obj.age = age;
+//        return obj;
+//    }
+//    product();
+//    var obj1 = product("",18);
+//    var obj2 = product("",25);
+
+//    function product(name,age) {
+//        // 省略创建对象
+//        // 也不用返回这个对象
+//        // this 指向实例
+//        this.name = name;
+//        this.age = age;
+//
+//    }
+//
+//    var ary = new product();
+    var obj = {
+        name : "zhufeng",
+        fn(){
+            console.log(arguments);  //
+            (()=>{
+                console.log(arguments)
+                console.log(this) // this指向obj
+            })()
+        }
+    };
+    var str = obj.fn;
+    str();// this-- > window
+//    (function () {
+//        // 自执行函数中的this，永远指向window
+//    })()//
+//    console.log(obj.fn) //
+
+//    obj.fn();
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // Number.isFinite()  : 用来检测当前数值是否非无穷,返回值是boolean值
+//    console.log(isFinite(88)) // true
+//    console.log(Number.isFinite(false))  // false
+//    console.log(isFinite(NaN)) // false
+//    console.log(Number.isFinite("12")) // false
+//    console.log(isFinite("str")) // false
+  // 加上Number,是非常严格的判断，只要不是number类型返回false
+    // Number.isNaN() 检查当前值是否是NaN
+    //typeof NaN // "number"
+//    Number.isNaN(NaN)  // true
+//    Number.isNaN(15) // false
+    // parseInt  parseFloat
+//    parseInt("12.34") // 12
+//    parseFloat("15.66px") // 15.66
+//    Number.parseInt("12.34")  // 12
+    // 使JavaScript语言逐步模块化
+
+    //Number.isInteger()  判断当前是否是一个整数,默认 3 和3.0 视为同一个值
+//    console.log(Number.isInteger(3.0))// true
+//    console.log(Number.isInteger(3.1))// false
+//    console.log(Number.isInteger(3))// true
+
+
+    // es6 Math 的拓展
+    // Math.trunc()  去除一个数的小数部分
+//    console.log(Math.trunc(4.1)) // 4
+//    console.log(Math.trunc(4.96))
+//    console.log(Math.trunc(-4.96))
+    //Math.sign() 用来判断一个数是正数，负数，零，如果是正数，返回 +1；负数返回-1；零返回0；NaN  返回NaN
+    console.log(Math.sign(NaN)) // NaN
+
+
+
+</script>
+</body>
+</html>

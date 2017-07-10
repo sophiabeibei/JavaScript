@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的传播机制</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 300px;
+            height: 300px;
+            background: #08bece;
+            margin: 50px auto;
+        }
+        #inner{
+            width: 200px;
+            height: 200px;
+            background: #ffaa2a;
+            margin: auto;
+        }
+        #center{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+1.事件的冒泡传播机制<br/>
+当触发center的click事件的时候,父级的click事件也会跟着触发,依次向上,依次触发;<br/>
+<br/>
+2.阻止事件的冒泡传播机制<br/>
+e.stopPropagation 阻止事件传播;(标准浏览器)中有这个属性<br/>
+e.cancelBubble 阻止事件传播;(不标准(ie6-8)浏览器)中有这个属性<br/>
+<br/>
+<h3 style="color: orange">3.阻止事件冒泡 - 兼容性解决方法:</h3>
+<h3 style="color: orange">e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;</h3>
+
+<script type="text/javascript">
+    var outer = document.getElementById("outer");
+    var inner = document.getElementById("inner");
+    var center = document.getElementById("center");
+    var body = document.body;
+    outer.onclick = function () {
+        console.log(outer);
+    };
+    inner.onclick = function () {
+        console.log(inner);
+    };
+    center.onclick = function () {
+        e = e || window.event;
+        console.log(e.stopPropagation);
+        console.log("center");
+        e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+    };
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

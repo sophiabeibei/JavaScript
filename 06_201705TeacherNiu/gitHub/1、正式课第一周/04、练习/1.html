@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function sum() {
+        var total =0;
+        return function () {
+        };
+    };
+    sum();
+    var obj = {8 : "zhufneg"}
+    for(var key in obj){
+
+    }
+    //    var obj = {
+    //        n: 12,
+    //        fn: (function (n) {
+    //            console.log(n);
+    //            n++;
+    //            return function () {
+    //                console.log(n);
+    //            }
+    //        })(obj.n)
+    //    };
+    //    obj.fn();
+
+//        var i = 2;
+//        function fn() {
+//            i *= 2;
+//            return function (n) {
+//                console.log(n * (++i));
+//            }
+//        }
+//        var f = fn();
+//        f(3);
+//        fn()(3);//->先把fn执行,把执行后的返回结果紧跟着在执行
+//        f(4);
+//        fn()(4);
+
+
+
+        var i = 2;
+        function fn() {
+            i *= 2;
+            return function (n) {
+                console.log(n * (++i));
+            }
+        }
+        var f = fn();
+        fn()(3);
+        f(3);
+        fn()(4);
+        f(4);
+
+
+
+//    var i = 2;
+//    function fn(i) {
+//        i *= 2;
+//        return function (n) {
+//            console.log(n * (++i));
+//        }
+//    }
+//    var f = fn(5);
+//    f(3);
+//    fn(5)(3);
+//    f(4);
+//    fn(5)(4);
+
+
+//
+    //    var obj = {num: 2};
+    //    obj.fn = (function (num) {
+    //        this.num = num * 2;
+    //        num++;
+    //        return function (n) {
+    //            this.num += n;
+    //            num++;
+    //            console.log(num);
+    //        }
+    //    })(obj.num);//->2
+    //    var fn = obj.fn;
+    //    fn(10);
+    //    obj.fn(20);
+    //    console.log(num, obj.num);
+
+
+    //
+</script>
+</body>
+</html>

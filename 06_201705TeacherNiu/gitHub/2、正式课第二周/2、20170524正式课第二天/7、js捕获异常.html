@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //捕获异常： 当js 代码报错的时候，捕捉到，并且能把异常信息抓取到
+    //    console.log(num);
+    //try catch  finally(不常用)
+    // e.message 可以看到具体的错误信息
+    var num1 =10;
+    //   var num2 =12;
+    // try 代码报错，才会走catch里面的代码不报错，catch中代码不执行
+    //如果catch里面也有错误，需要看try中的代码,try有错误，那么catch中也报错，try没有错，则代码正常
+
+    try{
+        console.log(num1);
+    }catch(ayy){
+        console.log(num2);
+        console.log(ayy.message)
+    };
+
+</script>
+</body>
+</html>

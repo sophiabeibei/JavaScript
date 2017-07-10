@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        input{
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            /*display: block;*/
+        }
+        #range{
+            width : 100px;
+            height:18px;
+        }
+        #num{
+            width :30px;
+
+        }
+    </style>
+    <script type="text/javascript" src="html5.min.js"></script>
+</head>
+<body>
+<!--<input type="text"/>-->
+<!--<input type="button" value="点击"/>-->
+<!--<input type="submit"/>-->
+<input type="radio" name="sex" id="boy"/><label for="boy">男</label>
+
+<input type="radio" name="sex" id="girl"/><label for="girl">女</label>
+<!--<input type="checkbox"/>-->
+<!--<input type="text"/>-->
+<!--<input type="file"/>-->
+<!--<input type="email"/>-->
+<!--<input type="date">-->
+<!--<input type="number">-->
+<!--<input type="tel">-->
+<input type="range" max="100" min="20" id="range">
+<input type="text" id="num">
+<!--<input type="color" id="color">-->
+
+<script type="text/javascript">
+    // file : 打开本地文件
+//    console.log(document.getElementById("color").value);
+// h5新增的type属性
+    // email  // 符合邮箱规则的不报错
+    // url   : 是个链接
+    // search : 搜索框
+    // date :时间
+    // number : 数字
+    // tel
+    // range : 范围
+    // color 
+
+var orange = document.getElementById("range");
+var num = document.getElementById("num");
+num.value = orange.value;
+    console.log(orange.value)
+    orange.oninput = function () {
+//        debugger
+        num.value = orange.value;
+    }
+</script>
+</body>
+</html>

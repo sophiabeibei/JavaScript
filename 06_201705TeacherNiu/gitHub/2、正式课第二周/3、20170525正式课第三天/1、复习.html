@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // call  和 apply
+    //  call  : 改变方法this关键字的指向
+    function fn1(num1,num2) {
+         console.log(this);//1
+         console.log(num1);//[1,2]
+         console.log(num2);//undefined
+    };
+    fn1.call()// window
+    //在非严格模式下，call不传参数，this指向window，传null和undefined也是window
+    // 在严格模式下，call不传参数，this指向undefined，如果null，指向null，传undefined，指向undefined
+//    fn1.call(1,[1,2]);
+    // 先去找Function原型的方法call ,执行call方法
+    //  把call方法点的前面的方法的this改成call 中传进去第一个参数
+    // 然后让点前面的方法执行
+
+    // 所有的函数数据类型都是Function 的一个实例，Function 的原型上有call 和apply;
+    // apply  改变this关键字指向，传参数：除了第一个参数以外，把其余参数放进数组中一块传进去，然后把数组每一项给函数形参
+//    fn1.apply(1,[1,2]);
+
+    // js异常捕获
+     //try catch finally
+//    try{
+//        console.log(num)
+//    }catch (e){
+//        console.log(e.message)
+//        var num =0;//
+//        if(e.message == "num is not defined"){
+//            var num =0;
+//        }
+//    };
+      //arguments  能用数组的方法
+       //[].slice indexOf Array 的原型上（prototype）
+    // sort
+    //var  cur = Array.prototype.slice.call(arguments)//
+
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM2级事件的基础知识</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: orange;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    //DOM0级事件(大部分用DOM0级事件绑定);
+    var box = document.getElementById("box");
+
+
+
+
+    //DOM0级: 直接找私有属性;
+    //DOM2级: 一级级的往上找;
+
+    //我们使用DOM2事件绑定,其实是让oBox通过原型链通过原型链一直找到EventTarget这个内置类原型上的addEventListener方法实现的;
+
+    //DOM0级事件绑定: 只能给一个元素的某个行为绑定一次方法,后面绑定的会把前面的覆盖掉;
+//    box.onclick = function () {
+//        console.log(1);
+//    };
+//    box.onclick = function () {
+//        console.log(2);
+//    };
+//    box.onmouseover = function () {
+//        console.log(3);
+//    };
+
+
+    //DOM2级绑定: 可以给某个元素的同一个行为绑定多个不同的方法,后面的不会覆盖前面的;
+//    box.addEventListener("click",function (e) {
+//        console.log(1);
+//    },false);
+//    box.addEventListener("click",function (e) {
+//        console.log(2);
+//    },false);
+
+
+    //DOM2: DOM0中的行为类型,用DOM2一样可以绑定;而且DOM2级事件绑定中,还提供了一些DOM0级事件绑定中没有的行为类型,比如:DOMContentLoaded(页面DOM结构已经加载完成);
+//    box.addEventListener("DOMContentLoaded",function () {
+//
+//    },false);
+
+    //window.onload = function(){}; -->当页面中的所有资源都加载完成(比如图片,页面结构,音视频....等)才会执行后面的函数;并且在一个页面中只能用一次,后面再写会把前面的覆盖掉;因为它是采用DOM0级事件绑定,所以只能绑定一次;
+
+    //jQuery: $(document).ready(function(){})  -->$(function(){})只要当前页面中HTML结构加载完成就会执行对应的函数;并且在同一个页面中可以出现多次;
+    //DOM2级事件绑定
+    //并且绑定的行为是DOM2级事件绑定中新增加的那个DOMContentLoaded;
+
+
+    //window.onload和DOMContentLoaded的区别:一个是DOM0级事件绑定,一个是DOM2级事件绑定;
+
+    //用DOM2级事件绑定,可以绑定多次;
+//    window.addEventListener("load",function () {},false);
+//    window.addEventListener("load",function () {},false);
+
+
+    //3.DOM2级事件绑定
+//    function fn1(e){
+//        console.log(this);//this是box;
+//    }
+//    box.addEventListener("click",fn1,false);
+
+    //移除的时候,需要保证三个参数:参数1: 行为;参数2: 方法;参数3: 哪个阶段发生;
+//    box.removeEventListener("click",fn1,false);
+    //所以,在使用DOM2绑定的时候,一般都给绑定的是实名函数;
+
+
+    //4.
+    // 1)只能给某个元素的同一个行为绑定多个"不同"的方法(如果方法相同,只能留一个);
+    // 2)当行为触发,会按照绑定的顺序依次把绑定的方法执行;
+    // 3)执行
+    function fn1() {console.log(1);}
+    function fn2() {console.log(2);}
+    function fn3() {console.log(3);}
+    function fn4() {console.log(4);}
+    function fn5() {console.log(5);}
+    function fn6() {console.log(6);}
+    function fn7() {console.log(7);}
+    function fn8() {console.log(8);}
+    function fn9() {console.log(9);}
+    function fn10() {console.log(10);}
+    function fn11() {console.log(11);}
+    function fn12() {console.log(12);}
+
+    box.addEventListener("click",fn1,false);
+    box.addEventListener("click",fn2,false);
+    box.addEventListener("click",fn3,false);
+    box.addEventListener("click",fn4,false);
+    box.addEventListener("click",fn5,false);
+    box.addEventListener("click",fn6,false);
+    box.addEventListener("click",fn7,false);
+    box.addEventListener("click",fn8,false);
+    box.addEventListener("click",fn9,false);
+    box.addEventListener("click",fn10,false);
+    box.addEventListener("click",fn11,false);
+    box.addEventListener("click",fn12,false);
+
+    box.addEventListener("mouseover",fn1,false);
+
+
+
+    //事件池: 用来存储当前元素行为绑定的方法;(浏览器自带的机制)
+
+
+    /**
+     * 第一方面: 类型 click  (行为)
+     * 第二方面: 方法   fn9
+     * 第三方面: 阶段 false  (第一个阶段是捕获,第二个阶段是冒泡)
+     *
+     *
+     */
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

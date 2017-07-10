@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // Object.is()
+    //  用来两个值是否严格相等，和===基本是一样的;返回值是布尔值
+    // 1、+0 和 -0
+    // 2 、NaN
+//    console.log(Object.is(+0,-0)) // false
+//    console.log(Object.is(NaN,NaN)) // true;
+
+    // Object.assign  : 方法将源对象的所有的可枚举属性，复制到目标对象中，至少需要两个参数，第一个参数是目标对象，后面的都是源对象
+    var target = {a : 1};
+    var yuanObj = {b : 2,c : 3};
+    var yuanObj1 = {a : 5}
+    Object.assign(target,yuanObj,yuanObj1);
+    console.log(target)
+    // 如果目标对象和源对象有相同的属性名，后面的属性把把前面的属性和属性值覆盖
+
+    // 对象的克隆
+    function clone(origin){ // origin  源对象
+        return Object.assign({},origin);
+    }
+    clone(yuanObj);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

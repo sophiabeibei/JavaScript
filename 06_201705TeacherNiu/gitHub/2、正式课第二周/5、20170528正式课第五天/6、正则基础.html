@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //单行注释
+    // 正则 ： 它是一个规则，用来处理字符串的规则
+//    var str = "zhufeng123zhufden12{[]}";
+    // 字符串的方法
+    // charAt   charCodeAt  indexOf  lastIndexOf  substring  slice toUpperCase  toLowerCase replace  substr  split
+    //js中 对象数据类型 ： object，array ，RegExp，Date
+
+
+    //  test
+    // 1)匹配 ： 判断当前字符串是否符合我们制定的规则；
+//    var reg = /\d/;  // 包含一个0-9之间的数字   语法：reg.test(str)
+//    console.log(reg.test("1")) // true
+//    console.log(reg.test("stt"))  // false
+   // console.log(reg.test("123")) // true
+//    console.log(reg.test("珠峰123zhufeng"))// true
+
+    // exec
+    //  2)捕获  把字符串中符合我们规则的内容捕获到
+    var reg = /\d/;
+    //console.log(reg.exec("zhufeng"))//  null
+    console.log(Object.prototype.toString.call(reg.exec("zhufeng123")))//["1", index: 7, input: "zhufeng123"]
+//    console.log(reg.exec("123"));
+    //返回值
+    // 第一项属性值是捕获到的内容
+    // 第二项index 属性值： 捕获内容在当前字符串中的索引
+    // 第三项inputs属性值 ： 是要进行捕获的字符串
+
+    // 如何创建一个正则
+    //var reg = /\d/;// 字面量方式创建
+
+    // 实例创建
+
+    var reg1 = new RegExp("tt");
+    console.log(reg1);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            top :0;
+            left:0;
+            right:0;
+            bottom: 0;
+            margin:auto;
+            width:100px;
+            height:100px;
+            background: #ffb51a;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script type="text/javascript">
+     var oBox = document.getElementById("box");
+     console.log(oBox)
+     oBox.onclick = function () {
+          console.log(1)
+     }
+     function on(curEle,type,fn) {
+         curEle.addEventListener(type,fn,false)
+     }
+     on(oBox,"click",function () {
+         this.style.webkitTransitionDuration = "2s";
+         this.style.webkitTransform = "rotate(360deg)";
+          // 定时器实现等待的作用
+         var _this= this;
+         var delayTimer = setTimeout(function () {
+             _this.style.webkitTransitionDuration = "0s";
+             _this.style.webkitTransform = "rotate(0deg)";
+         },2000)
+     })
+     // PC 端  ： click   mouseover  mouseenter  mouseleave  mousemove  mousedown mouseup keydown  keyup load scroll blur change
+     //   click  load  scroll blur  focus change
+    // touch事件类型 （处理单手指操作）  gesture事件类型（处理多手指的操作）
+
+    // touch  : touchstart  touchmove  touchend
+    // gesture : gesturestart   gesturemove    gestureend
+
+    // click  : 在移动端 是属于单击事件，不是点击事件，移动端的浏览器在识别click的时候，只有确定当前是单击才会执行
+
+    // 在移动端是使用click会存在300ms 延迟，浏览器在第一次点击结束后，等300ms看是否触发了第二次点击，如果是第二次点击了，就不属于click了，没有点击第二次，才属于click；
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #outer{
+            width :300px;
+            height:300px;
+            margin:20px auto;
+            padding-top:20px;
+            background: #008CD7;
+        }
+        #inner{
+            width :200px;
+            height:200px;
+            padding-top:20px;
+            margin:auto;
+            background: #008000;
+        }
+        #center{
+            width :100px;
+            height:100px;
+            margin:auto;
+            background: #F9044E;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var outer = document.getElementById("outer")
+    var inner = document.getElementById("inner")
+    var center = document.getElementById("center")
+    var body =document.body;
+    //false  操作的是冒泡阶段
+    // true  操作是捕获阶段
+//    先捕获，然后在冒泡传播
+    body.addEventListener("click",function () {
+            console.log("body","冒泡")
+    },false)
+    body.addEventListener("click",function () {
+        console.log("body","捕获")
+    },true)
+    outer.addEventListener("click",function () {
+        console.log("outer","冒泡")
+    },false);
+    outer.addEventListener("click",function () {
+        console.log("outer","捕获")
+    },true)
+    inner.addEventListener("click",function () {
+        console.log("inner","冒泡")
+    },false)
+    inner.addEventListener("click",function () {
+        console.log("inner","捕获")
+    },true)
+    center.addEventListener("click",function () {
+        console.log("center","冒泡")
+    },false);
+    center.addEventListener("click",function () {
+        console.log("center","捕获")
+    },true)
+
+
+</script>
+</body>
+</html>

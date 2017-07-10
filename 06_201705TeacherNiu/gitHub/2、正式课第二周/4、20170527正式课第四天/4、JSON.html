@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //   JSON　是一种数据格式，
+//    console.log("JSON" in  window)
+//    var obj={"name": "wusong","age" : 16}  // JSON格式的对象
+    // JSON.stringify //把JSON格式的对象转成JSON格式的字符串
+    // JSON.parse  // 把JSON格式字符串转换成JSON格式对象
+    // JSON IE67不兼容
+    //eval  把JSON格式字符串转换成JSON格式对象
+    // JSON格式的字符串转JSON对象并且兼容
+    var str = '{"name": "wusong","age" : 16}';
+
+    var  utils = {
+        toJSON : function (str) {
+            var  newObj = null;
+             "JSON" in window ? newObj=JSON.parse(str):newObj =eval("("+str+")");
+             return newObj;
+        }
+    }
+    console.log(utils.toJSON(str));
+
+</script>
+</body>
+</html>

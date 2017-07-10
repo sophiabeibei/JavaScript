@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // try  catch
+    var ary =[];
+    function toArray() {
+        try{
+            ary = Array.prototype.slice.call(arguments);
+        }catch (e){
+            for(var i=0;i<arguments.length;i++){
+                ary[ary.length] = arguments[i];
+            }
+        }
+        return ary;
+    };
+    // "getComputedStyle" 是window下的一个方法，在IE6-8 不兼容，currentStyle
+    // 用in 方法判断属性名是否属于某个对象
+    if("getComputedStyle" in window){
+
+    }else{
+
+    }
+    if(window.getComputedStyle){
+
+    }
+    if(typeof getComputedStyle === "function"){
+
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

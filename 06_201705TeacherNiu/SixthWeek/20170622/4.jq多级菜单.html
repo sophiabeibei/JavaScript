@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq多级菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #box{
+            width: 650px;
+            margin: 20px auto;
+        }
+        #box li{
+            position: relative;
+            margin-left: 10px;
+        }
+        #box ul{
+            margin-left: 10px;
+            display: none;
+        }
+        #box em{
+            position: absolute;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+            background: url("icon.png") no-repeat -60px -28px;
+            cursor: pointer;
+        }
+        #box span{
+            -webkit-user-select: none;
+            padding-left: 20px;
+        }
+        #box em.open{
+            background-position: -43px -28px;
+        }
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li>
+        <em></em><span>第一级第一个</span>
+        <ul>
+            <li>
+                <em></em><span>第二级第一个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+            <li>
+                <em></em><span>第二级第二个</span>
+                <ul>
+                    <li>
+                        <em></em><span>第三级第一个</span>
+                        <ul>
+                            <li><span>第四级第一个</span></li>
+                            <li><span>第四级第二个</span></li>
+                            <li><span>第四级第三个</span></li>
+                        </ul>
+                    </li>
+                    <li><em></em><span>第三级第二个</span>
+                        <ul>
+                            <li><span>第四级第一个</span></li>
+                            <li><span>第四级第二个</span></li>
+                            <li><span>第四级第三个</span></li>
+                        </ul>
+                    </li>
+                    <li><em></em><span>第三级第三个</span>
+                        <ul>
+                            <li><span>第四级第一个</span></li>
+                            <li><span>第四级第二个</span></li>
+                            <li><span>第四级第三个</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <em></em><span>第二级第三个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <em></em><span>第一级第二个</span>
+        <ul>
+            <li>
+                <em></em><span>第二级第一个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+            <li>
+                <em></em><span>第二级第二个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+            <li>
+                <em></em><span>第二级第三个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <em></em><span>第一级第三个</span>
+        <ul>
+            <li>
+                <em></em><span>第二级第一个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+            <li>
+                <em></em><span>第二级第二个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+            <li>
+                <em></em><span>第二级第三个</span>
+                <ul>
+                    <li><span>第三级第一个</span></li>
+                    <li><span>第三级第二个</span></li>
+                    <li><span>第三级第三个</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    //获取em下面的所有span(兄弟级)
+    $("#box em").next("span").css("cursor","pointer");
+
+    //利用事件委托来实现
+    //参数e: 通过事件源判断点击的元素对象;
+    $("#box").click(function (e) {
+        //获取当前的事件源,先处理e
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        //获取事件源的标签名,通过tagName获取的标签名全部是大写;通过toLowerCase大写转小写;
+        var tagName = target.tagName.toLowerCase();//toLowerCase大写转小写
+        if(tagName === "em" || tagName === "span"){
+            //如果为true,获取em和span兄弟级(同一级)的ul;
+            var nextUl = $(target).nextAll("ul");
+            if(!nextUl.length){
+                return;
+            }
+            //如果下面为隐藏,返回true;
+            if(nextUl.is(":hidden")){
+                nextUl.show().prevAll("em").addClass("open");
+            }else{
+                //获取当前父级下的所有ul,让它隐藏;
+                nextUl.parent().find("ul").hide();
+                nextUl.parent().find("em").removeClass("open");
+            }
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

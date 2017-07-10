@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // Function.prototype  //  函数数据类型的
+    // var ary =[];
+//    ary.slice(); //  通过__proto__ 这个属性取Array的原型上去找这个方法
+    //可以给原型新增自定义的方法
+//    var ary =[18,18]
+//    var obj ={18 : 18};
+//    Array.prototype.quChong = function () {
+//        //this
+//        var obj ={};
+//        for(var i=0;i<this.length;i++){
+//            var cur = this[i];
+//            if(obj[cur] == cur){
+//                this[i] = this[this.length-1];
+//                this.length--;
+//                i--;
+//                continue;// 结束本轮循环
+//            }
+//            obj[cur] = cur;
+//        };
+//        obj = null;
+//        return this;
+//    }
+//    var ary =[]
+//    ary.quChong();
+
+//    function Fn() {
+//
+//    };
+//    Fn.prototype = {
+//        getX : function () {
+//
+//        },
+//        slice : function () {
+//
+//        }
+//    };
+//    var f = new Fn;
+    // 内置类 ： Number String  Boolean  Null Undefined
+    //  Object  Array  RegExp  Date Function ...
+    // 所有的函数数据类型（普通的函数，类（自定义类，内置类））,都是Function的一个实例，实例又是对象数据类型，也是对象数据类型的
+    // 所有的对象数据类型（对象，实例，prototype），都是Object的一个实例；
+//    function Fn(){
+//
+//    };
+//    Fn();//undefined
+//    var f = new Fn;
+//    Fn.num =18;
+    // 函数的三种角色(函数的多面性)
+    // 1、普通函数 ： 形成私有作用域-》形参赋值--》预解释--》代码从上到下执行
+    // 2、 类  ： 把实例、原型、原型链关联在一起
+    // 3、 对象 ： 是Function一个实例，实例是对象数据类型的，可以新增属性名属性值
+//    Fn.num = 16;//
+//    console.log(Fn["num"]) // 16
+
+    // instanceof  检测实例是否属于某个类
+//     f instanceof Fn // true;
+//     Fn instanceof Function // true
+//    f instanceof  Object  // true
+//    var num =1;// 字面量创建
+//    num.getY = function () {
+//
+//    }
+//    var  num =  new Number(1);
+//    num.getX = function () {
+//
+//    }// 实例创建
+//    console.log(num instanceof Number)
+
+//    var ary = [];
+//    var ary = new Array;
+//    console.log(ary instanceof Array);
+
+
+//    var num = 0;//200
+//    function Fn(num) {
+//        arguments[0] = 100;
+//        this.num = 200;// this-->f 、this-->window
+//        console.log(num);// 100 / 100
+//        console.log(this.num);// 200   //200
+//        return num;  //100
+//    }
+//    Fn.num = 400;
+//    Fn.prototype.num = 300;
+//    Fn.prototype.getNum = function () {
+//        console.log(this.num);
+//    };
+//    var f = new Fn(num); //{num :200}
+//    console.log(f.num);//200
+//    f.getNum();//200
+//    Fn.prototype.getNum();//300
+//    console.log(num);//0
+//    var n = Fn(num);// 普通函数执行
+//    console.log(n);//100
+//    console.log(num);//200
+//    console.log(Fn["num"])// 400
+
+    // 思考题 ：slice   ： 截取数据，从索引n开始，到索引m,不包含m
+    //slice(n,m)
+    //typeof m == "undefined";
+
+    // this的问题
+    // 类中的this，指向当前的实例；
+    // 原型中的this，看方法前面是否有点，点 前面是谁，把相应的this换成点的前面的
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

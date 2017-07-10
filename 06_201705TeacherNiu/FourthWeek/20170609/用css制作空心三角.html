@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>空心小三角</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .arrow1{
+            width: 130px;
+            height: 130px;
+            margin: 50px auto;
+            border-left: 3px solid #0000ed;
+            border-bottom: 3px solid #0000ed;
+        }
+        .arrow2{
+            width: 130px;
+            height: 130px;
+            margin: 100px auto;
+            border-left: 3px solid #0000ed;
+            border-bottom: 3px solid #0000ed;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        .arrow3{
+            width: 130px;
+            height: 130px;
+            margin: 50px auto;
+            border-left: 3px solid #0000ed;
+            border-bottom: 3px solid #0000ed;
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+        .arrow4{
+            width: 130px;
+            height: 130px;
+            margin: 50px auto;
+            border-left: 3px solid #0000ed;
+            border-bottom: 3px solid #0000ed;
+            -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+        }
+        .arrow5{
+            width: 130px;
+            height: 130px;
+            margin: 100px auto;
+            border-left: 3px solid #0000ed;
+            border-bottom: 3px solid #0000ed;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+<!--制作空心小三角
+原理:先实现正方形的两条边框线,然后再通过旋转角度得到想要的方位的箭头;
+空心三角是通过正放心的宽高决定;
+-->
+<div class="arrow1"></div>
+<div class="arrow2"></div>
+<div class="arrow3"></div>
+<div class="arrow4"></div>
+<div class="arrow5"></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="index.less">
+</head>
+<body>
+<div id="box" class="box">
+    <div class="con">
+        <div class="center"></div>
+    </div>
+</div>
+<div id="box1" class="box1">
+    <div class="con"></div>
+</div>
+<script type="text/javascript">
+    var less = {
+        env: "development",
+        poll :1000
+    }
+</script>
+<script type="text/javascript" src="less.min.js"></script>
+<script type="text/javascript">
+    // 开启less的监听模式
+    less.watch();
+</script>
+<script type="text/javascript">
+    //
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //回调函数
+
+    //把函数当参数传进来
+    function A(callBack) {
+        callBack();
+    }
+    function B() {
+
+    }
+    //定时器
+    //setInterval()   setTimeout() =>这俩永远指向window      前面的window可以省略,这俩是window下的方法;
+    //this,永远指向window
+    //定时器,有返回值: 代表在当前中是第几个定时器,返回值就是几;
+    //1.返回值放进全局下
+    //2.返回值放在元素对象自定义属性上;
+
+
+    //单方向动画
+    //总时间,总距离,每10毫秒走的距离(步长)
+    //每间隔一段时间,对当前元素的left或者top进行设置;(备注:一定要加绝对定位  position:absolute)
+
+    function Linear(t, b, c, d) {
+        return t/d*b+c;
+        //t: time 走过的时间
+        //b: begin  开始的位置
+        //c: change 目标的距离(总距离)
+        //d: duration 持续的时间(总时间)
+    }
+
+
+    //多方向动画
+    //同时对盒子left和top进行设置;
+
+
+
+
+</script>
+</body>
+</html>

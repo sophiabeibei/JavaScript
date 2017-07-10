@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            top :0;
+            left:0;
+            right:0;
+            bottom: 0;
+            margin:auto;
+            width:100px;
+            height:100px;
+            background: #ffb51a;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<!--fastclick : 解决移动端使用click导致的300ms延迟的问题-->
+<script type="text/javascript" src="fastclick.min.js"></script>
+<script type="text/javascript">
+    FastClick.attach(document.body);
+    var oBox = document.getElementById("box");
+
+    function on(curEle,type,fn) {
+        curEle.addEventListener(type,fn,false)
+    }
+//    oBox.onTouchStart = function (ev) {
+//        console.log(ev)
+//    }
+    // 使用touch事件模型实现点击的操作
+    on(oBox,"touchstart",function (ev) {
+         var point = ev.touches[0];
+         //  clientX :获取x轴方向的距离屏幕左边的距离
+
+         this["strX"] = point.clientX;
+         this["strY"] = point.clientY;
+
+    });
+    // touchmove 事件只有当触摸发生移动才会执行
+    on(oBox,"touchmove",function (ev) {
+        var point = ev.touches[0];
+        var newX = point.clientX;
+        var newY = point.clientY;
+        //如果横向或者纵向发生30px 的移动，背景色变色，不旋转
+        if(Math.abs(newX -this["strX"])>30||Math.abs(newY-this["strY"])>30){
+            this["isMove"] = true;
+        }
+    });
+    on(oBox,"touchend",function (ev) {
+//        var point = ev.changedTouches[0];
+        if(this["isMove"]){
+            this.style.background = "red";
+        }else{
+            this.style.webkitTransitionDuration = "2s";
+            this.style.webkitTransform = "rotate(360deg)";
+            var _this = this;
+            var delayTimer = window.setTimeout(function () {
+                _this.style.webkitTransitionDuration = "0s";
+                _this.style.webkitTransform = "rotate(0deg)"
+            },2000);
+        }
+        // ev: touchEvent  : type (事件类型)  target cancelBubble returnValue
+        console.log(ev)
+        // touches : 是手指信息的集合，touches 获取到值得必备条件是只有手指还在屏幕上才可以获取到
+        //changedTouches   : 所以在touchend 事件中获取离开瞬间鼠标的这个信息只能使用changedTouches 获取
+    })
+
+
+
+
+
+</script>
+
+</body>
+</html>

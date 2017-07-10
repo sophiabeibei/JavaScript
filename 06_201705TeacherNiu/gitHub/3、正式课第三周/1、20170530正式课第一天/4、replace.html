@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 字符串replace
+    //var str = "zhufeng123zhufeng234";
+//    console.log(str.replace("zhufeng","zhufengpeixun").replace("zhufeng","zhufengpeixun"));//不可以
+    //str.replace("zhufeng123zhufeng234","zhufengpeixun123zhufeng");
+    //console.log(str.replace("1","peixun1").replace("234","peixun234"));
+    //var  reg = /zhufeng/g;// reg 存储的是一个地址
+//    console.log(str.replace(/zhufeng/g,"zhufengpeixun"));
+    //  replace 结合正则实现字符串替换原理：把replace的第一个参数换成一个正则；
+    // 然后把元字符进行符合正则规则捕获，然后把捕获的内容进行替换
+
+    // 把replace中的第一个参数换成正则，第二个参数换成函数
+    var str = "zhufeng123zhufeng234zhufeng456";
+    var  reg = /zhufeng/g;
+    str=str.replace(reg,function () {
+//        console.log(arguments[1]);//["zhufeng", 0, "zhufeng123zhufeng234", callee: function, Symbol(Symbol.iterator): function]
+        return "珠峰培训";
+    })
+    console.log(str);
+    // replace传进去的匿名函数，捕获几次，当前匿名函数执行几次
+    //要把字符串替换成什么内容，就把什么当做匿名函数的返回值返回
+
+    //格式化时间字符串
+    var str = "2017-5-30 15:20:30 ";
+    var ary = ["年","月","日","时","分","秒"];
+    // 2017年5月30日 15时20分30秒
+    var reg = /\d+/g;
+    var str1 = "";
+    var i=0;
+    str.replace(reg,function () {
+        console.log(arguments[0])//捕获数字
+        str1 += arguments[0]  + ary[i++];
+    });
+    console.log(str1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

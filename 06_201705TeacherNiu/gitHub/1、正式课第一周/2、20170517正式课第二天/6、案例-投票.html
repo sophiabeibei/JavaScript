@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding :0;
+            font-family: 微软雅黑;
+            font-size: 20px;
+        }
+        #tab{
+            width : 300px;
+            height :100px;
+            margin : 50px auto;
+        }
+        h2{
+            text-align: center;
+        }
+        .box{
+            width : 100%;
+            background: lightskyblue;
+            height : 50px;
+            line-height: 50px;
+            text-align: center;
+            color : white;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <h2>认为王林很丑的请点赞</h2>
+    <div class="box"><span id="box-span">0</span></div>
+</div>
+<script type="text/javascript">
+    var oBox = document.getElementsByClassName("box")[0];
+    var span = document.getElementById("box-span");
+    //第一种方式
+    // 定义全局变量尽量少用；
+//    console.log(num)  //undefined
+//    var num=0;
+//    console.log(num)
+//    oBox.onclick=function () {
+//        num++;
+//        span.innerHTML = num;
+//    }
+    //第二种方式  通过创建新的作用域，来保存变量的值，
+//    oBox.onclick= (function(){
+//        //上级作用域不销毁的
+//        var num=0;
+//        return function () {
+//            num++;
+//            span.innerHTML = num;
+//        }
+//    })();
+//    oBox.onclick= function (){
+//            //上级作用域不销毁的
+//            var num=0;
+//            return function () {
+//                num++;
+//                span.innerHTML = num;
+//            }
+//        }();
+    // 弊端： 形成一个私有的作用域，不销毁，那么占用内存；
+    //第三种方式   增加属性名的方式,保存点击的次数（经常用）
+//    oBox.index = 0;
+//    oBox.onclick = function () {
+//        span.innerHTML = this.index++;
+//    }
+    // 第四种
+        oBox.onclick = function () {
+            span.innerHTML++;
+        }
+
+</script>
+</body>
+</html>

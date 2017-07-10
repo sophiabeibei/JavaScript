@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding : 0;
+        }
+        div{
+            position: absolute;
+            width :100px;
+            height:100px;
+            border-radius: 50%;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box" style="left:0px;top:30px;background: green"></div>
+<div id="box1" style="left:100px;top:120px;background: linear-gradient(yellow,red,green)"></div>
+<div id="box2" style="background:yellow; left :200px;top :200px"></div>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript" src="3.event.js"></script>
+<script type="text/javascript" src="4.effect.js"></script>
+<script type="text/javascript">
+    //在拖拽的项目里,当前的盒子分为两个不同的模块:一个是拖拽,另一个是动画;(当拖拽结束时,执行的是动画);
+    //现在的需求,让这两个模块完全独立;互不干扰;
+    //(1.拖拽.html文件)案例中,是当拖拽结束时,执行动画;
+
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+    var oBox2 = document.getElementById("box2");
+    on(oBox,"mousedown",down);
+    on(oBox1,"mousedown",down);
+    on(oBox2,"mousedown",down);
+    //on 方法是订阅
+    //订阅到自定义属性上;
+    //自定义属性作为A;订阅的方法叫做B;(A:自定义的事件行为)
+    //A事件行为订阅了方法B;(换句话讲就是给A新增一个观察者;)
+    //通过发布订阅模式,让两个不同的模块可以共同完成复杂的功能;
+
+    on(oBox,"selfDragging",getSpeed);
+    on(oBox,"selfDragstart",fly);
+    on(oBox,"selfDragstart",drop);
+    on(oBox,"selfDragend",clearTimer);
+
+    on(oBox1,"selfDragging",getSpeed);
+    on(oBox1,"selfDragstart",fly);
+    on(oBox1,"selfDragstart",drop);
+    on(oBox1,"selfDragend",clearTimer);
+
+    on(oBox2,"selfDragging",getSpeed);
+    on(oBox2,"selfDragstart",fly);
+    on(oBox2,"selfDragstart",drop);
+    on(oBox2,"selfDragend",clearTimer);
+
+</script>
+</body>
+</html>

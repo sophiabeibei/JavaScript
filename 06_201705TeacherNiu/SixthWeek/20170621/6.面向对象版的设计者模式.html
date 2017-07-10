@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象版的设计者模式</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    function EventFire() {//EventFire 事件发射类;
+
+    }
+    //on 是订阅;
+    EventFire.prototype.on = function (evenType, evenFn) {
+        console.log(this);//这里的this看on执行时前面的主体是谁,this就指向谁,这this是k1;
+        if(!this["self" + evenType]){//这里的this指向
+            this["self" + evenType] = [];
+        }
+        var ary = this["self" + evenType];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(cur === evenFn){
+                return;
+            }
+        }
+        ary.push(evenFn);
+    };
+    //事件的发布者
+    //run 是执行;
+    EventFire.prototype.fire = function (evenType) {
+        var ary = this["self" + evenType];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(typeof cur === "function"){
+                cur.call(this);
+            }
+        }
+    };
+    //off 是移除;
+    EventFire.prototype.off = function (evenType, evenFn) {
+        var ary = this["self" + evenType];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(cur === evenFn){
+                cur = null;
+                break;
+            }
+        }
+    };
+
+    function Kettle() {}//水壶的类;
+
+    Kettle.prototype = new EventFire;//原型继承!!!kettle的原型指向了EventFire的实例;
+
+    Kettle.prototype.boiling = function () {
+        //这里的this还是看on执行时的前面的主体;
+        var _this = this;
+        setTimeout(function () {
+            _this.fire("boiling");//fire在EventFire的原型上;
+        },5000)
+    };
+
+    //创建一个Kettle这个类的实例
+    var k1 = new Kettle;
+    function drink() {
+        console.log("可以喝水了");
+    }
+    function washFace() {
+        console.log("可以洗脸了");
+    }
+    function noodle() {
+        console.log("可以泡面了");
+    }
+
+    //这里是订阅;(给boiling事件订阅方法;--方法有:drink,washFace,noodle)
+    k1.on("boiling",drink);//on执行之后,this是on前面的主体k1;
+    k1.on("boiling",washFace);
+    k1.on("boiling",noodle);
+    k1.boiling();
+
+
+
+    //范例
+    function Fn() {}
+    var f1 = new Fn;
+    console.log(f1);
+
+
+</script>
+</body>
+</html>

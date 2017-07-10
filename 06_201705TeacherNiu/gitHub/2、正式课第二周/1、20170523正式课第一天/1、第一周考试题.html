@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //一维数组：[1,4,6,8] [1,"tt"]
+    // 二维数组 ： [[1],[12]] ary[0][0]
+    // ary.sort(function(a,b){return b-a});
+    // pop  ary.length-- splice(ary.length-1,1)
+    // splice  增删改
+    // splice(n,m) 从索引n 开始删除m个
+    // splice(n,m,x)  修改
+    // splice(n,0,m)  增加
+    //slice(n-1,m) 参数前包后不包
+    // 兼容所有的浏览器  获取可视窗口的宽度或高度
+//   var width = document.documentElement.clientWidth || document.body.clientWidth;
+//   var height = document.documentElement.clientHeight || document.body.clientHeight
+    // DOM 操作DOM
+    // 1、appendChild
+    // 2、insertBefore
+    // 3、removeChild
+    // 4、replaceChild
+    // 5、cloneNode
+    // 6、document.createElement // 创建
+
+    // previousSibling  获取上一个哥哥节点   哥哥元素节点 previousElementSibling   获取上一个哥哥元素节点  （ IE6-8 ） 不兼容
+    // 节点 ： 元素节点 文本节点  注释节点 document
+
+   // nodeType : 1       3        8         9
+//  文本节点 ： 换行和空格都是文本节点
+
+
+    function  getBrother(curEle) {
+        var pre=curEle.previousSibling;
+        while(pre){
+            // 循环进来，pre 一定是存在的
+            if(pre&&pre.nodeType ==1){
+                return pre;
+            }
+            pre = pre.previousSibling;
+        }
+    }
+    // function 里面遇到return 函数代码马上停止；
+    // Math.abs()
+    // Math.ceil() 向上取整
+    // Math.floor()  向下取整
+    // Math.round() 四舍五入
+    // Math.random()  获取[0,1) 随机小数
+    // Math.round(Math.random()*(m-n) +n)//  获取[n-m]的之间随机整数
+//    Math.floor(Math.random()*(m-n+1) +n)  [30-60]
+    // Math.max()  取最大数
+    // Math.min()  取最小数
+
+    // 字符串 ：
+    // 1、substr 字符串截取（n,m） 从索引n开始，截取m个
+    // 2、substring  （n,m） 索引n到索引m ,不包含m
+    // 3、replace (old,new)  字符串替换  只能替换一次
+    //  4、toUpperCase  转大写
+    // 5、toLowerCase 转小写
+    // 6、split   把字符串的字符按照特定的字符分割成数组的每一项  数组（join ）
+    // 7、indexOf   获取字符第一次出现的索引，如果不存在，则返回-1；
+    //8、lastIndexOf  获取字符最后出现的索引，不存在返回-1
+    // 9、charAt  通过索引找到相应字符
+    // 10、charCodeAt 获取该字符的Unicode编码值
+    // 11、slice （n,m） 从索引n 开始，截取到索引m ,不包含m
+
+
+//    var oDiv= document.createElement("div");
+//    document.body.appendChild(oDiv);
+//    var oDiv1 = oDiv.cloneNode();// true  : 克隆子节点和自己本身 false ：克隆自己
+//    document.body.insertBefore(oDiv1,oDiv)
+    //  Number  parseFloat  parseInt   parseFloat  比parseInt  多识别一个小数点
+    //concat  slice(0)   splice(0)/splice(0,ary.length)
+
+
+
+    // 自定义属性解决方法
+    for(var i=0;i<inpList.length;i++){
+        var cur = inpList[i];
+        cur.index = i;
+        cur.onclick = function () {
+            document.body.style.backgroundColor = ary[cur.index];
+        }
+    }
+    // 作用域解决方法
+    for(var i=0;i<inpList.length;i++){
+        var cur = inpList[i];
+        cur.onclick = (function(num) {
+            // 当前自执行函数作用域有一个私有变量是num
+            return function () {
+                document.body.style.backgroundColor = ary[num];
+            }
+        })(i);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin-left: 20px;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+1.事件: 一个行为   onclick   onmouseover......,然后给这些行为绑定一个方法;当行为触发的时候,让当前绑定的这个方法执行;<br/>
+2.oBox  元素对象   onclick  是一个属性名<br/>
+3.如果给当前元素对象的某个行为绑定一个方法,那么浏览器会把当前事件的信息传给当前这个方法,方法用参数来接收(一般用参数e(event缩写));<br/>
+<h2 style="color: orangered">事件对象:</h2>
+5.事件对象中常用的事件信息: clientX   clientY   pageX  pageY   target<br/>
+1)clientX: 元素行为触发的时候,鼠标那个点距离当前可视窗口左边的距离;<br/>
+clientY: 元素行为触发的时候,鼠标那个点距离当前可视窗口上边的距离;<br/>
+<br/>
+<br/>
+2)pageX: 元素行为触发的时候,鼠标那个点距离当前页面左边的距离;<br/>
+pageY: 元素行为触发的时候,鼠标那个点距离当前页面顶端的距离;<br/>
+不兼容的算法:<br/>
+e.pageX = e.pageX || (e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft));<br/>
+e.pageY = e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop));<br/>
+<br/>
+<br/>
+3)事件源target<br/>
+在MouseEvent这个事件对象中,不标准浏览器中没有target;有srcElement;<br/>
+事件源: 事件触发的源头;<br/>
+e.target ? e.target : e.srcElement = true;(不知道对不对,自己写的)
+<br/>
+<br/>
+4)阻止事件的默认行为e.preventDefault<br/>
+兼容的写法: e.preventDefault ? e.preventDefault : e.returnValue = false;<br/>
+<br/>
+<br/>
+5)事件的传播机制;<br/>
+当触发当前元素的某个事件的时候,它的所有上级元素对应的这个事件也会跟着触发;<br/>
+阻止事件的传播机制的方法:e.stopPropagation();<br/>
+e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;<br/>
+<br/>
+<br/>
+6)onmouseover 和 onmouseenter 的区别: onmouseenter不支持事件的冒泡;<br/>
+<br/>
+<br/>
+7)放大镜<br/>
+两图存在两倍的关系;<br/>
+阴影盒子的移动和大图的移动也存下两倍的关系;<br/>
+<script type="text/javascript">
+//    console.log(oBox.onclick);//null
+//    oBox.onclick = function (e) {//e 形参 event缩写;
+//        console.log(e);//对应的事件对象;
+//    };
+    var box = document.getElementById("box");
+    box.onclick = function (e) {
+        e = e || window.event;//这个简写,相当于下面的if...else语法;
+//        if(e){
+//            e = e;
+//        }else{
+//            e = window.event;
+//        }
+        console.log(e);
+        console.log(e.target);//在标准浏览器下的事件源: target;用的时候e.target
+    };
+//    document.body.onclick = function (e) {
+//        console.log(e);
+//        console.log(e.target);
+//    }
+
+</script>
+</body>
+</html>

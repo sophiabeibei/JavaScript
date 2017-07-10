@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin :0;
+            padding:0;
+        }
+        .box{
+            margin : 50px auto;
+            width : 100px;/*指真实内容的宽度，或者可编辑的宽度*/
+            height: 100px;
+            border: 10px solid #08BECE;
+            padding:20px;
+        }
+        #outer{
+            /*position: relative;*/
+            width:300px
+        }
+        #inner{
+            width :200px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div class="box" id="box">你好哈</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var outer = document.getElementById("outer");
+    var inner = document.getElementById("inner");
+    var center = document.getElementById("box");
+    // 盒子模型 ： js中提供一些获取盒子的属性的一些方法
+    // clientWidth : 内容的宽度+左右的填充的宽度
+    // clientHeight : 内容的高度+ 上下填充的高度
+    // clientTop : 上边框的高度
+    // clientLeft ： 左边框的宽度
+    // scrollHeight : 如果没有溢出的情况 等于clientHeight
+                    // 如果有溢出的话，padding-Top + 真实内容的高度
+    // scrollWidth : 如果没有溢出的情况 等于clientWidth
+                    // 如果有溢出的话，padding-Left + 真实内容的宽度
+    //offsetHeight : clientHeight + 上下边框的高度
+    // offsetWidth : clientWidth + 左右边框的宽度
+    // offsetTop : 上偏移量
+    // offsetLeft : 左偏移量
+    // offsetParent  : 父级参照物
+    // scrollTop : 滚动条卷去的高度
+    // scrollLeft : 滚动条卷去的宽度
+
+
+    // offsetParent  : 父级参照物
+    // 在页面中，在不做任何处理的情况下，所有的元素的父级参照物都是body
+    // 修改父级参照物，那么利用position： absolute、relative、fixed属性
+
+    //偏移量： offsetTop  / offsetLeft
+    // 相对于父级参照物，
+    //offsetLeft ： 距离父级参照物左内边框的距离
+    // offsetTop : 距离父级参照物上内边框的距离
+
+//  console.log(outer.offsetParent.tagName)
+  console.log(inner.offsetParent.innerHTML)
+//    console.log(center.offsetParent.innerHTML)
+    // haslayout
+// 在IE7下，如果给body 的子元素，加上定位，那么当前元素的父级参照物就是HTML，如果不加定位，那么还是body
+    // 获取当前元素的偏移量（兼容的）
+//    function offset(curEle){
+//        var l = curEle.offsetLeft;
+//        var t= curEle.offsetTop;
+//        var p = curEle.offsetParent;
+//        while(p){
+//            //在XP 系统中
+////            if(navigator.userAgent.indexOf("MSIE 8.0") === -1){
+////                l+= p.clientLeft;
+////                t+= p.clientTop;
+////            };
+//            l+=p.clientLeft + p.offsetLeft;
+//            t+= p.clientTop + p.offsetTop;
+//            p = p.offsetParent;
+//        };
+//        return {left : l,top : t}
+//    };
+    // body 的父级参照物是null
+//    offset(center).left;
+    // 只读属性
+    // scrollTop  / scrollLeft  可以进行读写的
+    // 传一个参数是获取，传两个参数是设置
+//    function win(attr,value){
+//        // 如果value是undefined ，那么就是获取偏移量
+////        if(arguments.length == 1){
+////            return document.documentElement[attr] || document.body[attr];
+////        }
+//        if(typeof value == "undefined"){
+//            return document.documentElement[attr] || document.body[attr];
+//        }
+//        document.documentElement[attr] = value;
+//        document.body[attr] = value;
+//    };
+//    win("scrollTop");
+</script>
+</body>
+</html>

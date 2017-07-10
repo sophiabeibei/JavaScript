@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var name = "珠峰";
+    var age = 8;
+    (function (name,age) {
+        // 私有作用域里面有两个私有变量
+        console.log(name)// "珠峰"
+        console.log(age)// 8
+        name = "中国";
+        age = 5000;
+        console.log(name) // "中国"
+        console.log(window.name)//"珠峰"
+        window.name = name;
+        return function () {
+            console.log(name);//
+            console.log(age)
+        }
+    })(name,age)();//实参 ： "珠峰"  ，8
+    console.log(name,age);  //"珠峰" 8
+    // 形参是私有变量，
+    // 私有变量 ： 先看是否是形参，看有没有被var过，如果是其一，都是私有变量
+
+//    var name = "11";
+//    function sum() {
+//        var name ="12";
+//        name ="13"
+//    }
+//    sum();
+//    console.log(name);//"11"
+
+//    function foo() {
+//            var num = 0;
+//            function f() {
+//                console.log(num += 5)
+//            }
+//            return f;
+//        }
+//        var fo1 = foo();
+//        fo1();
+//        fo1();
+//        var fo2 = foo();
+//        fo2();
+//        fo1 = fo2;
+//        fo1();
+
+
+    var obj = {
+        num: 3,
+        bar: (function () {
+            var n = 5;
+            return function () {
+                console.log(n += 2);
+            }
+        })()
+    };
+    obj.bar = function () {
+        console.log(n += 2);
+    };
+    var bar = obj.bar;
+    obj.bar();//7
+    obj.bar();// 9
+    var fn3 = obj.bar;
+    fn3(); // 11
+    fn3();// 13
+</script>
+</body>
+</html>

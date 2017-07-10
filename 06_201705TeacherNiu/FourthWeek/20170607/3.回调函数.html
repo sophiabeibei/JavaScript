@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    //回调函数  一个函数作为另一个函数的参数;
+    function A(/*B*/callBack) {//把B方法当成形参传进来  --->回调函数   或者把B换成callBack
+        A();//递归
+        /*B();*/
+        callBack();
+    }
+    A(B);//把函数B当做一个参数传给函数A
+    function B() {
+
+    }
+
+    ary.sort(function (a, b) {//function...a-b  这只是一个方法而已,是sort的参数而已;
+        //a是前一项,b是后一项;
+        return a-b;//从小到大排序;
+        //return b-a;//从大到小排序;
+    });//sort排序的原理-->
+
+
+
+
+
+</script>
+</body>
+</html>

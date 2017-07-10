@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 加载HTML ,页面会形成一个全局的作用域，在代码执行之前，进行预解释，预解释完成之后，代码从上到下执行
+    //预解释 ：  会把带var  function 进行的声明，告诉浏览器有这么一个变量
+    // var  function  的区别 ： 带var 只声明，不定义；带function 不仅声明而且还进行定义
+    // 私有作用域 ： 函数执行的时候，首先形成私有的作用域；
+    // 1)形参赋值
+    // 2) 进行预解释，带var和function进行预解释
+    // 3) 代码从上到下执行
+     //函数分两部分 ： 定义，执行；
+    // 自执行函数 ： 定义加执行一块完成;自执行函数本身不进行预解释，但是在自执行函数执行的时候，里面打代码要进行预解释
+    // 普通函数function sum(){} 进行预解释，  sum =xxxfff111
+//    var num =12
+//    function sum(num){
+//    };
+//    sum(num)
+//    function total() {
+//    }
+//    (function (num) {
+//    })(11);
+    var yy=2;
+    //  0 ""  NaN null undefined
+//    if(yy){ // 把yy 转化为boolean  == 比较
+//        console.log(1);
+//    }
+    // 1、不管条件成立与否，都要进行预解释；在老版本浏览器function 预解释是声明加定义
+    // 在新版本浏览器，条件后面function 预解释只声明，不定义
+
+//     if(!(a in window)){
+//        var a =1;
+//     }
+//    console.log(a) // undefined
+    // 判断某一个属性名是否属于某个对象，用in方法
+//    var obj = {name : "zhufeng"};
+//    console.log("age" in obj)//false
+//    console.log(obj.age)  // undefined
+
+    //2、 等号的左边进行预解释，右边不进行预解释
+    //匿名函数 ： 没有名字的函数
+    var fn = function () {
+
+    };  // 赋值的时候，首先开辟一个对内存，然后把函数中的代码当做字符串存进去，把当前内存的空间地址给fn;
+    //3、return 后面的内容不进行预解释，但return下面的代码要进行预解释，但是不执行
+//    function bar(){
+////        console.log(tt);// undefined
+//        return function () {
+//            var tt =16;
+//        };
+////        console.log(tt);
+////        tt = 12;
+//    }
+//    var f = bar(); // f当前存储的值是 xxxfff000
+//    console.log(tt)// not a defined
+ // 4、匿名函数不进行预解释
+//    var fn= function () {
+//
+//    }
+    // 自执行函数不进行预解释
+//    (function (ab) {
+//
+//    })();
+    // 5、 如果是变量名字重复，那么不再进行声明，但是要重新定义
+//    sum(); //函数本身
+    function sum() {
+        console.log(sum);
+    };
+    sum();
+    var sum =16;
+    sum();// sum is not a function
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    // 利用递归思想实现动画
+    var  oBox = document.getElementById("box");
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var oBoxW = oBox.offsetWidth;
+    var maxL = winW-oBoxW;// 盒子距离左边的最大值
+    var count =0;
+    // setTimeout
+    console.log(utils)
+    // 递归和定时器结合
+    // 指定步长的动画
+    function move() {
+        clearTimeout(oBox.timer)// 避免再次点击，盒子加速
+        count+=10;
+        if(count>maxL){
+            utils.css(oBox,"left",maxL);
+            return;
+        }
+        utils.css(oBox,"left",count);
+        oBox.timer=setTimeout(move,10);
+    }
+    oBox.onclick = move;
+
+  // 指定时间的动画
+
+
+
+
+
+</script>
+</body>
+</html>

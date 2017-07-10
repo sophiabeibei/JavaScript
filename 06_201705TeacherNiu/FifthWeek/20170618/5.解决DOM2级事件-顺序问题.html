@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解决DOM2级事件绑定时-顺序问题</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: orange;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    /* DOM2级事件绑定方法中遇到的问题:
+     * 1)顺序问题:标准浏览器中有addEventListener方法,打印顺序--正序;
+     *           非标准浏览器中有attachEvent方法;打印顺序--倒叙;
+     * 2)this问题: 标准浏览器中this指向当前绑定的元素对象,IE6-8中的this指向window;
+     * 3)重复问题: 标准浏览器对元素的一个事件行为绑定多次一样的方法,浏览器会把重复的过滤掉,但IE6-8是不进行过滤处理,绑定了重复的方法也都会执行;
+     *
+     * */
+    var oBox = document.getElementById("box");
+    function fn1(e) {
+        console.log(1);
+//        console.log(this===oBox);//检测this
+    }
+    function fn2(e) {
+        console.log(2);
+    }
+    function fn3(e) {
+        console.log(3);
+    }
+    function fn4(e) {
+        console.log(4);
+    }
+    function fn5(e) {
+        console.log(5);
+    }
+
+    /**
+     *
+     * @param curEle: 当前的元素对象
+     * @param evenType: 事件行为(click...mouseover... ...)
+     * @param evenFn: 指定的事件行为的方法
+     */
+    //1)解决this的问题
+    function bind(curEle, evenType, evenFn) {
+        if(document.addEventListener){
+            curEle.addEventListener(evenType,evenFn,false);//捕获阶段不容易发生,一般先解决false冒泡阶段;
+            //如果执行了这里,说明addEventListener存在,说明是标准浏览器;直接绑定事件,直接结束即可;
+            return;
+        }
+        //解决this问题
+        var tempFn = function () {
+            evenFn.call(curEle);
+        };
+        //解决删除兼容
+        tempFn.photo = evenFn;
+        //解决重复问题
+        if(!curEle["myBind"] + evenType){//curEle["myBind"] -->假的事件池,在放置真事件池之前,判断一下假的事件池内是否存在方法,如果不存在,就放置真事件池中;如果存在就不往真事件池中放;
+            // + evenType: 同一个事件行为
+            curEle["myBind" + evenType] = [];
+        }
+        var ary = curEle["myBind" + evenType];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(cur === evenFn){
+                return;
+            }
+        }
+        ary.push(tempFn);
+
+        //如果执行了这里,说明是非标准浏览器(IE6-8);
+        curEle.attachEvent("on"+evenType,tempFn);
+    }
+    function unbind(curEle, evenType, evenFn) {
+        if(document.removeEventListener){
+            curEle.removeEventListener(evenType,evenFn,false);
+            return;
+        }
+
+        var ary = curEle["myBind" + evenType];
+        for (var i = 0; i < ary.length; i++) {
+            var tempFn = ary[i];
+            if(tempFn.photo === evenFn){//如果为true ->说明
+                curEle.detachEvent("on" + evenType,tempFn);
+                ary.splice(i,1);
+                break;
+            }
+        }
+    }
+//    bind(oBox,"click",fn1);
+//    unbind(oBox,"click",fn1);
+//    bind(oBox,"click",fn2);
+    //以上,打印出一个2;
+
+    //解决顺序问题: 内置的事件池,自己写一个事件池来按照绑定的顺序执行;
+    function on(curEle,evenType,evenFn) {
+        if(!curEle["myEvent" + evenType]){
+            curEle["myEvent" + evenType] = [];
+        }
+        var ary = curEle["myEvent" + evenType];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(cur === evenFn){
+                return;
+            }
+        }
+        ary.push(evenFn);
+        bind(curEle,evenType,run)
+    }
+    on(oBox,"click",fn1);
+    on(oBox,"click",fn2);
+    on(oBox,"click",fn3);
+    function run(e) {
+        //console.log(this === oBox);//检测this   -->true   说明this是oBox
+        e = e || window.event;
+        var flag = e.target;
+        if(!flag){
+            e.target = e.srcElement;
+            e.pageX = e.clientX + document.documentElement.scrollLeft || document.body.scrollLeft;
+            e.pageY = e.clientY + document.documentElement.scrollTop || document.body.scrollTop;
+        }
+        //this->oBox
+        var ary = this["myEvent" + e.type];
+        for (var i = 0; i < ary.length; i++) {
+            var curFn = ary[i];
+//            console.log(ary[i]);//fn1  fn2
+            if(typeof curFn === "function"){
+                curFn.call(this.e);
+            }
+        }
+    }
+    //off方法: 从自己事件池中,把需要的方法移除掉;
+    function off(curEle, evenType, evenFn) {
+        var ary = curEle["myEvent" + evenType];
+        for (var i = 0; i < ary.length; i++) {
+            var curFn = ary[i];
+            ary[i] = null;
+            break;
+        }
+    }
+    off(oBox,"click",fn1);
+
+
+</script>
+</body>
+</html>

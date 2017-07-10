@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -150px 0 0  -150px;
+            width: 300px;
+            height: 300px;
+            background: orange;
+        }
+        h2{
+            height: 30px;
+            line-height: 30px;
+            background: yellow;
+            padding: 0 10px;
+            font-size: 16px;
+            color: #000;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h2>珠峰培训 - 登录</h2>
+</div>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    var tip = oBox.getElementsByTagName("h2")[0];
+    //思路:1.鼠标按下时,记录当前盒子以及鼠标的位置;(记录了4个值)
+    //2.当鼠标移动时,获取到鼠标最新的坐标;
+    //3.计算出鼠标横向和纵向分别移动的距离;
+    //4.让盒子最开始记录的位置加上鼠标移动的距离,是当前盒子最新的位置;
+    tip.onmouseenter = function () {
+        console.log(2);
+    };
+    tip.onmousemove = function () {
+        console.log(1);
+    };
+    tip.onmouseleave = function () {
+        console.log(3);
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

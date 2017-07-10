@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    // "回调函数"  把一个方法B，当做参数传给方法A，在A执行的时候，可以在A方法中任意位置，任意时间调用方法B，让B执行
+    function A(callBack) {
+        if(typeof callBack === "function"){
+            callBack()
+        }
+    }
+    A(B)
+    function B() {
+
+    };
+    //[1,{name:5},7,3,8]
+    ary.sort(function (a,b) {
+        return b-a// 从大到小
+    });
+    //
+
+
+
+
+
+</script>
+</body>
+</html>

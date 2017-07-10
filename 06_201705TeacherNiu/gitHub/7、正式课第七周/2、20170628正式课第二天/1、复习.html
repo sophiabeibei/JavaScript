@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // let  const  这个不存在变量提升
+    // const  定义一个常量
+//    console.log(num)
+//    var num = 10;
+//    let str="stt";
+//    let str= "";
+    // for  if  都会形成一个块级作用域
+    // for 首先形成一个父作用域，循环体是子作用域
+//    for(let i=0;i<18;i++){
+//        // 循环一次，会对i 重新声明一次
+//        //let   i =0;
+//        // let  i =1;
+//        // 子作用域
+//        ary[i] = function () {
+//            console.log(i)
+//        }
+//    }
+//    console.log(i);
+    //startsWith  endsWith  includes
+//    String.prototype.startsWith = function () {
+//
+//    };
+//    var name="zhufeng";
+//    str=`Nihao ${name}`;
+    // 解构赋值
+//    var a = "str1";
+//    var b = 3;
+//    var c = 5;
+    var z =16;
+    var [a,b,c,d] = ["str1",3,5,z]
+    console.log(d)
+    // 对象的解构赋值
+    var {A,B} = {A: "88",B : "22"}
+    console.log(A)// "88";
+    var [foo] = "syrr"
+
+
+
+
+
+</script>
+</body>
+</html>

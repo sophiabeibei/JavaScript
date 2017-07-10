@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" name="tab">
+    <div class="tab" name="tab"></div>
+</div>
+<script type="text/javascript">
+    //
+    var oDiv = document.getElementById("box");
+//    var oDiv2 = document.getElementsByClassName("tab")[0];
+    var oDiv2 = oDiv.getElementsByTagName("div")[0];
+    console.log(oDiv2)
+    var oDiv3 = document.getElementsByName("tab")[1];
+//    console.log(oDiv3);
+//    var str ="3ee"
+//str.join("+")
+    // getElementById /getElementsByName 在document的原型链上，所以上下文必须是document，而在div原型链上面没有这方法，所以报错
+
+</script>
+</body>
+</html>

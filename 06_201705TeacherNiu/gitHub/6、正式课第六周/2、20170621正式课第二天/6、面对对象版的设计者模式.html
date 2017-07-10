@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function EventFire() {} // 事件发射类；
+    // on 还是起到订阅的作用
+    EventFire.prototype.on = function (evenType,evenFn) {
+        //console.log(this);// 指向Kettle的实例
+        if(!this["self"+evenType]){
+            this["self"+ evenType] = [];
+        }
+        var ary = this["self" + evenType];
+        for(var i=0;i<ary.length;i++){
+            if(ary[i] === evenFn)return;
+        };
+        ary.push(evenFn);
+    };
+    // 事件的发布者
+    EventFire.prototype.fire = function (evenType) {
+        var ary = this["self"+ evenType];
+        for(var i=0;i<ary.length;i++){
+            if(typeof ary[i] === "function"){
+                ary[i].call(this);
+            }
+        }
+    };
+    // 移除对应事件下的方法
+    EventFire.prototype.off = function (evenType,evenFn) {
+        var ary = this["self"+ evenType];
+        for(var i=0;i<ary.length;i++){
+            if(ary[i]==evenFn){
+                ary[i] = null;
+                break;
+            }
+        }
+    }
+    function Kettle() {}// 水壶的类
+    Kettle.prototype = new EventFire;//原型继承
+    // 创建一个Kttle 这个类的一个实例
+    Kettle.prototype.boling = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.fire("boling")
+        },5000);
+    }
+    var k1 = new Kettle;
+
+    function drink() {
+        console.log("可以喝水啦")
+    };
+    function washFace() {
+        console.log("可以洗脸啦")
+    }
+    function noodle() {
+        console.log("可以泡面了")
+    }
+    // 给boling订阅方法
+    k1.on("boling",drink)
+    k1.on("boling",washFace)
+    k1.on("boling",noodle)
+    k1.boling();
+
+
+
+
+
+</script>
+</body>
+</html>

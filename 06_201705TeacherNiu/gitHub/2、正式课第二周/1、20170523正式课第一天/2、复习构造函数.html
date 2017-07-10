@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 构造函数模式
+    function Fn() {
+//        var obj ={};
+        this.x = 100;
+        this.y =200;
+        var num =10;
+        this.getC=function () {
+
+        }
+//        return obj;
+    };
+    // 构造函数（类）中的this,指向当前的实例
+    // 普通函数
+    // 构造函数在创建实例，不用再创建对象，也不需要进行return ；Fn 被new 就变成一个类了
+//    var p2 = Fn() // p2  10
+    var p1 = new Fn;
+    var p2 = new Fn;
+    console.log(p1.getC === p2.getC)
+    // p1还是那个实例
+    //  p1 是一个实例 ，所用实例都是对象数据类型
+    console.log(p1);
+    // return  引用数据类型
+    // 当前的实例就是obj
+    // 当构造函数执行的时候，形成私有作用域-》形参赋值--》预解释--》从上到下执行
+
+</script>
+</body>
+</html>

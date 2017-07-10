@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+
+        *{
+            margin:0;
+            padding :0;
+        }
+        #oBox{
+            width :100px;
+            height:100px;
+            margin: 1000px auto;
+            background: #08BECE;
+        }
+    </style>
+</head>
+<body>
+<div id="oBox" class="div1">
+    
+</div>
+<script type="text/javascript">
+    // 事件对象: 在绑定事件的时候，浏览器会默认给当前绑定方法传进一个参数（这个参数一般用e来接收）,这个参数是一个对象数据类型的值，里面包含了当前点击的一些信息
+     //  在IE678下，事件对象没有在绑定的这个方法的参数中，而是放在全局下的window的一个属性上 ，属性名是event
+    var oBox = document.getElementById("oBox");
+    oBox.onclick = function (e) {
+//        console.log(window.event)
+//        console.log(e.pageX,e.pageY)
+//        console.log(e.clientX,e.clientY)
+        e = e || window.event;// 由于e在IE678不兼容
+        //e.clientX  e.clientY
+        e.pageX = e.pageX || (e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft))
+        e.pageY = e.pageY || (e.clientY + (document.documentElement.scrollTop|| document.body.scrollTop))
+        console.log(e)
+
+    }
+    // clientX  : 当前鼠标点击的位置，距离浏览器窗口左边的距离
+    // clientY ： 当前鼠标点击的位置，距离浏览器窗口上边的距离
+
+     // 在IE678 下不存在pageX pageY 这两个属性
+    // pageX  : 当前鼠标点击的位置，距离页面左边或者是body 的左边的距离
+    // pageY  : 当前鼠标点击的位置，距离页面顶部或者是body 的顶端的距离
+    //
+//    function sum(num1,num2) {
+//
+//    }
+//    sum(12,13)
+    // 事件源 ：事件绑定在哪个元素对象上，那么元素对象就是当前事件的事件源
+    //e.target  在IE678 不兼容的，事件源是e.srcElement
+    
+    
+    
+    
+    
+</script>
+</body>
+</html>

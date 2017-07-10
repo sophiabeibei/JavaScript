@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //查找上级作用域：首先看是不是私有的变量（形参，有没有被var过），如果不是就向上一级查找，如果上一级没有，继续向上查找,直到找到window为止，如果window也没有，相当于给window增加一个属性
+    // 如果当前变量在函数中被var过，或者是形参，是一个私有变量
+//    total= 0;//向window增加属性
+//    function foo() {
+//        var total= 0;
+//        console.log(window.total);//0
+//    }
+//    foo();
+    var num =2;
+    var obj={
+        num : 1,
+        fn :function (){
+                var num =1;
+                (function (num) {
+                    this.num++;
+                    return function () {
+                        ++this.num;
+                        num ++
+                        console.log(num);
+                    }
+                })(this.num)
+            }
+    }
+    var f=obj.fn();
+    f();
+//    function sum(num){
+//
+//    }
+//    sum(this.num)
+</script>
+</body>
+</html>

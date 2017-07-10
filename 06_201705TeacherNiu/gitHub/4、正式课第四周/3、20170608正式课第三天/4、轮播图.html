@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #outer{
+            position: relative;
+            width : 700px;
+            height:300px;
+            margin: 20px auto;
+            box-shadow: 1px 1px 10px lightblue;
+            overflow: hidden;
+        }
+        #swiper{
+            position: absolute;
+            width :3500px;
+            height:300px;
+        }
+        #swiper div{
+            float:left;
+            width :700px;
+        }
+        #swiper div img{
+            display: block;
+            width : 700px;
+            height:300px;
+            border: none;
+        }
+        #focus{
+            position: absolute;
+            bottom: 0;
+            left :50%;
+            margin-left: -60px;
+            width : 100%;
+            text-align: center;
+            height:30px;
+        }
+        #focus li{
+            width : 25px;
+            float: left;
+            height:25px;
+            border-radius: 50%;
+            margin-right: 5px;
+            background: #ffffff;
+            cursor: pointer;
+        }
+        #focus li.selected{
+            background: red;
+        }
+        #left,#right{
+            display: none;
+            position :absolute;
+            z-index: 5;
+            top : 50%;
+            margin-top: -25px;
+            height: 50px;
+            width:30px;
+            background: rgba(0,0,0,0.3);
+            color: #ffffff;
+            font-size: 30px;
+            text-align: center;
+            line-height: 50px;
+        }
+        #left{
+            left :0;
+        }
+        #right{
+            right:0;
+        }
+        #left:hover,#right:hover{
+            background: rgba(0,0,0,0.6);
+        }
+
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="swiper">
+        <div><img src="images/1.png" alt=""></div>
+        <div><img src="images/2.png" alt=""></div>
+        <div><img src="images/3.png" alt=""></div>
+        <div><img src="images/4.png" alt=""></div>
+        <div><img src="images/1.png" alt=""></div>
+    </div>
+    <ul id="focus">
+        <li class="selected"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <a id ="left" href="javascript:;"> < </a>
+    <a id ="right" href="javascript:;"> > </a>
+</div>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/animate.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

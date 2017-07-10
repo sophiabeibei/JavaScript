@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 处理浏览器兼容
+    // 1、
+    //  try  catch(e)进行捕捉
+    //getComputedStyle
+//    var val=null;
+//    try{
+//        val = window.getComputedStyle(oDiv)[attr];
+//    }catch (e){
+//        console.log(e.message)// 捕获错误信息
+//        val =oDiv.currentStyle[attr];
+//    };
+//    // 2、判断当前属性是否属于某个对象处理兼容
+//    // 1）用in 方法判断是否存在
+//    if("getComputedStyle" in window){
+//        val = window.getComputedStyle(oDiv)[attr];
+//    }else{
+//        val =oDiv.currentStyle[attr];
+//    };
+//    // 2）获取对象的属性名对应的属性值，如果当前属性不存在，返回undefined--》false
+//    if(window.getComputedStyle){
+//        //window.getComputedStyle不存在，返回undefined
+//        val = window.getComputedStyle(oDiv)[attr];
+//    }else{
+//        val =oDiv.currentStyle[attr];
+//    };
+//    // 3、如果知道属性在哪个版本的浏览器兼容
+    //navigator.userAgent  获取当前浏览器版本的具体信息
+    var reg = /MSIE [6-8]\.0/;
+    if(reg.test(navigator.userAgent)){// true  那么当前IE版本是IE678 中的一个
+        val = oDiv.currentStyle[attr];
+    }else{
+        val = window.getComputedStyle(oDiv)[attr];
+    }
+
+
+</script>
+</body>
+</html>

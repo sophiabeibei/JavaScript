@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // sort  定义Array的原型上的方法
+    // 排序
+//    ary.sort(function(a,b){return a-b});  从小到大
+    // ary.sort(function(a,b){return b-a})  从大到小
+    // a 是当前项，b,是后一项
+    //function sort(){
+//            callBack();// 大于0，a,b 交换位置，小于0,不换位置
+    // }
+    //sort(num)
+    var data = [{name : "武松",age : 28},{name : "王林",age : 280},{name : "李白",age : 50}];
+    data.sort(function(a,b){
+        console.log(a)
+        return a.age-b.age
+    });
+    console.log(data);
+
+
+
+
+
+
+</script>
+</body>
+</html>

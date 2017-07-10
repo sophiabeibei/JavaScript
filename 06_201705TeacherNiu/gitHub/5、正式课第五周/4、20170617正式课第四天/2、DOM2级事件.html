@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width : 100px;
+            height:100px;
+            background: #F9044E;
+            margin:30px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+//    oBox.onclick = function () {
+//        console.log(1)
+//    };
+//    oBox.onclick = function () {
+//        console.log(2)
+//    };
+//    oBox.onclick = null;// DOM0级移除事件方法
+    // 只打印一个2，
+    //DOM级事件绑定 ： 只能给元素对象的一个事件行为绑定一个方法，第二次绑定会把第一次绑定的覆盖掉
+    // DOM2 级事件 ：元素通过原型链找到EVentTarget 这个类的原型上的addEventListener
+     //DOM2级事件绑定的优势 ：1、DOM2 可以给一个元素的一个行为绑定多个方法 // 事件池、事件队列
+    // 2、DOM0 级事件只可以对事件冒泡传播这个阶段操控（但是捕获阶段也存在，但是我们不能操作）；DOM2级事件绑定不仅可以操作冒泡阶段，还可以操作捕获阶段
+
+    // 参数1 ： 事件行为，不带”on“
+    // 参数2 ： 是要给事件绑定的方法
+    // 参数3 ： false/true ;事件进行冒泡传播时进行操控的，true是在事件捕获阶段进行操控的;
+    // window.onload   : 只有页面中HTML结构，图片、文字等所有资源加载完成才会执行这个方法，在页面中只能执行一次
+    // $(document).ready() 只要页面中HTML结构加载完成，就会执行这个操作（一个页面可以使用多次）
+    function log() {
+        console.log(1)
+    }
+    function log2() {
+        console.log(2)
+    }
+    function log3() {
+        console.log(3)
+    }
+    oBox.addEventListener("click",log,false);
+    oBox.addEventListener("click",log2,false);
+    oBox.addEventListener("click",log3,true);// 123
+    oBox.removeEventListener("click",log,false)
+//    window.onload = function () {
+//        console.log(0);
+//    }
+    // addEventListener/removeListener 这两个方法在IE678 下是不兼容的，
+    // IE 下DOM2 级绑定： 第一个参数： 加"on"
+    // 参数只有两个
+//    oBox.attachEvent("onclick",log)// 123
+//    oBox.attachEvent("onclick",log2)
+//    oBox.attachEvent("onclick",log3)
+//    // 移除绑定的方法detachEvent
+//    oBox.detachEvent("onclick",log);
+
+
+
+
+</script>
+</body>
+</html>

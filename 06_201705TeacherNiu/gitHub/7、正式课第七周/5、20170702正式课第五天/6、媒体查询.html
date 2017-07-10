@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        @media screen and (min-width:990px){
+            #box{
+                width : 200px;
+                height:200px;
+                background-color: green;
+            }
+        }
+        @media screen and (min-width:880px){
+            #box{
+                width : 100px;
+                height:100px;
+                background-color: red;
+            }
+        }
+        /*媒体查询如果条件同时满足，按照下面满足那个样式加载*/
+
+        /*min-width:990px满足屏幕的最小宽度是990px,大于990px的时候，会按照当前的css 样式加载*/
+        /*max-width:990px满足屏幕的最大宽度是990px,小于990px的时候，会按照当前的css 样式加载*/
+        /*@media : 媒体 媒介*/
+        /*all : 所有类型*/
+        /*screen : 屏幕类型*/
+        /*print: 打印类型*/
+        /*连接符*/
+        /*and : 和 ，并且的意思
+        only : 唯一，只有
+        not ： 排除
+        */
+        /*（）是判断条件*/
+        /*{}  css 样式*/
+        /*and  后面跟的是对前面属性的一个描述*/
+        /*max-width:990px : 当前屏幕宽度小于990px*/
+
+
+    </style>
+    <!--@media-->
+
+
+</head>
+<body>
+<div id="box"></div>
+<script></script>
+</body>
+</html>

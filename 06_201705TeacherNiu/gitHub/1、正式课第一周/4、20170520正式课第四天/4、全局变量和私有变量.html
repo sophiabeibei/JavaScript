@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 全局变量
+    // 在全局作用域下，定义的变量是全局变量
+//    num =12;
+//    var num =22;
+    //私有变量
+    // 在私有作用域下定义的变量，是私有变量；形参也是私有变量
+//    function sum(sdd) {
+//        console.log(sdd) // 12
+//        sdd = 16;
+//        console.log(sdd) // 16
+//        var total = "syu";// 是私有变量
+//    }
+//    sum(12)
+//    var obj = {
+//        name :"zhufeng",
+//        num : 1,
+//        fn : (function (num) {
+//        num1 = num;
+//        return function () {
+//            console.log(num1)
+//        }
+//        })(this.num)// 报错
+//    };
+//    //在对象里面获取对象自己的属性值，报错
+//    obj.fn();
+    function sum(){
+        console.log(total);// undefined
+        total = 0;
+        console.log(total); // 0
+        var total = 12;
+    }
+    sum();
+</script>
+</body>
+</html>

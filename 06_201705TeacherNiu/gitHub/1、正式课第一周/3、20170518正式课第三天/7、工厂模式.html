@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    var people1 = {
+//        name : "王林",
+//        sex : "男",
+//        height : 150,
+//        food : "西瓜",
+//        eat : function () {
+//            console.log(this.name + "喜欢吃" + this.food);
+//        }
+//    };
+//    var people2 = {
+//        name : "徐向华",
+//        sex : " 男",
+//        height: "180",
+//        food : "冬瓜",
+//        eat : function () {
+//            console.log(this.name + "喜欢吃" + this.food);
+//        }
+//    };
+//    people1.eat();
+//    people2.eat();
+    //工厂模式 ： 把实现同一功能的代码放在函数中，通过传递参数的形式，获取或者修改相应的信息  --> 函数的封装
+// 优点 ： 减少代码的冗余  --函数的特点 “低耦合高内聚”
+    function eat(name,food) {
+        console.log(name + "喜欢吃" + food);
+    };
+    eat("王林","西瓜");
+    eat("徐向华","冬瓜");
+    var oDiv = document.getElementById("div1");
+    // $("#div1")
+//    $(".div1")
+//    $("")=function () {
+//    }
+    //锋利的jQuery;
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //全局作用域和私有作用域都是栈内存，存储基本数据类型
+    // 预解释 ： 形成当前作用域以后，代码执行之前，把带var function进行提前的声明；
+    // 全局变量  :在全局作用域下，被声明的变量
+    // 私有变量 ： 1、形参 2、在私有作用域中被声明的变量
+//    //闭包
+//    function sum(){
+//        var total =200;
+//        return function () {
+//            total +=100;
+//            return total;
+//        }
+//    }
+//    var f=sum();
+//    f();
+//    console.log(total) //报错
+    // 如果获取一个对象的属性值，如果属性名不存在，那么属性值是undefined；
+//    console.log(window.total)// undefined
+//    var obj ={};
+//    console.log(obj.name); // undefined
+    // window 是个对象
+    var a,b,fn=function () {
+        var a=b=2;
+    };
+    fn();
+    var a; // 全局变量
+    var b;
+    console.log(b)// 全局变量
+    var fn=function () {
+//        var a=b =2;
+        var a =2;
+        b =2;
+    };
+    fn();
+    console.log(a);//undefined
+    console.log(b);//2
+    //函数的执行
+    // 形成私有作用域 --> 形参赋值--> 预解释 --> 代码执行
+    // var 和function 的区别
+    // var  预解释只声明，不定义
+    // function 预解释 不仅声明，而且定义
+</script>
+</body>
+</html>

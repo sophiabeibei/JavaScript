@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //继承 ： 子类继承父类的方法
+//    var ary = [1,3];
+    //ary instanceof  Array// true
+//    ary.sort()//ary.__proto__ = Array.prototype = {sort :function(){}
+
+
+    //改变父类的原型，如果想让B的实例上面有A原型上的方法，那么让A的原型空间地址赋值给类B
+    function A(){
+        this.x = 100;
+        this.name = "珠峰"
+    };
+    A.prototype.getX = function () {
+        console.log(this.x);
+    }
+    function B() {
+        this.age = 18;
+    };
+    B.prototype = new A;
+    var f = new B;
+    console.log(f)
+    f.getX()//  undefined
+//    f.__proto__.__proto__.getX = function () {
+//        console.log(1)
+//    };
+//    f.getX();//1
+//    var f1 = new A;
+//    f1.getX();//
+//    console.log(A.prototype.getX)
+    //子类可以继承父类的方法，也可以对父类的方法进行修改，那么这就是重写
+
+
+
+
+
+</script>
+</body>
+</html>

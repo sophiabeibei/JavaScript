@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin : 0;
+            padding :0;
+        }
+        html{
+            width:100%;
+            height:100%;
+        }
+        body{
+            height:2000px;
+        }
+        #box{
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right:50px;
+            width :100px;
+            height:100px;
+            border-radius: 5px;
+            background: #08BECE;
+        }
+    </style>
+</head>
+<body>
+<div id="box">回到顶部</div>
+<script type="text/javascript">
+    // 1、当网页滚动条卷去一屏的高度的时候，让回到顶部按钮显示，
+    // 2、点击回到顶部按钮，滚动条一秒内回到页面顶部
+    // 思路 ：
+    // 1、点击按钮执行的时候，设置一个目标时间，计算当前的滚动条卷去的高度，计算出步长
+    // 2、设置定时器，每执行一次，让当前的scrollTop 进行重新设置，当scrollTop 变成0 的时候，清除定时器
+     // 3、当滚动条卷去高度等于可视窗口的高度时候，让box的display 变成block
+    var oBox = document.getElementById("box");
+    oBox.onclick = function () {
+        var duration = 1000;// 总时间
+        var dis = win("scrollTop");
+        var interval = 10;
+        var step=dis/ duration*interval;
+        var timer = setInterval(function () {
+            var curTop = win("scrollTop");
+            if(curTop == 0){
+                clearInterval(timer)
+            };
+            win("scrollTop",curTop-step);// 对页面的scrollTop进行重新设置
+        },interval)
+    };
+    // 每当滚动条滚动，执行该方法
+    window.onscroll = function () {
+        var curTop = win("scrollTop");
+        var winH = win("clientHeight");
+        if(curTop>winH){
+            oBox.style.display = "block";
+        }else{
+            oBox.style.display = "none";
+        }
+    }
+    function win(attr,value){
+        // 如果value是undefined ，那么就是获取偏移量
+//        if(arguments.length == 1){
+//            return document.documentElement[attr] || document.body[attr];
+//        }
+        if(typeof value == "undefined"){
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = value;
+        document.body[attr] = value;
+    };
+
+
+
+
+</script>
+</body>
+</html>

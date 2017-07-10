@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    // this   函数执行的主体
+    //  1、全局下的this 指向window
+    // 2、 定时器中的this 也指向window
+    // 3、 自执行函数this 指向window
+    // 4、看函数执行的时候前面有没“.”,"."前面是谁，this就是谁
+    // 5、call  \apply \bind  方法传进去的第一个参数
+    // 6、构造函数中的this ，指向创建的实例
+    // 7、绑定事件中，函数中的this，指向被绑定的那个元素对象
+    function fn1() {
+        this// 是fn2
+        console.log(1);
+    };
+
+    function fn2() {
+        console.log(2)
+    };
+    fn1.call(fn2)//1   call 方法 是定义在Function原型上的方法
+    //call和apply 传参数的区别： call 一个一个传，然后apply是把参数放进数组中，再一个一个传进去
+  tt.onclick = function () {
+
+  }
+
+
+
+
+</script>
+</body>
+</html>

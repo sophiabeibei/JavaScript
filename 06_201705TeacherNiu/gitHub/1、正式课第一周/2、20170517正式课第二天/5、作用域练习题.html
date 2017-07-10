@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+//    var total = 100;
+//    function fn() {
+//        var total = 10;
+//        return function () {
+//            console.log(total);
+//        };
+//    }
+//    console.log(fn()) //
+//    var f = fn();
+//    f();
+
+
+
+        function fn() {
+            var i = 10;
+            return function (n) {
+                console.log(n + (++i));
+            }
+        }
+        var f = fn();
+        f(10);//21
+        f(20);//32
+        fn()(10);//21
+        fn()(20);//31
+
+
+//    function fn(i) {
+//        return function (n) {
+//            console.log(n + i++);
+//        }
+//    }
+//    var f = fn(13);
+//    f(12);//
+//    f(14);//
+//    fn(15)(12);//
+//    fn(16)(13);//
+</script>
+</body>
+</html>

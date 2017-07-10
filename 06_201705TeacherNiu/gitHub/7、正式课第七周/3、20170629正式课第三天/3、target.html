@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        a{
+            width : 20px;
+            height:20px;
+        }
+        div{
+            width :100px;
+            height:100px;
+            border: 1px solid #333333;
+        }
+        :target{
+            width :300px;
+            height:300px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 300px;
+            color :red;
+            background: #9cff80;
+        }
+    </style>
+</head>
+<body>
+    <a href="#div1">div1</a>
+    <a href="#div2">div2</a>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+<script type="text/javascript">
+
+     // href   : 后面跟一个#id,指向当前文档某个具体的元素，这个被连接的元素就是目标元素
+    // :target  : 选择器 可用于当前活动的目标元素
+
+</script>
+</body>
+</html>

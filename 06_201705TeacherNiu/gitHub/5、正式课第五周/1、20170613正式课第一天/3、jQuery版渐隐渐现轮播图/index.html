@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐隐渐现</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding :0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #outer{
+            width : 700px;
+            height:300px;
+            position: relative;
+            margin:20px auto;
+            border: 1px solid #08BECE;
+            box-shadow: 2px 2px 10px #08BECE;
+            background: url(images/default.gif) no-repeat center;
+        }
+        #outer img{
+            display: none;
+            position: absolute;
+            left :0;
+            top :0;
+            width: 700px;
+            height:300px;
+            border: none;
+        }
+        #outer ul{
+            position: absolute;
+            margin:auto;
+            left:0;
+            right:0;
+            bottom: 3px;
+            width :125px;
+            background: rgba(0,0,0,.3);
+            padding: 5px 0 5px 5px;
+            border-radius:25px ;
+            overflow: hidden;
+        }
+        #outer ul li{
+            float: left;
+            width:20px;
+            height:20px;
+            background: #ffffff;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        #outer ul li.selected{
+            background: #ffaa2a;
+        }
+        #outer a{
+            position: absolute;
+            display: none;
+            width :30px;
+            height:50px;
+            top :50%;
+            margin-top: -25px;
+            color:#ffffff;
+            text-align: center;
+            line-height: 50px;
+             background: rgba(0,0,0,0.3);
+            font-size: 25px;
+        }
+        #outer #right{
+            right:0;
+        }
+        #outer a:hover{
+            background: rgba(0,0,0,1);
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="swip">
+        <!--<img src="./images/1.jpg" alt="">-->
+        <!--<img src="./images/2.jpg" alt="">-->
+        <!--<img src="./images/3.jpg" alt="">-->
+        <!--<img src="./images/4.jpg" alt="">-->
+        <!--<img src="./images/5.jpg" alt="">-->
+    </div>
+    <ul id="focus">
+        <!--<li class="selected"></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+    </ul>
+    <a href="javascript:;" id="left"> < </a>
+    <a href="javascript:;" id="right"> > </a>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/index.js">
+
+    // 渐隐渐现的轮播图：思想
+    //  把所有的图片堆叠在一块，放在一个位置上
+    // 改变要显示的图片的透明度，慢慢增加到1；
+    // 改变当前显示的图片的透明度，慢慢变为0；
+
+</script>
+</body>
+</html>

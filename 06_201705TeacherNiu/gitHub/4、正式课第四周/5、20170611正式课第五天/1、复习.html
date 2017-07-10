@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul li{
+            /*position: absolute;*/
+            /*left:0;*/
+            list-style: none;
+            height:30px;
+            width:150px;
+            border-bottom: 1px dashed #08BECE;
+        }
+        /*.myLi{*/
+            /*display: none;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<ul class="uu">
+    <li class="myLi"></li>
+    <li></li>
+    <li class="notLi"></li>
+    <li>
+        <ul>
+            <li class="child2"></li>
+            <li class="notLi"></li>
+        </ul>
+    </li>
+</ul>
+<ul class="ww">
+    <li class="myLi"></li>
+    <li>
+        <ul><li class="myLi"></li></ul>
+    </li>
+    <li></li>
+    <li></li>
+</ul>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    //$ === jQuery  true
+    // selector  字符串 、对象 、
+    // context // 如果不传 那么默认document
+    var ul1 = document.getElementsByTagName("ul")[0];
+
+//    $("li")
+//    $("ul li") // 获取ul 下面所有的后代元素li
+//    $("ul>li")  // 获取ul 下面所有子级li
+//    $("ul,li")// 获取ul  和 li
+    // addClass() removeClass()   hasClass()
+//    $("ul").addClass("oUl");
+    //ul1.addClass("ul2");
+    // 原生js对象转jQuery的对象
+   // $(ul1).addClass("oUl")
+   //    $(this)
+    // index  返回当前元素对象的索引
+//    console.log($(".myLi").index());
+
+    // each  遍历获取到的每一个jQuery元素对象
+
+//    $("ul li").each(function (index,item) {
+//        console.log(index) //当前元素对象的索引
+//        console.log(item)  // 指的当前项
+//    });
+
+
+    // 筛选的方法
+    // find   在所有后代中查找、筛选
+    //$("ul").find('.child2')
+    //filter   筛选出元素集合，去元素集合匹配相应的元素对象
+    //console.log($("ul").filter(".ww"))
+    // children  在下一级查找
+   //console.log($(".ww").children(".myLi"))
+
+    // css
+//    $("li.myLi").css("background","pink")
+//    console.log($("li.myLi").css("width","300px"))
+//  innerHeight / innerWidth 和原生js中clientWidth 和clientHeight
+    // 获取内容加填充的宽度和高度
+//    console.log($("li.myLi").innerHeight())
+    // scrollTop()  滚动条卷去的高度
+
+    // 事件
+
+
+//    $(".myLi").click(function () {
+//        console.log("王林很帅")
+//    });
+//    $(".myLi").on("mousemove",function () {
+//        console.log("王林很帅")
+//    });
+    // delegate
+//    $("body").delegate(".myLi","click",function () {
+//
+//    })
+
+
+    // 动画
+    //show显示  hide 隐藏
+//    $(".myLi").show()
+//    $(".myLi").hide()
+
+    // fadeIn  fadeOut ;淡入淡出
+//    $(".myLi").fadeOut(2000)
+//
+//    $(".myLi").fadeIn(2000)
+
+    // slideUp   // 收起
+    // slideDown  // 下拉
+//    $("li").slideUp(1000)
+//    $("li").slideDown(2000)
+    // stop 停止动画
+    //$("li").toggle(2000)
+    // animate
+//    $("li").animate({left:1000},3000)
+
+
+    // ajax
+    var jsonData = null;
+    $.ajax({
+        type: "post",// "get" 请求类型
+        url: "data.txt",// 请求地址
+        dataType :"json",//返回的数据类型
+        cache : false, // true /false
+        async : true,  // true:异步  false: 同步
+        success: function (data) {// 请求成功才会执行这个方法
+            console.log(data)// 响应回来的内容
+            jsonData = data;
+        },
+        error: function () {// 请求失败
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

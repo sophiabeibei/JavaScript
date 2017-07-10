@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标丢失的问题</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //鼠标丢失问题
+    //1.当鼠标移动过快,盒子跟不上鼠标的速度,导致鼠标丢失,当鼠标抬起时,并没有执行标题的鼠标抬起事件,当下次鼠标再次划入这个标题时,会继续执行move这个方法;
+
+    //在IE和火狐浏览器下,有个setCapture这个方法,这方法会把鼠标和元素绑定在一起;
+    //setCapture含义-->>>  将元素与鼠标绑定在一起;
+    //在google浏览器中,无论怎样移动鼠标,鼠标永远在document这个里面;由于事件存在冒泡传播机制,所以可以给document绑定onmousemove和onmouseup这两个方法;
+
+
+
+
+    this["strX"] = e.clientX;
+    this["strY"] = e.clientY;
+    this["strL"] = parseFloat(oBox.style.left);
+    this["strT"] = parseFloat(oBox.style.top);
+    if(this.setCapture){
+        this.setCapture();
+        this.onmousemove = move;
+        this.onmouseuup = up;
+    }else{
+        //如果不存在,利用事件冒泡传播机制,给document绑定事件;
+        var _this = this;
+        document.onmousemove = function () {
+            console.log(this);//this->是document;
+            move.call(_this,e);
+        };
+        document.onmouseup = function (e) {
+            up.call(_this,e);
+        }
+    }
+    function move(e) {
+        e = e || window.event;
+        var changeL = e.clientX - this["strX"];
+        var changeT = e.clientY - this["strY"];
+        var left = this["strL"] + changeL;
+        var top = this["strT"] + changeT;
+    }
+    function up(e) {
+        if(this.releaseCapture){
+            this.releaseCapture();
+            this.nomousemove = null;
+            this.nomouseup = null;
+        }else{
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+    tip.onmousedown = down;
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+*{
+    margin:0;
+    padding:0;
+}
+/*css3 动画库的动画名称
+   bounceInLeft  : 从左边飞入
+   bounceInRight : 从右边飞入
+   bouceInUp : 从下面飞入
+   zoomIn : 从中间向两端展开
+
+
+*/
+html,body,.main,.swiper-container,.swiper-slide{
+    height:100%;
+    width:100%;
+}
+html{
+    /*假设设计稿的宽度是640*/
+    font-size : 100px;
+}
+.music{
+    position: absolute;
+    top:.2rem;
+    right:.2rem;
+    z-index:10;
+    width:1.6rem;
+    height:1rem;
+    background: url(../images/music.png);
+    background-size:cover;
+}
+.musicMove{
+    -webkit-animation: musicMove .3s steps(15) infinite;
+    animation: musicMove .3s steps(15) infinite;
+}
+@keyframes musicMove {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -21rem 0;
+    }
+}
+.arrow{
+    position: absolute;
+    left:50%;
+    bottom: .2rem;
+    z-index:96;
+    width:.48rem;
+    height:.36rem;
+    margin-left: -0.24rem;
+    background: url(../images/web-swipe-tip.png) no-repeat;
+    background-size: 100% 100%;
+    -webkit-animation: myBounce .8s ease-in-out infinite;
+    animation: myBounce .8s ease-in-out infinite;
+}
+@keyframes myBounce {
+    0%{
+        bottom: 0;
+        opacity: 0;
+    }
+    100%{
+        bottom: .6rem;
+        opacity: 1;
+    }
+}
+/*第一屏*/
+.page1{
+    position: relative;
+    height:100%;
+    width:100%;
+    background: url(../images/bg1.jpg) no-repeat;
+    background-size: cover;
+}
+.page1 img{
+    position: absolute;
+    opacity: 0;
+}
+.page1 img:nth-child(1){
+    left:2rem;
+    top:.28rem;
+    width:.96rem;
+    height:2.32rem;
+}
+#page01 img:nth-child(1){
+    opacity: 1;
+    animation : bounceInLeft 1s linear backwards;
+    -webkit-animation:bounceInLeft 1s linear backwards;
+}
+.page1 img:nth-child(2){
+    top : .3rem;
+    right:0;
+    width:3.7rem;
+    height: 6rem;
+}
+#page01 img:nth-child(2){
+    opacity: 1;
+    animation : bounceInRight 1s linear backwards;
+    -webkit-animation:bounceInRight 1s linear backwards;
+}
+.page1 img:nth-child(3){
+    bottom : .9rem;
+    left:.5rem;
+    width:5.5rem;
+    height:5.1rem;
+}
+#page01 img:nth-child(3){
+    opacity: 1;
+    animation : bounceInUp 1s linear backwards;
+    -webkit-animation:bounceInUp 1s linear backwards;
+}
+.page1 img:nth-child(4){
+    left:-1.6rem;
+    bottom: 0;
+    width:7.8rem;
+    height:5.8rem;
+}
+#page01 img:nth-child(4){
+    opacity: 1;
+    animation : bounceInUp 1s linear backwards;
+    -webkit-animation:bounceInUp 1s linear backwards;
+}
+.page2{
+    position: relative;
+    background: url("../images/bg2.jpg") no-repeat;
+    background-size:cover;
+}
+.page2 img{
+    opacity: 0;
+    position: absolute;
+    top : 2.5rem;
+    height:6.38rem;
+    width:0.6rem;
+}
+.page2 img:nth-child(1){
+    top :0;
+    left:0;
+    width:3.4rem;
+    height:1.7rem;
+}
+#page02 img:nth-child(1){
+    opacity: 1;
+    animation : bounceInLeft 1s linear;
+    -webkit-animation:bounceInLeft 1s linear;
+}
+.page2 img:nth-child(2){
+    left:1.48rem;
+}
+#page02 img:nth-child(2){
+    opacity: 1;
+    animation : zoomIn 1s linear;
+    -webkit-animation:zoomIn 1s linear;
+}
+.page2 img:nth-child(3){
+    left:3.2rem;
+}
+#page02 img:nth-child(3){
+    opacity: 1;
+    animation : zoomIn 1s linear;
+    -webkit-animation:zoomIn 1s linear;
+}
+.page2 img:nth-child(4){
+    left:4.7rem;
+}
+#page02 img:nth-child(4){
+    opacity: 1;
+    animation : zoomIn 1s linear;
+    -webkit-animation:zoomIn 1s linear;
+}

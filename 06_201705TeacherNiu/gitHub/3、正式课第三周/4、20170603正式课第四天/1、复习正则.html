@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //正则 ： 处理字符串的一种规则
+    // 正则属于对象数据类型  每一个正则都是RegExp这个类的一个实例
+    // 所以每个正则都可以调用RegExp 的原型上的方法  test  exec
+    //test  : 匹配   返回值要么是true，要么false
+
+    //  exec :捕获  返回值如果捕获的到，是以数组形式返回，捕获不到，返回null
+//   var reg = /\w/; // 包含数字、字母、下划线中的一个
+//   var str = "stt--";
+//   console.log(reg.test(str));// true
+    // ^  : 以什么开头；
+    // $ : 以什么结尾
+//    var reg = /^\w$/;// 只能是数字、字母、下划线中的一个
+//    var str1 = '-';
+//    console.log(reg.test(str1))// false
+//    console.log(reg.exec(str1))//["s", index: 0, input: "s"]// 数组
+//    console.log(Object.prototype.toString.call(reg.exec(str1)))
+//    function att() {
+////        console.log(typeof arguments)
+//        console.log(Object.prototype.toString.call(arguments))//[object Arguments]
+//    }
+//    att();
+    // 捕获不到返回null
+
+    // 正则的组成 ： 正则是由元字符和修饰符
+    // 元字符：在这两个斜杠之间有意义的字符都是元字符
+    // \ : 转义字符，把在正则中有特殊意义的转化成自己本身的含义
+    // . : 除了\n 以外的任意一个字符
+
+    // 量词 ： 形容次数的字符
+    // ? : 出现零次或一次
+    // + : 出现一次或多次
+    // * : 零次或多次
+    // {n} : 出现n次
+    // {n,} : 出现n 到多次
+    // {n,m} : 出现n 到m 次
+    // 一个200-299 的有效数字
+    //var reg = /^2\d[0-8](\.\d+)?$/;
+    // 有效数字的正则 ： 正数、负数、小数、0
+//    var reg = /^[+-]?(\d|([1-9]\d+))(\.\d+)?$/;
+//    console.log(reg.test("-0"));
+
+    // 修饰符 ： 是用来修饰整个正则
+    // global : “g”全局
+    // ignoreCase : "i" 忽略大小写
+    // multiLine  : "m" 多行匹配
+    //var reg = /\d/g; // 全局
+
+    // x | y  : x或者y 中的一个
+    // [xyz] : xyz 中的任意一个
+    // [^xyz] : 除了xyz 中的任意一个字符
+    // [] 不识别两位数[55-88] 5到8
+
+    // () : 1、改变优先级
+    // 2、 \1 出现和第一个分组一模一样的内容,\2 和第二个分组出现一模一样的内容
+//    var reg = /(\d)\1(\w)\1/;
+//    console.log(reg.test("6yy6"))// false
+    // 3、分组的捕获 ,不仅可以捕获到大正则的内容，还可以对小正则的内容再捕获一次
+//    var str = "zhufeng123zhufeng234";
+//    var reg = /zhufeng(?:\d+)/g;
+////    console.log(reg.test(str))
+//    console.log(reg.exec(str))//["zhufeng123", "123", index: 0, input: "zhufeng123zhufeng234"]
+//    console.log(reg.exec(str))//["zhufeng123", "123", index: 0, input: "zhufeng123zhufeng234"]
+//    console.log(reg.exec(str)) // null
+
+    // 捕获的内容; 数组
+    // 1、捕获的内容
+    // 2、从什么位置开始捕获，或者是捕获开始位置的索引
+    // 3、input 属性值： 原始的字符串
+    //捕获的懒惰性 : 在不加“g”情况下，每一次捕获开始的索引位置都是从0开始
+    // 取消捕获的懒惰性： 加g情况下，每一次捕获的时候，开始的索引位置都发生变化；
+
+    // 捕获的贪婪性： 每次捕获都是都会尽可能把符合的正则内容捕获
+    // 取消捕获贪婪性 ： ?  放在量词的后面,取消贪婪性
+
+     // ?: 只匹配不捕获，经常用到分组（小括号中）
+
+    // match  : 字符串的捕获 是字符串的方法,把捕获到的内容放进数组进行返回，只对大正则内容进行捕获，小正则不捕获
+
+//    var str = "zhufeng123zhufeng234";
+//    var reg = /zhufeng(\d+)/g;
+//    var ary = str.match(reg)
+//console.log(ary)
+
+    // 字面量方式创建 、实例创建
+    // RegExp 是一个内置的类，所以可以通过New 创建一个正则的实例,并且是对象数据类型的
+    //两种方式创建的区别
+    //字面量方式中不识别字符串拼接，实例创建的正则可以进行识别
+    var name = "xuxianghua";
+//    var  reg = /^\d+"+name+"$/;
+//    var str = '456"""nameeee"';
+    var reg1 = new RegExp("\\d+"+name+"");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

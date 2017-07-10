@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+
+        }
+        .firstChild{
+            display: none;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="first" id="ww" name="zhufeng" data-id="1">
+    <h2></h2>
+    <div class="firstChild" name="zhupeixun">
+        <div class="sun">
+            <ul class="oUl"></ul>
+        </div>
+    </div>
+    <ul class="oUl">
+        <li class="tt">
+            <span>珠峰</span>
+        </li>
+        <li>
+            <span>777</span>
+        </li>
+        <li>666</li>
+    </ul>
+</div>
+<div class="first" id="yy">
+    <div class="secondChild">
+        <div class="sat"></div>
+    </div>
+    <ul class="oUl">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<ul class="oul"><li></li></ul>
+<input type="text">
+<input type="radio">
+<input type="checkbox" checked="checked">
+<input type="password">
+<input type="submit" disabled="disabled">
+<select name="" id="">
+    <option value="" selected="selected"></option>
+    <option value=""></option>
+</select>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    //DOM 是元素节点组成的
+    // 原声js中获取元素对象的方式
+//    document.getElementsByClassName("first")// 在iE 678 是不兼容的
+//    document.getElementById("div");
+//    document.getElementsByTagName("*")// 通过标签名来获取元素对象
+//     $("li")// 获取到所有的li
+    // childNodes   children  parentNode
+    // parent
+//    console.log($("#first"));
+    // 通过ID名来获取
+//    $("#first").removeClass(".first");
+    // 通过类名来获取
+//    $(".first")//
+   // $("div")  // 通过标签名来获取
+   //    console.log($("*"))
+
+//    console.log($("#first,.oUl"))// 获取id是first 的元素对象，class 是oUl 的元素对象获取到
+
+
+    // 层级选择器
+    //    console.log($("#first .oUl"))//  用空格隔开，代表所有后代的元素对象
+//    console.log($("#first .oUl"))
+//    console.log($("#first>.oUl"))// 获取下一级的元素对象
+//    console.log($("#first +")) // 获取同级下的弟弟元素对象
+//    console.log($("#first + div"))
+//    console.log($(".first ~ "))
+
+    //console.log($(".first:first"))// 第一个div
+    //console.log($(".first:last"))// 最后一个div
+//    console.log($(".first ul li:even"))// 索引是偶数的元素对象
+//    console.log($(".first ul li:odd")) // 匹配当前元素索引是奇数的元素对象
+//    console.log($(".first ul li:eq(0)"))// 匹配元素对象索引是零的元素对象
+//    console.log($(".first ul li:gt(20)")) // 索引大于0 的元素对象
+   // console.log($(".first ul li:lt(3)"))  // 索引小于3的元素对象
+   //  console.log($(".first :header"))//获取标题标签
+    // 内容的选择器 contains 包含什么内容
+//    console.log($(".first ul li:contains('珠峰')"))
+//    console.log($(".first ul li:empty"))
+    // has  对标签的一个筛选
+    //console.log($("li:has(span)"))
+    //  span可以作为父级的所有标签
+    //console.log($("span:parent"))
+   //   console.log($("div:visible"))
+   //    console.log($("div,ul:hidden"))
+
+ //console.log($("div[id]"))//有id这个属性 div 获取到
+
+     //    console.log($("div[id][data-id]"))
+     //
+     //    console.log($("div[name^='zhu']"))
+    // 获取ul 下面第几个li
+   //console.log($("ul li:only-child"))
+   //console.log($(":input"))
+   //console.log($("input:radio"))
+
+
+
+
+
+
+</script>
+</body>
+</html>

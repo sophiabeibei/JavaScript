@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // this  类中的this，是指向当前的实例，类中方法的this，需要看具体情况
+    function CreatePerson() {// 定义一个方法
+//        var  obj ={} //new 执行，浏览器默认创建一个对象
+        var num = 12;
+        this.name = "陆晨阳";// 通过实参给了形参，形参的值又给了默认创建的对象
+        this.hobby = "学习";
+        this.study = function () {
+            console.log(this.name + "学习js");
+        };
+    }
+//    CreatePerson()
+//    var ary = new Array("str");// 一个参数(数字)的话，代表当前实例（数组）length的属性值，如果用逗号隔开，那么会把参数当做数组的每一项传进去
+//    console.log(ary)
+    var p1 = new CreatePerson;
+    var p2 = new CreatePerson;
+    console.log(p1 === p2) // false
+    console.log(p1.study === p2.study)  // false
+//    p1.study()// 方法中的this指向当前的实例
+//    var f = p1.study;
+//    f()// window
+    // 自己的写的类是自定义类
+    //  返回一个实例
+    // 1、在构造函数中，如果不需要传入参数，那么小括号可以省去的
+    // 2、在构造函数中的，this指向当前创建的实例，类中方法的this，需要看具体情况（看方法前面是否有"."，有的话，点前面是谁，this就是谁
+    // 3、 类中的私有变量，跟创建的实例没有任何的关系
+    //4、如果属性名发生重复，后面的会把前面的覆盖
+    // 5、在类中，如果return 出一个基本数据类型值，那么当前类的返回值还是那个实例，如果是return的引用数据类型的值，那么返回值是return的那个对象，但是当前的这个对象不是当前实例了
+  // 6、instanceof  判断实例是否属于某个类的
+//    console.log(p1 instanceof CreatePerson)//true
+//    console.log(p1 instanceof Object) // true
+//    console.log(p1 instanceof Function) //  false
+       // 判断对象的属性名是否属于某个对象  in
+//    var  obj ={age : 16,name : "zhudeng"};
+//    console.log("age" in obj);
+//    console.log(name in obj); // false
+//    console.log(obj.name)
+    //  7、通过new 创建的实例，实例与实例之间的方法或者属性，是不相等的
+    // 8、hasOwnProperty  检测某一个属性是不是私有的
+//    console.log(p1.hasOwnProperty("study"))
+  console.log(window.name);
+
+
+</script>
+</body>
+</html>

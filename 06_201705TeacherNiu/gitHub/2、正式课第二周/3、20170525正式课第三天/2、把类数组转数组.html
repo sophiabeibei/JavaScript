@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="div1" id="yy">
+        <select name="" id="">
+            <option>徐仁坤</option>
+            <option>徐仁坤</option>
+            <option>徐仁坤</option>
+            <option>徐仁坤</option>
+        </select>
+    </div>
+    <div class="div1">2</div>
+    <div class="div1">3</div>
+    <div class="div1">4</div>
+    <div class="div1">5</div>
+<script type="text/javascript">
+    //arguments  // 类数组
+    // document.getElementsByTagName() // 类数组
+    var oDiv = document.getElementsByTagName("div");
+//    var oDiv = document.getElementById("yy")
+    console.log(oDiv)
+//    console.log(oDiv)
+//    var oDiv = document.getElementsByClassName("div1");
+    // 1、通过循环把类数组转化为数组
+//    var ary = [];
+//    for(var i=0;i<oDiv.length;i++){
+//        ary[ary.length] = oDiv[i];
+//    };
+    // 2、通过调用Array的原型上的slice方法，改变this指向，把类数组转成数组
+//    var cur =  Array.prototype.slice.call(oDiv);
+    // 当前的cur已经是一个数组
+//    console.log(cur.sort());
+    var ary = [];
+     try{
+         ary =  Array.prototype.slice.call(oDiv);
+     }catch(e){
+         for(var i=0;i<oDiv.length;i++){
+            ary[ary.length] = oDiv[i];
+         };
+     }
+     console.log(ary.sort());
+</script>
+</body>
+</html>

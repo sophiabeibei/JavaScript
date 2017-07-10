@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // this   代表是当前函数执行的主体，和当前函数在哪执行或在哪定义没有任何关系
+    //var  function
+//    var obj ={
+//        fn : (function () {
+//                console.log(this)// window
+//                return function () {
+//                    console.log(this)//obj
+//                }
+//            })()
+//    }
+//    obj.fn();
+    function sum() {
+        console.log(this)// window
+        function aa() {
+            console.log(this)
+        }
+        aa();
+    };
+    sum();
+//    function wash(){
+//        console.log(1)
+//    }
+//    wash();
+//    window.wash()
+    // 谁来wash this就是谁
+    //1、全局下的指向window
+    // 2、看执行的函数前面有没有“.”，是谁this就是谁，没有就是window
+    // 3、自执行函数中的this永远指向window
+    // 4、给元素绑定方法，方法中的this，指向当前的元素
+    // 5、 定时器中的this指向window
+    setTimeout(function () {
+        console.log(this)// window
+        return function () {
+            //this --> 不一定是window
+        }
+    });
+    var num =2;
+    var obj = {
+        num : 0,
+        fn : function () {
+             num =1;
+            (function (num) {
+                    ++this.num;
+                    num++;
+                    console.log(num)//3
+            })(this.num)
+        }
+    }
+    var f = obj.fn;
+    f();
+    console.log(window.num,obj.num) // 3  0
+</script>
+</body>
+</html>

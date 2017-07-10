@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+            font-size: 14px;
+            font-family: "微软雅黑";
+        }
+        #oUl{
+            list-style: none;
+            padding:10px;
+        }
+        #oUl li{
+            position: relative;
+            height:60px;
+            padding :10px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        #oUl li img{
+            position: absolute;
+            top:10px;
+            left :0;
+            border: none;
+            width :75px;
+            height:60px;
+
+        }
+        #oUl li div{
+            margin-left:80px;
+        }
+        #oUl li div h2{
+            height:20px;
+            line-height: 20px;
+             /*如果超出一行，那么进行省略*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #oUl li div p{
+            height : 40px;
+            line-height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="oUl">
+    <!--<li>-->
+        <!--<img src="img/default.jpg" alt="">-->
+        <!--<div>-->
+            <!--<h2>网络强国战略习近平与“十三五”十四大战略</h2>-->
+            <!--<p>互联网是二十世纪人类最大的发明互联网是二十世纪.</p>-->
+        <!--</div>-->
+    <!--</li>-->
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    // 获取后台的数据
+    var data = null;
+    var oUl = document.getElementById("oUl");
+    var imgList = document.getElementsByTagName("img");
+    ~function () {
+        // 创建一个ajax的对象
+        var xhr = new XMLHttpRequest();
+        // 打开相应路径下的文件
+        xhr.open("get","data.txt",false)// false 是同步
+        // 监听
+        xhr.onreadystatechange= function () {
+            if(xhr.readyState===4 && xhr.status === 200){
+                data = utils.toJSON(xhr.responseText);
+            }
+        };
+        // 发送请求
+        xhr.send();
+    }();
+   // 通过字符串拼接，添加到页面
+    function bindData() {
+        var str = "";
+        for(var i=0;i<data.length;i++){
+            var cur = data[i];//
+            str += "<li>"
+            str+="<img src='img/default.jpg' trueImg ="+cur.logo+">"
+            str+="<div>"
+            str += "<h2>"+cur.title+"</h2>"
+            str+="<p>"+cur.desc+"</p>"
+            str+="</div>"
+            str += "</li>"
+        }
+        // 把字符串给了oUl的innerHTML
+        oUl.innerHTML = str;
+    };
+    bindData();
+    var winH = document.documentElement.clientHeight || document.body.clientHeight
+    function delayImg() {
+       for(var i=0;i<imgList.length;i++){
+           delayImgCode(i)// 实参
+       }
+    }
+    function delayImgCode(i) {// 形参
+        var curImg = imgList[i];
+        curImg.style.background ="red";
+        if(curImg.Load){
+            return;
+        }
+        var curT = utils.offset(curImg).top;// 上偏移量
+        var curH = curImg.offsetHeight; // 当前图片的高度
+        var scrTop = utils.win("scrollTop");
+        var trueAddress = curImg.getAttribute("trueImg");
+//      curImg.index =1;
+        // getAttribute ： 是获取元素HTML标签里的属性
+        console.log(curImg.getAttribute("index"))
+        var color = curImg.getAttribute("style")
+
+        if(winH + scrTop>=curT + curH){// 可视窗口的下边框和图片的下边框
+            var oImg = document.createElement("img");
+            oImg.src = trueAddress;
+            oImg.onload= function () {
+                curImg.src = trueAddress;
+                curImg.Load = true;
+                fadeIn(curImg)
+            };
+            oImg = null;// 清空当前的oImg 对象
+        }
+    }
+    //渐变的效果
+    function fadeIn(curEle) {
+        var opa = 0.3;
+        utils.setCss(curEle,"opacity",opa);
+        var timer=setInterval(function () {
+            if(opa>=1){
+                utils.setCss(curEle,"opacity",1);
+                clearInterval(timer)
+                return;
+            };
+            opa+=0.1;
+            utils.setCss(curEle,"opacity",opa);
+        },100);
+    }
+    // 当滚动条滚动时，执行delayImg方法；
+   window.onscroll = delayImg;
+    window.onscroll();
+
+
+</script>
+</body>
+</html>

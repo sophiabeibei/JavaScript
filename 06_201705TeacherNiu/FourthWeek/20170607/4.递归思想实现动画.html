@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    //需求: 利用递归思想实现动画
+    //递归: 不断的调用函数;
+    //备注: 递归要用到setTimeout....不存在setInterval
+
+    var oBox = document.getElementById("box");
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var oBoxW = oBox.offsetWidth;
+    var maxL = winW - oBoxW;
+    var count = 0;
+    function move(){
+        clearTimeout(oBox.timer);//清除定时器是为了避免在中途点击盒子出现加速情况
+        count += 10;
+        if(count > maxL){
+            utils.css(oBox,"left",maxL);
+            return;
+        }
+        utils.css(oBox,"left",count);
+        oBox.timer = setTimeout(move,100);
+    }
+    oBox.onclick = move;
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

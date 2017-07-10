@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //replace  替换字符串
+    // str.replace(oldStr,newStr);
+    // 把原始字符串中oldStr  替换成newStr;
+
+//    var  str= "xuexi123xuexi234"
+//    str.replace(reg,"aixuexi");
+//    var reg = /xue/g;
+//    // 第二个参数传匿名函数
+//    str.replace(reg,function () {
+//        console.log(arguments)//["xue",0...]
+////        return "aixuexi"
+//    });
+    // 捕获多少次，当前匿名函数执行多少次；
+    // test 匹配
+    var reg = /\d/;
+    console.log(reg.test("zhufeng 1"))// true
+    console.log(reg.test("1"))// true
+    // 正则中的分组
+    // 1、改变优先级
+//    var reg = /^(18|19)$/; // 18\19
+    //  2、分组捕获   exec
+    // reg.exec(str)
+    //  捕获不仅把大正则内容捕获到，还可以把小正则内容捕获到
+//   //  只匹配不捕获 ?:
+    // 3、match   捕获
+    // str.match(reg)   返回一个数组，然后把匹配每一项当做数组的每一项返回，小正则不捕获
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

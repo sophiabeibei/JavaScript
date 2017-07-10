@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //
+    var oBox = document.getElementById("box")
+    function fn1(e) {
+        console.log(e)// 普通函数执行，没有作为一个被绑定的方法时，e 是undefined
+    // 如果作为一个元素对象的行为方法执行时，那么是事件对象
+    console.log(1)
+    console.log(this)
+    }
+    function fn2() {
+        console.log(2)
+    }
+    fn1()
+    // 当事件行为触发的时候，先捕获，后冒泡
+    oBox.addEventListener("click",fn1,false);
+    oBox.addEventListener("click",fn2,false);
+    oBox.attachEvent("onclick",fn1)
+    oBox.attachEvent("onclick",fn2)
+    // 移除
+    oBox.removeEventListener("click",fn1,false)// 三个参数高度一致
+    oBox.detachEvent("onclick",fn1);
+//
+    // 1、this问题 ： addEventListener方法中 this指向当前被绑定的元素对象,attachEvent  方法中this指向 window
+    // 2、重复问题 ： addEventListener方法中，当再给同一个事件行为绑定相同的方法，浏览器过滤不会进行重复绑定；attachEvent  方法中会重复绑定
+    // 3、顺序问题 ： addEventListener方法中，那么事件行为触发，方法执行的顺序和绑定的顺序一致;attachEvent方法中，方法执行的顺序是乱序的
+
+
+
+
+
+</script>
+</body>
+</html>

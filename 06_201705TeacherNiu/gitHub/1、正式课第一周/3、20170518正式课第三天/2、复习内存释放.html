@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 全局作用域 和私有作用域 都是栈内存
+    // 栈内存 ： 存储基本数据类型的
+    // 堆内存 ：
+    // 全局作用域属于不销毁的作用域，当页面的关闭的时候，全局作用域才会回收，
+    // 函数的执行的过程
+    // 形成一个私有作用域
+        // 1、形参赋值
+        // 2、预解释
+        // 3、代码从上到下执行
+    // 一般的情况下，当函数执行完成之后，当前私有作用域销毁
+    // 如果函数执行，并且返回一个引用数据类型的值，并且被外界接受，当前这个私有作用域不销毁
+    function bar() {
+        var su = "shh";
+        //当前的作用域属于不销毁作用域
+        return function sum() {
+            var uu = 17;
+        };
+    }
+    bar();
+//    f();//当f执行完成之后，f的私有作用域销毁
+    //如果return的function 没有被外界接受，那么当前作用域需要等待里面function执行完成之后销毁
+    // 查找作用域，看当前函数在哪定义的，跟函数在哪执行没有任何的关系
+        function fn(i) {
+//            var n =10;
+            // 第一次 13 i++-->14  第二次 14
+            return function (n) {
+                console.log(n + i++);
+            }
+        }
+        var f = fn(13);
+        f(12);  // 25
+        f(14);   // 28
+        fn(15)(12);  //27
+        fn(16)(13);   //29
+
+
+</script>
+</body>
+</html>

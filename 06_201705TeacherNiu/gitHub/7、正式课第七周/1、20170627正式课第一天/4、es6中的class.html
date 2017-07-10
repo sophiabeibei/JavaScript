@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // class  定义一个类
+//    function  Fn(num1,num2) {
+//        this.x = num1;
+//        this.y = num2;
+//    };
+//    Fn.prototype.sum = function () {
+//
+//    }
+//    new Fn(10,10);// Fn 执行
+
+//    class Fn{
+//        constructor(a,b){
+//            this.x = a;// 给实例添加私有属性
+//            this.y = b;
+//        }
+//        // 给当前这个类的原型新增新增方法
+//        sum(){
+//            console.log("1")
+//        }
+//    };
+//    let f = new Fn(10,100);
+//    let f2 =  new Fn;
+//    f.sum();
+//    console.log(f.sum === f2.sum)
+    // es 继承
+    class A {
+        constructor(name){
+            this.name = name
+        }
+        add(){
+           console.log("1")
+        }
+    };
+    // 类B 只继承类A的私有属性
+    // 子类中没有this,这个对象是从父类A中继承过来
+     class B extends A{
+       constructor(b){
+           super() //代表父类构造函数
+//         this.aa = 18;
+           this.aa = 18
+     }
+     }
+     console.log(B)
+     var f = new B("peixun");
+     f.add()
+     console.log(f)
+
+
+
+
+</script>
+</body>
+</html>

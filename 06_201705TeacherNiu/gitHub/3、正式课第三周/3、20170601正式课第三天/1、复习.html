@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    // 1、clientWidth clientHeight  内容+左右padding
+    // 2、clientLeft  clientTop  左边框的宽度 上边框的高度
+    // 3、offsetWidth offsetHeight  clientWidth + 边框的宽度
+    // 4、offsetLeft offsetTop  相对于父级参照物的偏移量
+    // 5、offsetParent  : 父级参照物
+    //6、scrollWidth  scrollHeight  : 没有溢出的情况 clientWidth  clientHeight 一样的
+    //有溢出的情况 ： clientWidth +溢出的宽度 / padding-Left + 真实内容的宽度
+    // 7、scrollLeft scrollTop  : 滚动卷取的宽度或者高度
+
+    // 在不做任何处理的情况下，那么页面元素的父级参照物默认是body
+    // 改变元素的父级参照物 ： 想让哪个元素成为当前元素的父级参照物，那么就在那个元素加上position ： absolute、relative、fixed
+    // parentNode
+
+    // 思路：1、获取当前元素的左偏移量，获取当前元素的父级参照物
+    // 2、通过while 循环，依次向上级获取父级参照物的左偏移量
+    // 3、注意IE 8 offsetLeft offsetTop 是包括边框的
+    // 4、把得到的两个值left top  放进对象中return
+    function offset(curEle) {
+        var l = curEle.offsetLeft;
+        var t = curEle.offsetTop;
+        var p = curEle.offsetParent;
+        while (p.tagName.toLowerCase() !== "body"){
+            if(navigator.userAgent.indexOf("MSIE 8.0") === -1){
+                l+= p.clientLeft;
+                t+= p.clientTop;
+            }
+            l+= p.offsetLeft;
+            t+= p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {left :l,top:t};
+    };
+    offset(oDiv);
+    // scrollTop scrollLeft
+
+
+
+
+
+
+</script>
+</body>
+</html>

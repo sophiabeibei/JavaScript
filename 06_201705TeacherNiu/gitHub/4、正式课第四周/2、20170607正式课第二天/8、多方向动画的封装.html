@@ -1,0 +1,68 @@
+s
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height:100px;
+            background: red;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    function Linear(t,b,c,d) {
+        return t/d*c+b;
+    };
+    function animate(curEle,target,duration,callBack) {
+        clearInterval(curEle.timer)
+        // 遍历对象，获取当前元素对应属性的初始值
+        var begin = {};// 存储属性对应的初始值
+        var change = {};// 存储属性变化的值
+        for(var key in target){
+            begin[key] = utils.css(curEle,key);
+            change[key] = target[key]- begin[key];
+        }
+
+        var time = null;
+        curEle.timer=setInterval(function () {
+            time+=10;
+            if(time > duration){
+                utils.css(curEle,target);
+                clearInterval(curEle.timer);
+                typeof callBack === "function" ? callBack():null;
+                return;
+            }
+            for(var key in target){
+                if(target.hasOwnProperty(key)){
+
+                    var curPos = Linear(time,begin[key],change[key],duration);
+                    utils.css(curEle,key,curPos);
+                }
+            }
+        },10);
+    }
+    // animate 参数 1： 元素对象
+    // 参数2 ： 目标位置
+    // 参数3 ： 总时间；
+    animate(oBox,{left : 1000,top : 500,opacity :1,width : 0,height:0},2000,function () {
+        utils.css(oBox,"width",100);
+        utils.css(oBox,"height",100);
+    });
+</script>
+</body>
+</html>

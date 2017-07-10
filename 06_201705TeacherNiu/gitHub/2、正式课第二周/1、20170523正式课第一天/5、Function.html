@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // Function  : 内置类
+    //所有的函数（普通函数、类（内置类，自定义类））都是函数类型的，都是Function这个类的一个实例,Function是所有函数的基类
+    // Object 和Function互为指向
+    // 所有的对象数据类型的（对象，实例，prototype），都是Object的一个实例
+    // 所有的实例是对象数据类型的
+//    function Sum() {// 函数
+//    };
+//    console.log(Sum instanceof Function) // true
+//    console.log(Sum instanceof Object)  // true
+    // Object 的原型上没有__proto__ 这个属性
+    // 函数的多面性
+    function Sum() {// 函数
+
+    };
+    Sum();
+    var f = new Sum;
+    // 1、 普通函数，函数数据类型，执行形成私有作用域，形参赋值，预解释，代码从上到下执行
+    // 2、类  函数数据类型，可以作为一个类，把类实例联系到一起了
+    // 3、对象  对象数据类型，具有对象的特点，可以新增属性名
+
+    Sum.getY =18;
+    console.log(Sum["getY"])
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="kettle"></div>
+</body>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+    // 烧水  40分钟
+     var kettle =  document.getElementById("kettle");
+    on(kettle,"selfcoldWater",readBook)
+    on(kettle,"selfcoldWater",buyVeg)
+    //   泡面、洗脸
+    function hotWater() {
+        selfrun.call(kettle,"selfcoldWater")
+        setTimeout(function () {
+            // 发布 通知水开了
+            selfrun.call(kettle,"selfboiling")
+        },5000)
+    };
+    hotWater();
+
+    function readBook() {
+        console.log("读书")
+    }
+    function buyVeg() {
+        console.log("买菜")
+    }
+    function paomian() {
+        console.log("可以泡面le")
+    }
+    function washFace() {
+        console.log("可以洗脸了")
+    }
+    // 给水壶的boiling属性订阅方法
+    on(kettle,"selfboiling",paomian);
+    on(kettle,"selfboiling",washFace);
+
+
+
+
+
+
+
+</script>
+</html>

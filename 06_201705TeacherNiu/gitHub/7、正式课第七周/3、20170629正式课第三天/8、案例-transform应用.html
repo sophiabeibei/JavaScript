@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+            margin: 50px;
+        }
+        ul li{
+            width : 150px;
+            height:190px;
+            float:left;
+            border:1px solid #ccc;
+            margin-left :50px;
+            border-radius: 5px;
+            -webkit-transition: all 1.3s;
+            -moz-transition: all 1.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 1.3s;
+        }
+        ul li img{
+            -webkit-transform:translate(10px,30px) ;
+            -moz-transform: translate(10px,30px);
+            -ms-transform: translate(10px,30px);
+            -o-transform: translate(10px,30px);
+            transform: translate(10px,30px);
+        }
+        ul li:hover{
+            /*以什么位置为基准准*/
+            /*top left right bottom center*/
+            -webkit-transform-origin: top;
+            -ms-transform-origin: top;
+            -o-transform-origin: top;
+            -moz-transform-origin: top;
+            transform-origin: top;
+            /*rotate3d(x,y,z,angel)xyz  都是小于1 的数，是个角度*/
+            /*rotateX()rotateY()rotateZ()*/
+            /*translateX()translateY()translateZ()*/
+            -webkit-transform: translate3d(0px,-2px,5px) rotateX(180deg);
+            -moz-transform: translate(0px,-2px) rotateX(180deg);
+            -ms-transform: translate(0px,-2px) rotateX(180deg);
+            -o-transform: translate(0px,-2px) rotateX(180deg);
+            transform: translate3d(0px,-2px,5px) rotateX(180deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // js 万物都是对象
+    // 类  ： 类是对象的一个细分
+    // 内置类  ： Number  String Boolean  Null Undefined
+                //  Array  RegExp  Object  Date  Function...
+    // 自定义类 ：   自己定义的类
+     // Function  是一个类，是一个函数的基类
+    // Object   是一个基类，最顶层那个类
+    //  所有的函数数据类型（普通的函数，类（内置类，自定义类））都是Function的一个实例
+    // 所有的对象数据类型 （对象，实例，prototype）都是Object的一个实例
+    function fn() {
+        this.name = "珠峰";
+    }
+    var f = fn();// undefined
+    function Fn(num1,num2){
+        //var obj= {}
+        console.log(num1)// undefined
+        this.name = "珠峰";
+        this.age = num1;
+    };
+    var f = new Fn(10,20); //  返回一个实例
+    console.log(f.age)  // 10
+    // 当前f 就是Fn的一个实例，Fn  是一个函数，被new 之后，那么咱们称它是一个类
+    //类和普通函数的区别
+    // 类本身是一个普通的函数
+    // 类和普通函数相同点 ：  形成私有作用域 --》 形参赋值--》 预解释 --》 代码从上到下执行；
+    //  不同点 ： 类在代码执行之前，首先默认创建一个对象，把里面带this的和obj 进行关联，把属性名属性值给了obj ,最后返回return obj;默认的创建，默认的返回
+
+
+    // 原型 ：
+    // 所有的函数都天生自带一个prototype属性，并且这个属性是一个对象数据类型的
+    // prototype 天生自带一个constructor 属性，属性值是当前原型所属类
+    // 每一个对象数据类型 都天生自带一个__proto__ 属性，属性值是当前实例所属类的原型
+    // 函数也是对象数据类型的
+    // 函数三种角色 ：
+    //1、普通函数 :   形成私有作用域 --》 形参赋值--》 预解释 --》 代码从上到下执行；
+    // 2、类  :  new  之后就变成一个类，并且返回一个实例
+    // 3、对象 ：  可以新增属性名属性值
+    function fn() {
+
+    };
+    fn.num =1;
+    console.log(fn["num"])// 1
+
+
+    // ary  是Array 的一个实例，
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin : 0;
+            padding :0;
+        }
+        .oul{
+            list-style: none;
+            width : 300px;
+            margin :50px auto;
+        }
+        .oul li{
+            height :30px;
+            line-height : 30px;
+            width :100%;
+            border-bottom: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+<ul class="oul" id="list">
+    <li>中共中央政治局召开会议 习近平主持会议</li>
+    <li>中共中央政治局召开会议 习近平主持会议</li>
+</ul>
+<script type="text/javascript">
+    //  数据绑定
+    var data=["中共中央政治局召开会议 习近平主持会议",
+                "中共中央政治局召开会议 习近平主持会议",
+                "中共中央政治局召开会议 习近平主持会议",
+                "中共中央政治局召开会议 习近平主持会议",
+                "中共中央政治局召开会议 习近平主持会议",
+                "中共中央政治局召开会议 习近平主持会议"
+            ];
+    var oUl = document.getElementById("list");
+    var oLis = oUl.getElementsByTagName("li");
+
+    // 1、字符串拼接  最常用的一种方式
+//    var  str = "";
+//    for(var i=0;i<data.length;i++){
+//        str += "<li>" +data[i]+"</li>";
+//    }
+//    console.log(str)
+//    oUl.innerHTML += str;
+
+
+    // 2、
+//    for(var i=0;i<data.length;i++){
+//        // 循环一遍创建一个li
+//        var li = document.createElement("li");
+//        li.innerHTML = data[i];// 给li 赋值
+//        oUl.appendChild(li)
+//    }
+//    console.dir(oLis)
+//    oLis.style.background = "red";
+
+      // 3、文档碎片
+    var frg = document.createDocumentFragment();// 创建一个文档碎片
+    for(var i=0;i<data.length;i++){// 循环数据
+        var li = document.createElement("li");// 创建元素对象
+        li.innerHTML = data[i];// 绑定数据
+        frg.appendChild(li);
+    }
+    oUl.appendChild(frg);
+    frg = null;
+    // 优点 ： 引发一次回流
+
+//    console.log(oLis)
+    for(var i=0;i<oLis.length;i++){
+        oLis[i].onmouseover = function () {
+            this.style.background = "#eee";
+        }
+        oLis[i].onmouseout = function () {
+            this.style.background = "";
+        }
+    }
+
+
+
+
+    //DOM 的回流机制 ：页面中删除元素，新增元素，元素换位置，浏览器都要对页面DOM的结构进行重新计算，非常耗性能
+   // 重绘 ：在js中，改变元素的样式（css),浏览器需要对元素进行重新的渲染，这就叫做重绘
+
+
+
+</script>
+</body>
+</html>

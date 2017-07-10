@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //call  改变this关键字指向
+    //fn1.call()
+    //去原型找到call 方法，call方法执行，把fn1中this 变成call方法传进去的第一个参数，然后让fn1执行
+
+    // call 、apply 是定义在Function原型上的方法，那么所以的函数都是Function的一个实例
+//    fn1.__proto__.call()
+//    console.log(fn1.__proto__.call === Function.prototype.call)
+//
+    function fn1(num1) {
+        // arguments
+        console.log(this) // fn2
+        console.log(1)
+        console.log(num1)
+        console.log(arguments)
+    };
+    function fn2() {
+        console.log(2)
+    };
+    //fn1.call(fn2) // 1
+    //apply  改变this关键字，
+    // 区别 ： 传参数方式不一样，除了第一个参数以外的参数，是放到一个数组里面传进去，把数组的每一项对形参一一赋值
+    fn1.apply(fn2,[1,2])
+    // 通过apply 传进去的参数，
+
+
+
+    // bind   也是定义在Function上的一个方法
+     // this的预处理   : 第一步： 只是改变了this，bind 执行，让fn1中的this变成bind传进去的第一个参数，将改造的fn1以返回值返回
+//    function fn1() {
+//        console.log(this)
+//        console.log(1)
+//    };
+//    function fn2() {
+//        console.log(2)
+//    };
+//    var f=fn1.bind(fn2);
+    //fn()
+//    fn1();
+
+
+//    Math.max([12,4,7,8])
+
+    console.log((1,6,9,7,4)) // （） 只取最后一个值
+</script>
+</body>
+</html>

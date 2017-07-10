@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //debugger  F10 往下查询bug
+    //动画里,从左向右盒子运动的原理: 改变left值...首先一定要定位,position: absolute; 其次不断的改变盒子的left;
+    //setInterval: 每间隔一段时间执行一次,对盒子left值设置;
+    //setTimeout: 递归思想,执行一次;在函数内部调用函数;要给停止的条件(清除定时器);
+    //清除定时器: 当到达目标位置,清除定时器(位置,时间)
+    //实现简单动画的基本原理: 定时器,left值
+    //指定的步长: 不知道运动的总时间,但是知道每步的长度(没间隔一个单位的时间,盒子left值新增的距离)(像素)
+    // 执行的时间: 每步的长度 = 总路程/总时间*interval(时间因子)
+
+
+    //匀速运动的公式
+//    function Linear(t, b, c, d) {
+//        return t/d*c+b;//获取当前最新的位置
+//    }
+
+
+
+    //多方向
+//    /**回车  ->>模块说明
+    /**
+     *
+     * @param curEle:
+     * @param target: 对象
+     * @param duration: 持续的时间
+     * @param callBack: 回调函数
+     * @constructor
+     */
+
+    function Animate(curEle, target, duration, callBack) {
+        curEle.timer ? clearInterval(curEle.timer);
+        var cur = Linear;
+        var begin = {};
+        var change = {};
+        for(var key in target){
+            begin[key] = getCss(curEle,key);
+            change[key] = target[key] - begin;
+        }
+        var step = null;
+        curEle.timer = setInterval(function (){
+            step+=10;
+            if(step >= duration){
+                clearInterval(curEle.timer);
+                css(curEle,target);
+                typeof callBack =="function" ? callBack() : null;
+                return;
+            }
+            for(var key in target){
+                var val = cur(step,begin[key],change[key],duration);
+                setCss(curEle,key,val)
+            }
+
+        },1000)
+    }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

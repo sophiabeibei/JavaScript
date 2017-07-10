@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //1、在if 条件中，不管条件成立与否，都要进行预解释， function 只声明，不定义
+    // 2、只对“=”左边的进行预解释，右边不进行预解释
+//    var fn = function () {
+//        var total =10;
+//    }
+    // 3、 return出去的内容不进行预解释，但是return 下面的代码需要进行预解释
+//    function sum() {
+//        console.log(total) // undefined
+//        return function () {// return  xxxfff000// 把这个地址返给函数外面
+//            var aa = "shg";
+//        };//return 下面的代码不再执行，但是需要预解释
+//        var total = 18;
+//    };
+//    var f=sum();
+//    f();//形成新的私有作用域
+    // 4、匿名函数不进行预解释
+//    function bas() {
+//    }
+//    bas();
+//    var num =11;
+//    (function (i) {// i 是形参
+//       var str="zhufeng";
+//       console.log(str);
+//    })(num);// 是实参
+    //自执行函数本身不进行预解释，但是函数里面的内容，执行之前也需要进行预解释, 定义和执行一块完成
+//    for(var i=0;i<oLis.length;i++){
+//        oLis[i].onclick = (function (num) {
+//            return function () {
+//                change(num);
+//            };
+//        })(i);
+//    };
+    //循环第一遍 ：oLis[０].onclick　＝　function ()｛change(0);};
+    //循环第二遍 ：oLis[1].onclick　＝　function ()｛change(1);};
+    //循环第三遍 ：oLis[2].onclick　＝　function ()｛change(2);};
+
+    //通过外面嵌套作用域的方式来保存值
+
+    // 5、预解释的时候，变量的名字重复，不再重复声明，但是需要重新定义；
+//    var fn1 = 18;
+    fn1()
+    function fn1() {
+        console.log(1)
+    }
+    fn1();// xxxfff111
+    function fn1() {
+        console.log(2);
+    }
+    fn1();
+</script>
+</body>
+</html>

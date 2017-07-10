@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.简单动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var boxW = oBox.clientWidth;
+    var maxW = winW - boxW;
+    var count = 0;
+    oBox.onclick = function () {
+        var timer = setInterval(function () {
+            count += 8;
+            if(count >maxW){
+                count = maxW;
+            }
+            oBox.style.left = count + "px";
+            console.log(2);
+            if(count >= maxW){
+                clearInterval(timer);
+            }
+        },10)
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

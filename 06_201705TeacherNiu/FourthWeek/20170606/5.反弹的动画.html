@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        input{
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        #left{
+            left: 50px;
+            background: yellow;
+        }
+        #right{
+            left: 200px;
+            background: orange;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box" id="box"></div>
+<input type="button" value="向左走" id="left">
+<input type="button" value="向右走" id="right">
+<script>
+    //思路: 1.求出可运动区域的最大值和最小值;2.给两个按钮绑定点击事件;3.通过传参的形式判断目标位置决定盒子向左运动还是向右运动;
+    var oBox = document.getElementById("box");
+    var oLeft = document.getElementById("left");
+    var oRight = document.getElementById("right");
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var targetRight = winW - oBox.offsetWidth;
+    var targetLeft = 0;
+    function move(target) {
+        timer = setInterval(function () {
+
+        },10)
+
+    }
+    oLeft.onclick = function () {
+        move(targetLeft);
+    };
+    oRight.onclick = function () {
+        move(targetRight);
+    }
+
+
+
+</script>
+</body>
+</html>

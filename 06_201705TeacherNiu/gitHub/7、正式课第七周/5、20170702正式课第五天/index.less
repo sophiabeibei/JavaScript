@@ -1,0 +1,53 @@
+// @ 是定义变量
+@color: red;
+@address:images;
+// 拼接地址或者字符串，把定义的这个变量放到{}里面
+
+// npm install less -g
+// lessc -v
+// 转义命令 ： lessc index.less index1.css
+// 函数可以不加括号 方法也是可以调用
+
+//ul li:nth-child(1){
+//  background: url("@{address}/list1.png");
+//};
+//ul li:nth-child(2){
+//  background: url("@{address}/list2.png");
+//}
+//  () 传的参数   函数参数赋值，是一个默认值
+.transformScale(@val:1){
+  -webkit-transform: scale(@val);
+  -moz-transform: scale(@val);
+  -ms-transform: scale(@val);
+  -o-transform: scale(@val);
+  transform: scale(@val);
+};
+// 在less函数中，可以调用@arguments
+.transition(@property:all,@duration:1s,@time-function:linear,@delay:0s){
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    -ms-transition: @arguments;
+    -o-transition: @arguments;
+    transition: @arguments;
+}
+.box1{
+  margin:20px auto;
+  width :200px;
+  height:200px;
+  background: #000000;
+  .transition(@duration:3s);
+  &:hover{
+    .transformScale(2);
+  }
+}
+.box {
+  @color: #eee;
+  .gray {
+    color: @color;
+    background : #000000;
+  }
+}
+
+nav ul {
+  .box !important;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin :0;
+            padding : 0;
+        }
+        #tab{
+            width : 100px;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+        }
+    </style>
+</head>
+<body>
+<div id="tab"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById("tab");
+    //盒子模型 ：　js中提供了一些获取DOM的属性的一些方法（属性）
+    // 八个只读属性，不可以进行设置
+    // 1、clientWidth  clientHeight
+    // 内容宽度 + 左右padding
+
+    // 2、clientTop  clientLeft
+    //  上边框的高度，左边框宽度
+
+    // 3、offsetWidth offsetHeight
+         // clientWidth + 左右边框的宽度
+        // clientHeighe + 上下边框的高度
+
+    // 4、scrollWidth   scrollHeight
+     // 没有溢出的 ： clientWidth
+    // 有溢出 情况  scrollHeight：padding-top + 真实内容的高度
+    //oDiv.style ; 只能获取行内样式
+//    var obj = getComputedStyle(oDiv)// 获取oDiv 所有的样式
+//    obj.width ="100px"
+//    obj.height = "100px"
+//    getComputedStyle(oDiv).width = "100px";
+//    getComputedStyle(oDiv).height = "100px";
+    //"getComputedStyle()" 在IE 678下是不兼容的
+//    oDiv.currentStyle[attr];处理透明度
+    function getCss(curEle,attr) {
+        var val = null;
+        var reg = null;
+        if("getComputedStyle" in window){
+            val = window.getComputedStyle(curEle)[attr];//
+        }else{
+            if(attr==="opacity"){
+                val = curEle.currentStyle["filter"];//alpha(opacity=50)
+                reg =/^alpha\(opacity=((?:\d|(?:[1-9]\d+))(?:\.\d+)?)\)$/;
+//                console.log(reg.exec(val))
+                var temp = reg.exec(val)[1];
+                val = temp ? temp/100 : 1;
+                val = parseFloat(val);
+            }else{
+                val = curEle.currentStyle[attr];
+            }
+        };
+        // val  : 颜色 数字 数字+单位
+        //val = isNaN(parseFloat(val)) ? val : parseFloat(val);
+        var reg1 = /^([+-]?(\d|[1-9]\d+)(\.\d+)?)(px|pt|rem|em)?$/;
+        val = reg1.test(val) ? parseFloat(val) : val;
+        return val;
+    };
+    // "100px" rem em pt
+    console.log(getCss(oDiv,"opacity"))
+
+
+
+
+
+
+</script>
+</body>
+</html>

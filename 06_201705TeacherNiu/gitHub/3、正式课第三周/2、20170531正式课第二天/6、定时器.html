@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 定时器、
+//    // 是window下的一个方法，定时器中this 永远指向window
+//    var timer = window.setTimeout(function () {
+//        console.log(1000);
+//    },1000);// 打印一次1000
+//    // 1 当前页面第几个定时器
+//    var time2 = setInterval(function () {
+//        console.log(2000)
+//    },1000)// 每隔一秒打印一次2000
+
+    // 清除定时器
+    clearTimeout(timer)
+//    clearInterval(timer2);
+    // 定时器是异步编程的
+    var timer = window.setTimeout(function () {
+        console.log(1000);
+    },1000);
+    console.log(2000);
+
+
+
+
+
+
+</script>
+</body>
+</html>

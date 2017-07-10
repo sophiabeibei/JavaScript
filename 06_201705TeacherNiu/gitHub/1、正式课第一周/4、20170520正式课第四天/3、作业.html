@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    console.log(a);
+//    a=1;
+//    if(!("a" in window)){
+//         var a=1;
+//    }
+//    alert(a);
+//    var a//相当于给window增加一个属性,在预解释，给window增加一个属性名是"a"
+//    弹出的a的值是？
+//    A、1   B、undefined   C、报错   D、以上答案都不对
+//  var obj ={na : "zhufeng",age : 8,8 : 12};
+//  var obj = {ary : []}
+    //  var obj = {aa : {}}
+//  var ary =[{name : "zhufeng"},1,"sajg"]
+    //获取对象属性值
+//    for(var key in obj){
+//        debugger
+//      console.log(obj[key])
+//    }
+//    obj.name
+//    obj["name"]
+    // 对象的属性名 是什么数据类型 “字符串”
+
+
+    var foo='hello';
+    (function(foo){
+        //实参的值传给了形参
+        //形参foo="hello";
+        console.log(foo);// "hello"
+        var foo=foo||'world';
+        console.log(foo); //"hello"
+    })(foo);//实参“hello”
+     console.log(foo);//三次分别输出什么？ "hello"
+//    A、hello hello hello   B、undefined world  hello   C、hello world world   D、以上答案都不正确
+    //   ||  条件语句中 ， 有一个是真，当前条件就是true
+    // || 赋值 ： 左边是真，取左边的值，左边是false，那么取右边
+
+</script>
+</body>
+</html>

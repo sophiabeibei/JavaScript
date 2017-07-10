@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    "use strict"严格模式
+    // call
+//    function sum() {
+//
+//    };
+    //sum()// window
+//    sum.call();
+//    console.log(sum.call)// 通过__proto__去sum的原型链上找call方法，找到Function的原型，原型上面有call方法，所以sum.call() 成立的
+    // 所有的函数数据类型都是Function的一个实例；Function 的__proto__指向Function的原型
+    // call  ： 改变方法中的this关键字的指向；
+//    function fn1() {
+//        console.log(1)
+//        console.log(this)//fn2
+//    };
+//    function fn2() {
+//        console.log(2)
+//    };
+
+//    fn1();// this-->window
+//    fn1.call(fn2); // this-->fn2
+    //1  call ->this(fn1) -->fn1中的this变成call传入的第一个参数
+    // call : fn1.call 执行的时候，先通过__proto__找到Function原型上的call方法，并让call方法执行；
+    // call 方法执行的时候，首先把call中this(call点的前面的函数)的this变为call第一个传入的参数，然后让call中的this执行；
+    //在非严格模式下，如果call方法中不传参数，或者穿null或undefined，那么当前函数指向window；
+    //在严格模式下，call不传参数的话，那么this是指向undefined，如果是穿null，那么this指向null，传undefined，this指向undefined；
+    function fn1(num1,num2) {
+        console.log(num1,num2)// 3  undefined
+        console.log(1)
+        console.log(this)//fn2
+    };
+    function fn2() {
+        console.log(2)
+        console.log(this)
+    };
+    //fn1.call([1,5,7],3,4)//
+    fn1.call.call(1);
+    // 最后call执行的时候，this是fn1.call,并且让fn2变成fn1.call 的this,让fn1.call执行（this-》fn2）--》fn1.call执行，没有传参数，fn1中this没有发生改变，让fn1.call 中的this（fn2）执行;
+
+//    fn1.call.call.call.call.call(fn2);
+    // 两个call及两个以上call执行，都是让fn2执行；
+
+
+
+
+
+
+</script>
+</body>
+</html>

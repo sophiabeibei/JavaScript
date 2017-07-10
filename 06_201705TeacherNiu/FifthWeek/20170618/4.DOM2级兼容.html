@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM2级兼容</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: orange;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    /* DOM2级事件绑定
+    * 标准浏览器绑定事件/删除事件: addEventListener/removeListener
+    * 非标准浏览器绑定事件/删除事件: attachEvent/detachEvent
+    *
+    * */
+
+    /* DOM2级事件绑定方法中遇到的问题:
+    * 1)顺序问题:标准浏览器中有addEventListener方法,打印顺序--正序;
+    *           非标准浏览器中有attachEvent方法;打印顺序--倒叙;
+    * 2)this问题: 标准浏览器中this指向当前绑定的元素对象,IE6-8中的this指向window;
+    * 3)重复问题: 标准浏览器对元素的一个事件行为绑定多次一样的方法,浏览器会把重复的过滤掉,但IE6-8是不进行过滤处理,绑定了重复的方法也都会执行;
+    *
+    * */
+
+
+    //DOM2级通过addEventListener方法/removeListener方法
+    var oBox = document.getElementById("box");
+    function fn1() {
+        console.log(1);
+    }
+    function fn2() {
+        console.log(2);
+    }
+    function fn3() {
+        console.log(3);
+    }
+    function fn4() {
+        console.log(4);
+    }
+    function fn5() {
+        console.log(5);
+    }
+//    oBox.addEventListener("click",fn1,false);
+//    oBox.addEventListener("click",fn2,false);
+//    oBox.addEventListener("click",fn3,false);
+//    oBox.addEventListener("click",fn4,false);
+//    oBox.addEventListener("click",fn5,false);
+    //以上,是标准浏览器绑定事件的方法;点击oBox打印顺序1,2,3,4,5
+
+    oBox.attachEvent("onclick",fn1);
+    oBox.attachEvent("onclick",fn2);
+    oBox.attachEvent("onclick",fn3);
+    oBox.attachEvent("onclick",fn4);
+    oBox.attachEvent("onclick",fn5);
+    //以上,非标准浏览器中IE6-8绑定事件的方法;点击oBox打印顺序5,4,3,2,1
+
+</script>
+</body>
+</html>

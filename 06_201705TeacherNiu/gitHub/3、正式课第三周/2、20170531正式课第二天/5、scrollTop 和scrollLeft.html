@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin : 0;
+            padding : 0;
+        }
+        html{
+            width :100%;
+            height :100%;
+        }
+        body{
+            width :100%;
+            height : 500%;
+        }
+        #tt{
+            width : 100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="tt"></div>
+<script type="text/javascript">
+    //获取当前可视窗口的宽度 ,高度
+    var width = document.documentElement.clientWidth|| document.body.clientWidth;
+    var height= document.documentElement.clientHeight || document.body.clientHeight;
+    var body = document.getElementsByTagName("body")[0];
+    // 之前的11个属性，只能获取，不能修改看（只读属性）
+    // scrollTop /scrollLeft  （读写属性）可以修改
+    // scrollTop  : 是滚动条卷去的高度
+    // scrollLeft : 是滚动条卷去的宽度
+   // 可以进行设置的
+//   document.body.scrollTop = 1000;
+   // win 获取加设置
+    function win(attr,value) {
+        if(value === undefined){
+            return document.documentElement[attr] || document.body[attr];
+        };
+        document.documentElement[attr] = value;
+        document.body[attr] = value;
+    };
+    console.log(win("scrollTop"));
+//  滚动条滚动就会触发function执行
+//    window.onscroll = function () {
+//        console.log(win("scrollTop"));
+//    }
+
+
+</script>
+</body>
+</html>

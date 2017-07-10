@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css盒模型面积</title>
+    <style>
+        .content{
+            background: red;
+            /* **** 重点box-sizing: border-box; */
+            /*border-box   包括了border边框和padding值;*/
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 500px;
+            height: 500px;
+            border: 10px solid #000;
+            border-top: 50px;
+            /*上边框只写数值,不写color和style,所以边框只能为0*/
+            padding: 50px 40px 30px 20px;
+            margin: 50px 40px 30px 20px;
+        }
+
+        /* 去掉box-sizing: border-box属性之后
+        盒模型的面积计算:
+        width=500+10+10+20+40=580
+        height=500+50+10+0+30=590*/
+
+    </style>
+
+</head>
+<body>
+<!--css 盒模型面积
+width: 420px;
+border-left: 10px;
+border-right: 10px;
+padding-left: 20px;
+padding-right: 40px;
+
+
+width: 500px;
+height: 500px;
+
+
+-->
+<div class="content"></div>
+</body>
+</html>

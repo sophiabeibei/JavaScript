@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin :0;
+            padding: 0;
+        }
+        #tab {width : 100px ;height : 100px;background: red;margin : 80px auto}
+#btn{
+    margin: 120px auto;
+    display: block;
+}
+    </style>
+</head>
+<body>
+<div id="tab"></div>
+<button id="btn">点击</button>
+<script type="text/javascript">
+//    var oTab = document.getElementById("tab");
+//    var oBtn = document.getElementById("btn");
+//    oTab.onclick = function () {
+//        console.log(this)
+//    };
+//    oBtn.onclick = function () {
+//        console.log(this)
+//    };
+    // this 是关键字
+    //this 当前执行的主体，它跟执行的范围（context）没有的任何的关系，跟函数在哪定义的也没有关系
+    //console.log(this); // window
+//    var num =19;
+    //相当于给winow增加一个属性名叫num ，属性值 19的一个属性
+//    function eat(){
+//        var veg = "白菜";
+//        console.log(this)
+//    }
+//    var obj={
+//        peo1 : eat
+//    }
+//    eat()// 默认全局window去eat
+//    obj["peo1"]() // "obj"
+    //循环绑定
+//    for(var i=0;i<oLis.length;i++){
+//        oLis[i].index = i;
+//        oLis[i].onclick = function () {
+//            change(this.index)
+//        }
+//    };
+    //this 常用几种情况
+    // 1、全局下this指向window   console.log(this)
+    // 2、看当前方法执行前面有没有“.”,如果有“.”,那么“.”前面是谁，this就是谁，如果没有，那么this就指向window
+    // 3、自执行函数中的this永远指向window
+    // 4、如果给一个元素绑定方法，那么方法中的this就是指当前被绑定的这个元素
+    // 5、定时器中的this 永远指向window
+//    function fn1() {
+//        console.log(this)
+//    }
+//    function fn2() {
+//        console.log(this)
+//    }
+//    function fn3() {
+//        console.log(this)
+//    }
+//    var ary = [fn1,fn2,fn3];
+//    ary[0]();// ary
+//    (function () {
+//       console.log(this)
+//    })()
+//    var obj = {
+//        num : 9,
+//        fn : (function () {
+//           var sum = 3;
+//           console.log(this) // window
+//            return function () {
+//                console.log(this)  // obj
+//            }
+//        })()
+//    };
+//    obj.fn();
+//    var fn = (function () {
+//        console.log(this)// window
+//        return function () {
+//            console.log(this)
+//        }
+//    })();
+//    fn();
+
+//    function sum() {
+//        window.setTimeout(function () {
+//            console.log(this); // window
+//        },1000);
+//    }
+//    sum();
+</script>
+</body>
+</html>

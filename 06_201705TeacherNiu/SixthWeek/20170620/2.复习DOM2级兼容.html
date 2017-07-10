@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习DOM2级兼容</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: orange;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript" src="../../event.js"></script>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    //bind   unbind
+    // bind: 绑定的所有 方法放在这个元素对象天生自带事件池里,
+    // on off run
+    function bind(curEle, evenType, evenFn) {
+        if(curEle.addEventListener){
+            curEle.addEventListener(evenType,evenFn,false);
+            return;
+        }
+        curEle.attachEvent("on" + evenType,evenFn);
+        var tempFn = function () {
+            evenFn.call(curEle);
+        };
+        var ary = !curEle.addEventListener;
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(cur === evenFn){
+                return;
+            }
+        }
+        ary.push(evenFn);
+        curEle.attachEvent("on" + evenType,tempFn);
+
+    }
+    function unbind(curEle, evenType, evenFn) {
+        if(!curEle.addEventListener){
+            curEle.addEventListener(evenType, evenFn, false);
+            return;
+        }
+        var ary = curEle["on" + evenType]
+;    }
+    //bind和on的区别:
+    bind(oBox,"click",fn1);//bind: 浏览器给事件行为的事件池;
+    on(oBox,"click",fn1);//on: 自己创建的事件池
+
+
+    function fn1() {
+        console.log(1);
+    }
+    function fn2() {
+        console.log(2);
+    }
+    function fn3() {
+        count++;
+        if(count > 2){
+            off(oBox,"click",fn4)
+        }
+        console.log(3);
+    }
+    function fn4() {
+        console.log(4);
+    }
+    function fn5() {
+        console.log(5);
+    }
+    function fn6() {
+        console.log(6);
+    }
+
+
+    on(oBox,"click",fn1);
+    on(oBox,"click",fn2);
+    on(oBox,"click",fn3);
+    on(oBox,"click",fn4);
+    off(oBox,"click",fn1);
+
+
+
+
+
+</script>
+</body>
+</html>

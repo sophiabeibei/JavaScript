@@ -1,0 +1,7 @@
+[
+      {"name":"武松","age":35,"hurt":105,"sex":1},
+      {"name":"李逵","age":32,"hurt":125,"sex":1},
+      {"name":"林冲","age":30,"hurt":149,"sex":1},
+      {"name":"鲁智深","age":31,"hurt":120,"sex":1},
+      {"name":"孙二娘","age":26,"hurt":110,"sex":0}
+]

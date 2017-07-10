@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //正则的捕获
+    // 正则每一次捕获之前都要先进行匹配，如果没有匹配成功的，则返回null,如果匹配成功，则返回一个数组
+
+    // 捕获的内容格式
+
+    // 正则捕获的特点
+//    var  reg = /\d/;
+//    console.log(reg.exec("zhufeng2017zhufeng"));//["2", index: 7, input: "zhufeng2017"];
+//    console.log(reg.lastIndex);
+//    console.log(reg.exec("zhufeng2017zhufeng"));//["2", index: 7, input: "zhufeng2017"];
+//    console.log(reg.lastIndex);
+    // 正则捕获的懒惰性
+    // 懒惰性 ： 正则每一次捕获，只捕获第一个匹配的内容，如果不进行任何处理的情况下，捕获还是第一次匹配的内容；原因是每次都是从索引0开始匹配的；
+//    var  reg = /\d+/g;
+    // 修饰符
+    // global   "g"  全局捕获
+    // ignoreCase  "i" 忽略大小写
+    // multiline  "m"  多行匹配
+//    console.log(reg.lastIndex);
+//    console.log(reg.exec("zhufeng2017zhufeng2018"));
+//    console.log(reg.lastIndex);
+//    console.log(reg.exec("zhufeng2017zhufeng2018"));
+    // 解决懒惰性原理： 加上修饰符g,正则每一次捕获结束后，lastIndex 都会发生改变，当下一次再捕获的时候，会从新的索引位置开始捕获；
+    // 贪婪性：正则每一次捕获的时候，会按照匹配最想的结果捕获，2符合我们的正则，2017也符合，默认捕获2017
+    //解决正则贪婪性
+
+//    var  reg = /\d+?/g;
+//    // ? 放到量词的后面，取消捕获的贪婪性
+//
+//    console.log(reg.exec("zhufeng2017zhufeng2018"));
+//    console.log(reg.exec("zhufeng2017zhufeng2018"));
+//    console.log(reg.exec("zhufeng2017zhufeng2018"));
+
+    // match
+//    var  reg = /\d+?/g;
+//    var str = "zhufeng2017zhufeng2018";
+//    var ary = str.match(reg);// 默认返回数组，并且把捕获到的内容，每一项放进数组中；
+//    console.log(ary);
+    var reg = /^[\w]$/;
+    console.log(reg.test("ue"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

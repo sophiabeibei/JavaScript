@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="qq" data-id="123">
+    <img src="ttt" alt="" id="hh">
+    <div class="yy">
+        <ul></ul>
+    </div>
+    <div class="yy">
+        <ul></ul>
+    </div>
+</div>
+<div id="new" class="new"></div>
+<input type="text">
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    //console.log($===jQuery)//
+//    $(".tt")// 返回一个实例,调用jQuery原型上的方法
+
+    //jQuery(".tt")
+    // addClass 新增类名
+    // removeClass  删除类名
+    //console.log($("#new").hasClass("new"))
+    // hasClass  有没有某个类名
+    // toggleClass   attr  removeAttr  prop
+
+    // html(innerHTML)  text(innerText)  next prev siblings  append
+    // appendTo  empty  clone  remove
+//    $(".qq").html('<p>awsdas</p>')
+    //append  往父元素对象添加子元素
+    //$(".yy").append($("#new"))
+    // appendTo  把子元素对象往父元素中添加
+    //$(".yy").clone().appendTo($("#new"))
+    //$(".qq").empty()// 清空当前元素下的所有后代元素
+    //$("#new .yy").remove() // 删除当前的元素对象
+
+    // next  prev  siblings parent
+//    console.log($(".yy").next())
+    //console.log($("#new").siblings())
+
+    // attr 获取自定义的属性值
+//    console.log($("#hh").attr("src"))
+    //$(".qq").removeAttr("class")
+    //prop 获取内置属性的属性值
+//    console.log($(".qq").prop("data-id"))
+    // getAttribute// 原生
+//  console.log($("#hh").prop("src"))
+   //console.log($("input").prop("style"))
+
+</script>
+</body>
+</html>

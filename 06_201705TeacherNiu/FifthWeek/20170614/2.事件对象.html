@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+1.事件对象<br/>
+在绑定事件对象的时候,浏览器会默认给当前绑定方法传进一个参数(这个参数一般用e(event简写)来接收);这个参数是一个对象数据类型的值,里面包含了当前点击的一些信息;<br/>
+clickX: 当前鼠标点击的位置,距离浏览器窗口左边的距离;<br/>
+clickY: 当前鼠标点击的位置,距离浏览器窗口上边的距离;<br/>
+pageX: 当前鼠标点击的位置,距离页面顶部(body的顶端)的距离;<br/>
+pageY: 当前鼠标点击的位置,距离页面左边(body的左边)的距离;<br/>
+<br/>
+<br/>
+2.IE兼容问题<br/>
+1)
+e = e || window.event;
+在ie6-8下,没有e这个属性,只有event属性;<br/>
+在ie6-8下,事件对象没有在绑定的这个方法的参数中,而是放在全局下的window的一个属性上,属性名是event;<br/>
+<br/>
+2)
+在ie6-8下,没有pageX,pageY属性,需要自己计算;<br/>
+有clientX,clientY属性;这个属性是兼容的;<br/>
+e.pageX = e.pageX || (e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft));<br/>
+e.pageY = e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop));<br/>
+<br/>
+<br/>
+3)事件源<br/>
+事件绑定在哪个元素对象上,那么元素对象就是当前事件的事件源;<br/>
+e.target<br/>
+在ie6-8下,没有target,有srcElement;
+
+
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    oBox.onclick = function (e) {
+        console.log(e.clientX,e.clientY);
+        console.log(e.pageX,e.pageY);
+        e = e || window.event;//解决不标准浏览器的兼容性问题,在ie6-8中的写法是window.event;
+        //clientX: 鼠标点击的位置,距离浏览器窗口左边的距离;
+        //scrollLeft:
+        e.pageX = e.pageX || (e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft));
+        e.pageY = e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop));
+    }
+
+</script>
+</body>
+</html>

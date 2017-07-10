@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            position: absolute;
+            left:0;
+            width :100px;
+            height:100px;
+            user-select: none;
+        }
+        #box{
+            top : 10px;
+            background: #ffaa2a;
+        }
+        #box1{
+            top :150px;
+            background: #F9044E;
+        }
+        #box2{
+            top :260px;
+            background: #008CD7;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<div id="box2"></div>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+
+    function Drag(curEle) {
+        // 当前类中的this还是指向实例  把当前的元素对象放在当前实例的一个属性上
+        // 给对象新增属性名,没有就是新增，有就是修改
+        //        curEle["self"+evenType]
+        //        curEle : {
+        //            self"+evenType : []
+        //        }
+        //        curEle["self"+evenType]
+        //        obj.name   // 对象.属性名  = 属性值
+        this.ele = curEle;
+        this.DOWN = this.down.bind(this);
+        // down  move up 都保存在Drag 这个类的原型上，只能实例去获取到
+        on(this.ele,"mousedown",this.DOWN)
+        //
+    }
+    Drag.prototype.down = function (e) {
+        this.ele.x = e.clientX;
+        this.ele.y = e.clientY;
+        this.ele.mx = this.ele.offsetLeft;
+        this.ele.my = this.ele.offsetTop;
+        this.MOVE = this.move.bind(this)
+        this.UP = this.up.bind(this);
+        on(document,"mousemove",this.MOVE)
+        on(document,"mouseup",this.UP)
+    };
+    Drag.prototype.move = function (e) {
+        var changeL = e.clientX - this.ele.x;
+        var changeT = e.clientY - this.ele.y;
+        this.ele.style.left = this.ele.mx + changeL + "px";
+        this.ele.style.top = this.ele.my + changeT + "px";
+    };
+    Drag.prototype.up = function (e) {
+        off(document,"mousemove",this.MOVE);
+        off(document,"mouseup",this.UP)
+    }
+    new Drag(box)
+    new Drag(box1)
+    new Drag(box2)
+    
+
+
+
+</script>
+</body>
+</html>

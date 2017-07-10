@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 函数
+//    function fn(x,y){
+//        console.log(x,y)
+//    };
+//    fn(1,2);
+    // es6之前参数赋值 ： 1、实参赋值 2、函数体内部赋值
+    // es6 直接可以在形参里面赋值
+//    function fn(x=2,y=1){
+////        if(typeof x === "undefined"){
+////            x=12;
+////        }
+//        console.log(x,y)// undefined  2
+//    };
+//    // 如果实参传入undefined，函数的参数等于默认值
+//    // null 可以改变默认值
+//    fn(null,2);
+//  参数默认值可以与解构赋值联起来用
+//    function fn({x,y=5}){
+//        console.log(x,y)
+//    }
+////    var {x,y=5} = {};
+//    fn({x:1,y:19});
+    // ... 加变量名, 把传进来的参数放进一个数组中，用变量来接收
+//    function add(...value){
+//        console.log(value)
+//
+//    }
+//    add(2,5,3);
+
+    // 箭头函数
+//    function sum(){}
+    // 如果参数只有一个的话，可以直接省略
+//    var sum = function (value,value1) {
+//        console.log(value);
+    //    }
+    // =>就是在定义一个函数
+    //    let sum = (value) => {
+    //        if(1==1){}
+//        console.log(value)
+//    };
+//    sum(1,2)
+    // 如果不传参,或者多个参数，就使用一个圆括号包起来
+//    var sum = () =>console.log(1);
+    let fn = () =>{
+        console.log(arguments)
+        if(a === 1){
+            return "hello world"
+        }
+        return "huanying"
+    }
+//    obj.fn = function () {
+//        (()=>{
+//            console.log(1)
+//        })();
+//    }
+//    obj.fn();
+    // 箭头函数中，不可以使用arguments这个对象
+    // 不可以当做构造函数，不可以new 命令
+    // 函数体内的this对象，指向在定义所在对象，不是函数执行所在的对象
+//    setTimeout(()=>{
+//        console.log(1)
+//    },10);
+//    fn(1)
+//    var obj = {
+//        name : "123",
+//        fn : function () {
+//
+//        }
+//    }
+//    var obj = {
+//        name : "123",
+//        fn(){
+//            console.log(this)// this,obj
+//            console.log(1);
+//        }
+//    }
+//    obj.fn()
+//    var obj = {};
+//    obj.fn = function () {
+//
+//        (()=>{
+//            console.log(this) // obj
+//        })()
+//    }
+//    obj.fn();
+function sum() {
+    setTimeout(()=>{
+        console.log(this)
+    },1000)
+}
+    sum();
+
+</script>
+</body>
+</html>

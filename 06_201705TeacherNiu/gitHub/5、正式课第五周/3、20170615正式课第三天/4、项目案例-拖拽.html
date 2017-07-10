@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #box{
+
+            position: absolute;
+            /*left : 50%;*/
+            /*top : 50%;*/
+            /*margin: -150px 0 0 -150px;*/
+
+            width : 300px;
+            height:300px;
+            background: #ffaa2a;
+        }
+        #box h2{
+            font-size: 14px;
+            background: #008CD7;
+            padding:0 10px;
+            color: #ffffff;
+            height:30px;
+            line-height: 30px;
+            cursor: move;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <h2>珠峰培训-登录</h2>
+</div>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    var tip = oBox.getElementsByTagName("h2")[0];
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+    var BoxW = oBox.offsetWidth,BoxH = oBox.offsetHeight;
+    oBox.style.left = (winW-BoxW)/2+"px";
+    oBox.style.top = (winH-BoxH)/2+"px";
+    // 1、鼠标按下时，记录当前盒子以及鼠标的位置。onmousedown
+    // 2、当鼠标移动时，获取到鼠标最新的位置（坐标） onmousemove
+    // 3、计算出鼠标横向和纵向移动的距离
+    // 4、让盒子最开始记录位置加上鼠标移动的距离，是当前盒子最新的位置
+    // 鼠标抬起： onmouseup
+
+    function down(e) {
+        e = e || window.event;
+//        console.log(this)
+        // 把四个位置的值放进当前的tip这个元素对象中
+        this["strX"] = e.clientX;
+        this["strY"] = e.clientY;
+        this["strL"] = parseFloat(oBox.style.left);
+        this["strT"] = parseFloat(oBox.style.top);
+        this.onmousemove = move;
+        this.onmouseup = up;
+    }
+    function move(e) {
+        e = e|| window.event;
+        var changeL = e.clientX - this["strX"];// 横向鼠标移动的距离
+        var changeT = e.clientY - this["strY"]; // 纵向鼠标移动的距离
+        var left = this["strL"] + changeL;
+        var top = this["strT"] + changeT;
+        var minL = 0,maxL = winW-BoxW;
+        var minT = 0,maxT = winH - BoxH;
+        if(left < minL){
+            left = minL
+        }else if(left > maxL){
+            left = maxL;
+        }
+        if(top < minT){
+            top = minT;
+        }else if(top > maxT){
+            top = maxT
+        }
+        oBox.style.left = left+"px";
+        oBox.style.top = top + "px";
+    }
+    function up(e) {
+        this.onmousemove = null;
+        this.onmouseup = null;
+    }
+
+    tip.onmousedown = down;
+
+
+
+
+
+
+</script>
+</body>
+</html>

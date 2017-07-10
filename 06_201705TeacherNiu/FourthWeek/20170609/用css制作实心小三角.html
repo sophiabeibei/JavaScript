@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .arrow{
+            width: 0;
+            height: 0;
+            border-width: 100px;/*边框的宽度决定三角的大小*/
+            border-style: solid;
+            border-color: red darkblue hotpink green;
+            margin-bottom: 10px;
+        }
+        .arrow1{
+            float: left;
+            width: 0;
+            height: 0;
+            border-width: 100px;/*边框的宽度决定三角的大小*/
+            border-style: solid;
+            /*border-color: red darkblue hotpink green;*/
+            /*向下的箭头*/
+            border-color: red transparent transparent transparent;
+        }
+        .arrow2{
+            float: left;
+            width: 0;
+            height: 0;
+            border-width: 100px;/*边框的宽度决定三角的大小*/
+            border-style: solid;
+            /*border-color: red darkblue hotpink green;*/
+            /*向右的箭头*/
+            border-color: transparent darkblue transparent transparent;
+        }
+        .arrow3{
+            float: left;
+            width: 0;
+            height: 0;
+            border-width: 100px;/*边框的宽度决定三角的大小*/
+            border-style: solid;
+            /*border-color: red darkblue hotpink green;*/
+            /*向上的箭头*/
+            border-color: transparent transparent hotpink transparent;
+        }
+        .arrow4{
+            float: left;
+            width: 0;
+            height: 0;
+            border-width: 100px;/*边框的宽度决定三角的大小*/
+            border-style: solid;
+            /*border-color: red darkblue hotpink green;*/
+            /*向左的箭头*/
+            border-color: transparent transparent transparent green;
+        }
+    </style>
+</head>
+<body>
+<!--制作实心三角   需求:用border-color实现
+border
+border-width: 边框的宽度,决定三角的大小
+border-style: 边框的类型(实线,虚线,点线...)
+border-color: 边框的颜色,决定三角的方位(排序->上,右,下,左)
+
+-->
+<div class="arrow"></div>
+<div class="arrow1"></div>
+<div class="arrow2"></div>
+<div class="arrow3"></div>
+<div class="arrow4"></div>
+</body>
+</html>

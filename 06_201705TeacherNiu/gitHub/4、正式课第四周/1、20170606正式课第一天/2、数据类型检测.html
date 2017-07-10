@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //数据类型检测起到一个识别的作用
+    // 基本数据类型 （number  string boolean null undefined)操作值
+    
+    // 引用数据类型（函数数据类型，对象数据类型）操作地址
+    // 对象数据类型： 对象、数组、正则、时间（Date）、Math...
+
+    // typeof  检测返回值是一个字符串，可以用来检测基本数据类型，函数数据类型，但是不能区分对象中具体的某个类
+  // 返回值 ： "number"、"string"、"boolean"、"undefined"、"function"、"object"
+
+//    function ww() {//
+//    }
+//    var obj  = {yy :function () {
+//    }};
+//    var ary = [1,3,4];
+//    var reg = /\d/;
+    //var num =12; // "number"
+    //var str = "yyu" // "string"
+    //var bol = true; // "boolean"
+    //typeof null  /// "object"
+    //typeof undefined // "undefined"
+    //typeof ww   //  "function"
+    //typeof obj // "object"
+    //typeof ary // "object"
+    // typeof reg // "object"
+//    console.log(typeof null)
+
+    // instanceof  : 判断某一个实例是否属于某个类
+    // 字面量方式创建的实例  Array
+//    // 类 ：内置的类： Number String Boolean Null Undefined  Function Object  Array RegExp  Date
+//    // 自定义类 ： 自己定义一个类
+//    function Fn() {
+//
+//    };
+//    var f = new Fn;//
+//    Fn(); // 普通函数 、类、普通对象
+//    Array.prototype.__proto__ = new RegExp();
+//    var ary =[];
+//    console.log(ary instanceof RegExp)// true
+    // 1、instanceof检测时候，只要在当前实例的原型链上，都返回true
+    // 2、原型继承修改原型链或者新增原型链，也有可能返回true
+    // 3、基本数据类型通过字面量方式创建的实例，去判断返回false，但是实例创建返回true
+//    var ary =new  Array;
+//    var num =1;
+//    var num1 = new Number(1);
+//    console.log(num1 instanceof Number)
+    // 内置类的原型不能修改，自定义可以修改原型
+//    function Fn() {// 自定义类
+//
+//    }
+//    Fn.prototype = new Array;
+//    var f = new Fn;
+//    console.log(f instanceof Array)// true
+
+
+
+    // 3、constructor 属性指向当前实例所属类
+
+//    var ary  = [];
+//    console.log(ary.constructor === Array)
+//    function Fn() {
+//    }
+//    Fn.prototype = {
+////        constructor : Fn
+//    };
+//    var f = new Fn;
+//console.log(f.constructor === Fn)// false
+
+    // 4、Object.prototype.toString.call()  检测数据类型
+     // toString : 把其他数据类型转字符串
+    // Object 的原型上的toString方法，通过call改变toString中的this关键字，返回当前参数所属类的信息
+    // "[object Number]"、 "[object String]"、"[object Boolean]"、"[object Null]"、"[object Undefined]"、"[object Object]"、"[object Function]"、"[object Array]"、"[object RegExp]"、"[object Date]"
+   // "[object Arguments]"  Arguments不是一个类，特定类型
+    function fn() {
+       console.log(typeof arguments)// "object"
+    };
+    fn();
+//    console.log(fn.toString())
+    var ary =[1,3];
+    var reg = /^\d$/;
+    console.log(Object.prototype.toString.call(ary));
+    console.log(Object.prototype.toString.call(fn));
+    console.log(Object.prototype.toString.call(reg));
+    console.log(Object.prototype.toString.call(null));
+    console.log(Object.prototype.toString.call(1));
+    console.log(Object.prototype.toString.call("33"));
+
+
+    function bar(curEle,cName) {
+        if(typeof cName === "undefined"){
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</script>
+</body>
+</html>

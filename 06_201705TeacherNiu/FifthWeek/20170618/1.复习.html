@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oBox = document.getElementById("box");
+    oBox.onclick = function (e) {
+        //e: 存储了事件的信息;
+        //MouseEvent: 是一个对象数据类型;
+        e = e || window.event;//对事件对象的兼容处理;
+        //e的属性: clientX,clientY,pageX,pageY,target,
+        //1)clientX: 鼠标距离可视窗口左边的距离;
+        //2)clientY: 鼠标距离可是窗口顶端的距离;
+        //3)pageX: 鼠标距离整个页面左边的距离;
+        //4)pageY: 鼠标距离整个页面顶端的距离;
+        //6)处理pageX的兼容: e.pageX = e.pageX || (e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft));
+        //7)处理pageY的兼容: e.pageY = e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop));
+        //5)target: 事件源;
+        //8)处理target的兼容: e.target = e.target || e.srcElement;
+    }
+
+    //当oBox的点击事件被触发的时候,给点击事件绑定的这个方法也会执行;
+    //事件的传播机制: 事件冒泡传播
+    //事件委托: 利用了事件冒泡的传播机制,给元素的最外层的事件绑定一个方法,结合事件源,进行不同的操作或处理;
+    //9)阻止事件的冒泡传播: e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+
+    //拖拽案例的思路:
+    //鼠标移动的位置,就是当前盒子相对于之前移动的位置;
+    //解决鼠标丢失的方法setCapture
+
+
+
+
+
+</script>
+</body>
+</html>

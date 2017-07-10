@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//DOM里面的方法
+//封装  getCss  setCss   setGroupCss
+    //css 通过判断参数,判断参数的类型
+//数据类型检测应用  4个;(typeof   instanceof   constructor  Object.prototype.toString.call)
+//typeof
+    //typeof val2 ===  "undefined"       必须要双引号
+    //typeof val2 == undefined     可以不加双引号
+    //typeof 返回值是以字符串形式返回,可以检测基本数据类型,但是对对象数据类型中的具体数组,正则,时间检测不出来
+    //判断方法兼容不兼容   用in方法      (window.getComputedStyle) ->
+    // for(getComputedStyle in window){    为true说明存在;为false说明不存在}
+//instanceof 检测某个实例是否属于某个类型;  前面是实例,后面第类型
+    //实例 instanceof 类    如果是true,说明是对应的类型,如果是false,说明不是所对应的类型
+    //原型继承可能会导致检测结果不准确;
+//constructor  prototype属性天生自带一个constructor属性,这个属性指向当前原型对应的类型;
+    //弊端: 原型继承可能导致结果不准确;
+//Object.prototype.toString.call()  常用检测数据类型的方法;
+    //toSring是内置的方法
+    //调用Object 原型上的方法,通过call改变当前方法的this关键字,返回值是字符串,里面包括数组,数组里包括[object 所属类]
+
+//可枚举.....不可枚举属性
+    //内置类的原型上的内置的方法,是不可枚举的
+    //没之类圆形上新增的方法,也是可枚举的,私有的属性也是可枚举的谁属性
+
+    //遍历对象   for...in   会把可枚举的全部遍历到;
+    //需求: 只遍历私有属性  用hasOwnProperty方法.这是定义在Object的原型上的方法;
+
+    //动画: 利用定时器   setInterval   思想: 不断改变距离屏幕左边的距离,不断设置left值;
+    //oBox.timer = setInterval(function (){},10)
+
+
+    //递归:
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

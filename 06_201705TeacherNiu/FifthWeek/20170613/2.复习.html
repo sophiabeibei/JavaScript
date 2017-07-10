@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    // 往全局里放东西通过window.$
+    // jQuery是类
+
+
+    //$ === jQuery ==>true
+    //选择器
+    //通过"选择器获取"的是jQuery对象;
+    //通过var 是原生获取的;   var oDiv = document.getElementById("div");
+    //原生转jQuery
+    //原生: oDiv.index();//index是jQuery类原型上的方法
+    //原生转jQuery:   =>$(oDiv).index()
+
+    //jQuery转原生
+    //通过jQuery获取数组    console.log($("#div")[0]);
+    //[div#div,context: document, selector: "#div"]   =>>这是jQuery数组
+    //索引0:div#div
+    //context: 上下文
+    //selector: 选择器
+
+    //jQuery方法   var $cur = $("#div");   $cur.index();//备注$cur中的"$"没有意义,只是表示通过jQuery获取的一个标识;
+    //给jQuery扩展方法 extend
+    //给jQuery扩展方法的时候,通常用的addClass: 新增类名;removeClass:移除类名;
+    //循环,jQuery中的循环方法是each/  map;
+//    for (var i = 0; i < array.length; i++) {
+//        //i是当前项的索引
+//        //oLis[i]//是当前项
+//
+//    }
+//
+//    $oLis.each(function (index,item) {
+//        //index  代表当前项的索引
+//
+//    })
+
+//    var ary = [12,32,46,5,4];
+//    $.each(data,function (index,item) {//jQuery的循环$.each()
+//
+//    })
+
+    //eq(index)     gt()大于    lt()小于
+//    $("li:eq(1)");
+//    $("li").eq(1);
+
+    //children   在儿子级筛选
+    //find  在后代中筛选
+    //filter
+    //hide   show  toggle()  //隐藏显示   隐藏显示切换
+    //fadeIn(淡入传时间)    fadeOut(淡出)    fadeToggle(切换)
+    //slideUp(收起)   slideDown(下拉)      slideToggle(切换)
+    //animate()
+    //stop()   结束     //作用: 在slideUp(收起)   slideDown(下拉)  fadeOut之前,先stop->结束没有执行完的动画
+    //css()   获取  设置
+
+
+    //ajax
+    //$.ajax({})
+
+
+</script>
+</body>
+</html>

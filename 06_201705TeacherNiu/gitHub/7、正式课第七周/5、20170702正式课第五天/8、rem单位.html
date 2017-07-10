@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        html{
+            font-size: 100px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+             float:left;
+             width : 1.6rem;
+             height:1rem;
+            background: red;
+        }
+
+    /*rem默认16px*/
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+
+</ul>
+<script type="text/javascript">
+    <!--rem-->
+//    rem  : 当前页面中的rem单位的值针对对HTML元素的font-size的值进行动态计算的；默认是16px;
+    // 1rem : HTML元素的font-size的值
+    // rem 是相对于根元素的单位
+    // 设计稿  宽度640px    盒子 100px;   font-size : 100                0.1rem
+    // iphone5   320       显示 ： 50px    font-size:50                  0.1rem
+    // iphone6   375      显示 ：100/(640/375)  font-size:  100/(640/375) 0.1rem
+    // rem的计算                                             100*375/640
+    var desW = 640;// 假设640  根元素的font-size=100;  iphone5  font-size =50
+    var winW = document.documentElement.clientWidth;
+    console.log(winW)
+    var radio= desW/winW;  //2
+    document.documentElement.style.fontSize = 100/radio+ "px";
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

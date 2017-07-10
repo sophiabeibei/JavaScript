@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function createPerson(name,hobby) {
+        var obj={};
+        obj.name = name;
+        obj.hobby = hobby;
+        obj.study = function () {
+            console.log(obj.name + "学习js")
+        }
+        return obj;
+    }
+    var p1 = createPerson("王林","打游戏");
+    var p2 = createPerson("陆晨阳","学习");
+
+//    console.log(p1.study === p2.study);
+//    console.log(createPerson("王林","打游戏").study());
+//    console.log(createPerson("陆晨阳","学习").study());
+    // 构造函数模式
+    var ary = [];
+    var ary1 = new  Array;
+    function CreatePerson(name,hobby) {// 定义一个方法
+//        var  obj ={} new 执行，浏览器默认创建一个对象
+        console.log(this)
+        this.name = name;// 通过实参给了形参，形参的值又给了默认创建的对象
+        this.hobby = hobby;
+        this.study = function () {
+            console.log(obj.name + "学习js");
+        }
+        console.log(this)
+    }
+    var ary =[];
+    console.log(Array instanceof Object)  //函数类
+    console.log(Object.prototype.toString.call(CreatePerson))
+    console.log(Function instanceof Object)
+    console.log(CreatePerson instanceof Function)//
+    //
+//    console.log(CreatePerson("陆晨阳","学习"))//undefined
+    var p3  = new CreatePerson("陆晨阳","学习")//返回是一个实例
+//    console.log(CreatePerson("陆晨阳","学习"))
+    console.log(p3)
+    // 方法名前面有new ,那么当前的方法就是一个类
+    //构造函数模式 ：
+    // 构造函数模式和普通函数区别
+    // 相同 ：  首先形成一个私有作用域，形参赋值-》预解释--》代码从上到下执行
+    // 不同点 ： 返回值： 普通函数中没有return ，返回值undefined ，构造函数模式会返回一个实例
+    // 函数执行的s时候：普通函数执行代码从上到下执行
+    // 构造函数执行之前，首先浏览器会默认创建一个对象，用于接受函数中的新增的属性，最后把创建的这个对象默认的返回，返回当前类的一个实例
+    // 类中的this ，指向当前创建的这个实例，并且这个实例也是对象
+
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        #box1{
+            position: absolute;
+            left: 0;
+            top: 200px;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        #box2{
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<div id="box2"></div>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+    //down  move  up
+    //记录盒子位置  并解决鼠标的问题
+    //move盒子初始位置加上鼠标移动的距离  算出当前盒子位置;
+    //移除当前盒子绑定的onmousemove  onmouseup;
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+    var oBox2 = document.getElementById("box2");
+    function down(e) {
+        //this -->oBox;
+        e = e || window.event;
+        //记录盒子的位置
+        this.x = oBox.offsetLeft;
+        this.y = oBox.offsetTop;
+        //记录鼠标的位置;
+        this.mx = e.pageX;
+        this.my = e.pageY;
+        //setCapture解决鼠标丢失问题;在IE,火狐中有这个属性;
+        if(this.setCapture){
+            this.setCapture();
+            oBox.onmousemove = move;
+            oBox.onmouseup = up;
+        }else{//google解决鼠标丢失问题的方法-->利用事件委托原理;
+            //
+            var _this = this;
+            document.onmousemove = function (e) {
+                move.call(_this,e);
+            };
+            document.onmouseup = function (e) {
+                up.call(_this,e);
+            }
+        }
+    }
+    function move(e) {
+        e = e || window.event;
+        var changeX = e.pageX - this.mx;
+        var changeY = e.pageY - this.my;
+        //
+        oBox.style.left = this.x + changeX + "px";
+        oBox.style.top = this.y + changeY + "px";
+    }
+    function up() {
+        //releaseCapture解决鼠标丢失问题;在IE,火狐中有这个属性;
+        if(this.releaseCapture){
+            this.releaseCapture();
+            oBox.onmousemove = move;
+            oBox.onmouseup = up;
+        }else{
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        oBox.onmousemove = null;
+    }
+    oBox.onmousedown = down;
+
+
+
+
+
+
+</script>
+</body>
+</html>
