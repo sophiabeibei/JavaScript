@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--在head标签中输入meta:vp  按tab键补全-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>rem单位</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*html: 是顶级元素,是根元素;*/
+        /*rem是相对于根元素font-size的属性值*/
+        html{
+            font-size: 100px;
+        }
+        /*#box{
+            width: 1rem;
+            height: 1rem;
+            background: orange;
+            !*font-size: 14px;*!
+        }*/
+        /*1rem: 是单位,默认是16px*/
+        /*rem: 当前页面中rem单位的值针对HTML元素的font-size的值进行动态计算;*/
+        ul{
+            list-style: none;
+        }
+        ul li{
+            float: left;
+            width: 1.035rem;
+            height: 1rem;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="box"><!--在head标签中输入meta:vp  按tab键补全--></div>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script type="text/javascript">
+
+
+
+    /**
+     * 1.在head标签中输入meta:vp  按tab键补全
+     * 2.html: 是顶级元素,是根元素;
+     * 3.rem是单位,是相对于根元素font-size的属性值
+     *   1rem默认是16px
+     *   rem: 当前页面中rem单位的值针对HTML元素的font-size的值进行动态计算;
+     * 4.
+     *
+     */
+
+    /**
+     * 设计稿: 宽度640px   盒子100px   font-size:100px     0.1rem
+     * iphone5  宽度320px   显示50px    font-size: 50      0.1rem
+     * iphone6   宽度375px   显示100/(640/375)   font-size:100(640/375)  0.1rem
+     * rem的计算
+     *
+     */
+
+    var desW = 414;//假设640   根元素的font-size=100;  iphone5  font-size=50
+    var winW = document.documentElement.clientWidth;
+    console.log(winW);
+    var radio = desW/winW;//2
+
+
+    document.documentElement.style.fontSize = 100/radio + "px";
+
+
+</script>
+</body>
+</html>

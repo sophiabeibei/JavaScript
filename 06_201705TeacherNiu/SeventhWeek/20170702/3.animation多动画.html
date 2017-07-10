@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animation多动画</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 500px;
+            height: 500px;
+            border: 1px solid orange;
+            margin: auto;
+        }
+        #box{
+            width: 100px;
+            height:  100px;
+            background-color: green;
+            animation: myslide 10s linear infinite;
+        }
+        /*定义的动画*/
+        @keyframes myslide{
+            0%{
+                background-color: red;
+                transform: translate(0,0) rotate(0deg);
+            }
+            25%{
+                background-color: blue;
+                transform: translate(400px,0) rotate(360deg);
+            }
+            50%{
+                background-color: yellow;
+                transform: translate(400px,400px) rotate(0deg);
+            }
+            75%{
+                background-color: black;
+                transform: translate(0,400px) rotate(360deg);
+            }
+            100%{
+                background-color: black;
+                transform: translate(0,0) rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="box"></div>
+</div>
+<button id="oBtn">暂停/运行</button>
+<script type="text/javascript"></script>
+</body>
+</html>
