@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+<!--<input type="text" placeholder="请在此处输入昵称/邮箱/手机号" autofocus/>-->
+<!--<input type="text" placeholder="请在此处输入密码" pattern="[a-z]{4}"/>-->
+<!--必须输入4个字母,一定要是字母;页面中的输入框才不会有错误的提示-->
+
+
+
+<!--范例-->
+<!--form表单写的,就不用Ajax发请求了,本身form就是个请求-->
+<form action="">
+    <label for="">用户名</label><input type="text" name="username" id="user" autofocus required>
+    <!--required 必填项-->
+    <!--name是前台后台交互的关键-->
+    <label for="">密码</label><input type="text" name="password" id="word" pattern="[A-z]{4}">
+    <!--[A-z]{4} 正则的规则,输入大写A-小写z,必须是4个字母;-->
+    <label for="">邮箱</label><input type="email" id="email">
+    <input type="submit" value="注册">
+</form>
+
+
+<script type="text/javascript">
+    //input 的属性:
+    //1)type: 各种类型,比如text,button....;
+    //2)placeholder: 只有input才有placeholder属性: 当加载时,默认显示文本的内容;当鼠标焦点在输入框内时,输入的内容不会消失,只有在输入框内输入别的内容时,这些预示的内容才会消失;
+    //3)autofocus: 页面加载的时候,input框自动获取鼠标焦点;
+
+    //4)required: 必填项;
+    //5)pattern: 验证输入的格式;()
+    //6)oninput: 事件在用户输入时触发,当元素的值发生改变的时候触发;14
+
+
+
+
+</script>
+</body>
+</html>

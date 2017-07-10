@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let和const</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //在es5里,声明变量var
+//    console.log(str);//undefined
+    //声明变量str;
+//    var str = "zhufeng";
+//    var str = "peixun";
+    //在es5里,可以对一个变量重复声明
+//    console.log(str);
+    //这叫赋值,不叫声明; str = "zhufeng"
+
+
+
+
+    //在es6里,新声明变量的一种方式: let
+//    console.log(str1);//报错
+    //报错原因: es6中let声明变量,不存在变量提升;
+//    let str1 = "zhufengpeixun";
+//    let str1 = "peixun";
+    //在es6里,不能重复声明一个变量;会报错: has already been declared!已经声明过;
+//    console.log(str1);
+
+    //这样声明也会报错.也算是重复声明;
+//    var num = 1;
+//    let num = 2;
+
+
+
+    //总结es5和es6的区别:
+    //1.是否可以变量提升?
+    //2.是否可以重复声明?
+
+
+    //es6的另一种声明方式: const
+//    console.log(num);//报错: num is not defined
+//    const num = 1
+
+//    const num = 1;
+//    const num = 10;
+//    console.log(num);//报错: Identifier 'num' has already been declared!
+    // 不能重复声明,声明的变量是常量;
+    //以上,num拿来用的时候,值是1;
+
+
+    //const和let不同的地方:
+    //const声明的是常量;let声明的是变量;
+
+
+    //块级作用域: 被大括号包起来的代码块;
+//    {
+//        var num1 = "hello";
+//        let num2 = "world";
+//        console.log(num1, num2);//hello world
+//    }
+//    console.log(num1);//hello
+//    console.log(num2);//报错:num2 is not defined
+    //报错原因: let声明的变量,只在当前作用域中有效;无法在外面输出打印;
+//    let num2 = 123;
+//    console.log(num2);//123;这样可以继续重复声明;
+
+
+    //以上可以理解为以下:
+//    if(true){
+//        var num1 = "hello";
+//        let num2 = "world";
+//        console.log(num1, num2);//hello world
+//    }
+
+//    let num2 = 456;
+//    {
+//        console.log(num2);//这样也可以声明变量;
+//        //在块级作用域下找不到,就往上级去找;
+//    }
+
+
+//    let num2 = 456;
+//    {
+//        console.log(num2);//报错: num2 is not defined
+//        let num2 = 789;
+//        //报错原因: 当前块级作用域已经被let声明过,不能重复声明
+//    }
+
+
+
+    //块级作用域可以多层嵌套;
+//    let num3 = 123;
+//    {{
+//        console.log(num3);//123
+//    }}
+
+
+    //for循环,用var声明的变量是全局变量
+//    for (var i = 0; i < 18; i++) {
+//
+//    }
+//    console.log(i);//18  i在for循环中定义的,但这里的i是全局变量;
+
+
+    //for循环中,用let声明的变量,不会泄露全局的变量;
+//    for (let t = 0; t < 7; t++) {
+//        console.log(t);//1-6
+//        //能正常打印的原因: 用let声明的变量,在for循环语句中,先形成父作用域,循环体是子作用域;
+//    }
+//    console.log(t);//报错: t is not defined
+    //报错原因: 不能在for循环外打印t,可以在for循环里正常打印;
+
+
+//    var ary = [];
+//    for (var i = 0; i < 18; i++) {
+//        //循环体  function不形成作用域;
+//        ary[i] = function () {
+//            console.log(i);//18 用var声明打印的是18;因为它会找最后一次的i;
+//            //function等for循环完成后,再执行;
+//        }
+//    }
+//    ary[3]();
+
+
+
+//    var ary = [];
+//    for (let i = 0; i < 18; i++) {
+//        //循环体
+//        ary[i] = function () {
+//            console.log(i);//3 用let声明打印的是3;
+//            //function形成作用域;每循环执行一次,就形成一个作用域(function的父级作用域)
+//            //用let循环,每循环一次,会对i重新声明一次;
+//            //ary[3]执行的时候,在for循环的环境下执行,没for循环一次,会对i重新声明赋值;ary[3]是for循环的子作用域,同时也是function的父作用域;
+//            //在es6中,遇见大括号{},就是一个作用域;
+//        }
+//    }
+//    ary[3]();
+
+
+
+
+
+
+
+
+//    var num;//只是声明,没有赋值;
+//    let str;//同样,只声明没赋值;
+//    const str1;//报错: 在声明的时候,必须声明+定义;(与上面两个的区别)
+
+
+
+    //let也要预解释
+    //let只声明了,但就不进行变量的提升;还有就是在同作用域下不能重复声明;还有就是在块级作用域下每循环一次行成一个子作用域,子作用域存储的值是for循环的子作用域中的值;
+
+
+
+    //理解"块级作用域":
+    (function () {//<--自执行函数的私有作用域
+        //如果浏览器兼容es6(最新版本浏览器),在条件语句中,如果条件语句不成立,function只声明,不定义;
+        if(false){//<--块级作用域;条件语句中是false;只声明,不定义;
+            function fn() {
+                console.log("peixun");
+            }
+
+        }
+        //console.log(fn);
+        fn();//报错: fn is not a function
+        //报错原因: 1)只声明,没定义;没有定义不能执行;
+        //报错原因: 2)条件语句中是false;改成true就不会报错;
+        //如果在条件语句中不成立,function只声明不定义;
+    })();
+    //在严格模式下"use strict";只能在顶层作用域和函数内声明,其他情况下(if代码块,for循环代码块)都会报错;
+
+
+
+    /**知识点:
+     * 解决let报错的问题,file->settings-->Languages & Frameworks -->JavaScript-->ECMAScript 5.1修改成>ECMAScript6
+     * 在es6里可以用es5;
+     * es6 兼容哥哥浏览器最新的版本(不是所有版本都兼容);
+     * 如何将es6转换成es5?????
+     * 学习es6的链接地址: http://www.nodeclass.com/api/ECMAScript6.html#let
+     * const和let不同的地方:let声明的是变量;const声明的是常量;
+     * 在es6里的新概念: 块级作用域(以前学过全局作用域和私有作用域)
+     * 什么是块级作用域????
+     * 在for循环中,用let声明的变量,不会泄露全局的变量;
+     * 在es6中,遇见大括号{},就是一个作用域;
+     * 用let声明的变量,在for循环语句中,先形成父作用域,循环体是子作用域;
+     * 与es5中var的区别: 用let声明的变量,每循环一次,就会形成一个块级作用域;
+     * const与var/let的区别: 在声明的时候必须声明+定义;
+     * 安全情况下,最好用let;
+     * var 子作用域可以获取到;
+     * let 不会造成变量的冲突和干扰;
+     * const,用的是常量,不变的量,不能改;
+     *
+     * es6浏览器也认,但低版本不认识;(下午讲将es6转es5的方法)
+     *
+     * 在严格模式下"use strict";只能在顶层作用域和函数内声明,其他情况下(if代码块,for循环代码块)都会报错;
+     *
+     *
+     * if条件的块级作用域,for循环的块级作用域......
+     *
+     *
+     *
+     */
+
+
+</script>
+</body>
+</html>

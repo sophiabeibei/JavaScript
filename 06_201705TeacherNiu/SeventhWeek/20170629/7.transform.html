@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transform</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: url(0.jpg);
+            background-size: cover;/**/
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 100px 300px;
+            /*快捷方式     输入"-transition"之后,回车,即可把以下几个内核输出*/
+            -webkit-transition: all 1s linear 1s;
+            -moz-transition: all 1s linear 1s;
+            -ms-transition: all 1s linear 1s;
+            -o-transition: all 1s linear 1s;
+            transition: all 1s linear 1s;
+        }
+        #box.active{
+            /*1)translate: 平移(x轴,y轴);*/
+            /*-webkit-transform: translate(100px, 300px);*/
+            /*-moz-transform: translate(100px, 300px);*/
+            /*-ms-transform: translate(100px, 300px);*/
+            /*-o-transform: translate(100px, 300px);*/
+            /*transform: translate(100px, 300px);*/
+
+            /*2)rotate: 角度*/
+            /*-webkit-transform: rotate(360deg);*/
+            /*-moz-transform: rotate(360deg);*/
+            /*-ms-transform: rotate(360deg);*/
+            /*-o-transform: rotate(360deg);*/
+            /*transform: rotate(360deg);*/
+
+            /*3)skew: 倾斜/翻转的度数(也有微微转动的效果)*/
+            /*-webkit-transform: skew(30deg);*/
+            /*-moz-transform: skew(30deg);*/
+            /*-ms-transform: skew(30deg);*/
+            /*-o-transform: skew(30deg);*/
+            /*transform: skew(30deg);*/
+
+            /*4)scale: 缩放(整个直径缩小)*/
+            /*-webkit-transform: scale(2);*/
+            /*-moz-transform: scale(2);*/
+            /*-ms-transform: scale(2);*/
+            /*-o-transform: scale(2);*/
+            /*transform: scale(2);*/
+
+
+            /*整合以上四个属性*/
+            -webkit-transform: translate(300px, 300px) rotate(360deg) skew(0deg) scale(2);
+            -moz-transform: translate(300px, 300px) rotate(360deg) skew(0deg) scale(2);
+            -ms-transform: translate(300px, 300px) rotate(360deg) skew(0deg) scale(2);
+            -o-transform: translate(300px, 300px) rotate(360deg) skew(0deg) scale(2);
+            transform: translate(300px, 300px) rotate(360deg) skew(0deg) scale(2);
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById("box");
+    oDiv.onclick = function () {
+        this.className = "active";
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

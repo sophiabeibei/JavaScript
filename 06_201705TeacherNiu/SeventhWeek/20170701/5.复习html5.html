@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习HTML5</title>
+</head>
+<body>
+<!--<input type="hidden" name="username">-->
+<!--<input type="password" name="password">-->
+<!--<input type="submit">-->
+<input type="text" id="test1">
+
+
+<script type="text/javascript">
+    //H5新增了一些标签,比如:音乐,音视频...等等;
+    //1)header,mean...让页面的结构明了化;
+
+    var test = document.getElementById("test1");
+
+    //2)API: 本地存储
+    //localStorage: 本地存储
+
+    //2.1)setItem: 设置localStorage中的属性;
+    //2.2)getItem: 获取localStorage中的属性;
+    //2.3)removeItem: 移除localStorage中的属性
+
+
+    //2.1)setItem: 往localStorage里面存储数值和属性值;
+    localStorage.setItem("username","zhufeng");//俩参数,第一个属性,第二个属性值;
+    //不同浏览器之间,localStorage起到沟通桥梁的作用;
+    localStorage.setItem("password",123);
+
+    //2.2)getItem
+    //在别的文件中拿取username的属性值的方法:
+    var username = localStorage.getItem("username");
+    console.log(username);
+
+    //2.3)removeItem  移除
+    localStorage.removeItem("password");
+
+
+    //cookie: 把信息存储到客户端的浏览器中(服务器也是可以获取cookie)
+    //session: 把信息存储到服务器(服务器存储)
+    //localStorage: 永久的存储到浏览器客户端的本地
+    //sessionStorage: 信息的会话存储;会话窗口的信息存在,sessionStorage就有相应的信息,只要会话窗口关闭,信息也就没了;
+
+
+
+
+
+    //3)h5中input框   新增的属性
+    //新增了几个类型.....
+    //text   password   button   submit   mail  tel   radio   checkbox   file   url   number   color   date    range    search   hidden(隐藏域)
+    //隐藏域: 页面中会默认把这个input框隐藏掉;不需要在页面在中展示,但有时候也需要这个功能;
+
+    //4)onchange: 当文本框中内容发生改变触发的事件;
+//    test.onchange = function () {
+//        console.log(1);
+//    };
+
+
+    //5)onfocus: 文本框获取鼠标焦点执行该方法
+//    test.onfocus = function () {
+//        console.log(1);
+//    };
+
+
+    //6)onblur: 文本框失去焦点的事件;
+//    test.onblur = function () {
+//        console.log(1);
+//    };
+
+
+
+    //7)oninput: 文本框内容发生改变,就会执行该方法;
+//    test.oninput = function () {
+//        console.log(1);
+//    };
+
+
+
+
+
+
+
+    //8)css3,之前讲过一些属性,动画;
+    //1)transition属性   transform属性   animation属性
+    //1)transition属性: 有四个参数;
+    //参数一: 属性(all)
+    //参数二: 过渡时间
+    //参数三: 动画的效果(是否匀速linear)
+    //参数四: 延迟时间(delay)
+
+
+    //2)transform
+    //参数一: translate(平移)
+    //参数二: rotate(旋转)<--3D的移动   x,y,z
+    //参数三: skew(倾斜)
+    //参数四: scale(缩放)
+
+    //3)animation
+    //参数一: @keyframe(自定义的动画)<--有from.....to;还可以0%....100%;
+
+    //明天lets  媒体查询  rem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

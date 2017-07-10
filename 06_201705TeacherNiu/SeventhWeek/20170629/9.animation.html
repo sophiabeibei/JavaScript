@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            /*position: absolute;*/
+            /*left: 50px;*/     /*方法1: 从50px开始,结束又回到50px的位置*/
+            width: 100px;
+            height:  100px;
+            background: orange;
+            -webkit-animation: myRotate 5s linear;
+            -o-animation: myRotate 5s linear;
+            animation: myRotate 5s linear;
+        }
+        
+        /*px的形式*/
+        /*@keyframes myRotate{*/
+            /*from{*/
+                /*-webkit-transform: translate(100px, 0);     !*方法2: 更改x轴,从100px开始,结束时回到0px*!*/
+                /*-moz-transform: translate(100px, 0);*/
+                /*-ms-transform: translate(100px, 0);*/
+                /*-o-transform: translate(100px, 0);*/
+                /*transform: translate(100px, 0);*/
+                /*opacity: 0;*/
+            /*}*/
+            /*to{*/
+                /*-webkit-transform: translate(300px, 300px);*/
+                /*-moz-transform: translate(300px, 300px);*/
+                /*-ms-transform: translate(300px, 300px);*/
+                /*-o-transform: translate(300px, 300px);*/
+                /*transform: translate(300px, 300px);*/
+                /*opacity: 1;*/
+            /*}*/
+        /*}*/
+        
+        
+        
+        /*%百分比的形式*/
+        -webkit-@keyframes myRotate{
+            0%{
+                -webkit-transform: translate(0, 0);
+                -moz-transform: translate(0, 0);
+                -ms-transform: translate(0, 0);
+                -o-transform: translate(0, 0);
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            15%{
+                -webkit-transform: scale(2, 0.5);
+                -moz-transform: scale(2, 0.5);
+                -ms-transform: scale(2, 0.5);
+                -o-transform: scale(2, 0.5);
+                transform: scale(2, 0.5);
+            }
+            50%{
+                -webkit-transform: translate(300px, 300px);
+                -moz-transform: translate(300px, 300px);
+                -ms-transform: translate(300px, 300px);
+                -o-transform: translate(300px, 300px);
+                transform: translate(300px, 300px);
+                opacity: 0.5;
+            }
+            75%{
+                -webkit-transform: scale(0.3);
+                -moz-transform: scale(0.3);
+                -ms-transform: scale(0.3);
+                -o-transform: scale(0.3);
+                transform: scale(0.3);
+            }
+            100%{
+                -webkit-transform: translate(0, 0) scale(1);
+                -moz-transform: translate(0, 0) scale(1);
+                -ms-transform: translate(0, 0) scale(1);
+                -o-transform: translate(0, 0) scale(1);
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        @keyframes myRotate{
+            0%{
+                -webkit-transform: translate(0, 0);
+                -moz-transform: translate(0, 0);
+                -ms-transform: translate(0, 0);
+                -o-transform: translate(0, 0);
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            15%{
+                -webkit-transform: scale(2, 0.5);
+                -moz-transform: scale(2, 0.5);
+                -ms-transform: scale(2, 0.5);
+                -o-transform: scale(2, 0.5);
+                transform: scale(2, 0.5);
+            }
+            50%{
+                -webkit-transform: translate(300px, 300px);
+                -moz-transform: translate(300px, 300px);
+                -ms-transform: translate(300px, 300px);
+                -o-transform: translate(300px, 300px);
+                transform: translate(300px, 300px);
+                opacity: 0.5;
+            }
+            75%{
+                -webkit-transform: scale(0.3);
+                -moz-transform: scale(0.3);
+                -ms-transform: scale(0.3);
+                -o-transform: scale(0.3);
+                transform: scale(0.3);
+            }
+            100%{
+                -webkit-transform: translate(0, 0) scale(1);
+                -moz-transform: translate(0, 0) scale(1);
+                -ms-transform: translate(0, 0) scale(1);
+                -o-transform: translate(0, 0) scale(1);
+                transform: translate(0, 0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

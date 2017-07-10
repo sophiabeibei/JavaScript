@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6中的class</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //es5中定义一个类  通过new创建;
+//    function Fn() {
+//        this.x = 10;
+//        this.y = 100;
+//    }
+//    new Fn;//Fn 执行     ()可以省略;
+
+
+
+
+    //es6中定义一个类,通过class创建;
+    class Fn{
+        //给实例添加私有属性-->constructor
+        constructor(){
+            this.x = 10;
+            this.y = 20;
+        }
+        //给当前类的原型上新增方法
+        sum(){
+            console.log(1);
+        }
+    }
+    var f = new Fn;
+    let f2 = new Fn;
+    f.sum();//1
+    console.log(f);
+    console.log(f.sum === f2.sum);//<--true  充分说明sum不是私有的,是在当前类的原型上新增的;
+    //类有时候需要传参;
+
+
+
+    //es 继承
+    class A {
+        constructor(name){
+            this.name = name;
+        }
+        add(){
+            console.log(1);
+        }
+    }
+    //类B 只继承类A的私有属性
+    //A是父类;子类中没有this;这个对象是从父类A中继承过来的;
+    class B extends A{
+        constructor(c){
+            super(c);//必须加这一句;super代表父类构造函数;(在这里A是父类)
+            //加super之后,子类中才有this;才有对象;
+            //如果传参的话,必须要同时传,比如参数c;
+            this.aa = 18;
+        }
+    }
+    console.log(B);
+    var f = new B("peixun");
+    f.add();
+    console.log(f);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串string</title>
+</head>
+<body>
+<script type="text/javascript">
+    //es5中:
+    //indexOf: 判断当前有没有某个字符
+//    let str = "zhufeng";
+//    console.log(str.indexOf("u"));//2
+//    console.log(str.indexOf("j"));//-1
+
+    //es5中,遍历方法: for...in,遍历对象;
+
+
+
+    //es6中
+    //1)includes: 包含,包括;返回一个布尔值,表示是否找到字符串;
+//    let str = "zhufeng";
+//    console.log(str.includes("f"));//true
+//    console.log(str.includes("m"));//false
+
+
+    //2)starsWith: 原始字符串是否以XXX(某某某)开头;返回boolean;true是;false不是;
+//    let str = "hello di wu qi";
+//    console.log(str.startsWith("hello"));//true
+//    console.log(str.startsWith("he"));//true
+//    console.log(str.startsWith("hi"));//false
+//    console.log(str.startsWith("hello di wu"));//true
+//    console.log(str.startsWith("hellodi wu"));//false
+
+
+    //3)endsWith: 原始字符串是否以XXX(某某某)结尾;返回boolean值;
+//    let str = "hello di wu qi";
+//    console.log(str.endsWith("qi"));//true
+
+
+    //4)repeat: 重复;返回一个新字符串;将源字符重复n次
+//    var foo = "zhufeng";
+//    console.log(foo.repeat(3));//zhufengzhufengzhufeng;  -->重复了3次;
+
+
+    //es6中,遍历的方法: for...of:
+    //for...of:
+
+    //es5中
+    var obj = {name: "zhufeng"};
+//    for(var key in obj){
+//        console.log(key);//name
+//        console.log(obj[key]);//zhufeng
+//    }
+
+
+
+    //es6中
+//    for(let key of foo){
+//        console.log(key);//输出每一个字符
+//    }
+
+    //遍历数组中的每一项
+//    let arr = [88,3,4,5];
+
+//    for(let key of arr){
+//        console.log(key);//88   3   4  5   <--属性值
+//    }
+
+    //遍历数组中索引
+//    for(let key of arr.keys()){
+//        console.log(key);//0   1   2  3  <--索引
+//    }
+
+
+
+    //同时遍历出索引和属性值:
+//    for(let key of arr.entries()){
+//        console.log(key);//把每一轮遍历的索引和属性值的每一项放进一个数组返回;打印结果如下:
+//        //(2) [0, 88]
+//        //(2) [1, 3]
+//        //(2) [2, 4]
+//        //(2) [3, 5]
+//    }
+
+
+
+    //模板字符串: 字符串拼接;
+
+    // 用es5的方式拼接方式(1)
+//    let user = "niuxiaoxin";
+//    let str = "hello! 我叫'+user+,来自河北'";
+//    console.log(str);//hello 我叫niuxiaoxin来自河北
+    // 用es5的方式拼接方式(2)
+//    str+="<li>";
+//    str+="<div>";
+//    str+="</div>";
+//    str+="</li>";
+
+
+
+    //es6的拼接方式: 新方式;``反引号
+//    let user = "niuxiaoxin";
+    //let str = `hello 我叫${变量的名字}来自河北`;
+//    let str = `hello 我叫${user}来自河北`;
+//    console.log(str);//hello 我叫niuxiaoxin来自河北
+
+
+    //放数组里也一样:
+    var user = ["niuxiaoxin"];
+    let str = `hello 我叫${user}来自河北`;
+    console.log(str);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

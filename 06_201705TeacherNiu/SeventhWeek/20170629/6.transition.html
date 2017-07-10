@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #oDiv{
+            width: 100px;
+            height: 100px;
+            background: orange;
+            border: 1px solid blue;
+            margin: 20px auto;
+            /*transition: property duration timing-function delay */
+
+            /*transition-property: 执行动画属性的名称;  <----第一个属性*/
+            /*transition-duration: 执行动画到目的地的过渡时间;  <----第二个属性*/
+            /*transition-timing-function: linear(匀速) ease-in() ease-out() ease-in-out();  <----第三个属性*/
+            /*transition-delay: 延迟时间;  <----第三个属性*/
+
+
+            /*transition-property: all;*/
+            /*transition-duration: 1s;*/
+            /*transition-timing-function: linear;*/
+            /*transition-delay: 1s;*/
+            /*以上的四个总结以下一条语句*/
+            transition: all 1s linear 1s;/*IE9及以下不兼容;*/
+            -webkit-transition: all 1s linear 1s;/*webkit兼容谷歌chrome内核/safari内核*/
+            -moz-transition: all 1s linear 1s;/*火狐firefox内核*/
+            -ms-transition: all 1s linear 1s;/*ie内核*/
+            -o-transition: all 1s linear 1s;/*欧朋opera内核*/
+
+        }
+        #oDiv.animated{
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            opacity: .4;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById("oDiv");
+    oDiv.onclick = function () {
+//        var timer = setInterval(function () {
+//            //获取每次定时器中函数执行的宽度,高度;
+//            var width = utils.getCss(oDiv,"width");
+//            var height = utils.getCss(oDiv,"height");
+//            //当宽度大于等于300的时候,清除定时器;
+//            if(width >= 300){
+//                clearInterval(timer);
+//            }
+//            oDiv.style.width = width + 5 + "px";
+//            oDiv.style.height = height + 5 + "px";
+//        },70)
+
+
+        //用css3动画实现的方法,在style里加transition;
+        this.className = "animated";
+    };
+
+
+    //transition:
+    /**
+     * transition: 过渡的动画;
+     *
+     *
+     *
+     */
+
+
+
+
+
+
+</script>
+</body>
+</html>

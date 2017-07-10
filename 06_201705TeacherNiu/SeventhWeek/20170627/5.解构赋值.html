@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构赋值</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    ////////////////////////////////////////////////关于数组的解构//////////////
+    //es5中根据数据解构赋值;在es5中,定义变量有规则;
+    var ary = [1,3,5];
+
+    //数组的解构赋值: 在es5中赋值的方式
+//    var x = ary[0];
+//    var y = ary[1];
+//    var z = ary[2];
+
+    //在es6中,按数据固有的解构匹配赋值;
+//    var [x,y,z] = [1,3,5];
+//    console.log(x, y, z);//1 3 5
+    //x=1 y=3 z=5
+
+//    var [x,y,z] = [1,[3],5];
+//    console.log(x, y, z);//1 [3] 5
+
+//    var [z] = [1,[3],5];
+//    console.log(z);//1
+
+    //在进行解构赋值的时候,如果数据解构不存在对应的值,输出undefined
+//    var [x,y,z,a] = [1,[3],5];
+//    console.log(a);//undefined
+
+    //还是打印undefined
+//    var [x,y,z,a] = [1,[3,4],5];
+//    console.log(a);//undefined
+
+
+//    var [x,[a,b],z,c] = [1,[3,4],5];
+//    console.log(a,b);//3 4
+
+    //逗号前面没有值也是可以;
+//    var [,[a,b],] = [1,[3,4],5];
+//    console.log(a,b);//3 4
+
+
+//    var x = 100;
+//    var y = 200;
+//    [x,y] = [y,x];//把x的值给了y;把y的值给了x;
+//    console.log(x, y);//200,100   备注: 在es5中不成立;
+
+
+//    let [xx,yy,...zz] = [1,3,5,7,9];
+//    console.log(xx);//1
+//    console.log(yy);//3
+//    console.log(zz);//(3) [5, 7, 9]
+//    //关于zz: 出现"...变量名",剩余的参数会形成一个新的数组,并且对这个变量名赋值;
+
+//    function sum(xx,...reset) {
+//        console.log(xx);//1  -->xx是变量;
+//        console.log(reset);//(5) [2, 3, 4, 5, 6]    -->reset返回的是一个数组
+//        console.log(arguments);//(6) [1, 2, 3, 4, 5, 6, callee: (...), Symbol(Symbol.iterator): function] -->arguments返回的是一个类数组;
+//        //arguments: 函数天生自带的参数的集合;
+//    }
+//    sum(1,2,3,4,5,6);
+
+
+    //解构的前提条件: 只能作用于"数组"和"对象";其他数据类型的值可以转相应的对象;但是undefined和null不能转为对象,所以解构时候会报错;
+    //解构的时候,要看"="等号两边的关系;
+//    var [str] = "hello";//h
+//    var [str] = [];//undefined -->不会报错,会打印出undefined;
+//    var [str] = 1;//报错
+//    var [str] = NaN;//报错
+//    var [str] = [NaN];//正常解构
+//    console.log(str);
+
+    //解构的时候,对undefined和null进行解构,会报错;因为undefined和null不能转换为对象;
+//    var [foo] = null;
+//    console.log(foo);//会报错;
+
+    //变量必须是声明过(通过var let const);
+//    [rr] = "yy";//rr没有声明过;前面一定要加let或var或const   这行不会报错,但也没意义;
+//    console.log([rr]);
+//    let [rr] = "yy";//这样既可;
+    //解构赋值不仅适用于var命令,还适用于left和const;
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////关于对象的解构//////////////
+
+//    var {xx,yy} = {xx:"aa",yy:"bb"};
+//    console.log(xx);//aa
+//    console.log(yy);//bb
+
+    //变量的名字,和对象的属性名字保持一致,能正常解构;
+//    var {xx,yy} = {xx:"aa",yyy:"bb"};
+//    console.log(xx);//aa
+//    console.log(yy);//undefined;
+
+
+    //变量的名字会根据对象的属性名去查找,并进行一一的匹配
+    //变量名和属性名要保持一致,才能正常的获取值;
+//    var {yy,xx} = {xx:"aa",yy:"bb"};
+//    console.log(xx);//aa
+//    console.log(yy);//bb
+
+
+    //以键值对存在;变量的名字和对象属性名不一致时,写成如下即可打印:
+//    var {xx:yy} = {xx:"aa",zz:"bb"};
+//    //获取字符串aa
+////    console.log(xx);//报错
+//    console.log(yy);//aa
+
+
+//    var {cc:yy} = {xx:"aa",zz:"bb"};
+//    console.log(yy);//undefined
+
+
+
+    //对象的解构赋值
+    //定义一个function 传对象x,y,z
+    function f({x, y, z}) {
+        console.log(x);//
+    }
+    f({x:1,y:2,z:3});
+
+
+    //在es5中,对象只有属性名,没有属性值,绝对不可以;
+    //但在es6中,可以只有属性名,没有属性值;[,,z] = [1,2,3]
+
+
+
+
+</script>
+</body>
+</html>

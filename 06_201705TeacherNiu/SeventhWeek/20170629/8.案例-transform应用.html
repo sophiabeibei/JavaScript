@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-transform应用</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        ul{
+            margin: 50px 150px;
+        }
+        ul li{
+            float: left;
+            width: 150px;
+            height: 190px;
+            border: 1px solid blue;
+            margin-left: 50px;
+            border-radius: 5px;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        ul li img{
+            -webkit-transform: translate(10px, 30px);
+            -moz-transform: translate(10px, 30px);
+            -ms-transform: translate(10px, 30px);
+            -o-transform: translate(10px, 30px);
+            transform: translate(10px, 30px);
+        }
+        ul li:hover{
+            /*-webkit-transform: translate3d(10px(右), 30px(上), 5px(外)加3d之后,参数要3个,向里,向上,向外平移;) rotate3d(0(x轴),0(y轴),0(z轴),30deg(角度));  */
+            /*rotate3d(x,y,z,angel) xyz 的数值是0或者1的数值,0表示不动,1表示翻转,angel是角度值*/
+            -webkit-transform: translate3d(0px, -2px, 5px) rotate3d(0,0,1,180deg);
+            -moz-transform: translate3d(0px, -2px, 5px) rotate3d(0,0,1,180deg);
+            -ms-transform: translate3d(0px, -2px, 5px) rotate3d(0,0,1,180deg);
+            -o-transform: translate3d(0px, -2px, 5px) rotate3d(0,0,1,180deg);
+            transform: translate3d(0px, -2px, 5px) rotate3d(0,0,1,180deg);
+            -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0,.1);
+            -moz-box-shadow: 0 15px 30px rgba(0, 0, 0,.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0,.1);
+
+
+            /*以什么位置为基准*/
+            /*top  left  right  bottom  center*/
+            -webkit-transform-origin: top;
+            -moz-transform-origin: top;
+            -ms-transform-origin: top;
+            -o-transform-origin: top;
+            transform-origin: top;
+
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+</ul>
+</body>
+</html>

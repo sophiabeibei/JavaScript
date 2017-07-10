@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习</title>
+</head>
+<body>
+<script type="text/javascript">
+    //1.复习es6数组:
+    //1)Array.from: 将类数组转换为数组
+    //{0: "syy",length: 1}
+
+    //2)Array,of(3,7,8,9)
+    //[{},{}]
+//    [1,7,8].find(function (value) {
+//        return value > 7;
+//    })
+
+    //3)findIndex: 查找符合条件的第一个索引
+
+
+
+    //2.复习es6对象:
+    //1)Object.is(num1,num2)  num1 === num2  --->返回一个布尔值;
+    //2)NaN        NaN == NaN       返回一个false;
+    //3)Object.assign(obj1,obj2,obj3):  把源对象可枚举的属性复制到目标对象里面;
+    // (给方法里传参数,对参数的要求:
+    // 1.参数的数据类型必须是对象;
+    // 2.第二个以及以后的参数全都是源对象;
+    function clone(origin) {
+        return Object.assign({},origin);
+    }
+
+
+    //3.复习数据结构: symbol和set
+//    var w1 = Symbol();
+    //set  add   has   delete
+    //set: 在set里每个成员都是唯一的,不允许出现重复;
+//    var s = Set();
+//    s.add(10).add(10);
+
+
+
+    //4.复习es6函数
+    //参数:
+//    function sum(x, y) {
+//        if(typeof x == "undefined"){
+//            x = 1;
+//        }
+//        x = x || 1;
+//    }
+//    sum({x : 1,y : 2});
+
+
+
+    //5.复习es6箭头函数(到c模块框架的时候用的多)
+    /**
+     * 1.箭头后面的代码只有一条语句,可以省略大括号
+     * 2.箭头函数中没有arguments
+     * 3.箭头函数不能作为构造函数,不能被new
+     * 4.函数中的this,指向所在定义的对象;不指向让函数执行的对象;
+     *
+     */
+    // 函数es5中的写法如下:
+    function sum() {}
+    sum();
+    //现在es6函数写法: 箭头函数
+    //箭头后面的代码只有一条语句,可以省略大括号
+    let sum =() =>console.log(10);
+//    let sum =() =>1;//执行sum()的时候,就会返回1;
+//    let sum =() =>{//如果有一条语句,可以省略return,有两条语句,return不能省略,必须写上;
+//        console.log((10));
+//        return 10;
+//    }
+    //参数的特点: 如果仅仅有一个参数,直接放赋值后面即可,有面参数,需要括号包起来;
+//    let sum = a =>a;//这条语句的意思: 形参a,返回了一个a;
+    //如果没有形参,加上括号();
+//    let sum = () =>a;//加上括号(),返回a;
+//    let sum = () => a;
+//    var obj = {
+//        name : "",
+//        fn : () => a
+//    }
+
+
+
+
+
+    //6.复习h5: 新增的标签
+    /**
+     * 1.
+     * 2.
+     * 3.
+     * 4.
+     * 5.
+     * 6.
+     * 7.
+     *
+     */
+
+    //js文件放在head里,加载DOM解构之前,会先把js文件加载好,提前进行相应的布局;
+
+
+
+    //7.复习input表单:
+    /**
+     * 1.text
+     * 2.radio
+     * 3.submit
+     * 4.number: 出现加好减号,增减添加删除数字
+     * 5.date: 年月日
+     * 6.range: 滑动的进度条(手动)
+     * 7.color
+     * 8.email: 右键
+     * 9.tel: 电话
+     *
+     *
+     */
+
+
+</script>
+</body>
+</html>

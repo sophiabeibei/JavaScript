@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3选择器</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        ul li{
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid orange;
+            margin: 10px;
+        }
+        /*ul li:nth-child(1){
+            background: yellow;
+        }*/
+        /*ul li:nth-child(2n){!*2的倍数*!
+            background: green;
+        }*/
+        /*ul li:nth-child(even){!*偶数*!
+            background: green;
+        }*/
+        /*ul li:nth-child(odd){!*奇数*!
+            background: green;
+        }*/
+        /*ul li:nth-child(3n-1){!* 显示2,5的li盒子*!
+            background: green;
+        }*/
+        .first li:first-child{/*针对下面所有级的第一个li进行设置*/
+            background: blue;
+        }
+        ul li:last-child{/*查找ul中最后一个子元素*/
+            background: yellow;
+        }
+
+        .sec{
+            position: absolute;
+            left: 100px;
+            top: 300px;
+        }
+
+        div:empty{/*查找作用父元素,内容为空*/
+            width: 100px;
+            height: 100px;
+            background: black;
+        }
+
+        p:only-child{/*p作为子元素(没有兄弟元素,没有兄弟节点)独立存在的时候,会被选中加效果*/
+            color: red;
+        }
+
+        /*备注: 有些动画如果能用css3写,就可以不用js写了,js写起来要费尽;*/
+
+    </style>
+</head>
+<body>
+<ul class="first">
+    <li>
+        <ul class="sec">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div></div>
+<div><p>black</p></div>
+<div><p>black</p><div></div></div>
+</body>
+</html>

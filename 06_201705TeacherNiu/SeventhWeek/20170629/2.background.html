@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .box{
+            width: 500px;
+            height: 80px;
+            background: url(0.jpg) no-repeat;
+            /*background-size: 横向100% 纵向100%*/
+            /*background-size: 100% 100%;*/
+
+            /*background-size: 100%    一个100%是等比例缩放*/
+            background-size: 100%;
+
+
+            /*背景的连接方式*/
+            background-attachment: scroll;
+            border: 20px dashed orange;
+            margin: 20px auto;
+            padding: 20px;
+            /*background-origin  默认时,图片是从padding内部开始的*/
+            /*background-origin: border-box;!*从border内部开始的*!*/
+            /*background-origin: content-box;!*从内容内部开始的*!*/
+
+            /*背景裁切的位置   默认是padding*/
+            /*background-clip: padding-box;  默认是从padding开始裁切*/
+            /*background-clip: border-box;   从边框开始裁切*/
+            background-clip: content-box;   /*从内容开始裁切*/
+
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script type="text/javascript">
+    //background-color: 背景颜色;
+    //background-image: 背景图片;
+    //background-repeat: 背景平铺; no-repeat(不平铺)/repeat-x(x轴方向平铺)/repeat-y(y轴方向平铺)
+    //background-attachment: 背景的连接方式;fixed(不随着滚动条的滚动而滚动)/scroll(随着滚动条的滚动而滚动);
+    //background-size: 背景尺寸的大小;
+    //background-origin: 背景显示起点的位置;border-box(从盒子边框开始显示图片);padding-box(从盒子内边距显示图片);content(从内容开始显示图片);
+    //background-clip: 背景裁切(裁剪)的位置;(ie6-8不兼容~!)
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

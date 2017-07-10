@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数值number</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //es6中:
+    //isFinite(): 检测当前数值是否非无穷;返回boolean值;true无穷,false非无穷;
+    //isFinite()方法:
+    console.log(isFinite(88));//true
+    console.log(isFinite(0));//true
+    console.log(isFinite(false));//true
+    console.log(isFinite(8.8));//true
+    console.log(isFinite(NaN));//false
+    console.log(isFinite("22"));//true
+    console.log(isFinite("str"));//false
+
+    //严格判断
+    //Number.isFinite(): 只要不是数字,返回值全是false;
+    console.log(Number.isFinite("22"));//false
+
+
+    //es5中:
+    //isNaN: 检查当前值是否NaN;
+    //Number.isNaN();//加Number. -->更加严谨;
+    parseInt("12.34");//12
+    Number.parseInt("12.34");//12  同上(改进的一种思想)
+    parseFloat("15.66px");//15.66  多识别一个小数点
+    Number.parseFloat("15.66px");//15.66  同上(改进的一种思想)
+    //加Number. -->使JavaScript语言逐步模块化
+
+    //typeof NaN//"number"
+
+
+    //Number.isInteger(): 判断当前是否是一个整数;默认3和3.0是同一个值(小数点后面的所有数值都必须是0),都返回true;
+    console.log(Number.isInteger(3));//true   -->是整数
+    console.log(Number.isInteger(3.2));//false  -->不是整数
+    console.log(Number.isInteger(3.0));//true  -->是整数
+
+
+    //es6中,关于Math知识点拓展:
+    //在es5中,Math.round(),Math....等等方法;
+    //在es6中的几个Math方法:
+    //1.Math.trunc(): 去除一个数值的小数部分;
+    console.log(Math.trunc(4.1));//4  -->去除小数部分,返回值:4;
+    console.log(Math.trunc(4.9));//4  没有四舍五入的功能,依然返回值是4;
+    console.log(Math.trunc(-4.96));//-4  也不会向上/向下取整,依然返回值是-4;
+
+    //2.Math.sign(): 用来判断一个数值是正数/负数/零,如果是正数,返回1;如果是负数,返回-1;如果是零,返回0;如果是NaN,返回NaN;
+    console.log(Math.sign(2.6));//1
+    console.log(Math.sign(-2.6));//-1
+    console.log(Math.sign(0));//0
+    console.log(Math.sign(NaN));//NaN
+
+
+
+
+</script>
+</body>
+</html>

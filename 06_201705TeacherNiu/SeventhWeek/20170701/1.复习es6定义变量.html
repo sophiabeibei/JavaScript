@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习es6定义变量</title>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+
+/////////////////////////////////es6的let////////////////////////////
+
+
+    //let  const
+    //1.let定义的变量不能被重复声明.
+    //2.let定义的变量,不能进行变量提升.
+    //3.let定义的变量,只在块级作用域中有效;
+    //都进行预解释,都进行变量声明
+    console.log(str);//undefined
+    var str = "zhufeng";
+//    console.log(num);//num is not defined
+    let num = 1;
+//    num.pop();
+//    console.log(num.style);
+    //不能给undefined设置background属性;
+//    num.style.background = "red";//Cannot set property 'background' of undefined
+//    oBox.style.background = "orange";
+
+
+//////////////////////////////////////es6的块级作用域////////////////////
+
+
+    //es6中新增的两个功能(块级作用域)
+    //1.if
+    //2.for循环
+    //块级作用域的区别:
+    //if
+//    if(true){
+//        let num = 16;
+//    }
+//    console.log(num);//num is not defined
+    //let定义的num这个变量,只能在块级作用域中有效;
+
+
+    //在es6中,不管if条件成立与否,里面的function代码预解释没有生命;
+//    if(false){
+//        function sum() {
+//            console.log(1);
+//        }
+//    }
+//    console.log(sum);
+//    sum();
+
+    for(let i = 0;i<7;i++){
+        //块级作用域
+        //for循环会形成父作用域;每次循环形成一个子作用域;
+        //会对i重新声明定义
+        //在每个子作用域中,没保存一个i的值;
+        ary[i] = function () {
+
+            console.log(i);
+        }
+    }
+    console.log(i);//报错  因为在for循环中被let定义的变量,不会泄露成全局变量;
+    //for循环的四步过程:1.先定义变量;2.判断循环条件是否成立;3.走循环体内的代码;4.累加;
+    //什么是递归?函数自己调用自己;
+
+
+
+
+/////////////////////////////////es6的const/////////////////////////////
+
+    //const: 定义一个常量,这个值不能修改;
+    //const定义的常量,不能被重复声明
+    const num = 1;
+    if(true){
+        const num = 2;
+    }
+    console.log(num);//1    不能输出2,因为const定义的常量在块级作用域中不能被泄露
+
+    //定义派,定义加速度等...
+
+
+</script>
+</body>
+</html>

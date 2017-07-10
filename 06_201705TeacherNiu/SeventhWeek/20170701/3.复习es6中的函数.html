@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习es6中的函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    //参数的优化
+//    function sum(num1=1,num2=5) {
+//        console.log(num1);
+//    }
+//    sum();
+    //函数的解构赋值
+
+
+
+
+    //2)箭头函数
+//    function sum() {
+//
+//    }
+//    function sum(value) {
+//        return value;
+//    }
+//    let sum = value => value;//一条语句不用写return
+    let sum =(value1,value2) =>{//俩参数时,用括号包起来
+        console.log(value1 + value2);
+    };
+    sum();
+
+    //箭头函数和普通函数的区别:
+    /**
+     * 1.箭头函数没arguments
+     * 2.不能作为构造函数(不能被new)
+     * 3.箭头函数中的this指向函数所在定义中的那个对象;
+     *
+     */
+
+    //工厂模式和构造函数模式的区别?
+    //工厂模式是什么?函数,通过传参;
+    //单利模式是什么?解决了分组的问题;
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
