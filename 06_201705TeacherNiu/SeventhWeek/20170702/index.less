@@ -1,0 +1,84 @@
+//less文件: 新建style文件时,选择less文件
+// 1.在less中,less把css当成变成语言;
+// 2.在less中,css是有方法的,是可执行的;
+// 3.less是css的预处理语言;
+// 4.less为css提供了变量;提供了函数;利用函数提供了嵌套;提供了功能函数;
+// 5.less为css提供了插件;
+//引用less文件跟引用style.css文件一样,在head中link标签里;
+
+
+
+//在less中定义变量,把想用的值放在顶端,需要的时候随时可引用;
+@color: yellow;//@艾特符号,是定义变量
+@address: images;
+//拼接地址或者字符串,把定义的变量放到{}中;@放在{}外;例如:@{address}
+//#box{
+//  //width: 200px;
+//  //height: 200px;
+//  //background: @color;
+//  //margin: 20px auto;
+//  //.transformScale(1.5);
+//  //.box1;//带.点的都是方法;(这是方法调用)   把box1的样式引用过来了;    2.也可以把上面的样式都删掉,直接调用.box,那么#box的样式就跟.box的样式一样一样;
+//}
+
+.box1{
+  width: 300px;
+  height: 300px;
+  background: yellow;
+  margin: 20px auto;
+  .transition(@duration: 100s);//只修改了其中的一个参数
+  //加hover
+  &:hover{
+    .transformScale(2);//放大2倍
+  }
+}
+#box2{
+  .transformScale(2);
+}
+//如果当前文件夹更换名称,肯定需要一个个的修改路径;有了less为css定义的变量,修改一次即可完成所有;
+//ul li:nth-child(1){
+//  //background: url(images/list1.png);
+//  background: url("@{address}/list1.png");
+//}
+//ul li:nth-child(2){
+//  //background: url(images/list2.png);
+//  background: url("@{address}images/list2.png");
+//}
+
+
+// ()传参数  函数的参数赋值,是一个默认值;
+//.transformScale(@val){
+//  -webkit-transform: scale(@val);
+//  -moz-transform: scale(@val);
+//  -ms-transform: scale(@val);
+//  -o-transform: scale(@val);
+//  transform: scale(@val);
+//}
+//也可以赋值 @val:1
+.transformScale(@val:1){
+  -webkit-transform: scale(@val);
+  -moz-transform: scale(@val);
+  -ms-transform: scale(@val);
+  -o-transform: scale(@val);
+  transform: scale(@val);
+}
+//transition也可以传参;
+// 在less函数中,可以调用@arguments;参数里传的什么,@arguments赋值就是什么;
+.transition(@property: all,@duration: 1s,@time-function: linear,@delay: 0s){
+  -webkit-transition: @arguments ;
+  -moz-transition: @arguments ;
+  -ms-transition: @arguments ;
+  -o-transition: @arguments ;
+  transition: @arguments ;
+}
+
+
+
+//转换成css比看页面更加的明显
+// 通过npm  install  less  -g这个命令,
+//cmd,直接执行这条命令即可;
+
+//检测是否安装成功的命令      lessc -v
+
+
+//转译的命令  lessc index.less(文件名) index1.css(要定义的名字)
