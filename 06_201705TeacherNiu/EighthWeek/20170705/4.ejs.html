@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--meta:vp   Tab键-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>ejs</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        html{
+            font-size: 100px;
+        }
+        body{
+            width: 100%;
+            font-size: 0.14rem;
+            color: #000;
+            overflow: hidden;
+        }
+        h1{
+            font-size: 0.18rem;
+        }
+        .header{
+            height: 0.5rem;
+            line-height: 0.5rem;
+            background: -webkit-linear-gradient(left,yellow,green,orange);
+        }
+        .header span{
+            float: left;
+            width: 25%;
+            text-align: center;
+        }
+        .content li{
+            height: 0.4rem;
+            line-height: 0.4rem;
+        }
+        .content li:nth-child(even){
+            background: #eee;
+        }
+        .content li span{
+            float: left;
+            width: 25%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="box"></div>-->
+<header class="header">
+    <h1>
+        <span>编号</span>
+        <span>姓名</span>
+        <span>性别</span>
+        <span>分数</span>
+    </h1>
+</header>
+<section class="content">
+    <ul>
+        <li>
+            <span>1</span>
+            <span>郑六二</span>
+            <span>男</span>
+            <span>91</span>
+        </li>
+    </ul>
+</section>
+<script type="text/javascript" src="ejs.min.js"></script>
+<!-- 制作ejs渲染的模板,在原有的html结果基础上,把数据嵌套进入;-->
+<!-- ejs语法规定我们需要编写的js代码写在<%%>内;需要在模板中输出的一些内容,把需要输出的内容放进<%=%>内;-->
+<script type="text/template" id="conTemplate">
+    <%$.each(dataNum,function(index,item){%>
+        <li>
+            <span><%=item.id%></span>
+            <span><%=item.name%></span>
+            <span><%=item.sex ===1?"女":"男"%></span>
+            <span><%=item.score%></span>
+        </li>
+    <%})%>
+</script>
+<script type="text/javascript" src="zepto.min.js"></script>
+<script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth/320*100 + "px";
+    //不同设备下,根元素字体随着屏幕宽高的改变而改变
+
+    $.ajax({
+        url: "data.json",
+        type: "get",
+        dataType: "json",
+        success: function(data){
+            //把模板字符串获取到
+            var template = $("#conTemplate").html();
+            //使用ejs中的render方法,向指定的模板中提供需要的数据,ejs会把模板和字符串按照既定的规则进行解析和渲染,最后得到的数据和html结构拼接在一起的字符串;
+            var result = ejs.render(template,{dataNum: data});
+            //把拼接好的字符串放进页面的容器中;
+            $(".content>ul").html(result);
+        }
+    });
+
+
+
+
+
+
+    /**
+     * 1.使用ejs模板引擎来渲染页面中的数据;ejs提供了模板引擎;
+     * 2.
+     * 3.
+     * 4.
+     * 5.
+     * 6.
+     * 7.
+     * 8.
+     * 9.
+     *
+     */
+
+
+
+
+</script>
+</body>
+</html>

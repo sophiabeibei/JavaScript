@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>touch</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: orange;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    //touch
+    var oBox = document.getElementById("box");
+    function on(curElr, type, fn) {
+        curElr.addEventListener(type,fn,false);
+    }
+    on(oBox,"touchstart",function (ev) {
+        var point = ev.touches[0];
+        this["strX"] = point.clientX;
+        this["strY"] = point.clientY;
+        //clientX: 获取X轴方向与屏幕左边之间的距离
+        //clientY: 获取Y轴方向与屏幕左边之间的距离
+        console.log(point);
+
+    });
+    on(oBox,"touchmove",function (ev) {
+        //ev: touchEvent : type(事件类型) target cancelBubble returnValue
+        //console.log(ev);//打印出好多
+        //touches: 是手指信息的集合,touches获取到值的必备条件---只有手指还在屏幕上才可以获取到;
+
+        var point = ev.touches[0];
+        var newX = point.clientX;
+        var newY = point.clientY;
+
+
+        //如果横向或者纵向发生30像素的移动,背景色变色,不旋转
+        if(Math.abs(newX - this["strX"]) > 30 || Math.abs(newY - this["strY"])){
+            this["isMove"] = true;
+        }
+    });
+    on(oBox,"touchend",function (ev) {
+        //console.log(ev);//打印出一个
+        //changedTouches: 所以在touchend实践中获取鼠标离开
+        //当鼠标点的时候,没有触发旋转;触发旋转的效果是鼠标松开之后;
+        //所以,触发旋转写在touchend事件中;
+
+
+        if(this["isMove"]){
+            this.style.bakground = "green";
+        }else{
+            this.style.webkitTransitionDuration = "2s";
+            this.style.webkitTransform = "rotate(360deg)";
+            var _this = this;
+            var delayTimer = window.setTimeout(function () {
+                _this.style.webkitTransitionDuration = "0s";
+                _this.style.webkitTransform = "rotate(360deg)";
+            },3000);
+
+        }
+
+    });
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

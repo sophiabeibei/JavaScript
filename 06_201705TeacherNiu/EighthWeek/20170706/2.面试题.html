@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    var value1= 0,value2 = 0,value3 = 0;
+    for(var i = 1;i <= 3;i++){
+        var i2 = i;
+        (function () {
+            var i3 = i;
+            setTimeout(function () {
+                value1 += i;
+                value2 += i2;
+                value3 += i3;
+            },100)
+        })()
+    }
+    setTimeout(function () {
+        console.log(value1, value2, value3);//12   9   6
+    },1000)
+
+
+
+</script>
+</body>
+</html>

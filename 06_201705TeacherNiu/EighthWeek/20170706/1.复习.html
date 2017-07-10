@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 200px;
+            height: 200px;
+            background: green;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+
+    //1
+    /**插件
+     * 1)touchstarte
+     * 2)touchend
+     * 3)touchmove
+     *
+     */
+
+    var oBox = document.getElementById("box");
+    oBox.onclick = function (e) {
+        //e事件对象
+        alert(1);
+    };
+
+
+    //2
+    /**触摸事件对象
+     * toucheEvent
+     * type
+     * target
+     * touches: 手指没有离开屏幕;
+     * touchend:
+     * changedTouches(既属性既对象): {};(存储在toucheEvent中)
+     *
+     */
+
+
+    //3
+    /**ejs
+     * 模板: type="text/template"必写
+     * id可以随意起名字
+     * <%$.each(dataNum,function(index,item)%> <li></li>  <%)%>
+     *
+     */
+
+
+    //4
+    /**上下滑屏
+     * 1)无缝衔接: loop: true,(加loop: 首尾两张图片分别有增+1;首图前加了一个尾图;尾图的后面加了一张首图,就是为了播放前一张/后一张的时候不会出现空白;)
+     * 2)横向: effect: "slide",
+     * 3)纵向: direction: "vertical",
+     * 4)自动轮播: autoplay: 1000,
+     * 5)加(...): pagination: ".swiper-pagination",
+     * 6)上一张/下一张图片: lazyLoadingPrevNext: true
+     *
+     */
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

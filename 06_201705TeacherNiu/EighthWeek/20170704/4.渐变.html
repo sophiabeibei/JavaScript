@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: -webkit-repeating-linear-gradient(to left top,red 20px,green 20px);
+            /*background: repeating-linear-gradient(to left top,red,green);*/
+            /*上面这条语句: 重复渐变*/
+            /*background: -webkit-linear-gradient(to left top,red,yellow,green);*/
+            /*background: -ms-linear-gradient(to left top,red,yellow,green);*/
+            /*background: -o-linear-gradient(to left top,red,yellow,green);*/
+            /*background: -moz-linear-gradient(to left top,red,yellow,green);*/
+            /*background: linear-gradient(to left top,red,yellow,green);*/
+            /*background: repeating-linear-gradient(to left top,red 20px,green 20px);*/
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    //火狐浏览器: Gecko(Firefox)
+    //谷歌浏览器:Webkit(Safari Chrome)
+    //欧朋浏览器: Presto
+    //IE浏览器: Trident
+    //-webkit-linear-gradient:
+    //background: linear-gradient(to left top,red,green
+    //参数一: 线性渐变的方向;top是从上到下;left是从左到右; left top: 从左上角到右下角;
+    //参数二参数三: 分别起点颜色和终点颜色,可以在它们之间加入其他的颜色,表示多种颜色的渐变;
+
+
+
+
+    //-webkit-repeating-linear-gradient: 重复渐变
+    //如果没有浏览器标志修饰,gradient里面的方位一定要加上to
+    //角度: 是由水平线和渐变线产生的角度,逆时针方向
+    //渐变线和颜色的变化方向是平行的
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

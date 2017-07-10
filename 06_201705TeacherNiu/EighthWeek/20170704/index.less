@@ -1,0 +1,184 @@
+//用于开发,自己写代码的过程用less,不上线;没人把less文件放到项目中的;
+//less的目的: 让编程变得更便捷;
+//less定义的变量,不仅可以存储公有的属性值,还可以存储选择器;
+
+
+
+//@width: 100px;
+////在less里面,可以定义变量,可以定义方法,方法可以嵌套,可以引用;
+//@selector:box;
+//
+////
+//@name: "珠峰培训";
+//@var: name;
+//
+////.public是方法.并不是类名;
+////.public{
+////  width: 100px;
+////  height: 100px;
+////}
+////加括号,可以传参数,也可以不传参数
+////加括号,和不加括号的区别: 方法不加括号,转译之后的css会存在这个样式,加了括号,这个样式会被过滤掉;
+//.public (@val: 100px){
+//  width: @val;
+//  height: 100px;
+//}
+////#box{
+////  .public;
+////  background: orange;
+////}
+//
+////上面有定义选择器,如下可以这样使用:
+//.@{selector}{
+//  .public;
+//  background: orange;
+//  &:hover{
+//    background: yellow;
+//    content: @@var;
+//  }
+//}
+//#box1{
+//  .public;
+//  background: green;
+//}
+
+
+
+
+
+
+
+
+
+//定义个方法
+//.public{
+//  width: 100px;
+//  height: 100px;
+//}
+//方法一:
+//nav{
+//  .public;
+//}
+
+//方法二:
+//.nav{
+//  //通过extend方法来节省代码
+//  &:extend(.public);
+//}
+
+//方法三: 不让出现重复的代码;引用另一个类名的样式;
+//.nav:extend(.public){
+//
+//}
+
+
+//方法四: 把public换成#id号
+//#public{
+//  width: 100px;
+//  height: 100px;
+//}
+//.nav:extend(#public){
+//
+//}
+
+
+//用法五: 在方法中,又新加一个方法gray方法
+//.public方法和.gray存在父子级关系
+//public就是js中的命名空间,它里面的方法gray是这个命名空间下的样式;
+//.public{
+//  width: 100px;
+//  height: 100px;
+//  .gray{
+//    background: blue;
+//  }
+//}
+
+
+//用法六:
+//.nav{
+//  &:extend(.public);
+//}
+
+//.private{
+//
+//}
+
+
+
+//在less中定义一个命名空间,就创建一个作用域,在这个作用域中使用的变量首先看一下自己的作用域看有没有,没有的话就向上一级查找;(类似于js中的作用域)
+//@color:#eee;
+//.box{
+//  @color: #000;
+//  .gray{
+//    background: @color;
+//  }
+//}
+
+
+//!important: 在方法
+//.box{
+//  width: 100px;
+//  height: 100px;
+//  .gray{
+//    background: orange;
+//  }
+//}
+
+
+//在方法的后面加!important,可以让方法下面所有的属性都集成!important
+//.public{
+//  .box !important;
+//}
+
+
+//.transition(@property: all,@duration: 1s,@time-function:linear,@delay:0s){
+//  //方法中可以用arguments这个属性,直接艾特即可
+//  transition: @arguments;
+//  //less方法中有arguments
+//  //箭头函数中没有arguments
+//}
+
+
+
+
+
+
+//首先方法不仅有参数,而且还有返回值,像js中的函数一样;
+//.average(@a,@b){
+//  @result:((@a+@b)/2);
+//}
+//.box{
+//  .average(16px,20px);
+//  padding:@result;
+//}
+
+//在less中,通常的条件运算符 > < >= >=  = ;在条件还可以使用一下函数:iscolor,isnumber,isstring,iskeyword,isurl,ispixel,ispercentage...
+.min(@a,@b) when (isnumber(@b)){
+  background: yellow;
+}
+//@a  @b是参数
+//判断@b是不是数值;
+//.min(@a:1,@b:5)
+//
+//.box1{
+//  width: 100px;
+//  height: 100px;
+//  .min(@a:1,@b:5)
+//}
+
+.animate{
+  transform: scale(1.5);
+}
+.box{
+  .animate;
+  transform: rotate(360deg);
+}
+
+
+
+
+
+//transform+_   拼接
+//&符号   &:hover{}    &-top{}   & + &-top{}
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--meta:vp Tab键-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>swiper--轮播</title>
+    <link rel="stylesheet" href="swiper.min.css">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 100px;
+        }
+        /*假设设计稿的宽度是640px,  那么假设轮播图640*300   */
+        .swiper-container{
+            height: 3rem;
+            overflow: hidden;
+        }
+        .swiper-slide{
+            height: 3rem;
+        }
+        .swiper-slide img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<section class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img data-src="image/banner1.jpg" class="swiper-lazy" alt="">
+            <!-- data-src: 实现延迟加载-->
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="image/banner2.jpg" class="swiper-lazy" alt="">
+            <!-- data-src: 实现延迟加载-->
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="image/banner3.jpg" class="swiper-lazy" alt="">
+            <!-- data-src: 实现延迟加载-->
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="image/banner4.jpg" class="swiper-lazy" alt="">
+            <!-- data-src: 实现延迟加载-->
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="image/banner5.jpg" class="swiper-lazy" alt="">
+            <!-- data-src: 实现延迟加载-->
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</section>
+<script type="text/javascript" src="swiper.min.js"></script>
+<script type="text/javascript">
+    var desW = 640;
+    var radio = document.documentElement.clientWidth/desW;
+    document.documentElement.style.fontSize = radio * 100 + "px";
+    //初始化swiper的区域的滑动
+    var swiper = new Swiper(".swiper-container",/*参数一:当前盒子的选择器*/{
+        loop: true,//无缝衔接的滑动
+        //effect: "slide",//横向滑动effect: "slide";
+        direction: "vertical",// 纵向:direction:"vertical"
+        autoplay: 2000,//自动轮播的时间
+        autoplayDisableOnInteraction : false,//是否禁止autoplay: autoplayDisableOnInteraction;属性值设置为false,自动切换不停止;每次重启autoplay
+        pagination: ".swiper-pagination",
+        lazyLoading: true,//true显示图片
+        lazyLoadingPrevNext: true//
+    });//Swiper()方法在swiper.min.js内;
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

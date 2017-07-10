@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--meta:vp-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>h5案例</title>
+    <link rel="stylesheet" href="swiper.min.css">
+    <link rel="stylesheet" href="animate.css">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        html,body,.main .swiper-container,.swiper-slide{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        html{
+            /*假设设计稿的宽度是640*/
+            font-size: 100px;
+        }
+        .music{
+            position: absolute;
+            top: 0.2rem;
+            right: 0.2rem;
+            width: 1.6rem;
+            height: 1rem;
+            background: url(images/music.png);
+            background-size: cover;
+            z-index: 10;
+        }
+        .musicMove{
+            -webkit-animation: musicMove 0.3s steps(15) infinite;
+            animation: musicMove 0.3s steps(15) infinite;
+        }
+        @keyframes musicMove{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: -21rem 0;
+            }
+        }
+        .arrow{
+            position: absolute;
+            left: 50%;
+            bottom: 0.2rem;
+            width: 0.48rem;
+            height: 0.36rem;
+            margin-left: -0.24rem;
+            background: url(images/web-swipe-tip.png) no-repeat;
+            background-size: 100% 100%;
+            z-index: 16;
+            animation: myBounce 0.8s ease-in-out;
+            -webkit-animation: myBounce 0.8s ease-in-out;
+        }
+        .page1{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url(images/bg1.jpg) no-repeat;
+            background-size: cover;
+        }
+        .page1 img{
+            position: absolute;
+        }
+        .page1 img:nth-child(1){
+            left: 2rem;
+            top: 0.28rem;
+            width: 0.96rem;
+            height: 2.32rem;
+        }
+        #page0 img:nth-child(1){
+            animation: bounceInLeft 1s linear;
+            -webkit-animation: bounceInLeft 1s linear;
+        }
+        .page1 img:nth-child(2){
+            top: 0.3rem;
+            right: 0;
+            width: 3.7rem;
+            height: 6rem;
+            animation: bounceInRight 1s linear;
+            -webkit-animation: bounceInRight 1s linear;
+        }
+        #page0 img:nth-child(2){
+            animation: bounceInRight 1s linear;
+            -webkit-animation: bounceInRight 1s linear;
+        }
+        .page1 img:nth-child(3){
+            bottom: 0.9rem;
+            left: 0.5rem;
+            width: 5.5rem;
+            height: 5rem;
+            animation: bounceInUp 1s linear;
+            -webkit-animation: bounceInUp 1s linear;
+        }
+        #page0 img:nth-child(3){
+            animation: bounceInUp 1s linear;
+            -webkit-animation: bounceInUp 1s linear;
+        }
+        .page1 img:nth-child(4){
+            left: -1.6rem;
+            bottom: 0;
+            width: 7.8rem;
+            height: 5.8rem;
+            animation: bounceInUp 1s linear;
+            -webkit-animation: bounceInUp 1s linear;
+        }
+        #page0 img:nth-child(4){
+            animation: bounceInUp 1s linear;
+            -webkit-animation: bounceInUp 1s linear;
+        }
+        .page2{
+            position: relative;
+            background: url("images/bg2.jpg") no-repeat;
+            background-size: cover;/*全屏覆盖*/
+        }
+        .page2 img{
+            position: absolute;
+            width: 0.6rem;
+            height: 6.38rem;
+        }
+        .page2 img:nth-child(1){
+            left: 0;
+            top: 0;
+            width: 3.4rem;
+            height: 1.7rem;
+        }
+        #page02 img:nth-child(1){
+            animation: bounceInUp 1s linear;
+            -webkit-animation: bounceInUp 1s linear;
+        }
+        .page2 img:nth-child(2){
+            left: 1.48rem;
+        }
+        .page2 img:nth-child(3){
+            left: 1.48rem;
+        }
+    </style>
+    <link rel="stylesheet" href="animate.css">
+</head>
+<body>
+<section class="main">
+    <div class="music" id="musicMenu">
+        <audio src="audio/music.mp3" id="musicAudio"></audio>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page1">
+                <img src="images/page1-text1.png" alt="">
+                <img src="images/page1-text2.png" alt="">
+                <img src="images/page1-text3.png" alt="">
+                <img src="images/page1-text4.png" alt="">
+            </div>
+            <div class="swiper-slide page2">
+                <img src="images/page2-text1.png" alt="">
+                <img src="images/page2-text2.png" alt="">
+                <img src="images/page2-text3.png" alt="">
+                <img src="images/page2-text4.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="arrow"></div>
+</section>
+
+<script type="text/javascript" src="fastclick.min.js"></script>
+<script type="text/javascript" src="swiper.min.js"></script>
+<script type="text/javascript">
+    //audio音视频的用法
+    /**audio属性如下:
+     * src: 音频的路径
+     * autoplay: 自动播放
+     * preload: 当前的音频是否进行预加载
+     * play: 音频播放
+     * pause: 音频停止
+     *
+     *
+     */
+
+
+
+    /**css3动画库的动画名称
+     * 1)bounceInLeft: 从左边飞入
+     * 2)bounceInRight: 从右边飞入
+     * 3)bounceInUp: 从下面飞入
+     * 4)zoomIn: 从中间向两端展开
+     *
+     */
+
+    function refreshRem() {
+        var desW = 750;
+        var winW = document.documentElement.clientWidth;
+        var radio = desW/winW;
+        document.documentElement.style.fontSize = 100/radio + "px";
+    }
+    refreshRem();
+    var swiper = new Swiper(".swiper-container",{
+        loop: true,
+        direction: "vertical",
+        onSlideChangeEnd: function (swiper) {
+            //swiper.slides: 获取到所有的滑块(对象数组)
+            //swiper.slides.length: 获取到当前滑块的个数(对象数组有length属性)
+            var curIndex = swiper.activeIndex;//swiper.activeIndex返回值: 数值(屏幕的索引值)
+            //console.log(swiper.activeIndex);//通过屏幕的索引创建id
+            var total = slides.length;
+            var atrgetId = "page0";
+            switch(curIndex){
+                case 3:
+                    targetId += 1;
+                    break;
+                case 2:
+                    targetId += 2;
+                    break;
+                case 1:
+                    targetId += 1;
+                    break;
+                case 0:
+                    targetId += 0;
+                    break;
+                default:
+                    targetId += curIndex;
+            }
+            //forEach: 遍历循环
+            [].forEach.call(slides,function (item,index) {//这里的function是forEach的回调函数
+                if(curIndex === index){
+                    item.id = targetId;
+                }else{
+                    item.id = null;
+                }
+            })
+
+
+        }//当滑动结束会触发这个方法
+    });
+    var oMusic = document.getElementById("musicMenu");
+    var audioMusic = document.getElementById("musicAudio");
+    setTimeout(function () {
+        oMusic.className = "music musicMove";
+    },1000);
+
+    oMusic.onclick = function () {
+        if(audioMusic.paused){//audioMusic.paused: 判断当前的音乐是停止还是播放
+            audioMusic.play();
+            oMusic.className = "music musicMove";
+        }else{
+            audioMusic.pause();
+            oMusic.className = "music";
+        }
+    }
+
+</script>
+</body>
+</html>

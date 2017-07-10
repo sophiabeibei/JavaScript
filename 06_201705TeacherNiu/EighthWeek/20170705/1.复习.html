@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习</title>
+</head>
+<body>
+<script type="text/javascript">
+    //less: 是预编译,用于开发,不用于上线;
+    //HBuilder编辑器: 自动转译;便捷;(缺点: 不能运行node环境,需要插件才能使用node)
+    //通过link引用less.mine.js    rel属性值要加stylesheet/less
+    //使用监听,1)必须和less.mine.js结合用;
+    //使用监听,2)必须在引用less.mine.js语句之前添加<script>var less = {env : "development",poll : 1000}<\/script>;
+    //使用监听,3)在引用less.mine.js语句之后添加<script>less.watch();<\/script>
+    //以上是使用less监听时必须要有的3个条件;
+
+
+
+    //在less中,less的语法跟js的思想很想;
+    //1)用(@)艾特定义变量;
+    //2)方法可以执行;
+    //3)没有参数时,方法可以这么写: .box{};转译之后,这个方法存在;
+    //4)没有参数时,方法这么写: .box(){};转译之后,方法不存在;
+    //5)方法里可以嵌套方法;
+    //注意事件: 调用变量的时候,查看是否当前作用域;
+
+
+
+    //box-sizing: 3个属性值
+    //1)content-box: 默认;
+    //2)border-box:从边框外开始;
+    //3)inherit: 从父元素继承;
+
+
+    //FastClick.attach(document.body);解决移动端click导致的300ms延迟的问题;
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

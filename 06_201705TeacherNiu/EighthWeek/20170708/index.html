@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--   meta:vp 适口-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>凤凰新闻webApp首页</title>
+    <!--   reset.min.css 重置默认样式-->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <!-- swiper.min.css: swiper插件提供的css样式-->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <!-- H5index.css文件: less写的less文件,通过考拉工具解析为.css文件-->
+    <link rel="stylesheet" href="css/H5index.css">
+</head>
+<body>
+<!-- header begin-->
+<header>
+    <!--h1.logo tab-->
+    <h1 class="logo">
+        <img src="images/logo.png" alt="">
+    </h1>
+</header>
+<!-- header end-->
+
+<!-- nav begin-->
+<nav>
+    <!-- div.nav-inner   tab-->
+    <div class="nav-inner">
+        <a href="javascript:;">推荐</a>
+        <a href="javascript:;">新闻</a>
+        <a href="javascript:;">娱乐</a>
+        <a href="javascript:;">体育</a>
+        <a href="javascript:;">图片</a>
+        <a href="javascript:;">财经</a>
+        <a href="javascript:;">汽车</a>
+        <a href="javascript:;">推荐</a>
+        <a href="javascript:;">新闻</a>
+        <a href="javascript:;">娱乐</a>
+        <a href="javascript:;">体育</a>
+        <a href="javascript:;">图片</a>
+        <a href="javascript:;">财经</a>
+        <a href="javascript:;">汽车</a>
+        <a href="javascript:;">推荐</a>
+        <a href="javascript:;">新闻</a>
+        <a href="javascript:;">娱乐</a>
+        <a href="javascript:;">体育</a>
+        <a href="javascript:;">图片</a>
+        <a href="javascript:;">财经</a>
+        <a href="javascript:;">汽车</a>
+    </div>
+    <div class="nav-shadow nav-shadow1"></div>
+    <div class="nav-shadow nav-shadow2"></div>
+</nav>
+<!-- nav end-->
+
+
+<!-- main begin-->
+<div id="wrapper">
+    <div id="scroller">
+        <div id="pullDown">
+            <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+        </div>
+
+        <div class="main">
+            <!-- focus begin   焦点图开始-->
+            <!-- swiper插件提供好的-->
+            <div class="swiper-container focus">
+                <!-- swiper-container: 放图片-->
+                <div class="swiper-wrapper">
+
+                    <!--
+                    须知: ejs第三步造模板数据之后,这里的数据需要删除;
+
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <img src="images/banner.png" alt="">
+                            <h2>标题标题今天的新闻标题今天的新闻标题今天的新闻今天的新闻</h2>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <img src="images/banner.png" alt="">
+                            <h2>标题今天的新闻</h2>
+                        </a>
+                    </div>
+
+                    -->
+
+
+                </div>
+                <div class="swiper-pagination">
+                    <!-- swiper-pagination: 分页器-->
+                </div>
+            </div>
+            <!-- focus end     焦点图结束-->
+
+            <!-- main begin-->
+            <!-- main的内容是通过js代码里(中间内容第三步: 造模版)完成-->
+            <div class="col">
+                <!-- 左图右文 begin-->
+                <!-- 三小图  begin-->
+                <!-- 大图-->
+                <!-- 纯文字-->
+            </div>
+            <!-- main end-->
+        </div>
+
+        <div id="pullUp">
+            <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+        </div>
+    </div>
+</div>
+<!-- main end-->
+
+<!-- 漂浮栏 begin-->
+<div class="sub-box">
+    <!-- 返回顶部-->
+    <a href="javascript:;"><span class="icon_toTop"></span></a>
+    <!-- 刷新的图标-->
+    <a href="javascript:;"><span class="icon_fresh"></span></a>
+</div>
+
+
+
+
+<!-- ejs第三步: 造模版(焦点图)-->
+<!-- ejs第三步: 造模版内不能写注释-->
+<!-- js代码用<%%>包裹起来-->
+<!-- js输入的代码用<%=%>放在(=)后面-->
+<!-- ejs第三步: text/template: type类型一定要这个-->
+<script type="text/template" id="focusTemplate">
+    <%data.forEach(function (item,index){%>
+    <div class="swiper-slide">
+        <a href="<%=item.link.weburl%>">
+            <img src="<%=item.thumbnail%>" alt="<%=item.title%>">
+            <h2><%=item.title%></h2>
+        </a>
+    </div>
+    <%})%>
+</script>
+
+<!-- 中间内容第三步: 造模版-->
+<script type="text/template" id="listTemplate">
+    <%dataList.forEach(function (item,index){%>
+    <%if(item.style.images){%>
+    <section class="itemPics">
+        <a href="<%=item.link.weburl%>">
+            <h2 class="title"><%=item.title%></h2>
+            <div class="picBox">
+                <div class="pics">
+                    <img src="<%=item.style.images[0]%>" alt="">
+                    <img src="<%=item.style.images[1]%>" alt="">
+                    <img src="<%=item.style.images[2]%>" alt="">
+                </div>
+            </div>
+            <div class="info">
+                <div class="left">
+                    <div class="source"><%=item.source%></div>
+                    <div class="time"><%=changeTime(item.updateTime)%></div>
+                </div>
+                <div class="right">
+                    <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                    <%if(item.style.attribute){%>
+                        <div class="label"><%=item.style.attribute%></div>
+                    <%}%>
+                </div>
+            </div>
+        </a>
+    </section>
+    <%}else if(item.type == "phvideo"){%>
+    <section class="itemPics">
+        <a href="<%=item.link.weburl%>">
+            <h2 class="tit"><%=item.title%></h2>
+            <div class="bigPic">
+                <img src="<%=item.thumbnail%>"
+                     alt="" class="pic" alt="">
+            </div>
+            <div class="info">
+                <div class="left">
+                    <div class="source"><%=item.source%></div>
+                    <div class="time"><%=changeTime(item.updateTime)%></div>
+                </div>
+                <div class="right">
+                    <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                    <%if(item.style.attribute){%>
+                    <div class="label"><%=item.style.attribute%></div>
+                    <%}%>
+                </div>
+            </div>
+        </a>
+
+    </section>
+    <%}else if(item.thumbnail){%>
+    <section class="item">
+        <a href="<%=item.link.weburl%>">
+            <img src="<%=item.thumbnail%>" alt="" class="pic">
+            <!-- 文字-->
+            <div class="txt">
+                <h2><%=item.title%></h2>
+                <div class="info">
+                    <div class="left">
+                        <div class="source"><%=item.source%></div>
+                        <div class="time"><%=changeTime(item.updateTime)%></div>
+                    </div>
+                    <div class="right">
+                        <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                        <%if(item.style.attribute){%>
+                        <div class="label"><%=item.style.attribute%></div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </section>
+    <%} else {%>
+    <section class="itemPics">
+        <a href="<%=item.link.weburl%>">
+            <h2 class="tit"><%=item.title%></h2>
+            <div class="info">
+                <div class="left">
+                    <div class="source"><%=item.source%></div>
+                    <div class="time"><%=changeTime(item.updateTime)%></div>
+                </div>
+                <div class="right">
+                    <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                    <%if(item.style.attribute){%>
+                    <div class="label"><%=item.style.attribute%></div>
+                    <%}%>
+                </div>
+            </div>
+        </a>
+
+    </section>
+    <%}%>
+    <%})%>
+
+</script>
+
+
+<!-- 1)swiper.min.js: swiper插件自带的js文件 -->
+<script type="text/javascript" src="js/swiper.min.js"></script>
+
+<!-- 2)iscroll插件自带的js: 上拉刷新,下拉加载-->
+<script type="text/javascript" src="js/iscroll.js"></script>
+
+<!-- 3)中间内容第一步: 引入ejs模板引擎的插件-->
+<script type="text/javascript" src="js/ejs.min.js"></script>
+
+<!-- 4)引入zepto插件-->
+<script type="text/javascript" src="js/zepto.min.js"></script>
+
+<!-- 5)H5index.js: 自己写的js文件 -->
+<script type="text/javascript" src="js/H5index.js"></script>
+</body>
+</html>

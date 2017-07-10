@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立方体</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        ul{
+            width: 200px;
+            margin: 200px auto;
+            /*transform-style: preserve-3d;    开启3维立体空间*/
+            transform-style: preserve-3d;
+        }
+        ul li{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+            font-size: 40px;
+            background: orange;
+            opacity: .5;
+            border: 1px solid green;
+        }
+        ul li:nth-child(1){
+            top: -202px;
+            transform-origin: bottom;
+            transform-rotateX(90deg);
+        }
+        ul li:nth-child(2){
+            left: -202px;
+            transform-origin: right;
+            transform-rotateY(-90deg);
+        }
+        ul li:nth-child(3){
+            left: 202px;
+            transform-origin: left;
+            transform-rotateY(90deg);
+        }
+        ul li:nth-child(4){
+            top: 202px;
+            transform-origin: top;
+            transform-rotateX(-90deg);
+        }
+        ul li:nth-child(5){}
+        ul li:nth-child(6){}
+    </style>
+</head>
+<body>
+<!--ul>li{$}*6    Tab-->
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+</body>
+</html>

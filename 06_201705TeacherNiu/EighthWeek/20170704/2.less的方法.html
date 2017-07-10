@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>less的方法</title>
+    <!-- "stylesheet/less"必须写-->
+    <!--<link rel="stylesheet/less" href="index.less">  有了转译后的css文件,less文件即可注释;下面的less.min.js文件也可注释-->
+    <link rel="stylesheet" href="index1.css">
+</head>
+<body>
+<div id="box" class="public"></div>
+<div id="gray">
+    <div class="center"></div>
+</div>
+<!--<script type="text/javascript" src="less.min.js"></script>-->
+<script type="text/javascript">
+    //less: 让css变成了编程的语言;有函数,也可以定义变量;
+    //用于开发,自己写代码的过程用less,不上线;没人把less文件放到项目中的;
+    //less的目的: 让编程变得更便捷;
+    //在less里面,可以定义变量,可以定义方法,方法可以嵌套,可以引用;
+
+
+    /**转码: less文件转css文件
+     * lessc less文件名 新css文件名
+     * lessc index.less index1.css
+     *
+     * 变量不仅可以存储公有的属性值,还可以存储选择器;
+     *
+     *
+     *
+     *
+     *
+     *
+     //.public是方法.并不是类名;
+     //.public{
+         width: 100px;
+         height: 100px;
+        }
+     //加括号,可以传参数,也可以不传参数
+     //加括号,和不加括号的区别: 方法不加括号,转译之后的css会存在这个样式,加了括号,这个样式会被过滤掉;
+     .public (@val: 100px){
+         width: @val;
+         height: 100px;
+      }
+     *
+     */
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

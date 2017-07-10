@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>h5案例</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<section class="main">
+    <div class="music musicMove" id="musicMenu">
+        <audio src="audio/music.mp3" id="musicAudio" autoplay="true" loop></audio>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page1">
+                <img src="images/page1-text1.png" alt="">
+                <img src="images/page1-text2.png" alt="">
+                <img src="images/page1-text3.png" alt="">
+                <img src="images/page1-text4.png" alt="">
+            </div>
+            <div class="swiper-slide page2">
+                <img src="images/page2-text1.png" alt="">
+                <img src="images/page2-text2.png" alt="">
+                <img src="images/page2-text3.png" alt="">
+                <img src="images/page2-text4.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="arrow"></div>
+</section>
+<script type="text/javascript" src="js/fastclick.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+    FastClick.attach(document.body);
+    function refreshRem() {
+        var desW = 750;
+        var winW = document.documentElement.clientWidth;
+        var radio = desW/winW;
+        document.documentElement.style.fontSize = 100/radio + "px";
+    }
+    refreshRem()
+    var swiper = new Swiper(".swiper-container",{
+        loop: true,
+        direction: "vertical",
+        onSlideChangeEnd: function (swiper) {
+            var slides = swiper.slides;
+            var curIndex = swiper.activeIndex;
+            var total = slides.length;
+            var targetId = "page0";
+            switch(curIndex){
+                case 3:
+                    targetId += 1;
+                    break;
+                case 0:
+                    targetId += 2;
+                    break;
+                default:
+                    targetId += curIndex;
+            }
+            [].forEach.call(slides,function (item, index) {
+                if(curIndex == index){
+                    item.id = targetId;
+                }else{
+                    item.id = null;
+                }
+            })
+        }
+    });
+    var oMusic = document.getElementById("musicMenu");
+    var audioMusic = document.getElementById("musicAudio");
+    oMusic.onclick = function () {
+        if(audioMusic.paused){
+            audioMusic.play();
+            oMusic.className = "music musicMove";
+        }else{
+            audioMusic.pause();
+            oMusic.className = "music";
+        }
+    };
+
+
+
+
+
+
+
+    /**
+     * 1)解决延迟问题: 导入fastclick.js;并在index.js文件中写语法FastClick.attach(document.body);
+     * 2)document.body: 是body节点;
+     * 3)document.documentElement: 是html节点;
+     *
+     *
+     *
+     */
+
+
+
+
+
+
+</script>
+</body>
+</html>

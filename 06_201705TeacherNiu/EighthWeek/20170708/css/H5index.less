@@ -1,0 +1,485 @@
+//用less写的好处,就是选择器可以互相嵌套;
+//.nav-shadow{}: 公用的public方法;用的时候,直接调用方法名即可;
+//public
+.nav-shadow{
+  //公用遮罩层的样式
+  z-index: 99;
+  position: fixed;
+  top: 0.8rem;
+  width: 10%;
+  height: 0.8rem;
+}
+.flex{
+  //flex: 弹性盒模型
+  //公用浮动的样式----转为行内块级
+  display: -webkit-flex;
+  display: flex;
+}
+.title{
+  //公用h2的字体样式
+  line-height: 0.44rem;
+  font-size: 0.36rem;
+  color: #1a1a1a;
+  //多行文字出现(...)必备的四个条件
+  display: -webkit-box;//条件1
+  -webkit-box-orient: vertical;//条件2
+  -webkit-line-clamp: 2;//条件3
+  overflow: hidden;//条件4
+}
+
+
+
+//自定义字体图标
+//1.font-face: 自定义字体格式  icomoon: 文件名称
+@font-face{
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/icomoon.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/icomoon.ttf')  format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/icomoon.svg#icomoon') format('svg'); /* Legacy iOS */
+}
+//2.以下代码: 引入字体图标
+[class^='icon_'],[class*='icon_']{
+  font-family: icomoon;
+  font-weight:normal;
+  font-style:normal;
+  /*面试题: 图标字体出现锯齿 不清晰*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon_comment:after{
+  content: "\e900"; //(图标)通过伪元素引入图标;一定要用转译(\)
+  //content: "\e618";
+}
+.icon_toTop:after{
+  content: "\ea3a";
+}
+.icon_fresh:after{
+  content: "\e984";
+}
+
+
+//header
+header{
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0.8rem;
+  background-color: #fff;
+  border-bottom: 0.01rem solid #e3e3e3;
+  overflow: hidden;//解决margin-top的传递问题;
+  .logo{
+    width: 1.95rem;
+    height: 0.37rem;
+  //  让块元素水平居中
+    margin: 0.21rem auto 0;
+    img{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+//nav
+nav{
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  top: 0.8rem;
+  width: 100%;//w100%  tab
+  height: 0.79rem;//h100%  tab
+  line-height: 0.8rem;
+  background-color: #f7f7f7;//back-co   tab
+  overflow-x: scroll;
+  font-size: 0;
+  //&连字符;  -webkit-scrollbar: 滚动条
+  &::-webkit-scrollbar{
+    display: none;
+  }
+  .nav-inner{
+    //white-space: nowrap: 强制不折行
+    white-space: nowrap;
+    a{
+      //inline-block: 让行内块级在一行显示
+      display: inline-block;
+      padding: 0 0.16rem;
+      font-size: 0.36rem;
+      color: #727272;
+    }
+  }
+  .nav-shadow1{
+    left: 0;
+    //linear-gradient(): 线性渐变;to right(方位)
+    background: linear-gradient(to right,#ccc 30%,transparent 70%);
+  }
+  .nav-shadow2{
+    //.nav-shadow: 调用公用样式
+    .nav-shadow;
+    right: -0.01rem;
+    background: linear-gradient(to left,#ccc 30%,transparent 70%)
+  }
+}
+
+
+//wrapper
+#wrapper{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+
+//focus
+.main{
+  .focus{
+    position: relative;
+    a{
+      color: #fff;
+      img{
+        display: block;
+        width: 100%;
+      }
+      h2{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;//4.宽度(出现省略号必备的4个条件)
+        height: 0.8rem;
+        line-height: 0.8rem;
+        padding: 0 1rem 0 0.3rem;
+        font-size: 0.22rem;
+        //linear-gradient: 渐变的背景,往下线性渐变
+        background: linear-gradient(to bottom,transparent,#000);
+        //box-sizing: 解决加padding的问题;(怪异盒模型)
+        box-sizing: border-box;
+        //单行文本出现(...)必备的四个条件
+        white-space: nowrap;//1.强制不换行
+        overflow: hidden;//2.溢出隐藏
+        text-overflow: ellipsis;//3.省略号
+      }
+    }
+    .swiper-pagination{
+      color: #fff;
+      font-size: 0.2rem;
+      text-align: right;
+      //插件默认为0,这里修改left:auto;
+      left: auto;
+      right: 0.2rem;
+      .swiper-pagination-current{
+        font-size: 0.36rem;
+        color: #f54343;
+      }
+    }
+  }
+}
+
+
+//边框线
+section{
+  border-bottom: 0.1rem solid #efefef;
+}
+
+
+//左图右文
+.item{
+  padding: 0.24rem 0.3rem;
+  //弹性盒模型
+  a{
+    //-webkit-flex: 新版本的弹性盒模型
+    .flex;
+    .pic{
+      display: block;
+      width: 1.82rem;
+      height: 1.3rem;
+      margin-right: 0.3rem;
+    }
+    .txt{
+      //去掉.pic的宽度之外,余下的一等份;
+      -webkit-flex: 1;
+      flex: 1;
+      //justify-content: space-between: 控制元素的对齐方式;(新版本的)两端对齐
+      .flex;
+      justify-content: space-between;
+      //方向: 默认水平方向,修改为垂直
+      //flex-direction: column: 控制元素的垂直方向排列;(新版本的)控制方向
+      flex-direction: column;
+      //justify-content和flex-direction是在弹性盒模型flex的基础上才有的属性
+      font-size: 0.22rem;
+      color: #999;
+      h2{
+        .title;//引用公用样式
+      }
+      .info{
+        .flex;
+        justify-content: space-between;
+        .left{
+          .flex;
+          .source{
+            margin-right: 0.2rem;
+          }
+        }
+        .right{
+          .flex;
+          .icon_comment{
+            margin-left: 0.1rem;
+            //vertical-align: middle;基线对齐
+            vertical-align: middle;
+          }
+          .label{
+            padding: 0 0.06rem;
+            margin-left: 0.2rem;
+            border: 1px solid #f54343;
+            border-radius: 0.03rem;
+            color: #f54343;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+.itemPics{
+  padding: 0.24rem 0.3rem;
+    h2{
+      .title;
+    }
+    h2.tit{
+      margin-bottom: 0.07rem;
+    }
+  //三小图
+  .picBox{
+    margin: 0.25rem 0;
+    overflow: hidden;
+    .pics{
+      margin-left: -0.09rem;
+      img{
+        float: left;
+        width: 33.33%;
+        padding-left: 0.09rem;
+        box-sizing: border-box;
+      }
+    }
+    .info{
+      .flex;
+      justify-content: space-between;
+      .left{
+        .flex;
+        .source{
+          margin-right: 0.2rem;
+        }
+      }
+      .right{
+        .flex;
+        .icon_comment{
+          margin-left: 0.1rem;
+          //vertical-align: middle;基线对齐
+          vertical-align: middle;
+        }
+        .label{
+          padding: 0 0.06rem;
+          margin-left: 0.2rem;
+          border: 1px solid #f54343;
+          border-radius: 0.03rem;
+          color: #f54343;
+        }
+      }
+    }
+  }
+  //大图
+  .picBox{
+    margin: 0.25rem 0;
+    img{
+      display: block;
+      width: 100%;
+    }
+  }
+  .info{
+    .flex;
+    justify-content: space-between;
+    font-size: 0.22rem;
+    color: #999;
+    .left{
+      .flex;
+      .source{
+        margin-right: 0.2rem;
+      }
+    }
+    .right{
+      .flex;
+      .icon_comment{
+        margin-left: 0.1rem;
+        //vertical-align: middle;基线对齐
+        vertical-align: middle;
+      }
+      .label{
+        padding: 0 0.06rem;
+        margin-left: 0.2rem;
+        border: 1px solid #f54343;
+        border-radius: 0.03rem;
+        color: #f54343;
+      }
+    }
+  }
+}
+
+
+//漂浮栏
+.sub-box{
+  position: fixed;
+  right: 0.53rem;
+  bottom: 1.5rem;
+  z-index: 9999;
+  a{
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    background: rgba(102,102,102,.5);//#666的rgba的色值
+    margin-bottom: 0.4rem;
+    text-align: center;
+    font-size: 0.5rem;
+    color: #fff;
+    .icon_refresh{
+      font-size: 0.4rem;
+    }
+  }
+}
+
+
+
+//上拉刷新 下拉加载的动画内容
+.top{
+  top: 0;
+}
+.footer{
+  bottom: 0;
+}
+.top,.footer{
+  position: fixed;
+  left: 0;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 100%;
+  background-color: #0dcecb;
+  color: #fff;
+  z-index: 100;
+}
+#wrapper{
+  position: absolute;
+  left: 0;
+  top: 50px;
+  bottom: 50px;
+  width: 100%;
+  background-color: #fafafa;
+  z-index: 10;
+}
+.news-lists .item{
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #CFCFCF;
+}
+.news-lists{
+  position: relative;
+}
+#pullDown, #pullUp {
+  background:#fff;
+  height:40px;
+  line-height:40px;
+  padding:5px 10px;
+  border-bottom:1px solid #ccc;
+  font-weight:bold;
+  font-size:14px;
+  color:#888;
+}
+#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+  display:block; float:left;
+  width:40px; height:40px;
+  background:url(http://sandbox.runjs.cn/uploads/rs/200/ptvnx6ur/pull-icon@2x.png) 0 0 no-repeat;
+  -webkit-background-size:40px 80px;
+  background-size:40px 80px;
+  -webkit-transition-property:-webkit-transform;
+  -webkit-transition-duration:250ms;
+}
+#pullDown .pullDownIcon {
+  -webkit-transform:rotate(0deg) translateZ(0);
+}
+#pullUp .pullUpIcon  {
+  -webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullDown.flip .pullDownIcon {
+  -webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullUp.flip .pullUpIcon {
+  -webkit-transform:rotate(0deg) translateZ(0);
+}
+
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+  background-position:0 100%;
+  -webkit-transform:rotate(0deg) translateZ(0);
+  -webkit-transition-duration:0ms;
+
+  -webkit-animation-name:loading;
+  -webkit-animation-duration:2s;
+  -webkit-animation-iteration-count:infinite;
+  -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+  from { -webkit-transform:rotate(0deg) translateZ(0); }
+  to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//单行文字出现(...)必备的四个条件
+//1.宽度
+//2.
+//3.文本显示的行数   -webkit-line-clamp: 1;
+//4.溢出隐藏
+
+
+
+
+
+
+//多行文字出现(...)必备的四个条件
+//1.转化为弹性和模型  display: -webkit-box;
+//2.规定元素的方向,默认是水平,修改为垂直     -webkit-box-orient: vertical
+//3.文字显示的行数  -webkit-line-clamp: 2;
+//4.溢出隐藏    overflow: hidden;
+
+
+
+
+
+
+
+
+//弹性盒模型的3个版本
+//box(旧版本) -flexbox(过渡版本的写法)
+//flex(新版本)
