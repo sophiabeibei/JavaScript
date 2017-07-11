@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- lang="en": 设置当前页面的语言为英语,如果当前页面中出现中文汉字,提示是否翻译该网页,根据自己的需求选择是否去掉-->
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    //数据类型: 1)基本数据类型;2)引用数据类型
+    /*var a = 12;//Number(数值)
+     a = "珠峰培训";//String(字符串)"珠峰培训"只要用单引号或者双引号包含起来的都是字符串;
+     a = true;//Boolean(布尔值)
+     a = null;//null(空)
+     a = undefined;//undefined(未定义)
+     a = {name: "珠峰",age: 8};//Object(对象)
+     a = [];//
+     a = /^(\+|-)?(\d|([1-9]\d+))(\.\d+)?$/;//
+     a = function () {};//
+     */
+
+    //NaN
+    /*console.log(isNaN(12));//false
+     console.log(isNaN("珠峰"));//true
+     console.log(isNaN("12"));//false
+     console.log(isNaN("12px"));//false
+     */
+
+
+    //Number()方法: 转换数据类型;(强制转换)
+    console.log(Number("12"));//12
+    console.log(Number("12px"));//NaN
+    console.log(Number(true));//1
+    console.log(Number(false));//0
+    console.log(Number(null));//0
+    console.log(Number(undefined));//NaN
+
+
+
+    //parseInt()方法: 转换数据类型(非强制转换)
+    console.log(parseInt("12px"));//12
+    console.log(parseInt("12px13"));//12
+
+
+    //parseFloat()方法: 转换数据类型(非强制转换)
+    console.log(parseInt("12.5px"));//12
+    console.log(parseFloat("12.5px"));//12.5
+    console.log(parseFloat("12.5.8px"));//12.5
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

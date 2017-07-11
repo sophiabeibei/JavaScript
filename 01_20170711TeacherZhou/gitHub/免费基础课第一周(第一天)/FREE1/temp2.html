@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><!--lang="en" 设置当前页面的语言为英语，如果当前页面中出现中文汉字，提示是否翻译该网页，根据自己的需求选择是否去掉-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*WS：CTRL+SHIFT+/ 添加多行注释*/
+    /*var a = 12;
+     a = '珠峰培训';//->"珠峰培训" 只要用单引号或者双引号包含起来的都是字符串格式的数据
+     a = true;//->false
+     a = null;
+     a = undefined;
+     a = {name: '珠峰', age: 8};
+     a = [12, 23, 34];
+     a = /^(\+|-)?(\d|([1-9]\d+))(\.\d+)?$/;
+     a = function () {
+
+     };*/
+
+    /*console.log(isNaN(12));
+     console.log(isNaN('珠峰'));
+     console.log(isNaN('12'));//->false 它是有效数字
+     console.log(isNaN('12px'));//->true*/
+
+    /*console.log(Number('12')); //->12
+    console.log(Number('12px'));//->NaN
+    console.log(Number(true));//->1
+    console.log(Number(false));//->0
+    console.log(Number(null));//->0
+    console.log(Number(undefined));//->NaN*/
+
+    console.log(Number('12px'));//->NaN
+    console.log(parseInt('12px'));//->12
+    console.log(parseInt('12px13'));//->12
+    console.log(parseInt('12.5px'));//->12
+    console.log(parseFloat('12.5px'));//->12.5
+    console.log(parseFloat('12.5.8px'));//->12.5
+
+    /*思考题：parseInt([value],[参数2]) 扩展第二个参数的意思*/
+
+</script>
+</body>
+</html>
