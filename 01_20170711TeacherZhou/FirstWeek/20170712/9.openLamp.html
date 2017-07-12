@@ -17,6 +17,8 @@
         }
         input{
             outline: none;
+            border: 0;
+            background: none;
         }
         .lampBtn{
             position: absolute;
@@ -46,20 +48,18 @@
     /*lampBox.onclick = function () {
         console.log(oBody.style.backgroundColor);
         var bgColor = oBody.style.backgroundColor;
-        if(bgColor === "white"){
+        if (bgColor === "white") {
             oBody.style.backgroundColor = "black";
             //lampBox.value = "开灯";: 设置input表单元素的value值;
-            lampBox.value = "开灯";
-
+            /!*lampBox.value = "开灯";
+            *!/
             //this.value = "开灯";: this->lampBox给当前元素绑定点击事件,function中的this是当前元素本身;
-            /!*this.value = "开灯";
-            *!/
-        }else{
+            this.value = "开灯";
+        } else {
             oBody.style.backgroundColor = "white";
-            lampBox.value = "关灯";
-
-            /!*this.value = "开灯";
+            /!*lampBox.value = "关灯";
             *!/
+            this.value = "关灯";
         }
     };
     */
@@ -70,20 +70,25 @@
     * 1.实现红->蓝->绿->黑->白->黄->红 的颜色切换;(使用if,else..if,else和switch...case各实现一遍)
     * 2.如果中间加载一个颜色"粉色pink",能否实现切换呢???如果不能,请分析原因;
     * 3.以下代码用bgColor代替原有的oBody.style.backgroundColor不能实现需求,为什么???
-    *
+    *       解答本题: 因为oBody.style.backgroundColor获取到的是颜色本身.因为颜色本身就是个值,不能设置样式;
     * 4.预习: for循环的视频(第12个视频),综合案例视频(15个视频),隔行变色(14个视频);
     *
     * */
+
     lampBox.onclick = function () {
         var bgColor = oBody.style.backgroundColor;
+        console.log(bgColor);//white;-->oBody.style.backgroundColor获取到的是颜色本身.因为颜色本身就是个值,不能设置样式;
         if (bgColor === "white") {
-            lampBox = "black";
-            lampBox.value = "开灯";
+            bgColor = "black";
+            console.log(bgColor);//black
+            //解答上面的题: 因为这里的bgColor是颜色,颜色没有style;不能给颜色赋值;
+            this.value = "开灯";
         } else {
-            lampBox = "white";
-            lampBox.value = "关灯";
+            bgColor = "white";
+            this.value = "关灯";
         }
     };
+
 
 
 
