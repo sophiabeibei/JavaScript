@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>三元运算符</title>
+</head>
+<body>
+<script>
+    var num = 12;
+    if (num > 0) {
+        num++;
+    } else {
+        num--;
+    }
+    num > 0 ? num++ : num--;
+
+    num > 0 ? (num < 10 ? num++ : num--) : (num > -5 ? num += 2 : num -= 3);
+    if (num > 0) {
+        if (num < 10) {
+
+        } else {
+
+        }
+    } else {
+        if (num > -5) {
+
+        } else {
+
+        }
+    }
+</script>
+</body>
+</html>

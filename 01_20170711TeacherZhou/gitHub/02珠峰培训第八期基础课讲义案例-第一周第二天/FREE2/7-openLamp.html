@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯案例-珠峰培训</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            outline: none; /*去除鼠标操作时候表单元素外面浏览器默认给加的那个光圈的*/
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .lampBtn {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 100px;
+            height: 35px;
+            border-radius: 5px;
+            border: 1px solid #999;
+            background: -webkit-linear-gradient(top left, lightblue, lightgreen, lightpink, lightgoldenrodyellow);
+            cursor: pointer; /*鼠标形状：小手，代表可以点击*/
+        }
+    </style>
+</head>
+<body style="background-color: white;">
+
+<input type="button" value="关灯" class="lampBtn" id="lampBox">
+
+<script>
+    /*
+     * 1、首先分析需求，把具体需要做的事情分析透彻；
+     * 2、然后把需要操作的元素依次获取到；
+     * 3、按照之前分析的步骤，一步步去实现即可；
+     */
+    var oBody = document.body; //->window.document.body：获取HTML页面中的BODY(WINDOW可以省略)
+    var lampBox = document.getElementById('lampBox');//->在当前页面中，通过元素的ID获取到这个元素
+
+    lampBox.onclick = function () {//->给当前元素绑定点击事件，当点击当前元素的时候执行FUNCTION，把需要处理的事情写在函数中即可 =>DOM0级事件绑定
+
+        //->获取BODY的背景颜色
+        //=>元素.style来获取元素的样式值，只能获取写在元素行内样式上的样式属性值，不写或者写在样式表中的样式值获取不到(如果想要获取需要使用getComputedStyle/currentStyle这个方法)
+        var bgColor = oBody.style.backgroundColor;
+        if (bgColor === 'white') {
+            oBody.style.backgroundColor = 'black';//->设置元素的“行内”样式：背景颜色是黑色
+        } else {
+            oBody.style.backgroundColor = 'white';
+        }
+    };
+</script>
+</body>
+</html>

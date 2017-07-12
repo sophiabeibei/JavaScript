@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>if判断</title>
+</head>
+<body>
+<script>
+    /*
+     * num++ <=> num+=1 <=> num=num+1  在自身基础上加一
+     * num--
+     * num+=2 <=> num=num+2
+     */
+
+    //    var num = 12;
+    //    if (num >= 10) {
+    //        num++;
+    //    } else if (num < 10 && num >= 0) {//-> ||只有一个成立就成立  &&都成立才成立
+    //        num--;
+    //    } else {
+    //        num += 2;
+    //    }
+    //    console.log(num);
+
+    //    if (1) {//->条件是单独的一个值，首先把这个值转换为布尔，验证真假即可
+    //        console.log('ok');
+    //    }
+
+    //    if (12 == '12') {
+    //        console.log('ok');
+    //    }
+    /*
+     * JS中等于号的三种情况：
+     *  =：赋值
+     *  ==：比较(不限制类型,如果左右两边比较的数据类型不一样,先会转成一样的,然后再进行比较)
+     *    12 == '12' =>首先把'12'变为数字12 =>true
+     *  ===：绝对比较(必须保证左右两边的数据类型一致才会进行下一步的比较，如果不一致直接是FALSE)
+     *    12==='12' =>false
+     */
+
+    //->BAT面试题
+    var num = Number('12px'); //->NaN
+    if (num == 12) {
+        console.log(12);
+    } else if (num === '12') {
+        console.log('12');
+    } else if (num === NaN) {//->NaN===NaN：false 不是一个数的范围很广，是没有办法进行比较的，NaN和任何值都不相等
+        console.log(NaN);
+    } else {
+        console.log('啥也不是');
+    }
+</script>
+</body>
+</html>

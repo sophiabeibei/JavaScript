@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯案例-珠峰培训</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            outline: none; /*去除鼠标操作时候表单元素外面浏览器默认给加的那个光圈的*/
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .lampBtn {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 100px;
+            height: 35px;
+            border-radius: 5px;
+            border: 1px solid #999;
+            background: -webkit-linear-gradient(top left, lightblue, lightgreen, lightpink, lightgoldenrodyellow);
+            cursor: pointer; /*鼠标形状：小手，代表可以点击*/
+        }
+    </style>
+</head>
+<body style="background-color: white;">
+
+<input type="button" value="关灯" class="lampBtn" id="lampBox">
+
+<script>
+    var oBody = document.body;
+    var lampBox = document.getElementById('lampBox');
+    //    lampBox.onclick = function () {
+    //        var bgColor = oBody.style.backgroundColor;
+    //        if (bgColor === 'white') {
+    //            oBody.style.backgroundColor = 'black';
+    //            //lampBox.value = '开灯';//->设置INPUT表单元素的VALUE值
+    //            this.value = '开灯';//this->lampBox 给当前元素绑定点击事件，FUNCTION中的THIS是当前元素本身
+    //        } else {
+    //            oBody.style.backgroundColor = 'white';
+    //            lampBox.value = '关灯';
+    //        }
+    //    };
+
+
+    /*
+     * 扩展：
+     * 1、实现 红->蓝->绿->黑->白->黄->红 的颜色切换(if、else 和 switch case 各实现一遍)
+     * 2、如果中间加载一个颜色“粉色pink”，能否实现切换呢？如果不能分析原因？
+     * 3、以下代码用bgColor代替原有的oBody.style.backgroundColor不能实现需求，为什么？
+     */
+    lampBox.onclick = function () {
+        var bgColor = oBody.style.backgroundColor;
+        if (bgColor === 'white') {
+            bgColor = 'black';
+            this.value = '开灯';
+        } else {
+            bgColor = 'white';
+            lampBox.value = '关灯';
+        }
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-以面向对象的思想理解对象</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*var num = 12;
+     var obj = {
+     name: "许潇文",
+     age: 13
+     };
+     */
+
+
+    //浏览器给js提供了一个运行的环境---->全局作用域
+    /**引用数据类型操作的核心原理:
+    * 1.创建一个变量;
+    * 2.会给对象obj创建一个存储空间;然后把对象中的键值对依次存储在这个空间中(这个空间是一个16进制的地址)
+    *
+    *
+    *
+    */
+
+
+
+    /*var num1 = 12;
+    var num2 = num1;//把num1的值赋值给num2
+    num2 = 13;
+    console.log(num1);//12
+
+    var obj1 = {age: 18};
+    var obj2 = obj1;
+    obj2.age = 20;
+    console.log(obj1.age);//20
+    console.log(obj2.age);//20
+    */
+
+
+
+    //思考题
+    var obj1 = {num: 12};
+    var obj2 = obj1;
+    obj2 = {num: 13};//num2又新开辟了一个空间地址
+    console.log(obj1.num);//12;
+
+
+</script>
+</body>
+</html>

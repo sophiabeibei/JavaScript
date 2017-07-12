@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象数据类型</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /**
+     * obj: 对象名
+     * name/age: 属性名(key)
+     * 王彬翊/82: 属性值(value值)
+     * 对象就是由多组键值对组成的;每组之间用逗号隔开;
+     *
+     */
+
+    //对象名/属性名/属性值/修改/增加/获取/假删除和真删除
+    /* var obj = {
+     name: "王彬翊",
+     age: 82
+     };
+     //修改: 因为age已经存在(一个对象中的key是不能重复的)
+     obj.name = 28;
+     //增加: 因为obj对象中没有sex这个key,所以是增加;
+     obj.sex = "man";
+     //获取: 在控制台输出/打印
+     console.log(obj.name);//"王彬翊"
+     //假删除: 把值赋值为null,但是该属性还存在;
+     obj.age = null;//null
+     //真删除: 把key和value在对象中都移除;
+     delete obj.sex;
+     console.log(obj);//控制台已经不存在sex属性
+     console.log(obj.sex);//undefined
+     */
+
+
+
+    //变量和字符串的区别: 变量代表的是所存储的值;字符串代表的是自己;
+    /*var num = 12;
+     console.log(num);//12;        num-->是变量num
+     console.log("num");//"num";  'num'--->是字符串num
+     */
+
+    /*var obj = {
+     name: "王彬翊",
+     age: 82
+     };
+
+     //获取: obj["name"]和obj.name的取值是一样
+     console.log(obj["name"]);//"王彬翊";   -->获取obj中name属性名对应的属性值;
+     //修改: obj.name = "王彬翊是个大帅锅"
+     obj["name"] = "王彬翊是个大帅锅";
+     console.log(obj["name"]);//"王彬翊是个大帅锅"
+     //获取的另一个方式: 把obj.age 赋值给变量num
+     var num = "age";
+     console.log(num);//"age"
+     console.log(obj[num]);//82;   -->obj["age"] 获取的是obj中属性名为age的属性值,此处的num是变量,代表的是存储的值"age"
+     console.log(obj["num"]);//undefined;   obj["num"]获取num属性名对应的属性值;因为在obj对象里这里没有num属性;
+     */
+
+
+    var ary = [12,23,34];
+    console.dir(ary);
+    //数组也是对象,数组的属性名是数字,我们看到的是属性值
+    /*{
+     0: 12,        0是第一项的属性名也是它的索引(index)
+     1: 23,
+     2: 34,
+     length: 3 ->数组太女生就有的属性,代表数组的长度
+     }*/
+
+    /*ary["0"] => ary[0]
+     ary.0;//如果属性名是数字,只能用中括号的方式,点的方式不支持;
+     ary.length
+     ary["length"]
+     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

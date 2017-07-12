@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>对象数据类型</title>
+</head>
+<body>
+<script>
+    /*var obj = {
+     name: '王彬翊',
+     age: 82
+     };*/
+
+    /*obj.age = 28;//->修改:因为AGE已经存在(一个对象中的KEY是不能重复的)
+     obj.sex = 'MAN';//->增加:之前没有SEX这个KEY
+
+     console.log(obj.name);//->获取
+
+     obj.age = null;//->假删除:把值赋值为NULL,但是该属性还存在
+     delete obj.sex;//->真删除:把KEY和VALUE在对象中都移除了
+
+     console.log(obj.age);//->null
+     console.log(obj.sex);//->undefined*/
+
+
+    /*var num = 12;
+     console.log(num);//->此处是变量，代表的是自身存储的值 =>12
+     console.log('num');//->此处是字符串，代表的就是本身'num' =>'num'
+     */
+
+    /*var obj = {
+     name: '王彬翊',
+     age: 82
+     };
+     console.log(obj['name']);//->此处的'name'是个字符串，代表的就是本身的意思，这里获取的是OBJ中属性名为NAME的属性值 =>'王彬翊'  等价于 obj.name
+
+     //obj[xxx] ->获取属性名为xxx的属性值
+
+     var num = 'age';
+     console.log(num);//->'age'
+     console.log(obj[num]);//-> obj['age'] 获取AGE的属性值
+     console.log(obj['num']);//-> obj['num'] 获取NUM属性名对应的属性值*/
+
+    var ary = [12, 23, 34];
+    console.dir(ary);
+    //->数组也是对象，数组的属性名是数字，我们看到的是属性值
+    /*{
+        0:12,  ->0是它第一项的属性名也是它的索引
+        1:23,
+        2:34,
+        length:3  ->数组天生就有的属性，代表数组的长度
+    }*/
+    /*ary['0'] <=> ary[0]
+    ary.0 //->如果属性名是数字，只能用中括号的方式，点的方式不支持
+    ary.length  <==> ary['length']*/
+</script>
+</body>
+</html>

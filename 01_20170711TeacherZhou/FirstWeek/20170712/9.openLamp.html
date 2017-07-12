@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9.开关灯案例</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 14px;
+            color: #555;
+        }
+        input{
+            outline: none;
+        }
+        .lampBtn{
+            position: absolute;
+            top: 50px;
+            right: 50%;
+            width: 100px;
+            height: 35px;
+            padding-left: 10px;
+            border-radius: 5px;
+            border: 1px solid #999;
+            background: -webkit-linear-gradient(top left,lightblue,lightgreen,lightpink,lightgoldenrodyellow);
+            cursor: pointer;
+            line-height: 35px;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 5px;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body style="background-color: white;">
+<input type="button" value="关灯" class="lampBtn" id="lampBox">
+<script type="text/javascript">
+    var oBody = document.body;
+    var lampBox = document.getElementById("lampBox");
+    /*lampBox.onclick = function () {
+        console.log(oBody.style.backgroundColor);
+        var bgColor = oBody.style.backgroundColor;
+        if(bgColor === "white"){
+            oBody.style.backgroundColor = "black";
+            //lampBox.value = "开灯";: 设置input表单元素的value值;
+            lampBox.value = "开灯";
+
+            //this.value = "开灯";: this->lampBox给当前元素绑定点击事件,function中的this是当前元素本身;
+            /!*this.value = "开灯";
+            *!/
+        }else{
+            oBody.style.backgroundColor = "white";
+            lampBox.value = "关灯";
+
+            /!*this.value = "开灯";
+            *!/
+        }
+    };
+    */
+
+
+    //作业--
+    /*扩展:
+    * 1.实现红->蓝->绿->黑->白->黄->红 的颜色切换;(使用if,else..if,else和switch...case各实现一遍)
+    * 2.如果中间加载一个颜色"粉色pink",能否实现切换呢???如果不能,请分析原因;
+    * 3.以下代码用bgColor代替原有的oBody.style.backgroundColor不能实现需求,为什么???
+    *
+    * 4.预习: for循环的视频(第12个视频),综合案例视频(15个视频),隔行变色(14个视频);
+    *
+    * */
+    lampBox.onclick = function () {
+        var bgColor = oBody.style.backgroundColor;
+        if (bgColor === "white") {
+            lampBox = "black";
+            lampBox.value = "开灯";
+        } else {
+            lampBox = "white";
+            lampBox.value = "关灯";
+        }
+    };
+
+
+
+</script>
+</body>
+</html>
