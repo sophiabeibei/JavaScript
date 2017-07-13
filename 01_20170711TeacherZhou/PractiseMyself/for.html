@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**变量销毁/保留
+     * if语句中,执行完之后,变量会销毁;
+     * 对于块级作用域的语句来说,例: for循环语句,循环结束后,会存在于循环外部的执行环境中;
+     *
+     */
+
+    /**循环
+     * for四部曲:
+     *    1.设置初始值  var i=0;
+     *    2.设置循环执行条件   i<5;
+     *    3.执行循环体中的内容  {}包起来的内容(循环体);
+     *    4.每一轮循环完成后都执行i++累加操作;
+     * while
+     * for...in
+     *
+     */
+    for(var i = 0;i < 5;i++){
+        console.log(i);
+    }
+    console.log(i);
+
+
+</script>
+</body>
+</html>
