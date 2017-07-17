@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+        }
+        ul{
+            list-style: none;
+        }
+        .tabBox{
+            width: 600px;
+            margin: 20px auto;
+        }
+        .tabBox ul{
+            position: relative;
+            top: 1px;
+            overflow: hidden;/*解决子元素浮动bug的方法1;方法2是::after  clear:both*/
+        }
+        .tabBox ul li{
+            float: left;/*设置浮动后,子元素的高度不能把父元素撑开,这是浮动的bug*/
+            padding: 0 10px;
+            line-height: 35px;
+            margin-right: 10px;
+            background: #eee;
+            border: 1px solid #999;
+            cursor: pointer;
+        }
+        .tabBox div{
+            display: none;
+            height: 110px;
+            padding: 20px;
+            border: 1px solid #999;
+        }
+        .tabBox div.select{
+            display: block;
+        }
+        .tabBox ul li.select{
+            background: #fff;
+            border-bottom-color: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="tabBox" id="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>电影</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">热门新闻</div>
+    <div>好莱坞电影</div>
+    <div>励志音乐</div>
+</div>
+
+<script type="text/javascript">
+    var tabBox = document.getElementById("tabBox"),
+        oList = tabBox.getElementsByTagName("li"),
+        oDivList = tabBox.getElementsByTagName("div");
+
+
+    for (var i = 0; i < oList.length; i++) {
+        //var cur = oList[i];
+        oList[i].onclick = function () {
+            //tabChage();: 执行这个方法实现页卡切换;需要把当前点击的这个li索引传递给这个方法;
+            tabChange(cur);
+            //是因为: 当我们去点击每一个li的时候,当前循环绑定点击事件的这些代码都完成了;循环也结束了;
+            /*i=0 第一次循环,此时我们绑定的方法仅仅是创建函数的部分,这个函数并没有执行(只有点击的时候才执行,而循环绑定的时候,还没有点击呢)=>而函数创建的时候,函数体中的js代码并不是代码,而是一堆字符串,只有执行的时候才会编程代码;
+            oList[0].onclick = function () {
+                console.log(i);//不管点击的是哪一个,i的值都是3;
+            }
+            i = 1 第二次循环
+            oList[1].onclick = function () {
+                console.log(i);
+            }
+            i = 2 第二次循环
+            oList[2].onclick = function () {
+                console.log(i);
+            }
+            i = 3 循环结束;
+            */
+        }
+
+    }
+
+    //tabChage: 点击每个li的时候需要做的事情
+    //nIndex: 传递给函数的是当前点击这个li的索引
+    function tabChange(nIndex) {
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].className = null;
+            oDivList.className = null;
+        }
+        oList[nIndex].className = "select";
+        oDivList[nIndex].className = "select";
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

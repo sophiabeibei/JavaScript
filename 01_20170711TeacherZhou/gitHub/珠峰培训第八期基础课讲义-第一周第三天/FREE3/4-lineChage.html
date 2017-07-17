@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .outlineBox {
+            margin: 20px auto;
+            width: 300px;
+        }
+
+        .outlineBox li {
+            line-height: 34px;
+            border-bottom: 1px dashed #999;
+        }
+
+        .bg1 {
+            background: lightcyan;
+        }
+
+        .bg2 {
+            background: lightgoldenrodyellow;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="outlineBox" id="outlineBox">
+    <li>HTML(5)</li>
+    <li>CSS(3)</li>
+    <li>JS(JQ/ZEPTO/bootstrap...)</li>
+    <li>移动端开发</li>
+    <li>VUE(全家桶)</li>
+    <li>REACT(全家桶)</li>
+    <li>NODE(EXPRESS/KOA/MONGODB...)</li>
+</ul>
+
+<script>
+    //->分析规律和需要处理的业务逻辑：让每一个LI按照一定的规律添加CLASS即可(奇数行->BG1 偶数行->BG2)
+
+    //->想操作谁，先获取谁：我们需要获取outlineBox中的所有LI
+    //=>context.getElementsByTagName([标签名])：在指定的上下文中(context->限定获取的范围)通过元素的标签名获取一组元素
+    var outlineBox = document.getElementById('outlineBox');
+    var oList = outlineBox.getElementsByTagName('li');
+    //=>oList：它是一个类数组集合(类似于数组但是不是数组)
+    //=>以数字作为索引，索引从零开始，每一个索引代表某一个LI，例如：0->第一个LI  3->第四个LI  n->第N+1个LI  length-1->最后一个LI的索引
+    //=>oList[索引(属性名)] 可以获取到具体的某一个LI
+    //=>oList.length:获取集合的长度
+
+    for (var i = 0; i < oList.length; i++) {
+        /*i=0 -> 第一次循环 -> 第一个LI -> oList[0]
+         i=1 -> 第二次循环 -> 第二个LI -> oList[1]
+         ...
+         oList[i]//->每一次循环，把变量I存储的值(0、1...)作为索引，到集合中获取到指定的LI，而找到的LI正好是当前这次循环需要操作的那个LI*/
+        var cur = oList[i];//->当前要操作的那个LI
+        //cur.className = 'bg1';//->元素.className=xxx：给当前元素设置CLASS样式值
+        /*索引为0的LI是第一个(奇数行)
+         索引为1的LI是第二个(偶数行)
+         ...
+         索引是奇数的代表偶数行，索引为偶数的代表奇数行
+         索引奇数+BG2
+         索引偶数+BG1
+
+         验证I值的奇偶数：用I的值除以2取余数，余数为零说明I是偶数，余数为1说明I是奇数  i%2(i mo 2)=>i除以2取余数
+         */
+        if (i % 2 === 0) {
+            cur.className = 'bg1';
+        } else {
+            cur.className = 'bg2';
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -14,7 +14,42 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="10.tab.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/10.tab.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="71" column="62" lean-forward="false" selection-start-line="71" selection-start-column="62" selection-end-line="71" selection-end-column="62" />
+              <folding>
+                <element signature="e#2442#2677#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="11.tab2-index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/11.tab2-index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="72" column="38" lean-forward="false" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="38" />
+              <folding>
+                <element signature="e#1954#2189#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="11.tab2-bibao.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/11.tab2-bibao.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="71" column="29" lean-forward="true" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -46,6 +81,17 @@
         <option value="$PROJECT_DIR$/FirstWeek/20170713/for.html" />
         <option value="$PROJECT_DIR$/FirstWeek/20170713/sort.html" />
         <option value="$PROJECT_DIR$/FirstWeek/20170713/1.think.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/2.for.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/3.for...in.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/4.lineChange.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/6-string.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/7.check.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/8.function.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/9.function.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/4.lineChange1.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/10.tab.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/11.tab2-index.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170713/11.tab2-bibao.html" />
       </list>
     </option>
   </component>
@@ -137,6 +183,7 @@
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\PractiseMyself" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek\20170713" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek\20170712" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek" />
     </key>
@@ -237,17 +284,17 @@
       <workItem from="1499818423231" duration="35343000" />
       <workItem from="1499863553953" duration="194000" />
       <workItem from="1499872134875" duration="3548000" />
-      <workItem from="1499905781756" duration="5444000" />
+      <workItem from="1499905781756" duration="29083000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58103000" />
+    <option name="totallyTimeSpent" value="81742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21502976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21502976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -429,6 +476,98 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/3.for...in.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="10" column="62" lean-forward="true" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/2.for.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="52" column="6" lean-forward="true" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/4.lineChange1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="48" column="41" lean-forward="true" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/9.function.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/8.function.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/7.check.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/6.string.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/4.lineChange.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="84" column="10" lean-forward="true" selection-start-line="84" selection-start-column="10" selection-end-line="84" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/10.tab.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="71" column="62" lean-forward="false" selection-start-line="71" selection-start-column="62" selection-end-line="71" selection-end-column="62" />
+          <folding>
+            <element signature="e#2442#2677#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/11.tab2-index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="72" column="38" lean-forward="false" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="38" />
+          <folding>
+            <element signature="e#1954#2189#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170713/11.tab2-bibao.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="71" column="29" lean-forward="true" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
           <folding />
         </state>
       </provider>

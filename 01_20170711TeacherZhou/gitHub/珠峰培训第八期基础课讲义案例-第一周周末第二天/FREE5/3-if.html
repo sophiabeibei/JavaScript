@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //    var num = Number('12.5px');//->NaN
+    //    if (num == 12) {
+    //        console.log(12);
+    //    } else if (num == 12.5) {
+    //        console.log(12.5);
+    //    } else if (num == NaN) {//->NaN==NaN:false
+    //        console.log(NaN);
+    //    } else if (typeof num == 'number') {//->typeof NaN=='number'：true
+    //        console.log('number');
+    //    } else {
+    //        console.log('nothing');
+    //    }
+
+
+    var num = parseFloat('12.5px');//->12.5
+    if (num == '12') {
+        console.log(12);
+    } else if (num === '12.5') {
+        console.log(12.5);
+    } else if (num == NaN) {
+        console.log(NaN);
+    } else if (typeof num == 'number') {
+        console.log('number');//->输出字符串number
+    } else {
+        console.log('nothing');
+    }
+
+    /*
+     * 等号的几种情况：
+     *  =：赋值
+     *  ==：比较
+     *  ===：绝对比较，如果左右两边数据类型不一致，结果肯定是FALSE，不会向两个等于号一样转换数据类型（类型相同、值也相同才会为TRUE）
+     */
+    //    console.log(1 == 1);//->true
+    //    console.log(1 == '1');//->true 两个等于号在比较的时候，如果左右两边的数据类型不一样，首先转换为一样的(这里是把字符串转换为数字 Number('1')->1)
+    //    console.log(1 === '1');//->false
+
+</script>
+</body>
+</html>

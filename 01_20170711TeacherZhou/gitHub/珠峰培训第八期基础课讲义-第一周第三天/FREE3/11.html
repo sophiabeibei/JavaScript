@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .tabBox {
+            margin: 20px auto;
+            width: 500px;
+        }
+
+        .tabBox ul {
+            position: relative;
+            top: 1px; /*整体下移1PX，解决边框重复问题*/
+        }
+
+        .tabBox ul:after { /*清除浮动的BUG*/
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .tabBox ul li {
+            float: left; /*设置浮动后，子元素的高度不能把父元素撑开 =>浮动的BUG*/
+            padding: 0 10px;
+            margin-right: 10px;
+            line-height: 35px;
+            background: #EEE;
+            border: 1px solid #999;
+            cursor: pointer;
+        }
+
+        .tabBox ul li.select {
+            background: #FFF;
+            border-bottom-color: #FFF;
+        }
+
+        .tabBox div {
+            display: none;
+            padding: 20px;
+            height: 110px;
+            border: 1px solid #999;
+        }
+
+        .tabBox div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tabBox" id="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>电影</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">热门新闻</div>
+    <div>好莱坞电影</div>
+    <div>励志音乐</div>
+</div>
+<script>
+    var tabBox = document.getElementById('tabBox');
+    var oList = tabBox.getElementsByTagName('li');
+    var oDivList = tabBox.getElementsByTagName('div');
+
+    //->当我们去点击每一个LI的时候，当前循环绑定点击事件的这些代码都完成了，循环也结束了
+    for (var i = 0; i < oList.length; i++) {
+        oList[i].onclick = function () {
+            console.log(i);//->不管点击的是哪一个，I的值都是3
+        }
+    }
+    /*i=0 第一次循环 此时我们绑定的方法仅仅是创建函数的部分，这个函数并没有执行(只有点击的时候才执行，而循环绑定的时候，还没有点击呢) =>而函数创建的时候，函数体中的JS代码并不是代码，而是一堆字符串，只有执行的时候才会变成代码
+    oList[0].onclick = function () {
+        "console.log(i);"
+    }
+    i=1 第二次循环
+    oList[1].onclick = function () {
+        "console.log(i);"
+    }
+    i=2 第三次循环
+    oList[2].onclick = function () {
+        "console.log(i);"
+    }
+    i=3 循环结束*/
+
+    function tabChange(nIndex) {
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].className = null;
+            oDivList[i].className = null;
+        }
+        oList[nIndex].className = 'select';
+        oDivList[nIndex].className = 'select';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string</title>
+</head>
+<body>
+<script type="text/javascript">
+    //在js中,减法,乘法,除法,都是数学运算,遇到非数字类型,先转换为数字,然后再进行运算;
+    console.log(1 + 1);//2
+    console.log(1 - 1);//0
+    console.log(1 * 1);//1
+    console.log(1 / 1);//1
+
+    console.log("1" - 1);//0
+    console.log(null - 1);//-1    null=>0
+    console.log(undefined - 1);//NaN      undefined=>NaN
+
+
+    //js中的加法: 加法不仅仅是数学运算,还有字符串拼接的效果;
+    console.log(1 + null);//1     null=>0
+    console.log(1 + undefined);//NaN    undefined=>NaN
+
+    console.log(1 + "1");//"11"   =>说明在js中遇到了加号,如果有一头是字符串,则代表的不是数字相加,而是字符串拼接;
+
+    console.log(1 + null + "10" + undefined + null);//110undefinednull
+    /**剖析:
+     * 1 + null - > 1
+     * 1 + "10" - > "110"
+     * "110" + undefined - > "110undefined"
+     * "110undefined" + null - > "110undefinednull"
+     */
+
+    console.log("12" + [12, 34]);//"1212,34"
+    //总结:万物加字符串,都会变成字符串
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .tab {
+            margin: 20px auto;
+            width: 500px;
+        }
+
+        .tab ul {
+            position: relative;
+            top: 1px;
+        }
+
+        .tab ul:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .tab ul li {
+            float: left;
+            margin-right: 10px;
+            line-height: 35px;
+            padding: 0 10px;
+            border: 1px solid #CCC;
+            cursor: pointer;
+            background: #EEE;
+        }
+
+        .tab ul li.select {
+            background: #FFF;
+            border-bottom-color: #FFF;
+        }
+
+        .tab div {
+            display: none;
+            padding: 10px;
+            height: 130px;
+            border: 1px solid #CCC;
+        }
+
+        .tab div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tab" id="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>电影</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">热门新闻</div>
+    <div>最新电影</div>
+    <div>主流音乐</div>
+</div>
+
+<script>
+    /*
+     * 实现选项卡的思路：
+     *  当我们点击某一个LI的时候，做一件事情：先把所有LI和对应DIV的CLASS都清空(清除选中样式)，然后再给当前点击的这个LI和对应的DIV设置CLASS='SELECT'(设置选中样式)
+     */
+    var tabBox = document.getElementById('tabBox');
+    var oList = tabBox.getElementsByTagName('li');
+    var oDivList = tabBox.getElementsByTagName('div');
+
+    //->首先创建一个方法:实现选项卡的切换
+    function changeTab(curIndex) {
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].className = null;
+            oDivList[i].className = null;
+        }
+
+        oList[curIndex].className = 'select';
+        oDivList[curIndex].className = 'select';
+    }
+
+    //->点击LI的时候，执行这件事，实现选项卡
+    //->自定义属性思想
+    for (var i = 0; i < oList.length; i++) {
+        oList[i].zhufengIndex = i;
+        /*
+         * i=0 第一轮循环
+         *   oList[0].zhufengIndex=0;
+         * i=1 第二轮循环
+         *   oList[1].zhufengIndex=1;
+         * i=2 第三轮循环
+         *   oList[2].zhufengIndex=2;
+         * 相当于我们把每一个LI的索引都放在了zhufengIndex这个属性上了
+         */
+
+        oList[i].onclick = function () {
+            //->需要传递的是当前点击这个LI的索引(不能用I,I是3)
+            //->this:当前点击的这个LI
+            changeTab(this.zhufengIndex);
+        }
+    }
+</script>
+</body>
+</html>

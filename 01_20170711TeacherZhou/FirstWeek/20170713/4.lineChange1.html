@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lineChange</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+        }
+        ul{
+            list-style: none;
+        }
+        .outlineBox{
+            width: 500px;
+            margin: 30px auto;
+            box-sizing: border-box;
+        }
+        .outlineBox li{
+            line-height: 34px;
+            /* dashed: 虚线*/
+            border: 1px dashed #999;
+            padding-left: 10px;
+        }
+        .bg1{
+            background: lightblue;
+        }
+        .bg2{
+            background: lightyellow;
+        }
+        .bg3{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<ul class="outlineBox" id="outlineBox">
+    <li>HTML(HTML5)</li>
+    <li>CSS(CSS3)</li>
+    <li>JS(jQuery/zepto/bootstrap/svaper)</li>
+    <li>移动端开发</li>
+    <li>框架: vue(全家桶)</li>
+    <li>框架: react(全家桶)</li>
+    <li>平台: node(express/koa/mongodb);供js开发(运行)的平台</li>
+</ul>
+<script type="text/javascript">
+    var outlineBox = document.getElementById("outlineBox"),
+        oList = outlineBox.getElementsByTagName("li");
+    for (var i = 0; i < oList.length; i++) {
+        var cur = oList[i];
+        if (i % 2 === 0) {
+            cur.className = "bg1";
+        } else {
+            cur.className = "bg2";
+        }
+        cur.onmouseover = function () {
+
+        }
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .tabBox {
+            margin: 20px auto;
+            width: 500px;
+        }
+
+        .tabBox ul {
+            position: relative;
+            top: 1px; /*整体下移1PX，解决边框重复问题*/
+        }
+
+        .tabBox ul:after { /*清除浮动的BUG*/
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .tabBox ul li {
+            float: left; /*设置浮动后，子元素的高度不能把父元素撑开 =>浮动的BUG*/
+            padding: 0 10px;
+            margin-right: 10px;
+            line-height: 35px;
+            background: #EEE;
+            border: 1px solid #999;
+            cursor: pointer;
+        }
+
+        .tabBox ul li.select {
+            background: #FFF;
+            border-bottom-color: #FFF;
+        }
+
+        .tabBox div {
+            display: none;
+            padding: 20px;
+            height: 110px;
+            border: 1px solid #999;
+        }
+
+        .tabBox div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tabBox" id="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>电影</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">热门新闻</div>
+    <div>好莱坞电影</div>
+    <div>励志音乐</div>
+</div>
+<script>
+    var tabBox = document.getElementById('tabBox');
+    var oList = tabBox.getElementsByTagName('li');
+    var oDivList = tabBox.getElementsByTagName('div');
+
+    /*oList[0].onclick=function () {
+
+     };
+     oList[1].onclick=function () {
+
+     };
+     oList[2].onclick=function () {
+
+     };*/
+
+    //->每当点击LI的时候，都会重复做一些事情，也就是有五个LI，这件事会重复五次=>循环
+    for (var i = 0; i < oList.length; i++) {
+        //->点击当前的LI进行一些具体的操作
+        oList[i].onclick = function () {
+            tabChange(i);//->执行这个方法实现页卡切换,需要把当前点击的这个LI的索引传递给这个方法
+        }
+    }
+
+
+    //->tabChange：点击每一个LI的时候需要做的事情
+    function tabChange(nIndex) {//->nIndex:传递给函数的是当前点击这个LI的索引
+        //->1、先清除所有LI和DIV的选中样式
+        /*oList[0].className=null;
+         oList[1].className=null;
+         oList[2].className=null;*/
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].className = null;
+            oDivList[i].className = null;
+        }
+
+        //->2、给当前点击的这个LI和DIV加选中的样式
+        oList[nIndex].className = 'select';
+        oDivList[nIndex].className = 'select';
+    }
+</script>
+</body>
+</html>

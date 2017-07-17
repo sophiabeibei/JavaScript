@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FOR循环</title>
+</head>
+<body>
+<script>
+    /*itar [TAB]*/
+    /*
+     * 循环的四步曲
+     * 1、设置初始值
+     * 2、验证是否循环的条件
+     * 3、条件成立执行循环体中内容，不成立结束循环
+     * 4、执行步长累加的操作
+     */
+    /*for (var i = 10; i > 0; i -= 2) {
+     console.log(i);//->10 8 6 4 2
+     }*/
+    /*for (var i = 10; i > 0; i -= 2) {
+
+     }
+     console.log(i);//->0*/
+
+    /*i*=2 ->i=i*2 ->i=i/2 ->i=i%2*/
+
+    //    for (var i = 0; i < 9; i += 3) {
+    //        if (i < 5) {
+    //            i += 2;
+    //        } else {
+    //            i--;
+    //        }
+    //        console.log(i);
+    //    }
+    //    console.log(i);
+
+
+    //    for (var i = 0; i < 5; i++) {
+    //        i < 5 ? i++ : null;//->条件不成立我们什么都不做(不写NULL不符合三元运算符的语法)
+    //        break;
+    //        console.log(i);//->永远不会执行的
+    //    }
+    //    console.log(i);//->执行
+
+    for (var i = 0; i < 9; i += 3) {
+        if (i < 5) {
+            i += 2;
+            continue;
+        } else {
+            i--;
+            break;
+        }
+        console.log(i);
+    }
+    console.log(i);
+
+</script>
+</body>
+</html>

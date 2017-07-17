@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        a:hover, a:active {
+            color: #555;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .lampLink {
+            display: block;
+            width: 100px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 16px;
+            letter-spacing: 5px;
+            font-weight: bold;
+            background: lightpink;
+        }
+
+        .lampLink:hover {
+            background: lightblue;
+        }
+    </style>
+</head>
+<body style="background: white;">
+<!--href="javascript:;"：阻止A标签点击的时候跳转页面的默认行为-->
+<a href="javascript:;" class="lampLink" id="lampLink">关灯</a>
+<!--CLASS一般应用于样式的编写 ID一般应用于JS的操作-->
+
+<script>
+    //->1、想要操作哪些元素，先把这些元素获取到
+    //window:浏览器对象
+    //document:文档对象(HTML页面)
+    //window.document.body => document.body (window可以省略)
+    var bodyBox = document.body;
+    var lampLink = document.getElementById('lampLink');//->在整个文档中我们通过元素的ID来获取这一个元素(DOCUMENT在这里相当于限定了获取的范围,我们把它称之为上下文CONTEXT)
+
+    lampLink.onclick = function () {//->给当前的某一个元素绑定点击事件,当点击这个元素的时候执行后面的方法
+        //->1、获取当前BODY的背景颜色
+        //=>元素.STYLE.XXX：获取当前元素的某一个样式值,但是这种方式只能获取写在元素行内上的样式,因为STYLE本身就是行内样式
+        var bgColor = bodyBox.style.backgroundColor;
+
+        //->2、根据当前的背景颜色让其变成对应的其它颜色
+        if (bgColor === 'white') {
+            bodyBox.style.backgroundColor = 'black';
+            lampLink.innerHTML = 'open';
+        } else {
+            bodyBox.style.backgroundColor = 'white';
+            lampLink.innerHTML = 'close';
+        }
+    };
+
+</script>
+</body>
+</html>

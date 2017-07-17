@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    /*
+     * 需求：获取两个数的和(任意两个数)，把获取的结果保留小数点后两位，最后在控制台输出
+     *
+     * 创建函数实现某一个功能的时候,我们发现所需要的原材料不够,需要用户执行方法的时候传递给函数才可以,此时我们可以模仿洗衣机,提供给用户几个入口==>“形参”：变量
+     * 用户执行的时候会给几个入口传递内容==>“实参”：值
+     */
+    function sum(num1, num2) {//->NUM1/NUM2都是形参,也都是变量
+        var total = num1 + num2;
+        total = total.toFixed(2);
+        console.log(total);
+    }
+    sum(10, 20);//->10/20都是实参,也都是具体的值,NUM1=10 NUM2=20
+    sum(10);//->NUM1=10 NUM2=UNDEFINED 定义形参,执行不给传递值,默认值是UNDEFINED
+</script>
+</body>
+</html>

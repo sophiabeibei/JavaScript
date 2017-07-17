@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //=>减、乘、除都是数学运算，遇到非数字类型，先转换为数字，然后再进行运算
+    //    console.log('1' - 1);//->0
+    //    console.log(null - 1);//->-1
+    //    console.log(undefined - 1);//->NaN
+
+    //=>加法不仅仅是数学运算，还有字符串拼接的效果
+    //    console.log(1 + null);//->1
+    //    console.log(1 + undefined);//->NaN
+    //    console.log(1 + '1');//->'11' 在JS中遇到了加号，如果有一头是字符串，则代表的不是数字相加，而是字符串拼接
+
+    console.log(1 + null + '10' + undefined + null);
+    //1+null ->1
+    //1+'10' ->'110'
+    //'110'+undefined ->'110undefined'
+    //'110undefined'+null ->'110undefinednull'
+</script>
+</body>
+</html>

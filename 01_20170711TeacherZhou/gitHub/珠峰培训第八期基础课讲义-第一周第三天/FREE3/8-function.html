@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+<script>
+    /*
+     * 计算168.3642和247.5621两个数字的和，把获取的和保留小数点后面两位，然后再控制台输出
+     */
+    //    var total = 168.3642 + 247.5621;
+    //    total = total.toFixed(2);//->toFixed:保留小数点后面两位,得到的结果是字符串格式的
+    //    console.log(total);
+
+    function sum() {
+        var total = 168.3642 + 247.5621;
+        total = total.toFixed(2);
+        console.log(total);
+    }
+    sum();
+    sum();
+    sum();
+    sum();
+
+    //->低耦合、高内聚：减少页面中的冗余代码，提高代码的重复利用率 =>函数的作用：把实现一个功能的代码进行封装(封装成一个函数)，以后再想实现这个功能，只需要执行函数即可，无需重复编写代码 =>封装
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        a:hover, a:active {
+            color: #555;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .lampLink {
+            display: block;
+            width: 100px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 16px;
+            letter-spacing: 5px;
+            font-weight: bold;
+            background: lightpink;
+        }
+
+        .lampLink:hover {
+            background: lightblue;
+        }
+    </style>
+</head>
+<body style="background: white;">
+<!--href="javascript:;"：阻止A标签点击的时候跳转页面的默认行为-->
+<a href="javascript:;" class="lampLink" id="lampLink">关灯</a>
+<!--CLASS一般应用于样式的编写 ID一般应用于JS的操作-->
+
+<script>
+    var bodyBox = document.body;
+    var lampLink = document.getElementById('lampLink');
+    lampLink.onclick = function () {
+        var bgColor = bodyBox.style.backgroundColor;
+
+        if (bgColor === 'white') {
+            bodyBox.style.backgroundColor = 'black';
+            lampLink.innerHTML = 'open';
+        } else {
+            bodyBox.style.backgroundColor = 'white';
+            lampLink.innerHTML = 'close';
+        }
+
+        //->三元运算符：我们先计算三元运算符的结果，然后把结果赋值给左边
+        //=>bgColor === 'white' ? (bodyBox.style.backgroundColor = 'black', lampLink.innerHTML = 'open') : (bodyBox.style.backgroundColor = 'white', lampLink.innerHTML = 'close');
+        //=>bodyBox.style.backgroundColor = bgColor === 'white' ? 'black' : 'white';
+        //=>lampLink.innerHTML = bgColor === 'white' ? 'open' : 'close';
+
+        //->switch case
+//        switch (bgColor) {
+//            case 'white':
+//                bodyBox.style.backgroundColor = 'black';
+//                lampLink.innerHTML = 'open';
+//                break;
+//            default:
+//                bodyBox.style.backgroundColor = 'white';
+//                lampLink.innerHTML = 'close';
+//        }
+    };
+</script>
+</body>
+</html>

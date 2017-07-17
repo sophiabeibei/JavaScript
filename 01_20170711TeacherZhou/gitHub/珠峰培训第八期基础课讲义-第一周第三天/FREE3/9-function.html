@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>函数-形参</title>
+</head>
+<body>
+<script>
+    //->形参：形式参数，给当前函数提供入口，函数执行的时候，我们可以通过入口给函数体中传递一些内容(当我们需要完成一件事，但是原材料不知道，执行的时候，用户传递的时候才知道，此时我们就可以定义形参来解决)
+    function sum(num1, num2) {//->num1和num2就是形参(变量)
+        var total = num1 + num2;
+        total = total.toFixed(2);
+        console.log(total);
+    }
+    sum(100, 200);//->实参：执行的时候给函数形参变量传递的那个值叫做实参(值 ) num1=100 num2=200
+    sum(100);//->num1=100 num2=undefined 定义了形参,执行的时候不传递值，默认形参的值是undefined
+</script>
+</body>
+</html>

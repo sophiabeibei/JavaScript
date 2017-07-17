@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for</title>
+</head>
+<body>
+<script type="text/javascript">
+    //for循环    快捷键: 输入itar,按tab键;
+    /**循环四部曲:
+     * 1.设置初始值就;
+     * 2.验证是否循环的条件
+     * 3.条件成立执行循环体中的内容,不成立结束循环;
+     * 4.执行步长累加的操作;
+     *
+     */
+    /*for (var i = 0; i < 5; i++) {
+        console.log(i);
+    }
+    */
+
+
+    /*var num = null;
+     for (var i = 0; i < 9; i+=3) {//0   5    7   9
+     if(i<5){
+     i+=2;//2
+     }else{
+     i--;//4   6
+     }
+     console.log(i);//(if: 2)  (else: 4  6)
+     num++;
+     console.log(num);//3
+     }
+     console.log(i);//9
+     */
+
+    /*for (var i = 0; i < 5; i++) {
+        i<5?i++:null;//条件不成立我们什么都不做(不屑null不符合三元运算符的语法)
+        continue;
+        //循环体当中遇见continue或者break,循环体(内)后面的代码都不会再执行;
+        console.log(i);//这条语句永远不会执行;
+    }
+    console.log(i);//这条语句执行,因为这条语句是循环体之外的语句;
+    */
+
+
+
+
+    //continue和break的区别:
+    /**
+     * continue: 遇到continue,循环体内当前这一轮的循环结束;继续执行下一轮循环;
+     * break: 遇到break,整个循环都终止结束;
+     *
+     */
+
+    //练习break
+    /*for (var i = 0; i < 5; i++) {
+        break;
+        console.log(i);//什么也不打印
+    }
+    console.log(i);//0
+    */
+
+    //练习break和continue
+    /*for (var i = 0; i < 9; i+=3) {//0   5
+        if(i<5){
+            i+=2;//2
+            continue;//continue: 本轮循环体内后面的代码不执行,继续下一轮循环;
+        }else{
+            i--;//4
+            break;//break: 整个循环体内后边的代码都不再执行,直接跳出循环;
+        }
+        console.log(i);//这条语句在continue,break之后,所以永远不会被执行;
+    }
+    console.log(i);//4
+    */
+
+
+    /**创建无限循环
+     * 1.初始值;初始化表达式
+     * 2.条件表达式;控制表达式
+     * 3.循环体;循环后表达式
+     * 4.累加表达式
+     *
+     * 将以上前三个表达式都省略,就会创建一个无限循环;
+     *
+     */
+
+
+    /**for和if的知识点扩展:
+     * 1.在循环内部定义的变量,也可以在外部访问;
+     * if语句中定义的变量,if语句执行结束之后,变量的值就会销毁;
+     * for语句是块级作用域;*********************补写后续********
+     *
+     */
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

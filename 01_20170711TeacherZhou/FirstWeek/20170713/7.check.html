@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型检测</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**js中的数据类型
+     * 数字
+     * 字符串
+     * 布尔
+     * null
+     * undefined
+     * object       对象,数组,正则
+     * function
+     */
+
+    /**js中数据类型检测的四种方式
+     * 1.typeof
+     * 2.instanceof
+     * 3.constructor: 后台语言中叫构造器;
+     * 4.Object.prototype.toString.call
+     *
+     */
+
+    //typeof: 检测数据类型的一个运算符;
+    /**语法: typeof [value]
+     * 检测当前值的数据类型,返回的结果: 首先是一个字符串,其次字符串中包含了对应的数据类型;
+     * 1.特殊的null: null是空对象指针,隶属于基本数据类型;但是使用typeof检测出的结果是object;也可以理解为js的一个bug;  如果想检测一个值是不是null(做不到!)这是typeof的局限,我们无法使用这种方式检测null;
+     * 2.typeof又一个瓶颈: typeof检测数组,正则等结果都是object,也就是我们无法使用这种方式细分对象中的数据类型;
+     *
+     */
+    /*console.log(typeof 12);//"number"
+    console.log(typeof true);//"boolean"
+    console.log(typeof "12");//"string"
+    console.log(typeof null);//"object"    null=>是空对象指针;
+    console.log(typeof undefined);//"undefined"
+    console.log(typeof {});//object
+    console.log(typeof []);//object
+    console.log(typeof /^$/);//object
+    console.log(typeof function () {});//function
+    */
+
+    console.log(typeof typeof typeof []);//"string"
+    //因为typeof检测数据类型时,首先是一个字符串,然后才是数据所属的数据类型;
+    //第一步检测出: "object"
+    //第二部检测: "string"
+    //往后检测都是"string"数据类型;
+
+
+</script>
+</body>
+</html>

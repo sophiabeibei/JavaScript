@@ -1,0 +1,293 @@
+周啸天
+TEL：18310612838
+QQ：1282347298
+微信：zhouxiaotian1990
+
+1、什么是标签语义化?
+  合理的标签做合适的事情(有利于页面的SEO优化)
+
+   HTML中都有哪些标签?
+     块状标签
+
+     行内标签
+
+   块状和行内的区别?以及如何相互转换?
+     display
+
+   display除了以上这些值，还有哪些?
+     none
+     table
+     ...
+
+   我页面中有一个元素，我想让他在页面中消失，你有哪些办法？
+     visibility: hidden; =>display:none和它的区别?
+     足够的-MARGIN
+     定位后使用-LEFT/-TOP =>常用的三种定位
+     设置透明度 =>IE下如何设置透明度? filter:alpha(opacity=xxx)
+
+   filter除了设置透明度还有哪些作用?
+      blur(10px)
+      grayscale(1)
+      ...
+
+======================================
+JS(javascript/JavaScript)：全栈脚本编程语言
+  ->HTML/CSS：标记语言
+  ->编程语言：基础知识、逻辑思想(编程思想)
+
+1、ECMAScript(ES)：JS的核心，JS的语法规范、数据类型、操作语句等都是ES来设定的，ES3/5=>ES6/ES7
+
+2、DOM：document object model 文档对象模型，它里面提供了一些方法和属性，能够让JS获取页面中的元素，然后进行相关的操作
+
+3、BOM：browser object model 浏览器对象模型，它里面提供了一些方法和属性，能够让JS操作浏览器
+
+=============================
+一、ECMAScript中的变量和常量
+
+  [语法]：
+    var 变量名 = 值; //->ES5创建的语法
+
+    let 变量名 = 值; //->ES6创建的语法
+
+    const 常量名 = 值; //->ES6中创建常量的语法
+
+  var num = 12;
+  num = 13;
+  变量仅仅是一个名字，它本身没有特殊的意义，我们提到变量，其实都是指的它所存储的值
+
+  const num = 12;
+  num = 13; //->Uncaught TypeError: Assignment to constant variable. 常量的值是不能修改的
+
+
+  疑问1：变量名是否可以随便起？ =>JS中的命名规范
+    ->1)严格区分大小写，建议大家使用“数字、字母、_”来命名，数字不能作为开头
+       var num=12;
+       var Num=13;
+       var 2num (ERROR) / num2 (OK)
+
+    ->2)使用驼峰命名法：第一个单词首字母小写，而其余每一个有意义的单词首字母大写 getElementById / getElementsByTagName / getComputedStyle / addEventListener ...
+
+    ->3)不能使用关键字和保留字：JS中有一些词是具备特殊含义的(关键字)，还有一些词未来可能会成为关键字的(保留字)，这些都不能用来命名
+
+    项目中，我们命名的时候，要规范，争取别人看到名字，就知道什么意思（尽量使用英文）
+    var studentInformation -> studentInfo
+    var xueshengInfo / xueshengXinxi / xsxx ... (NO)
+
+    add / create / insert
+    update
+    delete / del / remove / rm / clear / cl
+    query / get / select
+    queryUserInfo
+
+=============
+二、JS中的数据类型
+  12 12.5 -12.5 '珠峰' "哈哈" "12" true false null undefined {name:'候珍珍'} ['12',true,13] /^(\+|-)?(\d|([1-9]\d+))(\.\d+)?$/ function(){}
+
+  基本数据类型(值类型)
+    number
+    string
+    boolean
+    null
+    undefined
+
+  引用数据类型
+    object
+      -{} object
+      -[] array
+      -/^$/ RegExp
+      ...
+    function
+
+
+===
+1、number 数字
+  NaN：not a number 不是一个有效数字，但是它率属于number类型的
+    ->NaN==NaN：false，NaN和本身比较是不相等，和其他任何一个值都不相等
+    ->isNaN()：检测一个值是否不是有效数字,如果不是返回true,如果是的话返回false(如果检测的数据值并不是数字类型的，浏览器首先会把这个值转换为数字类型，然后再进行检测=>浏览器转换的时候,使用的是Number()这个方法转换的)
+    Number('12') ->12
+    Number('12px') ->NaN 需要保证字符串中的每一个字符都是数字,才能转换,否则结果就是NaN
+    Number(true) ->1
+    Number(false) ->0
+    Number(null) ->0
+    Number(undefined) ->NaN
+    Number('') ->0
+    Number({name:'xxx'}) ->NaN
+    ...
+
+    parseInt('12px') ->12 从左到右查找，把有效数字字符转换为数字，遇到非有效的数字字符，停止查找
+    parseInt('12px13') ->12
+    parseInt('12.5px') ->12  int整数
+    parseFloat('12.5px') ->12.5 float浮点数(小数)
+
+===
+2、boolean 布尔类型
+  true
+  false
+
+  -> !：先把其它数据类型转换为布尔类型，然后再取反
+  -> !!：把其它数据类型转换为布尔类型，等价于Boolean()
+
+  只有“0、NaN、null、undefined、空字符串”这五个值转换为布尔类型的FALSE，其余都转换为TRUE
+
+===
+3、string字符串
+  -> 所有用''或者""包含起来的都是字符串
+  -> [string].length：获取当前字符串中有多少个字符
+  -> 字符串中的每一个字符都有自己的位置，而且对应一个数字 =>"索引":索引从0开始，0->第一个字符  2->第三个字符  str.length-1->最后一个字符
+  -> str[0] ->获取第一个字符
+  -> str[1] ->获取第二个字符
+  -> str[str.length-1] ->获取最后一个字符
+  -> str[索引] ->获取指定索引位置的字符
+
+===
+4、null和undefined
+ -> null：空(空对象指针)
+ -> undefined：未定义
+
+ 天明的女朋友是NULL(以后会有)，男朋友是UNDEFINED(不可能存在的,但是后期可能也会有)
+
+===
+5、object对象
+  var obj={
+     name:'何晓凤',
+     age:18,
+     sex:'女'
+  };
+  一个对象其实是有多组“属性名：属性值(一组键值对 KEY:VALUE)”组成的，属性其实就是描述这个对象的特征或者特点
+
+  -> 获取对象中某个属性名对应的值
+     obj.name
+     obj.age
+
+  -> 修改某个属性名对应的值
+     obj.age = 19;
+
+  -> 给对象新增加一组键值对
+     obj.hobby = 'music';
+
+     一个对象中的属性名是不能重复的
+
+  -> 删除对象中的属性
+     obj.sex = null; //->假删除：把属性值设置为NULL，但是属性依然存在
+     delete obj.sex; //->真删除：把属性彻底从对象中移除了，此后通过obj.sex获取到的结果是undefined(因为sex不是obj的一个属性)
+
+  -> 除了“对象.属性名”可以完成以上操作，“对象[属性名]”也可以完成上述的操作
+
+    var str='zhufeng';
+    str ->'zhufeng' 此时的STR是变量,代表的是存储的值
+    'str' ->'str' 此时的STR就是代表本身意义的字符串
+
+    var obj={
+         name:'何晓凤',
+         age:18,
+         sex:'女',
+         hobby:'music'
+      };
+    var age='hobby';
+    obj[age] ->obj['hobby'] 获取的是HOBBY对应的属性值，此处的AGE是变量
+    obj['age'] ->此处的AGE是本身意思，获取的是AGE对应的属性值
+
+===
+6、[]数组
+  var ary = [12,'JS',false,null,undefined];
+
+    0:12
+    1:'JS'
+    ..
+    4:undefined
+    length:5
+
+  数组的属性名是代表某一项位置的“索引”(索引是从零开始的)，索引0->第一项...
+  数组中有一个LENGTH属性代表数组的长度：ary.length / ary['length']
+
+    ary.1  (NO)
+    ary[1] (OK)
+
+===
+7、JS中数据类型检测
+  -> typeof：用来检测数据类型的逻辑运算符
+  -> instanceof：检测某一个实例是否属于这个类
+  -> constructor：通过构造函数检测
+  -> Object.prototype.toString.call()：最常用的，借用Object基类原型上的toString方法，在执行这个方法的时候，让方法中的THIS指向需要检测的值，从获取到当前值所属的类，从而检测出对应的数据类型
+
+  typeof [value] ->首先是一个字符串，其次字符串中包含对应的数据类型
+     [TYPEOF局限]
+     -> typeof null："object"
+     -> 对象细分的数组、正则、普通对象无法用TYPEOF细分出来，因为检测出来的结果都是"OBJECT"
+
+     BAT面试题：
+     console.log(typeof typeof []);
+       -> typeof [] =>"object"
+       -> typeof "object" =>"string"
+
+===
+8、基本数据类型和引用数据类型的区别?
+
+  var num1=12;
+  var num2=num1; //->把NUM1存储的值赋值给NUM2
+  num2=13;
+  console.log(num1);
+
+  var obj1={n:100};
+  var obj2=obj1;
+  obj2.n=200;
+  console.log(obj1.n);
+
+
+  //->思考题：
+  var think1={n:100};
+  var think2=think1;
+  think2={n:200};
+  console.log(think1.n);
+
+==============================
+2017年第八期JS正式群 643937119
+  JavaScript免费基础课下载地址 http://pan.baidu.com/s/1pJuVLX5
+
+  预习：
+    第一周：数据类型、判断、循环  10~15
+    函数详细讲解                1~2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

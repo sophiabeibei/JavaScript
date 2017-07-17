@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lineChange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .outlineBox {
+            width: 600px;
+            margin: 30px auto;
+            box-sizing: border-box;
+        }
+
+        .outlineBox li {
+            line-height: 36px;
+            /* dashed: 虚线*/
+            border: 1px dashed #999;
+            padding-left: 10px;
+        }
+
+        .bg1 {
+            background: lightblue;
+        }
+
+        .bg2 {
+            background: lightgreen;
+        }
+    </style>
+    <!-- class: 用来写样式;id: 用来写js-->
+</head>
+<body>
+<!-- outlineBox: 盒子大纲-->
+<ul class="outlineBox" id="outlineBox">
+    <li>HTML(HTML5)</li>
+    <li>CSS(CSS3)</li>
+    <li>JS(jQuery/zepto/bootstrap/svaper)</li>
+    <li>移动端开发</li>
+    <li>框架: vue(全家桶)</li>
+    <li>框架: react(全家桶)</li>
+    <li>平台: node(express/koa/mongodb);供js开发(运行)的平台</li>
+</ul>
+<script type="text/javascript">
+    /**各行变色案例分析:
+     * 1.分析规律和需要处理的业务逻辑: 让每个li按照一定的规律添加class即可(奇数->bg1;偶数行->bg2);
+     * 2.想要操作哪些元素,就先把这些元素获取到;
+     * 3.
+     *
+     */
+
+        //Element: 元素
+
+        //获取outlineBox中的所有li
+    var outlineBox = document.getElementById("outlineBox"),
+        //oList: 获取到的一组类数组;
+        oList = outlineBox.getElementsByTagName("li");
+    console.log(oList);//[li, li, li, li, li, li, li] ==>类数组集合;类数组不是数组;
+    // length: 7;  _proto_: HTMLCollection
+    //以数字作为索引;索引从零开始,每个索引代表某个li,例如: 0->第一个li  3->第四个li;  n->第length-1,最后一个li的索引;
+    /**上面的语句中涉及到context: 上下文;
+     * 1.context.getElementsByTagName([标签名]);
+     * 2.限定获取的范围;在指定的上下文中通过元素的标签名获取一组元素;
+     */
+
+    /**oList.length: 获取集合的长度;
+     * 有length,说明是个对象;
+     * obj[0]: 获取第一个索引对应的值;
+     * oList.length: 控制循环的次数;
+     */
+    for (var i = 0; i < oList.length; i++) {
+        console.log(oList.length);//7   oList.length: 返回的是一个数值;
+        /**
+         * i=0 -> 第一次循环 -> 第一个li -> oLis[0]
+         * i=1 -> 第二次循环 -> 第二个li -> oLis[1]
+         * oList[i]//每次循环,把变量i存储的值(0,1....)作为索引,到集合中获取到指定的li,而找到的li正好是当前这次循环需要操作的那个li;
+         *
+         */
+        var cur = oList[i];//当前要操作的那个li
+        //元素.className = xxx;: 给当前元素设置class样式值;
+        cur.className = 'bg1';
+        //索引为0的li是第一个(奇数行);索引为1的li是第二个(偶数行);以此类推...索引是奇数的戴白哦偶数行;索引为偶数的代表奇数行;
+        //索引为奇数+bg2;索引为偶数+bg1;
+        //验证i的值奇偶数;用i的值除以2取余数,余数为零说明i是偶数,余数为1说明i是奇数;
+        //i%2(i  mo 2: i除以2取余数)
+        if (i % 2 === 0) {
+            cur.className = "bg1";
+        } else {
+            cur.className = "bg2";
+        }
+
+        //三元运算符
+        //i % 2 === 0 ? cur.className = "bg1" : cur.className = "bg2";
+        //cur.className = i % 2 === 0 ? "bg1" : "bg2";
+        //cur.className = "bg" + (i % 2 + 1);
+    }
+
+
+</script>
+</body>
+</html>

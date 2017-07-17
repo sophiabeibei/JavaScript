@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型检测</title>
+</head>
+<body>
+<script>
+    //=>JS中数据类型检测的四种方式
+    //1、typeof
+    //2、instanceof
+    //3、constructor
+    //4、Object.prototype.toString.call
+
+    //->typeof [value] 检测当前值的数据类型，返回的结果：首先是一个字符串，其次字符串中包含了对应的数据类型
+    /*console.log(typeof 12);//->'number'
+     console.log(typeof true);//->'boolean'
+     console.log(typeof '12');//->'string'
+     console.log(typeof null);//->'object' NULL是空对象指针，率属于基本数据类型，但是使用TYPEOF检测出的结果是'OBJECT' =>这是TYPEOF的局限，我们无法使用这种方式检测NULL
+     console.log(typeof undefined);//->'undefined'
+     console.log(typeof {});//->'object'  TYPEOF检测数组、正则等结果都是'OBJECT'，也就是我们无法使用这种方式细分对象中的数据类型
+     console.log(typeof []);//->'object'
+     console.log(typeof /^$/);//->'object'
+     console.log(typeof function () {});//->'function'*/
+
+    console.log(typeof typeof typeof []);
+    //-> typeof [] =>'object'
+    //-> typeof 'object' =>'string'
+    //-> typeof 'string' =>'string'
+</script>
+</body>
+</html>

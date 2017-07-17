@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯-珠峰培训</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #lampBtn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 35px;
+            border: 1px solid #999;
+            cursor: pointer;
+            outline: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body style="background: white;">
+<input type="button" value="关灯" id="lampBtn">
+
+<script>
+    var lampBtn = document.getElementById('lampBtn'),
+            oBody = document.body;
+    lampBtn.onclick = function () {
+        var bgColor = oBody.style.background;
+        if (bgColor === 'white') {
+            oBody.style.background = 'black';
+            this.value = '开灯';
+        } else {
+            oBody.style.background = 'white';
+            this.value = '关灯';
+        }
+    };
+</script>
+</body>
+</html>

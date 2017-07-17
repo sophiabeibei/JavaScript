@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .tab {
+            margin: 20px auto;
+            width: 500px;
+        }
+
+        .tab ul {
+            position: relative;
+            top: 1px;
+        }
+
+        .tab ul:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .tab ul li {
+            float: left;
+            margin-right: 10px;
+            line-height: 35px;
+            padding: 0 10px;
+            border: 1px solid #CCC;
+            cursor: pointer;
+            background: #EEE;
+        }
+
+        .tab ul li.select {
+            background: #FFF;
+            border-bottom-color: #FFF;
+        }
+
+        .tab div {
+            display: none;
+            padding: 10px;
+            height: 130px;
+            border: 1px solid #CCC;
+        }
+
+        .tab div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tab" id="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>电影</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">热门新闻</div>
+    <div>最新电影</div>
+    <div>主流音乐</div>
+</div>
+
+<script>
+    /*
+     * 实现选项卡的思路：
+     *  当我们点击某一个LI的时候，做一件事情：先把所有LI和对应DIV的CLASS都清空(清除选中样式)，然后再给当前点击的这个LI和对应的DIV设置CLASS='SELECT'(设置选中样式)
+     */
+    var tabBox = document.getElementById('tabBox');
+    var oList = tabBox.getElementsByTagName('li');
+    var oDivList = tabBox.getElementsByTagName('div');
+    /*
+     * 通过getElementsByTagName获取的是一个元素集合(对象数据类型的值=>类数组:结构和数组非常的相似,但是不是数组)
+     * 1、以数字作为索引,索引从0开始,每一个索引都存储着对应的每一个元素 =>oList[0]获取第一个元素  oList[2]获取第三个元素 ...
+     * 2、LENGTH属性存储的值代表集合的长度：oList.length / oList['length']
+     *
+     * 在JS中获取到的每一个元素都是对象数据类型的：
+     *   ->天生就带了很多的属性(内置属性)
+     *     STYLE：操作当前元素行内样式的
+     *     CLASSNAME：操作元素的样式类名的
+     *     ...
+     *   ->我们还可以给它新增加属性(自定义属性)
+     *     oList[0].zhufengIndex=0;
+     *     oList[0]['zhufengIndex']=0;
+     */
+
+    //->首先创建一个方法:实现选项卡的切换
+    //->curIndex:函数的入口(形参),我们创建这个方法的时候并不知道用户点击的是哪一个LI,只有用户点击执行这个方法的时候才能告诉我们,此时我们设置一个形参,来接收这个值 =>当前点击的这个LI的索引,例如:如果用户点击的是第三个LI,传递给方法一个2即可,当前函数中我们可以通过这个索引,获取点击的这个LI
+    function changeTab(curIndex) {
+        for (var i = 0; i < oList.length; i++) {
+            //->oList[i]:每一轮循环获取对应的LI
+            oList[i].className = null;
+            oDivList[i].className = null;
+        }
+
+        oList[curIndex].className = 'select';
+        oDivList[curIndex].className = 'select';
+    }
+
+    //->点击LI的时候，执行这件事，实现选项卡
+    oList[0].onclick = function () {
+        changeTab(0);
+    };
+
+    oList[1].onclick = function () {
+        changeTab(1);
+    };
+
+    oList[2].onclick = function () {
+        changeTab(2);
+    };
+</script>
+</body>
+</html>

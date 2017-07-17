@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>for in循环</title>
+</head>
+<body>
+<script>
+    var obj = {name: '张戈', age: 22, sex: 'woMan', hobby: 'man'};
+    for (var key in obj) {//->变量名经常使用KEY/ATTR，当前设置其他的名字也可以 =>因为这个变量每一次循环存储的值都是对象的属性名
+        //console.log(key);
+        //console.log(obj[key]);//->通过KEY存储的属性名获取属性值  obj.key=>到OBJ中找到属性名为KEY对应的属性值,等价于OBJ['KEY']
+        //console.log('属性名是：' + key + '，属性值是：' + obj[key]);
+        console.log(key, obj[key]);
+    }
+</script>
+</body>
+</html>
