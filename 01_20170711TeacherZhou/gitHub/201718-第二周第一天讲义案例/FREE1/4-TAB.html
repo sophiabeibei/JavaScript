@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .tab {
+            margin: 20px auto;
+            width: 500px;
+        }
+
+        .tab ul {
+            position: relative;
+            top: 1px;
+        }
+
+        .tab ul:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .tab ul li {
+            float: left;
+            margin-right: 10px;
+            line-height: 35px;
+            padding: 0 10px;
+            border: 1px solid #CCC;
+            cursor: pointer;
+            background: #EEE;
+        }
+
+        .tab ul li.select {
+            background: #FFF;
+            border-bottom-color: #FFF;
+        }
+
+        .tab div {
+            display: none;
+            padding: 10px;
+            height: 130px;
+            border: 1px solid #CCC;
+        }
+
+        .tab div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tab" id="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>电影</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">热门新闻</div>
+    <div>最新电影</div>
+    <div>主流音乐</div>
+</div>
+
+<script>
+    var tabBox = document.getElementById('tabBox');
+    var oList = tabBox.getElementsByTagName('li');
+    var oDivList = tabBox.getElementsByTagName('div');
+
+    var previousIndex = 0;//->存储的是上一个选中LI的索引(开始第一个被选中,所以初始值为零)
+    for (var i = 0; i < oList.length; i++) {
+        oList[i].zhufengIndex = i;
+        oList[i].onclick = function () {
+            //->如果当前点击的和需要清除的一样，说明点击的就是选中的，此时什么都不需要做即可
+            if (previousIndex === this.zhufengIndex) {
+                return;//->RETURN后面代码是不会在执行的
+            }
+
+            //->让上一个清除选中样式
+            oList[previousIndex].className = oDivList[previousIndex].className = null;
+
+            //->让当前的这个选中
+            oList[this.zhufengIndex].className = oDivList[this.zhufengIndex].className = 'select';
+
+            //->点击结束，让当前选中的作为下一次要清除的即可
+            previousIndex = this.zhufengIndex;
+        }
+    }
+</script>
+</body>
+</html>

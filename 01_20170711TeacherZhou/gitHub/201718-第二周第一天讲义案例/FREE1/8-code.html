@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        .code {
+            margin: 20px auto;
+            width: 100px;
+            line-height: 35px;
+            text-align: center;
+            letter-spacing: 5px;
+            border: 1px dashed lightblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="code" id="codeBox"></div>
+
+<script>
+    /*
+     * 验证码：在26个小写及大写字母以及10个数字中，随机获取四个，组成一个验证码即可
+     */
+    var codeBox = document.getElementById('codeBox');
+
+    //->1、先准备62个字符(0~61)
+    var codeArea = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+    //->2、在范围字符串中随便获取四个字符就可以组成验证码了
+    function createRandom() {
+        var result = '';
+        for (var i = 0; i < 4; i++) {
+            var ran = Math.round(Math.random() * 61);
+            result += codeArea.charAt(ran);
+        }
+        codeBox.innerHTML = result;
+    }
+    createRandom();
+    codeBox.onclick = createRandom;//->点击的时候执行此方法，重新生成验证码
+</script>
+</body>
+</html>

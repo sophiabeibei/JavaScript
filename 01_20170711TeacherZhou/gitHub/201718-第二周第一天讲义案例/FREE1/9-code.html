@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        .code {
+            margin: 20px auto;
+            width: 100px;
+            line-height: 35px;
+            text-align: center;
+            letter-spacing: 5px;
+            border: 1px dashed lightblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="code" id="codeBox"></div>
+
+<script>
+    var codeBox = document.getElementById('codeBox');
+    var codeArea = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    function createRandom() {
+        var result = '';
+        while (result.length < 4) {//->只要最后结果不足四位,则必须继续获取,具体循环多次不知道,超过四位停止循环获取即可
+            var ran = Math.round(Math.random() * 61);
+            var cur = codeArea.charAt(ran);//->每一次循环获取的字符
+
+            //->为了保证不重复，我们需要验证，现有获取的字符是否已经包含了我们的CUR，如果没包含我们在拼接，已经包含则不管，继续下一轮循环即可
+            if (result.indexOf(cur) === -1) {
+                result += cur;
+            }
+        }
+        codeBox.innerHTML = result;
+    }
+    createRandom();
+    codeBox.onclick = createRandom;
+</script>
+</body>
+</html>

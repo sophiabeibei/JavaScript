@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        a:hover, a:active {
+            color: #555;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .lampLink {
+            display: block;
+            width: 100px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 16px;
+            letter-spacing: 5px;
+            font-weight: bold;
+            background: lightpink;
+        }
+
+        .lampLink:hover {
+            background: lightblue;
+        }
+    </style>
+</head>
+<body style="background: white;">
+<a href="javascript:;" class="lampLink" id="lampLink">关灯</a>
+
+<script>
+    var bodyBox = document.body;
+    var lampLink = document.getElementById('lampLink');
+    //console.dir(lampLink);//->我们在JS中获取的元素是“对象数据类型的”，天生自带很多的内置属性
+    //console.log(typeof lampLink);//=>'object'
+
+
+    lampLink.onclick = function () {
+        var bgColor = bodyBox.style.backgroundColor;
+
+        if (bgColor === 'white') {
+            bgColor = 'black';
+        } else {
+            bgColor = 'white';
+        }
+    };
+
+    lampLink.onclick = function () {
+        var bgStyle = bodyBox.style;
+        var bgColor = bgStyle.backgroundColor;
+
+        if (bgColor === 'white') {
+            bgStyle.backgroundColor = 'black';
+        } else {
+            bgStyle.backgroundColor = 'white';
+        }
+    };
+</script>
+</body>
+</html>

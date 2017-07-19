@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .tab {
+            margin: 20px auto;
+            width: 500px;
+        }
+
+        .tab ul {
+            position: relative;
+            top: 1px;
+        }
+
+        .tab ul:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .tab ul li {
+            float: left;
+            margin-right: 10px;
+            line-height: 35px;
+            padding: 0 10px;
+            border: 1px solid #CCC;
+            cursor: pointer;
+            background: #EEE;
+        }
+
+        .tab ul li.select {
+            background: #FFF;
+            border-bottom-color: #FFF;
+        }
+
+        .tab div {
+            display: none;
+            padding: 10px;
+            height: 130px;
+            border: 1px solid #CCC;
+        }
+
+        .tab div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tab" id="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>电影</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">热门新闻</div>
+    <div>最新电影</div>
+    <div>主流音乐</div>
+</div>
+
+<script>
+    var tabBox = document.getElementById('tabBox');
+    var oList = tabBox.getElementsByTagName('li');
+    var oDivList = tabBox.getElementsByTagName('div');
+
+    function changeTab(curClickIndex) {
+        //->1、清空所有LI和DIV的选中样式
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].className = oDivList[i].className = null;
+        }
+
+        //->2、当前点击这个LI有选中的样式：创建方法的时候，用户具体点击的哪一个LI我们并不知道，点击执行这个方法的时候才知道，此时我们需要定义形参，在执行的时候把当前点击这个LI的索引传递进来，索引有了，我们就可以在集合中获取到当前点击的这个LI了
+        oList[curClickIndex].className = oDivList[curClickIndex].className = 'select';
+    }
+
+    for (var i = 0; i < oList.length; i++) {
+        oList[i].zhufengIndex = i;//->每一个LI都是对象数据类型的，在循环的时候，我依次给每一个LI都增加了一个属性(zhufengIndex)，存储的属性值就是当前LI的索引
+        oList[i].onclick = function () {
+            changeTab(this.zhufengIndex);//->传递的是当前点击这个LI的索引(当点击的时候I的值是循环结束的结果3，不是索引，不能用)  THIS->代表的是当前点击的这个LI，例如：我点击的是第三个，THIS指的就是第三个LI
+        }
+    }
+
+
+    //    oList[0].onclick = function () {
+    //        changeTab(0);
+    //    };
+    //    oList[1].onclick = function () {
+    //        changeTab(1);
+    //    };
+    //    oList[2].onclick = function () {
+    //        changeTab(2);
+    //    };
+
+
+    /*var a = b = 12;
+     /!*var a=12;
+     b=12;*!/*/
+</script>
+</body>
+</html>
