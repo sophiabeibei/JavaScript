@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .tabBox{
+            width: 500px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+        .tabBox ul{
+            position: relative;
+            top: 1px;
+            overflow: hidden;
+        }
+        .tabBox ul li{
+            float: left;
+            padding: 0 10px;
+            border: 1px solid #999;
+            border-bottom: 1px solid #fff;
+            margin-right: 5px;
+            line-height: 35px;
+            text-align: center;
+        }
+        .tabBox div{
+            position: absolute;
+            top: 57px;
+            width: 500px;
+            height: 300px;
+            border: 1px solid #999;
+            display: none;
+        }
+        .tabBox div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tabBox" id="tabBox">
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <div class="select">新闻内容</div>
+    <div>娱乐内容</div>
+    <div>军事内容</div>
+</div>
+</body>
+</html>

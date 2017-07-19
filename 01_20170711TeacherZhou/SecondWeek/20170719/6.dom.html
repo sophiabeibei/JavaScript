@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pre哥哥节点</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!-- ul>li*3    tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构-->
+    <div>新闻新闻</div>
+    <!-- 娱乐 -->
+    <!-- 娱乐 -->
+    <!-- 娱乐 -->
+    <!-- 娱乐 -->
+    <!-- 娱乐 -->
+    <!-- 娱乐 -->
+    <div id="div1">娱乐娱乐</div>
+    <div>军事军事</div>
+</div>
+
+<script type="text/javascript">
+    var oDiv = document.getElementById("div1");
+    console.log(oDiv.previousSibling.previousSibling);//<!-- 娱乐 -->
+    //问题: previousSibling获取的上一个哥哥节点,不一定是我们要的元素节点;不确定往上找多少层才能找到想要的元素标签;
+    //解决方法: nodeType不等于1,说明就不是元素节点,继续查找;
+    var pre = oDiv.previousSibling;
+    //nodeType !== 1;: 说明没有找到元素节点,所以一直继续查找,直到找到为止;
+    while(pre && pre.nodeType !== 1){
+        pre = pre.previousSibling;
+    }
+    console.log(pre);//<div>新闻新闻</div>
+
+
+</script>
+</body>
+</html>

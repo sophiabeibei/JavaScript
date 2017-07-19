@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pre封装-获取所有的哥哥节点</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!-- ul>li*3    tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li id="li3">军事</li>
+    </ul>
+    <!-- 我是div的结构-->
+    <div>新闻新闻</div>
+    <!-- 娱乐 -->
+    <div id="div1">娱乐娱乐</div>
+    <div>军事军事</div>
+</div>
+<div class="box">
+    <p></p>
+    <p></p>
+    <p></p>
+    <div></div>
+    <div id="main"></div>
+</div>
+<script type="text/javascript">
+    //需求: 获取元素的所有哥哥节点;
+    var oLi = document.getElementById("li3");
+    var oDiv = document.getElementById("main");
+
+    function preAll(ele) {
+        var pre = ele.previousSibling,
+            ary = [];
+        while(pre){
+            if(pre.nodeType === 1){
+                ary.unshift(pre);
+            }
+            pre = pre.previousSibling;
+        }
+        return ary;
+    }
+    console.log(preAll(oLi));//
+    console.log(preAll(oDiv));//
+
+    /**知识点:
+     * 元素.push(): 末尾添加;
+     * 元素.unshift(): 向数组的开头添加;
+     */
+
+</script>
+</body>
+</html>

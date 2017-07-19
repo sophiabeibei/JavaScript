@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装children</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!-- ul>li*3    tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构-->
+    <div>新闻新闻</div>
+    <div>娱乐娱乐</div>
+    <div>军事军事</div>
+</div>
+
+<script type="text/javascript">
+    var oTab = document.getElementById("tab");
+    function getChildren(ele, tagName) {
+        var nodes = oTab.childNodes;
+        var ary = [];
+        for (var i = 0; i < nodes.length; i++) {
+            var cur = nodes[i];
+            if(cur.nodeType === 1){
+                if(tagName){
+                    if(cur.tagName.toLowerCase() === tagName.toLowerCase()){
+                        ary.push(cur);
+                    }
+                }else{
+                    ary.push(cur);
+                }
+            }
+        }
+    }
+    console.log(getChildren(oTab));//
+    console.log(getChildren(oTab, "ul"));//
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

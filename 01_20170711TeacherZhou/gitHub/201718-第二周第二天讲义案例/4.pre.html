@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!--ul>li*3  tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li id="li3">军事</li>
+    </ul>
+    <!-- 我是div的结构 -->
+    <div>新闻</div>
+    <!-- 娱乐 -->
+    <div id="div1">娱乐</div>
+    <div>军事</div>
+</div>
+<script type="text/javascript">
+    //var oDiv = document.getElementById('div1');
+    //previousSibling 获取的上一个哥哥节点 不一定是我们要的元素节点,我们也不确定到底需要往上查找多少次
+    //console.log(oDiv.previousSibling.previousSibling);
+    //var pre = oDiv.previousSibling;
+    /*if (pre.nodeType != 1) {
+        pre = pre.previousSibling;
+        if(pre.nodeType!=1){
+            pre = pre.previousSibling;
+              if(pre.nodeType!=1){
+                  pre = pre.previousSibling;
+              }
+        }
+    }*/
+    //nodeType!==1 说明我们找到的不是元素节点 所以一直继续往上查找 直到找到为止 就不再往上查找
+/*    while (pre && pre.nodeType !== 1) {
+        pre = pre.previousSibling;
+    }
+    console.log(pre); *///<div>新闻</div>
+
+
+    /*
+    * 方法pre():获取元素的上一个哥哥节点(元素节点/标签)
+    *  parameter:
+    *  ele: 想获取谁的哥哥节点 我们就把谁传进去
+    * */
+    function pre(ele) {
+        var pre = ele.previousSibling;
+        while (pre && pre.nodeType !== 1) {
+            //只要上一个哥哥不是元素节点  我们就继续往上查找
+            pre = pre.previousSibling;
+        }
+        return pre;
+    }
+    var oLi=document.getElementById('li3');
+    console.log(pre(oLi)); //<li>娱乐</li>
+
+    var oDiv1=document.getElementById('div1');
+    console.log(pre(oDiv1)); //<div>新闻</div>
+</script>
+</body>
+</html>

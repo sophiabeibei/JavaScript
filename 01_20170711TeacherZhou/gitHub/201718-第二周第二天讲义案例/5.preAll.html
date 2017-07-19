@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!--ul>li*3  tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li id="li3">军事</li>
+    </ul>
+    <!-- 我是div的结构 -->
+    <div>新闻</div>
+    <!-- 娱乐 -->
+    <div id="div1">娱乐</div>
+    <div>军事</div>
+</div>
+
+<div class="box">
+    <p></p>
+    <p></p>
+    <p></p>
+    <div></div>
+    <div id="main"></div>
+</div>
+<script type="text/javascript">
+    /* 方法:获取元素的所有的哥哥元素节点
+    * paramater:
+    * ele:想要获取谁下面的所有的哥哥元素节点 我们就把谁传进去
+    *
+    * */
+    function preAll(ele) {
+        var pre = ele.previousSibling, ary = [];//空的数组用来放他的哥哥元素节点
+        while (pre) {
+            //如果找到哥哥元素节点了也就是他的nodeType===1 我们直接放到盒子里
+            if (pre.nodeType === 1) {
+                ary.unshift(pre) // unshift 向数组的开头添加元素
+            }
+            //如果没有找到 再继续往上查找
+            pre = pre.previousSibling;
+        }
+        return ary; //ary 里面放的就是我们找到所有的哥哥元素节点
+    }
+
+    var oLi = document.getElementById('li3');
+    console.log(preAll(oLi)); //<li>新闻</li>  <li>娱乐</li>
+
+    var oDiv = document.getElementById('main');
+    console.log(preAll(oDiv));//3
+</script>
+</body>
+</html>

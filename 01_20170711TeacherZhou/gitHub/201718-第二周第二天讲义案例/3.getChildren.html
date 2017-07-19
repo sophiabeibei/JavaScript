@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="tab" id="tab">
+    <!--ul>li*3  tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构 -->
+    <div>新闻</div>
+    <div>娱乐</div>
+    <div>军事</div>
+</div>
+<script type="text/javascript">
+    /*创建  执行 element current
+    *
+    * 形参：
+    * ele 我们想要获取谁下面的元素节点 把谁传进去
+    * tagName 指定ele 下面的某一个元素 比如tab ul
+    * */
+//    tagName:
+    /*1.用户传进去了指定的元素 比如ul
+        1) 有可能传进去的是大写的标签名 比如：DIV
+        2) 有可能传进去的是小写的标签名 比如：div
+        所以统一的进行小写的转换toLowerCase() 统一转换完之后再放到ary.push(cur)
+      2).用户没有传第二个参数  ary.push(cur)
+     */
+    function getChildren(ele,tagName) {
+        var nodes = ele.childNodes, ary = []; //类数组集合
+        for (var i = 0; i < nodes.length; i++) {
+            var cur = nodes[i];
+            if (cur.nodeType === 1) {
+                //能从if判断进来 说明它只能是元素节点(标签)
+                if(tagName){
+                    //tagName  大写 小写
+                    if(cur.nodeName.toLowerCase() == tagName.toLowerCase()){
+                        //利用toLowerCase 统一转化为小写
+                        ary.push(cur);
+                    }
+                }else{
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary;
+    }
+
+    var oDiv = document.getElementById('tab');
+    console.log(getChildren(oDiv)); //ul div div div
+    console.log(getChildren(oDiv,'UL')); //ul
+
+    var oBox=document.getElementById('box');
+    console.log(getChildren(oBox)); // p p p
+</script>
+</body>
+</html>

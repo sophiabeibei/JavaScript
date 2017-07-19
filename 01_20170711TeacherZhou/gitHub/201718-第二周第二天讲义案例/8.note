@@ -1,0 +1,58 @@
+作业：984877081@qq.com
+
+【获取dom元素的8个方法】
+document.getElementById("id名")
+document.getElementsByClassName('class名')
+document.getElementsByTagName('标签名')
+document.getElementsByName('name属性')
+document.documentElement =>html
+document.body=>body
+document.querySelector('css选择器') =>获取一个
+document.querySelectorAll('css选择器') =>获取多个
+
+【节点关系属性7个】
+childNodes 获取的是所有的子节点
+children  获取的是所有的元素子节点 (标签)
+parentNode 获取的元素父节点
+previousSibling 获取的是上一个哥哥节点
+nextSibling 获取的是下一个弟弟节点
+firstChild 获取的是第一个子节点
+lastChild 获取的是最后一个子节点
+
+【节点类型4个】
+                 nodeType      nodeName      nodeValue
+元素节点               1         大写的标签名      null
+文本节点               3         #text         文本的内容
+注释节点               8         #comment      注释的内容
+document              9         #document     null
+
+【while循环的语法】
+while(条件){
+    只要条件成立我一直执行循环体中的代码
+}
+
+【操作dom元素9个方法】
+1)document.createElement() 创建一个标签元素
+2)容器.appendChild(我们要添加的元素)   把我们创建的标签插到指定的容器(末尾)
+3)oldVal.insertBefore(newVal,oldVal) 把一个元素添加另一个元素的前面
+4)oldVal.replaceChild(newVal,oldVal) 一个元素把另一个元素替换掉
+5)元素.cloneNode() 把元素克隆一份 true(深度克隆)  false
+6)document.body.removeChild(我们要移除的元素)
+7)setAttribute   设置元素的属性名 (会在html结构中体现出来)
+8)getAttribute   获取元素的属性名
+9)removeAttribute 移除元素的属性名
+
+【方法1->getChildren:利用childNodes实现children的效果->获取指定元素下的元素子节点】
+【方法2->pre:获取元素的上一个哥哥元素节点】
+【方法3->preAll:获取元素的所有哥哥元素节点】
+【思考】
+获取下一个弟弟节点;
+获取所有的弟弟节点;
+【作业】
+实现点击登录弹窗的效果  弹窗上有一个close的按钮?
+
+
+
+
+
+

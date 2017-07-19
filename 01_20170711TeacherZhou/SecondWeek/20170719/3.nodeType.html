@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nodeType节点类型</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!--ul>li*3   tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构-->
+    <div>新闻新闻</div>
+    <div id="div2">娱乐娱乐</div>
+    <div>军事军事</div>
+</div>
+<script type="text/javascript">
+    /**
+     * 节点类型: 4个          nodeType      nodeName           nodeValue
+     * 1)元素节点(标签)       1             DIV(大写标签名)     null
+     * 2)文本节点            3             #text              文字的内容
+     * 3)注释节点           8             #comment            注释的内容
+     * 4)document          9             #document            null
+     *
+     */
+    var oTab = document.getElementById("tab");
+    console.log(oTab.nodeType);//1
+    console.log(oTab.nodeName);//DIV
+    console.log(oTab.nodeValue);//null
+
+    console.log(document.nodeType);//9
+    console.log(document.nodeName);//#document
+    console.log(document.nodeValue);//null
+
+
+    //利用(节点类型nodeType)封装一个方法(只把标签元素筛选出来):
+    //函数分两步: 创建,执行;
+    function getChildren(ele) {
+        //console.log(oTab.childNodes);
+        var nodes = ele.childNodes,
+            ary = [];
+        for (var i = 0; i < nodes.length; i++) {
+            var cur = nodes[i];
+            if(cur.nodeType === 1){
+                ary.push(cur);
+                //console.log(ary);// [ul, div, div#div2, div]
+            }
+        }
+        return ary;
+    }
+    var result = getChildren(oTab);
+    console.log(result);//(4) [ul, div, div#div2, div]
+
+
+    /**知识点
+     * 1)A元素.push(B);: 向A元素的数组末尾添加B;
+     * 2)A元素.nodeType: A元素的nodeType值;   nodeType===1;1是元素标签的nodeType值;
+     * 3)return ary;: 把搜集到的数据返回输出;
+     * 4)getChildren(oTab);: 形参/实参(获取哪个元素下面的子节点,就把这个元素传进实参);
+     *
+     *
+     * 缩写ele: element;
+     * 缩写cur: current;
+     *
+     */
+
+
+
+
+
+
+</script>
+</body>
+</html>

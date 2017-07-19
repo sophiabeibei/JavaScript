@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!--ul>li*3   tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构-->
+    <div>新闻新闻</div>
+    <div id="div2">娱乐娱乐</div>
+    <div>军事军事</div>
+</div>
+<script type="text/javascript">
+    //DOM: document object model文档对象模型
+    //DOM: 提供了很多获取元素的方法和之间关系属性,以及操作这些元素的方法;
+    //DOM关系图谱
+
+    //获取#tab下面的ul
+    //css写法: #tab ul
+    //js写法: document.getElementByTagName("ul")[0];
+    //节点(node): html页面中的标签元素,注释,文字内容....所有的都可以叫节点(node);
+    /**
+     * 空格,回车,都算是节点;会当成文本系节点处理;
+     */
+
+    /**上下文context
+     *
+     *
+     */
+
+    //获取#tab
+    /**1)childNodes
+     * 获取的是元素的(所有)子节点;包括test(文本)/comment(注释)/标签;
+     */
+    var oTab = document.getElementById("tab");
+    console.log(oTab.childNodes);//test(文本)   comment(注释)   标签
+
+
+    /**2)children
+     * 获取的是元素的(标签)节点;
+     */
+    console.log(oTab.children);//ul div div div
+
+    /**3)parentNode
+     * 获取的是元素的(父)节点;
+     */
+    console.log(oTab.parentNode);//<body>...</body>
+
+    /**4)previousSibling
+     * 获取的是元素的(哥哥)节点;
+     */
+    var oDiv2 = document.getElementById('div2');
+    console.log(oDiv2.previousSibling);//#text
+    console.log(oDiv2.previousSibling.previousSibling);//<div>新闻新闻</div>
+
+    /**5)nextSibling
+     * 获取的是元素的(弟弟)节点;
+     */
+    console.log(oDiv2.nextSibling);//#text
+    console.log(oDiv2.nextSibling.nextSibling);//<div>军事军事</div>
+
+    /**6)firstChild
+     * 获取的是元素的(第一个)子节点;
+     */
+    console.log(oTab.firstChild);//#text
+
+
+    /**7)lastChild
+     * 获取的是元素的(最后一个)子节点;
+     */
+    console.log(oTab.lastChild);//#text
+
+
+
+
+
+
+
+
+
+    //node节点(关系属性)总结:
+    /**
+     * 1)childNodes: 元素的所有子节点
+     * 2)children: 元素的(标签)节点
+     * 3)parentNode: 元素的(父)节点
+     * 4)previousSibling: 元素的(哥哥)节点
+     * 5)nextSibling: 元素的(弟弟)节点
+     * 6)firstChild: 元素的(第一个)子节点
+     * 7)lastChild: 元素的(最后一个)子节点
+     *
+     */
+
+</script>
+</body>
+</html>

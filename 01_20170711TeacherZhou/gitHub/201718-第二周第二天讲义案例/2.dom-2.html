@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="tab" id="tab">
+    <!--ul>li*3  tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构 -->
+    <div>新闻</div>
+    <div id="div2">娱乐</div>
+    <div>军事</div>
+</div>
+
+<div class="tab" id="tab1">
+    <!--ul>li*3  tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构 -->
+    <div>新闻</div>
+    <div>娱乐</div>
+    <div>军事</div>
+    <div>军事</div>
+</div>
+<script type="text/javascript">
+    //DOM document object model 文档对象模型
+    //dom 提供了很多获取元素的方法和之间关系属性,以及操作这些元素的方法;
+    //dom 关系图谱
+    /*css #tab ul  #tab div*/
+    //节点：node,html页面中的标签元素,注释,文字内容....
+    //空格和回车会当成文本节点去处理....
+
+    /*关系属性(7个)：
+    * childNodes 获取的是元素所有的子节点 包括注释 文字 标签 回车/空格
+    * children 获取的所有的元素(标签)节点
+    * parentNode 获取元素的父节点
+    * previousSibling 获取元素的哥哥节点
+    * nextSibling 获取弟弟节点
+    * firstChild  获取元素的第一个子节点
+    * lastChild 获取的是元素的最后一个子节点
+    * */
+    var oTab = document.getElementById('tab');
+    console.log(oTab.childNodes); //13 有注释#comment 文字 标签 回车#text
+    console.log(oTab.children); //4
+    console.log(oTab.parentNode);//body
+
+    var oDiv2 = document.getElementById('div2');
+    console.log(oDiv2.previousSibling.previousSibling); //<div>新闻</div>
+
+    console.log(oDiv2.nextSibling.nextSibling); //<div>军事</div>
+    console.log(oTab.firstChild);//#text
+    console.log(oTab.lastChild);//#text
+
+    /*
+    * 节点类型：4个       nodeType      nodeName   nodeValue
+    * 元素节点(标签)        1          大写的标签名    null
+    * 文本节点             3           #text       文字的内容
+    * 注释节点             8           #comment    注释的内容
+    * document            9           #document   null
+    * */
+    console.log(oTab.nodeType); //1
+    console.log(oTab.nodeName); //DIV
+    console.log(oTab.nodeValue); //null
+
+    console.log(document.nodeType); //9
+    console.log(document.nodeName); //#document
+    console.log(document.nodeValue); //null
+
+    //思考:利用childNodes 实现和children一样的效果 - 只要元素(标签)节点？
+    /*element -> ele
+     getChildren() 获取是元素下所有的元素子节点的方法;
+    *parameter(参数/函数的形参):
+    * ele 我们想要获取谁下面的元素子节点 我们就把谁传进去 比如：tab下所有的 元素 只要把我们的oTab传进去;
+    *
+    * */
+
+    /*函数分2步: 创建 执行*/
+    function getChildren(ele) {
+        var nodes = ele.childNodes,//1.获取所有的子节点,包括标签,注释,文本... length 13
+            ary = []; //2.拿一个空的盒子 如果是我们要的标签 我们往盒子里放 如果不是我们的标签(注释,文本(回车/换行)), 我们就不需要往里放;
+
+        //3.循环我们子节点的每一项  我们只需要挑选出元素字节点
+        for (var i = 0; i < nodes.length; i++) {
+            var cur = nodes[i]; //cur 指的是当前的子节点
+            console.log(nodes[i]); //#text #comment ul....
+            //4.做一个挑选 挑选出我们需要的元素子节点 nodeType为1 如果是元素子节点 就放在盒子里
+            if (cur.nodeType === 1) {
+                ary.push(cur) //push 向数组的末尾添加
+            }
+        }
+        //5)把我们挑选出来的元素子节点输出
+        return ary;
+    }
+
+    var result = getChildren(oTab);
+    console.log(result); //ul div div div
+
+    var oTab1 = document.getElementById('tab1');
+    var res = getChildren(oTab1);
+    console.log(res); //ul div div div div
+
+</script>
+
+</body>
+</html>

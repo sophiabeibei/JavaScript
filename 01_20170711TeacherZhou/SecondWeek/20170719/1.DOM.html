@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+<div class="div1" id="div1"></div>
+<input type="text" name="div1">
+<!--
+css:
+基本选择器:
+id     #div{}
+class    .div{}
+标签      div{}
+*通配符选择器    *{}
+属性选择器   input[name="sex"]
+根元素根目录    html{}
+
+
+-->
+
+
+<script type="text/javascript">
+    /**1)document.getElementById("id名"): 通过id名获取元素;
+     *
+     */
+
+
+
+    /**2)document.getElementsByClassName("class名")
+     * 返回的结果是一个类数组,length的属性,索引从0开始,逐级递增,就算类数组的长度只有一项,也必须要通过索引oDiv[0]获取它的第一项;
+     * 这种获取元素的方法是我们项目中最常用的方法之一;但是它有兼容性;在ie6-8下不支持这个属性;
+     *
+     */
+    var oDiv1 = document.getElementsByClassName("div1")[0];
+    oDiv1.style.backgroundColor = "red";
+    console.log(oDiv1);//
+
+
+
+    /**3)document.getElementsByTagName("标签名"): 通过标签名获取元素;
+     * 返回值: 类数组;
+     *
+     */
+    var oDiv = document.getElementsByTagName("div1");
+    console.log(oDiv1);
+    //获取第一项: oDiv[0]    oDiv.item(0)
+    //获取length长度: oDiv.length => oDiv['length']
+    //获取对象中属性名的方法:
+
+
+    /**4)document.getElementsByName("name属性"): 通过name属性获取元素;
+     * 返回值: 类数组;
+     *
+     */
+    var oBtn = document.getElementById("btn");
+    var oSex = document.getElementsByName("sex");
+    for (var i = 0; i < oSex.length; i++) {
+        var cur = oSex[i].value;
+        if(cur.checkbox === true){
+            console.log(cur);
+            break;
+        }
+    }
+
+
+    /**5)document.documentElement: 获取根元素html;
+     *
+     */
+
+
+
+    /**6)document.body: 获取body元素;
+     *
+     */
+
+
+
+    /**7)document.querySelector(""): 移动端获取元素的方法;
+     * document.querySelector("#div1");
+     * 遵循css选择器的规范   #div1
+     */
+
+
+
+    /**8)document.querySelectorAll(""): 获取多个,获取一组元素;
+     * document.querySelectorAll("#tab ul li"): 获取#tab里面所有的li;
+     *
+     * 获取<input type="text" name="div1">中的name: document.querySelector("input[name='div1']");
+     *
+     *
+     */
+
+
+
+    /**9)获取当前可视窗口的宽(兼容所有浏览器的写法):
+     * var curWidth = document.documentElement.clientWidth||document.body.clientWidth;
+     *
+     */
+
+
+    /**10)获取当前可视窗口的高(兼容所有浏览器的写法):
+     * var curHeight = document.documentElement.clientHeight||document.body.clientHeight;
+     *
+     */
+
+
+    //获取DOM元素的8个方法总结:
+    /**
+     * 1)document.getElementById
+     * 2)document.getElementsByClassName
+     * 3)document.getElementsByTagName
+     * 4)document.getElementsByName
+     * 5)document.documentElement
+     * 6)document.body
+     * 7)document.querySelector
+     * 8)document.querySelectorAll
+     *
+     * 9)var curWidth = document.documentElement.clientWidth||document.body.clientWidth;
+     * 10)var curHeight = document.documentElement.clientHeight||document.body.clientHeight;
+     */
+
+
+
+
+    //三种方法写一个按钮
+    //1.<input type="button">
+    //2.<a href="javascript:;"/>
+    //3.<button></button>
+
+</script>
+</body>
+</html>

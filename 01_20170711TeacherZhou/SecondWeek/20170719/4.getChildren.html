@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装getChildren</title>
+</head>
+<body>
+<div id="box">
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="tab" id="tab">
+    <!--ul>li*3   tab-->
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <!-- 我是div的结构-->
+    <div>新闻新闻</div>
+    <div id="div2">娱乐娱乐</div>
+    <div>军事军事</div>
+</div>
+
+<script type="text/javascript">
+    var oTab = document.getElementById("tab");
+    function getChildren(ele, tagName) {
+        var nodes = ele.childNodes;
+        var ary = [];
+        for (var i = 0; i < nodes.length; i++) {
+            var cur = nodes[i];
+            if(cur.nodeType === 1){
+                if(tagName){
+                    if(cur.nodeName.toLowerCase() === tagName.toLowerCase()){
+                        ary.push(cur);
+                    }
+                }else {
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary;
+    }
+
+    console.log(getChildren(oTab));//(4) [ul, div, div#div2, div]
+    console.log(getChildren(oTab, "ul"));//[ul]    指定打印ul元素标签;
+    console.log(getChildren(oTab, "UL"));//[ul]    统一把大写转小写;
+
+    var oBox = document.getElementById("box");
+    console.log(getChildren(oBox));//(3) [p, p, p]
+
+    /**知识点:
+     * 1)toLowerCase()方法: 转化小写字母;
+     * 2)
+     * 3)
+     *
+     */
+
+</script>
+</body>
+</html>

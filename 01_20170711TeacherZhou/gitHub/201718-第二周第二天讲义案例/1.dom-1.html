@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+css:
+基本选择器：
+id     #div1
+class  .div1
+标签选择器  div{}
+*
+属性选择器 input[name="sex"]
+html  html{}
+body  body{}
+  
+-->
+<!--3种方式写一个按钮-->
+<!--
+<input type="button">
+<button></button>
+<a href="javascript:;"></a>
+-->
+
+
+<input type="text" name="div1">
+<div id="div1" class="div1"></div>
+<input type="radio" id="man" name="sex" value="男" checked="checked"><label for="man">男</label>
+<input type="radio" id="woman" name="sex" value="女"><label for="woman">女</label>
+<input type="button" value="点击按钮" id="btn">
+
+<script type="text/javascript">
+    var oDiv = document.getElementById('div1');
+    console.log(oDiv.tagName); //6,7 input
+    //1)document.getElementById('ID名') 通过id名来获取元素
+    //id唯一  如果出现重复 默认的获取的是第一个
+    // 如果没有获取到 返回的结果null
+    //在ie6,7下会把表单元素(input)的name属性当成id值;
+    // 在ie6,7下不区分大小写
+    //项目中注意:
+    // 表单元素的name 尽量不要和其他元素的id重名;
+    //尽量不要用大小写去区分不同的id值 比如：tab TAB
+
+    //2)document.getElementsByClassName('class名')
+    //返回的结果是一个类数组,length的属性,索引从0开始,逐级递增,就算类数组的长度只有一项,也必须要通过索引oDiv1[0]获取他的第一项
+    //这种获取元素的方法是我们项目中最常用的方法之一,但是它有兼容问题,在ie6-8下不支持这个属性
+    /*var oDiv1=document.getElementsByClassName('div1')[0];
+    oDiv1.style.backgroundColor='red';
+    console.log(oDiv1); //*/
+
+    //3)document.getElementsByTagName('标签名')
+    //返回值也是一个类数组
+    /*var oDiv=document.getElementsByTagName('div');
+   console.log(oDiv);*/
+    //oDiv[0] oDiv.item(0) 获取第一项
+    //oDiv.length => oDiv['length']  获取对象中属性名的方法
+
+    //4)document.getElementsByName('name属性')
+    //返回结果:类数组
+    var oBtn = document.getElementById('btn');
+    var oSex = document.getElementsByName('sex');
+    oBtn.onclick = function () {
+        for (var i = 0; i < oSex.length; i++) {
+            var val = oSex[i].value;
+            if (oSex[i].checked === true) {
+                console.log(val);
+                break; //一个被选中,另一个肯定不会被选中 break直接跳出整个循环;如果选中男 女肯定没选中;反之选中女 男肯定没选中
+            }
+        }
+    }
+    //continue break 后面的代码不执行
+
+    //5)
+    document.documentElement  //html 根元素
+    document.body  //body元素
+    //兼容所有的浏览器,获取屏幕的宽度和高度
+    var curWidth = document.documentElement.clientWidth || document.body.clientWidth;//获取屏幕的宽度
+    var curHeight = document.documentElement.clientHeight || document.body.clientHeight;//获取屏幕的高度
+
+    //6)document.querySelector 获取一个
+    //  document.querySelectorAll 获取多个
+    // 常用在移动端
+    //遵循css选择器的规则 #div1 .div1
+    document.querySelector(".div1");
+    document.querySelectorAll("#tab ul li");
+    document.querySelector("input[name='div1']");
+
+</script>
+</body>
+</html>

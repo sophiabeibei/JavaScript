@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作DOM元素的方法</title>
+</head>
+<body>
+<!--<div id="div1"></div>-->
+<div id="box"></div>
+<script type="text/javascript">
+
+    /**1)createElement: 动态添加div标签元素;
+     *
+     */
+    var oDiv = document.createElement("div");
+    oDiv.id = "div1";
+    oDiv.style.width = "200px";
+    oDiv.style.height = "200px";
+    oDiv.style.backgroundColor = "yellow";
+
+
+    /**2)appendChild: 把创建的标签插入指定的容器中;
+     *
+     */
+    document.body.appendChild(oDiv);
+
+
+
+    /**3)旧元素.parentNode.replaceChild(新元素,旧元素): 新的元素替换旧的元素;
+     *
+     */
+
+    var oDiv1 = document.createElement("div");
+    oDiv1.id = "div2";
+    oDiv1.style.width = "200px";
+    oDiv1.style.height = "200px";
+    oDiv1.style.backgroundColor = "orange";
+    oDiv1.innerHTML = "我是橙色";
+    //oDiv.parentNode.replaceChild(oDiv1,oDiv);
+
+
+    /**4)旧元素.parentNode.insertBefore(新元素,旧元素): 新的元素插入旧的元素的前面;
+     *
+     */
+    oDiv.parentNode.insertBefore(oDiv1,oDiv);
+
+
+    /**5)元素.cloneNode: 把元素克隆一份;(有俩参数true   false)
+     * true: 把文本内容也克隆;
+     */
+    //var clo = oDiv1.cloneNode();
+    var clo = oDiv1.cloneNode(true);
+    console.log(clo);
+    document.body.appendChild(clo);
+    console.log(clo);
+
+
+    /**6)元素.removeChild: 移除元素;
+     *
+     */
+    document.body.removeChild(oDiv);
+
+
+    /**7)元素.setAttribute: 设置元素的自定义属性名;
+     *
+     */
+    var oBox = document.getElementById("box");
+    oBox.setAttribute("zhufengIndex","珠峰培训");
+
+
+    /**8)元素.getAttribute: 获取元素的自定义属性名;
+     *
+     */
+    var zhufeng = oBox.getAttribute("zhufengIndex");
+    console.log(zhufeng);
+
+
+    /**9)元素.removeAttribute: 移除元素的自定义属性;
+     *
+     */
+    //oBox.removeAttribute("zhufengIndex");
+
+
+
+
+    oBox.className = "select";//  元素标签中有个class="select";
+
+
+
+
+
+
+
+
+
+    /**操作DOM元素的9个方法总结:
+     * 1)createElement: 动态添加div标签元素;
+     * 2)appendChild: 把创建的标签插入指定的容器中;
+     * 3)replaceChild(新元素,旧元素): 新的元素替换旧的元素;
+     * 4)insertBefore(新元素,旧元素): 新的元素插入旧的元素的前面;
+     * 5)cloneNode: 把元素克隆一份;(有俩参数true   false)
+     * 6)removeChild: 移除元素;
+     * 7)setAttribute: 设置元素的自定义属性名;
+     * 8)getAttribute: 获取元素的自定义属性名;
+     * 9)removeAttribute: 移除元素的自定义属性;
+     */
+
+</script>
+</body>
+</html>
