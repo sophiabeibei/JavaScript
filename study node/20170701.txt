@@ -1,0 +1,26 @@
+1.调试 debugger
+2.插件的引用  http://echarts.baidu.com/feature.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
