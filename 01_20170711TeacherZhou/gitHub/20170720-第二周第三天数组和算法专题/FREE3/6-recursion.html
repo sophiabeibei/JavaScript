@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>recursion 递归</title>
+</head>
+<body>
+<script>
+    //->函数自己执行的时候在调用自己执行，这种机制叫做递归
+    //    function fn() {
+    //        fn();
+    //    }
+    //    fn();
+
+    //->获取1~100的和
+    //->LOW EST
+    //    var total = null;
+    //    for (var i = 1; i <= 100; i++) {
+    //        total += i;
+    //    }
+    //    console.log(total);//->5050
+
+    //    function sum(n) {
+    //        if (n === 0) {
+    //            return 0;
+    //        }
+    //        return n + sum(n - 1);//->return 5+sum(4)  ->5+4+sum(3) ->5+4+3+sum(2) ->5+4+3+2+sum(1) ->5+4+3+2+1+sum(0) -> 5+4+3+2+1+0
+    //    }
+    //    var result = sum(5);
+    //    console.log(result);
+
+
+    function sum(n) {
+        if (n === 0) {
+            return 0;
+        }
+        return n + sum(n - 1);
+    }
+    var result = sum(100);
+    console.log(result);
+
+    //->扩展思考题：
+    //1~100之间的数字，如果是3的倍数我们加，如果是5的倍数我们减，即是3也是5的倍数，我们不加也不减，其它数字也不管?
+</script>
+</body>
+</html>

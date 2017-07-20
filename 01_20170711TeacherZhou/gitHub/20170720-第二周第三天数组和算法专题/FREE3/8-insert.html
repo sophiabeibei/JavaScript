@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>插入排序</title>
+</head>
+<body>
+<script>
+    function insertSort(ary) {
+        //->1、首先抓一张牌:第一张
+        var handAry = [];//->handAry:手里已经抓的牌
+        handAry.push(ary[0]);
+
+        //->2、依次到桌面抓牌
+        //->i=1:第一张已经被抓走了,在抓的时候从第二张开始即可
+        for (var i = 1; i < ary.length; i++) {
+            var cur = ary[i];//->CUR就是当前抓到的新牌
+
+            //->3、把当前抓到的牌和手里的牌进行比较(比较习惯是按照从后向前比较的),当遇到一张手里的牌比新抓的牌小了,我们把这张新抓的牌放在手里这张牌的后面即可(也可以理解为放在手里这张牌下一张牌的前面)
+            for (var j = handAry.length - 1; j >= 0; j--) {
+                var curHand = handAry[j];
+                if (curHand < cur) {
+                    handAry.splice(j + 1, 0, cur);//->把CUR(新抓的牌)放在当前手里这张牌的后一张牌的前面
+                    j = -1;//->此时就不需要再循环了(也就是不需要再跟前面的比较了)
+                }
+                if (j === 0) {//->新抓的牌和手里所有的牌都比较完了,没有比新抓牌更小的,此时我们把新抓的牌放在开始即可
+                    handAry.unshift(cur);
+                }
+            }
+        }
+
+        return handAry;
+    }
+
+
+    var ary = [12, 24, 2, 15, 34, 17, 3, 18, 25, 0];
+    var result = insertSort(ary);
+    console.log(result);
+</script>
+</body>
+</html>

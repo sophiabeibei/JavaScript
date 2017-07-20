@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>distinct数组去重</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    //解决兼容问题
+    var ary = [2,3,1,2,6,5,4,6,8,1,3,2,1,6,4,6,1,3,4,9,8,4,5,3,1,6,5,7,9,8,4,3,1,5,1];
+
+    //没注释:
+    var obj = {};
+    for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i];
+        if(typeof obj[cur] !== "undefined"){
+            ary[i] = ary[ary.length-1];
+            ary.length--;
+            i--;
+            continue;
+        }
+        obj[cur] = cur;
+    }
+    console.log(obj);
+    console.log(ary);
+
+
+    //var obj = {1: 1,2: 2};
+    //obj[1];//1
+    //obj[3];//undefined
+
+
+    //思想:
+    /*
+    * 解决方案二:
+    * 依次循环数组中的每一项,把每一项获取的值作为obj对象的属性名和属性值存储起来,但是在每一次向对象中存储的时候,我们都验证以下对象中是否已经存在了这个属性名,如果存在说明即将存储的这个数是重复的,如果不存在说明还没有重复,对于重复的我们只需要把它干掉即可;
+    *
+    * */
+    //1.先创建一个空对象;
+    /*var obj = {};
+    2   {2:2}
+    3   {2:2,3:3}
+    1   {2:2,3:3,1:1}
+    2   {2:2,3:3,1:1}//发现之前对象中已经存在属性为2的这一项了,说明2重复了,我们把当前项干掉即可;    属性值是啥无所谓*/
+
+    //对象中的属性名不能重复!!!!
+
+
+    //循环数组
+    /*for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i];
+
+        //每一次存储之前作判断,obj[cur] === "undefined"  说明cur这个属性在对象中已经存在了.同时说明了cur这个值重复了
+        if(typeof obj[cur] !== "undefined"){
+
+            //把数组中最后一项的值赋值给数组当前属性
+            ary[i] = ary[ary.length-1];
+
+            //把数组中最后一项删除
+            ary.length--;
+            i--;
+            continue;
+        }
+        //把数组中获取的这一项的值分别作为obj对象的属性名和属性值存储起来
+        obj[cur] = cur;
+    }
+    */
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

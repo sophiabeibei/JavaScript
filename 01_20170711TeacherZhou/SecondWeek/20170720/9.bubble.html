@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡排序bubble</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    function bubbleSort(ary) {
+        for (var i = 0; i < ary.length - 1; i++) {//控制多少轮
+            for (var j = 0; j < ary.length - 1 - i; j++) {//
+                if (ary[j] > ary[j + 1]) {
+                    var temp = null;
+                    temp = ary[j];
+                    ary[j] = ary[j+1];
+                    ary[j+1] =temp;
+                }
+
+            }
+
+        }
+        return ary;
+    }
+
+
+    var ary = [12, 14, 2, 5, 10, 23, 25, 13, 0, 16, 18, 24];
+    var result = bubbleSort(ary);
+    console.log(result);
+
+
+
+
+</script>
+</body>
+</html>

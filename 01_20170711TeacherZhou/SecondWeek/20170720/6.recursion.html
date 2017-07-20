@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>recursion递归</title>
+</head>
+<body>
+<script type="text/javascript">
+    //递归: 函数自己执行的时候在调用自己执行,这种机制叫递归;
+    /*function fn() {
+     fn();
+     }
+     fn();
+     */
+
+    //=================
+    //获取1-100的和;
+    /*var total = null;
+     for (var i = 1; i <= 100; i++) {
+     total += i;
+     }
+     console.log(total);*/
+
+
+
+    /*function sum(n) {
+     return 0;//return后面是啥,result接收到的就是啥;
+     }
+     var result = sum(100);
+     console.log(result);*/
+
+
+    function sum(n) {
+        if(n === 0){
+            return 0;
+        }
+        return n + sum(n - 1);//return 5+sum(4)  ->5+sum(4) ->5+4+sum(3)  ->5+4+3+sum2  ->5+4+3+2+sum(1)  ->5+4+3+2+1+sum(0)  ->5+1+3+2+1+0;
+    }
+    var result = sum(5);
+    console.log(result);
+
+    //扩展思考题: 1-100之间的数字,如果是3的倍数,我们加;如果是5的倍数,我们减;既是3又是5的倍数,我们不加也不减;其他数字也不管;求总和???
+
+
+
+
+
+</script>
+</body>
+</html>

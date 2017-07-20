@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-数组去重</title>
+</head>
+<body>
+<script>
+    function distinctFn(ary) {
+        var obj = {};
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if (typeof obj[cur] !== 'undefined') {
+                ary[i] = ary[ary.length - 1];
+                ary.length--;
+                i--;
+                continue;
+            }
+            obj[cur] = cur;
+        }
+        return ary;//->把去重后的数组返回
+    }
+
+    var ary = [1, 2, 3, 2, 3, 4, 3, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 3, 4, 2];
+    var result = distinctFn(ary);
+    console.log(result);
+</script>
+</body>
+</html>

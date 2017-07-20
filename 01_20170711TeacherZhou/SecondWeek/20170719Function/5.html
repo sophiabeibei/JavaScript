@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数-arguments</title>
+</head>
+<body>
+<script type="text/javascript">
+    function sum() {
+        console.log(arguments);//arg是类数组
+        //arguments[0]  ->第一个实参值;
+        //arguments.length ->获取总共传递的实参个数;
+        var total = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            var cur = arguments[i];
+            total += cur;
+        }
+        return total;
+    }
+    var result = sum(20,30,40,50,60);
+    console.log(result);//
+
+
+    /**知识点: arguments(实参集合)
+     * 实参: 传进来的值;
+     * 实参集合: 当函数执行的时候,传递进来的实参值,都存储在arg(arguments)这个集合中;不管是否定义了形参,也不管是否传递了实参,arg始终存在;
+     *
+     */
+
+
+</script>
+</body>
+</html>

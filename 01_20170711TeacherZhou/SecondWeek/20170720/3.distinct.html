@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-distinct数组去重</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    var ary = [2,3,1,6,5,4,6,8,1,3,2,1,6,4,6,1,3,4,9,8,4,5,3,1,6,5,7,9,8,4,3,1,5,1];
+    /*for (var i = ary.length-1; i >=0; i--) {
+        var cur = ary[i];
+        var aryBefore = ary.slice(0,i);
+        if(aryBefore.indexOf(cur) !== -1){
+            ary.splice(i, 1);
+        }
+    }*/
+    //遗留问题: 当我们使用splice删除当前项之后,导致当前项后面内容的索引都要向前提一位,如果后面内容较多,会消耗很多性能;
+
+    //优化性能,解决方法:
+    for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i],
+            backAry = ary.slice(i+1);
+        if(backAry.indexOf(cur) !== -1){
+            //ary.splice(i,1);
+            //我们把数组最后的那一项替换当前要删除的这一项;然后再把最末尾的那一项给删除掉即可;
+
+            //最后一项替换当前项
+            ary[i] = ary[ary.length-1];
+            ary.pop();//       ary.length--;         ary.splice(ary.length-1,1)删除最后一项即可;
+            i--;
+        }
+    }
+    //遗留问题: indexOf不兼容
+
+
+
+</script>
+</body>
+</html>

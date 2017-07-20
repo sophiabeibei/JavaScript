@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>选项卡1</title>
+    <title>选项卡-2</title>
     <style>
         *{
             margin: 0;
@@ -14,56 +14,54 @@
         ul{
             list-style: none;
         }
-        .tabBox{
+        .tab{
             width: 500px;
             margin: 20px auto;
             box-sizing: border-box;
         }
-        .tabBox ul{
+        .tab ul{
             position: relative;
             top: 1px;
             overflow: hidden;
         }
-        .tabBox ul li{
+        .tab ul li{
             float: left;
             margin-right: 5px;
-            line-height: 35px;
-            padding: 0 10px;
-            border: 1px solid #ccc;
-            background: #eee;
+            padding: 5px;
+            border: 1px solid #999;
+            background: #ccc;
             cursor: pointer;
         }
-        .tabBox ul li.select{
-            background: #fff;
+        .tab ul li.select{
             border-bottom-color: #fff;
+            background: #fff;
         }
-        .tabBox div{
+        .tab div{
             display: none;
-            padding: 10px;
             height: 300px;
-            border: 1px solid #ccc;
+            padding: 10px;
+            border: 1px solid #999;
         }
-        .tabBox div.select{
+        .tab div.select{
             display: block;
         }
     </style>
 </head>
 <body>
-<div class="tabBox" id="tabBox">
+<div id="tab" class="tab">
     <ul>
         <li class="select">新闻</li>
+        <li>体育</li>
         <li>娱乐</li>
-        <li>军事</li>
     </ul>
     <div class="select">新闻内容</div>
+    <div>体育内容</div>
     <div>娱乐内容</div>
-    <div>军事内容</div>
 </div>
 <script type="text/javascript">
-    var oTab = document.getElementById("tabBox");
+    var oTab = document.getElementById("tab");
     var oList = oTab.getElementsByTagName("li");
     var oDivList = oTab.getElementsByTagName("div");
-
 
     function changeTab(curIndex) {
         for (var i = 0; i < oList.length; i++) {
@@ -74,13 +72,13 @@
         oDivList[curIndex].className = "select";
     }
 
-
     for (var i = 0; i < oList.length; i++) {
         oList[i].curIndex = i;
-        oList[i].onclick = function () {
+        oList[i].onclick = function (){
             changeTab(this.curIndex);
         }
     }
+
 
 
 </script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>快速排序</title>
+</head>
+<body>
+<script>
+    function quickSort(ary) {
+        //->3、如果递归执行这个方法,传递进来的某个数组中只有一项或者没有了,我们不需要再递归了,此时返回的直接是这个值即可
+        if (ary.length <= 1) {
+            return ary;
+        }
+
+        //->1、找到ARY中间这一项,在原有数组中干掉这一项
+        //->找到中间项的索引
+        var pointIndex = Math.floor(ary.length / 2);
+        //->根据索引找到中间项,并且把中间这一项在原有数组中删除掉：通过SPLICE删除数组中的内容,返回的结果是个新数组,新数组中包含删除的内容,如果我们想获取中间项的值,需要通过索引零获取
+        var pointValue = ary.splice(pointIndex, 1)[0];
+
+        //->2、拿中间项这个值和剩余的内容比较,所有比他小的放在左边,比他大的放在右边
+        var leftAry = [];
+        var rightAry = [];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            cur > pointValue ? rightAry.push(cur) : leftAry.push(cur);
+        }
+
+        //quickSort(leftAry)//->让左边的数组按照这个步骤处理:左边排好序的
+        //quickSort(rightAry)//->让右边的数组也按照这个步骤处理:右边排好序的
+        return quickSort(leftAry).concat(pointValue, quickSort(rightAry));
+    }
+
+
+    var ary = [12, 14, 23, 25, 13, 16, 18, 24];
+    var result = quickSort(ary);
+    console.log(result);
+</script>
+</body>
+</html>

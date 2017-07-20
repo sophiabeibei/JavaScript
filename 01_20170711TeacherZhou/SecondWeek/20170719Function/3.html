@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数-出口(返回值)</title>
+</head>
+<body>
+<script type="text/javascript">
+    function sum(num1, num2) {
+        var total = num1 + num2;
+        return total;//我们使用return关键词来设置函数的出口;return后面返回的是一个值,次数相当于把私有变量total存储的值返回;
+        //重点: return是把存储的值返回了,而不是把变量返回;-->return 30;
+    }
+    //sum(10, 20);
+    //console.log(total);//total is not defined   =>  TOTAL不存在: 函数体中的私有变量在外面是不能直接获取的,需要函数提供出口(返回值 return);
+
+
+
+    //接收return返回的值;先定义一个变量;
+    var result = sum(10, 20);
+    console.log(result);//30
+
+
+    /**函数的出口(返回值)
+     * 返回值: return;
+     * return返回的是一个值,需要在外界定义一个变量接收(执行函数,把函数return返回的值赋值给变量result,此时的result存储的就是返回的值);
+     *
+     *
+     */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-数组去重</title>
+</head>
+<body>
+<script>
+    var ary = [1, 2, 3, 2, 3, 4, 3, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 3, 4, 2];
+
+    //->单里斯 思想
+    //    for (var i = ary.length - 1; i >= 0; i--) {
+    //        var cur = ary[i];
+    //        var aryBefore = ary.slice(0, i);
+    //        if (aryBefore.indexOf(cur) !== -1) {
+    //            ary.splice(i, 1);
+    //        }
+    //    }
+
+    //    for (var i = 0; i < ary.length;) {
+    //        var cur = ary[i];
+    //        var backAry = ary.slice(i + 1);
+    //        if (backAry.indexOf(cur) !== -1) {
+    //            ary.splice(i, 1);
+    //        } else {
+    //            i++;
+    //        }
+    //    }
+
+    //    for (var i = 0; i < ary.length; i++) {
+    //        var cur = ary[i];
+    //        var backAry = ary.slice(i + 1);
+    //        if (backAry.indexOf(cur) !== -1) {
+    //            ary.splice(i, 1);//->当我们使用SPLICE删除当前项之后，导致当前项后面内容的索引都要向前提一位，如果后面内容较多，会消耗很多的性能
+    //            i--;
+    //        }
+    //    }
+
+    for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i];
+        var backAry = ary.slice(i + 1);
+        if (backAry.indexOf(cur) !== -1) {
+            //ary.splice(i, 1);
+            //->我们把数组最后面的那一项替换当前要删除的这一项，然后在把最末尾的那一项给删除掉即可
+            ary[i] = ary[ary.length - 1];//->最后一项替换当前项
+            ary.pop(); //->ary.length--;  ->ary.splice(ary.length-1,1) 删除最后一项即可
+
+            i--;
+        }
+    }
+</script>
+</body>
+</html>

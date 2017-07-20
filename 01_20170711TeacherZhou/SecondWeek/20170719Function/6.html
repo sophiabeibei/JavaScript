@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数-arguments升级版</title>
+</head>
+<body>
+<script type="text/javascript">
+    function sum() {
+        //var total = 0;
+        var total = null;//0和null的区别: 0是有值;null是没值,不占位置;   (0是挖坑不种树;null连坑都没挖);
+        for (var i = 0; i < arguments.length; i++) {
+            var cur = Number(arguments[i]);//把传递的值转换为number,如果得到的数据是NaN,我们就不累加这一项;
+            if(isNaN(cur)){
+                continue;//不再往下执行,继续执行下一轮循环;
+            }
+            total += cur;//200+"70"->"20070"字符串拼接: 我们需要在加法运算钱,把传递的值转换为数字,然后再进行加法运算,防止出现字符串拼接;
+        }
+        return total;
+    }
+    var result = sum(20,30,40,50,60,"70");
+    console.log(result);//
+
+
+    /**知识点: 防止出现字符串拼接
+     * 1.把传递的值转换为number,如果得到的数据是NaN,我们就不累加这一项;
+     * 匿名函数: 没有名字的函数就是匿名函数;
+     *
+     */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            color: #555;
+        }
+        #tab{
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 100px;
+            height: 35px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            font-size: 18px;
+            letter-spacing: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body style="background: orange">
+<input type="button" value="开灯" id="tab">
+<script type="text/javascript">
+    var oTab = document.getElementById("tab"),
+        oBody = document.body;
+    oTab.onclick = function () {
+        var oBodybg = oBody.style.backgroundColor;
+        if(oBodybg === "orange"){
+            oBody.style.backgroundColor = "yellow";
+        }else if(oBodybg === "yellow"){
+            oBody.style.backgroundColor = "orange";
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>
