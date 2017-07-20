@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var ary1=[1,2,4,2,4,2,5,3,5,2,3,5];
+    function unique(ary){
+        var obj={};
+        for (var i = 0; i < ary.length; i++) {
+            var cur=ary[i];
+            var nextAry=ary.slice(i+1);
+            if(typeof obj[cur]!=="undefined"){
+               ary.splice(i,1,ary[ary.length-1]);
+               ary.splice(ary.length-1,1);
+               i--;
+               continue;
+            }
+            obj[cur]=cur;
+        }
+        return ary;
+    }
+
+    console.log(unique(ary1));//12453
+</script>
+</body>
+</html>

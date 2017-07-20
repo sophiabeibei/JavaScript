@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*slice(n,m) 从索引n开始到索引m
+      slice(n) 从索引n找到数组的最后  返回的是一个数组
+    *
+    * splice 删除有2个参数:
+    * splice(n,1) 当前删除
+    * splice(ary.length-1,1)    删除末尾项 =>数组最后一项的索引值ary.length-1
+    *
+    * 替换有3个参数：
+    *splice(n,m,x)=>splice(i,1,ary[ary.length-1]) =>splice(索引，个数,项)
+    * indexof 检测数组中是否存在某一个值
+    *
+    * 弊端:
+    * indexOf 兼容问题
+    * 数组塌陷的=>删除当前项 后面的项的索引全都改变了
+    * */
+    var ary=[1,2,4,2,4,2,5,3,5,2,3,5];
+    //1     [  2,4,2,4,2,5,3,5,2,3,5]
+    //1     [5,2,4,2,4,2,5,3,5,2,3  ]
+    /*for(var i=0;i<ary.length;i++){
+        var cur=ary[i]; //当前项
+        var nextAry=ary.slice(i+1);//当前项到数组的最后
+        if(nextAry.indexOf(cur)!=-1){
+            ary.splice(i,1); //删除当前项
+            i--;
+        }
+    }*/
+
+    /* 解决弊端一:数组塌陷*/
+/*    for(var i=0;i<ary.length;i++){
+        var cur=ary[i]; //当前项
+        var nextAry=ary.slice(i+1);//当前项到数组的最后
+        if(nextAry.indexOf(cur)!=-1){
+            //2步:先替换  再删除
+            ary.splice(i,1,ary[ary.length-1]);
+            //删除 pop();  ary.length--
+            ary.splice(ary.length-1,1);
+            i--;
+        }
+    }*/
+
+//    解决弊端二:indexOf 的兼容问题
+    //数组去重
+    var obj={};
+    for(var i=0;i<ary.length;i++){
+        var cur=ary[i]; //当前项
+        if(typeof obj[cur]!="undefined"){
+            //2步:先替换  再删除
+            ary.splice(i,1,ary[ary.length-1]);
+            //删除 pop();  ary.length--
+            ary.splice(ary.length-1,1);
+            i--;
+        }
+        obj[cur]=cur;
+    }
+    /*
+    * obj={}
+    *
+    * obj={
+    * 1:1,
+    * 2:2,
+    * ....
+    * }
+    * */
+    console.log(ary);
+
+    var obj={
+        1:1,
+        2:2,
+        3:3,
+        珠峰培训:zhufeng
+
+    }
+    obj[1]   =>1
+    obj["珠峰培训"] =>zhufeng
+    obj['李梦']   =>undefined  =>typeof obj[cur] !=undefined
+</script>
+</body>
+</html>
