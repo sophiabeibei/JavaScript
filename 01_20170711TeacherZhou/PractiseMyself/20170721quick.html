@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速排序-练习1</title>
+</head>
+<body>
+<script>
+    function quickSort(ary){
+        if(ary.length <= 1){
+            return ary;
+        }
+        var pointIndex = Math.floor(ary.length/2),
+            pointValue = ary.splice(pointIndex, 1)[0],
+            leftAry = [],
+            rightAry = [];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            cur>pointValue ? rightAry.push(cur): leftAry.push(cur);
+        }
+        return quickSort(leftAry).concat(pointValue, quickSort(rightAry));
+    }
+
+
+
+    var ary = [0,1,2,365,47,89,96,54,79,84,8,9,10,5,7,6,2,1,6,5,4,9,8,7];
+    var result = quickSort(ary);
+    console.log(result);
+
+</script>
+</body>
+</html>

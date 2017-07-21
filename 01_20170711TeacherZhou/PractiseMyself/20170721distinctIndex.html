@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>distinct数组去重indexOf</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    function distinctFn(ary){
+        var obj = {};
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            var nextAry = ary.slice(i+1);
+            if(nextAry.indexOf(cur) !== -1){
+                ary.splice(i,1);
+                ary.length--;
+                obj[cur] = cur;
+                i--;
+            }
+        }
+        return ary;
+    }
+
+
+    var ary = [1,2,3,5,5,4,6,9,8,7,4,1,0,0,2,5,8,9,9,6,3,0];
+    var result = distinctFn(ary);
+    console.log(result);
+
+</script>
+</body>
+</html>

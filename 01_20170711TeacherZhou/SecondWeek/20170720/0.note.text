@@ -116,7 +116,7 @@
         6.slice
         7.concat
         8.toString
-        9.join
+        9.join      eval
         10.reverse
         11.sort
         12.indexOf
@@ -129,50 +129,20 @@
 
 
     1.数组去重
-
-
-
-
     2.递归
-
-
-
-
-
     3.冒泡
-
-
-
-
-
-
     4.快速
-
-
-
-
-
-
     5.插入
 
 
 
 
+        必考:
+        1.选项卡      oList[i].curIndex = i;
+        2.数组去重    slice(i+1)   ary.length-1   ary[ary.length-1]   ary.length--   obj[cur] = cur;  continue
+        typeof obj[cur] !== "undefined"      nextAry.indexOf(cur) !== -1;   ary.splice(i,1);
 
-
-
-
-
-
-
-
-
-
-
-
-        算法总结:
-        1.去重
-        2.递归
+        选考:
         3.冒泡
         4.插入
         5.快速

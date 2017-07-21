@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡1</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .tab{
+            width: 500px;
+            margin: 30px auto;
+            box-sizing: border-box;
+        }
+        .tab ul{
+            position: relative;
+            top: 1px;
+            overflow: hidden;
+        }
+        .tab ul li{
+            float: left;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #999;
+            background: #ccc;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .tab ul li.select{
+            border-bottom-color: #fff;
+            background: #fff;
+        }
+        .tab div{
+            display: none;
+            height: 200px;
+            padding: 20px;
+            border: 1px solid #999;
+            font-size: 35px;
+        }
+        .tab div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab" class="tab">
+    <ul>
+        <li class="select">新闻</li>
+        <li>军事</li>
+        <li>娱乐</li>
+    </ul>
+    <div class="select">全国降雨量再次提升</div>
+    <div>愿世界和平 不再有战争</div>
+    <div>林心如 霍建华大婚</div>
+</div>
+<script type="text/javascript">
+    var oTab = document.getElementById("tab");
+    var oList = oTab.getElementsByTagName("li");
+    var oDivList = oTab.getElementsByTagName("div");
+
+
+    function changeTab(curIndex) {
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].className = null;
+            oDivList[i].className = null;
+        }
+        oList[curIndex].className = "select";
+        oDivList[curIndex].className = "select";
+    }
+
+
+
+    for (var i = 0; i < oList.length; i++) {
+        oList[i].curIndex = i;
+        oList[i].onclick = function () {
+            changeTab(this.curIndex);
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>distinct数组去重2</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function distinctFn(ary) {
+        var obj = {};
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if (typeof obj[cur] !== "undefined") {
+                ary[i] = ary[ary.length-1];//ary.length-1: ary.length是ary数组的长度,ary.length-1是ary数组的长度-1,等价于ary的最后一个索引index;ary[ary.length-1]是获取ary数组最后一个索引对应的属性值; ==>把获取到的属性值覆盖当前ary[i]对用的属性值;
+                ary.length--;//ary.length--: ary.length是数组的长度,前面把ary数组的最后一个index对应的属性值覆盖了当前index对应的属性值,所以最后一个index对应的属性值已经为空;ary.length--: ==>在ary数组长度的基础上-1;
+                i--;
+                continue;
+            }
+            obj[cur] = cur;
+        }
+        return ary;
+    }
+
+
+    var ary = [5, 7, 0, 1, 7, 5, 1, 7, 5, 4, 5, 4, 0, 9, 0, 8, 0, 9, 1, 9, 8, 7, 5, 6, 1, 8, 7, 6, 8, 7, 1, 5, 6, 3, 5, 2, 6, 2, 5, 8];
+    var result = distinctFn(ary);
+    console.log(result);
+
+</script>
+</body>
+</html>

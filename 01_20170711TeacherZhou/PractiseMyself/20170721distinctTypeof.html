@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重2</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    function distinctFn() {
+        var obj = {};
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(typeof obj[cur] !== "undefined"){
+                ary[i] = ary[ary.length-1];
+                ary.length--;
+                i--;
+                continue;
+            }
+            obj[cur] = cur;
+        }
+        return ary;
+    }
+
+
+    var ary = [0,1,2,3,6,5,4,8,7,8,9,9,6,3,2,5,8,7,4,1,0];
+    var result = distinctFn(ary);
+    console.log(result);
+
+
+</script>
+</body>
+</html>
