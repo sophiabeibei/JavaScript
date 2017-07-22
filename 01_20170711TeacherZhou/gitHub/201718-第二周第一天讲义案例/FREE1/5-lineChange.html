@@ -55,8 +55,9 @@
 </ul>
 
 <script>
-    var outlineBox = document.getElementById('outlineBox');
-    var oList = outlineBox.getElementsByTagName('li');
+    var outlineBox = document.getElementById('outlineBox'),
+        oList = outlineBox.getElementsByTagName('li');
+
     for (var i = 0; i < oList.length; i++) {
         oList[i].className = oList[i].oldClassName = 'bg' + (i % 3 + 1);
 
@@ -69,6 +70,8 @@
             this.className = this.oldClassName;
         };
     }
+
+
 </script>
 </body>
 </html>
