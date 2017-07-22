@@ -1,0 +1,357 @@
+考试安排:
+    [机试]
+    必考: 选项卡,数组去重
+    选考: 冒泡,快速,插入 (-100)
+
+    笔试:
+    数据类型(细节知识,检测)
+    数组
+    String
+    Math
+    DOM
+    数据类型转换
+    函数: 任意数求和
+    选项卡,隔行变色(有可能会考)
+    String+Math: 验证码
+    递归
+
+    >=70
+    >=80 -100
+    >=95 -200
+    ==100 -300
+
+=================================================================
+
+二.数据类型转换
+    1.把其他数据类型转换为字符串(toString方法)
+        ->null和undefined转换为字符串的"null"/"undefined",但是我们不能操作toString这个方法;
+
+        ->[12].toString() =>"12"
+        ->[12,13].toString() =>"12,13"
+        ->[[[[[[1]]]]],[[[[[[2]]]]]],[[[[[[3]]]]]]].toString();//"1,2,3"   原理: 数组扁平化
+        ->[[[[[[1],[4],[5]]]]],[[[[[[2]]]]]],[[[[[[3]]]]]]].toString();//"1,4,5,2,3"
+
+
+        ->var obj = {name: "周啸天"}
+        obj.toString();//"[object Object]"  普通对象调用这个方法不是转换字符串,而是检测数据类型(Object.prototype.toString.call());
+
+
+
+    2.把其他数据类型转布尔(!!方法        !取反)
+        问题: 在什么情况下,需要把数据类型转字符串??
+        答: 调toString需要;涉及概念字符串拼接;    1+"1"=>等于"11"     1-"1"=>等于"0"
+        说明: 加号(+)在js中不仅仅是数学运算,还有字符串拼接的作用,如果加号的一边遇到了字符串,都是字符串拼接;除了加号,减法/乘法/除法都是数学运算,会把其他的非number(数字类型)转换为数字类型,再进行运算;
+
+
+        1+null+undefined+"12"+[]+undefined+{name: "张三"}+null;
+
+        Number(null) : 0
+        Number(undefined): NaN
+
+        问: 1+null+undefined+"12"+[]+undefined+{name: "张三"}+null//字符串拼接结果
+        答: NaN12undefined[Object Object]null
+
+
+        "0,NaN,null,undefined,空字符串" =>转换为false;其余都转换为true;
+
+        问: 什么时候需要用到这个转换?
+        ->!     !!   Boolean()
+        ->if(12){}  先把12转换为布尔,然后验证真假;
+
+
+    3.把其他数据类型转换为数字
+        Number("12")   =>12
+        Number("12px")   =>NaN
+        Number(true)   =>1
+        Number(false)   =>0
+        Number(null)   =>0
+        Number(undefined)   =>NaN
+
+        ->对象转数字: 先把对象转为字符串,然后再转数字;
+        Number([]) =>Number('') =>0
+        Number([12]) =>Number('12') =>12
+        Number([12,13]) =>Number('12,13') =>NaN
+        Number({}) =>Number('[Object Object]') =>NaN
+
+        问: 在什么时候会把对象转数字????
+        ->1.Number()
+        ->2.parseInt()
+        ->3.parseFloat()
+        ->4.数学运算的时候
+
+
+
+        1-6周     js核心部分
+        7-8周     设计模式  框架      1-8学完,应该达到的能力: 随便一个网站,用原生js都能做;
+                                    做一个项目,上报;
+        9周       初级开发工程师
+
+        react   vue   用pc端做的转成框架
+        node      拿js写后台    node.js09年诞生     珠峰13年开始定的
+
+    4.==在比较的时候,如果数据类型不一样,首先转换为一样的数据类型,然后再作比较
+        ->null == undefined: true;
+          null === undefined: false;
+          null == 0: false;
+          undefined == 0: false;
+          null和undefined相等,但是和其他任何值都不相等;
+
+        ->NaN和谁都不相等,包括自己不也相等;
+          NaN == NaN: false   不是一个数(除了数以外,可以是任何类型)
+
+        ->对象==对象: (比较的是空间地址,地址不一样就不会相等)
+          [] == []: false
+
+        ->对象==字符串: 都转换为数字;
+        ->对象==布尔: 都转换为数字;(两者都先转换为字符串,再转换为数字)
+        ->对象==数字: 对象转换为数字;
+
+        ->字符串==布尔: 都转换为数字;
+        ->字符串==数字: 把字符串转换成数字;
+
+        ->布尔==数字: 把布尔转换为数字;
+
+
+
+        [] == 0: true
+        false == 0: true
+        true == 2: false
+        [] == false: true      都转换为数字
+        ![] == false: true
+            ->![]: 先转布尔再取反  []变为true    取反为false
+            ->false == false: true
+
+
+        "3px"+3 ? alert(6) : alert(NaN); =>"6"
+            "3px"+3 => 3px3 => true    =>alert(6)   => "6"
+
+        "3px"-3 ? alert(0) : alert(NaN); =>"NaN"
+            "3px"+3 => NaN => false    =>alert(NaN)   => "NaN"
+
+=================================================================
+
+三.Array/String/Math方法
+    1.Array
+        console.dir(Array.prototype);//可以看到所有的方法;
+
+        1.push           ary.splice(ary.length-1,0,xxx)
+        2.pop            ary.splice(ary.length-1,1)
+        3.shift          ary.splice(0,1)
+        4.unshift        ary.splice(0,0,x)
+        5.splice(n,m)
+          splice(n,m,x)
+          splice(n,0,x)
+        6.slice(n,m)
+          slice(n)
+          slice(0)克隆
+          slice()克隆
+        7.concat
+        8.reverse
+        9.sort
+        10.indexOf              如果数组中不包含这一项,返回的结果是-1;
+        11.lastIndexOf          同理,返回-1;
+        12.forEach           循环遍历数组中的每一项
+        13.map               同上;
+        14.toString          转换字符串
+        15.join                           和字符串方法split()对应
+            eval(ary.join("+"))  =>数组中的每一项求和,join变为字符串;eval把字符串变为js表达式执行
+            表达式: 就是加减乘除
+
+            sort(function(a,b){
+                return a-b;升序(ASC)
+                return b-a;降序(DESC)
+            });
+    =============================================
+    2.Math方法
+        Math的属性名后面的属性值都是方法function
+
+        Math => 数学函数,Math对象中提供了很多的方法可以来操作数字;
+
+
+        1.Math.abs    获取绝对值
+        2.Math.ceil   向上取整
+        3.Math.floor   向下取整
+        4.Math.round   四舍五入
+        5.Math.random  获取0-1之间的随机小数;包含0,不包含1(永远获取不到0,因为获取的是小数)
+          Math.round(Math.random()*(m-n)+n)  获取n-m之间的随机整数   包含n也包含m
+        6.Math.max   获取最大值
+        7.Math.min   获取最小值
+        8.Math.sqrt   开平方
+        9.Math.pow    多少次幂
+        10.Math.PI   圆周率
+    =============================================
+    3.String
+        var str = "zhufeng";
+        1.查找指定字符
+            charAt: 获取指定索引位置的字符,相对于STR[索引]来说,如果索引不存在,charAt获取的结果是空字符串而不是undefined;
+            charCodeAt: 获取指定索引位置字符对应的ASCII码值;(a,sei,too码值)
+            String.fromCharCode([val])根据ASCII码值获取对应的字符;和charCodeAt相反;
+        2.字符串截图
+            substr(n,m): 从索引n开始截取m个;
+            substr(n): 从索引n开始截取到末尾;
+
+            substring(n,m): 从索引n开始找到索引m处(不含m);
+            substring(n): 找到末尾;
+
+            slice(n,m): 它的语法和substring一样,但是此方法支持以负数作为索引;
+
+                var str = "zhufeng"
+                str.charAt(0);//"z"
+                str.substr(2,3);//"ufe"
+                str.substring(2,3);//"u"
+                str.slice(2,3);//"u"
+                str.slice(-4,-1);//"fen"
+        3.大小写转换
+            toUpperCase: 所有小写字母转大写
+            toLowerCase: 所有大写字母转小写
+        4.查找索引值
+            indexOf: 获取当前字符再字符串中第一次出现位置的索引值,如果不存在该字符,返回-1;
+            lastIndexOf: 获取当前字符再字符串中最后一次出现位置的索引值,如果不存在该字符,返回-1;
+                if(str.indexOf("@") === -1){//说明@再str中不存在}
+
+                数组中的此方法(indexOf/lastIndexOf)不兼容ie6-8;
+                字符串的此方法(indexOf/lastIndexOf)兼容所有浏览器;
+        5.字符串拆分成数组
+            split: 把字符串按照指定的分隔符拆分成数组,和数组中的join相对应
+                var str = "music|moving|eat";
+                str.split("|")
+                ["music", "moving", "eat"]
+        6.replace: 把字符串中的原有字符替换为新字符
+            var time = "2017-07-22";           转换为=>"2017/07/22"
+            方法: replace
+            time.replace("-","/")
+            "2017/07-22"
+
+            time = time.replace("-","/");
+            time = time.replace("-","/");
+
+            备注:
+
+
+
+            字符串常用方法:
+            1.charAt
+            2.charCodeAt
+            3.String.fromCharCode
+            4.substr
+            5.substring
+            6.slice
+            7.toUpperCase
+            8.toLowerCase
+            9.indexOf
+            10.lastIndexOf
+            11.split
+            12.replace
+=================================================================
+四.综合案例: 获取四位验证码(验证码是由数字+字母组成)
+
+=================================================================
+五.DOM
+    1.获取页面中元素
+        document.getElementById: 在整个文档中,通过元素的ID来获取这个元素,制定的范围是document(范围不能变)
+        [context].getElementsByTagName: 在制定的范围中[context],通过元素的标签名获取一组元素(元素集合);
+        [context].getElementsByClassName: 在制定范围中,通过元素的样式类名来获取一组元素(ie6-8下这个方法不兼容);
+        document.getElementsByName: 在整个文档中,通过元素的name属性值来获取一组元素;
+        document.documentElement: 获取整个HTML;
+        document.body: 获取body;
+        [context].querySelector: 通过选择器获取到一个元素;
+        [context].querySelectorAll: 通过选择器获取一组元素(在ie6-8下不兼容);
+
+    2.节点
+        node: 页面当中的所有内容都被称之为节点;
+
+                                        nodeType            nodeName                nodeValue
+        元素节点(元素标签)                  1                 大写标签                  null
+        文本节点(文字)                     3                  #text                   文本内容
+        注释节点                          8                  #coment                  注释内容
+        document                         9                  #document                null
+
+    3.操作元素的方法
+        childNodes: 获取当前元素的所有子节点;
+        parentNode: 获取父节点;
+        children: 获取当前元素的所有子节点;(ie8及以下获取的内容不准确)
+        previousSibling: 获取上一个哥哥节点;
+        nextSibling: 获取下一个节点;
+        firstChild: 第一个子节点
+        lastChild: 最后一个子节点
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===========================================
+
+字符串常用方法:
+            1.charAt
+            2.charCodeAt
+            3.String.fromCharCode
+            4.substr
+            5.substring
+            6.slice
+            7.toUpperCase
+            8.toLowerCase
+            9.indexOf
+            10.lastIndexOf
+            11.split
+            12.replace
+
+Math常用方法:
+        1.Math.abs    获取绝对值
+        2.Math.ceil   向上取整
+        3.Math.floor   向下取整
+        4.Math.round   四舍五入
+        5.Math.random  获取0-1之间的随机小数;包含0,不包含1(永远获取不到0,因为获取的是小数)
+          Math.round(Math.random()*(m-n)+n)  获取n-m之间的随机整数   包含n也包含m
+        6.Math.max   获取最大值
+        7.Math.min   获取最小值
+        8.Math.sqrt   开平方
+        9.Math.pow    多少次幂
+        10.Math.PI   圆周率
+
+
+数组常用方法:
+        1.push
+        2.pop
+        3.shift
+        4.unshift
+        5.splice(n,m)
+          splice(n,m,x)
+          splice(n,0,x)
+        6.slice(n,m)
+          slice(n)
+          slice(0)克隆
+          slice()克隆
+        7.concat
+        8.toString
+        9.join
+        10.reverse
+        11.sort
+        12.indexOf
+        13.lastIndexOf
+        14.forEach
+        15.map
