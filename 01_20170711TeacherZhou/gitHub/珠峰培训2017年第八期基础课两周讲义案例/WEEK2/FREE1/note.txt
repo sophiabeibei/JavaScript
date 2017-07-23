@@ -1,0 +1,240 @@
+一、函数的核心操作
+ function sum(num1,num2){
+    var total=num1+num2;
+    total=total.toFixed(2);
+    console.log(total);
+ }
+
+ sum(10,20);
+
+==========================
+二、数据类型转换
+  1、把其它数据类型转为数字
+    Number('') ->0
+    Number('12') ->12
+    Number('12.5px') ->NaN
+    Number(true) ->1
+    Number(false) ->0
+    Number(null) ->0
+    Number(undefined) ->NaN
+
+    Number({}) ->NaN
+    Number([]) ->0
+    Number([12]) ->12
+    Number([12,23]) ->NaN
+    对象转为数字：先把对象转换为字符串(toString)，然后把字符串转换为数字(Number)
+
+  2、把其它数据类型转换为字符串(toString)
+    [].toString() ->''
+    [12,23].toString() ->'12,23'
+    /^\d{11}$/.toString() ->'/^\d{11}$/'
+    (function sum(){}).toString() ->"function sum(){}"
+    ===
+    ({}).toString() ->'[object Object]'
+
+  3、把其它数据类型转换为布尔
+    “0、NaN、null、undefined、空字符串” 五个是FALSE，其余都是TRUE
+
+    =>情况
+     1) ! / !! / Boolean()
+     2) if(12){} ->先把12转换为布尔，然后判断条件的真假
+
+  4、==在进行比较的时候，如果左右两边的数据类型不一致，我们转换为一致的，在进行比较
+
+    对象==对象：比较是的引用地址，地址相同则相等，否则不相等，例如：[]==[] ->false
+
+    对象==数字：对象转换为数字(先转换为字符串,然后再转换为数字)，例如：[]==0 ->true  {}==NaN ->false(NaN和自己以及一切都不相等)
+
+    对象==字符串：把对象和字符串都要转换为数字，然后再进行比较
+
+    对象==布尔：依然是把两边都转换为数字再做比较
+
+    字符串==布尔：都转换为数字
+
+    字符串==数字：字符串转换为数字
+
+    布尔==数字：把布尔转换为数字，例如：true==2 ->false
+
+    null && undefined和其它任何数据类型都不相等，但是两者比较相等，例如：null==undefined ->true  null===undefined ->false  null==0 ->false
+
+
+   ![]==false：
+     1、![] 把数组转换为布尔(只有五个值为FALSE)然后取反  !true->false
+     2、false==false =>true
+
+   []==false：
+     1、都转换为数字  []->0  false->0
+     2、0==0 =>true
+
+
+   if('3px'+3){//->'3px3' ->true  (加号在JS除了数学运算还有字符串拼接)
+     alert(0);
+   }else{
+     alert(NaN);
+   }
+   弹出的结果：'0'
+
+   if('3px'-3){//->NaN
+     alert(0);
+   }else{
+     alert(NaN);
+   }
+   弹出的结果：'NaN'
+
+=============================================
+三、Math：数学函数，它里面提供了一系列方法，可以让我们操作数字
+  typeof Math =>'object'
+
+  console.dir(Math) =>在这里可以看到Math中提供的所有方法
+
+  1、Math.abs：取绝对值
+      Math.abs(-12) =>12
+      Math.abs(12)  =>12
+
+  2、Math.ceil：向上取整
+      Math.ceil(12.2) =>13
+      Math.ceil(12.0) =>12
+      Math.ceil(-12.2) =>-12
+
+  3、Math.floor：向下取整
+      Math.floor(12.999) =>12
+      Math.floor(-12.999) =>-13
+
+  4、Math.round：四舍五入
+      Math.round(12.49) =>12
+      Math.round(12.5)  =>13 (正数包括五是入)
+      Math.round(-12.49) =>-12
+      Math.round(-12.5)  =>-12 (负数包括五是舍)
+      Math.round(-12.51) =>-13
+
+  5、Math.max：获取一堆值中的最大值
+      Math.max(12,14,23,13,15)  =>23
+      Math.max(12,14,'23','13',15) =>23
+      Math.max(12,14,'23','13px',15) =>NaN
+
+  6、Math.min：获取一堆值中的最小值
+
+  7、Math.PI：圆周率(3.141592653589793)
+
+  8、Math.sqrt：开平方
+      Math.sqrt(100) ->10
+
+  9、Math.pow：某个数的多少次幂(多少次方)
+      Math.pow(2,3) ->2的3次方 =>8
+
+  10、Math.random：获取[0~1)之间的随机小数
+      Math.round(Math.random()*(m-n)+n)：获取[n~m]之间的随机整数
+
+      例如：获取12~98之间的随机整数
+      for(var i=0;i<100;i++){
+         var ran=Math.round(Math.random()*(98-12)+12);
+         console.log(ran);
+      }
+
+====================================
+四、string字符串
+  var str='zhufeng';
+  //->没一个字符都有自己的“索引”位置，索引从零开始，length的属性存储的是字符串的长度
+  //->str.length / str['length']
+  //->str[0]第一个字符   str[str.length-1]最后一个字符
+
+  1、charAt / charCodeAt
+      charAt：根据索引获取对应位置字符，等价于“str[索引]”，通过中括号方式获取，如果索引不存在，返回的结果是UNDEFINED，charAt做了处理，如果不存在返回的是空字符串
+
+      charCodeAt：获取指定索引位置的字符所对应的ASCII码值(UNICODE编码) http://www.asciima.com/
+
+      String.fromCharCode([UNICODE值])：根据ASCII值返回对应的字符
+
+  2、substr / substring / slice 字符串截取
+      substr(n,m)：从索引N开始截取M个字符，如果M不写，就是截取到末尾，N也不写从开头截取，如果M大于最大长度，也是截取到末尾；如果N为负数，M则不起作用，倒着截取N个；
+        例如：
+          str='zhufeng@qq.com'
+          str.substr(-3) =>'com'
+
+      substring(n,m)：从索引N开始，找到索引为M处(不包含M)，把找到的截取；M不写也依然是截取到末尾；不支持负数索引；
+
+      slice(n,m)：和SUBSTRING语法一样，但是可以支持负数索引
+        例如：
+          str='zhufeng@qq.com'
+          str.substring(-4,-1) =>''
+          str.slice(-4,-1)     =>'.co'  用总长度+负数索引，得到一个正数索引，也就是我们需要的正向索引str.slice((14-4),(14-1)) 总长度14
+
+  3、toUpperCase / toLowerCase
+      toUpperCase：把字符串中的所有字符转化为大写
+      toLowerCase：把字符串中的所有字符转化为小写
+
+  4、indexOf / lastIndexOf
+      indexOf：获取当前某一个字符，在字符串中第一次出现位置的索引
+      lastIndexOf：最后一次出现的索引
+
+      如果该字符在字符串中存在，返回的结果是>=0的数字，不存在返回-1，我们根据这个规律可以验证，当前字符串中是否包含某一个字符
+      if(str.indexOf('z')>=0){
+         //->包含
+      }else{
+         //->不包含
+      }
+
+  5、split：按照某一个指定的分隔符，把字符串中转换为数组
+      var str='2017-07-18';
+      str.split('-'); =>["2017", "07", "18"]
+
+  6、replace([old],[new])：实现字符串的替换，在不使用正则的情况下，每一次执行这个方法，只能替换一次
+      var str='2017-07-18';
+      str=str.replace('-','/'); =>"2017/07-18"
+      str=str.replace('-','/'); =>"2017/07/18"
+
+  7、match
+  8、localeCompare
+  ...
+
+  console.dir(String.prototype) 可以看到字符串中提供的所有方法
+
+
+======================
+while循环
+
+  while(条件){
+     //->只要条件成立就会一直执行循环体中的内容
+  }
+
+  for(var i=0;i<4;i++){
+    console.log(i);
+  }
+
+  var i=0;
+  while(i<4){
+     console.log(i);
+     i++;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

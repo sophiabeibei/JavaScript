@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>函数-返回值</title>
+</head>
+<body>
+<script>
+    function sum(num1, num2) {
+        var total = num1 + num2;
+        return;//->函数体中遇到RETURN,后面的代码都不会在执行了(函数体中)
+        total = total * 100;
+        console.log(total);
+    }
+
+    var result = sum(10, 20);//->如果函数中并没有设置RETURN,或者设置了RETURN但是什么值都没有返回,默认的结果是UNDEFINED
+    console.log(result);
+
+    //console.log(sum(100, 200));
+</script>
+</body>
+</html>

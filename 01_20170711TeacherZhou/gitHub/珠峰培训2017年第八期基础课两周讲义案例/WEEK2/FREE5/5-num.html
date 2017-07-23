@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 思路二:罗傲
+     *   我随机获取四位，判断获取的这四位是否大于860，如果大于的话，我们直接的重新获取即可
+     */
+    function queryRandomNum() {
+        var result = '0';
+        for (var i = 0; i < 3; i++) {
+            result += Math.round(Math.random() * 9);
+        }
+        if (result < 860) return result;
+        return queryRandomNum();
+    }
+    console.log(queryRandomNum());
+</script>
+</body>
+</html>

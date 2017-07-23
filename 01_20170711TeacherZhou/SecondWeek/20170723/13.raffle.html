@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>raffle抽奖活动-思路二</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**抽奖活动思路
+     *
+     *
+     */
+
+
+
+    function queryRandomNum() {
+        var ary = [];
+        for (var i = 0; i <= 860; i++) {
+            var n = "00000" + i;
+            //支持以负数作为索引index
+            n = n.slice(-4);
+            ary.push(n);
+            console.log(ary);
+        }
+        return ary[Math.round(Math.random() * 859)];
+    }
+    console.log(queryRandomNum());
+
+
+</script>
+</body>
+</html>

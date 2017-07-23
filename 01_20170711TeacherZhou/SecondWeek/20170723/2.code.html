@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>code随机验证码-思路二</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        .codeBox {
+            margin: 30px auto;
+            padding: 10px;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            border: 1px solid orange;
+            background: lightyellow;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="codeBox" id="codeBox"></div>
+<script type="text/javascript">
+    var codeBox = document.getElementById("codeBox");
+
+    function queryRandomCode() {
+        var codeArea = "0123698547qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM";
+
+        var result = "";
+        for (var i = 0; i < 4; i++) {
+            var ran = Math.round(Math.random()*61);
+
+                //验证当前获取的字符在现有result结果中重复
+            var curCode = codeArea[ran];
+
+                //验证一个数组中是否包含某个字符   用indexOf()方法;
+            if(result.indexOf(curCode) !== -1){
+                i--;
+
+                //没找到合适的当前这轮的循环作废,重新再获取一个字符即可;
+                continue;
+            }
+            result += curCode;
+        }
+        codeBox.innerHTML = result;
+    }
+    queryRandomCode();
+    codeBox.onclick = queryRandomCode;//问题: 不加括号也是调用吗?
+
+
+    //需求: 获取四个不重复的验证码!!!
+    /**思路二:
+     * 1.每一次在范围字符串中获取的时候,我们获取到一个字符,就把这个字符在字符串中移除掉,那么下一次获取的字符和上一次不会重复;
+     *
+     * codeArea.split("");   ===>字符串转数组;
+     *
+     * codeArea.length - 1;   ===>  不能是固定的61,因为数组每删除一项,最大索引就要减一,此处获取随机索引的范围也要跟着随时改变;
+     *
+     *
+     */
+
+
+</script>
+</body>
+</html>

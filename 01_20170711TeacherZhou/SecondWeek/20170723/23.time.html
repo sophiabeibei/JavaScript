@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时-练习字符串拼接-练习封装函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**倒计时需要两个值
+     * 1.目标时间
+     *
+     *
+     */
+
+    function computedTime() {
+        var tarTime = new Date("2017/07/23 20:00:00");
+        var nowTime = new Date();//括号什么不写,是当前时间
+
+        //差值= 目标时间 - 当前时间(MS)
+        var spanTime = tarTime - nowTime;
+        if(spanTime<0){
+            //超过目标时间 执行的代码
+            document.body.innerHTML = "抢购结束";
+            return;
+        }
+
+
+        //计算当前MS差中包含多少个小时(毫秒中计算多少个小时     /1000->miao   /   minit   /hours)
+        var hours = Math.floor(spanTime / (1000 * 60 * 60));
+
+        //总差MS值减去小时所占的值,剩下的值计算分钟和秒
+        spanTime = spanTime-hours*60*60*1000;
+
+        var minutes = Math.follr(spanTime/(1000*60*60));
+
+        spanTime = spanTime -minutes*1000*60;
+        var seconds = Math.floor(spanTime/1000);
+
+        document.body.innerHTML = addZero(hours)+":"+addZero(minutes)+":"+addZero(seconds);
+    }
+    computedTime();
+    window.setInterval(computedTime,1000);
+
+
+
+
+    //不足十位前面补零
+    function addZero(val) {
+        return val < 10 ? "0" + val : val;
+    }
+
+
+
+    //留着自己研究: 时间字符串;   练习字符串方法
+    //时间字符串格式化: 字符串拆分法.....等好多种方法;
+    //今天的课程: children   prev     string   验证法
+
+
+</script>
+</body>
+</html>

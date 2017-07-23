@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>raffle抽奖活动-思路二</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**抽奖活动思路
+     * 1.我随机获取四位,判断获取的这四位是否大于860;
+     * 2.如果大于860的,我们直接重新获取;
+     *
+     */
+
+
+
+    function queryRandomNum() {
+        var result = "0";
+        for (var i = 0; i < 3; i++) {
+            result += Math.round(Math.random()*9);
+        }
+        if(result < 860){
+            return result;
+        }
+        return queryRandomNum();
+    }
+    console.log(queryRandomNum());
+
+
+</script>
+</body>
+</html>

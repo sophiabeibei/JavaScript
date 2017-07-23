@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>raffle抽奖活动-思路二</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**抽奖活动思路
+     * 1.先获取1-860 之间的随机整数,然后不足四位的,前面补充0;
+     *
+     */
+
+
+
+    function queryRandomNum() {
+        var ran = Math.round(Math.random() * 859 + 1);
+        return ran<10?"000"+ran:(ran<100?"00"+ran:"0"+ran);
+    }
+    console.log(queryRandomNum());
+
+
+</script>
+</body>
+</html>

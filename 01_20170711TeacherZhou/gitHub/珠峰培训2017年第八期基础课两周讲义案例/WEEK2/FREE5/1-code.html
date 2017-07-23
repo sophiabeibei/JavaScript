@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .codeBox {
+            margin: 20px auto;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 18px;
+            background: lightcoral;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="codeBox" id="codeBox"></div>
+
+<script>
+    var codeBox = document.getElementById('codeBox');
+
+    /*
+     * 思路一：苏萍萍
+     *   每一次在范围字符串中获取的时候，我们获取到一个字符，就把这个字符在字符串中移除掉，那么下一次获取的字符绝对和上一次不会重复
+     */
+    function queryRandomCode() {
+        var codeArea = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+        //->把字符串变为数组
+        codeArea = codeArea.split('');
+
+        var result = '';
+        for (var i = 0; i < 4; i++) {
+            var ran = Math.round(Math.random() * (codeArea.length - 1));//->不能是固定死的61了,因为数组每删除一项,最大索引就要减一,此处获取随机索引的范围也要跟着随时改变
+            result += codeArea[ran];
+
+            //->把当前的字符在原有数组中干掉
+            codeArea.splice(ran, 1);
+        }
+        codeBox.innerHTML = result;
+    }
+    queryRandomCode();
+    codeBox.onclick = queryRandomCode;
+</script>
+</body>
+</html>

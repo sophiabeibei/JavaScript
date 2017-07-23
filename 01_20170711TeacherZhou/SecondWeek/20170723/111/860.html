@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>860人抽奖</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    for (var i = 0; i <= 859; i++) {
+        var curCode = Math.floor(Math.random()*859);
+        var str = "00000";
+        str +=curCode;
+        var res= str.slice(-4);
+    }
+    console.log(res);
+
+</script>
+</body>
+</html>

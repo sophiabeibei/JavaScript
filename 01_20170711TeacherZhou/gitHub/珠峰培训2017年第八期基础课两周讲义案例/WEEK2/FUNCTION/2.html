@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+<script>
+    //->当我们创建一个方法实现某个功能，但是实现该功能的一些原材料并不知道，只有执行这个功能的时候，让用户传递进来才知道，此时，我们可以像洗衣机一样，提供一些入口 => “形参”：函数提供的入口
+    function sum(num1, num2) {//->num1/num2都是形参(私有变量)
+        var total = num1 + num2;
+        console.log(total);
+    }
+    sum(100, 200);//->num1=100 num2=200 此处传递的是值(实参:执行的时候给函数传递的值就是实参)
+    sum(100);//->num1=100 num2=undefined 定义了形参,但是执行的时候没有给传递值,形参默认存储的值是undefined  (100+undefined=NaN)
+
+    var a = 12;
+    var b = 13;
+    sum(a, b);//->num1=12 num2=13 实参应该是值，及时我在这些的是变量，也是把变量A/B的中赋值给形参 sum(12,13)
+
+    sum(1 == 1 ? 10 : 20);//->此处是一个三元运算符,我们也是先把这个三元运算符执行,得到10,然后把10传递给num1 =>sum(10)
+</script>
+</body>
+</html>

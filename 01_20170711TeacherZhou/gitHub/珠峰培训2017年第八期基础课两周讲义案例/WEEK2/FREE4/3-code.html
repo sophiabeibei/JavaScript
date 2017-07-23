@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .codeBox {
+            margin: 20px auto;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 18px;
+            background: lightcoral;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<!--哈哈哈哈哈哈-->
+<div class="codeBox" id="codeBox"></div>
+嘿嘿嘿嘿嘿嘿
+
+<script>
+    var codeBox = document.getElementById('codeBox');
+
+    function queryRandomCode() {
+        //->制定当前获取四位验证码的范围
+        var codeArea = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';//->索引:0~61
+
+        //codeArea.charAt(索引) ->在字符串中通过索引获取一个字符，如果想随机获取一个字符，那么随机一个索引即可(0~61)
+        var result = '';
+        for (var i = 0; i < 4; i++) {
+            var ran = Math.round(Math.random() * 61);
+            var curCode = codeArea.charAt(ran);
+            result += curCode;
+        }
+        codeBox.innerHTML = result;
+    }
+    queryRandomCode();
+    codeBox.onclick = queryRandomCode;//->当点击的时候重新执行这个方法(注意方法后面没有小括号),重新生成四位的验证码
+
+
+</script>
+</body>
+</html>

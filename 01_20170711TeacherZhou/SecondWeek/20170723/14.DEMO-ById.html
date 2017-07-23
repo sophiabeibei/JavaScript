@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO获取元素-ById</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<input type="text" name="box">
+<div id="box">1</div>
+<div id="box">2</div>
+<script type="text/javascript">
+
+    //js获取后,赋值颜色;
+    /*var oBox = document.getElementById("box");
+    oBox.style.background = "red";*/
+
+
+    //2.(id不重复的情况下)不用获取id,赋值颜色: 在js中我们可以直接使用元素的id来代表当前这个元素对象,等价于通过getElementById获取到了(不建议这样)===>如果id出现重复的,这种方式是无法操作的;因为: 直接通过ID方式获取,如果ID有重复的,是把所有ID是这个的都获取到了,得到的是一个集合;
+    //box.style.background = "red";
+
+    //(id重复的情况下): 通过索引可以实现;
+    /*box[0].style.backgroundColor = "orange";
+    box[1].style.backgroundColor = "blue";*/
+
+
+
+    //这种方式可以: 如果id重复,获取的是第一个
+    //document.getElementById("box").style.background = "green";
+    //控制台: dir(box)
+
+
+    console.log(document.getElementById("box"));
+
+    //在ie6-8下,浏览器会把表单元素input的name属性值当成id来使用;编程上的规范: 在命名的时候,注意name属性值的名值和id属性的值尽量不要重合;(因为重合,在ie6/7下,会导致获取到的元素可能会是input的name属性值)
+
+
+</script>
+</body>
+</html>

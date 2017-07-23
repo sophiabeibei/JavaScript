@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .codeBox {
+            margin: 20px auto;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 18px;
+            background: lightcoral;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="codeBox" id="codeBox"></div>
+
+<script>
+    var codeBox = document.getElementById('codeBox');
+
+    /*
+     * 思路一：杜伟民思想
+     *   每一次在这个范围中获取字符,都看看现有获取的结果中是否包含这个字符,如果已经包含了,本次获取作废,重新在获取一个(具体获取多少次才能得到四位验证码不清楚)
+     */
+    //    function queryRandomCode() {
+    //        var codeArea = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+    //        var result = '';
+    //        for (var i = 0; i < 4; i++) {
+    //            var ran = Math.round(Math.random() * 61);
+    //            var cur = codeArea[ran];
+    //            //->验证当前获取的字符,是否在现有RESULT中重复
+    //            if (result.indexOf(cur) !== -1) {
+    //                //->没找到合适的当前这轮的循环作废,重新在获取一个字符即可
+    //                i--;
+    //                continue;
+    //            }
+    //            result += cur;
+    //        }
+    //
+    //        codeBox.innerHTML = result;
+    //    }
+
+    //    function queryRandomCode() {
+    //        var codeArea = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+    //        var result = '';
+    //        for (var i = 0; i < 4;) {
+    //            var ran = Math.round(Math.random() * 61);
+    //            var cur = codeArea[ran];
+    //            if (result.indexOf(cur) === -1) {
+    //                result += cur;
+    //                i++;
+    //            }
+    //        }
+    //
+    //        codeBox.innerHTML = result;
+    //    }
+
+    function queryRandomCode() {
+        var codeArea = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+        var result = '';
+        while (result.length < 4) {
+            var ran = Math.round(Math.random() * 61);
+            var cur = codeArea[ran];
+            if (result.indexOf(cur) === -1) {
+                result += cur;
+            }
+        }
+        codeBox.innerHTML = result;
+    }
+    queryRandomCode();
+    codeBox.onclick = queryRandomCode;
+
+
+    /*while (条件){
+     //->条件成立就执行
+     }
+     while(1===1){
+
+     } =>死循环
+     */
+</script>
+</body>
+</html>

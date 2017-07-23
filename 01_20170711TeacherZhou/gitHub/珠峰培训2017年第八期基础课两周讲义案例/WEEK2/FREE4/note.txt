@@ -1,0 +1,326 @@
+考试安排：
+  [机试]
+  必考：选项卡、数组去重
+  选考：冒泡、快速、插入 (-100￥)
+
+  [笔试]
+   数据类型(细节知识、检测)
+   数组
+   String
+   Math
+   DOM
+   数据类型转换
+   函数：任意数求和
+   选项卡、隔行变色
+   String+Math：验证码
+   递归
+
+   >=70
+   >=80 -100￥
+   >=95 -200￥
+   ==100 -300￥
+
+============================================
+二、数据类型转换
+  1、把其它数据类型转换为字符串(toString方法)
+    ->null和undefined转换为字符串的'null'/'undefined'，但是我们不能操作toString这个方法
+
+    ->[12].toString() =>'12'
+    ->[12,13].toString() =>'12,13'
+    ->[[[[[1]]]],[[[2]]],[[[[[3]]]]]].toString() =>'1,2,3' (美团面试题)
+
+    ->({name:'周啸天'}).toString() =>'[object Object]' 普通对象调用这个方法不是转换为字符串，而是在检测数据类型(Object.prototype.toString.call())
+
+    在什么情况下，我们需要把其它数据类型转换为字符串?
+      字符串拼接
+        1+'1' =>'11' 加号在JS中不仅仅是数学运算,还有字符串拼接的作用,如果加号的一边遇到了字符串,都是字符串拼接
+        1-'1' =>0 除了加号,减法/乘法/除法都是数学运算,会把其它的非数字类型转换为数字类型，在进行运算
+
+      1+null+undefined+'12'+[]+undefined+{name:'张三'}+null
+        ->1+null <=> 1+0 = 1
+        ->1+undefined <=> 1+NaN = NaN
+        ->NaN+'12' = 'NaN12'
+        ->'NaN12' + [] = 'NaN12'
+        ->'NaN12' + undefined = 'NaN12undefined'
+        ->'NaN12undefined' + {name:'张三'} = 'NaN12undefined[object Object]'
+        ->'NaN12undefined[object Object]'+null = 'NaN12undefined[object Object]null'
+
+
+  2、把其它数据类型转为布尔
+    “0、NaN、null、undefined、空字符串”转换为FALSE，其余的都转换为TRUE
+
+    什么时候需要用到这个转换?
+      -> ! / !! / Boolean()
+      -> if(12){} 先把12转换为布尔,然后验证真假
+
+  3、把其它数据类型转化为数字
+    Number('12') ->12
+    Number('12px') ->NaN
+    Number(true) ->1
+    Number(false) ->0
+    Number(null) ->0
+    Number(undefined) ->NaN
+
+    //->对象转数字：先把对象转为字符串,然后再转换为数字
+    Number([]) -> Number('') -> 0
+    Number([12]) -> Number('12') ->12
+    Number([12,13]) -> Number('12,13') ->NaN
+    Number({}) -> Number('[object Object]') ->NaN
+
+    什么时候会把对象转化为数字？
+      ->Number()
+      ->parseInt()
+      ->parseFloat()
+      ->数学运算
+
+  4、==在比较的时候，如果数据类型不一样，首先转换为一样的数据类型，然后再作比较
+     -> null==undefined：true
+        null===undefined：false
+        null==0：false
+        undefined==0：false
+
+        null和undefined相等，但是和其它任何值都不相等
+
+     -> NaN和谁都不相等(包括和自己也不相等)
+        NaN===NaN：false
+
+     -> 对象==对象 (比较的是空间的地址,地址不一样就不会相等)
+        []==[]：false
+
+     -> 对象==字符串：都转换为数字
+     -> 对象==布尔：都转换为数字
+     -> 对象==数字：对象转换为数字
+     -> 字符串==布尔：都转换为数字
+     -> 字符串==数字：把字符串转换为数字
+     -> 布尔==数字：把布尔转为数字
+
+     []==0：true
+     false==0：true
+     true==2：false
+
+     []==false：true
+       -> 都转换为数字0
+
+     ![]==false：true
+       -> ![]：先转布尔在取反 []变为TRUE 取反为FALSE
+       -> false==false：true
+
+     '3px'+3?alert(6):alert(NaN); =>'6'
+     '3px'-3?alert(0):alert(NaN); =>'NaN'
+
+=====================================
+三、Array/String/Math
+
+  [Array]
+    console.dir(Array.prototype); //->看到所有的方法
+
+    ->push
+      ary[ary.length]=xxx
+      ary.splice(ary.length,0,xxx)
+
+    ->pop
+      ary.length--;
+      ary.splice(ary.length-1,1)
+
+    ->shift
+      ary.splice(0,1)
+
+    ->unshift
+      ary.splice(0,0,x)
+
+    ->splice
+      splice(n,m) 删除
+      splice(n,m,x) 替换
+      splice(n,0,x) 新增(把X放到索引N之前)
+
+    ->slice
+      slice(n,m)
+      slice(n)
+      slice(0) / slice() 克隆
+
+    ->concat
+
+    ->toString
+
+    ->join
+      var ary=[12,23,34];
+      ary.join('+'); =>'12+23+34'  =>split(和字符串这个方法对应)
+
+      eval(ary.join('+')) =>数组中的每一项求和,JOIN变为字符串,EVAL把字符串变为JS表达式执行
+
+    ->reverse
+
+    ->sort
+      sort(function(a,b){
+         return a-b;//->升序(ASC)
+         return b-a;//->降序(DESC)
+      });
+
+    ->indexOf / lastIndexOf
+      如果数组中不包含这一项，返回的结果是-1
+
+    ->forEach
+
+    ->map
+
+================================
+ [Math]
+   typeof Math => "object"
+   console.dir(Math) =>数学函数,Math对象中提供了很多的方法可以来操作数字
+
+   ->Math.abs：获取绝对值
+   ->Math.ceil：向上取整
+   ->Math.floor：向下取整
+   ->Math.round：四舍五入
+   ->Math.random：获取0~1之间的随机小数
+     Math.round(Math.random()*(m-n)+n) 获取[N~M]之间的随机整数
+   ->Math.max：获取最大值
+   ->Math.min：获取最小值
+   ->Math.sqrt：开平方
+   ->Math.pow：多少次幂
+   ->Math.PI：圆周率
+
+============================
+ [String]
+   var str='zhufeng';
+
+   1、查找指定字符的
+     charAt：获取指定索引位置的字符，相对于STR[索引]来说,如果索引不存在,CHARAT获取的结果是空字符串而不是UNDEFINED
+
+     charCodeAt：获取指定索引位置字符对应的ASCII码值 (http://www.asciima.com/)
+
+     String.fromCharCode([val]) 根据ASCII码值获取对应的字符
+
+   2、字符串截取的
+     substr(n,m)：从索引n开始截取m个
+       substr(n)：从索引n开始截取到末尾
+
+     substring(n,m)：从索引n开始找到索引为m处(不含m)
+       substring(n)：找到末尾
+
+     slice(n,m)：它的语法和SUBSTRING一样，但是此方法支持以负数作为索引
+       var str='zhufeng'
+       str.slice(-4,-1)：用字符串的总长度加上负数值，得到的值就是需要操作的索引值 <=> str.slice(7-4,7-1) <=> slice(3,6)
+
+   3、大小写转换
+     toUpperCase：所有小写字母转大写
+
+     toLowerCase：所有大写字母转小写
+
+   4、indexOf / lastIndexOf：获取当前字符在字符串中第一次/最后一次出现位置的索引值，如果不存在该字符，返回-1
+     if(str.indexOf('@')===-1){
+       //->@在STR中不存在
+     }
+
+     数组中的此方法是不兼容IE6~8的,字符串的此方法是兼容所有浏览器的
+
+   5、split：把字符串按照指定的分隔符拆分成数组，和数组中的join相对应
+
+   6、replace：把字符串中的原有字符替换为新字符
+     var time='2017-07-22';
+     =>'2017/07/22'
+
+     time=time.replace('-','/');
+     time=time.replace('-','/');
+
+     REPLACE在不使用正则的前提下，每一次的执行只能替换一个字符
+
+     time=time.replace(/-/g,'/');
+
+==============================================
+综合案例：获取四位验证码(验证码是由数字+字母组成)
+
+============================================
+DOM
+ [获取页面中元素]
+   document.getElementById()：通过元素的ID来获取这个元素,指定的范围是DOCUMENT(范围不能变)
+
+   [context].getElementsByTagName()：在指定的范围中(CONTEXT)，通过元素的标签名获取一组元素(元素集合)
+
+   [context].getElementsByClassName()：在指定范围中，通过元素的样式类名来获取一组元素(IE6~8下这个方法不兼容)
+
+   document.getElementsByName()：在整个文档中，通过元素的NAME属性值来获取一组元素
+
+   document.documentElement：获取HTML
+
+   document.body：获取BODY
+
+   [context].querySelector()：通过选择器获取到一个元素
+
+   [context].querySelectorAll()：通过选择器获取一组元素(IE6~8下不兼容)
+
+========
+  [节点]
+   node：页面中的所有内容都被称之为节点
+
+  元素节点(标签)
+    nodeType:1
+    nodeName:大写的标签名
+    nodeValue:null
+
+  文本节点(文字)
+    nodeType:3
+    nodeName:#text
+    nodeValue:文字内容
+
+  注释节点
+    nodeType:8
+    nodeName:#comment
+    nodeValue:注释内容
+
+  document
+    nodeType:9
+    nodeName:#document
+    nodeValue:null
+
+描述节点和节点之间关系的属性
+  ->childNodes：获取当前元素的所有子节点
+
+  ->children：获取当前元素的所有元素子节点（IE8及以下获取的内容不准确）
+
+  ->parentNode：父节点
+
+  ->previousSibling：获取上一个哥哥节点
+
+  ->nextSibling：获取下一个弟弟节点
+
+  ->firstChild：第一个子节点
+
+  ->lastChild：最后一个子节点
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

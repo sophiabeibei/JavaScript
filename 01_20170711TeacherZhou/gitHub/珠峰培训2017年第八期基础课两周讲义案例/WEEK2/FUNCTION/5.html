@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //->arguments：实参集合,当函数执行的时候,传递进来的实参的值,都存储在ARG(ARGUMENTS)这个集合中了(不管是否定义了形参,也不管是否传递了实参,ARG始终存在)
+    //    function sum() {
+    //        /*console.log(arguments);//->类数组
+    //         arguments[0] ->第一个实参值
+    //         arguments.length ->获取总共传递的实参个数*/
+    //
+    //        var total = 0;
+    //        for (var i = 0; i < arguments.length; i++) {
+    //            var cur = arguments[i];
+    //            total += cur; //->30+'30' ->'3030' 字符串拼接:我们需要在加法运算前,把传递的值转换为数字,然后再进行加法运算,防止出现字符串拼接
+    //        }
+    //        return total;
+    //    }
+    //    var result = sum(10, 20, '30');
+    //    console.log(result);
+
+
+    function sum() {
+        var total = null;//->0和NULL的区别:0属于挖坑不种树,NULL连坑都没挖
+        for (var i = 0; i < arguments.length; i++) {
+            var cur = Number(arguments[i]);//->把传递的值转换为NUMBER，如果得到的数据是NaN，我们就不累加这一项了
+            if (isNaN(cur)) {
+                continue;
+            }
+            total += cur;
+        }
+        return total;
+    }
+    var result = sum(10, 20, '30px');
+    console.log(result);
+</script>
+</body>
+</html>

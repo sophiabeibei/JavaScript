@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色-珠峰培训</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .cataLog {
+            margin: 50px;
+            width: 300px;
+        }
+
+        .cataLog li {
+            line-height: 35px;
+            border-bottom: 1px dashed #999;
+        }
+
+        .bg1 {
+            background: lightcyan;
+        }
+
+        .bg2 {
+            background: lightgoldenrodyellow;
+        }
+
+        .bg3 {
+            background: lightgrey;
+        }
+
+        .bg {
+            background: lightpink;
+        }
+    </style>
+</head>
+<body>
+<ul class="cataLog" id="cataLog">
+    <li>HTML(HTML5)</li>
+    <li>CSS(CSS3)</li>
+    <li>JS(JQ/ZEPTO...)</li>
+    <li>移动端开发</li>
+    <li>VUE</li>
+    <li>REACT</li>
+    <li>NODE</li>
+</ul>
+
+<script>
+    var cataLog = document.getElementById('cataLog'),
+            cataLogList = cataLog.getElementsByTagName('li');
+    for (var i = 0, len = cataLogList.length; i < len; i++) {
+        cataLogList[i].className = 'bg' + (i % 3 + 1);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .codeBox {
+            margin: 20px auto;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 18px;
+            background: lightcoral;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="codeBox" id="codeBox"></div>
+
+<script>
+    var codeBox = document.getElementById('codeBox');
+    var codeArea = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+
+    /*
+     * 思路三：康晶
+     *   我每一次把获取的随机索引存储起来，下一次获取最新的索引，看一下是否和之前的索引重复，如果重复，就从新在获取一个索引
+     */
+
+    //    function queryRandomCode() {
+    //        var ary = [];
+    //        var result = '';
+    //        while (result.length < 4) {
+    //            var ran = Math.round(Math.random() * 61);
+    //            if (ary.indexOf(ran) === -1) {
+    //                ary.push(ran);
+    //                result += codeArea[ran];
+    //            }
+    //        }
+    //        codeBox.innerHTML = result;
+    //    }
+
+    var ary = [];
+    function queryDistinctRan() {
+        var ran = Math.round(Math.random() * 61);
+//        while (ary.indexOf(ran) !== -1) {
+//            ran = Math.round(Math.random() * 61)
+//        }
+        for (var i = 0; i < ary.length; i++) {
+            if (ran === ary[i]) {
+                ran = Math.round(Math.random() * 61);
+                i--;
+            }
+        }
+        ary.push(ran);
+        return ran;
+    }
+
+    function queryRandomCode() {
+        var result = '';
+        for (var i = 0; i < 4; i++) {
+            var ran = queryDistinctRan();
+            result += codeArea[ran];
+        }
+        codeBox.innerHTML = result;
+    }
+
+
+    queryRandomCode();
+    codeBox.onclick = queryRandomCode;
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quick快速排序</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    function quickSort(ary) {
+        if(ary.length<=1){
+            return ary;
+        }
+        var curIndex = Math.floor(ary.length/2),
+            curValue = ary.splice(curIndex, 1)[0],
+            leftAry = [],
+            rightAry = [];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            cur>curValue ? rightAry.push(cur): leftAry.push(cur);
+        }
+        return quickSort(leftAry).concat(curValue, quickSort(rightAry));
+    }
+
+
+    var ary = [0,1,4,7,8,5,2,36,9,9,8,7,45,63,21,0,14,56];
+    var result = quickSort(ary);
+    console.log(result);
+
+
+</script>
+</body>
+</html>

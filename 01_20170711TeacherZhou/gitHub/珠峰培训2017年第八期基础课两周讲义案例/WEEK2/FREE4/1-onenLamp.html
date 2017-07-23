@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .lampBtn {
+            display: block;
+            width: 100px;
+            line-height: 35px;
+            background: lightblue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="background: white;">
+<a href="javascript:;" class="lampBtn" id="lampBtn">CLOSE/OPEN</a>
+
+<script>
+    var lampBtn = document.getElementById('lampBtn');
+    //console.log(typeof lampBtn);//->'object' 在JS中获取的元素对象或者元素集合都是对象数据类型的
+    console.dir(lampBtn);
+    /*
+     * className：'lampBtn'  操作当前元素的CLASS样式属性
+     * id：'lampBtn' 操作当前元素的ID属性的
+     * innerHTML：'...' 操作当前元素中的所有内容
+     * innerText：'...' 操作当前元素中的所有文本内容
+     * tagName：'A' 操作的是当前元素的标签名(一般都是大写)
+     * ...
+     * style：CSSStyleDeclaration  操作当前元素的行内样式值的(获取和设置的时候只能操作行内的样式,对于样式表中的样式无法操作) =>STYLE属性存储的属性值也是对象数据类型的值
+     *
+     * var obj={
+     *    style:{
+     *
+     *    }
+     * };
+     */
+    console.log(lampBtn.className);
+    lampBtn.className += ' HAHA';
+
+
+    //    lampBtn.onclick = function () {
+    //        //->document.body.style.backgroundColor='white'
+    //        var bg = document.body.style.backgroundColor;
+    //        //->bg='white'
+    //
+    //        if (bg === 'white') {
+    //            bg = 'black';//->基本数据类型是按照值操作的,此处仅仅是把BG的值修改为了黑色,对原有的document.body.style.backgroundColor不进行任何改变
+    //        } else {
+    //            bg = 'white';
+    //        }
+    //    }
+
+    lampBtn.onclick = function () {
+        //->document.body.style=xxxfff111
+        var bgStyle = document.body.style;
+        //->bgStyle=xxxfff111
+
+        if (bgStyle.backgroundColor === 'white') {
+            bgStyle.backgroundColor = 'black';
+            //->把XXXFFF111中的backgroundColor修改为黑色，此时整个BODY的背景颜色也会跟着变
+        } else {
+            bgStyle.backgroundColor = 'white';
+        }
+    }
+</script>
+</body>
+</html>

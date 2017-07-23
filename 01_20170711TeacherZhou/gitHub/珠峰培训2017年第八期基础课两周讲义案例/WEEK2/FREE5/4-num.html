@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 思路一:
+     *   获取一个 1~860 之间的随机整数，然后不足四位的前面补充零
+     */
+    //    if (ran < 10) {
+    //        ran = '000' + ran;
+    //    } else if (ran < 100) {
+    //        ran = '00' + ran;
+    //    } else {
+    //        ran = '0' + ran;
+    //    }
+    //    return ran;
+    function queryRandomNum() {
+        var ran = Math.round(Math.random() * 859 + 1);
+        return ran < 10 ? '000' + ran : (ran < 100 ? '00' + ran : '0' + ran);
+    }
+    console.log(queryRandomNum());
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date日期</title>
+</head>
+<body>
+<script type="text/javascript">
+    var nowTime = new Date();
+    console.log(nowTime);
+
+    //nowTime: 对象数据类型;
+
+    console.log(nowTime.getFullYear());//获取年(4位)
+    console.log(nowTime.getMonth());//值是从0-11   代表的是1-12月   得到的值+1,才是目前的月
+    console.log(nowTime.getDate());//获取的日;
+    console.log(nowTime.getDay());//值是从0-6  代表周日-周六    因为西方人的第一天是周日;
+    console.log(nowTime.getHours());//获取小时
+    console.log(nowTime.getMinutes());//获取分钟
+    console.log(nowTime.getSeconds());//获取秒
+    console.log(nowTime.getMilliseconds());//获取毫秒
+    console.log(nowTime.getTime());//获取当前时间距离"1970-01-01 00:00:00"之间的毫秒差
+
+
+    //把一个时间字符串变为标准的时间对象格式,这样就可以调用上面的方法了;(但是对字符串有个格式要求)
+    var str = "2017-7-23 18:00:00";
+    console.log(new Date(str));//Sun Jul 23 2017 18:00:00 GMT+0800 (中国标准时间)
+    //"2017-7-23 18:00:00"; ie下只能用"斜杠/"不能用"横杠-"
+    /*时间格式:
+    * 2017-7-23   ie下不兼容
+    * 2017/7/23   都可以
+    * ...其他格式自己回去百度搜一下;
+    *
+    * */
+
+
+    /*
+    * 1.getFullYear()
+    * 2.getMonth()
+    * 3.getDate()
+    * 4.getDay()
+    * 5.getHours()
+    * 6.getHours()
+    * 7.getMinutes()
+    * 8.getSeconds()
+    * 9.getMilliseconds()
+    * 10.getTime()
+    *
+    * */
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

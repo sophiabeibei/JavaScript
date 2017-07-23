@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div name="hobby"></div>
+<p name="hobby"></p>
+
+<input type="checkbox" name="hobby" id="hobbyMusic"><label for="hobbyMusic">MUSIC</label>
+<input type="checkbox" name="hobby">MOVIE
+<input type="checkbox" name="hobby">FOOD
+<input type="checkbox" name="hobby">READ
+
+<script>
+    //->getElementsByName：在IE6~9浏览器中,只能识别表单元素的NAME属性值,所以NAME属性是针对于表单元素创建的(项目中非表单元素尽量不要设置NAME) =>表单元素可以通过NAME给单选框或者复选框进行分组
+    console.log(document.getElementsByName('hobby').length);
+
+
+</script>
+</body>
+</html>

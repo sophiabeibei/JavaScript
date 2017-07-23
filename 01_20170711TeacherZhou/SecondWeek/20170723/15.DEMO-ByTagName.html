@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO获取元素-ByTagName</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div class="tabBox" id="tabBox">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div id="div1">
+        <div id="div11"></div>
+        <div id="div12"></div>
+        <div></div>
+    </div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<script type="text/javascript">
+
+    //document.getElementsByTagName("div"): 会把当前上下文中,所有后台元素中叫做这个标签名的,全部获取到;
+    //console.log(document.getElementsByTagName("div"));
+
+
+    //选项卡案例中,如果通过这个方法tabBox.getElementsByTagName("div")获取,会把当前容器子子孙孙中的DIV都得到,而我们案例只想得到儿子级别的,所以我们最好使用(children)来处理;
+    console.log(tabBox.getElementsByTagName("div"));
+
+
+
+</script>
+</body>
+</html>

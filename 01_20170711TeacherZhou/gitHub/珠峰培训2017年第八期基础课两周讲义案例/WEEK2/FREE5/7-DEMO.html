@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<input type="text" name="box">
+<div id="box">1</div>
+<div id="box">2</div>
+
+<script>
+    //->在JS中我们可以直接使用元素的ID来代表当前这个元素对象,等价于通过getElementById获取到了(不建议这样玩) =>如果ID出现重复的,这种方式是无法操作的,因为:直接通过ID方式获取,如果ID有重复的,是把所有ID是这个的都获取到了,得到的是一个集合,想要操作需要一个个获取到,然后再操作
+    //box[0].style.backgroundColor = 'red';
+    //box[1].style.backgroundColor = 'green';
+
+    //->如果ID重复，获取的是第一个
+    //document.getElementById('box').style.backgroundColor = 'green';
+
+    //->在IE6~7中,浏览器会把表单元素(INPUT)的NAME属性值当做ID来使用:在命名的时候,注意NAME属性的值和ID属性的值尽量不要重合
+    //console.log(document.getElementById('box').tagName);
+</script>
+</body>
+</html>

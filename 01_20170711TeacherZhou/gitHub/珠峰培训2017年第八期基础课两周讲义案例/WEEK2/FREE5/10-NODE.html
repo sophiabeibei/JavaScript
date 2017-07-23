@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>节点</title>
+</head>
+<body>
+<ul id="itemBox">
+    <li id="li1">第一周:变量提声、作用域、THIS、面向对象、原型链等</li>
+    <li>第二周:原型深入、CALL/APPLY、DOM的操作、表格排序、正则等</li>
+    <li>第三周：DOM盒子模型、图片懒加载、DOM库的封装、组件封装等</li>
+    <li>第四周：定时器、TWEEN动画、轮播图、jQuery核心解读等</li>
+    <li>第五周：事件、事件委托、DOM2事件、事件兼容处理、拖拽等</li>
+    <li>第六周：发布订阅设计模式、插件封装、ES6等</li>
+    <li>第七周/第八周：移动端乱七八糟的、项目实战等</li>
+    <!--哈哈哈，我乐意-->
+    <li id="li9">第九周：让你们成为初级全栈开发工程师</li>
+    <!--以下是高级进阶,需要把上面掌握扎实-->
+    <li>C进阶第一阶段：Vue</li>
+    <li>C进阶第二阶段：React</li>
+    <li>C进阶第三阶段：Node</li>
+    <li>
+        C进阶第四阶段：项目实战
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    var itemBox = document.getElementById('itemBox');
+
+    //->标准浏览器中会把“ENTER和SPACE”作为文本节点
+    //console.log(itemBox.childNodes);
+    //console.log(itemBox.children.length);//->在IE8及以下浏览器中会把注释节点当做元素节点获取(兼容)
+
+    //    var nodeList = itemBox.childNodes;//->先获取当前容器下的所有子节点
+    //    var ary = [];
+    //    for (var i = 0; i < nodeList.length; i++) {
+    //        var curNode = nodeList[i];
+    //        curNode.nodeType === 1 ? ary.push(curNode) : null;//->三运运算符有一部分如果不需要做任何的操作,我们写NULL代替即可(不写任何东西语法出错)
+    //    }
+    //    console.log(ary.length);
+
+    var oLiNine = document.getElementById('li9');
+    var par = oLiNine.previousSibling;//->获取它的上一个哥哥节点
+
+    while (par && par.nodeType !== 1) {//->上一个哥哥还存在，但是不是元素，我就需要一直向上查找；如果上一个哥哥已经不存在了(找到头了 PAR=NULL)，或者上一个哥哥已经是元素了，结束循环
+        par = par.previousSibling;
+    }
+    console.log(par);
+
+
+</script>
+</body>
+</html>

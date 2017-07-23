@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    var Ha = "";
+    var He = "";
+    var Hei = "";
+    for (var i = 0; i <= 59; i++) {
+        if(i%3){
+            Ha.innerHTML = "哈哈";
+        }
+        if(i%7){
+            He.innerHTML = "呵呵";
+        }
+        if(i%3&&i%7){
+            Hei.innerHTML = "嘿嘿";
+        }
+        eval(Ha.join("+"));
+        eval(He.join("+"));
+        eval(Hei.join("+"));
+    }
+    console.log(Ha, He, Hei);
+
+
+    function Ha() {
+        if(i%3){
+            document.body.innerHTML = "哈哈";
+        }
+    }
+    Ha()
+
+
+
+
+
+</script>
+</body>
+</html>

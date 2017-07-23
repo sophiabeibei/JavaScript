@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quick快速排序</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+
+    function quickSort(ary) {
+        if(ary.length <=1){
+            return ary;
+        }
+        var curIndex = Math.floor(ary.length/2),
+            curValue = ary.splice(curIndex, 1)[0],
+            leftAry = [],
+            rightAry = [];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            cur>curValue?rightAry.push(cur):leftAry.push(cur);
+        }
+        return quickSort(leftAry).concat(curValue, quickSort(rightAry));
+    }
+
+
+    var ary = [1,4,7,8,5,2,3,6,9,2,0,1,4,5,62,0,3,9,87];
+    var result = quickSort(ary);
+    console.log(result);
+
+
+    //问题: 声明空变量的时候       str = "";   ary = [];    obj = {};     result = "0"   还有等于null....
+    //请问,以上赋值都有啥区别?.........???????????????????
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 把字符串变为标准时间,通过方法获取到需要的一些值
+     */
+    //    var str = '2017/7/23 18:00:00';
+    //    var time = new Date(str);
+    //    var year = time.getFullYear();
+    //    var month = addZero(time.getMonth() + 1);
+    //    var day = addZero(time.getDate());
+    //    var hours = addZero(time.getHours());
+    //    var minutes = addZero(time.getMinutes());
+    //    var seconds = addZero(time.getSeconds());
+    //    var result = year + '年' + month + '月' + day + '日 ' + hours + '时' + minutes + '分' + seconds + '秒';
+    //    console.log(result);
+
+
+    function queryNow() {
+        var time = new Date();
+        var year = time.getFullYear();
+        var month = addZero(time.getMonth() + 1);
+        var day = addZero(time.getDate());
+        var hours = addZero(time.getHours());
+        var minutes = addZero(time.getMinutes());
+        var seconds = addZero(time.getSeconds());
+
+        document.body.innerHTML = year + '年' + month + '月' + day + '日 ' + hours + '时' + minutes + '分' + seconds + '秒';
+    }
+    queryNow();
+    window.setInterval(queryNow, 1000);//->设置定时器,每隔一秒钟执行一次QUERY NOW方法
+
+
+    //->不足十位前面补零
+    function addZero(val) {
+        val = Number(val);
+        return val < 10 ? '0' + val : val;
+    }
+
+</script>
+</body>
+</html>

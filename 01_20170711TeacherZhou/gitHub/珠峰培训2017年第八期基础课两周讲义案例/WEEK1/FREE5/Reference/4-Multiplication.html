@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>99乘法表</title>
+
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: url("img/9999.jpg") no-repeat;
+            background-size: cover;
+        }
+
+        #box {
+            padding: 10px;
+        }
+
+        #box li {
+            margin-top: 10px;
+            height: 35px;
+        }
+
+        #box li span {
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+            line-height: 35px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.1);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<ul id="box">
+
+</ul>
+
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    //->创建99乘法表
+    var $box = $('#box');
+    var str = '';
+    for (var i = 1; i <= 9; i++) {
+        str += '<li>';
+        for (var j = 1; j <= i; j++) {
+            str += '<span>' + j + ' * ' + i + ' = ' + (i * j) + '</span>';
+        }
+        str += '</li>';
+    }
+    $box.html(str);
+
+    //->出现时候的动画
+    var $list = $box.find('span');
+    $list.each(function (index, item) {
+        window.setTimeout(function () {
+            $(item).stop().animate({opacity: 1}, 500);
+        }, index * 30);
+    });
+</script>
+</body>
+</html>

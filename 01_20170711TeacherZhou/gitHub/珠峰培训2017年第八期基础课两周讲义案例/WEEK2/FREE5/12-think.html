@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 把字符串中的每一个数据都提取出来，放在数组中，最后在拼接即可
+     */
+    var str = '2017/7/23 18:00:00';
+    //=>'2017年07月23日 18时00分00秒'
+
+    //    var ary = str.split(' ');//->["2017/7/23", "18:00:00"]
+    //    var leftAry = ary[0].split('/');//->["2017", "7", "23"]
+    //    var rightAry = ary[1].split(':');//->["18", "00", "00"]
+    var ary = str.split(/(?:\/|:| )/g);//->["2017", "7", "23", "18", "00", "00"]
+    var result = ary[0] + '年' + addZero(ary[1]) + '月' + addZero(ary[2]) + '日 ' + addZero(ary[3]) + '时' + addZero(ary[4]) + '分' + addZero(ary[5]) + '秒';
+    console.log(result);
+
+    //->不足十位前面补零
+    function addZero(val) {
+        val = Number(val);
+        return val < 10 ? '0' + val : val;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+学习方式：
+  1、笔记必须要做(最好是手写)
+    ->基础知识
+    ->重要的案例(分析步骤和代码)
+
+  2、JavaScript高级程序设计第三版
+
+  3、每天晚上睡觉之前，温习半个小时的笔记，从头开始看(把知识印在骨子里面=>随着不断的温习,在自己的脑子中会形成一个知识点的梳理图)
+     对于案例，建议大家拿手写练习那么几次
+
+======================================
+一、DOM
+  [获取DOM元素]
+    document.getElementById
+    [context].getElementsByTagName
+    [context].getElementsByClassName (IE6~8不兼容)
+    document.getElementsByName
+
+    document.documentElement
+    document.body
+
+    =>document.documentElement.clientWidth||document.body.clientWidth ：获取当前浏览器可视区域的宽度
+    =>document.documentElement.clientHeight||document.body.clientHeight ：获取当前浏览器可视区域的高度
+
+    [context].querySelector
+    [context].querySelectorAll (IE6~8下不兼容)
+
+==================
+childNodes：所有子节点
+children：所有的元素子节点(IE6~8获取的值不准确)
+parentNode：父亲节点
+previousSibling：上一个哥哥节点
+  previousElementSibling：上一个哥哥元素节点(IE6~8下不兼容)
+nextSibling：下一个弟弟节点
+firstChild：第一个子节点
+lastChild：最后一个子节点
+
+=======================================
+Date：日期类
+  typeof Date =>"function"
+
+new Date() ->获取客户端本机时间(对象数据类型的值)
+  Sun Jul 23 2017 17:15:44 GMT+0800 (中国标准时间)
+
+(GMT+0800 东八区 北京时间)(UTC-0500 西五区 纽约时间)
+
+
+
+
+
+
+
+
+
+
+
+
+=========================================
+视频预习：
+http://video.zhufengpeixun.cn/kecheng/detail_1029018
+[第一章第一节]
+课件1~课件8一定要好好的预习
+
+[第一章第二节]
+课件1~课件6过一遍
+
+所有人:
+  http://www.zhufengpeixun.cn/course/20
+  先把GIT安装上
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>思考题think</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    var str = "2017-7-23 18:00:00";
+    //需求: 把"2017-7-23 18:00:00"输出成"2017年07月23日 18时00分00秒"这种格式;
+    //方法1.替换
+    //方法2.变成数组 :把字符串中的每一个数据都提取出来,放在数组当中,最后再拼接即可
+
+    //实现方法2:
+    //split 拆;
+    /*var ary = str.split(" ");
+     console.log(ary);//第一次拆完后的结果 : ["2017-7-23", "18:00:00"]
+
+     var leftAry = ary[0].split("/");
+     var rightAry = ary[1].split(":");
+     console.log(leftAry);//第二次拆完后的结果 : ["2017-7-23"]
+     console.log(rightAry);//第二次拆完后的结果 : ["18", "00", "00"]*/
+
+    //实现方法3: 正则         (只匹配不捕获);
+    var ary = str.split(/(?:\/|:|)/g);
+    //["2017-7-23", "18:00:00"]
+
+    var result = ary[0] + "年"+addZero(ary[1])+"yue"+addZero(ary[2])+"ri"+addZero(ary[3])+"shi"+addZero(ary[4])+"fen"+addZero(ary[5])+"miao";
+
+    //不足十位前面补零
+    function addZero(val) {
+        return val < 10 ? "0" + val : val;
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

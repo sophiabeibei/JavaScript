@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>思考题think-2</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * 把字符串变成标准时间,通过犯法获取到需要的一些值;
+     *
+     */
+
+    var str = "2017-7-23 18:00:00";
+    var time = new Date();
+    var year = addZero(time.getFullYear()+1);
+    var month = addZero(time.getMonth());
+    var day = addZero(time.getDay());
+    var hours = addZero(time.getHours());
+    var minutes = addZero(time.getMinutes());
+    var secondes = addZero(time.getSeconds());
+
+
+    var result = year + "nian"+month+"yue"+day+"ri"+hours+"shi"+minutes+"fen"+secondes+"miao";
+
+
+    console.log(result);
+
+
+    //不足十位前面补零
+    function addZero(val) {
+        return val < 10 ? "0" + val : val;
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

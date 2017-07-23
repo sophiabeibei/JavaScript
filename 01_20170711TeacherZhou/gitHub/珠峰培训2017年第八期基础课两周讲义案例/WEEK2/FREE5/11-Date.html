@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>日期</title>
+</head>
+<body>
+<script>
+    var nowTime = new Date();
+    console.log(nowTime.getFullYear());//->年(4位)
+    console.log(nowTime.getMonth());//->月(0~11代表1~12月)
+    console.log(nowTime.getDate());//->日
+    console.log(nowTime.getDay());//->(0~6 日~六)
+    console.log(nowTime.getHours());//->小时
+    console.log(nowTime.getMinutes());//->分钟
+    console.log(nowTime.getSeconds());//->秒
+    console.log(nowTime.getMilliseconds());//->毫秒
+    console.log(nowTime.getTime());//->获取当前时间距离'1970-01-01 00:00:00'之间的毫秒差
+
+    var str = '2017/7/23 18:00:00';
+    console.log(new Date(str));//->把一个时间字符串变为标准的时间对象格式,这样就可以调取上面的方法了 (但是对自付串有格式要求)
+    /*
+     * 2017-07-23 IE下不兼容
+     * 2017/07/23 都可以
+     * ...其它格式自己回去百度搜一下
+     */
+</script>
+</body>
+</html>

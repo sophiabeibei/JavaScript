@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 思路二:苏萍萍
+     */
+    function queryRandomNum() {
+        var ary = [];
+        for (var i = 1; i <= 860; i++) {
+            var n = '00000' + i;
+            n = n.slice(-4);
+            ary.push(n);
+            //ary.push(i < 10 ? '000' + i : (i < 100 ? '00' + i : '0' + i));
+        }
+        return ary[Math.round(Math.random() * 859)];
+    }
+    console.log(queryRandomNum());
+</script>
+</body>
+</html>

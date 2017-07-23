@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<div class="tabBox" id="tabBox">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div id="div1">
+        <div id="div11"></div>
+        <div id="div12"></div>
+        <div></div>
+    </div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<script>
+    //->getElementsByTagName:会把当前上下文中,所有后代元素中叫做这个标签名的,全部获取到
+    //console.log(document.getElementsByTagName('div'));
+
+    //->选项卡案例中，如果通过这个方法获取，会把当前容器子子孙孙中的DIV都得到，而我们案例只想得到儿子级别的，所以我们最好使用children来处理
+    console.log(tabBox.getElementsByTagName('div'));
+</script>
+</body>
+</html>

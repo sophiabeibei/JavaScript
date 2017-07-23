@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO获取元素-ByName</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="itemBox">
+    <li>第一周: 变量提升,作用域,this,面向对象,原型链等</li>
+    <li>第二周: 原型深入,call/apply,DOM的操作,表格排序,正则等</li>
+    <li>第三周: DOM盒子模型,图片懒加载,DOM库的封装,组件封装等</li>
+    <li>第四周: 定时器,tween动画,轮播图,jQuery核心解读等</li>
+    <li>第五周: 事件,事件委托,DOM2事件,事件兼容处理,拖拽等</li>
+    <li>第六周: 发布订阅设计模式,插件封装,ES6</li>
+    <li>第七周/第八周: 移动端乱七八糟的知识,项目实战等</li>
+    <!-- 呵呵呵, 我乐意-->
+    <li id="li9">第九周: 让你们成为初级全栈开发工程师ajax,node,crm管理系统</li>
+    <!-- 以上第一周 -- 第九周(周啸天);  以下是高级进阶,需要把上面掌握扎实-->
+    <li>C进阶第一阶段: Vue</li>
+    <li>C进阶第二阶段: React</li>
+    <li>C进阶第三阶段: Node</li>
+    <li>
+        C进阶第四阶段: 项目实战
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </li>
+</ul>
+<script type="text/javascript">
+    var itemBox = document.getElementById("itemBox");
+
+    //1.children: 不兼容;
+    //2.标准浏览器中,会把"enter和space作为文本节点"
+
+
+    //console.log(itemBox.childNodes);
+    //console.log(itemBox.children);
+    //console.log(itemBox.children.length);//3.children: 在ie8及以下浏览器中会把注释节点当作元素节点获取(存在兼容问题)
+
+    //4.自己写个children方法,兼容所有浏览器;
+    //怎么才能获取只获取元素子节点?
+
+    /*var nodeList = itemBox.childNodes;//5.现货区当前容器下的所有子节点
+    var ary = [];
+    for (var i = 0; i < nodeList.length; i++) {
+        var curNode = nodeList[i];
+        curNode.nodeType === 1 ? ary.push(curNode) : null;//6.三元运算符有一部分如果不需要做任何操作,我们写null代替即可(补写任何语法会报错)
+    }
+    console.log(ary.length);
+    */
+
+    var oLiNine = document.getElementById("li9");
+    //console.log(oLiNine.previousSibling);//
+    //console.log(oLiNine.previousElementSibling);//
+    var par = oLiNine.previousSibling;
+    /*if(par.nodeType !==1){//nodeType !==1;: 不是元素
+        par = par.previousSibling;//找哥哥的哥哥
+        //重复用循环    不知道循环多少次,就用while循环
+    }
+    */
+
+
+    //while这里有俩条件: 1.保证par存在;2.并且不是元素,所以才会继续往上找;
+    while(par && par.nodeType !==1){//nodeType !==1;: 只要不是元素,我就需要一直向上查找;如果上一个哥哥已经不存在了(找到头了,PAR = NULL),或者上一个哥哥已经是元素了,结束循环;
+        //par && : 意思是par必须得存在,并且........
+        par = par.previousSibling;
+    }
+    console.log(par);
+
+
+    /**知识点:
+     * 不知道循环多少次的时候,用while循环
+     *
+     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //
+
+</script>
+</body>
+</html>

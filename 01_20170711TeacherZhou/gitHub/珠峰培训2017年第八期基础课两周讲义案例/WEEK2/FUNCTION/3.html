@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>函数-返回值</title>
+</head>
+<body>
+<script>
+    function sum(num1, num2) {
+        var total = num1 + num2;
+
+        return total;//->我们使用RETURN关键词来设置函数的出口,RETURN后面返回的是一个值,此处相当于把私有变量TOTAL存储的值返回,而不是把变量返回了 =>return 30;
+    }
+
+    //sum(10, 20);
+    //console.log(total);//->Uncaught ReferenceError: total is not defined TOTAL不存在：函数体中的私有变量在外面是不能直接获取的,需要函数提供出口 =>“返回值 return”
+
+    var result = sum(10, 20);//->执行函数,把函数RETURN返回的值赋值给变量RESULT,此时的RESULT存储的就是返回的值
+    console.log(result);
+
+
+</script>
+</body>
+</html>

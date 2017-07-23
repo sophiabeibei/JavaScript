@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>code随机验证码-思路六</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+
+        .codeBox {
+            margin: 30px auto;
+            padding: 10px;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            border: 1px solid orange;
+            background: lightyellow;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="codeBox" id="codeBox"></div>
+<script type="text/javascript">
+    var codeBox = document.getElementById("codeBox");
+    var codeArea = "0123698547qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM";
+
+
+    var ary = [];
+    function queryDistinctRan(){
+            //Math.round(Math.random()*61): 获取索引的方法;
+        var ran = Math.round(Math.random()*61);
+        //ary.indexOf(ran) !== -1   说明已经存在;     数组中的indexOf不兼容
+        while(ary.indexOf(ran) !== -1){
+            ran = Math.round(Math.random()*61);
+        }
+        ary.push(ran);
+        return ran;
+    }
+
+
+    function queryRandomCode() {
+        var result = "";
+        for (var i = 0; i < 4; i++) {
+            var ran = queryDistinctRan();
+            result += codeArea[ran];
+        }
+        codeBox.innerHTML = result;
+    }
+    queryRandomCode();
+    codeBox.onclick = queryRandomCode;//问题: 不加括号也是调用吗?
+
+
+    //需求: 获取四个不重复的验证码!!!
+    /**思路六: 数组中的indexOf不兼容;
+     *
+     */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    ~function (pro) {
+        function myFormatTime(template) {
+            template = template || '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+            var _this = this,
+                    ary = _this.match(/\d+/g);
+            template = template.replace(/\{(\d)\}/g, function () {
+                return (ary[arguments[1]] || '00').length < 2 ? '0' + ary[arguments[1]] : ary[arguments[1]];
+            });
+            return template;
+        }
+
+        pro.myFormatTime = myFormatTime;
+    }(String.prototype);
+
+    var str = '2017/7/23 18:00:00';
+    console.log(str.myFormatTime('{1}月{2}日 {3}:{4}'));
+</script>
+</body>
+</html>

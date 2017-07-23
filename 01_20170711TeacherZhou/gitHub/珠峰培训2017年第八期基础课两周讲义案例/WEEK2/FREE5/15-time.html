@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    function computedTime() {
+        var tarTime = new Date('2017/07/23 18:18:40');
+        var nowTime = new Date();
+
+        //->差值=目标-当前(MS)
+        var spanTime = tarTime - nowTime;
+        if (spanTime < 0) {
+            //->超过目标时间
+            document.body.innerHTML = '抢购结束';
+            return;
+        }
+
+        var hours = Math.floor(spanTime / (1000 * 60 * 60));//->计算当前MS差中包含多少个小时
+        spanTime = spanTime - hours * 60 * 60 * 1000;//->总差MS值减去小时所占的值,剩下的值计算分钟和秒
+        var minutes = Math.floor(spanTime / (1000 * 60));
+        spanTime = spanTime - minutes * 1000 * 60;
+        var seconds = Math.floor(spanTime / 1000);
+        document.body.innerHTML = '距离开抢还剩：' + addZero(hours) + ':' + addZero(minutes) + ':' + addZero(seconds);
+    }
+    computedTime();
+    window.setInterval(computedTime, 1000);
+
+    //->不足十位前面补零
+    function addZero(val) {
+        val = Number(val);
+        return val < 10 ? '0' + val : val;
+    }
+</script>
+</body>
+</html>

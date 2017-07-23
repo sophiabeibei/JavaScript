@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO获取元素-ByName</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div name="box"></div>
+<p name="box"></p>
+<input type="checkbox" id="hobbyMusic" name="hobby"><label for="hobbyMusic">MUSIC</label>
+<input type="checkbox" id="MOVIE" name="hobby"><label for="MOVIE">MOVIE</label>
+<input type="checkbox" id="FOOD" name="hobby"><label for="FOOD">FOOD</label>
+<input type="checkbox" id="READ" name="hobby"><label for="READ">READ</label>
+<script type="text/javascript">
+    //getElementsByName: 通过name的属性值来获取元素;在ie6-9浏览器中,只能识别表单元素的name属性值,所以name属性是针对于表单元素创建的;(项目中非表单元素尽量不要设置name)  ==>表单元素可以通过name给单选框或者复选框进行分组;
+    console.log(document.getElementsByName("hobby"));
+
+
+    //1.不要给非表单元素加name
+    //2.name不要和id重名
+
+
+</script>
+</body>
+</html>
