@@ -33,6 +33,7 @@
             border: 1px solid #999;
             background: #ccc;
             text-align: center;
+            cursor: pointer;
         }
         .tabBox ul li.select{
             border-bottom-color: #fff;
@@ -59,9 +60,9 @@
         <li>综艺</li>
         <li>军事</li>
     </ul>
-    <div class="select">新闻内容</div>
-    <div>综艺内容</div>
-    <div>军事</div>
+    <div class="select">全国多地区降雨量提升</div>
+    <div>综艺-奔跑吧兄弟</div>
+    <div>军事-伊拉克战争</div>
 </div>
 <script>
     var oTab = document.getElementById("tabBox");
@@ -69,6 +70,37 @@
     var oDivList = oTab.getElementsByTagName("div");
 
 
+    function changeTab(curIndex) {
+        for (var i = 0; i < oList.length; i++) {
+                oList[i].className = null;
+                oDivList[i].className = null;
+        }
+        oList[curIndex].className = "select";
+        oDivList[curIndex].className = "select";
+    }
+
+    for (var i = 0; i < oList.length; i++) {
+        oList[i].curIndex = i;
+        oList[i].onclick = function () {
+            changeTab(this.curIndex);
+        }
+    }
+
+
+
+    /*用到的知识点:
+    1.oList[i].curIndex = i / oList[curIndex] / oDivList[curIndex]: 自定义属性
+    2.changeTab(this.curIndex): this关键字
+    3.changeTab(this.curIndex): 普通函数执行 / 实参
+    4.function changeTab(curIndex) {}: 形参.实参;
+    5.getElementById / getElementsByTagName: DOM获取元素的方法
+    6.for (var i = 0; i < oList.length; i++) {}: for循环遍历元素对象
+
+
+
+
+
+    */
 
 
 </script>
