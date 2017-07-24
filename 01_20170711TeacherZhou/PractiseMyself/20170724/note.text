@@ -1,0 +1,142 @@
+
+
+[string方法]
+1.charAt     根据索引获取对应位置字符
+2.charCodeAt       获取指定索引位置的字符对应的ASCII码值(UNICODE编码)
+3.String.fromCharCode    根据ASCII(UNICODE编码)找对应的字符
+4.substr
+        substr(n,m)    从索引n开始截取m个;
+        substr(n)    从索引n开始截取到末尾
+        substr()    从开头截取到末尾
+        substr(-n)    n倒着数截取m个
+5.substring
+        substring(n,m)   索引n,索引m,不包含m处;   (此处n<m)
+        substring(n)  从索引n截取到末尾
+        不支持负索引;
+6.slice
+        slice(n,m)    跟substring语法一样;索引n,索引m,不包括m;(n<m)
+        substring(n)  从索引n截取到末尾
+        支持负索引;
+7.toUpperCase      小写转大写
+8.toLowerCase     大写转小写
+9.indexOf        获取当前字符串中某一个字符在字符串中第一次出现的索引位置;
+10.lastIndexOf     获取当前字符串中某一个字符在字符串中最后一次出现的索引位置;
+        如果字符在字符串中存在,返回的数值>=0;如果不存在,返回-1;
+11.split    按照某一个指定的分隔符,把字符串转换为数组形式;
+12.replace      实现字符串的替换,在不使用正则时每执行这个方法,只能替换一次;
+13.match   匹配
+14.localCompare   比较对照
+
+
+[Math方法]
+1.Math.abs
+2.Math.ceil
+3.Math.floor
+4.Math.max
+5.Math.min
+6.Math.round
+7.Math.PI
+8.Math.sqrt
+9.Math.pow
+10.Math.random
+Math.round(Math.random()*(m-n)+n)
+
+
+[数组方法]
+1.push
+2.pop
+3.unshift
+4.shift
+5.splice
+6.slice
+7.concat
+8.reverse
+9.sort
+10.toSting
+11.join
+12.indexOf
+13.lastIndexOf
+14.forEach
+15.map
+==================================================================
+
+[string方法]
+1.charAt
+2.charCodeAt
+3.String.fromCharCode
+4.substr
+5.substring
+6.slice
+7.toUpperCase
+8.toLowerCase
+9.indexOf
+10.lastIndexOf
+11.split
+12.replace
+13.match
+14.localCompare
+
+
+[Math方法]
+1.Math.abs
+2.Math.ceil
+3.Math.floor
+4.Math.max
+5.Math.min
+6.Math.round
+7.Math.PI
+8.Math.sqrt
+9.Math.pow
+10.Math.random
+Math.round(Math.random()*(m-n)+n)
+
+
+[Array方法]
+1.push
+2.pop
+3.unshift
+4.shift
+5.splice
+6.slice
+7.concat
+8.toString
+9.join
+10.reverse
+11.sort
+12.indexOf
+13.lastIndexOf
+14.forEach
+15.map
+1.增删改
+2.截取和拼接
+3.转换类型
+4.排序
+5.查找
+6.循环
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

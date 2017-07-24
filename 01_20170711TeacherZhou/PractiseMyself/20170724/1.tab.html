@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+            -webkit-user-select: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .tabBox{
+            margin: 30px auto;
+            width: 500px;
+            box-sizing: border-box;
+        }
+        .tabBox ul{
+            position: relative;
+            top: 1px;
+            overflow: hidden;
+        }
+        .tabBox ul li{
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            border: 1px solid #999;
+            background: #ccc;
+            text-align: center;
+        }
+        .tabBox ul li.select{
+            border-bottom-color: #fff;
+            background: #fff;
+        }
+        .tabBox div{
+            display: none;
+            padding: 20px;
+            width: 500px;
+            height: 200px;
+            border: 1px solid #999;
+            font-size: 30px;
+            box-sizing: border-box;
+        }
+        .tabBox div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tabBox" class="tabBox">
+    <ul>
+        <li class="select">新闻</li>
+        <li>综艺</li>
+        <li>军事</li>
+    </ul>
+    <div class="select">新闻内容</div>
+    <div>综艺内容</div>
+    <div>军事</div>
+</div>
+<script>
+    var oTab = document.getElementById("tabBox");
+    var oList = oTab.getElementsByTagName("li");
+    var oDivList = oTab.getElementsByTagName("div");
+
+
+
+
+</script>
+</body>
+</html>
