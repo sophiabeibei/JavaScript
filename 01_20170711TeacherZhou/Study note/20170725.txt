@@ -1,0 +1,70 @@
+1.什么是git?
+项目源代码的版本控制器;也可以说是代码管理工具,方便团队协作开发;跟svn一样;
+B模块-git1: git入门;
+C模块-git2: 版本分支切换;版本分支管控;版本分支合并;如何处理冲突;
+
+
+
+2.github是什么?
+有的公司搭建自己的服务器;
+有的公司没有自己的服务器,就用github;
+
+
+git --version: 查看git版本
+
+
+Delete account: 注销用户
+
+Email preferences: 邮箱通知;
+SSH and GPG keys: 安全;
+Repositories: 仓库的记录更新;
+A repository contains all the files for your project, 一个仓库包含了你所有的文件
+including the revision history,包括修订历史记录
+Public  公共(免费)
+Private   私人(付费)
+
+Initialize this repository with a README: 是否创建一个README文件;(选择是-勾选即可)
+关于README: 
+1.README相当于说明书,是对项目仓库的描述,介绍了项目的简介,以及如何使用的;
+2.这个文件内容的编写采用的是MARKDOWN语法编写的;
+重点词汇释义
+Initialize初始化
+repository仓库; 贮藏室; 博物馆; 亲信
+README读我文件; 自述文件
+
+
+ 39 commits: 修改的记录;
+ 1 branch: 分支(C模块git2讲解master分支)
+
+Are you ABSOLUTELY sure?你真的确定吗？
+重点词汇释义
+ABSOLUTELY绝对地; 完全地; 毫无疑问地; 独立地，分离地
+sure确信的，确实的; 有把握的; 无疑的; 一定的; 当然; 确实地; 无疑地
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
