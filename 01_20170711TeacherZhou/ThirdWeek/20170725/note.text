@@ -12,6 +12,91 @@ git / gitHub
 
     -> https://coding.net/        coding是中文的,照抄gitHub做的;gitHub上有很多功能,coding上没有;不算gitHub汉化版;
 
+3.git
+    把代码从仓库上拉下来,并且可以把代码提交到git上(node  npm)
+    操作git的有小乌龟的,还有命令的(珠峰教的是命令)
+
+    第一次使用git,我们先在本地把邮箱和用户名配置一下(配置的用户名和邮箱可以随便设置,建议大家和gitHub的用户名邮箱保持一致);
+
+
+    window键+R    打开运行命令框;
+    cmd   打开命令操作窗口
+    D:    打开D盘
+    dir   查看D盘的文件有哪些
+    cd Study    打开Study文件夹
+    ...... 循环以上的dir  -> cd 文件夹名...直到找到自己所想要的文件;
+
+
+
+
+
+    git config --global user.name"sophiabeibei"     设置配置连接自己的gitHub
+    git config --global user.email"duguyiren681@163.com"     设置配置连接自己的gitHub
+
+
+    git config --global user.name     查看自己的用户名
+    sophiabeibei
+
+    git config --global user.email    查看自己的邮箱
+    duguyiren681@163.com
+
+
+
+    "服务器分布式":
+    1.性能优化;app请求次数;解决慢的问题和性能优化的问题;分布式通俗讲就是烧钱;
+    2.服务器集群(架一个需要很多钱,烧钱的;)还有服务器运维维护;
+    git的分布式  跟服务器分布式是一样一样的概念;
+
+
+
+
+    /*需求: 本地建立一个git仓库,并且和远程能够建立连接;
+     *麻烦的操作如下:
+
+    Mac下显示隐藏文件/文件夹:
+        【方法一:】
+        1.在Finder下进入你想要操作的文件夹,按快捷键Command + F 调出搜索窗口;
+        2.点击"种类"选项卡找到最后项 "其他";
+        3.在弹出的窗口里 找到"文件可见性" 选项(可通过搜索快速查找),勾选后面的方框,点击"好"保存设置;
+
+        【方法二:】
+        在应用程序里打开终端,cd 你的文件夹名,ls -a,即可显示该文件夹下的所有隐藏文件;
+        打开整个系统的隐藏文件可以在终端下输入以下命令:
+        defaults write com.apple.finder AppleShowAllFiles -bool true
+        关闭显示隐藏功能:
+        defaults write com.apple.finder AppleShowAllFiles -bool false
+
+
+
+
+    建立本地的git仓库
+        $ git init  (初始化)  =>在当前的项目文件夹中生成一个.git文件(不能删除,删除后就不是本地仓库了)
+
+    让本地仓库和远程仓库之间建立连接的通道
+        $ git remote add [名字] [远程仓库地址]
+            [名字]: 给传输通道起个名字,一般我们都叫做 origin
+            [远程仓库地址]: gitHub创建仓库完成后,会生成一个远程仓库地址(例如:  https://github.com/sophiabeibei/aaa.git  注意是HTTPS开头的),通过这个地址可以找到远程的仓库;
+
+            本地仓库可以和N个远程仓库保持连接;
+
+        $ git remote -v   查看连接仓库
+        $ git remote rm [名字]  删除连接的通道
+        $ git remote update [名字]    更新连接的通道
+
+
+
+    *简单的操作:
+        $ git clone [远程仓库地址]
+            一个clone[远程仓库地址]完成了以下三件事:
+            1.在本地创建了一个git仓库;
+            2.让本地仓库和远程仓库保持了连接;
+            3.把远程仓库中的源代码拉取到了本地;
+
+    */
+
+
+
+
 
 
 
