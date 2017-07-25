@@ -107,7 +107,15 @@ git / gitHub
         .idea: 这是webstorm生成的文件,可以放在.gitignore文件中,每次上传时就可会忽略上传.idea这个文件;
         .idea         .DS_Store(mac电脑)         node_modules(node)   这三个文件都可以忽略;
 
+        windows创建.gitignore文件的方法:
+            1.新建一个text文件
+            2.打开文件,文件,另存为,保存类型选择所有
+            3.命名为.gitignore即可
 
+        $ touch .gitignore:  windows创建.gitignore文件的方法:
+
+        mac本创建gitignore的方法:
+        $ touch .gitignore
 
 
         $ git add [某一个文件: 路径要对]      把工作区某一个文件上传到暂存区
@@ -127,6 +135,28 @@ git / gitHub
             绿色文字: 当前文件还未上传到历史区
 
         $ git push origin master    把本地仓库历史区中的内容(包含提交的记录)都有更新到远程仓库(origin对应的远程仓库)的master主分支下   =>此处应该叫做同步,这样比提交叫法更准确,因为在每一个push后,不仅仅是代码推送到远程仓库中,而且本地新增加的项目版本记录也都同步到了远程仓库上;
+
+
+
+
+
+
+
+
+
+
+    git步骤:
+        1.git init
+        2.git remote add [通道名称bei可以更改] [将要连接的远程仓库的地址]
+        3.git pull bei master
+        4.touch .gitignore
+            .idea
+            .DS_store
+            .node_modules
+        5.本地文件......
+        6.git add .
+        7.git commit -m"笔记更新"
+        8.git push bei master
 
 
 
