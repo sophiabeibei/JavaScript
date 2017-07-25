@@ -1,6 +1,6 @@
 git / gitHub
 1.GIT
-    项目源代码的版本控制器(代码管理工具),方便团队协作开发;
+    项目源代码的"版本控制器"(代码管理工具),方便团队协作开发;
 
 2.gitHub
     -> https://github.com/
@@ -28,11 +28,8 @@ git / gitHub
 
 
 
-
-
     git config --global user.name"sophiabeibei"     设置配置连接自己的gitHub
     git config --global user.email"duguyiren681@163.com"     设置配置连接自己的gitHub
-
 
     git config --global user.name     查看自己的用户名
     sophiabeibei
@@ -41,12 +38,10 @@ git / gitHub
     duguyiren681@163.com
 
 
-
     "服务器分布式":
     1.性能优化;app请求次数;解决慢的问题和性能优化的问题;分布式通俗讲就是烧钱;
     2.服务器集群(架一个需要很多钱,烧钱的;)还有服务器运维维护;
-    git的分布式  跟服务器分布式是一样一样的概念;
-
+    git的分布式  跟服务器分布式是一样一样的概念;也可以理解为"集中式";
 
 
 
@@ -72,7 +67,7 @@ git / gitHub
     建立本地的git仓库
         $ git init  (初始化)  =>在当前的项目文件夹中生成一个.git文件(不能删除,删除后就不是本地仓库了)
 
-    让本地仓库和远程仓库之间建立连接的通道
+        让本地仓库和远程仓库之间建立连接的通道
         $ git remote add [名字] [远程仓库地址]
             [名字]: 给传输通道起个名字,一般我们都叫做 origin
             [远程仓库地址]: gitHub创建仓库完成后,会生成一个远程仓库地址(例如:  https://github.com/sophiabeibei/aaa.git  注意是HTTPS开头的),通过这个地址可以找到远程的仓库;
@@ -130,6 +125,8 @@ git / gitHub
         $ git status    查看当前本地仓库文件的状态
             红色文字: 当前文件还未增加到暂存区
             绿色文字: 当前文件还未上传到历史区
+
+        $ git push origin master    把本地仓库历史区中的内容(包含提交的记录)都有更新到远程仓库(origin对应的远程仓库)的master主分支下   =>此处应该叫做同步,这样比提交叫法更准确,因为在每一个push后,不仅仅是代码推送到远程仓库中,而且本地新增加的项目版本记录也都同步到了远程仓库上;
 
 
 
