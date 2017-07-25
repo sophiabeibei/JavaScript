@@ -14,18 +14,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="note.text" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ThirdWeek/20170725/note.text">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -151,6 +140,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FirstWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -166,17 +169,18 @@
     <property name="SearchEverywhereHistoryKey" value="`&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek\20170724" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek\20170723" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\PractiseMyself" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\PractiseMyself" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek\20170723" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek\1.code" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170726" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek\20170724" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -289,12 +293,12 @@
       <workItem from="1500859590547" duration="417000" />
       <workItem from="1500860037778" duration="193000" />
       <workItem from="1500860451365" duration="18413000" />
-      <workItem from="1500940574536" duration="23786000" />
+      <workItem from="1500940574536" duration="23960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284514000" />
+    <option name="totallyTimeSpent" value="284688000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -454,8 +458,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ThirdWeek/20170725/note.text">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+        <state relative-caret-position="629">
+          <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding />
         </state>
       </provider>
