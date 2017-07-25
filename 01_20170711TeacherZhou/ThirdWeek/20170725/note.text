@@ -149,6 +149,9 @@ git / gitHub
         1.git init
         2.git remote add [通道名称bei可以更改] [将要连接的远程仓库的地址]
         3.git pull bei master
+
+
+        0.git clone [将要连接的远程仓库的地址]       ====这条命令等同于上面三条命令;(完成了上面三条命令达到的效果)
         4.touch .gitignore
             .idea
             .DS_store
@@ -157,6 +160,37 @@ git / gitHub
         6.git add .
         7.git commit -m"笔记更新"
         8.git push bei master
+
+        备注: 0的那条命令中的远程仓库,在创建的时候,一定要想好名字;因为clone到本地之后,这个文件名字是无法更改;
+
+
+
+
+
+
+        ====================================================避免每次输入密码使用的命令;建议最好不要这样操作!!!!!!
+        .git-credentials
+          https://{username}:{password}@github.com
+        git config –global credential.helper store
+
+
+===================================================================
+5.Mark Down:
+    技术人员编写技术文档的一个新神奇(一种新的语法),使用MD编写奇数文档,不需要考虑样式和HTML结构等;
+
+    编写MD的开发工具:
+    1.在WS中安装MD插件(不推荐使用这个插件,会使WS打开速度的越来越慢);
+        在settings找plugins,搜markdown,找到Markdown Navigator安装,这个功能全;
+    2.MD的专用开发工具(马克飞象)
+        专门为印象笔记打造的一款MD的开发工具,我们可以使用印象笔记的账号登陆马克飞象,在马克中编辑的文件会同步到印象笔记中;
+        网页版的马克飞象是: https://maxiang.io
+
+
+
+
+
+
+
 
 
 
