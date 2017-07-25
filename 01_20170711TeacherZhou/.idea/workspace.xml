@@ -14,7 +14,56 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="2.insertSort.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/2.insertSort.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="3.insertSort.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/3.insertSort.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="134">
+                  <caret line="14" column="39" lean-forward="false" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="8.insert.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FreeSecondWeek/20170720/8.insert.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="306">
+                  <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="2.insertSort.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/2.insertSort.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="170">
+                  <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -33,11 +82,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gitHub/201718-第二周第一天讲义案例/FREE1/note.txt" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170719/4.getChildren.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170722/1.openLamp.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170722/2.innerHTML.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170722/note.text" />
         <option value="$PROJECT_DIR$/gitHub/201718-第二周第一天讲义案例/FREE1/5-lineChange.html" />
         <option value="$PROJECT_DIR$/SecondWeek/20170722/3.code.html" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170723code.html" />
@@ -76,14 +120,19 @@
         <option value="$PROJECT_DIR$/SecondWeek/20170723/111/haha.html" />
         <option value="$PROJECT_DIR$/FirstWeek/20170724/1.insteSort.html" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170724/1.html" />
-        <option value="$PROJECT_DIR$/PractiseMyself/20170724/1.quickSort.html" />
         <option value="$PROJECT_DIR$/gitHub/珠峰培训2017年第八期基础课两周讲义案例/WEEK2/FREE1/note.txt" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170724/1..html" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170724/note.text" />
-        <option value="$PROJECT_DIR$/PractiseMyself/20170724/1.tab.html" />
         <option value="$PROJECT_DIR$/FreeSecondWeek/20170718/note.text" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170724/function.html" />
         <option value="$PROJECT_DIR$/ThirdWeek/20170725/note.text" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/1.tab.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/1.quickSort.html" />
+        <option value="$PROJECT_DIR$/FreeSecondWeek/20170720/8.insert.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/2.insteSort.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/3.insetSort2.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/2.insertSort.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/3.insertSort.html" />
       </list>
     </option>
   </component>
@@ -125,8 +174,22 @@
               <option name="myItemId" value="01_20170711TeacherZhou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ThirdWeek" />
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PractiseMyself" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170724" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -139,18 +202,8 @@
               <option name="myItemId" value="01_20170711TeacherZhou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="01_20170711TeacherZhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01_20170711TeacherZhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstWeek" />
+              <option name="myItemId" value="PractiseMyself" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,12 +346,12 @@
       <workItem from="1500859590547" duration="417000" />
       <workItem from="1500860037778" duration="193000" />
       <workItem from="1500860451365" duration="18413000" />
-      <workItem from="1500940574536" duration="23960000" />
+      <workItem from="1500940574536" duration="32329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284688000" />
+    <option name="totallyTimeSpent" value="293057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -334,11 +387,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170722/1.openLamp.html" />
-    <entry file="file://$PROJECT_DIR$/gitHub/201718-第二周第一天讲义案例/FREE1/1-openLamp.html" />
-    <entry file="file://$PROJECT_DIR$/gitHub/201718-第二周第一天讲义案例/FREE1/5-lineChange.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170722/3.code.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/1.code/20170723code.html" />
     <entry file="file://$PROJECT_DIR$/gitHub/201718-第二周第一天讲义案例/FREE1/8-code.html" />
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/8.raffle.html" />
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/7.code.html" />
@@ -373,14 +421,6 @@
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/13.raffle.html" />
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/111/860.html" />
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/111/haha.html" />
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/1.quickSort.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="62" column="28" lean-forward="true" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gitHub/珠峰培训2017年第八期基础课两周讲义案例/WEEK2/FREE2/8.note">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -395,40 +435,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/note.text">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="106" column="14" lean-forward="true" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gitHub/珠峰培训2017年第八期基础课两周讲义案例/WEEK2/FREE1/note.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="168" column="0" lean-forward="true" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/1.insteSort.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/function.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/1.tab.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="86" column="5" lean-forward="false" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -460,6 +470,86 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/note.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170723/20170723quick.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/function.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/1.quickSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/1.tab.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="80" column="52" lean-forward="false" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FreeSecondWeek/20170722/2.innerHTML.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170721/20170721insert.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FreeSecondWeek/20170720/8.insert.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/2.insertSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/3.insertSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="14" column="39" lean-forward="false" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
           <folding />
         </state>
       </provider>

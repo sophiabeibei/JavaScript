@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>insertSort插入排序</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function insertSort(ary) {
+
+        var handAry = [];//手里的牌
+        handAry.push(ary[0]);//把第一张牌添加(放到)手里
+        //依次循环余下的牌ary[x,x,x]
+        for (var i = 0; i < ary.length; i++) {
+            //余下牌里,当前的牌cur
+            var cur = ary[i];
+            for (var j = handAry.length - 1; j>= 0; j--) {
+                var curHand = handAry[j];
+                if(cur > curHand){
+                    handAry.splice(j+1,0,cur);
+                    j = -1;
+                }
+                if(j === 0){
+                    handAry.unshift(cur);
+                }
+            }
+        }
+        return handAry;
+    }
+
+
+
+
+    var ary = [12,44,5,63,1,32,1,987,45,61,3,17,98,43,231,3,48,643,212,3,49,8,4,3,21];
+    var result = insertSort(ary);
+    console.log(result);
+
+
+</script>
+</body>
+</html>

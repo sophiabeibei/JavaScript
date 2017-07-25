@@ -7,6 +7,18 @@
 <body>
 <script>
 
+    /*
+    * ary[0]: 第一张牌;
+    * cur: 当前抓的牌;
+    * curHand: 手里的牌最末尾的一张;
+    *
+    * 手里牌最末尾的一张curHand 和 当前抓的牌cur  做比较: cur > curHand
+    * 如果当前抓的牌cur比手里最末尾一张curHand大;就把当前的牌cur插入到最末尾牌curHand的前面(依此类推...)
+    * 用到数组方法splice(n,0,x)从索引n开始删除0个,把x插入到索引n前面;
+    * 最末尾的牌curHand的索引是j+1
+    *
+    *
+    * */
     function insetSort(ary) {
 
         //1.首先抓一张牌: 第一张

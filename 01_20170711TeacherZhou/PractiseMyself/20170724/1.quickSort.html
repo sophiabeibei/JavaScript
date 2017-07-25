@@ -6,35 +6,8 @@
 </head>
 <body>
 <script type="text/javascript">
-
-
-    function quickSort(ary){
-        debugger;
-        console.log(ary.length);
-        console.log(ary);
-        if(ary.length<= 1){
-            console.log(ary.length);
-            return ary;
-        }
-        var curIndex = Math.floor(ary.length/2),
-            curValue = ary.splice(curIndex,1)[0],
-            leftAry = [],
-            rightAry = [];
-        for (var i = 0; i < ary.length; i++) {
-            var cur = ary[i];
-            cur>curValue ? rightAry.push(cur) : leftAry.push(cur);
-        }
-        return quickSort(leftAry).concat(curValue, quickSort(rightAry));
-    }
-
-
-    var ary = [0,12,36,5,4,7,8,963,258,74,10];
-    var result = quickSort(ary);
-    console.log(result);
-
-
     /*本案例思路:
-     1.求出整个数组长度的一半,拿到这个值;
+     1.求出整个数组长度的一半,拿到这个值A;
      数组的长度除以2,即得到数组一半(公式: ary.length/2);为避免有小数出现,使用数组的向下取整方法Math.floor();
      根据splice(n,m)这个数组方法:从索引n开始删除m个,返回删除的项; 即可拿到整个数组中位于中间位置的一项数字;
 
@@ -52,19 +25,40 @@
 
 
      本案例用到的知识点:
-    1.Math.floor(): 向下取整
-    2.ary.length: 数组的长度
-    3.ary.length/2: 求出数组一半的index
-    4.ary.splice(n,m): 从索引N开始删除M个元素
-    5.quickSort(ary): 形参.实参.
-    6.cur>curValue ? rightAry.push(cur) : leftAry.push(cur): 三元运算符;cur比curValue大,cur放right;否则,cur放左边;(?:;)
-    7.return quickSort(leftAry).concat(curValue, quickSort(rightAry)): 返回值供环境外面使用;
-    8.quickSort(rightAry): 递归
-    9.quickSort(leftAry): 递归
-    10.result 打印结果,外面变量接收;
+     1.Math.floor(): 向下取整
+     2.ary.length: 数组的长度
+     3.ary.length/2: 求出数组一半的index
+     4.ary.splice(n,m): 从索引N开始删除M个元素
+     5.quickSort(ary): 形参.实参.
+     6.cur>curValue ? rightAry.push(cur) : leftAry.push(cur): 三元运算符;cur比curValue大,cur放right;否则,cur放左边;(?:;)
+     7.return quickSort(leftAry).concat(curValue, quickSort(rightAry)): 返回值供环境外面使用;
+     8.quickSort(rightAry): 递归
+     9.quickSort(leftAry): 递归
+     10.result 打印结果,外面变量接收;
 
-    */
+     */
 
+
+
+    function quickSort(ary) {
+        if (ary.length <= 1) {
+            return ary;
+        }
+        var curIndex = Math.floor(ary.length / 2),
+            curValue = ary.splice(curIndex, 1)[0],
+            leftAry = [],
+            rightAry = [];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            cur > curValue ? rightAry.push(cur) : leftAry.push(cur);
+        }
+        return quickSort(leftAry).concat(curValue, quickSort(rightAry));
+    }
+
+
+    var ary = [0, 12, 36, 5, 4, 7, 8, 963, 258, 74, 10];
+    var result = quickSort(ary);
+    console.log(result);
 
 
 </script>

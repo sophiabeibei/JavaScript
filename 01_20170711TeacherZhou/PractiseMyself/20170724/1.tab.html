@@ -65,6 +65,17 @@
     <div>军事-伊拉克战争</div>
 </div>
 <script>
+    /*用到的知识点:
+     1.oList[i].curIndex = i / oList[curIndex] / oDivList[curIndex]: 自定义属性
+     2.changeTab(this.curIndex): this关键字
+     3.changeTab(this.curIndex): 普通函数执行 / 实参
+     4.function changeTab(curIndex) {}: 形参.实参;
+     5.getElementById / getElementsByTagName: DOM获取元素的方法
+     6.for (var i = 0; i < oList.length; i++) {}: for循环遍历元素对
+
+     */
+
+
     var oTab = document.getElementById("tabBox");
     var oList = oTab.getElementsByTagName("li");
     var oDivList = oTab.getElementsByTagName("div");
@@ -86,21 +97,6 @@
         }
     }
 
-
-
-    /*用到的知识点:
-    1.oList[i].curIndex = i / oList[curIndex] / oDivList[curIndex]: 自定义属性
-    2.changeTab(this.curIndex): this关键字
-    3.changeTab(this.curIndex): 普通函数执行 / 实参
-    4.function changeTab(curIndex) {}: 形参.实参;
-    5.getElementById / getElementsByTagName: DOM获取元素的方法
-    6.for (var i = 0; i < oList.length; i++) {}: for循环遍历元素对象
-
-
-
-
-
-    */
 
 
 </script>

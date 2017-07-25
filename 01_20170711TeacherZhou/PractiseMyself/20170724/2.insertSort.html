@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>insertSort</title>
+</head>
+<body>
+<script type="text/javascript">
+    function insertSort(ary) {
+        var handAry = [];
+        handAry.push(ary[0]);
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            for (var j = handAry.length - 1; j >= 0; j--) {
+                var curHand = handAry[j];
+                if (curHand < cur) {
+                    handAry.splice(j + 1, 0, cur);
+                    j = -1;
+                }
+                if (j === 0) {
+                    handAry.unshift(cur);
+                }
+            }
+        }
+        return handAry;
+    }
+
+
+    var ary = [89, 7, 6, 51, 3, 2, 100, 0, 34, 6, 7, 46, 1, 30, 0, 32, 4, 6, 79, 8, 78];
+    var result = insertSort(ary);
+    console.log(result);
+
+
+    /*本案例用到的知识点:
+     1.声明一个新的空数组,用来存储排序好的值;
+
+
+
+
+     */
+
+
+</script>
+</body>
+</html>
