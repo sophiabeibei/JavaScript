@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升</title>
+</head>
+<body>
+<script>
+    /*
+     * 全局下的变量提升
+     *   var a;  fn = xxxfff000;
+     */
+    console.log(a);//->undefined
+    var a = 12;
+    console.log(a);//->12
+
+    function fn() {
+        /*
+         * FN执行形成一个私有作用域
+         *  形参赋值:
+         *  变量提升: var a; ->说明A是当前私有作用域的私有变量,和外面没有任何关系
+         */
+        console.log(a);//->undefined
+        var a = 13;
+        console.log(a);//->13
+        console.log(window.a);//->12 指定获取外面的A
+    }
+
+    a = fn();//->先把函数FN执行,把执行的返回值赋值给全局变量A(看一个函数的返回值,只需要看函数体中是否有RETURN,有RETURN,RETURN后面是啥函数的返回值就是啥,没有RETURN,默认返回值是UNDEFINED)
+    console.log(a);
+
+
+</script>
+</body>
+</html>

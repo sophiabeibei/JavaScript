@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    //    fn();
+    //    function fn() {
+    //        console.log(1);
+    //    }
+
+    //->匿名函数：函数表达式(把函数当做一个值,赋值给一个变量或者某个元素的某个事件)
+    //document.body.onclick = function () {};
+
+    /*
+     * 变量提升：
+     *   只对=左边的进行变量提升,右边的是值,不进行提升的操作
+     *   var fn; ->undefined
+     */
+    fn();//->Uncaught TypeError: fn is not a function 相当于undefined(),undefined不是函数,所以报错
+    var fn = function () {
+        console.log(1);
+    };
+</script>
+</body>
+</html>

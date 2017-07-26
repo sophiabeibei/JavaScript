@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升</title>
+</head>
+<body>
+<script>
+    console.log(result);//->undefined：预解释阶段,只是声明了一个变量,但是没有赋值,默认值就是undefined
+    console.log(sum);//->函数本身：预解释阶段，函数的声明和定义都完成了，此时函数是有值的 sum代表的是函数本身  sum()把函数执行,代表的是执行后的返回结果
+    //sum();//->可以在这个部分执行,因为已经定义完成了
+
+    var result = null;
+    function sum() {
+        var total = null;
+        for (var i = 0; i < arguments.length; i++) {
+            var cur = Number(arguments[i]);
+            if (isNaN(cur)) continue;
+            total += cur;
+        }
+        return total;
+    }
+    result = sum(12, 23, 34);
+    console.log(result);
+
+
+</script>
+</body>
+</html>

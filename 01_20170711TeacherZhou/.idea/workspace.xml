@@ -14,7 +14,48 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="note.text" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/note.text">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1445">
+              <caret line="85" column="85" lean-forward="false" selection-start-line="85" selection-start-column="85" selection-end-line="85" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="12.scope.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/12.scope.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="629">
+              <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="8.quickSort.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/8.quickSort.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="7.insertSort.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/7.insertSort.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -28,31 +69,12 @@
     <findStrings>
       <find>`</find>
       <find>分布式</find>
+      <find>判断</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gitHub/201718-第二周第一天讲义案例/FREE1/5-lineChange.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170722/3.code.html" />
-        <option value="$PROJECT_DIR$/PractiseMyself/20170723code.html" />
-        <option value="$PROJECT_DIR$/PractiseMyself/20170723code2.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/3.code.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/2.code.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/4.code.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/5.code.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/7.code.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/6.code.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/8.lovely.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/9.raffle.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/8.raffle.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/11.raffle.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/12.raffle.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/13.raffle.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/10.raffle.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/1.code.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/14.DEMO.html" />
-        <option value="$PROJECT_DIR$/SecondWeek/20170723/14.DEMO-ById.html" />
         <option value="$PROJECT_DIR$/SecondWeek/20170723/15.DEMO-ByName.html" />
         <option value="$PROJECT_DIR$/SecondWeek/20170723/15.html" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170723quick.html" />
@@ -84,6 +106,26 @@
         <option value="$PROJECT_DIR$/PractiseMyself/20170724/3.insetSort2.html" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170724/2.insertSort.html" />
         <option value="$PROJECT_DIR$/PractiseMyself/20170724/3.insertSort.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/4.inertSort.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/4.insertSort.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/5.insetSort.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/6.quickSort.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/9.changTab.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/8.quickSort.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/1.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/2.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/7.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/6.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/5.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/4.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/3.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/8.declare.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/10.scope.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/11.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/note.text" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/12.scope.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170726/9.scope.html" />
+        <option value="$PROJECT_DIR$/PractiseMyself/20170724/7.insertSort.html" />
       </list>
     </option>
   </component>
@@ -114,7 +156,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -159,41 +201,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01_20170711TeacherZhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01_20170711TeacherZhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FreeSecondWeek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="20170723" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01_20170711TeacherZhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01_20170711TeacherZhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FreeSecondWeek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,18 +215,18 @@
     <property name="SearchEverywhereHistoryKey" value="`&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek\20170726" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170726" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\PractiseMyself" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek\20170723" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek\1.code" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170726" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FirstWeek\20170724" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -331,16 +341,19 @@
       <workItem from="1500860451365" duration="18413000" />
       <workItem from="1500940574536" duration="32471000" />
       <workItem from="1500990261905" duration="606000" />
+      <workItem from="1501029450785" duration="36659000" />
+      <workItem from="1501085289583" duration="87000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293805000" />
+    <option name="totallyTimeSpent" value="330551000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19345239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19345239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -371,26 +384,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/8.raffle.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/7.code.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/11.raffle.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/12.raffle.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/2.code.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/3.code.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/6.code.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/14.DEMO-ById.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170722/note.text" />
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170723quick.html" />
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170720quick.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/15.DEMO-ByTagName.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/16.DEMO-ByName.html" />
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170723quick2.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/10.raffle.html" />
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170720distinct3.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/js/utils.js" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/17.NODE.html" />
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170721insert.html" />
-    <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/18.Date.html" />
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/19.think.html" />
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/21.think.html" />
     <entry file="file://$PROJECT_DIR$/SecondWeek/20170723/20.think.html" />
@@ -421,13 +414,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170725/note.text">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170725/note.text" />
     <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/note.text" />
     <entry file="file://$PROJECT_DIR$/PractiseMyself/20170723/20170723quick.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -475,31 +462,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FreeSecondWeek/1.code/20170723code.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/FreeSecondWeek/1.code/20170723code.html" />
     <entry file="file://$PROJECT_DIR$/FreeSecondWeek/20170723/1.code.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/3.insertSort.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -507,6 +477,156 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="49">
           <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/3.insertSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/4.insertSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/6.quickSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/5.insetSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170719/20170719tab.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="77" column="34" lean-forward="true" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/9.changTab.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/7.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="21" column="46" lean-forward="true" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/6.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/5.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="35" column="61" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/4.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/3.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="31" column="47" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/2.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="49" column="18" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/1.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/note.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="85" column="85" lean-forward="false" selection-start-line="85" selection-start-column="85" selection-end-line="85" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/8.declare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/10.scope.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/9.scope.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/11.eval.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170726/12.scope.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/8.quickSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PractiseMyself/20170724/7.insertSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
           <folding />
         </state>
       </provider>

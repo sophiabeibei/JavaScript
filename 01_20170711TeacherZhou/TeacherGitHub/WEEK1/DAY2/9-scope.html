@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+<script>
+    //    console.log(a, b, c);
+    //    var a = 12,
+    //            b = 13,
+    //            c = 14;
+    //    function fn(a) {
+    //        console.log(a, b, c);
+    //        a = 30;
+    //        var b = 10;
+    //        c = 20;
+    //        console.log(a, b, c);
+    //    }
+    //    fn(100);
+    //    console.log(a, b, c);
+
+    /*
+     * 变量提升:
+     *   var n;  var s;  fn = xxxfff000;
+     */
+    //    var n = 9;
+    //    var s = 'str';
+    //    function fn() {
+    //        /*
+    //         * 私有作用域中的形参赋值和变量提升
+    //         *   var n; (n是私有的变量)
+    //         */
+    //        console.log(n);//->undefined
+    //        console.log(s);//->window.s =>'str'
+    //        n = 7;//->私有的n=7
+    //        var n = 6;//->私有的n=6
+    //    }
+    //    fn();
+    //    console.log(n);//->9
+
+
+    //    var n = 9;
+    //    function fn() {
+    //        /*
+    //         * 变量提升和形参赋值都没有
+    //         */
+    //        console.log(n);//->window.n =>9
+    //        n = 7;//->window.n=7
+    //    }
+    //    fn();
+    //    console.log(n);//->7
+
+
+    //    function fn() {
+    //        console.log(n);//->Uncaught ReferenceError: n is not defined
+    //        n = 7;
+    //    }
+    //    fn();
+    //    console.log(n);
+
+
+    function fn() {
+        n = 7;//->全局下也没有N这个变量,此时相当于给window增加了一个n的属性,属性值是7
+    }
+    fn();
+    console.log(n);//->7
+
+</script>
+</body>
+</html>

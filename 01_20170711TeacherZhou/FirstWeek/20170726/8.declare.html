@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8.declare思考题</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            white-space: nowrap; /*英文单词不断行*/
+        }
+        /*.box{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }*/
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+
+    //->在变量提升阶段,如果当前这个名字已经声明过了,则不再新的声明,只需要重新的定义赋值即可(变量名和函数名如果相同也算是重复)
+
+    /*
+    * 变量提升:
+    *     fn = xxxfff111;
+    *        = xxxfff222;
+    *        = xxxfff333;
+    *        = xxxfff444;
+    *
+    * */
+
+    fn();//4
+    function fn() {console.log(1); }
+    fn();//4
+    function fn() {console.log(2); }
+    fn();//4
+    var fn = 13;//->fn = 13;
+    fn();//13();报错:Uncaught TypeError: fn is not a function
+    function fn() {console.log(3); }
+    fn();
+    function fn() {console.log(4); }
+    fn();
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7.变量提升declare</title>
+</head>
+<body>
+<script type="text/javascript">
+    f = function () {return true;};//window.f
+    g = function () {return false;};//window.g
+    ;(function () {
+        //->私有作用域
+        //形参赋值: 没有
+        //变量提升: g = xxxfff000   ->TRUE    G是当前私有的变量,和全局的没有任何的关系;
+        if (g() && [] == ![]) {//
+            //g()执行的结果TRUE
+            //[]==![]    []==false   0==0:TRUE
+            f = function f() {return false;};//自己家里没有f,我们在此操作的F都是外面的(全局的); =>相当于window.f代表FALSE;
+        }
+        function g() {return true;}//->TRUE
+    })();
+    console.log(f());//->false    因为自执行函数中没有声明f变量,所以里边的f是全局window.f
+    console.log(g());//->false   全局中的window.g;
+
+
+    //[] == ![]
+    /*
+    * 左[]  ->Number([])  ->0
+    * 右![]   ->
+    *
+    * */
+
+
+
+
+    /*涉及到知识点:
+    * 1.全局下的属性    f = xxx;     g = xxx;   这不是声明,是全局window的属性;
+    * 2.自执行函数不参与变量提升;(自执行函数执行,也就是普通的函数执行);遵循函数执行的5步骤!!!!
+    *       1.形成私有作用域;2.形参赋值(没有);3.变量提升:g声明+定义完成(返回的结果是TRUE);
+    * 3.判断g()结果返回TRUE;
+    *       []==![]    []==false   0==0:TRUE
+    *       判断条件成立进入判断体;(记住准则: 判断条件是否成立都会声明)(只有判断条件成立才会赋值,判断条件不成立,就不会赋值)
+    *
+    *
+    *
+    * */
+
+
+
+
+
+</script>
+</body>
+</html>

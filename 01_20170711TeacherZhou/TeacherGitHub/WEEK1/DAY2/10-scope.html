@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    //    var a = 12;
+    //    var obj = {
+    //        a: 14,
+    //        fn: (function () {
+    //            var a = 13;
+    //            return function () {
+    //                console.log(a);
+    //            }
+    //        })()//->自执行函数是在给fn这个属性名赋值的时候就执行了,把执行的返回结果赋值给fn了
+    //    };
+    //    obj.fn();
+
+
+    //思考题：
+    var num = 12;
+    function fn() {
+        var num = 13;
+        return function () {
+            console.log(num);
+        }
+    }
+    var f = fn();
+    f();
+    function sum() {
+        var num = 14;
+        f();
+    }
+    sum();
+</script>
+</body>
+</html>

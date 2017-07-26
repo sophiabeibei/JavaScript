@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升-思考题</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    * 全局下的变量提升
+    *   var a;  fn = xxxfff000;
+    * */
+
+    console.log(a);//undefined
+    var a = 12;
+    console.log(a);//12
+    function fn() {
+        /*
+        * fn()执行形成一个私有作用域
+        * 形参赋值;
+        * 变量提升: var a; ->说明A是当前私有作用域的私有变量,和外面没有任何关系;
+        *
+        * */
+        console.log(a);//->undefined
+        var a = 13;
+        console.log(a);//->13
+
+        console.log(window.a);//->12  指定获取外面的A
+    }
+
+    a = fn();//函数fn执行;没有return,直接返回undefined;
+    console.log(a);//13    为啥是undefined     因为没有return;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //函数fn执行; 把执行的结果赋值给变量a; 看结果是啥,得看有没有return;有return时,看return后面是啥;没return直接undefined;
+    //如何看函数的返回值???
+    //如何看函数的返回值???
+    //如何看函数的返回值???
+    //如何看函数的返回值???
+    //如何看函数的返回值???
+    //如何看函数的返回值???      return;(return后面没东西,返回值也是undefined;)
+    //如何看函数的返回值???      return;(return后面没东西,返回值也是undefined;)
+    //如何看函数的返回值???      return;(return后面没东西,返回值也是undefined;)
+    //如何看函数的返回值???      return;(return后面没东西,返回值也是undefined;)
+    //如何看函数的返回值???
+    //如何看函数的返回值???
+    //看一个函数的返回值,只需要看函数体中是否有return,有return,return后是啥,返回值就是啥;没有return,默认返回值是undefined;
+
+
+
+</script>
+</body>
+</html>

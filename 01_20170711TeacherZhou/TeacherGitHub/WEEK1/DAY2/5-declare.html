@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 不管条件是否成立都要进行预解释(IF和FOR在ES5的机制下是不存在作用域概念的,ES6的机制下是块级作用域)
+     *  ->不管是带VAR还是带FUNCTION,判断体中出现的内容,在变量提升阶段都仅仅是声明,没有定义
+     *   变量提升：
+     *     var a;  function fn;
+     */
+    console.log(a);//->undefined
+    console.log(fn);//->undefined 老版本浏览器输出的是FN,新版本做了一些处理,结果是undefined
+    //    if (1 === 1) {
+    //        console.log(a);//->undefined
+    //        console.log(fn);//->function fn... 条件成立,进入到判断体中的第一件事就是先把函数定义了
+    //        var a = 12;
+    //        function fn() {
+    //            console.log(1);
+    //        }
+    //    }
+
+    if (1 !== 1) {
+        var a = 12;
+        function fn() {
+            console.log(1);
+        }
+    }
+    console.log(a);//->undefined
+    console.log(fn);//->undefined 条件不成立,进入不到判断体中,函数还是无法赋值的
+
+
+</script>
+</body>
+</html>

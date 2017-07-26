@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入排序练习二</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function insertSort(ary) {
+
+        var handAry = [];
+        handAry.push(ary[0]);
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            for (var j = handAry.length - 1; j >= 0; j--) {
+                var curHand = handAry[j];
+                if (cur > curHand) {
+                    curHand.splice(j+1,0,cur);
+                    j = -1;//break
+                }
+                if(j === 0){
+                    curHand.unshift(cur);
+                }
+            }
+        }
+        return ary;
+    }
+
+
+    var ary = [1, 20, 36, 54, 7, 8, 59, 68, 5, 2, 0, 14, 78, 5, 28, 36, 9, 8, 74, 23];
+    var result = insertSort(ary);
+    console.log(result);
+
+
+</script>
+</body>
+</html>

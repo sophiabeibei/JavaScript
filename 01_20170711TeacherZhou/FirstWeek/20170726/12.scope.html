@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12.scope变量提升</title>
+</head>
+<body>
+<script>
+
+    //形参  arguments   return
+
+
+    /*var a = 12;
+    var obj = {
+        a: 14,
+        fn: (function(){
+            var a = 13;
+            return  function(){
+                console.log(a);//13
+            }
+        })()//->自执行函数是在给fn这个属性名赋值的时候就执行了,把执行的返回结果赋值给属性名fn了;
+    };
+    obj.fn();
+    */
+
+    //作业1:
+    //思考题1:
+    var num = 12;//12
+    function fn(){
+        var num = 13;
+        return function () {
+            console.log(num);
+        }
+    }
+    var f = fn();
+    f();
+    function sum() {
+        var num = 14;
+        f();
+    }
+    sum();
+
+
+    //作业2:
+    //看视频(第1章课件67)
+    //建议把免费课函数的好几个视频看一遍;
+
+
+
+
+</script>
+
+</body>
+</html>

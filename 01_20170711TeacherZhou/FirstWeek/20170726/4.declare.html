@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>declare变量提升</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+
+    //为什么fn1可以在前面执行(因为变量提升,函数声明+定义)
+    fn1();//
+    function fn1() {
+        console.log(1);//->1
+    }
+
+    //匿名函数: 函数表达式(把函数当作一个值,赋值给一个变量或者某个元素的某个事件)
+    //document.body.onclick = function () {  }
+    /*var fn = function () {
+        console.log(2);//->2
+    };
+    fn();
+    */
+
+
+
+    /*
+    * 变量提升: 只对=左边的进行变量提升,右边的是值,不进行提升的操作;
+    * var fn; ->undefined
+    *
+    * */
+    fn();//Uncaught TypeError: fn is not a function(报错);  相当于undefined(),undefined不是函数,所以报错;(只声明没赋值,值是undefined,undefined不能执行);
+    //从个人严谨角度来讲,下面这种函数表达式方式使用的较多;(保证先创建再执行);以上function方式的用的少;
+    var fn = function () {
+        console.log(2);//->2
+    };
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 变量提升:
+     *   var a;  <=> window.a=undefined;
+     */
+    console.log(a);//->undefined
+    var a = 12; //<=> window.a=12;
+    console.log(a);//->12 输出变量存储的值
+    console.log(window.a);//->12 输出WIN属性A的属性值
+
+    //console.log(b);//->Uncaught ReferenceError: b is not defined 当前这一行JS代码报错,后面的代码都不在执行了
+    b = 13;//->b不是变量,它是window的一个属性名(前提:在全局作用域下操作) window.b=13;
+    console.log(b);//->13 window.b
+    console.log(window.b);//->13
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.变量提升declare</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /*
+    * 不管条件是否成立,都要进行预解释(IF和FOR在ES5的机制下是不存在作用域概念的,ES6的机制下是块级作用域);
+    *   ->不管是带VAR还是带FUNCTION,判断体(三个判断)中出现的内容,在变量提升阶段都仅仅是声明,没有定义;
+    *     变量提升:
+    *     var a;   function fn;   VAR和FUNCTION都只是先声明;   要不要赋值,得看条件是否成立;(成立就赋值,不成立就不赋值)
+    * */
+    /*console.log(a);//undefined    条件不成立也能打印出undefined.是因为变量提升;
+    console.log(fn);//undefined   老版本浏览器打印出fn,新版本做了一些处理;结果是undefined;
+    if(1 === 1){//判断体:if,else...if,else;    switch...case;    三元运算符
+        console.log(a);//->undefined
+        console.log(fn);//->function fn....条件成立,进入到判断体中的第一件事就是先把函数定义了;
+        var a = 12;
+        function fn() {
+            console.log(1);
+        }
+    }
+    */
+    if(1 !== 1){
+        console.log(a);//->
+        console.log(fn);//->
+        var a = 12;
+        function fn() {
+            console.log(1);
+        }
+    }
+    console.log(a);//->undefined
+    console.log(fn);//->undefined   条件不成立,进入不到判断体中,函数还是无法赋值的;
+
+
+</script>
+</body>
+</html>

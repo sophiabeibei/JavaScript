@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0726insertSort</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    function insertSort(ary){
+
+        var handAry = [];
+        handAry.push(ary[0]);
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            for (var j = handAry.length-1; j >=0; j--) {
+                var curHand = handAry[j];
+                if(cur > curHand){
+                    handAry.splice(j + 1, 0, cur);
+                    j = -1;
+                }
+                if(j === 0){
+                    handAry.unshift(cur);
+                }
+            }
+        }
+        return handAry;
+    }
+
+
+
+    var ary = [15,48,94,1,32,1,647,6,1,0,148,7,49,6,4,1,3,2,1,0,2,3,16,4,6,468,4,3,10];
+    var result = insertSort(ary);
+    console.log(result);//
+
+
+</script>
+</body>
+</html>

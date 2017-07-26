@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.变量提升declare</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /*涉及到的知识点:
+    * 函数中的return;return后面是啥,返回值就是啥;
+    *
+    *
+    * */
+
+    /*
+    * 变量提升:]
+    *     1.没有变量提升;
+    * 代码开始执行
+    *     2.
+    *
+    *
+    * */
+
+    f = function () {return true;};//window.f
+    g = function () {return false;};//window.g
+    //->自执行函数: 函数创建和函数执行都完成了(自执行函数不参与变量提升)
+    ;(function () {//->在前面加一个分号是为了防止上面的函数结束不加分号,导致括号的执行顺序出现错误;
+        /*函数执行5个步骤:
+        * 1.形成一个私有的作用域
+        *      形参赋值:
+        *      变量提升: function g;    ->undefined;
+        * */
+        if (g() && [] == ![]) {//g()相当于undefined();报错:Uncaught TypeError: g is not a function
+            f = function f() {
+                return false;
+            };
+            function g() {
+                return true;
+            }
+        }
+    })();
+    console.log(f());//
+    console.log(g());//
+    //自执行函数
+    /*~function () {}();
+     !function () {}();
+     +function () {}();
+     -function () {}();
+     (function () {})()
+     ;(function () {})()  ->习惯加一个(;),为了避免前面一组没有分号(;)结尾;
+
+     */
+
+
+</script>
+</body>
+</html>

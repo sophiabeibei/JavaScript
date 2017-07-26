@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    /*
+     * 变量提升:没有
+     */
+    f = function () {return true;}; //->window.f
+    g = function () {return false;} //->window.g
+    ;(function () {
+        //->私有作用域
+        //形参赋值：
+        //变量提升：g = xxxfff000 ->TRUE  G是当前私有的变量,和全局的没有任何的关系
+        if(g()&&[]==![]){
+            //->G():TRUE
+            //->[]==![] []==false 0==0:TRUE
+            f = function f() {return false;}; //->自己家里没有F,我们在此操作的F都是外面的(全局的) =>window.f FALSE
+        }
+        function g() {return true;}
+    })();
+    console.log(f());//->false
+    console.log(g());//->false
+</script>
+</body>
+</html>

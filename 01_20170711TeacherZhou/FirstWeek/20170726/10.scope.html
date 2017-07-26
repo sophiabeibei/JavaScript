@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.scope变量提升</title>
+</head>
+<body>
+<script>
+
+    var a = 100;
+    function testResult() {
+        /*
+        * 形参赋值: 没有
+        * 变量提升: var b; var a; var c;
+        *
+        *
+        * */
+        var b= 2*a;
+        var a = 200;
+        var c = a/2;
+        alert(b);//"NaN"
+        alert(c);//"100"
+    }
+    testResult();
+
+
+</script>
+</body>
+</html>
