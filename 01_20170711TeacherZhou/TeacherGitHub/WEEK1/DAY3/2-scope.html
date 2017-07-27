@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+<script>
+    var num = 12;
+    function fn() {
+        var num = 13;
+        return function (i) {
+            console.log(num + i++);
+        }
+    }
+    var f = fn();
+    f(10);
+    fn()(10);//->先把FN执行,把执行的返回结果(小函数)再执行,等价于上面赋值给F的两句话
+    fn()(20);
+    f(20);
+
+
+</script>
+</body>
+</html>

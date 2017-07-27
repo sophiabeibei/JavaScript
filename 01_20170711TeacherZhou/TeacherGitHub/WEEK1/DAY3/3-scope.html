@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+<script>
+    //    var i = 12;
+    //    function fn() {
+    //        var i = 13;
+    //        return function (n) {
+    //            console.log(n + (++i));
+    //        }
+    //    }
+    //    var f = fn();
+    //    f(10);
+    //    fn()(10);
+    //    fn()(20);
+    //    f(20);
+
+    //思考题
+        var i = 12;
+        function fn() {
+            i = 13;
+            return function (n) {
+                console.log(n + (++i));
+            }
+        }
+        var f = fn();
+        f(10);
+        fn()(10);
+        f(20);
+        fn()(20);
+
+        var i = 1;
+        function fn() {
+            i += 2;
+            return function (n) {
+                console.log(n + (++i));
+            }
+        }
+        var f = fn();
+        f(1);
+        fn()(2);
+        f(3);
+        fn()(4);
+
+    var i = 1;
+    function fn() {
+        i += 2;
+        return function (n) {
+            console.log(n + (i++));
+        }
+    }
+    var f = fn();
+    f(1);
+    fn()(2);
+    fn()(4);
+    f(3);
+</script>
+</body>
+</html>

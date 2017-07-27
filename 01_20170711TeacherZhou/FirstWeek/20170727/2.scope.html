@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.scope变量提升-思考题</title>
+</head>
+<body>
+<script>
+    //思考题1:
+    /*var num = 12;
+    function fn() {
+        var num = 13;
+        return function (i) {
+            console.log(num + i++);
+        }
+    }
+    var f = fn();
+    f(10);
+    fn()(10);//先把FN执行(fn()),再把执行的返回结果(xxxfff000(10))再执行;
+    fn()(20);
+    f(20);*/
+
+
+    /*
+    var num;  var f;
+    fn = xxxfff000;
+
+
+
+
+
+
+    * */
+
+
+
+    //思考题2:
+    var i = 12;
+    function fn() {
+        var i = 13;
+        return function (n) {
+            console.log(n + (++i));
+        }
+    }
+    var f = fn();
+    f(10);
+    fn()(10);
+    fn()(20);
+    f(20);
+
+
+    //晚自习思考题3:
+    /*var i = 12;
+    function fn() {
+        i = 13;
+        return function (n) {
+            console.log(n + (++i));
+        }
+    }
+    var f = fn();
+    f(10);
+    fn()(10);
+    fn(20);
+    f()(20);*/
+
+
+
+
+</script>
+</body>
+</html>

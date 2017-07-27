@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+<script>
+    var num = 12;
+    function fn() {
+        var num = 13;
+        return function () {
+            console.log(num);
+        }
+    }
+    var f = fn();
+    f();
+    function sum() {
+        var num = 14;
+        f();
+    }
+    sum();
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #555;
+    -webkit-user-select: none;
+}
+ul{
+    list-style: none;
+}
+.tabBox{
+    margin: 30px auto;
+    width: 500px;
+    box-sizing: border-box;
+}
+.tabBox ul{
+    position: relative;
+    top: 1px;
+    overflow: hidden;
+}
+.tabBox ul li{
+    float: left;
+    margin-right: 10px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #999;
+    background: #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+.tabBox ul li.select{
+    border-bottom-color: #fff;
+    background: #fff;
+}
+.tabBox div{
+    display: none;
+    padding: 20px;
+    width: 500px;
+    height: 200px;
+    border: 1px solid #999;
+    font-size: 30px;
+    box-sizing: border-box;
+}
+.tabBox div.select{
+    display: block;
+}

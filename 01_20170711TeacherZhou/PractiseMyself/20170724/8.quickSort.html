@@ -7,18 +7,23 @@
 <body>
 <script type="text/javascript">
 
-    function quickSort(ary){
-
-        var handAry = [];
-        handAry.push(ary[0]);
-
-
-
-        return ary;
+    function quickSort(ary) {
+        if (ary.length <= 0) {
+            return ary;
+        }
+        var curIndex = Math.floor(ary.length / 2),
+            curValue = ary.splice(curIndex, 1)[0],
+            leftAry = [],
+            rightAry = [];
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            cur > curValue ? rightAry.push(cur) : leftAry.push(cur);
+        }
+        return quickSort(leftAry).concat(curValue, quickSort(rightAry));
     }
 
 
-    var ary = [24,755,46,87,98,45,31,10,135,0,49,87,98,453,132,168,4,80,24];
+    var ary = [24, 755, 46, 87, 98, 45, 31, 10, 135, 0, 49, 87, 98, 453, 132, 168, 4, 80, 24];
     var result = quickSort(ary);
     console.log(result);
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰</title>
+</head>
+<body>
+<script>
+    var num = 10;
+    var obj = {
+        num: 5,
+        fn: (function () {
+            this.num *= 2;
+            num *= 2;
+            var num = 3;
+
+            return function () {
+                this.num *= 2;
+                num *= 3;
+                console.log(num);
+            }
+        })()
+    };
+    var fn = obj.fn;
+    fn();
+    obj.fn();
+    console.log(num, obj.num);
+</script>
+</body>
+</html>
