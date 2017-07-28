@@ -1,29 +1,40 @@
 
+[string方法]
+1.charAt
+2.charCodeAt
+3.String.fromCodeAt
+4.substr
+5.substring
+6.slice
+7.toUpperCase
+8.toLowerCsse
+9.indexOf
+10.lastIndexOf
+11.split
+12.replace
+13.match
+14.localCompare
+
+
+
+
+[Math方法]
+1.Math.abs   绝对值
+2.Math.ceil   向上取整
+3.Math.floor   向下取整
+4.Math.max    最大值
+5.Math.min   最小值
+6.Math.round    四舍五入
+7.Math.PI   圆周率
+8.Math.sqrt    开平方
+9.Math.pow    幂次方
+10.Math.random    求0-1之间的随机数
+求n-m之间的随机整数(包含m)
+Math.round(Math.random()*(m-n)+n)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+赵双燕总结:
 substring（n,m） 截取字符串，从字符串索引n开始，截取到索引m，不包含m；如果两个都是负数，则不进行截取，返回空字符串；如果m是负数，截取索引n之前的所有字符，不包括索引n这一项；如果n是负数，从0开始，截取到索引m之前的数； “abcdefg”.substing(3,-2);  //”abc” 不管第二个参数是负数还是0，都是从0取到索引n；
