@@ -5,7 +5,14 @@
             2.引用数据类型: 1.Object;2.Function;
                 Object: 对象类   数组类   正则类   时间类...
     2.JS中如何检测数据类型(写出四种方法)?JS中判断某个值是否时一个有效数字的方法是?
-        答: 检测数据类型的方法有四种,分别是1.typeof;2.instanceOf
+        答: 检测数据类型的方法有四种,分别是1.typeof;2.instancof;3.constructor;4.Object.prototype.toString.call;
+        isNaN();
+二.写出DOM中常用的方法和属性
+三.数组的基础执行hi和应用
+四.写出下面表达式的运算结果
+五.<input type="button" value="按钮1"/><input type="button" value="按钮2"/><input type="button" value="按钮3"/><input type="button" value="按钮4"/><input type="button" value="按钮5"/>
+六.画图分析
+
 
 
 

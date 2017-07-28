@@ -124,7 +124,7 @@
         14.forEach
         15.map
 
-二.算法
+三.算法
     目的: 开阔思维;
 
 
@@ -136,22 +136,14 @@
 
 
 
+四.机考相关
+    必考:
+    1.选项卡      oList[i].curIndex = i;
+    2.数组去重    slice(i+1)   ary.length-1   ary[ary.length-1]   ary.length--   obj[cur] = cur;  continue
+    typeof obj[cur] !== "undefined"      nextAry.indexOf(cur) !== -1;   ary.splice(i,1);
 
-        必考:
-        1.选项卡      oList[i].curIndex = i;
-        2.数组去重    slice(i+1)   ary.length-1   ary[ary.length-1]   ary.length--   obj[cur] = cur;  continue
-        typeof obj[cur] !== "undefined"      nextAry.indexOf(cur) !== -1;   ary.splice(i,1);
-
-        选考:
-        3.冒泡
-        4.插入
-        5.快速
-
-
-
-
-
-
-
-
+    选考:
+    3.冒泡
+    4.插入
+    5.快速
 
