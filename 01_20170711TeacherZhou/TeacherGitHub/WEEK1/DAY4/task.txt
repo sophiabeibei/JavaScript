@@ -1,0 +1,82 @@
+1、上课布置的思考题
+    var i = 12;
+    function fn() {
+        i = 13;
+        return function (n) {
+            console.log(n + (++i));
+        }
+    }
+    var f = fn();
+    f(10);
+    fn()(10);
+    f(20);
+    fn()(20);
+
+    ===
+
+    var i = 1;
+    function fn() {
+        i += 2;
+        return function (n) {
+            console.log(n + (++i));
+        }
+    }
+    var f = fn();
+    f(1);
+    fn()(2);
+    f(3);
+    fn()(4);
+
+    =====
+
+    var i = 1;
+    function fn() {
+        i += 2;
+        return function (n) {
+            console.log(n + (i++));
+        }
+    }
+    var f = fn();
+    f(1);
+    fn()(2);
+    fn()(4);
+    f(3);
+
+    ======
+
+    以下代码的功能是要实现为5个input按钮循环绑定click点击事件，绑定完成后点击1、2、3、4、5五个按钮分别会alert输出0、1、2、3、4五个字符。
+    	请问如下代码是否能实现？
+    	如果不能实现那么现在的效果是什么样的？
+    	应该做怎样的修改才能达到我们想要的效果，并说明原理？
+    <div id="btnBox">
+    	<input type="button" value="button_1" />
+        <input type="button" value="button_2" />
+        <input type="button" value="button_3" />
+        <input type="button" value="button_4" />
+        <input type="button" value="button_5" />
+    </div>
+
+    <script type="text/javascript">
+        var btnBox=document.getElementById('btnBox');
+        var inputs=btnBox.getElementsByTagName('input');
+        var l=inputs.length;
+        for(var i=0;i<l;i++){
+    	    inputs[i].onclick=function(){
+    		    alert(i)
+    	    }
+        }
+    </script>
+
+========================================
+2、完成 “珠峰培训正式课作业[第一周]” 作业题，要求画图的题目，需要画图 (下周二上课抽查)
+
+========================================
+3、预习作业
+  http://video.zhufengpeixun.cn/kecheng/detail_1029018
+  第一章(第二节)
+    课件1
+    课件2
+    课件4
+    课件5
+    课件6
+  (周日上课前看完即可)

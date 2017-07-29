@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //->变量提升：在当前作用域中，JS代码从上到下执行之前，浏览器首先会把带VAR/FUNCTION关键字的进行提前声明或者定义
+    //声明(declare):告诉当前作用域有这样一个变量
+    //定义(defined):给变量赋值
+
+    //==>VAR和FUNCTION的区别
+    //VAR：只声明，不定义(默认值是undefined)
+    //FUNCTION：声明+定义
+
+    console.log(n);
+    var n = 12;
+
+    console.log(fn);//->输出函数本身
+    console.log(fn(20));//->先把函数执行,把函数执行的返回结果输出(RETURN)
+    function fn(i) {
+        var m = 13;//->在全局作用域中，这个M是不会在全局下变量提升的,因为此时它还是函数开辟空间中的一个字符串而已(函数执行的时候形成一个私有作用域,在这个私有作用域中它才会提升)
+        console.log('ok');
+    }
+</script>
+</body>
+</html>

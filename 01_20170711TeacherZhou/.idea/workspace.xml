@@ -52,31 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="6.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="6.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/6.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2.subject.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/2.subject.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3.scope.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/3.scope.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            <state relative-caret-position="391">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,8 +135,8 @@
         <option value="$PROJECT_DIR$/FirstWeek/20170729/4.vote.html" />
         <option value="$PROJECT_DIR$/FirstWeek/20170729/js/4.js" />
         <option value="$PROJECT_DIR$/FirstWeek/20170729/5.this.html" />
-        <option value="$PROJECT_DIR$/FirstWeek/20170729/6.html" />
         <option value="$PROJECT_DIR$/FirstWeek/20170729/3.scope.html" />
+        <option value="$PROJECT_DIR$/FirstWeek/20170729/6.html" />
       </list>
     </option>
   </component>
@@ -441,12 +421,12 @@
       <workItem from="1501213458416" duration="489000" />
       <workItem from="1501213967512" duration="19000" />
       <workItem from="1501214005221" duration="22177000" />
-      <workItem from="1501291926843" duration="20353000" />
+      <workItem from="1501291926843" duration="23838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="402427000" />
+    <option name="totallyTimeSpent" value="405912000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -458,7 +438,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1592262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -492,13 +472,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FreeFirstWeek/20170711/2.数据类型.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-561">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FreeFirstWeek/20170711/1.输出和打印的方式.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-971">
@@ -855,10 +828,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/6.html">
+    <entry file="file://D:/DeleteTeacherZhouGitHub/JavaScript201708/WEEK1/DAY4/6.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        <state relative-caret-position="374">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/3.scope.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -871,10 +852,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/3.scope.html">
+    <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/6.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="391">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>

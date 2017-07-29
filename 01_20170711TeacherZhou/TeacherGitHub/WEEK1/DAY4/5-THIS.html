@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //->THIS:函数执行的主体(杜伟民.吃饭() ->吃饭的主体是“杜伟民”,THIS就是“杜伟民”)
+    //console.log(this);//->window 我们研究THIS都是研究函数中的THIS,全局下的THIS都是WINDOW
+
+    //    function fn() {
+    //        console.log(this);
+    //    }
+    //    fn();//->window.fn() this:window
+
+    //    ~function () {
+    //        fn();//->THIS:window
+    //        function fn() {
+    //            console.log(this);
+    //        }
+    //    }();
+
+    //->THIS是谁和函数在哪执行的或者函数在哪创建的没有半毛钱的关系，想知道THIS，按照以下规律分析即可 (以后遇到THIS问题,三四而后行:"你以为你以为的就是你以为的")
+    //[非严格模式下]
+
+    //1、自执行函数中的THIS是WINDOW
+    //    ~function () {
+    //        console.log(this);//->window
+    //    }();
+
+    //2、给元素的事件绑定方法,当方法执行的时候,方法中的THIS是当前元素本身
+    //    document.body.onclick=function () {
+    //        console.log(this);//->document.body
+    //    }
+
+    //3、方法执行，看方法名前面是否有“.”，有的话，“.”前面是谁THIS就是谁，没有的话，THIS就是WINDOW
+    //    function fn() {
+    //        console.log(this);
+    //    }
+    //    var obj = {
+    //        aa: fn
+    //    };
+    //    fn();//->this:window
+    //    obj.aa();//->this:obj
+
+    function fn() {
+        console.log(this);
+    }
+    document.body.onclick = function () {
+        //this:document.body
+
+        //fn();//->fn中的this:window
+    }
+</script>
+</body>
+</html>
