@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.this</title>
+</head>
+<body>
+<script>
+    //->this: 函数执行的主体;
+    //console.log(this);//->window
+    //->我们研究this,都是研究函数中的this,全局下的this都是window;
+
+//    function fn() {
+//        console.log(this);//->
+//    }
+//    fn();//->window.fn   this: window;
+
+
+
+//    ~function(){
+//        fn();
+//        function fn(){
+//            console.log(this);//自执行里面的this永远是window
+//        }
+//    }()
+    /*非严格模式下的规律!!!!
+    * this是谁和函数在哪执行的或者函数在哪创建的没有半毛钱的关系,想知道this,按照以下规律分析即可;(以后遇到this问题,三思而后行:"你以为你以为的就是你以为的")
+    * 1.自执行函数中的this是window;
+    * 2.给元素的事件绑定方法,当方法执行的时候,方法中的this是当前元素本身;
+    * 3.方法执行,看方法名前面是否有".",有的话,"."前面是谁,this就是谁;没有的话,this就是window;
+    *
+    * */
+
+    function fn() {
+        console.log(this);
+    }
+    document.body.onclick = function () {
+        //->this: document.body
+        fn();//->fn中的this: window   this是谁和函数在哪执行的或者函数在哪创建的没有半毛钱的关系!!!!
+    }
+
+
+
+
+</script>
+</body>
+</html>
