@@ -27,23 +27,17 @@ var p1 = new Person();//->而P1接收到的返回结果就是当前这个类的�
  实例,都是对象数据类型      typeof p1//->"object"
  类,都是函数数据类型       typeof Person//->"function"
  */
-console.log(typeof p1);//->"object"
-console.log(typeof Person);//->"function"
+// console.log(typeof p1);//->"object"
+// console.log(typeof Person);//->"function"
 //基本数据类型的变态性!!!!
 
 
-
-
-
-
-
-
-
 //普通函数: 看一个函数的返回结果,就要看函数中有没有return;
-//构造函数:
+//构造函数: 不用有return
 
 
-//---------------------------------------------
+
+
 
 
 

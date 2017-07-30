@@ -1,0 +1,67 @@
+https://github.com/:基于GIT操作的一个代码仓库(开源/免费) =>coding:https://coding.net/
+
+GIT/SVN:团队协作,代码管理,项目版本控制
+  -> GIT分布式
+  -> SVN中央集中式
+
+GIT
+ 本地仓库：开发、生成历史版本
+ 实现本地仓库和远程中央仓库的信息同步，团队协作开发的时候，大家可以在中央仓库中获取最新的项目代码
+
+=============================
+$ git init  ->在本地创建一个git仓库
+
+git remote 系列操作可以完成本地和远程仓库之间的管理
+  $ git remote -v 查看现有的链接
+
+  $ git remote add [名字(默认名字是origin)] [远程仓库地址]
+    给本地仓库新加一个远程的链接，例如：$ git remote add origin https://github.com/zhouxiaotian/20170729.git (新增一个链接通道,名字是origin,链接是的zhouxiaotian/20170729.git这个远程仓库)
+
+  $ git remote rm [名字]  删除远程链接
+  $ git remote update [名字] 更新远程链接通道
+
+$ git pull origin master 从远程仓库中拉取最新的内容到本地仓库
+$ git push origin master 把本地仓库中的信息(代码和历史版本信息)同步(推送到)远程仓库中
+
+=====================
+$ git clone [远程地址]
+  ->在本地创建一个仓库 $ git init
+  ->让本地新创的仓库和远程仓库保持连接 $ git remote add ...
+  ->把远程仓库中的内容拉取到本地 $ git pull origin master
+
+=====================
+$ git add js/xxx.xx  把某一个文件放在暂存区
+$ git add .
+$ git add -A 把所有新修改(增加/删除)的内容放在暂存区
+
+$ git commit -m'当前本次生成版本信息的描述(必须加)'  把暂存区中的所有内容生成一个历史版本
+
+$ git status 查看当前所有未提交文件的状态
+  ->红色：工作区还没有提交到暂存区
+  ->绿色：暂存区还没有提交到历史区
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

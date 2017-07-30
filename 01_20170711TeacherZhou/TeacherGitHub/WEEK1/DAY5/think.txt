@@ -1,0 +1,28 @@
+1、思考题
+  (5).plus(3).minus(2)  =>6  自己在Number的原型上扩展plus/minus，实现以上需求
+
+  重写数组的slice方法，实现和内置一模一样的功能(要求不能使用数组任何内置方法)
+  Array.prototype.mySlice=function...
+    ->slice(n,m)
+    ->slice(n)
+    ->slice(0)
+    ->slice()
+    ->slice() 如果n>m?
+    ->slice() 如果n或者m为负数?
+    ->slice() 如果n或者m是非有效数字怎么办?
+    ->slice() 如果n或者m是小数怎么办?
+    ->slice() 如果n或者m超过最大的索引怎么办?
+    ...
+
+2、昨天留的作业
+
+3、http://video.zhufengpeixun.cn/kecheng/detail_1029018
+第一章第二节：6、7、8 复习原型
+
+第二章第一节：1、2（难度）
+ 其余的有时间可以看看，没时间拉倒
+
+     第三节：正则，衷心建议好好的看看(当然也可以看教材)
+
+
+
