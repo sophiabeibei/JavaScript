@@ -82,7 +82,9 @@
         b=11,
         c=12;
     function test(a){
-        a=1;var b=2;c=3;
+        a=1;
+        var b=2;
+        c=3;
     }
     test(10);
     alert(a);
@@ -144,12 +146,17 @@
     var a=9;
     function fn(){
         a=0;
-        return function(b){ return b+a++; }
+        return function(b){
+            return b+a++;
+        }
     }
     var f=fn();
-    var m=f(5);alert(m);
-    var n=fn()(5);alert(n);
-    var x=f(5);alert(x);
+    var m=f(5);
+    alert(m);
+    var n=fn()(5);
+    alert(n);
+    var x=f(5);
+    alert(x);
     alert(a);
     //弹出的四次结果？
     // A、6 6 7 2
