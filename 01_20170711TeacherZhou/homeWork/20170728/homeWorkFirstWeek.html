@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训正式课作业[第一周]- 作业题，要求画图的题目</title>
+</head>
+<body>
+<script>
+/*
+
+     一.基础知识填空
+     1.JS中的数据类型包含哪些(要求详细)以及基本数据类型和引用数据类型的本质区别?
+        答: 数据类型包括基本数据类型和引用数据类型;
+            1.基本数据类型:
+                1.Number;
+                2.String;
+                3.Boolean;
+                4.Null;
+                5.Undefined;
+            2.引用数据类型:
+                1.Object;(Object: 对象类   数组类   正则类   时间类...)
+                2.Function;
+
+     2.JS中如何检测数据类型(写出四种方法)?JS中判断某个值是否是一个有效数字的方法是?
+        答: 检测数据类型的方法有四种,分别是:
+                                        1.typeof;
+                                        2.instanceof;
+                                        3.constructor;
+                                        4.Object.prototype.toString.call;
+            JS中判断某个值是否是一个有效数字的方法是isNaN();
+     二.写出DOM中常用的方法和属性
+        答: DOM中常用的方法:
+            1.document.getElementById
+            2.document.getElementsByTagName
+            3.document.getElementsByClassName
+            4.document.getElementsByName
+            5.document.documentElement
+            6.document.body
+            7.document.querySelector
+            8.document.querySelectorAll
+
+            DOM中node关系属性:
+            1.childNodes
+            2.children
+            3.parentNode
+            4.previousSibling
+            5.nextSibling
+            6.firstChild
+            7.lastChild
+
+            DOM中4个节点类型:
+            1.元素节点
+            2.文本节点
+            3.注释节点
+            4.document
+        1.有一个div: <div class="w" name="h" id="div1"></div>我向获取这一个div你有几种解决办法(不考虑兼容):
+            答:
+            1.document.getElementById("div1")
+            2.document.getElementsByTagName("div")[0];
+            3.document.getElementsByClassName("w")[0];
+            4.document.getElementsByName("h")[0];
+            5.document.querySelector("#div1");
+              document.querySelector(".w");
+              document.querySelector("div");
+              document.querySelector("[name='h']");
+            6.document.querySelectorAll("#div1")[0];
+              document.querySelector(".w")[0];
+              document.querySelector("div")[0];
+              document.querySelector("[name='h']")[0];
+            //->querySelector/querySelectorAll在不考虑兼容的情况下(例如: 移动端开发),我们经常使用这两个方法获取需要的DOM元素
+        2.获取当前浏览器屏幕的宽度和高度(兼容所有的浏览器)??
+            1答:
+            //->获取宽度
+            document.documentElement.clientWidth || document.body.clientWidth;
+            //->获取高度
+            document.documentElement.clientHeight || document.body.clientHeight;
+        逻辑与(&&)和逻辑或(||)
+            1.作为条件的分隔符,
+                if(1 == 1 && 2 == 2){
+                //->逻辑与: 左边的条件为真,右边条件也为真,整体才为真,否则就是假 =>"并且"
+                }
+
+                if(1 == 1 || 2 == 2){
+                    //->逻辑或: 左右两边的条件只要有一面为真,整体就为真,反之为假 =>"或者"
+                }
+            2.赋值运算符
+                //->逻辑或: A||B,首先验证A的真假,如果A为真,返回的结果是A,如果A为假,返回的结果是B(不管B是真是假);(0是假)
+                    function fn(num1, num2){
+                    //->利用这个机制,做参数初始化: (给一个值设置默认值)如果参数没有传递,给参数一个默认值;
+                    //->方法一: typeof num1 === "undefined" ? num1=0 : null;(传统判断做法: 麻烦但是严谨(所以还是会经常用))
+                    //->方法二:
+                        num1 = num1 || 0;
+                        num2 = num2 || 0;
+                        //->一般我们这样处理参数初始化即可,比较的简便,但这样不严谨: 传递值了,但是传递的是false/0/空字符串,这样返回的也是右边的值;
+                    }
+                    fn(10);
+                //->逻辑与: A&&B,A如果为真,返回右边的B,如果A为假,返回左边的A(和逻辑或的操作是相反的)
+                    //->利用逻辑与做这样的事情:
+                    //->方法一:
+                    fn && fn();//->如果当前函数存在,则让函数执行,否则函数不执行(不严谨: 如果fn是10呢?);
+                    //->方法二:
+                    typeof fn === "function" ? fn() : null;//->和上面意思相同,但是这种方式严谨一些;
+                //->一个运算中既有||也有&&,&&的优先级高于||;
+                    var res = 0||2&&3&&0||false
+                    console.log(res);//->false
+                        /*操作步骤:
+                        2&&3//->3
+                        3&&0//->0
+                        0||0//->0
+                        0||false//->false
+                        *\/
+        3.获取上一个哥哥元素节点(兼容所有的浏览器);
+            2答:previousSibling();//->问题: 不兼容;
+                兼容写法:
+                    function prev(curEle){
+                        //->兼容的浏览器执行判断体的操作
+                        if("previousElementSibling" in curEle){
+                            return curEle.previousSibling;
+                        }
+                        //->不兼容的浏览器执行如下操作
+                        var pre = curEle.previousSibling;
+                        while(pre && pre.nodeType !== 1){
+                            pre = pre.previousSibling;
+                        }
+                        return pre;
+                    };
+        4.动态创建一个div标签，并且添加到body的最后面位置??继续上一题，把刚才创建的克隆一份一模一样的，添加到刚才创建的div前面;
+            var oDiv = document.createElement("div");
+            document.body.appendChild(oDiv);
+
+            var cloneDiv = oDiv.cloneNode(true);
+            document.body.insertBefor
+
+
+
+
+
+
+
+
+
+
+     三.数组的基础执行和应用
+
+
+
+
+
+            5.实现找到第n项到第m项的内容，返回一个新的数组(原有数组不变)
+
+     四.写出下面表达式的运算结果
+                ary.slice(n-1,m)
+            6.一些判断
+                []==false//->true
+                ![]==false//->true
+                []==![]//->true
+                Number(“13px”)==NaN//->false
+                5+”3”-2//->51
+                If(“3px”*3){alert(“true”)}else{alert(“false”)}//->false
+                If(“3px”+3){alert(“true”)}else{alert(“false”)}//->true
+                If（document.body）{alert(“ok”);}else{alert(“no”)}//->"ok"
+                alert([])//->" "
+                null==undefined//->false
+                null===undefined//->true
+
+
+     应聘: 原生js为主   框架为辅   算法   node
+     职业生涯: 进BAT TMD公司;两三年镀金//->转去开始创业的公司
+
+
+     五.<input type="button" value="按钮1"/><input type="button" value="按钮2"/><input type="button" value="按钮3"/><input type="button" value="按钮4"/><input type="button" value="按钮5"/>
+     六.画图分析
+        1、 console.log(a);
+        var a=12;
+        function fn(){
+            console.log(a);
+            var a=13;
+        }
+        fn();
+        console.log(a);
+        //输出的三次分别是多少
+        // A、undefined  12 13
+        // B、undefined undefined 12
+        // C、undefined undefined 13
+        // D、有程序报错
+
+
+
+        //2、
+        console.log(a);
+        var a=12;
+        function fn(){
+            console.log(a);
+            a=13;
+        }
+        fn();
+        console.log(a);
+        // A、undefined  12 13
+        // B、undefined undefined 12
+        // C、undefined undefined 13
+        // D、有程序报错
+
+
+
+        //3
+        console.log(a);
+        a=12;
+        function fn(){
+            console.log(a);
+            a=13;
+        }
+        fn();
+        console.log(a);
+        // 输出的三次分别是多少
+        // A、undefined  12 13
+        // B、undefined undefined 12
+        // C、undefined undefined 13
+        // D、有程序报错
+
+
+
+        //4、
+        var foo=1;
+        function bar(){
+            if(!foo){
+                var foo=10;
+            }
+            console.log(foo);
+        }
+        bar();
+        //输出的结果是多少
+        // A、1
+        // B、10
+        // C、undefined
+        // D、报错
+
+
+
+        //5、
+        var n=0;
+        function a(){
+            var n=10;
+            function b(){
+                n++;
+                alert(n);
+            }
+            b();
+            return b;
+        }
+        var c=a();
+        c();
+        alert(n);
+        // 弹出三次的结果分别是什么？
+        // A、1 1 1
+        // B、11 11 0
+        // C、11 12 0
+        // D、11 12 12
+
+
+
+        //6、
+        var a=10,
+            b=11,
+            c=12;
+        function test(a){
+            a=1;
+            var b=2;
+            c=3;
+        }
+        test(10);
+        alert(a);
+        alert(b);
+        alert(c);
+        // 弹出的三个值分别是多少？
+        // A、1 11 3
+        // B、10 11 12
+        // C、1 2 3
+        // D、10 11 3
+
+
+        //7.
+        if(!("a" in window)){
+            var a=1;
+        }
+        alert(a);
+        // 弹出的a的值是？
+        // A、1
+        // B、undefined
+        // C、报错
+        // D、以上答案都不对
+
+
+
+        //8、
+        var a=4;
+        function b(x,y,a) {
+            alert(a);
+            arguments[2]=10;
+            alert(a);
+        }
+        a=b(1,2,3);
+        alert(a);
+        //三次弹出的结果是
+        // A、3  3  4
+        // B、3  10  4
+        // C、3  10  10
+        // D、3  10  undefined
+
+
+
+        //9、
+        var foo='hello';
+        (function(foo){
+            console.log(foo);
+            var foo=foo||'world';
+            console.log(foo);
+        })(foo);
+        console.log(foo);
+        // 三次分别输出什么？
+        // A、hello hello hello
+        // B、undefined world  hello
+        // C、hello world world
+        // D、以上答案都不正确
+
+
+        //10.
+        var a=9;
+        function fn(){
+            a=0;
+            return function(b){
+                return b+a++;
+            }
+        }
+        var f=fn();
+        var m=f(5);
+        alert(m);
+        var n=fn()(5);
+        alert(n);
+        var x=f(5);
+        alert(x);
+        alert(a);
+        //弹出的四次结果？
+        // A、6 6 7 2
+        // B、5 6 7 3
+        // C、5 5 6 3
+        // D、以上答案都不正确
+
+
+
+
+
+
+
+    //四.附加题
+        //1、
+        function fn(i) {
+            return function (n) {
+                console.log(n + (i++));
+            }
+        }
+        var f = fn(10);
+        f(20);
+        fn(20)(40);
+        fn(30)(50);
+        f(30);
+
+        //2、
+        var i = 10;
+        function fn() {
+            return function (n) {
+                console.log(n + (++i));
+            }
+        }
+        var f = fn();
+        f(20);
+        fn()(20);
+        fn()(30);
+        f(30);
+
+
+        //3、
+        var num = 10;
+        var obj = {num: 20};
+        obj.fn = (function (num) {
+            this.num = num * 3;
+            num++;
+            return function (n) {
+                this.num += n;
+                num++;
+                console.log(num);
+            }
+        })(obj.num);
+        var fn = obj.fn;
+        fn(5);
+        obj.fn(10);
+        console.log(num, obj.num);
+
+
+
+        //4、
+        function Fn() {
+            this.x = 100;
+            this.y = 200;
+            this.getX = function () {
+                console.log(this.x);
+            }
+        }
+        Fn.prototype.getX = function () {
+            console.log(this.x);
+        };
+        Fn.prototype.getY = function () {
+            console.log(this.y);
+        };
+        var f1 = new Fn;//->new执行的时候,如果不需要给函数传递参数值,小括号加和不加都无所谓,
+        var f2 = new Fn;//->new Fn的时候,跟普通函数执行是一样的;多了两条(第3条和第5条)
+
+        //关于[原型链查找]----------------------------------------------------------------------------
+        console.log(f1.getX === f2.getX);//->false
+        console.log(f1.getY === f2.getY);//->true
+        console.log(f1.__proto__.getY === Fn.prototype.getY);//->true
+        console.log(f1.__proto__.getX === f2.getX);//->false
+        console.log(f1.getX === Fn.prototype.getX);//->false
+        console.log(f1.constructor);//->Fn
+        console.log(Fn.prototype.__proto__.constructor);//->Object
+
+        //关于[THIS]----------------------------------------------------------------------------
+        f1.getX();//->首先找到是私有的getX,并且getX方法中的this是f1;console.log(this.x)相当于输出f1.x =>100;
+        f1.__proto__.getX();//->首先找的是公有的getX,并且getX方法中的this是f1.__proto__,console.log(this.x)相当于输出f1.__proto__.x =>undefined;
+        f2.getY();//->this: f2,console.log(this.y)相当于输出f2.y =>200
+        Fn.prototype.getY();//->this: Fn.prototype,console.log(this.y)相当于输出Fn.prototype.y =>undefined;
+
+        总结:
+        //->1.首先看方法执行中的this是谁(函数执行,点前面是谁this就是谁;)
+        //->2.把js代码中的this换为刚才分析的结果
+        //->3.按照原型链查找机制,直接判断输出的值即可;
+
+
+
+        第3条: 浏览器首先会创建一个对象(当前类的实例xxxfff111)->this
+        第5条: 执行完成后,浏览器会默认的把实例对象返回;
+              第5条特殊说明:
+                如果我们自己手动返回一个基本数据类型值,对默认返回的实例没有影响;
+                如果我们自己返回的是引用数据类型只,会把默认的实例(xxxfff111)覆盖;
+        私有变量num = 100;和浏览器创建的对象(当前类的实例xxxfff111)->this上的属性是没关系的;
+
+        IE浏览器中屏蔽了__proto__的使用;我们以后再调取属性和方法的时候,一般都是这种操作: "实例.xxx";而不会通过"实例.__proto__.xxx"操作;第一种方式,首先找实例私有的,私有的没有再找原型上公有的,再没有,一直找到Object.prototype,我们这种查找机制叫做"原型链";
+
+
+
+
+
+        //思考题-20170801
+        console.log(f1.num);//->undefined
+        f1.num = 1000;
+        console.log(f2.num);//->undefined
+        Fn.prototype.num = 2000;
+        console.log(f2.num);//->2000
+
+        console.log(f1.hasOwnProperty("x"));
+        console.log(Fn.prototype.hasOwnProperty("getY"));
+        console.log(f1.hasOwnProperty("getY"));
+        console.log(f1.hasOwnProperty("hasOwnProperty"));
+        console.log(Fn.prototype.hasOwnProperty("hasOwnProperty"));
+        console.log(Object.prototype.hasOwnProperty("hasOwnProperty"));
+
+        //->in检测是否存在这个属性
+        //->hasOwnProperty检测是否为它的私有属性
+        Object.prototype.myHasPubProperty = function myHasPubProperty(){
+            //->完成你的js
+        }
+        f1.myHasPubProperty("getY");//->true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+</script>
+</body>
+</html>
