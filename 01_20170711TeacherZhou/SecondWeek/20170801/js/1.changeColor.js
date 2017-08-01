@@ -1,6 +1,5 @@
 
 var ary = ["red","orange","yellow","green","blue"];
-
 var btnList = document.getElementsByName("color");
 
 
@@ -9,7 +8,7 @@ var btnList = document.getElementsByName("color");
 
 //return处理方式1
 for (var i = 0; i < btnList.length; i++) {
-    btnList.onclick = (function (n) {
+    btnList[i].onclick = (function (n) {
         return function(){
             document.body.style.backgroundColor = ary[n];
         }
