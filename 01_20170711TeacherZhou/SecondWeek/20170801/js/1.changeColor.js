@@ -7,25 +7,25 @@ var btnList = document.getElementsByName("color");
 
 
 //return处理方式1
-for (var i = 0; i < btnList.length; i++) {
+/*for (var i = 0; i < btnList.length; i++) {
     btnList[i].onclick = (function (n) {
         return function(){
             document.body.style.backgroundColor = ary[n];
         }
     })(i);
-}
+}*/
 
 
 
 
 //闭包处理方式2
-/*for (var i = 0; i < btnList.length; i++) {
+for (var i = 0; i < btnList.length; i++) {
     ~function(i){
-        btnList.onclick = function () {
+        btnList[i].onclick = function () {
             document.body.style.backgroundColor = ary[i];
         }
-    }();
-}*/
+    }(i);
+}
 
 
 
@@ -34,7 +34,7 @@ for (var i = 0; i < btnList.length; i++) {
 //自定义属性处理方式3
 /*for (var i = 0; i < btnList.length; i++) {
     btnList[i].index = i;
-    btnList.onclick = function () {
+    btnList[i].onclick = function () {
         document.body.style.backgroundColor = ary[this.index];
         //->this.index: 当前点击按钮自定义属性中存储的值(按钮的索引)
     }

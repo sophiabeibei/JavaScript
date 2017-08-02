@@ -64,9 +64,9 @@
               document.querySelector("div");
               document.querySelector("[name='h']");
             6.document.querySelectorAll("#div1")[0];
-              document.querySelector(".w")[0];
-              document.querySelector("div")[0];
-              document.querySelector("[name='h']")[0];
+              document.querySelectorAll(".w")[0];
+              document.querySelectorAll("div")[0];
+              document.querySelectorAll("[name='h']")[0];
             //->querySelector/querySelectorAll在不考虑兼容的情况下(例如: 移动端开发),我们经常使用这两个方法获取需要的DOM元素
         2.获取当前浏览器屏幕的宽度和高度(兼容所有的浏览器)??
             1答:
@@ -160,8 +160,8 @@
                 If(“3px”+3){alert(“true”)}else{alert(“false”)}//->true
                 If（document.body）{alert(“ok”);}else{alert(“no”)}//->"ok"
                 alert([])//->" "
-                null==undefined//->false
-                null===undefined//->true
+                null==undefined//->true
+                null===undefined//->false
 
 
      应聘: 原生js为主   框架为辅   算法   node
