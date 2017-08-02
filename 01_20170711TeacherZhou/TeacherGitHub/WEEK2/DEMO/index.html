@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-商品排序</title>
+    <!--import css-->
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+<!--div.container>div.header+ul.list>li>a>img+p+span [tab]-->
+<div class="container">
+    <!--HEADER-->
+    <div class="header clear" id="header">
+        <span>排序：</span>
+        <a href="javascript:;" sort-attr="data-time">上架时间<i class="up"></i><i class="down"></i></a>
+        <a href="javascript:;" sort-attr="data-price">价格<i class="up"></i><i class="down"></i></a>
+        <a href="javascript:;" sort-attr="data-hot">热度<i class="up"></i><i class="down"></i></a>
+        <!--A中href='javascript:;'是阻止A标签点击跳转页面(锚点定位)的默认行为的,这里把A仅仅当做一个按钮来实现点击即可-->
+        <!--sort-attr:规定排序的时是按照LI中存储的自定义属性中哪一个字段进行排序的，一定要记住，我们的A和LI对应的字段要严格匹配-->
+    </div>
+
+    <!--LIST-->
+    <ul class="list clear" id="list">
+        <!--<li><a href="javascript:;">
+            <img src="img/1.jpg" alt="">
+            <p>华为运动蓝牙耳机</p>
+            <span>￥499</span>
+        </a></li>-->
+    </ul>
+</div>
+
+<!--import javascript-->
+<script src="js/utils.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
