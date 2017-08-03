@@ -137,10 +137,19 @@
                 }
             };
         //->4.向服务器端发送请求
+            xhr.send(null);//->因为get请求是没有请求体的所以为null
+
+    AJAX的格式:(汇总以上)
+        var xhr = new XMLHttpRequest;
+            xhr.open("GET","json/temp.json",false);
+            xhr.onreadystatechange = function (){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    //console.log(xhr.responseText);
+                    var res = xhr.responseText;
+                    console.log(utils.toJSON(res));
+                }
+            };
             xhr.send(null);
-
-
-
 
 
 五.表格排序
@@ -190,10 +199,17 @@
 
 
 思考题:
-    "2.JSON.stringify没有能取代的方法,需要自己编写复杂的处理程序(思考题);"
+    1."2.JSON.stringify没有能取代的方法,需要自己编写复杂的处理程序(思考题);"
         提示: 跟数据的深度克隆相似;
 
+    2.看视频
+        第二周(第1节)
+            课件10: 数据绑定及DOM回流
+            课件11: 表格排序及DOM映射
 
+        第二周(第2节)
+            1.表格排序相关视频都看一遍;
+            2.开始预习正则(*正则教材元字符列表背下来*)
 
 
 

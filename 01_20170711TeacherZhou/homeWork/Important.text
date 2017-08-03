@@ -124,7 +124,13 @@
 
 
 
-
+20170803上午课程
+1.类数组转数组的方法/
+2.try...catch封装兼容类数组转数组的库(兼容用slice,不兼容用循环)/
+3.浏览器异常信息捕获/
+4.JSON俩方法(JSON字符串转JSON对象,JSON对象转JSON字符串)JSON是window的对象/
+5.封装JSON字符串转JSON对象(兼容用JSON.parse,不兼容用eval)/
+6.AJAX(异步的JS和XML)的作用和格式
 
 
 
