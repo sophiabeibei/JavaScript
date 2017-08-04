@@ -16,22 +16,6 @@ console.log(p1.num);//->undefined   P1没有num这个属性,所以结果为undef
 
 
 
-
-
-
-
-
-
-
-
 //2.4是原型链的第一阶段
-
-
-
-
-
-
-
-
 
 

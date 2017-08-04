@@ -53,14 +53,3 @@ console.log(hasPublicProperty("toString", p1));//->true
 
 
 
-
-
-
-
-
-
-
-
-
-
-

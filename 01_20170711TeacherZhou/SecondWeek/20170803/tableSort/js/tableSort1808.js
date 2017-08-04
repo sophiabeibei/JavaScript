@@ -27,29 +27,3 @@
     document.getElementById("mallItem").innerHTML = str;
 }();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

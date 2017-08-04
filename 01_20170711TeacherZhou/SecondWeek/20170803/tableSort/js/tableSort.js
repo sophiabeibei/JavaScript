@@ -40,34 +40,3 @@ for (var i = 0; i < productData.length; i++) {
 //->循环完成后,htmlStr 存储的东西就是我们最后需要展示内容的全部字符串,我们把这堆字符串
 var mallItem = document.getElementById("mallItem");
 mallItem.innerHTML = htmlStr;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -37,22 +37,3 @@ console.log(res);//->
 // console.log(newAry);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

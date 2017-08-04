@@ -21,27 +21,3 @@ function queryAvg() {
 var res = queryAvg(9.8,8,9,9.2,9.5,8.6,7,7.8,9,8.8);
 console.log(res);//->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

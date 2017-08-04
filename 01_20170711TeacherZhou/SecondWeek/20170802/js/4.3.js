@@ -33,35 +33,10 @@ Array.prototype.slice = function slice() {
 
 
 
-
-
-
-
-
-
     return aryNew;
 };
 var ary = [12,23,34];
 var newAry = ary.slice();
 console.log(newAry);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

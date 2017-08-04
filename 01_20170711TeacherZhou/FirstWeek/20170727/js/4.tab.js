@@ -64,8 +64,4 @@ for (var i = 0; i < oList.length; i++) {
             changeTab(i);
         };
     })();
-
-
-
-
 }

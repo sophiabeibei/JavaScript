@@ -56,17 +56,6 @@ ary.sort().reverse().push(100).pop();//->Uncaught TypeError:
 
 
 
-
-
-
-
-
 //2.5是原型链的第二阶段
-
-
-
-
-
-
 
 
