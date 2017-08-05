@@ -1,0 +1,53 @@
+一.changeColor案例
+    //return处理方式1
+    for (var i = 0; i < btnList.length; i++) {
+        btnList[i].onclick = (function (n) {
+            return function(){
+                document.body.style.backgroundColor = ary[n];
+            }
+        })(i);
+    }
+
+    //闭包处理方式2
+    for (var i = 0; i < btnList.length; i++) {
+        ~function(i){
+            btnList[i].onclick = function () {
+                document.body.style.backgroundColor = ary[i];
+            }
+        }(i);
+    }
+
+    //自定义属性处理方式3
+    for (var i = 0; i < btnList.length; i++) {
+        btnList[i].index = i;
+        btnList[i].onclick = function () {
+            document.body.style.backgroundColor = ary[this.index];
+            //->this.index: 当前点击按钮自定义属性中存储的值(按钮的索引)
+        }
+    }
+
+
+二.严格模式和非严格模式的区别
+    1.var
+        非严格模式下,创建一个变量如果不带var,相当于给window加了一个属性,不会报错的;
+        严格模式下,不允许出现不带var的变量;
+
+    2.自执行函数
+        非严格模式下,自执行函数中的this是window
+        严格模式下,自执行函数中的this是undefined;
+
+    3.函数执行
+        非严格模式下,如果不确定执行的主体,this都是window;
+        严格模式下,不知道执行主体的时候,this都是undefined;
+
+        方法执行,没".",不知道执行主体是谁;严格模式下,不知道执行主体的时候,this都是undefined;
+
+    4.arguments
+        非严格模式下,arguments和形参存在映射关系(一个改,另外一个也跟着自动改);
+        严格模式下,arguments和形参存没有映射关系;
+
+    5.arguments.callee和arguments.callee.caller
+        非严格模式下: arguments.callee存储的是当前函数本身,也就是fn;
+                    arguments.callee()不需要名字就可以自己调用自己;
+                    arguments.callee.caller存储的是当前函数在哪个作用域下执行的,如果是在全局下执行的,返回结果是null,如果aa函数中执行的,它存储的值就是aa本身;
+        严格模式下不允许使用: arguments.callee/arguments.callee.caller这两个属性;

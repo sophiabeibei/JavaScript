@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+<script src="js/utils.js"></script>
+<script>
+    var xhr = new XMLHttpRequest;
+    xhr.open('GET', 'json/temp.json', false);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            //console.log(xhr.responseText);//->获取的结果是一个JSON字符串
+            var res = xhr.responseText;
+            console.log(utils.toJSON(res));
+        }
+    };
+    xhr.send(null);
+</script>
+</body>
+</html>

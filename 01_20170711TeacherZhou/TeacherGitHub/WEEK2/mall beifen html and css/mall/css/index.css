@@ -1,0 +1,78 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background: #F4F4F4;
+
+    font-size: 14px;
+    color: #555;
+}
+
+.container {
+    margin: 20px auto;
+    width: 1200px;
+    overflow: hidden;
+}
+
+/*--MENU--*/
+.menu {
+    background: #FFF;
+}
+
+.menu span, .menu a {
+    float: left;
+}
+
+.menu span {
+    width: 90px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.menu a {
+    padding: 0 15px;
+    line-height: 50px;
+    color: #999;
+}
+
+.menu a:hover {
+    color: #E01D20;
+}
+
+/*--LIST--*/
+.mallList {
+    width: 1210px;
+    margin-top: 20px;
+}
+
+.mallList li {
+    float: left;
+    background: #FFF;
+    margin: 0 10px 10px 0;
+}
+
+.mallList li a {
+    display: block;
+    padding: 0 16px;
+    width: 194px;
+    border: 3px solid transparent;
+    overflow: hidden;
+}
+
+.mallList li a img {
+    display: block;
+    width: 100%;
+}
+
+.mallList li a span {
+    display: block;
+    line-height: 40px;
+    color: #999;
+}
+
+.mallList li a .price {
+    color: #555;
+}
+
+.mallList li a:hover {
+    border-color: #E01D20;
+}

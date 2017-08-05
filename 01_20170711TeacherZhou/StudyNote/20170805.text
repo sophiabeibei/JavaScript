@@ -1,0 +1,181 @@
+一.函数执行时注意几点:
+    1.有没有实参/形参
+    2.有没有return
+    3.函数名前有没有点
+二.面试题回家做(在老师课件md文档中)
+    //->易车面试题
+    var a = {n : 4};
+    var b = a;
+    b.x = a = {n : 10};
+    console.log(a.x);//->undefined
+    console.log(b.x);//->{n : 10}
+
+    //->用友面试题
+    var fullName = "language";
+    var obj = {
+        fullName = "javascript",
+        prop : {
+            getFullName : function(){
+                return this.fullName;
+            }
+        }
+    };
+    console.log(obj.prop.getFullName());//->undefined
+        //->方法执行,方法名的点前面是谁this就是谁;这里的点前面是obj.prop;所以是undefined;
+    var test = obj.prop.getFullName;
+    console.log(test());//->language
+
+
+三.原型链
+
+
+四.原型链深入Function(函数的三种角色)
+    1.普通函数
+    2.类
+    3.普通对象
+五.call/apply/bind(老师课件md文档里,有道题要做)
+    1.call方法
+    2.apply方法
+    3.bind方法
+
+
+
+六.JS中this的集中情况
+    1.自执行函数中的this是window;和函数在哪执行定义以及在哪执行没有任何关系;
+    2.给元素的某个事件绑定方法,事件触发,方法执行,方法中的this是当前元素本身;
+    3.构造函数执行,函数体中出现的this是当前类的实例;
+    4.方法执行,看方法前面是否有点,有的话,点前面是谁,this就是谁;没有点,this是window;
+    5.可以使用call/apply/bind强制改变某一方法中的this(这个规律的优先级最高)
+    但是,以上5条都是在非严格模式下,JS还有严格模式
+    严格模式下:
+    1.自执行函数中的this是undefined;
+    2.函数执行,前面没点,this是undefined;
+    3.使用call/apply/bind时,如果传递的第一个参数是null,this是undefined;如果传递的第一个参数是undefined,this是undefined;
+    总结以上3条,如果没确定主体,this都是undefined;
+
+
+七.求数组中的最大值最小值(4种方法)
+    1.
+    2.
+    3.
+    4.
+八.求平均数(6个方法)
+    1.两个循环的方法
+
+    2.优化(数组求和)使用join
+
+    3.优化,合并(数组求和+求平均数) 使用join
+
+    4.让slice执行并让其this变为arguments
+
+    5.除了上面的slice方法,arguments还可以使用其它数组方法;
+
+    6.引申出try...catch...finally方法
+九.utils.js文件
+    1.封装类数组转数组的方法
+
+    2.封装JS字符串转JS对象的方法
+
+十.JSON
+    1.JSON对象转JSON字符串: JSON.parse
+
+    2.JSON字符串转JSON对象: JSON.stringify
+
+十一.AJAX
+    发送一个请求,把数组拿回来,需要4步:
+    1.创建一个AJAX对象;
+    2.打开一个请求的地址;
+    3.监听AJAX的状态改变.接收服务器返回的结果;
+    4.向服务器发送请求;
+        xhr.send(null);
+        null: 什么都不给服务器传;
+十二.table表格排序案例
+    1.数据动态绑定的3种方式
+        1)动态创建DOM元素
+        2)字符串拼接(ES6中模板字符串)
+        3)模板引擎(react/vue/tempPlate/Angular)
+        动态绑定容易引起DOM回流;
+            1.DOM回流
+            2.DOM重绘
+        解决DOM回流的方法: 文档碎片
+    2.文档碎片
+        文档碎片虽然解决了DOM回流的问题,但里面包含有动态创建的步骤,麻烦;
+        解决文"档碎片这个麻烦"的方法: 字符串拼接(ES6方式)
+    3.字符串拼接(ES6方式)
+        ES6不兼容所有的浏览器;
+        解决ES6不兼容的方法: babel;
+    4.babel
+        babel: 就是把ES6转换为ES5的工具;
+十三.sort数组排序
+    1.return a-b方法
+
+    2.a.xxx.localComPare(b.xxx)方法
+
+十四.预习
+    从第二章第二节开始一直往后看,能看多少看多少;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
