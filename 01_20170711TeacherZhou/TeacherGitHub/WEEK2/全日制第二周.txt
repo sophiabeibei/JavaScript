@@ -1,0 +1,113 @@
+全日制第二周三天梳理
+1、周二
+ 全面复习第一周作用域/THIS和原型的知识，把第一周知识打牢
+  ->附加知识：
+    严格模式和费严格模式
+    arguments.callee
+    逻辑与和逻辑或
+
+ 复习方式：
+   考试题和作业题，就是做题，只要感觉自己掌握的还不是很扎实的，就去做题吧
+   需要罚抄基础的同学不要忘记罚抄哈
+ 
+ 附加题：易车面试题
+   var a = {n:4};
+   var b = a;
+   b.x = a = {n: 10};
+   console.log(a.x);
+   console.log(b.x);
+  
+ 用友面试题
+   var fullName='language';
+   var obj={
+      fullName='javascript',
+      prop:{
+          getFullName:function(){
+            return this.fullName;
+          }
+      }
+   };
+   console.log(obj.prop.getFullName());
+   var test=obj.prop.getFullName;
+   console.log(test());
+
+ 用友面试题 
+   var name='window';
+   var Tom={
+     name:"Tom",
+     show:function(){
+       console.log(this.name);
+     },
+     wait:function(){
+        var fun=this.show;
+        fun();
+     }
+  };
+  Tom.wait();
+
+  
+2、周三
+ 原型深入(Function原型链)
+   -> call、apply、bind 三者的作用和区别
+   -> call的原理
+      fn1.call.call.call(fn2)
+      ....
+   -> 函数的三种角色
+      
+     BAT经典函数三种角色分析的面试题：
+     function Foo() {
+        getName = function () {
+            console.log(1);
+        };
+        console.log('this is' + this);
+        return this;
+     }
+     Foo.getName = function () {
+        console.log(2);
+     };
+     Foo.prototype.getName = function () {
+        console.log(3);
+     };
+     var getName = function () {
+        console.log(4);
+     };
+     function getName() {
+        console.log(5);
+     }
+     Foo.getName();
+     getName();
+     Foo().getName();
+     getName();
+     new Foo.getName();
+     new Foo().getName();
+     new new Foo().getName();
+   
+ 获取数组最大值
+ 获取平均数案例
+
+ 难点：原型深入
+ 重点：把类数组转换为数组
+
+3、周四
+ 把类数组转换为数组
+   ->try catch
+ 
+ JSON
+   ->前后端数据交互模型
+   ->toJson方法
+   ->JSON操作
+ 
+ SORT排序的原理
+
+ AJAX数据获取以及ES6模板字符串数据绑定
+
+ [第三天都是重点]
+ 
+   
+ 
+
+
+
+
+ 
+   
