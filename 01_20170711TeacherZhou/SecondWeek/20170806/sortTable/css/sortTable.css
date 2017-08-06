@@ -1,0 +1,42 @@
+html,body{
+    -webkit-user-select: none;
+}
+.stuList{
+    margin: 20px auto;
+    width: 600px;
+    border: 1px solid green;
+    font-size: 16px;
+}
+.stuList thead{
+    line-height: 35px;
+    background: orange;
+    font-size: 20px;
+    cursor: pointer;
+}
+.stuList tbody{
+    line-height: 35px;
+    text-align: center;
+}
+.stuList tbody tr:nth-child(odd){
+    background: yellow;
+}
+.stuList tbody tr:nth-child(even){
+    background: mediumpurple;
+}
+.stuList tbody tr:hover{
+    background: lightcoral;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+.stuList {
+    margin: 20px auto;
+    width: 600px;
+    border: 1px dashed green;
+    font-size: 16px;
+}
+
+.stuList thead tr {
+    line-height: 35px;
+    background: lightblue;
+    font-size: 20px;
+}
+
+.stuList tbody tr {
+    line-height: 35px;
+    text-align: center;
+}
+
+.stuList tbody tr:nth-child(even) {
+    background: #EEE;
+}
+
+.stuList tbody tr:hover {
+    background: lightgoldenrodyellow;
+}
