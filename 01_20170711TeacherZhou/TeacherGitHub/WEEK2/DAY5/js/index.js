@@ -32,19 +32,24 @@ var stuList = document.getElementById('stuList'),
 
 //->让所有的行按照年龄由小到大排序
 ~function () {
-
-    function sortRows() {
-        //->把存储所有行的类数组转换为数组(只有数组才能用SORT方法进行排序)
+    function sortRows(cellIndex) {
+        //->cellIndex:你想按照哪一列排序,就把当前列的索引传递进来
         var stuRowsAry = utils.toArray(stuRows);
-
-        //->让所有的行按照年龄这一列由小到大排序
+        var _this = this;
         stuRowsAry.sort(function (a, b) {
-            var curAge = parseFloat(a.cells[2].innerHTML);
-            var nextAge = parseFloat(b.cells[2].innerHTML);
-            return curAge - nextAge;
-        });
+            //->首先我们要判断，需要排序的这一列是否为数字，数字按照减法运算实现排序，汉字按照localeCompare方法实现排序
+            var curInn = a.cells[cellIndex].innerHTML;
+            var nextInn = b.cells[cellIndex].innerHTML;
+            var curInnNum = parseFloat(curInn);
+            var nextInnNum = parseFloat(nextInn);
 
-        //->按照数组排好的顺序,我们把每一行重新的放入到页面中,让页面中的结构也跟着排序
+            if (isNaN(curInnNum) || isNaN(nextInnNum)) {
+                //->只要有一个不是有效的数字,就不能使用减法进行运算排序
+                return (curInn.localeCompare(nextInn)) * _this.n;
+            }
+
+            return (curInnNum - nextInnNum) * _this.n;
+        });
         var frg = document.createDocumentFragment();
         for (var i = 0; i < stuRowsAry.length; i++) {
             var curRow = stuRowsAry[i];
@@ -54,7 +59,33 @@ var stuList = document.getElementById('stuList'),
         frg = null;
     }
 
-    sortRows();
-
-
+    for (var i = 0; i < stuHeadList.length; i++) {
+        stuHeadList[i].n = -1;
+        stuHeadList[i].index = i;
+        stuHeadList[i].onclick = function () {
+            /*
+             * 点击当前列，把其它列的自定义属性n的值设置为默认值-1，下一次在点击其它列才会从新的按照升序排列
+             */
+            this.n *= -1;
+            sortRows.call(this, this.index);
+        }
+    }
+    //
+    // stuHeadList[2].n = -1;
+    // stuHeadList[2].onclick = function () {
+    //     this.n *= -1;
+    //     sortRows.call(this, 2);
+    // };
+    //
+    // stuHeadList[1].n = -1;
+    // stuHeadList[1].onclick = function () {
+    //     this.n *= -1;
+    //     sortRows.call(this, 1);
+    // };
+    //
+    // stuHeadList[0].n = -1;
+    // stuHeadList[0].onclick = function () {
+    //     this.n *= -1;
+    //     sortRows.call(this, 0);
+    // };
 }();

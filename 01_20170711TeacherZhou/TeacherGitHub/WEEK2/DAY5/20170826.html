@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><title>20170826</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>
+.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h4 id="20170826">20170826</h4>
+
+<h5 id="dom的映射机制">DOM的映射机制</h5>
+
+<blockquote>
+  <p>在JS中获取的DOM元素或者元素集合，和HTML页面上的元素标签是存在<code>映射关系</code>的</p>
+  
+  <ul><li>JS中把DOM元素进行修改，页面中的元素样式也会跟着改变</li>
+  <li>页面中元素的结构发生改变，JS中的DOM元素也会跟着改变</li>
+  </ul>
+</blockquote>
+
+
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-keyword">var</span> stuList = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'stuList'</span>),<br><span class="hljs-comment line-number">2.</span>    stuBody = stuList.tBodies[<span class="hljs-number">0</span>],<br><span class="hljs-comment line-number">3.</span>    stuRows = stuBody.rows;<br><span class="hljs-comment line-number">4.</span><span class="hljs-comment">//-&gt;开始的时候页面中没有TR,所以stuRows是一个空的类数组</span><br><span class="hljs-comment line-number">5.</span><br><span class="hljs-comment line-number">6.</span>~<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<br><span class="hljs-comment line-number">7.</span>    <span class="hljs-comment">//-&gt;GET DATA</span><br><span class="hljs-comment line-number">8.</span>    ...<br><span class="hljs-comment line-number">9.</span><br><span class="hljs-comment line-number">10.</span>    <span class="hljs-comment">//-&gt;BIND DATA</span><br><span class="hljs-comment line-number">11.</span>    <span class="hljs-keyword">var</span> str = <span class="hljs-string">``</span>;<br><span class="hljs-comment line-number">12.</span>    ...<br><span class="hljs-comment line-number">13.</span>    stuBody.innerHTML = str; <span class="hljs-comment">//-&gt;向页面中增加了20个TR</span><br><span class="hljs-comment line-number">14.</span><br><span class="hljs-comment line-number">15.</span>    <span class="hljs-built_in">console</span>.log(stuRows); <span class="hljs-comment">//-&gt;页面中TBODY结构中的内容改变了,根据DOM的映射机制,此处不需要重新的获取,stuRows中存储的就是最新的20条数据</span><br><span class="hljs-comment line-number">16.</span>}();<br></code></pre>
+
+
+
+<h5 id="正则">正则</h5>
+
+<blockquote>
+  <p>用来处理<code>字符串</code>的规则 <br>
+  <code>验证当前的字符串是否符合规则</code> – <code>匹配</code> <br>
+  <code>把字符串中符合规则的字符捕获到</code> – <code>捕获</code></p>
+  
+  <p>正则匹配：<code>[正则].test([字符串])</code> <br>
+  正则捕获：<code>[正则].exec([字符串])</code> 或者 <code>[字符串].match([正则])</code> 或者 <code>[字符串].replace([正则],function...)</code> 或者 <code>[字符串].split([正则])</code>…</p>
+</blockquote>
+
+
+
+<h6 id="元字符和修饰符">元字符和修饰符</h6>
+
+<blockquote>
+  <p>一个正则就是由元字符和修饰符组成的，想要学会编写自己所需的规则，需要牢牢掌握元字符和修饰符</p>
+</blockquote>
+
+<p><code>修饰符</code></p>
+
+<ul><li>i(ignoreCase)：忽略单词大小写匹配</li>
+<li>m(multiline)：多行匹配</li>
+<li>g(global)：全局匹配</li>
+</ul>
+
+
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">//-&gt;修饰符放在最后一个斜杠的后面</span><br><span class="hljs-comment line-number">2.</span><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^\d+$/img</span>;<br><span class="hljs-comment line-number">3.</span><br><span class="hljs-comment line-number">4.</span><span class="hljs-comment">//-&gt;实例创建方式中，修饰符放在第二个实参字符串中</span><br><span class="hljs-comment line-number">5.</span><span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">''</span>,<span class="hljs-string">'img'</span>);<br></code></pre>
+
+<p><strong><code>特殊元字符</code></strong></p>
+
+<ul><li>\：转义字符，把普通元字符转换为特殊的意义或者把特殊元字符转换为普通的意义，例如:<code>/\d/ d本身是一个字母，前面加一个转义字符，代表0~9之间的一个数字</code> 或者 <code>/\./ 点在正则中代表任意字符(特殊含义)，此处加上转义字符，代表的就是本身意思点了</code></li>
+<li>^：以某一个元字符开始，例如:<code>/^1/ 代表当前的字符串应该是以1开始的</code></li>
+<li>$：以某一个元字符结束，例如:<code>/2$/ 代表当前字符串最后一个字符应该是以2结尾</code></li>
+<li>\d：代表一个0~9之间的数字</li>
+<li>\D：和\d正好相反，代表一个非0~9之间的任意字符(大写字母都和小写字母的是相反的)</li>
+<li>\w：数字、字母、下划线 三者中的任意一个</li>
+<li>\n：匹配一个换行符</li>
+<li>\b：匹配一个边界</li>
+<li>\s：匹配一个空白字符</li>
+<li>.：除了\n以外的任意一个字符</li>
+<li>x|y：x或者y中的一个字符</li>
+<li>()：分组</li>
+<li>[a-z]：匹配一个a-z中的任意字符 <code>/[0-9]/ 0~9之间的任何一个数字，等价于\d</code></li>
+<li>[^a-z]：除了a-z以外的任意一个字符，这里^是取反的意思</li>
+<li>[xyz]：x或者y或者z，三者中的一个</li>
+<li>[^xyz]：除了三者以外的任意一个字符</li>
+<li>?=：正向预查</li>
+<li>?!：负向预查</li>
+<li>?: ：只匹配不捕获</li>
+</ul>
+
+<p><strong><code>量词元字符</code></strong></p>
+
+<ul><li>* ：前面的元字符出现零次到多次</li>
+<li>+ ：前面的元字符出现一次到多次</li>
+<li>? ：前面的元字符出现零次或者一次</li>
+<li>{n}：出现n次</li>
+<li>{n,}：出现n到多次</li>
+<li>{n,m}：出现n到m次</li>
+</ul>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">//-&gt;两个斜杠中间包起来的都是正则的元字符</span><br><span class="hljs-comment line-number">2.</span><span class="hljs-comment">//1、特殊元字符：有特殊含义的</span><br><span class="hljs-comment line-number">3.</span><span class="hljs-comment">//2、量词元字符：代表出现多少次</span><br><span class="hljs-comment line-number">4.</span><span class="hljs-comment">//3、普通元字符：代表本身含义的</span><br><span class="hljs-comment line-number">5.</span><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^\d+$/g</span>;<br><span class="hljs-comment line-number">6.</span><span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'[元字符]'</span>,<span class="hljs-string">'[修饰符]'</span>);<br></code></pre></div></body></html>
