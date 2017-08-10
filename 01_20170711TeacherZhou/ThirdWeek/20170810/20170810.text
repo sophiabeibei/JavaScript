@@ -1,0 +1,181 @@
+一.检测数据类型类库
+    封装了一个检测数据类型的类库;
+
+二.设置元素CSS样式的类库
+    function setCss(curEle, attr, value) {
+        if (attr.toLowerCase() === 'opacity') {
+            curEle.style.opacity = value;
+            curEle.style.filter = 'alpha(opacity=' + value * 100 + ')';
+            return;
+        }
+        var unitReg = /^(width|height|((margin|padding)?(top|left|right|bottom)?))$/i;
+        unitReg.test(attr) && !isNaN(value) ? value += 'px' : null;
+        curEle['style'][attr] = value;
+    }
+
+三.批量设置元素CSS样式的类库
+    function setGroupCss(curEle, options) {
+        if (Object.prototype.toString.call(options) !== '[object Object]') return;
+        for (var attr in options) {
+            if (options.hasOwnProperty(attr)) {
+                setCss(curEle, attr, options[attr]);
+            }
+        }
+    }
+
+四.获取元素CSS样式属性值的类库
+    function getCss(curEle, attr) {
+        var val = null,
+            reg = null;
+        if ('getComputedStyle' in window) {
+            val = window.getComputedStyle(curEle, null)[attr];
+        } else {
+            if (attr.toLowerCase() === 'opacity') {
+                val = curEle.currentStyle['filter'];
+                reg = /^alpha\(opacity=(.+)\)$/i;
+                val = reg.test(val) ? reg.exec(val)[1] / 100 : 1;
+            } else {
+                val = curEle.currentStyle[attr];
+            }
+        }
+        reg = /^-?\d+(\.\d+)?(px|em|rem)?$/i;
+        reg.test(val) ? val = parseFloat(val) : null;
+        return val;
+    }
+
+五.实现获取,单独设置,批量设置元素的样式属性
+    //->css: 实现获取,单独设置,批量设置元素的样式属性(第一种方法)
+    // function css() {
+    //     var arg = arguments;
+    //     if(arg.length >=3){
+    //         //->单独设置
+    //         setCss.apply(null,arg);
+    //     }
+    //     if(arg.length === 2 && typeof arg[1] === "object"){
+    //         //->批量设置
+    //         setGroupCss.apply(null,arg);
+    //         return;
+    //     }
+    //     //->获取样式
+    //     return getCss.apply(null,arg);
+    // }
+
+
+
+    //->css: 实现获取,单独设置,批量设置元素的样式属性(第二种方法)
+    function css() {
+        var arg = arguments,
+            fn = getCss;
+        if(arg.length>=3)fn = setCss;
+        if(arg.length === 2 && typeof arg[1] === "object") fn = setGroupCss;
+        return fn.apply(null,arg);
+    }
+
+六.偏移量(offsetLeft/offsetTop/offsetParent)
+    1.offsetParent: 获取当前元素的父级参照物
+        //->在默认的情况下,body中出现的所有元素的父级参照物都是body(因为在同一个平面上),body本身的父级参照物是null
+        //->我们通过设置position定位,可以让元素脱离文档流,从而改变元素的父级参照物
+
+    2.offsetLeft/offsetTop: 当前元素举例其父级参照物的左偏移和上偏移
+        //->在大部分浏览器中,这个距离是从当前元素的外边框开始到父级参照物的内边框结束(不含父级元素的边框);
+        //->IE8(纯正的IE8: 浏览器就是IE8,而非是控制台模仿),这个距离包含了父级参照物的边框,偏移量=当前元素的外边框到父级参照物的外边框;
+
+        获取center距离body的左偏移
+        1&2
+        当前元素距离其父级参照物(inner)的左偏移+inner的左边框
+        3&4
+        从上一次的父级参照物算起,找到inner的父级参照物(outer),获取inner的左偏移+outer的左边框
+        ...
+        一直到父级参照物是null为止
+
+        获取任意元素距离body的左偏移(不管其父级参照物是谁)
+            当前元素的左偏移
+                +父级参照物的左边框
+                +父级参照物的左偏移
+            找父级参照物的父级参照物...一直到父级参照物为null结束;
+
+七.偏移量兼容封装
+    1.offset: 获取当前元素距离body的左偏移和上偏移
+        //->return: 返回结果是一个对象{left: xxx,top: xxx}
+
+        function offset(curEle){
+            var l = curEle.offsetLeft,
+                t = curEle.offsetTop,
+                p = curEle.offsetParent;
+            while(p){
+                //->首先累加父级参照物的边框(IE8下,偏移量已经包含父级参照物的边框了,此时我们没必要再累加父级参照物的边框了)
+                if(!/MSIE 8.0/i.test(navigator.userAgent)){
+                    //->navigator.userAgent: 获取当前浏览器的详细版本信息,IE浏览器有特点(是字符串 "MSIE [版本号]");
+                    l += p.clientLeft;
+                    t += p.clientTop;
+                }
+
+                //->其次还要继续累加父级参照物的偏移量
+                l += p.offsetLeft;
+                t += p.offsetTop;
+
+                p = p.offsetParent;//->如果获取的父级参照物存在,就会一直向上查找,直到父级参照物不存在(说明已经找到body了)
+            }
+            //->最后把累加的L和T返回,代表当前元素距离body的左上偏移量
+            return{left: l,top : t};
+        }
+
+八.滚动条(scrollTop/scrollLeft)
+    1.scrollTop 和 scrollLeft: 当前容器(一般都是当前页面)卷去的高度和宽度
+    //->学习的13个JS盒子模型属性,只有这俩属性是"可读写"(可以获取也可以设置),而其余的11个属性都是"只读"的;
+    //->为了兼容浏览器,我们设置或者获取页面的盒子模型属性值的时候,都要写两套;
+    //->有最小值,最小值是0;设置的值小于0也没用;
+    //->有最大值,真是页面的高度(document.documentElement.scrollHeight || document.body.scrollHeight) - 可视窗口的高度(document.documentElement.clientHeight || document.body.clientHeight)
+
+
+九.回到顶部封装
+
+
+
+
+
+十.思考题
+    1.开始的时候,回到顶部的按钮并不会展示,只有卷去的内容高度超过一屏幕高度的时候,按钮才会展示
+        window.onscroll = function(){}当浏览器的滚动条发生滚动(鼠标滚轮,JS代码,手动拖动滚动条,键盘的某些按键都可能会触发滚动条滚动),触发onscroll事件执行
+
+    2.当第一次点击回到顶部,开始我们的动画,接下来再来再点击这个按钮应该不会有任何的操作才可以,直到当前的动画完成(回到顶部了),再次点击这个按钮才会有作用=>"动画运动期间,防止按钮的重复点击"
+
+    3.当回到顶部的动画正在运行中,但是我们滚动了鼠标的滚轮,此时应该立即结束当前正在运行的动画,以用户接下来的手动操作为准(京东淘宝等都没有实现这个功能,功能实现起来比较复杂)
+
+
+
+
+十一.定时器
+    1.定时器的分类(有两种)
+        1.setInterval
+            setInterval([function],[interval]): 设置一个定时器,然后每隔[interval]这么长时间执行一次[function],直到手动清除定时器,才会终止;
+
+        2.setTimeout([function],[interval]): 设置一个定时器,然后等[interval]这么长时间执行一次[function],定时器结束;
+
+    2.设置定时器
+
+        //->设置定时器的时候,会有一个返回值,返回值是一个数字(定时器的序列号,代表当前的定时器是第几个),当我们清除定时器的时候,只需要指定这个数字即可,就会把相关的定时器清除掉;
+        //=>不管设置的是哪种定时器,都是按照设定的时间排号序号的,清除的时候,clearInterval或者clearTimeout中的任意一个方法,只要指定对应的定时器编号,都可以把当前的定时器清除掉;
+        var timer1 = window.setInterval(function(){
+            console.log(1);
+            window.clearInterval(timer1);
+        },1000)
+
+
+        var timer2 = window.setTimeout(function(){
+            console.log(2);
+        },500)
+
+
+navigator.userAgent  在控制台输入,可显示浏览器的版本号;
+
+
+
+
+
+
+
+
+
+
+
