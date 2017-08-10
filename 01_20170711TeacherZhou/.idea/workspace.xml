@@ -21,56 +21,7 @@
     <favorites_list name="01_20170711TeacherZhou" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="20170810.text" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ThirdWeek/20170810/20170810.text">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3.scroll.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThirdWeek/20170810/3.scroll.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThirdWeek/20170810/css/3.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThirdWeek/20170810/js/utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="98" column="51" lean-forward="false" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
-              <folding>
-                <element signature="e#153#428#0" expanded="false" />
-                <element signature="e#519#627#0" expanded="false" />
-                <element signature="e#714#1108#0" expanded="false" />
-                <element signature="e#1182#1433#0" expanded="false" />
-                <element signature="e#1496#2110#0" expanded="false" />
-                <element signature="e#2173#2384#0" expanded="false" />
-                <element signature="e#2468#2874#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -573,12 +524,12 @@
       <workItem from="1502242569873" duration="113000" />
       <workItem from="1502242721528" duration="23049000" />
       <workItem from="1502281880423" duration="564000" />
-      <workItem from="1502329232985" duration="23296000" />
+      <workItem from="1502329232985" duration="23433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="648356000" />
+    <option name="totallyTimeSpent" value="648493000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -590,10 +541,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18824404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18824404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1031,8 +981,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ThirdWeek/20170810/20170810.text">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+        <state relative-caret-position="465">
+          <caret line="168" column="0" lean-forward="true" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
           <folding />
         </state>
       </provider>
