@@ -1,0 +1,157 @@
+一.JS中的盒子模型
+    通过一系列的属性,来获取当前盒子的相关样式;
+    13个属性
+    1.client系列(4个)
+        1.clientWidth
+            clientWidth = width +　padding(Left / Right)
+        2.clientHeight
+            clientHeight = height（不设置height就是内容真实的高度）+ padding(Top + Bottom)
+        3.clientLeft
+            clientLeft = 左边框的宽度（border-left-width）
+        4.clientTop
+            clientTop = 上边框的高度（border-top-width）
+        和内容是否溢出没有关系;因为client是可视区域,溢出的内容不在可视区域内容,我们可以设置"overflow: hidden"隐藏溢出的内容;(js盒子模型中没有clientRight以及clientBottom这两个属性);
+            5.document.documentElement.clientWidth || document.body.clientWidth;
+            6.document.documentElement.clientHeight || document.body.clientHeight;
+            //->部分浏览器不识别用document.documentElement来操作浏览器的一些盒子模型属性,我们需要使用document.body来操作,所以需要写两套;
+            案例:
+                需求:
+                    让当前盒子处于页面水平和垂直都居中的位置(可能不知道盒子的宽度和高度);
+                思路:
+                    1.获取一屏幕的宽度和高度
+                        var winW = document.documentElement.clientWidth || document.body.clientWidth;
+                        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+                    2.获取盒子的宽度和高度
+                        var boxW = box.clientWidth + box.clientLeft*2;
+                        var boxH = box.clientHeight + box.clientTop*2;
+                    3.计算需要设置的position的值
+                        box.style.position = "absolute";
+                        box.style.top = (winH - boxH)/2 + "px";
+                        box.style.left = (winW - boxW)/2 + "px";
+    2.offset系列(2个)
+        5.offsetWidth
+            offsetWidth = clientWidth + border(Left / Right);
+        6.offsetHeight
+            offsetHeight = clientHeight + border(Top / Bottom);
+            和内容是否溢出没有关系
+    3.scroll系列(2个)
+        7.scrollWidth
+            1.没有内容溢出
+                scrollWidth = clientWidth
+            2.有内容溢出
+                scrollWidth = paddingLeft + contentWidth(包括溢出的部分);
+        8.scrollHeight
+            1.没有内容溢出
+                scrollHeight = clientHeight
+            2.有内容溢出
+                scrollHeight = paddingTop + contentWidth(包括溢出的部分);
+            当前我们通过scrollHeight获取的值只能算是约等于值;
+                //->因为同一个浏览器设置overflow和不设置获取的结果有所区域
+                //->不同浏览器获取的结果也不尽相同
+            案例:
+                需求:
+                    获取一个页面看不见部分的高度;
+                思路:
+                    1.获取整个页面的真实高度
+                        var trueH = document.documentElement.scrollHeight || document.body.scrollHeight;
+                    2.获取一屏幕的高度
+                        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+                    3.计算;(看不见的高度)
+                        var hiddenH = trueH - winH;
+二.获取元素具体的CSS样式
+    1.元素.style.样式属性
+        [curEle].style.[attr]: 获取当前元素写在行内样式上的样式属性值,重点记住只能获取写在行内的样式,如果样式写在样式表中,我们通过这个操作是无法获取的;
+
+    2.getComputedStyle 和 currentStyle
+        获取当前元素所有经过浏览器计算的样式;
+
+        浏览器计算的样式: 只要是当前元素能在页面中展示,那么它的样式都是通过浏览器计算的,不管你写在哪,以及不管你写不写(有些样式不屑,浏览器也有默认样式);
+        getComputedStyle是window全局对象的一个属性方法,但是再IE6-8浏览器中不存在这个属性,IE低版本需要我们使用currentStyle来获取;
+
+        案例:
+            需求:
+                获取当前元素的某一个样式属性(需要兼容所有的浏览器)
+            方法:
+                attr: 当前元素的样式属性
+
+                function getCss(curEle,attr){
+                    var val = null;
+                    if("getComputedStyle" in window){
+                        val = window.getComputedStyle(curEle,null)[attr];
+                    }else{
+                        if(attr.toLowerCase() === "opacity"){
+                            val = curEle.currentStyle["filter"];
+                            reg = /^alpha\(opacity=(.+)\)$/i;
+                            val = reg.test(val)?reg.exec(val)[1]/100 : 1;
+                        }else{
+                            val = curEle.currentStyle[attr];
+                        }
+                    }
+                    var temp = parseFloat(val);
+                    val = isNaN(temp) ? val : temp;
+                    return val;
+                }
+                //->第三章 第一节 课件2: 学习兼容浏览器处理常用的三种方式
+    3.设置元素的样式
+        两种方式(都很常用)
+        1.元素.style.样式属性 = 值;
+            设置元素的行内样式(会写3个方法)
+            setCss:
+            setGroupCss:
+            css:
+        2.元素.className = xxx;
+            首先在样式表中编写一些样式类名这句JS代码就是在设置元素的样式类名,从而让其具备某些特定的样式;(会写3个方法)
+            addClass:
+            removeClass:
+            hasClass:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
