@@ -67,12 +67,13 @@ var utils = (function (){
         return val;
     }
 
-    //->css: 实现获取,单独设置,批量设置元素的样式属性(第一种方法)
+    //->css: 实现(获取,单独设置,批量设置)元素的样式属性(第二种方法)
     function css() {
         var arg = arguments,
+            len = arg.length,
             fn = getCss;
-        if(arg.length>=3)fn = setCss;
-        if(arg.length === 2 && typeof arg[1] === "object") fn = setGroupCss;
+        if(len>=3)fn = setCss;
+        if(len === 2 && typeof arg[1] === "object") fn = setGroupCss;
         return fn.apply(null,arg);
     }
 
@@ -84,7 +85,7 @@ var utils = (function (){
         var l = curEle.offsetLeft,
             t = curEle.offsetTop,
             p = curEle.offsetParent;
-        while(p){
+        while(p && p !== document.body){
             if(!/MSIE 8.0/i.test(navigator.userAgent)){
                 l += p.clientLeft;
                 t += p.clientTop;

@@ -69,6 +69,7 @@
             for (var j = 0; j < menuLink.length; j++) {
                 menuLink[j] !== this ? menuLink[j].n = -1 : null;
             }
+
             this.n *= -1;
             sortGoods.call(this);
         }

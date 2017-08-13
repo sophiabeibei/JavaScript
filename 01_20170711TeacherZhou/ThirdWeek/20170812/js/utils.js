@@ -1,26 +1,33 @@
-//->utils：common method libraries used in projects
-var utils = (function () {
-    //->toArray：converts a like array into an array
-    function toArray(likeAry) {
+
+//->utils: 整个项目的公共方法库(使用单利模式封装)
+var utils = (function (){
+
+    //->toArray: converts a like array into an array(把类数组转换成数组)
+    function toArray(likeAry){
         var ary = [];
-        try {
+        try{
             ary = [].slice.call(likeAry);
-        } catch (e) {
-            for (var i = 0; i < likeAry.length; i++) {
+        }catch(e){
+            var len = likeAry.length;
+            for (var i = 0; i < len; i++) {
                 ary[ary.length] = likeAry[i];
             }
         }
         return ary;
     }
 
-    //->toJSON：converts a string to a JSON object
+    //->toJSON: converts a string into a object (把JSON字符串转化为对象)
     function toJSON(str) {
-        return 'JSON' in window ? JSON.parse(str) : eval('(' + str + ')');
+        //->传一个字符串过来,最终转化成对象;
+        return "JSON" in window ? JSON.parse(str) : eval('('+str+')');
     }
 
-    //->getCss：gets the style property value of the element
+
+    //20170810上午封装
+    //->getCss: 获取元素的样式属性值
     function getCss(curEle, attr) {
-        var val = null;
+        var val = null,
+            reg = null;
         if ('getComputedStyle' in window) {
             val = window.getComputedStyle(curEle, null)[attr];
         } else {
@@ -32,27 +39,25 @@ var utils = (function () {
                 val = curEle.currentStyle[attr];
             }
         }
-        var temp = parseFloat(val);
-        val = isNaN(temp) ? val : temp;
+        reg = /^-?\d+(\.\d+)?(px|em|rem)?$/i;
+        reg.test(val) ? val = parseFloat(val) : null;
         return val;
     }
 
-    //->setCss：sets the style property value of an element
+    //->setCss: 设置元素的样式
     function setCss(curEle, attr, value) {
         if (attr.toLowerCase() === 'opacity') {
             curEle.style.opacity = value;
-            curEle.style.filter = 'alpha(opacity=' + (value * 100) + ')';
+            curEle.style.filter = 'alpha(opacity=' + value * 100 + ')';
             return;
         }
 
-        var unitReg = /^(zIndex|fontWeight)$/i;
-        if (!isNaN(value) && !unitReg.test(attr)) {
-            value += 'px';
-        }
+        var unitReg = /^(width|height|((margin|padding)?(top|left|right|bottom)?))$/i;
+        unitReg.test(attr) && !isNaN(value) ? value += 'px' : null;
         curEle['style'][attr] = value;
     }
 
-    //->setGroupCss：sets the style attribute values of elements in batch settings
+    //->setGroupCss：批量设置元素的样式
     function setGroupCss(curEle, options) {
         if (Object.prototype.toString.call(options) !== '[object Object]') return;
         for (var attr in options) {
@@ -62,23 +67,26 @@ var utils = (function () {
         }
     }
 
-    //->css：the style attributes of the operation element include settings individually, batch settings, access styles, and so on
+    //->css: 实现(获取,单独设置,批量设置)元素的样式属性(第二种方法)
     function css() {
         var arg = arguments,
             len = arg.length,
             fn = getCss;
-        if (len >= 3) fn = setCss;
-        if (len === 2 && typeof arg[1] === 'object') fn = setGroupCss;
-        return fn.apply(null, arg);
+        if(len>=3)fn = setCss;
+        if(len === 2 && typeof arg[1] === "object") fn = setGroupCss;
+        return fn.apply(null,arg);
     }
 
-    //->offset：gets the offset of the current element distance BODY => {left:xxx,top:xxx}
+
+
+    //20170810下午封装
+    //->offset: 获取当前元素距离body的偏移量
     function offset(curEle) {
         var l = curEle.offsetLeft,
             t = curEle.offsetTop,
             p = curEle.offsetParent;
-        while (p && p !== document.body) {
-            if (!/MSIE 8/i.test(navigator.userAgent)) {
+        while(p && p !== document.body){
+            if(!/MSIE 8.0/i.test(navigator.userAgent)){
                 l += p.clientLeft;
                 t += p.clientTop;
             }
@@ -86,12 +94,12 @@ var utils = (function () {
             t += p.offsetTop;
             p = p.offsetParent;
         }
-        return {left: l, top: t};
+        return{left: l,top : t};
     }
 
-    //->win：operate the box model properties about the browser
+    //->win: 设置/获取浏览器的JS盒子模型属性(1个值的时候是获取,2个值的时候是设置)
     function win(attr, value) {
-        if (typeof value !== 'undefined') {
+        if(typeof value !== "undefined"){
             document.documentElement[attr] = value;
             document.body[attr] = value;
             return;
@@ -99,12 +107,61 @@ var utils = (function () {
         return document.documentElement[attr] || document.body[attr];
     }
 
+
     return {
         toArray: toArray,
         toJSON: toJSON,
-        css: css,
-        offset: offset,
-        win: win
+        setCss :setCss,
+        setGroupCss : setGroupCss,
+        getCss : getCss,
+        css : css,
+        offset : offset,
+        win : win
     }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

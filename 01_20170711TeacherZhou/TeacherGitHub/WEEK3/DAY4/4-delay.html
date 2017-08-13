@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 1000%;
+        }
+
+        .box {
+            margin: 1000px auto;
+            width: 200px;
+            height: 300px;
+            background: #999; /*默认的占位图*/
+        }
+
+        .box img {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box">
+    <!--
+        1、开始的时候,我们的IMG的SRC不放真实图片的地址,也就是不加载任何的图片,此处显示的是BOX的默认背景图片
+        刚开始设置图片的DISPLAY=NONE：因为此时没有加载图片，某些IE浏览器显示的是一个‘叉子’，不美观，所以开始没有图片的时候，我们让其不显示，当真实的图片加载完成的时候我们在让其显示（而且还可以加一些渐隐渐现的动画效果）
+
+        2、我们把图片的真实地址放在一个自定义属性 DATA-SRC 中
+
+        3、当符合一定条件的时候（有些需求是图片一露头、有些是当前图片完全看见、有些是距离图片露头还有一定距离...），我们开始加载真实的图片
+    -->
+    <img src="" data-src="img/psb.jpg" alt="">
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/4-2.js"></script>
+</body>
+</html>

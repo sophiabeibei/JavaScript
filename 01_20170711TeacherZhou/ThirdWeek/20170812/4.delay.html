@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4.delay</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            margin: 1000px auto;
+            width: 500px;
+            height: 300px;
+            background: #999;/*默认的占位图*/
+        }
+        .box img{
+            display: none; /*display: none;为了防止图片显示图裂*/
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box">
+    <!--data-src:
+        1.开始的时候,我们的img的src不放真实图片的地址,也就是不加载任何的图片,此处显示的是box的默认背景图片;
+            刚开始设置图片的display=none: 因为此时没有加载图片,某些IE浏览器显示的是一个"叉子",不美观,所以开始没有图片的时候,我们让其不现实,当真实的图片加载完成的时候我们再让其显示(而且还可以加一些渐隐渐现的动画效果);
+        2.我们把图片的真实地址放在一个自定义属性data-src中;
+        3.当符合一定条件的时候(这个条件不一定,有些需求是图片一露头,有些图片部分完全看见,有些是距离图片露头还有一定距离....),我们开始加载真实图片;
+
+    -->
+    <img src="" data-src="img/me.jpg" alt="">
+</div>
+<script src="js/utils.js"></script>
+<script src="js/delay.js"></script>
+<!--<script src="js/4.1.js"></script>-->
+</body>
+</html>

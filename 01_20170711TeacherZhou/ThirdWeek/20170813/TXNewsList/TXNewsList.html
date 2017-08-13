@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--meta:vp tab-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>TXNewsList</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/TXNewsList.css">
+</head>
+<body>
+<!--ul.newsItem#newsItem>li>img+h3+p-->
+<ul class="newsItem" id="newsItem">
+    <!--
+        延迟加载
+            div的背景图是默认的占位图
+            img开始不现实,只有加载成功才显示
+            img的src开始是空,data-src存储真实图片的地址
+            JS中完成懒加载的图片处理
+    -->
+    <li>
+        <div>
+            <img src="img/default.jpg" data-src="" alt="">
+        </div>
+        <h3>网络强国战略习近平与“十三五”十四大战略</h3>
+        <p>互联网是二十世纪人类最大的发明互联网是二十世纪互联网是二十世纪人类最大的发明互联网是二十世纪</p>
+    </li>
+</ul>
+<script src="js/utils.js"></script>
+<script src="js/TXNewsList.js"></script>
+</body>
+</html>

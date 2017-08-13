@@ -1,0 +1,45 @@
+#news {
+    padding: 10px;
+}
+
+#news li {
+    position: relative;
+    padding: 10px 0;
+    height: 60px;
+    border-bottom: 1px dashed #ccc;
+}
+
+#news li div:nth-child(1) {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 75px;
+    height: 60px;
+    background: url("../img/default.jpg") no-repeat center center;
+    background-size: 100% 100%;
+}
+
+#news li div:nth-child(1) img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#news li div:last-child {
+    margin-left: 80px;
+}
+
+#news li h2 {
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#news li p {
+    line-height: 20px;
+    color: #999;
+}

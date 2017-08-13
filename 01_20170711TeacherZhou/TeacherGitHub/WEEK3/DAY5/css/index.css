@@ -1,0 +1,53 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+
+    color: #555;
+    font-size: 14px;
+}
+
+.newsItem {
+    padding: 10px;
+}
+
+.newsItem li {
+    position: relative;
+    padding: 10px 0 10px 80px;
+    border-bottom: 1px dashed #999;
+}
+
+.newsItem li div {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 75px;
+    height: 60px;
+    /*图片区域默认占位图*/
+    background: url("../img/default.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+
+.newsItem li div img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    /*开始让图片透明度为零,当加载出来后实现一个渐显效果*/
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.newsItem li h3 {
+    line-height: 20px;
+    font-size: 16px;
+
+    /*文字超出一行自动裁切：以下三个属性一个都不能少*/
+    text-overflow: ellipsis; /*裁切后以省略号代替*/
+    white-space: nowrap; /*强制不换行*/
+    overflow: hidden; /*隐藏溢出的内容*/
+}
+
+.newsItem li p {
+    font-size: 12px;
+    color: #999;
+    line-height: 20px;
+}
