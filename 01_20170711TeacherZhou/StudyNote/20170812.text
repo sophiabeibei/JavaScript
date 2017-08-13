@@ -1,7 +1,7 @@
 一.JS中的盒子模型
     通过一系列的属性,来获取当前盒子的相关样式;
     13个属性
-    1.client系列(4个)
+    1).client系列(4个)
         1.clientWidth
             clientWidth = width +　padding(Left / Right)
         2.clientHeight
@@ -15,8 +15,7 @@
             6.document.documentElement.clientHeight || document.body.clientHeight;
             //->部分浏览器不识别用document.documentElement来操作浏览器的一些盒子模型属性,我们需要使用document.body来操作,所以需要写两套;
             案例:
-                需求:
-                    让当前盒子处于页面水平和垂直都居中的位置(可能不知道盒子的宽度和高度);
+                需求: 让当前盒子处于页面水平和垂直都居中的位置(可能不知道盒子的宽度和高度);
                 思路:
                     1.获取一屏幕的宽度和高度
                         var winW = document.documentElement.clientWidth || document.body.clientWidth;
@@ -28,13 +27,13 @@
                         box.style.position = "absolute";
                         box.style.top = (winH - boxH)/2 + "px";
                         box.style.left = (winW - boxW)/2 + "px";
-    2.offset系列(2个)
+    2).offset系列(2个)
         5.offsetWidth
             offsetWidth = clientWidth + border(Left / Right);
         6.offsetHeight
             offsetHeight = clientHeight + border(Top / Bottom);
             和内容是否溢出没有关系
-    3.scroll系列(2个)
+    3).scroll系列(2个)
         7.scrollWidth
             1.没有内容溢出
                 scrollWidth = clientWidth
@@ -49,8 +48,7 @@
                 //->因为同一个浏览器设置overflow和不设置获取的结果有所区域
                 //->不同浏览器获取的结果也不尽相同
             案例:
-                需求:
-                    获取一个页面看不见部分的高度;
+                需求: 获取一个页面看不见部分的高度;
                 思路:
                     1.获取整个页面的真实高度
                         var trueH = document.documentElement.scrollHeight || document.body.scrollHeight;
@@ -60,170 +58,195 @@
                         var hiddenH = trueH - winH;
 
 
-    4.关于盒子的偏移量(3个)
-        1.offsetParent
-            获取当前元素的父级参照物
-
-            1.默认情况下,
-        2.offsetLeft
+    4).offset: 盒子的偏移量(3个),获取页面中的任意元素距离BODY的左偏移和上偏移 (不论父级参照物是谁)
+        9.offsetParent
+            获取当前元素的父级参照物;
+            1.默认情况下，所有元素的父级参照物都是body，body的父级参照物是null;
+            2.如果我们设置了position:relative/absolute/fixed，当前元素的父级参照物是 距离其最近的并且设置position样式的祖先元素;
+        10.offsetLeft
             获取当前元素距离父级参照物的左偏移
             inner.offsetParent = outer
             1.从inner的外边框 到 outer的内边框 = inner距离其父级参照物的左偏移;
             偏移量在大部分浏览器中是不算父级参照物的边框的,但是在纯正的IE8下,也会把父级参照物的边框算在内;
-        3.offsetTop
+        11.offsetTop
             获取当前元素距离父级参照物的上偏移
-        offset:
-            获取页面中的任意
-    5.关于滚动条(2个)
-        1.scrollLeft
-        2.scrollTop
-            滚动条卷去的宽度和高度;
 
+    5).scroll: 滚动条(2个)
+        12.scrollLeft: 滚动条卷去的宽度;
+        13.scrollTop: 滚动条卷去的高度;
             //->在13个JS盒子模型属性中,只有这两个属性是"可读写",其余的属性都是"只读"的;
-            //->两个属性可以设定的之存在边界范围
+            //->两个属性可以设定的值存在边界范围
                 最小值: 0;->达到最顶端了;
                 最大值: 整个页面的高度scrollHeight - 可视窗口的高度clientHeight;->到最底端了;
 
             //->JS盒子模型中的属性,如果操作的元素是浏览器(页面),为了兼容都需要写两套;document.documentElement...|| document.body...
-                封装一个方法win: 操作有关于浏览器的盒子模型属性;这个方法不需要传参,操作浏览器的;
-                win方法:
-                function win(attr,value){
-                    //->value: 设置
-                    if(typeof value !== "undefined"){
-                        document.documentElement[attr] = value;
-                        document.body[attr] value;
-                        return;
+
+
+二.DOM库封装: 获取/设置元素具体的CSS样式(getCss/setCss/)
+    1).元素.style.样式属性
+        获取当前元素写在行内样式上的样式属性值,重点记住只能获取写在行内的样式,如果样式写在样式表中,我们通过这个操作是无法获取的;
+
+    2).getComputedStyle 和 currentStyle
+        //->获取当前元素所有经过浏览器计算的样式;
+        //->浏览器计算的样式: 只要是当前元素能在页面中展示,那么它的样式都是通过浏览器计算的,不管你写在哪,以及不管你写不写(有些样式不屑,浏览器也有默认样式);
+        //->getComputedStyle是window全局对象的一个属性方法,但是再IE6-8浏览器中不存在这个属性,IE低版本需要我们使用currentStyle来获取;
+
+    3).getCss案例:
+        需求: 获取当前元素的某一个样式属性(需要兼容所有的浏览器)
+        方法:
+            1.去掉获取值的单位;2.OPACITY的兼容处理;
+            curEle: 当前元素
+            attr: 当前元素的样式属性
+            function getCss(curEle, attr) {
+                var val = null;
+                if ('getComputedStyle' in window) {
+                    val = window.getComputedStyle(curEle, null)[attr];
+                } else {
+                    if (attr.toLowerCase() === 'opacity') {
+                        val = curEle.currentStyle['filter'];
+                        reg = /^alpha\(opacity=(.+)\)$/i;
+                        val = reg.test(val) ? reg.exec(val)[1] / 100 : 1;
+                    } else {
+                        val = curEle.currentStyle[attr];
                     }
-                    return document.documentElement[attr] || document.body[attr];
                 }
-
-
-
-
-
-二.DOM库封装(获取元素具体的CSS样式)
-    1.元素.style.样式属性
-        [curEle].style.[attr]: 获取当前元素写在行内样式上的样式属性值,重点记住只能获取写在行内的样式,如果样式写在样式表中,我们通过这个操作是无法获取的;
-
-    2.getComputedStyle 和 currentStyle
-        获取当前元素所有经过浏览器计算的样式;
-
-        浏览器计算的样式: 只要是当前元素能在页面中展示,那么它的样式都是通过浏览器计算的,不管你写在哪,以及不管你写不写(有些样式不屑,浏览器也有默认样式);
-        getComputedStyle是window全局对象的一个属性方法,但是再IE6-8浏览器中不存在这个属性,IE低版本需要我们使用currentStyle来获取;
-
-        案例:
-            需求:
-                获取当前元素的某一个样式属性(需要兼容所有的浏览器)
-            方法:
-                attr: 当前元素的样式属性
-
-                function getCss(curEle,attr){
-                    var val = null;
-                    if("getComputedStyle" in window){
-                        val = window.getComputedStyle(curEle,null)[attr];
-                    }else{
-                        if(attr.toLowerCase() === "opacity"){
-                            val = curEle.currentStyle["filter"];
-                            reg = /^alpha\(opacity=(.+)\)$/i;
-                            val = reg.test(val)?reg.exec(val)[1]/100 : 1;
-                        }else{
-                            val = curEle.currentStyle[attr];
-                        }
-                    }
-                    var temp = parseFloat(val);
-                    val = isNaN(temp) ? val : temp;
-                    return val;
-                }
-                //->第三章 第一节 课件2: 学习兼容浏览器处理常用的三种方式
-    3.设置元素的样式
-        两种方式(都很常用)
-        1.元素.style.样式属性 = 值;
-            设置元素的行内样式(会写3个方法)
-            setCss:
-            setGroupCss:
-            css:
-        2.元素.className = xxx;
-            首先在样式表中编写一些样式类名这句JS代码就是在设置元素的样式类名,从而让其具备某些特定的样式;(会写3个方法)
-            addClass:
-            removeClass:
-            hasClass:
-
-
-        周日再讲:
-
-
-
-
-
-    2.offset: 获取当前元素距离body的偏移量
-        function offset(curEle) {
-            //->1.先获得自己本身的左偏移和上偏移,以及自己的父级参照物;
-            var l = curEle.offsetLeft,
-                t = curEle.offsetTop,
-                p = curEle.offsetParent;
-            //->2.如果找到的父级参照物存在,并且还不是body,我们就要一直的向上查找.用while循环;
-            while(p && p !== document.body){
-                //->3.我们需要在原有的左(上)偏移量的基础上,加上父级参照物的以下两部分值:1.父级参照物的边框;2.加上父级参照物的偏移量;
-                //->(1)加父级参照物的边框(但是在纯正的IE8下(模拟器的不算)偏移量已经包含边框了,我们不需要再重复的加边框)
-                    //->判断IE8的方法: window.navigator.userAgent(获取当前浏览器的版本信息,IE8浏览器包含特定的字符: MSIE 8)
-                if(!/MSIE 8/i.test(navigator.userAgent)){
-                    l += p.clientLeft;
-                    t += p.clientTop;
-                }
-                //->(2)加上父级参照物的偏移量
-                l += p.offsetLeft;
-                t += p.offsetTop;
-                p = p.offsetParent;
+                var temp = parseFloat(val);
+                val = isNaN(temp) ? val : temp;
+                return val;
             }
-            //->把我们最后获取的L和T返回(一个对象)
-            return {left: l,top: t};
-        }
+
+    4).setCss案例:
+        需求: 设置某个元素的某一个样式属性(需要兼容所有的浏览器)
+        方法:
+            1.为没有单位的值添加单位;2.OPACITY的兼容处理;
+            function setCss(curEle, attr, value) {
+                if(attr.toLowerCase() === "opacity"){
+                    curEle.style.opacity = value;
+                    curEle.style.filter = "alpha(opacity = "+ (value*100)+")";
+                    return;
+                }
+                var unitReg = /^(opacity|zIndex|fontWeight)$/i;
+                if(!isNaN(value) && !unitReg.test(attr)){
+                    value += "px";
+                }
+                curEle["style"][attr] = value;
+            }
+
+    5).setGroupCss案例
+        需求: 批量设置元素的样式
+            function setGroupCss(curEle, options) {
+                if (Object.prototype.toString.call(options) !== '[object Object]') return;
+                for (var attr in options) {
+                    if (options.hasOwnProperty(attr)) {
+                        setCss(curEle, attr, options[attr]);
+                    }
+                }
+            }
+
+    6).css:
+        需求: 把上述三个方法综合到一个CSS方法中
+            function css() {
+                var arg = arguments,
+                    len = arg.length,
+                    fn = getCss;
+                if(len>=3) fn = setCss;
+                if(len === 2 && typeof arg[1] === "object") fn = setGroupCss;
+                return fn.apply(null,arg);
+            }
+
+    7).offset: 获取当前元素距离body的偏移量
+            function offset(curEle) {
+                //->1.先获得自己本身的左偏移和上偏移,以及自己的父级参照物;
+                var l = curEle.offsetLeft,
+                    t = curEle.offsetTop,
+                    p = curEle.offsetParent;
+                //->2.如果找到的父级参照物存在,并且还不是body,我们就要一直的向上查找.用while循环;
+                while(p && p !== document.body){
+                    //->3.我们需要在原有的左(上)偏移量的基础上,加上父级参照物的以下两部分值:1.父级参照物的边框;2.加上父级参照物的偏移量;
+                    //->(1)加父级参照物的边框(但是在纯正的IE8下(模拟器的不算)偏移量已经包含边框了,我们不需要再重复的加边框)
+                        //->判断IE8的方法: window.navigator.userAgent(获取当前浏览器的版本信息,IE8浏览器包含特定的字符: MSIE 8)
+                    if(!/MSIE 8/i.test(navigator.userAgent)){
+                        l += p.clientLeft;
+                        t += p.clientTop;
+                    }
+                    //->(2)加上父级参照物的偏移量
+                    l += p.offsetLeft;
+                    t += p.offsetTop;
+                    p = p.offsetParent;
+                }
+                //->把我们最后获取的L和T返回(一个对象)
+                return {left: l,top: t};
+            }
+
+    8).win: 操作有关于浏览器的盒子模型属性;这个方法不需要传参,操作浏览器的;
+            function win(attr,value){
+                //->value: 设置
+                if(typeof value !== "undefined"){
+                    document.documentElement[attr] = value;
+                    document.body[attr] value;
+                    return;
+                }
+                return document.documentElement[attr] || document.body[attr];
+            }
+
 
 三.综合实战: 图片懒加载(图片延迟加载)
-    刚开始打开页面(渲染页面)的时候,我们不加载真实的图片,先用一张很小的默认图片(最好是10kb以内,1keb最好)占位;等页面(有时候也是第一屏)渲染完成,用户已经看到内容了,我们再依次加载真实的图片(还有更好的方式: 先把第一屏幕的真是图片加载,当用户拉动到具体区域的时候,再把当前区域的真实图片加载);
-    作用: 加载页面第一屏幕的渲染速度;
+    1.概述:
+        刚开始打开页面(渲染页面)的时候,我们不加载真实的图片,先用一张很小的默认图片(最好是10kb以内,1keb最好)占位;等页面(有时候也是第一屏)渲染完成,用户已经看到内容了,我们再依次加载真实的图片(还有更好的方式: 先把第一屏幕的真是图片加载,当用户拉动到具体区域的时候,再把当前区域的真实图片加载);
+    2.作用:
+        加载页面第一屏幕的渲染速度;
+    3.思路分析:
+        图片完全展示的条件:
+            A: 浏览器底边框距离"顶一屏幕body"的距离
+            B: 图片底边框距离"顶屏幕body"的距离
+            B <= A: 就是图片完全出现在用户的视野中
+            A = 页面.clientHeight + 页面.scrollTop
+            B = 图片.offsetHeight + 图片距离body的上偏移(今天下午封装offset方法获取的就是这个值);
+            什么时候做这些事情?
+            ->当浏览器的滚动条滚动的时候,我们按照上述的思路去做判断处理
+            window.onscroll就是这个事件(当浏览器滚动事件): 当浏览器的滚动条滚动的时候,触发这个事件执行;
+
+    4.代码如下:
+            var oBox = document.getElementById('box'),
+                boxImg = oBox.getElementsByTagName('img')[0];
+            window.onscroll = function () {
+                var A = utils.win('clientHeight') + utils.win('scrollTop'),
+                    B = oBox.offsetHeight + utils.offset(oBox)['top'];
+                if (A >= B) {
+                    if (boxImg.isLoad) return;
+                    boxImg.isLoad = true;
+                    //->以下是直接的使用页面中的IMG来操作的,会存在一个问题:如果加载不成功,我们把错误的地址也赋值给页面IMG的SRC了,这样不好；真实的项目中,我们都是先临时创建一个IMG,来试加载真实的图片,如果能加载我们在把地址给页面中的IMG,不能加载我们则不做处理
+                    // boxImg.src = boxImg.getAttribute('data-src');
+                    // boxImg.onload = function () {
+                    //     utils.css(this, 'display', 'block');
+                    // };
+
+                    // var oTempImg = document.createElement('img');
+                    var oTempImg = new Image;//=>等同于上面的方式,临时创建一张图片
+                    oTempImg.src = boxImg.getAttribute('data-src');
+                    oTempImg.onload = function () {
+                        //->this:oTempImg
+                        boxImg.src = this.src;
+                        utils.css(boxImg, 'display', 'block');
+                        oTempImg = null;
+                    };
+                }
+            };
 
 
+五.作业:
+    //->第三章 第一节 课件2: 学习兼容浏览器处理常用的三种方式
 
 
-
-
-
-
-图片完全展示的条件:
-	A: 浏览器底边框距离"顶一屏幕body"的距离
-	B: 图片底边框距离"顶屏幕body"的距离
-	B <= A: 就是图片完全出现在用户的视野中
-	A = 页面.clientHeight + 页面.scrollTop
-    B = 图片.offsetHeight + 图片距离body的上偏移(今天下午封装offset方法获取的就是这个值);
-    什么时候做这些事情?
-    ->当浏览器的滚动条滚动的时候,我们按照上述的思路去做判断处理
-    window.onscroll就是这个事件(当浏览器滚动事件): 当浏览器的滚动条滚动的时候,触发这个事件执行;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+六.设置元素的样式
+    两种方式(都很常用)--(今天下午讲)
+    1.元素.style.样式属性 = 值;
+        设置元素的行内样式(会写3个方法)
+        setCss:
+        setGroupCss:
+        css:
+    2.元素.className = xxx;--(周日2017.08.13再讲)
+        首先在样式表中编写一些样式类名这句JS代码就是在设置元素的样式类名,从而让其具备某些特定的样式;(会写3个方法)
+        addClass:
+        removeClass:
+        hasClass:

@@ -1,47 +1,73 @@
 一.检测数据类型类库
-    封装了一个检测数据类型的类库;
+    ~function () {
+        var obj = {
+            isNumber: 'Number',
+            isString: 'String',
+            isBoolean: 'Boolean',
+            isNull: 'Null',
+            isUndefined: 'Undefined',
+            isPlanObject: 'Object',
+            isArray: 'Array',
+            isRegExp: 'RegExp',
+            isDate: 'Date',
+            isFunction: 'Function'
+        };
+        var checkType = {};
+        for (var key in obj) {
+            if (!obj.hasOwnProperty(key)) continue;
 
-二.设置元素CSS样式的类库
-    function setCss(curEle, attr, value) {
-        if (attr.toLowerCase() === 'opacity') {
-            curEle.style.opacity = value;
-            curEle.style.filter = 'alpha(opacity=' + value * 100 + ')';
-            return;
+            checkType[key] = (function () {
+                var className = obj[key];
+                return function (val) {
+                    var reg = new RegExp('\\[object ' + className + '\\]');
+                    return reg.test(Object.prototype.toString.call(val));
+                }
+            })();
         }
-        var unitReg = /^(width|height|((margin|padding)?(top|left|right|bottom)?))$/i;
-        unitReg.test(attr) && !isNaN(value) ? value += 'px' : null;
-        curEle['style'][attr] = value;
-    }
+        window.checkType = checkType;
+    }();
 
-三.批量设置元素CSS样式的类库
-    function setGroupCss(curEle, options) {
-        if (Object.prototype.toString.call(options) !== '[object Object]') return;
-        for (var attr in options) {
-            if (options.hasOwnProperty(attr)) {
-                setCss(curEle, attr, options[attr]);
-            }
-        }
-    }
+二.获取元素CSS样式属性值的类库
+      function getCss(curEle, attr) {
+          var val = null,
+              reg = null;
+          if ('getComputedStyle' in window) {
+              val = window.getComputedStyle(curEle, null)[attr];
+          } else {
+              if (attr.toLowerCase() === 'opacity') {
+                  val = curEle.currentStyle['filter'];
+                  reg = /^alpha\(opacity=(.+)\)$/i;
+                  val = reg.test(val) ? reg.exec(val)[1] / 100 : 1;
+              } else {
+                  val = curEle.currentStyle[attr];
+              }
+          }
+          reg = /^-?\d+(\.\d+)?(px|em|rem)?$/i;
+          reg.test(val) ? val = parseFloat(val) : null;
+          return val;
+      }
 
-四.获取元素CSS样式属性值的类库
-    function getCss(curEle, attr) {
-        var val = null,
-            reg = null;
-        if ('getComputedStyle' in window) {
-            val = window.getComputedStyle(curEle, null)[attr];
-        } else {
+三.设置元素CSS样式的类库
+        function setCss(curEle, attr, value) {
             if (attr.toLowerCase() === 'opacity') {
-                val = curEle.currentStyle['filter'];
-                reg = /^alpha\(opacity=(.+)\)$/i;
-                val = reg.test(val) ? reg.exec(val)[1] / 100 : 1;
-            } else {
-                val = curEle.currentStyle[attr];
+                curEle.style.opacity = value;
+                curEle.style.filter = 'alpha(opacity=' + value * 100 + ')';
+                return;
             }
+            var unitReg = /^(width|height|((margin|padding)?(top|left|right|bottom)?))$/i;
+            unitReg.test(attr) && !isNaN(value) ? value += 'px' : null;
+            curEle['style'][attr] = value;
         }
-        reg = /^-?\d+(\.\d+)?(px|em|rem)?$/i;
-        reg.test(val) ? val = parseFloat(val) : null;
-        return val;
-    }
+
+四.批量设置元素CSS样式的类库
+      function setGroupCss(curEle, options) {
+          if (Object.prototype.toString.call(options) !== '[object Object]') return;
+          for (var attr in options) {
+              if (options.hasOwnProperty(attr)) {
+                  setCss(curEle, attr, options[attr]);
+              }
+          }
+      }
 
 五.实现获取,单独设置,批量设置元素的样式属性
     //->css: 实现获取,单独设置,批量设置元素的样式属性(第一种方法)
@@ -128,10 +154,24 @@
     //->有最大值,真是页面的高度(document.documentElement.scrollHeight || document.body.scrollHeight) - 可视窗口的高度(document.documentElement.clientHeight || document.body.clientHeight)
 
 
-九.回到顶部封装
+九.实战案例: 回到顶部
+    var goLink = document.getElementById("goLink");
+    goLink.onclick = function () {
+        //->设置一个定时器,让其每隔第一段时间在现有的scrollTop基础上减去我们的步长,一直减到小于等于0为止;
+        var timer = window.setInterval(function () {//->window.setInterval中,window.可以省略
+            //->获取当前scrollTop值
+            var curTop = utils.win("scrollTop");
+            //->如果现有的st的值,已经小于等于0,说明已经回到顶部了,那么操作这个动画的定时器应该停止,结束当前的动画;
+            if(curTop <=0){
+                clearInterval(timer);
+            }
+            //->步长就是1000,在现有的scrollTop基础上减去我们的步长(步长越大走的越快,反之步长越小走的越慢)
+            curTop -= 1000;
+            //->让浏览器运动到最新步长的位置
+            utils.win("scrollTop",curTop);
 
-
-
+        },17);//->一般都写17毫秒
+    };
 
 
 十.思考题
@@ -141,8 +181,6 @@
     2.当第一次点击回到顶部,开始我们的动画,接下来再来再点击这个按钮应该不会有任何的操作才可以,直到当前的动画完成(回到顶部了),再次点击这个按钮才会有作用=>"动画运动期间,防止按钮的重复点击"
 
     3.当回到顶部的动画正在运行中,但是我们滚动了鼠标的滚轮,此时应该立即结束当前正在运行的动画,以用户接下来的手动操作为准(京东淘宝等都没有实现这个功能,功能实现起来比较复杂)
-
-
 
 
 十一.定时器
@@ -168,14 +206,5 @@
 
 
 navigator.userAgent  在控制台输入,可显示浏览器的版本号;
-
-
-
-
-
-
-
-
-
 
 

@@ -17,7 +17,7 @@ goLink.onclick = function () {
             clearInterval(timer);
         }
         //->步长就是1000,在现有的scrollTop基础上减去我们的步长(步长越大走的越快,反之步长越小走的越慢)
-        curTop -= 10;
+        curTop -= 1000;
         //->让浏览器运动到最新步长的位置
         utils.win("scrollTop",curTop);
 

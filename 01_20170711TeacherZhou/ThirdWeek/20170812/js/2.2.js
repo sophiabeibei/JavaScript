@@ -25,7 +25,7 @@ function setCss(curEle, attr, value) {
         curEle.style.filter = "alpha(opacity = "+ (value*100)+")"
         return;
     }
-    var unitReg = /^(opancity|zIndex|fontWeight)$/i;
+    var unitReg = /^(opacity|zIndex|fontWeight)$/i;
     if(!isNaN(value) && !unitReg.test(attr)){
         value += "px";
     }

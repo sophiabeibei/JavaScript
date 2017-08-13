@@ -20,7 +20,7 @@ function byClass(strClass, context) {
     }
     return ary;
 }
-console.log(byClass("w1 w2").length);
+//console.log(byClass("w1 w2").length);
 
 
 

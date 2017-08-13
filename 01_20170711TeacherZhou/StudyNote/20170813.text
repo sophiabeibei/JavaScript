@@ -1,0 +1,236 @@
+一.响应式布局案例: 腾讯新闻App资讯列表
+    1.why responsive web design
+        一个页面(h5页面),在不同尺寸的屏幕设备上,都能够良好的展示;
+
+    2.如何编写响应式布局页面
+        1.媒体查询法(百分比布局(流式布局))
+
+        2.REM等比缩放布局
+
+        3.flexbox弹性盒模型布局
+
+        这周我们就先初窥一下下响应式布局(移动端的)
+
+二.实战案例: TXNewsList
+        1.第一步: 设置viewport;<!--meta:vp tab-->
+            <meta name="viewport"
+                      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                      这句话的意思是: 设置viewport(设置当前视口)的规则;
+            content="width=device-width: 让当前html页面的宽度和设备(手机,pad...)的宽度保持一致,不设置的情况下,不管设备有多宽,html页面默认的宽度是980或者是1024;
+            user-scalable=no: 禁止用户手动缩放(放大和缩小);
+            initial-scale=1.0(初始), maximum-scale=1.0(放大), minimum-scale=1.0(缩小): 初始,最大,最小的缩放比例都是1:1,页面既不会放大也不会缩小;
+
+        2.搭建html架构
+            <!--ul.newsItem#newsItem>li>img+h3+p-->
+        3.写JS代码
+            1.获取JSON数据
+            2.延迟加载
+            3.实现图片的小动画(opacity从0到1的过程)
+三.DOM库封装
+    1.prev: 获取上一个哥哥元素节点
+        function prev(curEle) {
+            if("previousElementSibling" in curEle){
+                return curEle.previousElementSibling;
+            }
+            var p = curEle.previousElementSibling;
+            while (p && p.nodeType !== 1){
+                p = p.previousSibling;
+            }
+            return p;
+        }
+
+    2.next: 获取下一个弟弟元素节点
+        function next(curEle) {
+            if("nextElementSibling" in curEle){
+                return curEle.nextElementSibling;
+            }
+            var n = curEle.nextSibling;
+            while (n && n.nodeType !== -1){
+                n = n.nextSibling;
+            }
+            return n;
+        }
+
+    3.prevAll: 获取所有的哥哥元素节点
+        function prevAll(curEle) {
+            var ary = [],
+                p = curEle.previousSibling;
+            while (p){
+                if(p.nodeType === 1){
+                    //ary.push(p);//-> [li#li3, li#li2, li#li1]
+                    ary.unshift(p);//->[li#li1, li#li2, li#li3]
+                }
+                p = p.previousSibling;
+            }
+            return ary;
+        }
+
+    4.nextAll 获取所有的弟弟元素节点
+        function nextAll(curEle) {
+            var ary = [],
+                n = curEle.nextSibling;
+            while (n){
+                if(n.nodeType === 1){
+                    ary.push(n);
+                }
+                n = n.nextSibling;
+            }
+            return ary;
+        }
+
+    5.sibling: 获取有的兄弟元素节点
+        function siblings(curEle) {
+            return prevAll(curEle).concat(nextAll(curEle));
+        }
+
+    6.index: 获取当前元素的索引
+        function index(curEle) {
+            return prevAll(curEle).length;
+        }
+
+    7.firstChild: 获取当前容器的第一个元素子节点
+        function firstChild(curEle) {
+            var f = curEle.firstChild;
+            while (f && f.nodeType !== 1){
+                f = f.firstChild;
+            }
+            return f;
+        }
+
+    8.lastChild: 获取当前容器的最后一个元素子节点
+        function lastChild(curEle) {
+            var l = curEle.lastChild;
+            while (l && l.nodeType !== 1){
+                l = l.previousSibling;
+            }
+            return l;
+        }
+
+    9.children: 获取容器所有的元素子节点
+        function children(curEle,tag) {
+            var ary = [],
+                nodeList = curEle.childNodes;
+            for (var i = 0; i < nodeList.length; i++) {
+                var cur = nodeList[i];
+                if(cur.nodeType ===1){
+                    if(typeof tag !== "undefined"){
+                        cur.tagName.toUpperCase() === tag.toUpperCase() ? ary.push(cur) : null;
+                        continue;
+                    }
+                    ary.push(cur);
+                }
+            }
+            return ary;
+        }
+
+    10.byClass: 通过元素的样式类名来获取一组元素(获取当前容器所有的元素子节点)
+        1.假设法
+        function byClass(strClass, context) {
+            context = context || document;
+            var ary = [],
+                tagList = context.getElementsByTagName("*");
+            strClass = strClass.replace(/^ +| +$/g, "").split(/ +/g);
+            for (var i = 0; i < tagList.length; i++) {
+                var curTag = tagList[i],
+                    curTagClass = curTag.className;
+                var isMatch = true;
+                for (var k = 0; k < strClass.length; k++) {
+                    var reg = new RegExp("(^| +)" + strClass[k] + "( +|$)");
+                    if(!reg.test(curTagClass)){
+                        isMatch = false;
+                        break;
+                    }
+                }
+                isMatch ?ary.push(curTag): null;
+            }
+            return ary;
+        }
+
+        2.排除法
+        function byClass(strClass, context) {
+            context = context || document;
+            var ary = [],
+                tagList = context.getElementsByTagName("*");
+            strClass = strClass.replace(/^ +| +$/g, "").split(/ +/g);
+            for (var i = 0; i < tagList.length; i++) {
+                var curTag = tagList[i],
+                    curTagClass = curTag.className;
+                for (var k = 0; k < strClass.length; k++) {
+                    var reg = new RegExp("(^| +)" + strClass[k] + "( +|$)");
+                    if(!reg.test(curTagClass)){
+                        ary.length--;
+                        break;
+                    }
+                }
+            }
+            return ary;
+        }
+
+    10.hasClass: 检测当前元素是否包含某些样式类名
+        function hasClass(curEle, strClass) {
+            var curEleClass = curEle.className,
+                isMatch = true;
+            strClass = strClass.replace(/^ +| +$/g,"").split(/ +/g);
+            for (var i = 0; i < strClass.length; i++) {
+                var reg = new RegExp("(^| +)"+strClass[i]+"( +|$)");
+                if(!reg.test(curEleClass)){
+                    isMatch = false;
+                    break;
+                }
+            }
+            return isMatch;
+        }
+
+    11.addClass: 给当前元素增加样式类名
+        function addClass(curEle, strClass) {
+            strClass = strClass.replace(/^ +| +$/g,"").split(/ +/g);
+            for (var i = 0; i < strClass.length; i++) {
+                var curClass = strClass[i];
+                if(hasClass(curEle,curClass)){
+                    continue;
+                }
+                curEle.className += "" + curClass;
+            }
+            curEle.className = curEle.className.replace(/ +/g," ");
+        }
+
+    12.removeClass: 移除当前元素的某一个样式类名
+        function removeClass(curEle, strClass) {
+            strClass = strClass.replace(/^ +| +$/g,"").split(/ +/g);
+            var originalClass = curEle.className.replace(/ +/g,"  ");
+            for (var i = 0; i < strClass.length; i++) {
+                var curClass = strClass[i];
+                if(hasClass(curEle,curClass)){
+                    var reg = new RegExp("(^| )"+curClass+"( |$)","g");
+                    originalClass = originalClass.replace(reg,"");
+                }
+            }
+            originalClass = originalClass.replace(/ +/g," ").replace(/^ +| +$/g,"");
+            curEle.className = originalClass;
+        }
+
+四.作业
+    1.扩充(这个不讲,自己回去看视频)
+        第三周/第三章/第三节/课件5;知识点两个: 1.prepend;2.insertAfter
+    2.补课
+        可能是一天晚上,可能是两天晚上(周二三四抽查两天)
+        补课内容: 课件第三周/第三章/第三节/课件12(选项卡插件化);插件化开发用到了构造原型开发
+        补课内容2: 花瓣网瀑布流(找别的老师给讲)
+    3.考试
+        多张图片懒加载,周六晚上(周末班的学生)
+        表格排序没过的,周二晚上补考(全日制)
+        多张图片懒加载,周四晚上考试(全日制)
+    4.预习(周末班学生)
+        第四周周六课程: 动画库/轮播图/jQuery
+        预习内容: 第四周第一节所有内容都看完;
+        第三节轮播图(渐隐渐现版)周末班的课程---这是第五周讲的内容;
+        第5节和第6节统一是五六周扩展的;jQuery轮播图周末班不讲
+        第四章: 第四节可以先不预习,简单!!
+
+        replace正则实战
+
+    5.预习(全日制)
+        复习
+        周二早上来了DOM库的考察;再过一下DOM库内容;
+        第二节轮播图(左右运动版)全日制的课程
+        周四考 多张图片延迟加载

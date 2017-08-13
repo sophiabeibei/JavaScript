@@ -34,7 +34,7 @@ function next(curEle) {
 //->获取所有的哥哥元素节点
 //->getPrevAll
 function prevAll(curEle) {
-    //->基于但钱的元素一直向上查找,直到找到头为止;在查找的过程中,我们把所有是元素节点存起来;
+    //->基于当前的元素一直向上查找,直到找到头为止;在查找的过程中,我们把所有是元素节点存起来;
     var ary = [],
         p = curEle.previousSibling;
     while (p){

@@ -2,7 +2,7 @@
 //=>children: 它在IE6-8下会把注释也当作元素节点来处理
 //=>childNodes: 获取所有的子节点
 //=>思路: 先获取所有的子节点,遍历集合,把所有的nodeType===1的保存起来;
-// function chhildren(curEle) {
+// function children(curEle) {
 //     //->先获取所有的子节点
 //     var ary = [],
 //         nodeList = curEle.childNodes;
@@ -21,7 +21,7 @@
 // ================================
 //->需求升级: 我们不仅要获取元素子节点,而且还想能够通过指定标签名来获取到指定标签元素子节点
 //=>例如: 当前案例中,我们想获取list中的所有div
-// function chhildren(curEle,tag) {
+// function children(curEle,tag) {
 //     var ary = [],//->存的所有元素子节点
 //         nodeList = curEle.childNodes;
 //     for (var i = 0; i < nodeList.length; i++) {
@@ -52,7 +52,7 @@
 // ================================
 //->需求再次升级:
 //=>传tag和不传tag的区别
-function chhildren(curEle,tag) {
+function children(curEle,tag) {
     var ary = [],
         nodeList = curEle.childNodes;
     for (var i = 0; i < nodeList.length; i++) {
@@ -72,3 +72,4 @@ function chhildren(curEle,tag) {
     }
     return ary;
 }
+//->获取容器所有的元素子节点;

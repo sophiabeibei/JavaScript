@@ -42,4 +42,4 @@ function byClass(strClass, context) {
     }
 }
 
-//byClass: 获取当前容器所有的元素子节点
+//byClass: 通过元素的样式类名来获取一组元素

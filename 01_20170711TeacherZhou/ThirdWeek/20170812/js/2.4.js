@@ -19,7 +19,7 @@ function getCss(curEle, attr) {
 function setCss(curEle, attr, value) {
     if (attr.toLowerCase() === "opacity") {
         curEle.style.opacity = value;
-        curEle.style.filter = "alpha(opacity = " + (value * 100) + ")"
+        curEle.style.filter = "alpha(opacity = " + (value * 100) + ")";
         return;
     }
     var unitReg = /^(opancity|zIndex|fontWeight)$/i;

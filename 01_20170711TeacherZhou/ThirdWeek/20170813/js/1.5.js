@@ -22,3 +22,5 @@ function byClass(strClass, context) {
     return ary;
 }
 console.log(byClass("w1 w2").length);
+
+//->假设法

@@ -25,13 +25,13 @@ function setGroupCss(curEle,options) {
         }
     }
 }
-setGroupCss(box,{
+/*setGroupCss(box,{
     width: 300,
     opacity: 0.5,
     height: 200,
     overflow: "hidden",
     margin: "20px auto"
-});
+});*/
 
 
 

@@ -32,25 +32,4 @@ function byClass(strClass, context) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//->假设法

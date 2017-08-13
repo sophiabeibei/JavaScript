@@ -26,26 +26,4 @@ function byClass(strClass, context) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//byClass: 通过元素的样式类名来获取一组元素

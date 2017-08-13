@@ -59,21 +59,3 @@ function children(curEle, tag) {
     }
     return ary;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
