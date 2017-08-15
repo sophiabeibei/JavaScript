@@ -1,0 +1,344 @@
+一.头脑风暴(DOM库中的方法)
+    1.children(李梦真(3)/王彬翊(2))
+        抄:
+        1.prev
+        2.prevAll
+        3.next
+        4.nextAll
+        5.sibling
+        6.index
+        7.firstChild
+        8.lastChild
+        9.children
+    2.getCss(冉俊俊(5)康晶(0))
+        抄:
+        1.getCss
+        2.setCss
+        3.setGroupCss
+        4.css
+        5.byClass
+        6.hasClass
+        7.addClass
+        8.removeClass
+    3.setCss(薛辈辈(4)李睿(1))
+        抄:
+        1.getCss
+        2.setCss
+        3.setGroupCss
+        4.css
+        5.byClass
+        6.hasClass
+        7.addClass
+        8.removeClass
+    4.addClass(何晓凤(5)王潇潇(0))
+        抄:
+        1.getCss
+        2.setCss
+        3.setGroupCss
+        4.css
+        5.byClass
+        6.hasClass
+        7.addClass
+        8.removeClass
+    5.byClass(高婷婷(5)郝新杰(2))
+        抄:
+        1.getCss
+        2.setCss
+        3.setGroupCss
+        4.css
+        5.byClass
+        6.hasClass
+        7.addClass
+        8.removeClass
+
+二.压缩封装的方法库
+    网址: tool.css-js.com
+    1.压缩方式一:
+        用google->ugLify压缩(选项中排除"不安全")
+        这个方法不能解压缩;
+    2.压缩方式二:
+        用JSpacker加密(压缩)
+        这个方法可以解密(解压)
+
+三.学习没跟上的学生
+    建议狂练习的案例有:
+        1.表格排序
+        2.延迟加载
+        3.DOM库
+
+四.待完善的工作:
+    1.关于utils文件
+        1.把utils文件补充完;
+        2.把补充完的utils文件覆盖之前所有的utils文件
+        3.把一个utils文件放在最外层方便将来使用;
+        4.记录有那些文件中有utils文件;
+
+五.JS高阶编程
+    1.JS高阶编程技巧之惰性思想
+        //->第一次加载页面,再给utils赋值的时候,执行一个自执行函数,形成一个不销毁的私有作用域,在这个作用域中定义一个变量来存储当前的浏览器是否兼容某个属性或者方法;
+        //->以后在getCss等其他的方法中,如果再需要判断是否兼容,就没必要再检测一次了,直接使用这个变量即可;
+        //->总结: 能够执行一次就解决的,绝对不执行多次;这种"懒思想"就是惰性思想;基于惰性思想构造的单利模式就叫"高级单利模式";
+            var utils = (function () {
+                var isCompatible = "getComputedStyle" in window;//->isCompatible 兼容   这种检测的方法就执行一次;懒惰思想(高级单利模式)
+                function getCss(curEle,attr) {
+                    if(isCompatible){
+                        return window.getComputedStyle(curEle,null)[attr];
+                    }else{
+                        return curEle.currentStyle[attr];
+                    }
+                }
+                return {
+                    getCss : getCss
+                }
+            })();
+            utils.getCss();
+            utils.getCss();
+            utils.getCss();
+            utils.getCss();
+            utils.getCss();
+
+    2.JS的惰性思想之重构函数
+        //->第一次执行函数,我们判断兼容哪一个,然后把方法进行重新赋值,让其值等于兼容的那一个即可,第二次及以后再执行的时候,直接的运行重构的方法,告别了复杂的判断;
+            function getCss(curEle, attr) {
+                if("getComputedStyle" in window){
+                    getCss = function (curEle, attr) {//->重构函数
+                        return window.getComputedStyle(curEle,null)[attr];
+                    };
+                }else{
+                    getCss = function (curEle, attr) {//->重构函数
+                        return curEle.currentStyle[attr];
+                    };
+                }
+                return getCss(curEle, attr);
+            }
+            console.log(getCss(document.body, "background"));
+
+六.字符串方法replace练习
+    思考题:
+        1、时间字符串格式化
+            var str = '2017-8-9 16:43:5';
+            //->把这个字符串可以变为 'xxxx年xx月xx日 xx时xx分xx秒' / 'xx-xx xx:xx 08-09 16:43' ... 变为一切你想需要的格式;
+
+            //->1.方法一 李玲
+                var str = '2017-8-9 16:43:5',
+                    ary = [],
+                    result = null;
+                var reg = /^(\d{4})-(\d{1,2})-(\d{1,2})\s+(\d{1,2}):(\d{1,2}):(\d{1,2})$/;
+
+                ary = reg.exec(str);
+                for (var i = 0; i < ary.length; i++) {
+                    if(ary[i].length<2){
+                        ary[i] = "0" + ary[i]
+                    }
+                }
+                result = ary[1]+"年"+ary[2]+"月"+ary[3]+"日"+ary[4]+"时"+ary[5]+"分"+ary[6]+"秒";
+                console.log(result);
+
+            //->2.方式二 赵盈盈
+                var str = '2017-8-9 16:43:5',
+                    ary = [];
+                ary = str.split(/(?:-| +|:|\/)/g);
+                // var reg = /\d+/g;
+                // for (var i = 0; i < str.length; i++) {
+                //     if(reg.test(str[i])){
+                //         ary.push(str[i]);
+                //     }
+                // }
+                var str1 = "{0}年{1}月{2}日 {3}时{4}分{5}秒";
+                str1 = str1.replace(/\{(\d+)\}/g, function () {
+                    var index = arguments[1],
+                        value = ary[index];
+                    return value.length < 2 ? "0" + value : value;
+                });
+                console.log(str1);
+
+            //->3.方式三 周啸天
+                String.prototype.myFormatTime = function myFormatTime(template) {
+                    //->this: str 我们需要格式化时间的字符串
+                    var ary = this.match(/\d+/g),
+                        result = template || "{0}年{1}月{2}日 {3}时{4}分{5}秒";
+                    result = result.replace(/\{(\d+)\}/g,function(){
+                        var index = arguments[1],
+                            value = ary[index] || 0;
+                        return value.length<2?"0"+value:value;
+                    });
+                    return result;
+                };
+
+                var str = '2017-8-9 16:43:5';
+                console.log(str.myFormatTime());
+                console.log(str.myFormatTime("{1}-{2} {3}:{4}"));
+                console.log(str.myFormatTime("{0}年{1}月{2}日"));
+
+            //->4.方式四 王天明
+                var str = '2017-8-9 16:43:5',
+                    firstSplit = str.split(" "),
+                    secSplit = firstSplit[0].split("-"),
+                    thiSplit = firstSplit[1].split(":");
+                function addZero(number) {
+                    return number<10?"0"+number:number;
+                }
+                var result = secSplit[0] + '年' + addZero(secSplit[1]) + '月' + addZero(secSplit[2]) + '日 ' + addZero(thiSplit[0]) + '时' + addZero(thiSplit[1]) + '分' + addZero(thiSplit[2]) + '秒';
+                console.log(result);
+
+            //->5.方式五 转换为标准的时间格式数据
+                function addZero(number) {
+                    return number<10?"0"+number:number;
+                }
+                var str = '2017-8-9 16:43:5',
+                    time = new Date(str.replace(/-/g,"/"));//->IE下只能支持xxxx/xx/xx这种日期格式
+                var year =  time.getFullYear(),
+                    month =addZero(time.getMonth() + 1),
+                    day = addZero(time.getDate()),
+                    hours = addZero(time.getHours()),
+                    minutes = addZero(time.getMinutes()),
+                    seconds = addZero(time.getSeconds()),
+                    result = year + '年' + month + '月' + day + '日 ' + hours + '时' + minutes + '分' + seconds + '秒';
+                console.log(result);
+
+            //->6.方式六
+                var str = '2017-8-9 16:43:5';
+                var reg = /(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/;
+                str = str.replace(reg, '$1年$2月$3日 $4时$5分$6秒');
+                console.log(str);
+
+            //->7.方式七
+                 var str = '2017-8-9 16:43:5';
+                 var reg = /(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/;
+                str = str.replace(reg, function (a, n1, n2, n3, n4, n5, n6) {
+                    console.log(arguments); //["2017-8-9 16:43:5", "2017", "8", "9", "16", "43", "5", 0, "2017-8-9 16:43:5", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+                   return n1 + '年' + n2 + '月' + n3 + '日 ' + n4 + '时' + n5 + '分' + n6 + '秒'
+                });
+                console.log(str);
+
+            //->8.方式八
+                var time = ['年', '月', '日', '时', '分', '秒'];
+                var n = 0; // 记录索引
+                var reg = /(\d+)[:-]?/g;
+                var str = '2017-8-9 16:43:05';
+                str = str.replace(reg, function (a, b) {
+                   // 2018- 2018
+                   //  console.log(b + time[n++]); // 2018 + time[0] 2018年
+                   return b + time[n++];
+                });
+                console.log(str);
+
+            //->9.方式九
+                var str = '2017/7/23 18:00:00';
+                var time = new Date(str);
+                var year = time.getFullYear();
+                var month = addZero(time.getMonth() + 1);
+                var day = addZero(time.getDate());
+                var hours = addZero(time.getHours());
+                var minutes = addZero(time.getMinutes());
+                var seconds = addZero(time.getSeconds());
+                var result = year + '年' + month + '月' + day + '日 ' + hours + '时' + minutes + '分' + seconds + '秒';
+                console.log(result);
+                //->不足十位前面补零
+                function addZero(val) {
+                    val = Number(val);
+                    return val < 10 ? '0' + val : val;
+                }
+
+            //->10.方式十
+                  var time = ['年', '月', '日', '时', '分', '秒'];
+                var n = 0; // 记录索引
+                var str = '2018-05-12 18:00:40';
+                //    str.split(/[- :]/) // split 支持正则
+                //    console.log(str.split(/ /));
+                //    console.log(str.split(/\s/));
+                // console.log(str.split(/[- :]/)); // ["2018", "05", "12", "18", "00", "40"]
+                var arr = str.split(/[- :]/);
+                str = str.replace(/\d+[-:]?/g, function () {
+                    //       2018- => arr[0]+''+time[0]   05- => arr[1]+ '' +time[1]
+                    var str2 = arr[n] + '' + time[n];
+                    n++;
+                    return str2;
+                });
+                console.log(str);
+
+            //->11.方式十一: 模板引擎
+                //需求: 2017-01-01 18:00:40 => 2017年01月01日 18时00分40秒
+                var str = '2018-05-12 18:00:40';
+                var tempStr = '{0}年{1}月{2}日 {3}时{4}分{5}秒'; // 模板字符串
+                var arr = str.split(/[: -]/); //  ["2018", "05", "12", "18", "00", "40"]
+                    //console.log(arr);
+                str = tempStr.replace(/\{(\d+)\}/g, function (a, b) {
+                    // arr[0] => {0} arr[1] => {1} arr[2] => {2}
+                    return arr[b];
+                });
+                console.log(str);
+
+
+        2、URL参数格式化
+            var url = 'http://www.zhufengpeixun.com/index.html?name=zxt&age=28&sex=1&type=0';
+            //->问号以后的都是`URL问号传参值`，接下里我们要把问号后面的信息拆解成为对象的键值对;
+            //->{name:'zxt',age:28,sex:1,type:0}
+
+            //->方法一: 字符串拼接
+                var url = 'http://www.zhufengpeixun.com/index.html?name=zxt&age=28&sex=1&type=0';
+                var obj = {},
+                    parameter = url.split("?")[1];//->"name=zxt&age=28&sex=1&type=0"
+                if (parameter) {//->当前url种有问号参数
+                    var ary = parameter.split("&");
+                    for (var i = 0; i < ary.length; i++) {
+                        var item = ary[i];//->"xxx=xxx"把等号左边作为对象的属性名,右边是对象的属性值
+                        //->方式一:
+                        // item = item.split("=");
+                        // var key = item[0],
+                        //     value = item[1];
+                        //->方式二:
+                        var index = item.indexOf("="),
+                            key = item.substring(0, index),
+                            value = item.substring(index + 1);
+                        obj[key] = value;
+                    }
+                }
+                console.log(obj);
+
+            //->方法二: 正则处理
+                var url = 'http://www.zhufengpeixun.com/index.html?name=zxt&age=28&sex=1&type=0';
+                var obj = {},
+                    reg = /([^?&=]+)=([^?&=]+)/g;//->当前正则匹配的是xxx=xxx
+                url.replace(reg,function () {
+                    obj[arguments[1]] = arguments[2];
+                });
+                console.log(obj);
+
+            //->方法三: 还是正则处理
+                var url = 'http://www.zhufengpeixun.com/index.html?name=zxt&age=28&sex=1&type=0';
+                //->把URL问号传递的参数值格式化为一个JSON对象
+                String.prototype.myQueryURLParameter = function myQueryURLParameter() {
+                    //->this: url 我们需要处理的url地址
+                    var obj = {},
+                        reg = /([^?&=]+)=([^?&=]+)/g;
+                    this.replace(reg,function () {
+                        //console.log(arguments[1]);//->arguments[1] 是属性名key  arguments[2]是属性值value
+                        obj[arguments[1]] = arguments[2];
+                    });
+                    return obj;
+                };
+                console.log(url.myQueryURLParameter());
+
+            //->方法四:
+                var url = 'http://www.zhufengpeixun.com/index.html?name=zxt&age=28&sex=1&type=0';
+                var reg = /([\w-]+)=([\w-]+)/g;
+                var obj = {};
+                url.replace(reg, function (a, b, c) {
+                    obj[b] = c;
+                });
+                console.log(obj);
+
+            //->方法五:
+                var url = 'http://www.zhufengpeixun.com/index.html?name=zxt&age=28&sex=1&type=0';
+                var reg = /([^?&=]+)=([^?&=]+)/g;
+                var obj = {};
+                url.replace(reg, function () {
+                    obj[arguments[1]] = arguments[2];
+                });
+                console.log(obj);
+
+        3、回到顶部案例优化
+            没讲;留着自己研究;到第四周学完后再研究这个都不是问题了;
+
+<完>

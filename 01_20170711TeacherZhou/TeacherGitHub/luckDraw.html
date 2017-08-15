@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-第八期随机抽奖系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            margin: 20px auto;
+            width: 400px;
+            line-height: 100px;
+            border: 4px dashed red;
+            font-size: 60px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .move {
+            background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-animation: textMove 2s infinite;
+            animation: textMove 2s infinite;
+        }
+
+        @-webkit-keyframes textMove {
+            0% {
+                -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                -webkit-filter: hue-rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes textMove {
+            0% {
+                -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                -webkit-filter: hue-rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .link {
+            display: block;
+            width: 200px;
+            line-height: 50px;
+            font-size: 30px;
+            border: 1px solid black;
+            text-decoration: none;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="box move" id="box">--</div>
+<a href="javascript:;" class="box link" id="link">坑队友</a>
+
+
+<script src="luckDraw.js"></script>
+</body>
+</html>

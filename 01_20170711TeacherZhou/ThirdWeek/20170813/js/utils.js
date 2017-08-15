@@ -2,11 +2,15 @@
 //->utils: 整个项目的公共方法库(使用单利模式封装)
 var utils = (function (){
 
-    //->toArray: converts a like array into an array(把类数组转换成数组)
+    /**
+     * toArray: converts a like array into an array(把类数组转换成数组)
+     * @param likeAry:
+     *
+     * */
     function toArray(likeAry){
         var ary = [];
         try{
-            ary = [].slice.call(likeAry);
+            ary = [].slice.call(likeAry);//->slice不兼容IE
         }catch(e){
             var len = likeAry.length;
             for (var i = 0; i < len; i++) {
@@ -189,7 +193,13 @@ var utils = (function (){
 
 
     //20170813下午封装
-    //->children: 获取容器所有的元素子节点;
+    /**
+     * children: 获取容器所有的元素子节点;
+     * @param curEle: 元素名
+     * @param tag: 标签名
+     * @return Array
+     * By iBei 2017-08-13
+     * */
     function children(curEle,tag) {
         var ary = [],
             nodeList = curEle.childNodes;
@@ -205,6 +215,14 @@ var utils = (function (){
         }
         return ary;
     }
+
+
+    /**
+     * byClass: getElementsByClassName的兼容处理;在指定上下文中,通过传递的样式类名,获取拥有这些样式类的元素;
+     * @param: strClass
+     * @param: context
+     * @return: Array
+     * */
 
     //->byClass: 通过元素的样式类名来获取一组元素(排除法)
 
@@ -297,9 +315,9 @@ var utils = (function (){
     return {
         toArray: toArray,
         toJSON: toJSON,
+        getCss : getCss,
         setCss :setCss,
         setGroupCss : setGroupCss,
-        getCss : getCss,
         css : css,
         offset : offset,
         win : win,
