@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StudyNote/20170711.txt" afterPath="$PROJECT_DIR$/StudyNote/20170711.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StudyNote/20170712.txt" afterPath="$PROJECT_DIR$/StudyNote/20170712.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -46,7 +46,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ThirdWeek/20170810/js/1.3.js" />
         <option value="$PROJECT_DIR$/ThirdWeek/20170810/js/utils1625.js" />
         <option value="$PROJECT_DIR$/ThirdWeek/20170810/js/2.1.js" />
         <option value="$PROJECT_DIR$/ThirdWeek/20170810/2.offset.html" />
@@ -97,6 +96,7 @@
         <option value="$PROJECT_DIR$/ThirdWeek/20170810/js/3.1.js" />
         <option value="$PROJECT_DIR$/StudyNote/20170810.text" />
         <option value="$PROJECT_DIR$/ThirdWeek/1.html" />
+        <option value="$PROJECT_DIR$/ThirdWeek/20170813/TXNewsList/js/utils.js" />
       </list>
     </option>
   </component>
@@ -152,7 +152,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -181,6 +180,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -196,19 +196,19 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\StudyNote" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20180812" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek\20170803\table" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\homeWork" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\PractiseMyself" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\TeacherGitHub\WEEK3\DAY5" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170813\js" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170813\TXNewsList\js" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170813\TXNewsList" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\StudyNote" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20180812" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\SecondWeek\20170803\table" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\homeWork" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\PractiseMyself" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -358,11 +358,12 @@
       <workItem from="1502556558232" duration="544000" />
       <workItem from="1502588434507" duration="35991000" />
       <workItem from="1502715835185" duration="70000" />
+      <workItem from="1502760694539" duration="439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="728302000" />
+    <option name="totallyTimeSpent" value="728741000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -376,7 +377,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16815476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16815476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -425,13 +426,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170808/tableSort/js/tableSort.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="38" column="24" lean-forward="false" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ThirdWeek/20170813/TXNewsList/css/index.css" />
     <entry file="file://$PROJECT_DIR$/ThirdWeek/20170813/TXNewsList/css/reset.min.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -581,24 +575,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170813/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="295" column="0" lean-forward="true" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudyNote/20170813.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="235" column="20" lean-forward="false" selection-start-line="235" selection-start-column="20" selection-end-line="235" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170812/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="301" column="34" lean-forward="true" selection-start-line="301" selection-start-column="34" selection-end-line="301" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -764,6 +744,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ThirdWeek/1.html" />
+    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170813/TXNewsList/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="319" column="5" lean-forward="false" selection-start-line="319" selection-start-column="5" selection-end-line="319" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170812/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170813/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
