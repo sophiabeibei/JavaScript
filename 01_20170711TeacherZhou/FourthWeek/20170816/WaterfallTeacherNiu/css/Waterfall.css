@@ -1,0 +1,59 @@
+*{
+    margin:0;
+    padding: 0;
+}
+ul{
+    list-style:none;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    width:962px;
+    margin:auto;
+    overflow: hidden;
+    background: #ccc;
+    padding:0 0 10px 10px;
+}
+.container ul{
+    width:230px;
+    margin-right:10px;
+    float:left
+}
+.container ul li{
+    width:100%;
+    border:1px solid #cccccc;
+    position: relative;
+    margin-top : 10px;
+    background: #ffffff;
+}
+.container ul li a{
+    display: none;
+    position: absolute;
+    top:3px;
+    left:3px;
+    width:60px;
+    text-align:center;
+    height:25px;
+    line-height: 25px;
+    background: pink;
+    color:#fff;
+    font-size:14px;
+}
+.container ul li:hover a{
+    display:block;
+}
+
+.container ul li img {
+    width: 100%;
+    height: 300px;
+    opacity: 0.3;
+    background: url("../images/timg.gif") no-repeat center;
+}
+
+.container ul li p {
+    width:100%;
+    padding-left:10px;
+    font-size: 14px;
+}
+
