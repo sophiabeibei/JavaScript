@@ -21,92 +21,60 @@
     <favorites_list name="01_20170711TeacherZhou" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.73899615">
+    <splitter split-orientation="horizontal" split-proportion="0.7875">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.77184916">
-          <split-first>
-            <leaf>
-              <file leaf-file-name="20170816.text" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/20170816.text">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="15">
-                      <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="1.timer.html" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/1.timer.html">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="195">
-                      <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="1.1.js" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/1.1.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="615">
-                      <caret line="45" column="51" lean-forward="false" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="51" />
-                      <folding>
-                        <element signature="n#!!doc" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="1.2.js" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/1.2.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="345">
-                      <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-                      <folding>
-                        <element signature="n#!!doc" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="1.3.js" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/1.3.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="315">
-                      <caret line="222" column="26" lean-forward="true" selection-start-line="222" selection-start-column="26" selection-end-line="222" selection-end-column="26" />
-                      <folding>
-                        <element signature="n#!!doc" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf>
-              <file leaf-file-name="20170816.text" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/20170816.text">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="810">
-                      <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
+        <leaf>
+          <file leaf-file-name="20170816.text" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/20170816.text">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="2.animation.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/2.animation.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="2.1.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/2.1.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="82" column="10" lean-forward="true" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="2.2.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/2.2.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="21" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="1.timer.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/1.timer.html">
+          <file leaf-file-name="2.animation.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/2.animation.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+                <state relative-caret-position="216">
+                  <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -140,10 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ThirdWeek/20180812/3.offset.html" />
-        <option value="$PROJECT_DIR$/ThirdWeek/20180812/js/3.1.js" />
-        <option value="$PROJECT_DIR$/ThirdWeek/20180812/20170812.text" />
-        <option value="$PROJECT_DIR$/ThirdWeek/20180812/js/utils.js" />
         <option value="$PROJECT_DIR$/ThirdWeek/20180812/js/4.1.js" />
         <option value="$PROJECT_DIR$/ThirdWeek/20180812/js/delay.js" />
         <option value="$PROJECT_DIR$/ThirdWeek/20180812/4.delay.html" />
@@ -188,9 +152,13 @@
         <option value="$PROJECT_DIR$/FourthWeek/20170815/20170815.text" />
         <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.1.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.2.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.3.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170816/20170816.text" />
         <option value="$PROJECT_DIR$/FourthWeek/20170816/1.timer.html" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.3.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.4.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170816/2.animation.html" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/2.2.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/2.1.js" />
       </list>
     </option>
   </component>
@@ -530,12 +498,12 @@
       <workItem from="1502715835185" duration="70000" />
       <workItem from="1502760694539" duration="30196000" />
       <workItem from="1502808976676" duration="1839000" />
-      <workItem from="1502847146036" duration="8120000" />
+      <workItem from="1502847146036" duration="13402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="768457000" />
+    <option name="totallyTimeSpent" value="773739000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,8 +516,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25074404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18154761" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -580,34 +549,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/js/3-1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/js/3-2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FirstWeek/20170729/js/4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FirstWeek/20170730/js/1.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FirstWeek/20170730/js/2.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -925,26 +866,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/20170816.text">
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/1.3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="150">
+          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/1.timer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        <state relative-caret-position="156">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/1.3.js">
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/20170816.text">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="222" column="26" lean-forward="true" selection-start-line="222" selection-start-column="26" selection-end-line="222" selection-end-column="26" />
+        <state relative-caret-position="150">
+          <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/2.2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/2.animation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/1.4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="43" column="58" lean-forward="false" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/2.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="82" column="10" lean-forward="true" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

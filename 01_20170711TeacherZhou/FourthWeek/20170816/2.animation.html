@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.animation: 让小球平移缓慢滚动</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .box{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+
+            /*CSS3的一个属性 border-radius: 圆角;如果是正方形,设置50%,盒子变成一个圆*/
+            border-radius: 50%;
+
+
+            /*备注:CSS3不兼容IE低版本浏览器,有的甚至连IE9都不兼容*/
+
+            /*另写一套兼容IE版本,如果不兼容CSS3属性,就使用这一套;*/
+            background: green;
+
+            /*CSS3中的背景颜色渐变: 1.linear-gradient按照指定方向的线性渐变;2.radial-gradient: 从正中心开始的放射性渐变*/
+            background: -webkit-radial-gradient(orange,red);
+
+
+
+
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+
+<script src="js/utils.js"></script>
+<script src="js/2.1.js"></script>
+</body>
+</html>
