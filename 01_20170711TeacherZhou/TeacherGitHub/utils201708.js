@@ -242,7 +242,7 @@ var utils = (function () {
         for (var i = 0; i < strClass.length; i++) {
             var item = strClass[i];
             if (hasClass(curEle, item)) continue;
-            curEle.className = ' ' + item;
+            curEle.className += ' ' + item;
         }
         curEle.className = curEle.className.replace(/^\s+|\s+$/g, '').replace(/\s+/g, ' ');
     }

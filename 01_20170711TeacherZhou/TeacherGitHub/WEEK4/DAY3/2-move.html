@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+
+<script src="js/utils201708.min.js"></script>
+<script src="js/animate.js"></script>
+<script>
+    //    animate(box, {
+    //        top: 300,
+    //        left: 500,
+    //        width: 200,
+    //        height: 200,
+    //        opacity: 0.5
+    //    }, animationEffect.Bounce.easeOut);
+
+    zhufengAnimate({
+        target: {
+            top: 300,
+            left: 500,
+            width: 200,
+            height: 200,
+            opacity: 0.5
+        },
+        curEle: box,
+        callBack: function () {
+            //->this:当前操作的元素
+            utils.css(this, 'background', 'green');
+        },
+        duration: 500,
+        effect: animationEffect.Bounce.easeOut
+    });
+</script>
+</body>
+</html>

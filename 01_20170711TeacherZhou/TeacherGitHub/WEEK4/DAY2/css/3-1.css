@@ -1,0 +1,46 @@
+html, body {
+    width: 100%;
+    height: 1000%;
+    background: -webkit-linear-gradient(top left, lightsalmon, lightpink, lightcoral, lightblue);
+}
+
+.dialogBg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 2000;
+    /*margin: -200px 0 0 -250px;
+    width: 500px;
+    height: 400px;*/
+    margin: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+
+    background: #FFF;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.dialog input[type='button'] {
+    display: block;
+    width: 100px;
+    line-height: 35px;
+}
+
+

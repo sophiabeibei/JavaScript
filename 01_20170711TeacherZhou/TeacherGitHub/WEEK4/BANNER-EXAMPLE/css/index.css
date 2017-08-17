@@ -1,0 +1,82 @@
+.container {
+    position: relative;
+    margin: 0 auto;
+    width: 1000px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.container .wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5000px;
+}
+
+.container .wrapper .slider {
+    display: block;
+    float: left;
+    width: 1000px;
+    height: 300px;
+    background: url("../img/default.gif") no-repeat center center #EEE; /*当图片没有加载的时候,用默认的背景图占位:为图片延迟加载做准备*/
+}
+
+.container .wrapper .slider img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.container .tip {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 999;
+}
+
+.container .tip li {
+    float: left;
+    margin-left: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    background: lightblue;
+    border-radius: 50%;
+}
+
+.container .tip li.bg {
+    background: red;
+}
+
+.container .btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    margin-top: -22.5px;
+    z-index: 999;
+    width: 30px;
+    height: 45px;
+    background: url("../img/pre.png") no-repeat;
+
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.container:hover .btn {
+    display: block;
+}
+
+.container .btn.btnLeft {
+    left: 20px;
+    background-position: 0 0;
+}
+
+.container .btn.btnRight {
+    right: 20px;
+    background-position: -45px 0;
+}
+
+.container .btn:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

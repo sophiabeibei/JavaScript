@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-轮播图(第一版)</title>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+<!--
+  container：外层容器
+  wrapper：内层容器,存放所有图片的
+  slider：其中一张图片所在的区域,每一个里面都有一个IMG
+
+  轮播图的原理：控制wrapper在container中来回左右运动即可,所有的slider都在wrapper中水平平铺
+-->
+<div class="container">
+    <!--BANNER-->
+    <div class="wrapper clear">
+        <a class="slider" href="javascript:;"><img src="img/banner1.jpg" alt=""></a>
+        <a class="slider" href="javascript:;"><img src="img/banner2.jpg" alt=""></a>
+        <a class="slider" href="javascript:;"><img src="img/banner3.jpg" alt=""></a>
+        <a class="slider" href="javascript:;"><img src="img/banner4.jpg" alt=""></a>
+        <a class="slider" href="javascript:;"><img src="img/banner1.jpg" alt=""></a>
+    </div>
+
+    <!--TIP-->
+    <ul class="tip clear">
+        <li class="bg"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <!--BTN-->
+    <a href="javascript:;" class="btn btnLeft"></a>
+    <a href="javascript:;" class="btn btnRight"></a>
+</div>
+
+<script src="js/utils.min.js"></script>
+<script src="js/animate.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

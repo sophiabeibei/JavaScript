@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .box {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+
+            /*CSS3中设置盒子圆角的属性:如果当前的盒子是个正方形,设置50%,盒子会变为一个圆*/
+            border-radius: 50%;
+
+            /*CSS3中背景颜色渐变:linear-gradient按照指定方向的线性渐变  radial-gradient从正中心开始的放射性渐变*/
+            background: red;
+            background: -webkit-radial-gradient(orange, red);
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+
+<script src="js/utils201708.min.js"></script>
+<script src="js/2-6.js"></script>
+</body>
+</html>
