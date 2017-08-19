@@ -1,0 +1,296 @@
+//==================定时器的部分
+一.setInterval
+    设置一个定时器,等待[interval]这么长时间后,会把[function]执行,以后每间隔[interval]这么长的时间,都会重新的再次把[function]执行,直到手动的去清除定时器为止;
+    window.setInterval([function],[interval])
+
+
+二.setTimeout
+    设置一个定时器,等待[interval]这么长时间后,执行[function],执行完成当前定时器停止工作(不是定时器清除,而是不工作了而已),相对于与setInterval来说,setTimeout执行依次就结束了
+    window.setTimeout([function],[interval])
+
+三.清除定时器
+    (clearInterval/clearTimeout)
+
+四.第三个参数
+    定时器再语法上还支持第三个参数,第三个参数写的值,是在函数执行的时候,给函数传递的实参值(在IE9及以下版本的浏览器补兼容);
+    window.setTimeout(function(str){
+        console.log(str);//->"i am parameter"
+    },1000,"i am parameter")
+
+五.改this
+    真实项目中,我们往往不仅向到达时间后执行一个函数,而且有时候需要改变这个函数中的this以及函数传递的一些参数
+
+    1.定时器改this(call/apply不能改)
+        var obj = {name: "zhufeng"};
+        window.setTimeout(function (num) {
+            //->使用call或者apply
+            //->在设置定时器的时候就把当前的匿名函数执行了,把函数执行的结果赋值给了定时器<=>setTimeout;返回结果是undefined;(也就是1000ms后执行的是undefined,不是我们想要的效果)
+            console.log(this===window);//->true
+        }.call(obj,100),1000);
+
+    2.定时器改this(bind可以改,但不兼容)
+        window.setTimeout(function (num) {
+            //->使用bind(bind在IE6-8下不兼容)
+            //->谁用bind可以解决这个问题,bind仅仅是预先把函数中的this和参数都准备好,设置定时器的时候,第一个参数还依然是个函数,当1000ms后执行函数,此时函数中的this已经是预先设置的obj了,num的值也是预先设定好的100这个值;
+            console.log(this===window);//->true
+        }.call(obj,100),1000);
+
+
+
+六.把一个值存储起来,用以下两个
+    //->自定义属性
+    //->闭包
+
+七.bind的执行机制(闭包机制,形成不销毁的私有作用域)
+    //->利用了闭包可以保存内容的机制: 在设置定时器的时候,我们预先形成一个不销毁的闭包(把需要的this和um提前通过call改变了),在这函数中返回一个小函数给定时器,1000ms后执行返回的小函数,在小函数中我们可以通过作用域链的机制找到需要obj以及num;
+    //->这种思想就是柯理化函数思想,所谓柯理化思想就是保存this;
+        var obj ={name: "zhufeng"};
+        window.setTimeout(function (num) {
+            //->this: obj  num=100
+            var _this=this;
+            // console.log(this===obj,num);//->true,100
+            return function(){
+                //->1000ms后执行的是返回的小函数,把我们需要处理的事情放在小函数中即可
+                console.log(num);//->不是小函数私有的变量,找上一级作用域中的num,也就是100
+                console.log(this);//->this: window
+                console.log(_this);//->_this: obj
+            }
+        }.call(obj,100),1000);
+
+八.定时器的返回值
+    定时器的返回结果: 数字;
+    设置一个定时器(setInterval/setTimeout),都会有返回值,返回值是要给数字,代表当前是第几个定时器;随着设置定时器的增多,当前这个数字会一直累加(类似于去银行办理业务领取的排队号);IE浏览器中也有返回值,也是一个数字,但是数字有点跳跃([刷新页面时]google下定时器计数的起始值是1,IE中是从上次的结束值开始累加,并没有清除前面的值;[关闭页面时]IE的定时器的这个值便会从1开始);
+
+九.清除定时器
+    clearInterval([number])
+    或者:
+    clearTimeout([number])
+    我们清除定时器的时候,我们只需要把一个数字传递进来,那么就清除了当前序号代表的定时器;(重点: 不管是用什么方法设置的(setInterval/setTimeout),这两种方法都可以相把定时器清除掉)
+    范例:
+        var timer1 = setInterval(function(){
+            clearTimeout(timer1);//->也可以用clearTimeout把定时器清除掉,只不过为了保证语义化,我们最好使用哪个方法设置的,就使用哪个方法把它清除掉即可,这里最好使用clearInterval;
+        },1000);
+
+    当我们把页面中的某一个定时器的序号清除掉之后,后面排队号是顺着捋下来的,不会发生塌陷的改变;(也就说当再设置一个新的定时器,会继续基于最后一个序号累加[其实就是我们去银行办业务的那个逻辑])
+
+十.定时器中的递归思想
+    1.setInterval具有递归思想;
+    2.setTimeout去实现setInterval思想原理: 基于递归思想
+    范例:
+    //->需求: 每间隔一秒钟我们都在原来的基础上累加1,当累加到五的时候,结束这个的操作
+        1.setInterval 实现
+            var n = 0;
+            var timer = window.setInterval(function () {
+                console.log(++n);//->
+                if(n>=5){
+                    clearInterval(timer);
+                }
+            },1000);
+
+        2.setTimeout去实现setInterval思想原理: 基于递归思想
+            var timer = null,
+                n = 0;
+            function fn() {
+                //->执行fn之前的第一步: 把上一次没用的那个定时器清除掉
+                window.clearTimeout(timer);
+                console.log(++n);//->1
+                if(n>=5){
+                    //->已经到达最后的阶段了,结束后将不再执行fn,我们也就没必要再设置新的定时器了
+                    return;
+                }
+                timer = window.setTimeout(fn,1000);//->每一次执行fn结束后,为了过一秒再次执行fn,我们再重新设置一个定时器
+            }
+            timer = setTimeout(fn,1000);
+
+
+
+
+
+十一.同步和异步编程
+    同步:
+1)定时器
+    1.定时器的同步编程
+        范例一: 定时器是1000ms
+        var n = 0;
+        window.setTimeout(function () {
+            console.log(++n);//->第二个输出: 1
+        },1000);
+        clearInterval(n);//->先输出,0
+
+    2.定时器的异步编程
+    2.setTimeout鉴证浏览器的最小反应时间
+      范例二: 定时器是0ms
+      //->定时器的等待时间设置为零也不是立即执行: 浏览器在处理一件事情的时候,会有一个最小的反应时间,我们写零浏览器是反应不过来的(谷歌一般最小的反应时间是5~6ms,IE是10-13ms,这个值会根据当前电脑cpu性能能来决定的,每个人的不太一样)
+      var n = 0;
+      window.setTimeout(function () {
+          console.log(++n);//->第二个输出: 1
+      },0);//->5~6
+      clearInterval(n);//->先输出,0
+
+  3.定时器的等待时间的先后顺序: 时间到了不一定执行
+    //->定时器设定了等待时间,到达时间后也不一定执行,看当前主任务队列中是否有任务正在执行呢,如果有任务在执行,到时间后也依然需要继续等待(JS是单线程的)
+    var n = 0;
+    window.setTimeout(function () {
+        console.log(++n);//->2)1
+    },0);
+    for(var i=0;i<1000000000;i++){
+        //->循环10亿次
+    }
+    console.log(n);//->1)0
+
+    4.定时器的while循环: 死循环
+      //->此时的队列中遇到了死循环,浏览器永远空闲下不下来,定时器等不到执行的那一天了(真实项目中要杜绝出现死循环: 出现死循环什么就做不了了);
+      var n = 0;
+      window.setTimeout(function () {
+          console.log(++n);
+      },0);
+      while(1==1){
+          //->死循环
+      }
+
+  5.定时器的执行顺序: 多条任务同时到时间
+    //->当主任务队列的任务完成后,会到等待任务队列中,把到时间的任务执行;如果好多任务都到时间了,谁先到的,我们先执行谁;如果时间都很短,而且很相近,有些时候浏览器执行顺序混乱(可以理解为浏览器的bug)
+    window.setTimeout(function () {
+        console.log(1);//->第3次打印
+    },100);
+
+    window.setTimeout(function () {
+        console.log(2);//->第1次打印
+    },0);
+
+
+    window.setTimeout(function () {
+        console.log(3);//->第2次打印
+    },50);
+    for (var i = 0; i < 1000000000; i++) {
+        //->循环10亿次: 需要大概3-4s,上面所有的定时器都到时间了
+    }
+
+
+2)事件绑定
+    所有的事件绑定也都是异步编程;
+        oImg.onload = function(){
+            //->当图片加载成功后执行这个匿名函数
+            alert("img is load success~");//->如果成功,第2次打印这个
+        };
+        oImg.onload = function(){
+            //->当图片加载失败后执行这个匿名函数
+            alert("img is load error~");//->如果失败,第2次打印这个
+        };
+        alert("img is loading~");//->第1次打印
+
+
+
+3)AJAX
+    AJAX中也可以设置异步编程;
+    //->AJAX中也可以设置异步编程
+    var xhr = new XMLHttpRequest;
+    xhr.open("GET","地址",false);//->写false: 同步;  不写或者写true: 异步;
+
+
+4)总结:
+1.JS中同步(sync)或者异步(async)编程是一个非常重要的知识点,也是高级前端开发工程师应该必须掌握的技能;
+
+2.promise: 这个设计模式就是处理异步编程的;
+
+
+
+
+
+
+
+
+
+编写JS就是为了处理一个个任务的,写的每一行JS都可以理解为是任务;
+主任务队列:
+
+
+我们处理的事情都是在主任务队列完成的
+所谓的同步编程: 在主任务当中,JS代码自上而下执行,上面的代码没有完成,下面代码就不能执行;这就是=>"同步编程"
+
+
+for(){
+     //->当前代码会循环10万次
+}
+alert("ok");//->只有当上面的循环任务结束后,才会继续执行下面的代码
+
+
+
+
+
+
+十二.应用定时器实现JS动画
+    //->真正项目中,我们的动画基本上就有两种:
+    1.不限定运动的时间: 规定的是步长(每隔多长时间走多远),我们控制需要运动的元素,在现有的基础上,累加步长即可;
+    2.限定运动时间: 在规定时间之内,完成需求的动画;这个就需要我们获取总距离,总时间等信息,然后按照运动的公式来处理了;
+
+
+
+
+十三.不限定时间的匀速运动
+    需求: 让橙色的盒子
+    1.代码: 用setInterval实现
+        var box = document.getElementById("box");
+        //->获取左边界和右边界的left值
+        var minL = 0,
+            maxL = utils.win("clientWidth")-box.offsetWidth;
+        //->假设我们设定步长为10px,接下来我们让当前元素在现有的left基础上累加步长,就可以实现向右运动的动画了;
+
+        //->重点2(自定义属性): 真实项目当中为了避免全局变量的污染: 我们定时器的返回值不要定义在全局变量,而是设定在当前元素的自定义属性上;(而且在任何的作用域中或者任何的位置,如果有需要我们都可以通过自定义属性的方式获取到这个结果)
+        box.timer = window.setInterval(function () {
+            var curL = utils.css(box,"left");//->获取当前的left值
+            //->重点1(边界判断): 为了防止多走一步会超过边界,少走一步到不了边界,我们JS实现动画的时候,边界判断都是加上步长来处理的(相当于模拟走一步看情况,如果模拟走一步超过了边界,我们直接让其运动到边界即可)
+
+            if(curL>=maxL){
+                utils.css(box,"left",maxL);
+                window.clearInterval(box.timer);
+                return;
+            }
+
+
+            curL+=10;//->在现有的基础上累加步长实现当前这一步动画
+
+            utils.css(box,"left",curL);
+        },17);//->我们设置动画的时候,时间因子一般都设置为17ms,也就是每隔17ms运动一步,17是在各个浏览器中动画效果相对流畅的一个值;
+
+
+
+    2.基于上一个案例实现向左走,向右运动
+
+十四.限定时间的匀速动画
+    需求还是沿袭上面的需求,只不过规定从左边界到达右边界总时间需要1000ms;
+
+    //-------两个关键词: 总时间1000ms   匀速
+    //总时间
+    //总距离
+    //目前所在的位置(34ms的位置) = 34ms/总时间1000ms
+    //走过的距离 = 34ms/总时间1000ms * 总距离
+    //剩余的距离 = 34ms/总时间1000ms * 总距离 + 起始位置
+
+
+
+    //=>总时间1000ms                       D
+    //=>匀速                              B
+    //=>总距离: 目标位置-起始位置            C
+    //=>已经走的时间                        T
+
+    //=>限定时间的匀速动画: 就是随时获取到当前元素的位置即可,让元素运动到这个位置,一直到总时间结束,就完成了动画;
+    //->T/D: 已经走过的时间占总时间的百分比(我们已经走过百分之多少了);
+    //->T/D*C: 已经走过的百分比乘以总距离= 已经走过的具体距离(走过的距离);
+    //->T/D*C+B: 已经走过的距离+起始位置=当前的位置(当前我们应该所在的位置;)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

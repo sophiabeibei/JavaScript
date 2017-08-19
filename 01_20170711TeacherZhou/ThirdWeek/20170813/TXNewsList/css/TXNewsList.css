@@ -43,5 +43,9 @@ html,body{
     font-size: 12px;
     color: #999;
     line-height: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;/*控制出现的行数*/
+    overflow: hidden;
 }
 
