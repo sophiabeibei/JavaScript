@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "img": "img/banner1.jpg",
+    "desc": "读书不觉已春深，一寸光阴一寸金",
+    "link": "https://github.com/sophiabeibei"
+  },
+  {
+    "id": 2,
+    "img": "img/banner2.jpg",
+    "desc": "云想衣裳花想容，春风拂槛露华浓",
+    "link": "http://es6.ruanyifeng.com/#docs/function"
+  },
+  {
+    "id": 3,
+    "img": "img/banner3.jpg",
+    "desc": "春风得意马蹄疾，一日看尽长安花",
+    "link": "http://www.swiper.com.cn/"
+  },
+  {
+    "id": 4,
+    "img": "img/banner4.jpg",
+    "desc": "天街小雨润如酥，草色遥看近却无",
+    "link": "http://www.zhufengpeixun.cn/"
+  }
+]

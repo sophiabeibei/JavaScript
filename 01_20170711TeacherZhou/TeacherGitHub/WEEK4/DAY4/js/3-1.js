@@ -37,3 +37,19 @@ box.timer = window.setInterval(function () {
     utils.css(box, 'left', curL);
 }, 17);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

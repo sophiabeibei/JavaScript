@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StudyNote/20170711.txt" afterPath="$PROJECT_DIR$/StudyNote/20170711.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StudyNote/20170712.txt" afterPath="$PROJECT_DIR$/StudyNote/20170712.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,7 +21,75 @@
     <favorites_list name="01_20170711TeacherZhou" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <splitter split-orientation="horizontal" split-proportion="0.81512606">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="20170820.text" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/20170820.text">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="405">
+                  <caret line="203" column="12" lean-forward="true" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="12" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="jquery-1.11.3.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/jquery-1.11.3.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="617">
+                  <caret line="2857" column="41" lean-forward="true" selection-start-line="2857" selection-start-column="41" selection-end-line="2857" selection-end-column="41" />
+                  <folding>
+                    <element signature="e#76649#78864#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="1.1.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/1.1.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="225">
+                  <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+                  <folding>
+                    <marker date="1503226375593" expanded="true" signature="25:187" ph="/** @param selector: jQuery的选择器 ...*/" />
+                    <marker date="1503226375593" expanded="true" signature="238:480" ph="{...}" />
+                    <marker date="1503226375593" expanded="true" signature="251:412" ph="//..." />
+                    <marker date="1503226375593" expanded="true" signature="526:601" ph="{&quot;constructor&quot;: jQuery...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="1.1.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/1.1.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-480">
+                  <caret line="160" column="19" lean-forward="true" selection-start-line="160" selection-start-column="19" selection-end-line="160" selection-end-column="19" />
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="1.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/1.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -43,7 +111,18 @@
       <find>offset</find>
       <find>img</find>
       <find>minL</find>
+      <find>animate</find>
+      <find>回掉</find>
+      <find>掉</find>
+      <find>箱</find>
+      <find>setCss</find>
+      <find>height</find>
+      <find>Query.fn</find>
     </findStrings>
+    <replaceStrings>
+      <replace>调</replace>
+      <replace>项</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -51,33 +130,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/WaterfallTeacherNiu/css/reset.min.css" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/WaterfallTeacherNiu/WaterfallTeacherNiu.html" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/WaterfallTeacherNiu/js/Waterfall.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.1.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.2.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.3.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/js/1.4.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170816/20170816.text" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/js/1.1.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/js/1.3forEach.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/20170817.text" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/1.callBack.html" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/js/1.2.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/js/1.replace.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/js/2.move.html" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/2.move.html" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/js/2.1.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/js/animate.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/js/animate1500.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/js/banner-example.html" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-example/banner-example.html" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-example/json/banner.json" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-example/css/banner-example.css" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-example/js/banner-example.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170819/1.setInter.html" />
         <option value="$PROJECT_DIR$/FourthWeek/20170819/js/1.4.js" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170819/20170819.text" />
         <option value="$PROJECT_DIR$/ThirdWeek/TXNewsList/css/TXNewsList.css" />
         <option value="$PROJECT_DIR$/ThirdWeek/TXNewsList/js/TXNewsList.js" />
         <option value="$PROJECT_DIR$/TeacherGitHub/WEEK3/DAY5/index.html" />
@@ -102,6 +162,25 @@
         <option value="$PROJECT_DIR$/FourthWeek/20170819/js/3.2.js" />
         <option value="$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/3-3.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170819/4.dialog.html" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/js.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170819/20170819.text" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/js/animate1026.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/js/animate1007.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/js/animate1025.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/1.move.html" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/js/animate.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/js/1.1.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/js/1.forEach.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/json/banner.json" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/banner-filter.html" />
+        <option value="D:/DeleteTeacherZhouGitHub/JavaScript201708/WEEK4/BANNER-FADE/js/index.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/js/banner-filter.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-example/js/banner-example.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/css/banner-filter.css" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/jQuery/1.html" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/JQ-SELECTOR.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/1.1.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170820/20170820.text" />
       </list>
     </option>
   </component>
@@ -156,8 +235,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -183,6 +260,10 @@
               <option name="myItemId" value="FourthWeek" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170820" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -198,12 +279,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="20170819" />
+              <option name="myItemId" value="20170820" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170820" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -219,19 +346,19 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\jQuery\js" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\BANNER-FADE\js" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\js" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170816\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\animate" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170813\TXNewsList" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\TXNewsList" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170817\banner-example" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170817" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\StudyNote" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170819\css" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170819\js" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170819" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170817\banner-example\js" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170817\banner-example\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -399,11 +526,12 @@
       <workItem from="1503127232660" duration="8675000" />
       <workItem from="1503136188815" duration="7399000" />
       <workItem from="1503146938579" duration="3533000" />
+      <workItem from="1503188527489" duration="31857000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="865521000" />
+    <option name="totallyTimeSpent" value="897378000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -415,23 +543,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20089285" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.114583336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47954175" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47954175" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -443,338 +572,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/jquery-1.11.3.min.js" />
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/luckDraw.js" />
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/1.setInter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../06_201705TeacherNiu/SeventhWeek/20170628/8.h5页面.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/TXNewsList/css/TXNewsList.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="48" column="21" lean-forward="true" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/20170819.text">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="266" column="32" lean-forward="false" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/luckDraw.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="67" lean-forward="false" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/计时器.html" />
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK3/DAY5/js/index1123.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="67" column="28" lean-forward="true" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK3/DAY5/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK3/DAY5/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="24" column="8" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/TXNewsList/TXNewsList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/TXNewsList/css/TXNewsList.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/TXNewsList/js/TXNewsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170813/TXNewsList/css/TXNewsList.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="47" column="35" lean-forward="false" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/TXNewsList/js/TXNewsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/TXNewsList/TXNewsList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThirdWeek/20170813/TXNewsList/img/1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/1-2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/1.3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="50" column="18" lean-forward="true" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/1.2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/1-3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/1.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="53" column="136" lean-forward="true" selection-start-line="53" selection-start-column="136" selection-end-line="53" selection-end-column="136" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/1-4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/1.4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-615">
-          <caret line="28" column="70" lean-forward="true" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/2-1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/2.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/2-2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/2.2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/2-3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/2.3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/2.4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/2-4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/2-5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/2.5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/2.move.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/2-move.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/3-1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/3.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/3-move.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/3.move.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/3.2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="32" column="20" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/js/3-2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -782,7 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -790,7 +595,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,7 +602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-225">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -806,7 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -829,6 +631,565 @@
     <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/修改WS快捷模板.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER-FADE/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER-FADE/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER-FADE/json/banner.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER-FADE/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/img/banner1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/img/banner2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/img/banner3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/img/banner4.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/img/default.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/animate/js.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/js/3.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="26" column="15" lean-forward="true" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170819/20170819.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="274" column="14" lean-forward="false" selection-start-line="274" selection-start-column="8" selection-end-line="274" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/animate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#6321#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170816/js/animate1007.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2670">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/js/animate1025.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="261" column="28" lean-forward="false" selection-start-line="261" selection-start-column="28" selection-end-line="261" selection-end-column="28" />
+          <folding>
+            <element signature="e#36#220#0" expanded="false" />
+            <element signature="e#253#290#0" expanded="false" />
+            <element signature="e#342#7325#0" expanded="false" />
+            <element signature="e#399#444#0" expanded="false" />
+            <element signature="e#484#1454#0" expanded="false" />
+            <element signature="e#528#622#0" expanded="false" />
+            <element signature="e#667#1155#0" expanded="false" />
+            <element signature="e#712#784#0" expanded="false" />
+            <element signature="e#810#906#0" expanded="false" />
+            <element signature="e#934#1033#0" expanded="false" />
+            <element signature="e#1039#1141#0" expanded="false" />
+            <element signature="e#1202#1444#0" expanded="false" />
+            <element signature="e#1235#1337#0" expanded="false" />
+            <element signature="e#1489#1940#0" expanded="false" />
+            <element signature="e#1533#1593#0" expanded="false" />
+            <element signature="e#1638#1705#0" expanded="false" />
+            <element signature="e#1752#1930#0" expanded="false" />
+            <element signature="e#1792#1857#0" expanded="false" />
+            <element signature="e#1976#2445#0" expanded="false" />
+            <element signature="e#2020#2084#0" expanded="false" />
+            <element signature="e#2129#2206#0" expanded="false" />
+            <element signature="e#2253#2435#0" expanded="false" />
+            <element signature="e#2293#2362#0" expanded="false" />
+            <element signature="e#2481#2968#0" expanded="false" />
+            <element signature="e#2525#2593#0" expanded="false" />
+            <element signature="e#2638#2720#0" expanded="false" />
+            <element signature="e#2767#2958#0" expanded="false" />
+            <element signature="e#2807#2880#0" expanded="false" />
+            <element signature="e#3004#3505#0" expanded="false" />
+            <element signature="e#3048#3120#0" expanded="false" />
+            <element signature="e#3165#3250#0" expanded="false" />
+            <element signature="e#3297#3495#0" expanded="false" />
+            <element signature="e#3337#3414#0" expanded="false" />
+            <element signature="e#3541#3934#0" expanded="false" />
+            <element signature="e#3585#3669#0" expanded="false" />
+            <element signature="e#3714#3793#0" expanded="false" />
+            <element signature="e#3840#3924#0" expanded="false" />
+            <element signature="e#3970#4551#0" expanded="false" />
+            <element signature="e#4014#4106#0" expanded="false" />
+            <element signature="e#4151#4249#0" expanded="false" />
+            <element signature="e#4296#4541#0" expanded="false" />
+            <element signature="e#4587#5108#0" expanded="false" />
+            <element signature="e#4631#4713#0" expanded="false" />
+            <element signature="e#4758#4840#0" expanded="false" />
+            <element signature="e#4887#5098#0" expanded="false" />
+            <element signature="e#4927#5014#0" expanded="false" />
+            <element signature="e#5147#5864#0" expanded="false" />
+            <element signature="e#5194#5323#0" expanded="false" />
+            <element signature="e#5371#5513#0" expanded="false" />
+            <element signature="e#5563#5854#0" expanded="false" />
+            <element signature="e#5652#5752#0" expanded="false" />
+            <element signature="e#5907#7319#0" expanded="false" />
+            <element signature="e#5957#6327#0" expanded="false" />
+            <element signature="e#6378#6745#0" expanded="false" />
+            <element signature="e#6798#7309#0" expanded="false" />
+            <element signature="e#7360#7400#0" expanded="false" />
+            <element signature="e#7405#7537#0" expanded="false" />
+            <element signature="e#7858#9398#0" expanded="false" />
+            <element signature="e#7921#8055#0" expanded="false" />
+            <element signature="e#8091#8224#0" expanded="false" />
+            <element signature="e#8139#8214#0" expanded="false" />
+            <element signature="e#8598#8793#0" expanded="false" />
+            <element signature="e#8644#8783#0" expanded="false" />
+            <element signature="e#8918#9387#0" expanded="false" />
+            <element signature="e#8974#9107#0" expanded="false" />
+            <element signature="e#9174#9338#0" expanded="false" />
+            <element signature="e#9224#9324#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/js/animate1007.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="232" column="17" lean-forward="true" selection-start-line="232" selection-start-column="17" selection-end-line="232" selection-end-column="17" />
+          <folding>
+            <element signature="e#36#220#0" expanded="false" />
+            <element signature="e#253#290#0" expanded="false" />
+            <element signature="e#342#7325#0" expanded="false" />
+            <element signature="e#399#444#0" expanded="false" />
+            <element signature="e#484#1454#0" expanded="false" />
+            <element signature="e#528#622#0" expanded="false" />
+            <element signature="e#667#1155#0" expanded="false" />
+            <element signature="e#712#784#0" expanded="false" />
+            <element signature="e#810#906#0" expanded="false" />
+            <element signature="e#934#1033#0" expanded="false" />
+            <element signature="e#1039#1141#0" expanded="false" />
+            <element signature="e#1202#1444#0" expanded="false" />
+            <element signature="e#1235#1337#0" expanded="false" />
+            <element signature="e#1489#1940#0" expanded="false" />
+            <element signature="e#1533#1593#0" expanded="false" />
+            <element signature="e#1638#1705#0" expanded="false" />
+            <element signature="e#1752#1930#0" expanded="false" />
+            <element signature="e#1792#1857#0" expanded="false" />
+            <element signature="e#1976#2445#0" expanded="false" />
+            <element signature="e#2020#2084#0" expanded="false" />
+            <element signature="e#2129#2206#0" expanded="false" />
+            <element signature="e#2253#2435#0" expanded="false" />
+            <element signature="e#2293#2362#0" expanded="false" />
+            <element signature="e#2481#2968#0" expanded="false" />
+            <element signature="e#2525#2593#0" expanded="false" />
+            <element signature="e#2638#2720#0" expanded="false" />
+            <element signature="e#2767#2958#0" expanded="false" />
+            <element signature="e#2807#2880#0" expanded="false" />
+            <element signature="e#3004#3505#0" expanded="false" />
+            <element signature="e#3048#3120#0" expanded="false" />
+            <element signature="e#3165#3250#0" expanded="false" />
+            <element signature="e#3297#3495#0" expanded="false" />
+            <element signature="e#3337#3414#0" expanded="false" />
+            <element signature="e#3541#3934#0" expanded="false" />
+            <element signature="e#3585#3669#0" expanded="false" />
+            <element signature="e#3714#3793#0" expanded="false" />
+            <element signature="e#3840#3924#0" expanded="false" />
+            <element signature="e#3970#4551#0" expanded="false" />
+            <element signature="e#4014#4106#0" expanded="false" />
+            <element signature="e#4151#4249#0" expanded="false" />
+            <element signature="e#4296#4541#0" expanded="false" />
+            <element signature="e#4587#5108#0" expanded="false" />
+            <element signature="e#4631#4713#0" expanded="false" />
+            <element signature="e#4758#4840#0" expanded="false" />
+            <element signature="e#4887#5098#0" expanded="false" />
+            <element signature="e#4927#5014#0" expanded="false" />
+            <element signature="e#5147#5864#0" expanded="false" />
+            <element signature="e#5194#5323#0" expanded="false" />
+            <element signature="e#5371#5513#0" expanded="false" />
+            <element signature="e#5563#5854#0" expanded="false" />
+            <element signature="e#5652#5752#0" expanded="false" />
+            <element signature="e#5907#7319#0" expanded="false" />
+            <element signature="e#5957#6327#0" expanded="false" />
+            <element signature="e#6378#6745#0" expanded="false" />
+            <element signature="e#6798#7309#0" expanded="false" />
+            <element signature="e#7360#7456#0" expanded="false" />
+            <element signature="e#7533#8562#0" expanded="false" />
+            <element signature="e#7674#8556#0" expanded="false" />
+            <element signature="e#7720#7859#0" expanded="false" />
+            <element signature="e#7992#8541#0" expanded="false" />
+            <element signature="e#8056#8205#0" expanded="false" />
+            <element signature="e#8280#8484#0" expanded="false" />
+            <element signature="e#8334#8466#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/css/4.1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/css/1.1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/js/animate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="260" column="37" lean-forward="true" selection-start-line="260" selection-start-column="37" selection-end-line="261" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/1.move.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/js/animate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="232" column="55" lean-forward="true" selection-start-line="232" selection-start-column="55" selection-end-line="232" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/js/1.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/js/1.forEach.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/DAY4/定时器详细解读.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="231" column="3385" lean-forward="false" selection-start-line="231" selection-start-column="3385" selection-end-line="231" selection-end-column="3385" />
+          <folding>
+            <element signature="e#258570#258574#0" expanded="false" />
+            <element signature="e#258587#258591#0" expanded="false" />
+            <element signature="e#258673#258677#1" expanded="false" />
+            <element signature="e#258712#258716#1" expanded="false" />
+            <element signature="e#258798#258802#1" expanded="false" />
+            <element signature="e#258837#258841#1" expanded="false" />
+            <element signature="e#258927#258931#1" expanded="false" />
+            <element signature="e#259046#259050#1" expanded="false" />
+            <element signature="e#259136#259140#1" expanded="false" />
+            <element signature="e#259176#259180#1" expanded="false" />
+            <element signature="e#259214#259218#0" expanded="false" />
+            <element signature="e#259255#259259#1" expanded="false" />
+            <element signature="e#259349#259353#0" expanded="false" />
+            <element signature="e#259368#259372#0" expanded="false" />
+            <element signature="e#259458#259462#1" expanded="false" />
+            <element signature="e#259667#259671#1" expanded="false" />
+            <element signature="e#259757#259761#1" expanded="false" />
+            <element signature="e#259963#259967#1" expanded="false" />
+            <element signature="e#260049#260053#0" expanded="false" />
+            <element signature="e#260089#260093#1" expanded="false" />
+            <element signature="e#260176#260180#1" expanded="false" />
+            <element signature="e#260215#260219#1" expanded="false" />
+            <element signature="e#260306#260310#0" expanded="false" />
+            <element signature="e#260321#260325#0" expanded="false" />
+            <element signature="e#260408#260412#1" expanded="false" />
+            <element signature="e#260605#260609#1" expanded="false" />
+            <element signature="e#260639#260643#0" expanded="false" />
+            <element signature="e#260678#260682#1" expanded="false" />
+            <element signature="e#260765#260769#1" expanded="false" />
+            <element signature="e#260958#260962#1" expanded="false" />
+            <element signature="e#261049#261053#1" expanded="false" />
+            <element signature="e#261326#261330#1" expanded="false" />
+            <element signature="e#261413#261417#0" expanded="false" />
+            <element signature="e#261452#261456#1" expanded="false" />
+            <element signature="e#261596#261600#0" expanded="false" />
+            <element signature="e#261614#261618#0" expanded="false" />
+            <element signature="e#261701#261705#1" expanded="false" />
+            <element signature="e#261834#261838#1" expanded="false" />
+            <element signature="e#261899#261903#0" expanded="false" />
+            <element signature="e#261941#261945#1" expanded="false" />
+            <element signature="e#262028#262032#1" expanded="false" />
+            <element signature="e#262153#262157#1" expanded="false" />
+            <element signature="e#262218#262222#0" expanded="false" />
+            <element signature="e#262260#262264#1" expanded="false" />
+            <element signature="e#262347#262351#1" expanded="false" />
+            <element signature="e#262471#262475#1" expanded="false" />
+            <element signature="e#262536#262540#0" expanded="false" />
+            <element signature="e#262578#262582#1" expanded="false" />
+            <element signature="e#262665#262669#0" expanded="false" />
+            <element signature="e#262705#262709#1" expanded="false" />
+            <element signature="e#262792#262796#0" expanded="false" />
+            <element signature="e#262832#262836#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/json/banner.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/js/animate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/js/banner-filter-1300bindData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-720">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/js/banner-filter1543.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DeleteTeacherZhouGitHub/JavaScript201708/utils201708.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="42" column="16" lean-forward="true" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DeleteTeacherZhouGitHub/JavaScript201708/WEEK4/BANNER-FADE/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/css/reset.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/js/banner-filter1618.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-example/js/banner-example.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="96" column="11" lean-forward="true" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/banner-filter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding>
+            <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#323#464#0" expanded="false" />
+            <element signature="n#ul#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/js/banner-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="214" column="30" lean-forward="true" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+          <folding>
+            <element signature="e#635#987#0" expanded="false" />
+            <element signature="e#772#920#0" expanded="false" />
+            <element signature="e#834#910#0" expanded="false" />
+            <element signature="e#1035#1653#0" expanded="false" />
+            <element signature="e#1138#1578#0" expanded="false" />
+            <element signature="e#1699#1972#0" expanded="false" />
+            <element signature="e#1806#1880#0" expanded="false" />
+            <element signature="e#2051#2789#0" expanded="false" />
+            <element signature="e#2132#2256#0" expanded="false" />
+            <element signature="e#2320#2690#0" expanded="false" />
+            <element signature="e#2378#2420#0" expanded="false" />
+            <element signature="e#2483#2680#0" expanded="false" />
+            <element signature="e#2576#2666#0" expanded="false" />
+            <element signature="e#2835#3027#0" expanded="false" />
+            <element signature="e#2888#3021#0" expanded="false" />
+            <element signature="e#3068#3335#0" expanded="false" />
+            <element signature="e#3410#3799#0" expanded="false" />
+            <element signature="e#3454#3608#0" expanded="false" />
+            <element signature="e#3653#3791#0" expanded="false" />
+            <element signature="e#3848#4102#0" expanded="false" />
+            <element signature="e#3901#4096#0" expanded="false" />
+            <element signature="e#4007#4086#0" expanded="false" />
+            <element signature="e#4147#4428#0" expanded="false" />
+            <element signature="e#4189#4284#0" expanded="false" />
+            <element signature="e#4327#4421#0" expanded="false" />
+            <element signature="e#4496#5626#0" expanded="false" />
+            <element signature="e#4506#4526#0" expanded="false" />
+            <element signature="e#4685#5620#0" expanded="false" />
+            <element signature="e#4950#4984#0" expanded="false" />
+            <element signature="e#5126#5405#0" expanded="false" />
+            <element signature="e#5234#5316#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/BANNER-FADE/css/banner-filter.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="44" column="14" lean-forward="false" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/jquery-1.11.3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="2857" column="41" lean-forward="true" selection-start-line="2857" selection-start-column="41" selection-end-line="2857" selection-end-column="41" />
+          <folding>
+            <element signature="e#76649#78864#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/JQ-SELECTOR.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/1.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <marker date="1503226375593" expanded="true" signature="25:187" ph="/** @param selector: jQuery的选择器 ...*/" />
+            <marker date="1503226375593" expanded="true" signature="238:480" ph="{...}" />
+            <marker date="1503226375593" expanded="true" signature="251:412" ph="//..." />
+            <marker date="1503226375593" expanded="true" signature="526:601" ph="{&quot;constructor&quot;: jQuery...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/20170820.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="203" column="12" lean-forward="true" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="12" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

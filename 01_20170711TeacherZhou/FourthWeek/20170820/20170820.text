@@ -1,0 +1,215 @@
+一.非匀速运动
+    //->实现动画,依赖于utils.js文件
+        /**
+         *
+         * @param options
+         */
+        function animate(options) {
+            //->初始化参数配置initialize(简写init)
+            var _default = {
+                curEle: null,
+                target: null,
+                duration: 1000,
+                effect: animationEffect.Linear
+            };
+            for (var attr in options) {
+                if (options.hasOwnProperty(attr)) {
+                    _default[attr] = options[attr];//->默认的+传进来的
+                }
+            }
+            var curEle = _default.curEle,
+                target = _default.target,
+                duration = _default.duration,
+                effect = _default.effect;
+
+            //->准备prepare T/B/C/D
+            var time = 0,
+                begin = {},
+                change = {};
+            for (var key in target) {
+                if (target.hasOwnProperty(key)) {
+                    begin[key] = utils.css(curEle,key);
+                    change[key] = target[key]-begin[key];//->总距离 =  目标值-起始值
+                }
+            }
+            //->running(clear other animate before running)
+            clearInterval(curEle.animateTimer);//->在设置一个动画之前,先把之前其他的动画清除调
+            curEle.animateTimer = setInterval(function () {
+                time += 17;
+                if(time>=duration){
+                    utils.css(curEle,target);
+                    clearInterval(curEle.animateTimer);
+                    return;
+                }
+                var current = {};
+                for (var key in target) {
+                    if (target.hasOwnProperty(key)) {
+                        current[key] = effect(time,begin[key],change[key],duration);
+                    }
+                }
+                utils.css(curEle,current);
+            },17);
+        }
+        //->暴露在外面,方便使用
+        window.animationEffect = animationEffect;
+        window.animate = animate;
+    }();
+    //->在外面使用
+    animate({
+        effect: animationEffect.Back.easeOut
+    });
+
+
+    //->这个是effect版本;暴露在外面,方便使用
+
+
+二.回调函数
+
+
+    function fn(){
+
+
+
+        //->为了防止callBack不传递函数值,执行会报错,我们在回调函数执行的时候一般都会加判断,只有传递的是函数在执行
+        typeof callBack === "function"?callBack():null;
+        callBack&&callBack();
+
+    }
+
+    fn(function(){
+        //->函数当作一个实参传递给fn
+        console.log("ok");
+        //->this: window回调函数中的this一般都是window(严格模式undefined)
+    });
+
+
+
+
+
+三.宿主函数
+    回调函数B可以在宿主函数A(B在A中执行的,所以可以把A叫做B的宿主函数)的["任何位置执行"](根据需求而定),而且还可以["执行零到N次"],还可以给回调函数B["传递参数"]或者["改变里面的this"],也可以["接收回调函数B的返回值"],进行后续的相关处理;
+
+    回调函数可以在宿主环境中["肆无忌惮"]的像正常的普通函数一样执行;
+
+
+四.哪些方法是回调函数
+    1.sort
+        sort中传递的匿名函数,就是回调函数;
+        ary.sort(function(){
+            //->sort方法执行的时候,把传递的回调函数执行,不仅执行,还给回调函数传递了(A和B)两个实参值;
+            return a-b;
+            //->同样也接收了回调函数的返回结果,如果回调函数返回的是大于0的值,sort方法中会让当前项和后一项交换位置(这些就是sort的原理);
+        })
+
+    2.forEach(不兼容)
+        ary.forEach(function(item,index,input){
+            //->数组中有多少项,就会把当前的回调函数执行多少次,不仅执行,还会给它传递参数;
+            item: 当前数组中遍历的这一项;
+            index: 当前遍历这一项的索引;
+            input: 遍历的原始数组;
+            //->但是这个forEach方法不支持回调函数return返回值(不需要自己写return,写了return也没用);
+
+        },[context]);//->第二个传递给forEach的参数是改变回调函数中的this;(一定要记住是匿名函数-回调函数中的this)
+    3.map
+        map用法跟forEach很相似;
+        ary.map(function(item,index,input){
+            //->数组中有多少项,就会把当前的回调函数执行多少次,不仅执行,还会给它传递参数;
+            item: 当前数组中遍历的这一项;
+            index: 当前遍历这一项的索引;
+            input: 遍历的原始数组;
+            //->map传递的回调函数支持返回值,return的是啥,相当于把当前的遍历项替换成啥;
+            return item*10;//->让原有的每一项乘以10
+
+        },[context]);//->第二个传递给forEach的参数是改变回调函数中的this;(一定要记住是匿名函数-回调函数中的this)
+    4.replace
+        当前正则和字符串匹配几次,我们的回调函数执行几次,并且把本次捕获的结果,传递给回调函数,回调函数中的返回值会把当前正则匹配的这一项替换掉;
+        str.replace([reg],[function]);
+    5.setInterval([function]....)
+      setTimeout([function]....)
+    6.filter.....
+    数组中的很多方法都是支持回调函数的;
+
+五.重写forEach(实现兼容)
+    Array.prototype.myForEach = function myForEach() {
+        var callBack = arguments[0],
+            //->|| undefined可以不写,毕竟不传也是undefined
+            context = arguments[1] || undefined;
+        //->兼容不需要处理,直接执行下面方法
+        if("forEach" in window){
+            this.forEach(callBack,context);
+        }
+        //->myForEach this: 需要处理的数组
+        //->不兼容,这样处理;
+        //->数组中有多少项,就遍历多少次
+        for (var i = 0; i < this.length; i++) {
+            callBack && callBack.call(context,this[i],i,this);//->给callBack传三个值
+        }
+    };
+
+    var obj = {name: "zhufeng"};
+    [12,23,34,45].myForEach(function (item, index, input) {//->数组中有多少项,回调函数就会执行多少次
+        console.log(item, index, input);
+    },obj);
+
+六.思考题
+    重写数组的map方法,也可以尝试重写字符串的replace方法
+
+七.实战案例: 轮播图
+    实现原理: 渐隐渐现;
+    另外还有两个版本: 运动版本(20170817已经讲过),jq版本(待讲...)
+
+八.jQuery
+    1.jQ的简介和版本
+        jQ是一款非常伟大的JavaScript类库,它里面提供了["选择器"],["DOM筛选的方法"],["事件处理"],["动画处理"],["AJAX/JSONP"],["常用方法"]...等方面的内容;
+        简单说,jQ是一个类库;
+        所谓类库,就是方法的综合体,里面提供了日常开发中常用的功能,这些方法,做了浏览器兼容处理;(我们的DOM库,就是这种东西),jQ不是框架;
+        插件: 不用写css,引进来就能用(带样式的插件/不带样式的插件)
+        类库: 这是个方法库,其他的js,css还得写;jQ就是类库;
+        框架: 提供复杂的设计思想
+        UI组件: 不懂css,html,js....UI组件全提供了;
+
+    2.jQ版本
+        jQ一共有三大版本;
+            第一个版本: 1.xxx
+                第一代版本兼容所有浏览器,里边最常用的有以下:
+                    jquery.min.js(轻量级的jQ,不全,只包含了最常用的)
+                    jquery-1.9.3.min.js
+                    jquery-1.11.3.min.js(这个版本最稳定)
+
+            第二个版本: 2.xxx
+                第二代版本,就是个鸡肋;对于IE6-8的兼容不好;
+                    专门为移动端准备的类库;移动端不用兼容IE678;
+                    PC端: 键鼠的操作
+                    移动端:
+                    不支持手指事件;为移动端诞生,但移动端很少有用;
+
+            第三个版本: 3.xxx
+                第三代版本,老师说他自己都还每看,让自己回去看看;因为现在是react,vue的天下,jQ不常用了;
+
+    3.下载jQ
+        jQ官网: jquery.com
+        API手册: jquery.cuishifeng.cn
+        书籍: 锋利的jQuery第二版
+        老师的资料: jquery的源码;没有例子;还得看书;
+
+
+    4.原型上常用的JQ方法
+
+
+
+九.下周安排
+    1.补课:
+        下周三晚上,讲选项卡封装(UTILS/JQ),把它封装成为插件  19:30-21:30
+    2.预习
+        周末班:
+            第五周: DOM零级/二级事件
+                第二节(全部)--包括全日制班的;也要看看吧,这个听不会,第六周就是听天书;这是封装类库中最难的;
+                课件10/11(第五周结束之后再看)
+
+        全日制班:
+            第五周: DOM零级/二级事件
+                第二节(全部)--包括全日制班的;也要看看吧,这个听不会,第六周就是听天书;这是封装类库中最难的;
+
+
+
+
