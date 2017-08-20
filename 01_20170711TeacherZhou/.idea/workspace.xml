@@ -28,7 +28,7 @@
             <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/20170820.text">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="405">
-                  <caret line="203" column="12" lean-forward="true" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="12" />
+                  <caret line="203" column="12" lean-forward="false" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -37,8 +37,8 @@
           <file leaf-file-name="jquery-1.11.3.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/jquery-1.11.3.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="617">
-                  <caret line="2857" column="41" lean-forward="true" selection-start-line="2857" selection-start-column="41" selection-end-line="2857" selection-end-column="41" />
+                <state relative-caret-position="-19738">
+                  <caret line="2857" column="41" lean-forward="false" selection-start-line="2857" selection-start-column="41" selection-end-line="2857" selection-end-column="41" />
                   <folding>
                     <element signature="e#76649#78864#0" expanded="false" />
                   </folding>
@@ -69,7 +69,7 @@
             <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/1.1.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-480">
-                  <caret line="160" column="19" lean-forward="true" selection-start-line="160" selection-start-column="19" selection-end-line="160" selection-end-column="19" />
+                  <caret line="160" column="19" lean-forward="false" selection-start-line="160" selection-start-column="19" selection-end-line="160" selection-end-column="19" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -81,7 +81,7 @@
             <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/1.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="150">
-                  <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+                  <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
@@ -526,12 +526,12 @@
       <workItem from="1503127232660" duration="8675000" />
       <workItem from="1503136188815" duration="7399000" />
       <workItem from="1503146938579" duration="3533000" />
-      <workItem from="1503188527489" duration="31857000" />
+      <workItem from="1503188527489" duration="32455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="897378000" />
+    <option name="totallyTimeSpent" value="897976000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1147,8 +1147,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/js/jquery-1.11.3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="2857" column="41" lean-forward="true" selection-start-line="2857" selection-start-column="41" selection-end-line="2857" selection-end-column="41" />
+        <state relative-caret-position="-19738">
+          <caret line="2857" column="41" lean-forward="false" selection-start-line="2857" selection-start-column="41" selection-end-line="2857" selection-end-column="41" />
           <folding>
             <element signature="e#76649#78864#0" expanded="false" />
           </folding>
@@ -1158,7 +1158,7 @@
     <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/jQuery/1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1187,7 +1187,7 @@
     <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/20170820.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="203" column="12" lean-forward="true" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="12" />
+          <caret line="203" column="12" lean-forward="false" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="12" />
           <folding />
         </state>
       </provider>
