@@ -201,7 +201,8 @@
      * @param duration 总时间
      */
     window.ainimate = animate;
-    function animate(curEle,target,duration) {        duration = duration || 1000;
+    function animate(curEle,target,duration) {
+        duration = duration || 1000;
         var time = 0,
             begin = {},
             change = {};

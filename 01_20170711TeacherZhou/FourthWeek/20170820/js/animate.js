@@ -13,7 +13,8 @@
         return t / d * c + b;
     }
 
-    //=>珠峰培训TWEEN算法动画公式
+    //=>珠峰培训TWEEN算法动画公式(除了匀速还有非匀速的公式)
+    //=>http://old.zhufengpeixun.cn/tween/
     var animationEffect = {
         //->匀速运动
         Linear: function (t, b, c, d) {
@@ -209,7 +210,7 @@
         };
         for (var attr in options) {
             if (options.hasOwnProperty(attr)) {
-                _default[attr] = options[attr];//->默认的+传进来的
+                _default[attr] = options[attr];//->_default[attr]: 默认的+传进来的
             }
         }
         var curEle = _default.curEle,
