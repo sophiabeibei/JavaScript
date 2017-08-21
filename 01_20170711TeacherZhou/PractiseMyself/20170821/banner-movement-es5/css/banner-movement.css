@@ -1,0 +1,73 @@
+.banner{
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+    height: 500px;
+    overflow: hidden;
+}
+.imgBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.imgBox li{
+    float: left;
+    width: 800px;
+    height: 100%;
+    background: url("../img/default.gif") no-repeat center center #eee;
+}
+.banner .imgBox li a, .banner .imgBox li a img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.banner .imgBox li a img{
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.banner .focus{
+    position: absolute;
+    bottom: 10px;
+    z-index: 999;
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+}
+.banner .focus li{
+    display: inline-block;
+    margin: 0 5px;
+    width: 18px;
+    height: 18px;
+    background: #79eeee;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.banner .focus li.select{
+    background-color: #bf616a;
+}
+.banner .change{
+    position: absolute;
+    top: 50%;
+    margin-top: -22.5px;
+    width: 30px;
+    height: 45px;
+    background: url("../img/pre.png") no-repeat;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    display: none;
+}
+.banner .change.changeL{
+    left: 20px;
+    background-position: 0 0;
+}
+.banner .change.changeR{
+    right: 20px;
+    background-position: -45px 0;
+}
+.banner .change:hover{
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

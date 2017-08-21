@@ -10,12 +10,12 @@ var banner = document.getElementById("banner"),
 
 //->数据绑定
 ~function () {
-    var bannerDate = null;
+    var bannerData = null;
     var xhr = new XMLHttpRequest;
     xhr.open("GET", "json/banner.json", false);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            bannerDate = utils.toJSON(xhr.responseText);
+            bannerData = utils.toJSON(xhr.responseText);
         }
     };
     xhr.send(null);
@@ -24,8 +24,8 @@ var banner = document.getElementById("banner"),
     var str = "",
         strFocus = "";
 
-    for (var i = 0; i < bannerDate.length; i++) {
-        var item = bannerDate[i];
+    for (var i = 0; i < bannerData.length; i++) {
+        var item = bannerData[i];
         str+='<li>';
         str+='<a href="'+item.link+'">';
         str+='<img src="" data-src="'+item.img+'" alt=""/>';
@@ -43,7 +43,7 @@ var banner = document.getElementById("banner"),
     imgBox.appendChild(cloneLi);
 
     //->动态设置oImg的宽度
-    utils.css(imgBox,"width",(bannerDate.length+1)*1000);
+    utils.css(imgBox,"width",(bannerData.length+1)*1000);
 }();
 
 

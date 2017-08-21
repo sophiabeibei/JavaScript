@@ -10,12 +10,12 @@ var banner = document.querySelector(".banner"),
 
 //->数据绑定
 ~function () {
-    var bannerDate = null;
+    var bannerData = null;
     var xhr = new XMLHttpRequest;
     xhr.open("GET", "json/banner.json", false);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            bannerDate = utils.toJSON(xhr.responseText);
+            bannerData = utils.toJSON(xhr.responseText);
         }
     };
     xhr.send(null);
@@ -23,15 +23,15 @@ var banner = document.querySelector(".banner"),
     //->需要数据绑定的: focus的li a标签
     var str = ``,
         strFocus = ``;
-    for (var i = 0; i < bannerDate.length; i++) {
-        var item = bannerDate[i];
+    for (var i = 0; i < bannerData.length; i++) {
+        var item = bannerData[i];
         str += `<li><a href="${item.link}"><img src="" alt="" data-src="${item.img}"></a></li>`;
         strFocus += `<li class="${i===0?'select':''}"></li>`;
     }
     imgBox.innerHTML = str;
     focus.innerHTML = strFocus;
     //->动态设置oImg的宽度
-    utils.css(imgBox,"width",bannerDate.length*1000);
+    utils.css(imgBox,"width",bannerData.length*1000);
 }();
 
 

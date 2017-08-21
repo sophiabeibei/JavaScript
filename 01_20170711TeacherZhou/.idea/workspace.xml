@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StudyNote/20170712.txt" afterPath="$PROJECT_DIR$/StudyNote/20170712.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StudyNote/20170711.txt" afterPath="$PROJECT_DIR$/StudyNote/20170711.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StudyNote/20170712.txt" afterPath="$PROJECT_DIR$/StudyNote/20170712.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,10 +50,13 @@
       <find>height</find>
       <find>Query.fn</find>
       <find>width</find>
+      <find>bannerData</find>
+      <find>bannerDate</find>
     </findStrings>
     <replaceStrings>
       <replace>调</replace>
       <replace>项</replace>
+      <replace>bannerData</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -62,9 +65,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/TeacherGitHub/计时器.html" />
-        <option value="$USER_HOME$/Desktop/TXNewsList/TXNewsList.html" />
-        <option value="$USER_HOME$/Desktop/TXNewsList/css/TXNewsList.css" />
         <option value="$USER_HOME$/Desktop/TXNewsList/js/TXNewsList.js" />
         <option value="$PROJECT_DIR$/ThirdWeek/20170813/TXNewsList/css/TXNewsList.css" />
         <option value="$PROJECT_DIR$/FourthWeek/20170819/js/1.1.js" />
@@ -110,9 +110,12 @@
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-example/css/banner-example.css" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-example/js/banner-example.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement/banner-movement.html" />
-        <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement/js/banner-movement.js" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement/css/banner-movement.css" />
         <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement-es6/css/banner-movement.css" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement/js/banner-movement1800.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement/js/banner-movement.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement-es6/js/banner-movement1800.js" />
+        <option value="$PROJECT_DIR$/FourthWeek/20170817/banner-movement-es6/js/banner-movement.js" />
       </list>
     </option>
   </component>
@@ -167,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -179,10 +183,137 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170817" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170817" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="banner-movement-es6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170817" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="banner-movement-es6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170817" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="banner-movement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FourthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170817" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="banner-movement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -198,19 +329,19 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\StudyNote" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\animate" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170813\TXNewsList" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\TXNewsList" />
-      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170817\banner-example" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170817" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\jQuery\js" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\BANNER-FADE\js" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\js" />
       <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\StudyNote" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170820\animate" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\20170813\TXNewsList" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\ThirdWeek\TXNewsList" />
+      <recent name="D:\Study\JavaScript\01_20170711TeacherZhou\FourthWeek\20170817\banner-example" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -386,11 +517,13 @@
       <workItem from="1503298683648" duration="975000" />
       <workItem from="1503304778013" duration="248000" />
       <workItem from="1503305318469" duration="495000" />
+      <workItem from="1503306377943" duration="323000" />
+      <workItem from="1503312208927" duration="198000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="911750000" />
+    <option name="totallyTimeSpent" value="912271000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -453,27 +586,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/banner-fade/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/banner-fade/json/banner.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/banner-fade/js/animate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FourthWeek/20170820/banner-fade/js/banner-fade-1300bindData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-720">
@@ -728,20 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER/js/banner.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement-es6/js/banner-movement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="72" column="31" lean-forward="false" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -756,13 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement/banner-movement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement-es6/banner-movement.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -774,15 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER/css/banner.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-309">
-          <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -790,7 +872,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="54" column="30" lean-forward="false" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,6 +879,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="51" column="30" lean-forward="false" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER/css/banner.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK4/BANNER/js/banner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <marker date="1502967545043" expanded="true" signature="896:992" ph="..." />
+            <marker date="1502967545043" expanded="true" signature="919:987" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement/js/banner-movement1800.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="33" column="39" lean-forward="false" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement/js/banner-movement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement/banner-movement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement-es6/js/banner-movement1800.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="33" column="39" lean-forward="false" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FourthWeek/20170817/banner-movement-es6/js/banner-movement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
           <folding />
         </state>
       </provider>
