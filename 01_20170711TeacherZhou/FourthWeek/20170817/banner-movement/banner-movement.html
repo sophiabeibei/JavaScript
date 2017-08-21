@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>banner-example轮播图例子</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/banner-movement.css">
+</head>
+<body>
+<div class="banner" id="banner">
+    <!--img-->
+    <ul class="imgBox" id="imgBox">
+        <!--<li>
+            <a href="javascript:;">
+                <img src="img/01.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="img/02.jpg" alt="">
+            </a></li>
+        <li>
+            <a href="javascript:;">
+                <img src="img/03.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="img/04.jpg" alt="">
+            </a>
+        </li>-->
+
+        <!-- `<li><a href="${item.link}"><img src="" alt="" data-src="${item.img}"></a></li>`;
+        strFocus += `<li class="${i===0?'select':''}"></li>`-->
+
+    </ul>
+    <!--focus-->
+    <ul class="focus" id="focus">
+        <!--<li class="select"></li>-->
+    </ul>
+    <!--change-->
+    <a href="javascript:;" class="change changeL" id="changeL"></a>
+    <a href="javascript:;" class="change changeR" id="changeR"></a>
+</div>
+
+
+
+<script src="js/utils.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/banner-movement.js"></script>
+</body>
+</html>

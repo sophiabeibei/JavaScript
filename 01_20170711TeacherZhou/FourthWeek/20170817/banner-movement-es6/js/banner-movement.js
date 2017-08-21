@@ -37,7 +37,7 @@ var banner = document.querySelector(".banner"),
     imgBox.appendChild(cloneLi);
 
     //->动态设置oImg的宽度
-    utils.css(imgBox,"width",(bannerDate.length+1)*500);
+    utils.css(imgBox,"width",(bannerDate.length+1)*1000);
 }();
 
 
@@ -54,7 +54,6 @@ function lazyImg(oImg) {
         oImg.src = this.src;
         oImg.style.display = "block";
         tempImg = null;
-
     };
     //->部分浏览器需要把src赋值操作放在onload事件的下面;这样加载成功之后才会触发onload事件;
     tempImg.src = oImg.getAttribute("data-src");
@@ -65,7 +64,7 @@ function lazyImg(oImg) {
 ~function(){
     var step = 0,//->步长: 记录当前展示图片的索引
         interval = 3000;//->时间因子: 控制每隔多少ms切换到下一张图片
-    var autoTimet = window.setInterval(function () {
+    var autoTimer = window.setInterval(function () {
         if(step===4){//->过了3000ms再次执行定时器,此时step=4,说明上一次已经切换到最末尾的一张,而且那一张是经过克隆的;此时我们让容器立即回到第一张的位置;让其step=0;
             utils.css(imgBox,"left",0);
             step=0;
@@ -75,7 +74,7 @@ function lazyImg(oImg) {
         animate({
             curEle: imgBox,
             target: {
-                left: -step*500
+                left: -step*800
             },
             duration: 500
         });
