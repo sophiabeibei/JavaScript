@@ -1,44 +1,34 @@
-.banner {
+.banner{
     position: relative;
     margin: 0 auto;
     width: 800px;
     height: 500px;
     overflow: hidden;
 }
-
-.banner .imgBox {
+.imgBox{
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /*需要计算：图片的数量 * banner的宽度*/
+    width: 100%;
     height: 100%;
 }
-
-.banner .imgBox li {
+.imgBox li{
     float: left;
     width: 800px;
     height: 100%;
-    /*为了后期做图片的懒加载，我们把图片所在区域设置一张默认的背景图占位*/
     background: url("../img/default.gif") no-repeat center center #eee;
 }
-
 .banner .imgBox li a, .banner .imgBox li a img {
-     display: block;
-     width: 100%;
-     height: 100%;
- }
-
-.banner .imgBox li a img {
-    /*为图片懒加载的准备*/
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.banner .imgBox li a img{
     display: none;
     width: 100%;
     height: 100%;
-    /*opacity: 0;
-    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);*/
 }
-
-.banner .focus {
+.banner .focus{
     position: absolute;
     bottom: 10px;
     z-index: 999;
@@ -46,22 +36,19 @@
     text-align: center;
     font-size: 0;
 }
-
-.banner .focus li {
+.banner .focus li{
     display: inline-block;
     margin: 0 5px;
     width: 18px;
     height: 18px;
-    background-color: #79eeee;
+    background: #79eeee;
     border-radius: 50%;
     cursor: pointer;
 }
-
-.banner .focus li.select {
+.banner .focus li.select{
     background-color: #bf616a;
 }
-
-.banner .change {
+.banner .change{
     position: absolute;
     top: 50%;
     margin-top: -22.5px;
@@ -69,22 +56,18 @@
     height: 45px;
     background: url("../img/pre.png") no-repeat;
     opacity: 0.5;
-    filter: alpha(Opacity=50);
+    filter: alpha(opacity=50);
     display: none;
 }
-
-.banner .change.changeL {
+.banner .change.changeL{
     left: 20px;
     background-position: 0 0;
-
 }
-
-.banner .change.changeR {
+.banner .change.changeR{
     right: 20px;
     background-position: -45px 0;
 }
-
-.banner .change:hover {
+.banner .change:hover{
     opacity: 1;
-    filter: alpha(Opacity=100);
+    filter: alpha(opacity=100);
 }
