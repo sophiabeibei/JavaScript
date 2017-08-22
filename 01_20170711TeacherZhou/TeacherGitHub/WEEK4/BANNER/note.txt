@@ -1,0 +1,80 @@
+1、分析左右运动轮播图实现的原理
+
+2、编写HTML结构和CSS样式
+
+3、实现JS
+  ->搭建一个单例模式
+    var bannerRender=(function(){
+
+        return {
+            init:function(){
+
+            }
+        }
+    })();
+    bannerRender.init();
+
+  ->想要操作哪些元素就先把这些元素获取到(暂时没有内容的元素,预留变量)
+
+  ->编写一个方法queryData获取数据
+
+  ->编写一个方法bindHTML
+    ->首先把IMG-BOX和FOCUS中需要的字符串拼接好，然后放到容器中
+    ->把之前没有获取的数据,重新获取一遍(imgBoxList/imgList/focusList)
+    ->设置IMG-BOX的宽度以及记录当前有多少个LI(maxNum)
+
+  ->编写一个lazyImg的方法实现图片的延迟加载
+
+  ->编写一个initLoad的方法，实现当页面加载完成后(window.onload)，展示第一张图片以及让第一个焦点LI有选中的样式
+
+  ->第一阶段汇总：在init方法中，把上面做的方法执行
+    init:function(){
+        queryData();
+        bindHTML();
+        initLoad();
+    }
+
+
+
+
+  ->设置step/interval/autoTimer三个后续需要的变量
+
+  ->编写change方法实现图片的切换
+    ->让IMG-BOX在300MS内的LEFT值运动到STEP对应的位置（-STEP*1000）
+    ->加载STEP对应这个LI中的真实图片
+    ->焦点对齐
+
+  ->编写autoMove方法实现每间隔INTERVAL这么长的时间自动切换下一张
+    ->我们需要分析如何实现无缝滚动了
+    ->修改BIND-HTML方法：在计算IMG-BOX宽度之前，把第一张克隆一份插入到容器的末尾
+    ->在AUTO-MOVE定时器到达时间执行之前，判断上一次是否已经运动到克隆的最后一张了(STEP===MAXNUM-1)，如果条件成立，让IMG-BOX立即运动到真实第一张的位置(LEFT=0),让STEP=0
+    ->继续STEP++
+    ->继续执行CHANGE实现图片的切换
+    ->修改CHANGE方法中焦点对齐这一部分的代码(因为当前IMG-BOX区域的STEP出现的值会比真实的FOCUS中LI的最大索引多一个)
+
+  ->第二阶段汇总
+    init:function(){
+        ...
+
+        autoMove();
+    }
+
+  ->实现一个方法bindMouseEvent：鼠标进入和离开的时候控制按钮的显示隐藏以及自动轮播的暂停和开启
+
+  ->实现一个方法bindFocusEvent：点击焦点切换
+
+  ->实现一个方法bindArrowEvent：点击左右按钮切换
+    ->右按钮和自动轮播一致
+    ->左按钮无缝衔接需要单独在处理
+
+  ->第三阶段汇总
+    init:function(){
+        ...
+
+        bindMouseEvent();
+        bindFocusEvent();
+        bindArrowEvent();
+    }
+
+
+

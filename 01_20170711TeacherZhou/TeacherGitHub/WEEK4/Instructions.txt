@@ -1,0 +1,7 @@
+BANNER--2001708期   es5兼容版 左右运动版
+BANNER-FADE--es5 字符串拼接兼容版    渐隐渐现版
+BANNER-JQ   JQ版  兼容;
+
+
+JQUERY---老师以前的案例;
+BANNER-EXAMPLE----老师以前的案例;
