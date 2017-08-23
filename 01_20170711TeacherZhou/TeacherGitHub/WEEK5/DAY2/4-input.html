@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-表单验证</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .userNameBox {
+            margin: 20px auto;
+            width: 400px;
+        }
+
+        .userNameBox input {
+            padding: 0 10px;
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #AAA;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .userNameBox span {
+            display: none;
+            line-height: 35px;
+            font-size: 14px;
+        }
+
+        .userNameBox span#nameSpanInit {
+            color: #999;
+        }
+
+        .userNameBox span#nameSpanError {
+            color: lightcoral;
+        }
+
+        .userNameBox span#nameSpanSuccess {
+            color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<div class="userNameBox">
+    <!--
+      placeholder：H5中为表单元素新增的属性，给文本框做默认提示信息的，基本上IE都不兼容(>=10的兼容)
+    -->
+    <input type="text" id="userName" placeholder="请输入您的用户名">
+    <span id="nameSpanInit">支持中文、数字、字母、-、_的组合,4~20位</span>
+    <span id="nameSpanError">格式错误,仅支持数字、字母、-、_的组合,4~20位</span>
+    <span id="nameSpanSuccess">哇呜,你竟然输入正确了</span>
+</div>
+
+<a href="javascript:;" id="submit">注册</a>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/4-3.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.preventDefault</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<a href="http://www.zhufengpeixun.cn:80/student/index.html?name=zxt&age=28#sex" id="link"></a>
+<script>
+    console.dir(link);
+    console.log(link.hash);//->获取hash哈希值
+    console.log(link.hostname);//->获取域名
+    console.log(link.pathname);//->请求文件的路径和名称
+    console.log(link.protocol);//->请求协议(http/https/ftp...)
+    console.log(link.search);//->问号传参的值"?name=zxt&age=28"
+
+    //->真正项目中,如果我们想获取一个URL地址中的部分信息,我们可以利用A独特的这些属性
+    //1.首先动态创建一个A标签,把我们需要解析的URL地址放在href中
+    //2.把A增加到页面中,但是让其时隐藏的
+    //3.利用私有的属性获取到我们想要的结果
+    //4.在页面中把A移除掉
+</script>
+<script src="js/utils.js"></script>
+<script src="js/animate.js"></script>
+</body>
+</html>

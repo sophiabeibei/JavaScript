@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .box {
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            border: 1px dashed red;
+            line-height: 35px;
+            font-size: 16px;
+        }
+
+        .box input {
+            outline: none;
+            margin-right: 5px;
+            vertical-align: middle; /*让复选和文字是基于中线对齐*/
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <!--真实项目中我们需要给单选或者复选框进行分组(用NAME分组)-->
+    <input type="checkbox" id="selectAll"><label for="selectAll">全选/全不选</label> <br>
+    <input type="checkbox" name="hobby">敲代码 <br>
+    <input type="checkbox" name="hobby">打篮球 <br>
+    <input type="checkbox" name="hobby">踢足球 <br>
+    <input type="checkbox" name="hobby">打排球 <br>
+    <input type="checkbox" name="hobby">游泳 <br>
+    <input type="checkbox" name="hobby">旅游 <br>
+    <input type="checkbox" name="hobby">看书 <br>
+    <input type="checkbox" name="hobby">冥想人生
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    /*
+     * 1、点击全选或者全不选控制HOBBY的复选框也跟着全选中或者全不选中
+     * 2、其它HOBBY的复选框只要有一个不选中的时候,全选那个框也要取消选中,当然如果其它HOBBY框都选中了,全选这个框也要选中
+     */
+    //=>当HTML结构都加载完成的时候执行回调函数,等价于$(document).ready(function(){...})
+    $(function () {
+        var $selectAll = $('#selectAll'),
+                $hobbyList = $('input[name="hobby"]');
+
+        $selectAll.click(function (e) {
+            //->e:事件对象,并且兼容了所有的浏览器(我们不需要自己处理兼容,JQ已经帮我们处理好了)
+            //->this:当前点击的这个INPUT(不管点击的是LABEL还是INPUT)[原生JS对象]
+            //->JQ中操作元素属性有两个方法:ATTR/PROP
+            //ATTR：操作的一般都是自定义的属性(部分内置也能操作)
+            //PROP：操作的一般都是内置属性(尤其是表单的内置属性)
+            //项目中经常都是表单的使用PROP,其它标签使用ATTR
+            var flag = $(this).prop('checked');
+            $hobbyList.prop('checked', flag);//->JQ内置循环机制:一个JQ元素集合中有多项,执行PROP,JQ内部会进行循环,把每一项都执行PROP
+        });
+
+        $hobbyList.click(function () {
+            //->验证所有的HOBBY是否都被选中：如果是,则让全选框中,反之只要有一个没选中,全选框就不会选中
+            //->this:不是所有的HOBBY而是当前点击的这个HOBBY
+            var isFlag = true;
+            $hobbyList.each(function () {
+                //->this:JQ的EACH方法中的THIS是当前遍历的这一项
+                if (!$(this).prop('checked')) {
+                    isFlag = false;
+                    return false;
+                    //->在JQ的EACH中返回一个FALSE,代表结束当前的循环
+                }
+            });
+            $selectAll.prop('checked', isFlag);
+        });
+    });
+</script>
+</body>
+</html>

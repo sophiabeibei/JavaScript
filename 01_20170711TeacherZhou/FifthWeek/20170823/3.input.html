@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.input全选/全不选</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            user-select: none;
+        }
+        .box{
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            border: 1px dashed orange;
+
+            line-height: 50px;
+            font-size: 16px;
+        }
+        .box input{
+            outline: none;/*去除自带边框*/
+            margin-right: 5px;
+            vertical-align: middle;/*让复选框和文字是基于中线对齐的*/
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <!-- 真实项目中我们需要给单选或者复选框进行分组(用name分组)-->
+    <input type="checkbox" id="selectAll"><label for="selectAll">全选/全不选</label><br>
+    <input type="checkbox" name="hobby">敲代码<br>
+    <input type="checkbox" name="hobby">打篮球<br>
+    <input type="checkbox" name="hobby">看书<br>
+    <input type="checkbox" name="hobby">踢足球<br>
+    <input type="checkbox" name="hobby">打台球<br>
+    <input type="checkbox" name="hobby">游泳<br>
+    <input type="checkbox" name="hobby">旅游<br>
+    <input type="checkbox" name="hobby">冥想人生<br>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    /*分析需求
+    *   1.点击全选/全不选,控制hobby的复选框也跟着全选中或者全不选中
+    *   2.其它hobby的复选框,只要有一个不选中的时候,全选那个框,也要取消选中;当然如果其它hobby框都选中了,全选这个框也要选中;
+    *
+    * */
+
+    //=>$(function(){...});: 当html结构都加载完成的时候执行回调函数,等价于$(document).ready(function(){...})
+    $(function () {
+        var $selectAll = $("#selectAll"),
+            $hobbyList=$("input[name='hobby']");
+        //console.log($hobbyList);
+        $selectAll.click(function (e) {
+            //->e: 事件对象,并且兼容了所有的浏览器(我们不需要自己处理兼容,JQ已经帮我们处理好了)
+
+            //->flag: 标识
+            //->this: 当前点击的这个input(不管点击的是label还是input)[原生JS对象]
+            //console.log(this);
+            //->JQ中操作元素属性,有两个方法: 1.attr: 操作的一般都是自定义属性(部分内置属性也能操作);2.prop: 操作的一般都是内置属性(尤其是表单的内置属性);
+            //项目中经常都是表单的使用prop,其它标签使用attr
+            var flag = $(this).prop("checked");
+            //console.log(flag);
+
+            //->JQ内置循环机制: 一个JQ元素集合中有多项,执行prop,JQ内部会进行循环,
+            $hobbyList.prop("checked",flag);
+        });
+
+        //->$hobbyList: 而是把集合中的每一个绑定了click;不是把集合绑定了click
+        $hobbyList.click(function () {
+            //->验证所有的hobby是否都被选中,如果是,则让全选框选中,反之只要有一个没有选中,全选框就不会选中;
+
+            //->this: 不是所有的hobby而是当前点击的这个hobby
+            var isFlag = true;//->假设都是被选中的;
+            //->验证假设的对不对,循环hobbyList
+            $hobbyList.each(function () {
+                //->this: JQ的each方法中的this是当前遍历的这一项
+                if(!$(this).prop("checked")){
+                    isFlag = false;
+                    //->在JQ的each方法中的return 返回false,代表结束当前的循环;
+                    return false;
+                }
+            });
+            $selectAll.prop("checked",isFlag);//->isFlag为true: 选中;isFlag为false: 选不中;
+        });
+    });
+
+
+</script>
+</body>
+</html>

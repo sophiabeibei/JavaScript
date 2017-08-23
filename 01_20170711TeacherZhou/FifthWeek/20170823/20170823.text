@@ -1,0 +1,536 @@
+一.事件
+    事件就是一件事情或者一个行为(元素天生自带的行为),即使我们没有编写xxx.onclick = function(){...}这样的代码,元素也有点击事件,当我们点击该元素,也同样会触发事件,只不过什么事都不做而已;
+
+    范例: xxx.onclick = function(){...}
+
+二.事件行为本身
+    1.PC端
+        1.click
+        2.dblclick
+        3.mouseover(mouseenter)
+        4.mouseout(mouseleave)
+        5.mousemove
+        6.mousedown
+        7.mouseup
+        8.mousewheel: 鼠标滚轮滚动事件
+        9.keydown
+        10.keypress
+        11.keyup
+        12.load: 加载完成事件;例如: oImg.onload(图片加载成功)/window.onload(window加载成功)
+        13.unload/onbeforeunload: 当浏览器窗口关闭的时候,触发这个事件;: ;例如: window.upload
+        14.error: 加载失败事件;;
+        15.scroll: 当滚动条滚动触发事件执行
+        16.change: 表单内容发生改变
+        17.focus: 表单获取到焦点(光标)
+        18.blur: 表单失去焦点
+        19.select: 表单被选中(下拉框)
+        20.checked: 表单被选中(单选或者复选按钮)
+        21.resize: 当窗口大小发生改变的时候触发这个事件;例如:
+            window.onresize = function () {
+                console.log(document.documentElement.clientWidth, document.documentElement.clientHeight);
+            };
+
+    2.移动端
+        1.input: 等价于PC的keydown/keyup,表单内容输入过程中触发这个事件
+        单手指事件
+        2.touchstart:
+        3.touchmove:
+        4.touchend:
+        5.touchcancel:
+        多手指事件
+        6.gesturestart:
+        7.gesturechange:
+        8.gestureend:
+
+三.事件绑定方法
+    给事件绑定一个方法,当事件触发的时候我们能做一些事情;给事件绑定有两种方式:
+        1.DOM0级事件绑定
+        2.DOM2级事件绑定
+
+四.DOM0级事件绑定
+    1.DOM0级绑定的方法:
+        xxx.onclick = function(){...}
+    2.DOM0事件原理:
+        给元素的某些私有属性赋值(例如onclick,刚开始onclick=null,后来赋值onclick=function(){...};),当以后我们触发事件的时候,浏览器会自动找到元素的事件私有属性,把后面赋的值执行;而我们赋的值一般都是函数;
+        例如:
+            给body的点击事件绑定一个方法:
+            document.body.onclick = function(){....};
+五.DOM0事件绑定注意事项:
+    1.不能绑定多个方法
+        不能给当前元素的某一个事件绑定多个方法,只能绑定一个,绑定多个,最后也会把前面绑定的都覆盖掉;
+        document.body.onclick = function(){
+            console.log(1);
+        };
+        document.body.onclick = function(){
+            console.log(2);
+        };
+    2.没有这事件属性
+        如果私有属性中没有这事件属性,那么我们则无法进行绑定
+        例如: DOMContentLoaded
+    3 .传递参数值
+        当事件触发的时候,不仅执行了对应绑定的方法,而且还给这个方法默认传递了参数值(事件对象);
+
+六.事件对象
+    当事件触发的时候,会把绑定的方法执行,不仅执行,而且浏览器还会给这个方法传递一个实参的值(真实项目中我们会定义"e/ev"的形参变量接收)
+    1.MouseEvent: 鼠标事件对象
+        对象->MouseEvent.prototype->UIEvent.prototype->Event.prototype->Object.prototype
+        CAPTURING_PHASE:1        捕获阶段
+        AT_TARGET:2              目标位置
+        BUBBLEING_PHASE:3        冒泡阶段
+
+        范例:
+            document.body.onclick = function (e) {
+                console.log("OK");
+                console.log(e);
+                //MouseEvent: 鼠标事件对象
+            };
+    2.KeyboardEvent: 键盘事件对象
+        范例:
+            document.body.onkeyup = function (e) {
+                console.log(e);
+            };
+
+七.鼠标事件对象中常用的一些属性
+    1.clientX/clientY
+        当前鼠标触发点距离当前窗口(不是body:第一屏幕左上角)左上角的X/Y坐标
+
+    2.pageX/pageY
+        当前鼠标触发点距离body左上角的X/Y坐标
+
+    3.type
+        当前触发事件的类型(例如: "click");
+
+    4.target
+        事件源(当前鼠标在哪个元素上触发的,那么事件源就是谁,属于事件的源头)
+        在IE6-8中没有target,只有srcElement;
+    5.e.preventDefault
+        阻止事件的默认行为(例如:a标签点击的跳转行为;表单元素输入的时候,有记录前面输入内容的行为...这些都是浏览器的默认行为)放在event.prototype上的方法
+        returnValue
+    6.stopPropagation
+        阻止事件的冒泡传播
+
+八.鼠标事件对象的兼容处理
+    在IE6-8中并不像标准浏览器一样,执行方法的时候传递一个事件对象,IE6-8下什么都没传递,事件对象无法通过形参获取;
+        document.body.onclick = function(){
+            //console.log(arguments.length);//->IE6-8: 0
+            //=>window.event: IE6-8中,把我们需要的事件对象存储在全局的event属性中了,获取的时候到这个属性中去读取
+
+            e = e || window.event;
+        };
+
+        由于获取的方式不一样,我们最后获取的结果中兼容性也不一样;
+    1.兼容的:
+        1.clientX
+        2.clientY
+        3.type
+
+    2.不兼容的:
+        1.target
+            IE6-8下没有target,只有srcElement,所以说我们如果想获取事件源,我们需要按照如下的写法获取:
+                var target = e.target || e.srcElement;
+        2.pageX/pageY
+            IE6-8下没有这两个属性;
+                e.pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+                e.pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+
+        3.e.preventDefault
+            阻止默认行为
+            IE6-8下没有e.preventDefault;有returnValue方法
+                e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+        4.e.stopPropagation
+            阻止冒泡传播
+            IE6-8下没有stopPropagation这个方法,有cancelBubble方法
+                e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+
+九.键盘事件对象
+    1.
+        相对于MouseEvent来说,没有clientX/clientY/pageX/pageY这些属性,其它的属性是存在的(type/target/preventDefault/stopPropagation...)
+
+    2.key
+
+    3.keyCode
+
+
+    e = e || window.event;
+
+十.阻止页面按F5刷新页面
+    onkeydown: 按下
+    onkeyup: 抬起
+    onkeypress: 长按;
+    document.onkeydown = document.onkeyup = document.onkeypress = function(e){
+        e = e || window.event;
+        var keyNum = e.which || e.keyCode;
+        if(keyNum === 116){
+            console.log(keyNum);
+            e.keyCode = 0;//->IE下想要禁止F5,还需要e.keyCode = 0(这个特殊)
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        }
+    };
+
+
+十一.推盒子
+   var minL=0,
+       minT=0,
+       maxL=(document.documentElement.clientWidth || document.body.clientWidth)-box.offsetWidth;
+       maxT=(document.documentElement.clientHeight || document.body.clientHeight)-box.offsetHeight;
+   document.onkeydown = document.onkeyup = document.onkeypress = function(e){
+       //->事件对象兼容处理
+       e = e || window.event;
+
+       //=>按四个(上下左右)键实现操作
+       var keyNum = e.which || e.keyCode,
+           curL = utils.css(box,"left"),
+           curT = utils.css(box,"top");
+
+       switch (keyNum){
+           case 37:
+               curL-=100;
+               break;
+           case 38:
+               curT-=100;
+               break;
+           case 39:
+               curL+=100;
+               break;
+           case 40:
+               curT+=100;
+               break;
+       }
+       curL=curL<minL?minL:(curL>maxL?maxL:curL);
+       curT=curT<minT?minT:(curT>maxT?maxT:curT);
+       animate({
+           curEle: box,
+           target: {
+               left: curL,
+               top: curT
+           },
+           duration: 300
+       })
+
+       //->按space键蹦一下
+       if(keyNum === 32){
+           animate({
+               curEle: box,
+               target: {
+                   top: curT - 100
+               },
+               duration: 200,
+               effect: animationEffect.Back.easeOut,
+               callBack: function () {
+                   animate({
+                       curEle: box,
+                       target: {
+                           top: curT
+                       },
+                       duration: 200,
+                       effect: animationEffect.Bounce.easeOut
+                   });
+               }
+           });
+       }
+
+   };
+
+十二.默认行为
+    1.a标签的默认行为: 页面跳转
+        1.在当前窗口打开页面
+            <a href="http://www.baidu.com">百度</a>
+        2.在新窗口打开页面
+            <a href="http://www.baidu.com" target="_blank">百度</a>
+        3.刷新当前页面(跳到本页面)
+            <a href="">百度</a>
+        4.写#号,页面不做任何的操作,但是会在当前URL地址栏的末尾把#xxx追加进来(HASH 哈希值)(#号后面的东西叫哈希)
+            <a href="#">百度</a>
+
+    2.a标签的默认行为: HASH定位或者称为锚点定位
+        定位到当前页面指定ID的容器位置;
+        如果URL地址的末尾出现了哈希值,浏览器首先会在当前页面中找一下是否存在对应ID的容器;如果有的话,会在页面渲染完成后,直接定位到指定容器的位置(哈希定位/锚点定位),如果没有,哈希值可能是在做前端路由(reactRouter/vueRouter);
+        页面跳转范例:
+        哈希定位范例1:
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>2.preventDefault</title>
+                <style>
+                    *{
+                        margin: 0;
+                        padding: 0;
+                    }
+                    #box{
+                        margin: 3000px auto;
+                        width: 200px;
+                        height: 200px;
+                        background: orange;
+                    }
+                </style>
+            </head>
+            <body>
+            <a href="#box">定位到橘色盒子的位置</a>
+            <div id="box"></div>
+            <script src="js/utils.js"></script>
+            <script src="js/animate.js"></script>
+            </body>
+            </html>
+
+        哈希定位范例2:
+            打开页面时,定位到指定的位置
+            以后我们再做广告的时候,如果想跳转到指定页面的指定位置,就通过哈希搞定
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>2.preventDefault</title>
+                <style>
+                    *{
+                        margin: 0;
+                        padding: 0;
+                    }
+                </style>
+            </head>
+            <body>
+            <a href="http://www.zhufengpeixun.cn#course-list" target="_blank">百度的广告</a>
+            <script src="js/utils.js"></script>
+            <script src="js/animate.js"></script>
+            </body>
+            </html>
+
+
+十三.阻止默认行为
+    有些时候我们也需要阻止A标签默认行为
+        有些时候我们会把a标签作为一个按钮,点击不是页面跳转,仅仅时实现某个功能(例如:轮播图的所有切换按钮)
+        a标签的hover属性兼容所有的浏览器,我们可以利用这个特点给按钮加鼠标滑过离开的一些样式变化的效果;
+        范例: 阻止默认行为方式一
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>2.preventDefault</title>
+                <style>
+                    *{
+                        margin: 0;
+                        padding: 0;
+                    }
+                </style>
+            </head>
+            <body>
+            <!--方式一-->
+            <!--<a href="javascript:;"></a>-->
+            <!--<a href="javascript:void 0"></a>-->
+            <!--&lt;!&ndash; void 0 <=> undefined &ndash;&gt;-->
+            <!--<a href="#" id="link">登录</a>-->
+
+
+            <!--阻止默认行为方式二-->
+            <!--<a href="http://www.zhufengpeixun.cn" id="link">登录</a>-->
+            <!--<script>-->
+                <!--//->当点击a标签的时候,先出发click事件,然后才会触发默认行为-->
+                <!--link.onclick = function () {-->
+                    <!--return false;//->阻止默认行为-->
+                <!--}-->
+                <!---->
+                <!--link.onclick = function (e) {-->
+                    <!--e = e || window.event;-->
+                    <!--//->阻止默认行为-->
+                    <!--e.preventDefault ? e.preventDefault() : e.returnValue = false;-->
+                <!--}-->
+            <!--</script>-->
+            <script src="js/utils.js"></script>
+            <script src="js/animate.js"></script>
+            </body>
+            </html>
+
+十三.解析域名的案例
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>2.preventDefault</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+    <a href="http://www.zhufengpeixun.cn:80/student/index.html?name=zxt&age=28#sex" id="link"></a>
+    <script>
+        console.dir(link);
+        console.log(link.hash);//->获取hash哈希值
+        console.log(link.hostname);//->获取域名
+        console.log(link.pathname);//->请求文件的路径和名称
+        console.log(link.protocol);//->请求协议(http/https/ftp...)
+        console.log(link.search);//->问号传参的值"?name=zxt&age=28"
+
+        //->真正项目中,如果我们想获取一个URL地址中的部分信息,我们可以利用A独特的这些属性
+        //1.首先动态创建一个A标签,把我们需要解析的URL地址放在href中
+        //2.把A增加到页面中,但是让其时隐藏的
+        //3.利用私有的属性获取到我们想要的结果
+        //4.在页面中把A移除掉
+    </script>
+    <script src="js/utils.js"></script>
+    <script src="js/animate.js"></script>
+    </body>
+    </html>
+
+十四.input表单案例
+    1.案例一: 全选/全不选
+
+    e: 事件对象,并且兼容了所有的浏览器(我们不需要自己处理兼容,JQ已经帮我们处理好了)
+    flag: 标识
+    this: 当前点击的这个input(不管点击的是label还是input)[原生JS对象]
+
+    JQ中操作元素属性,有两个方法:
+        1.attr: 操作的一般都是自定义属性(部分内置属性也能操作);
+        2.prop: 操作的一般都是内置属性(尤其是表单的内置属性);
+        项目中经常都是表单的使用prop,其它标签使用attr
+
+
+    案例代码: (兼容所有浏览器)
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>3.input全选/全不选</title>
+            <link rel="stylesheet" href="css/reset.min.css">
+            <style>
+                html,body{
+                    user-select: none;
+                }
+                .box{
+                    margin: 20px auto;
+                    padding: 20px;
+                    width: 300px;
+                    border: 1px dashed orange;
+
+                    line-height: 50px;
+                    font-size: 16px;
+                }
+                .box input{
+                    outline: none;/*去除自带边框*/
+                    margin-right: 5px;
+                    vertical-align: middle;/*让复选框和文字是基于中线对齐的*/
+                }
+            </style>
+        </head>
+        <body>
+        <div class="box">
+            <!-- 真实项目中我们需要给单选或者复选框进行分组(用name分组)-->
+            <input type="checkbox" id="selectAll"><label for="selectAll">全选/全不选</label><br>
+            <input type="checkbox" name="hobby">敲代码<br>
+            <input type="checkbox" name="hobby">打篮球<br>
+            <input type="checkbox" name="hobby">看书<br>
+            <input type="checkbox" name="hobby">踢足球<br>
+            <input type="checkbox" name="hobby">打台球<br>
+            <input type="checkbox" name="hobby">游泳<br>
+            <input type="checkbox" name="hobby">旅游<br>
+            <input type="checkbox" name="hobby">冥想人生<br>
+        </div>
+
+        <script src="js/jquery-1.11.3.js"></script>
+        <script type="text/javascript">
+            /*分析需求
+            *   1.点击全选/全不选,控制hobby的复选框也跟着全选中或者全不选中
+            *   2.其它hobby的复选框,只要有一个不选中的时候,全选那个框,也要取消选中;当然如果其它hobby框都选中了,全选这个框也要选中;
+            *
+            * */
+
+            //=>$(function(){...});: 当html结构都加载完成的时候执行回调函数,等价于$(document).ready(function(){...})
+            $(function () {
+                var $selectAll = $("#selectAll"),
+                    $hobbyList=$("input[name='hobby']");
+                //console.log($hobbyList);
+                $selectAll.click(function (e) {
+                    //->e: 事件对象,并且兼容了所有的浏览器(我们不需要自己处理兼容,JQ已经帮我们处理好了)
+
+                    //->flag: 标识
+                    //->this: 当前点击的这个input(不管点击的是label还是input)[原生JS对象]
+                    //console.log(this);
+                    //->JQ中操作元素属性,有两个方法: 1.attr: 操作的一般都是自定义属性(部分内置属性也能操作);2.prop: 操作的一般都是内置属性(尤其是表单的内置属性);
+                    //项目中经常都是表单的使用prop,其它标签使用attr
+                    var flag = $(this).prop("checked");
+                    //console.log(flag);
+
+                    //->JQ内置循环机制: 一个JQ元素集合中有多项,执行prop,JQ内部会进行循环,
+                    $hobbyList.prop("checked",flag);
+                });
+
+                //->$hobbyList: 而是把集合中的每一个绑定了click;不是把集合绑定了click
+                $hobbyList.click(function () {
+                    //->验证所有的hobby是否都被选中,如果是,则让全选框选中,反之只要有一个没有选中,全选框就不会选中;
+
+                    //->this: 不是所有的hobby而是当前点击的这个hobby
+                    var isFlag = true;//->假设都是被选中的;
+                    //->验证假设的对不对,循环hobbyList
+                    $hobbyList.each(function () {
+                        //->this: JQ的each方法中的this是当前遍历的这一项
+                        if(!$(this).prop("checked")){
+                            isFlag = false;
+                            //->在JQ的each方法中的return 返回false,代表结束当前的循环;
+                            return false;
+                        }
+                    });
+                    $selectAll.prop("checked",isFlag);//->isFlag为true: 选中;isFlag为false: 选不中;
+                });
+            });
+        </script>
+        </body>
+        </html>
+
+    还有第二种写法:
+    代码如下
+        ...
+
+
+十五.思考题:
+    实现全选和反选(之前选中的不选中,而之前不选中的选中)
+    此时的全选和反选是两个按钮(不是框了)
+
+十六.表单验证案例
+    例如: 京东登录框-用户名
+    重点要实现的功能: 验证;
+    范例代码
+        ....
+
+十七.作业
+    从第五周开始~毕业
+    两种情况
+    1.以小组为单位(一个项目小组不能超过3人)
+        以小组为单位的,做的项目要包含全面: 首页,登录,注册,详情页或者商品筛选页面,都要做完;
+
+    2.以个人为单位
+        以个人为单位的,做的项目包含: 首页,登录,注册;
+
+    老师建议以小组为单位
+    ------------------------------------------------------------------------------
+
+
+    今明两天(8.23-8.24)组建好自己的小分队,定一下本小组需要开发的项目,选好项目小组长,把相关信息统计给宋涵;
+    ------------------------------------------------------------------------------
+
+
+    技术可以使用JQ(老师建议在C模块第一周之前就完成项目;等C模块学完,同样的一个项目,同一个小组再拿react再做一遍)
+    ------------------------------------------------------------------------------
+
+    参考的项目:
+        1.电商类
+            京东,淘宝,苏宁易购,天猫....这类的大型网站;
+        2.视频类
+            爱奇艺,腾讯视频,优酷,乐视....;
+        3.其它类
+            .....大型网站;
+    ------------------------------------------------------------------------------
+
+    难一点的项目
+        QQ空间
+        微博
+        ...
+    ------------------------------------------------------------------------------
+
+    偏简单一点的项目
+        拉钩
+        小米商城 mi.com
+        华为
+        ...

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .box {
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            border: 1px dashed red;
+            line-height: 35px;
+            font-size: 16px;
+        }
+
+        .box input {
+            outline: none;
+            margin-right: 5px;
+            vertical-align: middle; /*让复选和文字是基于中线对齐*/
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <!--真实项目中我们需要给单选或者复选框进行分组(用NAME分组)-->
+    <input type="checkbox" id="selectAll"><label for="selectAll">全选/全不选</label> <br>
+    <input type="checkbox" name="hobby">敲代码 <br>
+    <input type="checkbox" name="hobby">打篮球 <br>
+    <input type="checkbox" name="hobby">踢足球 <br>
+    <input type="checkbox" name="hobby">打排球 <br>
+    <input type="checkbox" name="hobby">游泳 <br>
+    <input type="checkbox" name="hobby">旅游 <br>
+    <input type="checkbox" name="hobby">看书 <br>
+    <input type="checkbox" name="hobby">冥想人生
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function () {
+        var $selectAll = $('#selectAll'),
+                $hobbyList = $('input[name="hobby"]');
+
+        $selectAll.click(function (e) {
+            $hobbyList.prop('checked', $(this).prop('checked'));
+        });
+
+        $hobbyList.click(function () {
+            $selectAll.prop('checked', true);
+            $hobbyList.each(function () {
+                if (!$(this).prop('checked')) {
+                    $selectAll.prop('checked', false);
+                    return false;
+                }
+            });
+        });
+    });
+
+    //=>思考题：
+    //实现全选和反选(之前选中的不选中,而之前不选中的选中)
+    //此时的全选和反选是两个按钮(不是框了)
+</script>
+</body>
+</html>

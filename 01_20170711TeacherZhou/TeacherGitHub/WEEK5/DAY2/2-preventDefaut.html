@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        #box {
+            margin: 3000px auto;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<!--
+A的默认行为:页面跳转
+  ->target="_blank"：在新窗口打开页面
+  ->href=""：点击刷新当前的页面(跳转到本页面)
+  ->href="#xxx"：页面不做任何的操作，但是会在当前URL地址栏的末尾把#xxx追加进来(HASH 哈希值)
+-->
+<!--<a href="http://www.zhufengpeixun.cn/">珠峰培训</a>
+<a href="http://www.zhufengpeixun.cn/" target="_blank">珠峰培训</a>
+<a href="#aaa">珠峰培训</a>-->
+
+<!--
+A的默认行为：HASH定位或者称为锚点定位
+  ->定位到当前页面指定ID的容器位置
+  ->如果URL地址的末尾出现了HASH值,浏览器首先会在当前页面中找一下是否存在对应ID的容器,如果有的话,会在页面渲染完成后,直接定为到指定容器的位置(HASH定位);如果没有,我们的HASH值可能是在做前端路由;
+-->
+<!--<a href="#box">定位到红色盒子的位置</a>
+<div id="box"></div>-->
+
+<!--
+以后我们在做广告的时候，如果想跳转到指定页面的指定位置，就通过HASH搞定
+<a href="http://www.zhufengpeixun.cn/#course-list" target="_blank">珠峰培训最具震撼的REACT视频首发了(快快来~~)</a>
+-->
+
+<!--
+有些时候我们也需要阻止A的默认行为
+   ->有些时候我们会把A作为一个按钮,点击不是页面跳转,仅仅是实现某个功能(例如：轮播图的所有切换按钮)
+   ->A标签的HOVER属性兼容所有的浏览器,我们可以利用这个特点给按钮加鼠标滑过离开的一些样式变化的效果
+-->
+<!--HTML中直接阻止默认行为-->
+<!--<a href="javascript:;"></a>
+<a href="javascript:void 0;"></a>&lt;!&ndash; void 0 <=> undefined &ndash;&gt;-->
+
+<!--在JS中阻止默认行为-->
+<!--<a href="http://www.zhufengpeixun.cn/" id="link">登录</a>
+<script>
+    //->当点击A标签的时候,先触发CLICK事件,然后才会触发默认行为
+    //    link.onclick = function () {
+    //        return false;//->阻止默认行为
+    //    };
+
+    //    link.onclick = function (e) {
+    //        e = e || window.event;
+    //        //->阻止默认行为
+    //        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    //    };
+</script>-->
+
+<a href="http://www.zhufengpeixun.cn:80/student/index.html?name=zxt&age=28#sex" id="link"></a>
+<script>
+    console.dir(link);
+    console.log(link.hash);//->获取HASH值
+    console.log(link.hostname);//->获取域名
+    console.log(link.pathname);//->请求文件的路径和名称
+    console.log(link.protocol);//->请求协议(HTTP/HTTPS/FTP...)
+    console.log(link.search);//->问号传参的值 "?name=zxt&age=28"
+
+    //->真正项目中，如果我们想获取一个URL地址中的部分信息，我们可以利用A独特的这些属性
+    //1、首先动态创建一个A标签，把我们需要解析的URL地址放在HREF中
+    //2、把A增加到页面中，但是让其是隐藏的
+    //3、利用私有的属性获取到我们想要的结果
+    //4、在页面中把A移除掉
+</script>
+
+
+<script src="js/utils201708.min.js"></script>
+<script src="js/animate.min.js"></script>
+<script src="js/2-1.js"></script>
+</body>
+</html>
