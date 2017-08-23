@@ -21,7 +21,7 @@
     <favorites_list name="01_20170711TeacherZhou" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.1">
+    <splitter split-orientation="vertical" split-proportion="0.15220949">
       <split-first>
         <leaf>
           <file leaf-file-name="4.inputYanZheng.html" pinned="false" current-in-tab="false">
@@ -57,8 +57,8 @@
           <file leaf-file-name="4.3.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/FifthWeek/20170823/js/4.3.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+                <state relative-caret-position="345">
+                  <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -71,8 +71,8 @@
           <file leaf-file-name="20170823.text" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/FifthWeek/20170823/20170823.text">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="418">
-                  <caret line="522" column="22" lean-forward="true" selection-start-line="522" selection-start-column="22" selection-end-line="522" selection-end-column="22" />
+                <state relative-caret-position="-75">
+                  <caret line="498" column="8" lean-forward="true" selection-start-line="498" selection-start-column="8" selection-end-line="498" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -196,10 +196,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-7" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -512,12 +511,12 @@
       <workItem from="1503322639596" duration="420000" />
       <workItem from="1503365234309" duration="33396000" />
       <workItem from="1503444294611" duration="289000" />
-      <workItem from="1503452112113" duration="25690000" />
+      <workItem from="1503452112113" duration="26185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="972066000" />
+    <option name="totallyTimeSpent" value="972561000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -529,10 +528,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="0" width="697" height="735" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17261904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35204855" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47954175" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -955,16 +954,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FifthWeek/20170823/js/4.3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        <state relative-caret-position="345">
+          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FifthWeek/20170823/20170823.text">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="522" column="22" lean-forward="true" selection-start-line="522" selection-start-column="22" selection-end-line="522" selection-end-column="22" />
+        <state relative-caret-position="-75">
+          <caret line="498" column="8" lean-forward="true" selection-start-line="498" selection-start-column="8" selection-end-line="498" selection-end-column="8" />
           <folding />
         </state>
       </provider>
