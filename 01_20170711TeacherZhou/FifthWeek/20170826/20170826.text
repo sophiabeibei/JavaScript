@@ -102,7 +102,7 @@
     标准浏览器: MouseEvent
     IE浏览器: PointerEvent
 
-    1.实例(私有属性)-MouseEvent.prototype-UIEvent.prototype-Event.prototype-Object.prototype
+    1.鼠标事件对象是MouseEvent的实例(私有属性)-MouseEvent.prototype-UIEvent.prototype-Event.prototype-Object.prototype
         兼容:
         1.clientX: 当前鼠标操作的那个点,距离浏览器窗口的X轴坐标
         2.clientY: 当前鼠标操作的那个点,距离浏览器窗口的Y轴坐标
@@ -163,23 +163,188 @@
 
 
 十一.键盘事件对象
-    
+    KeyboardEvent
+    键盘事件对象是KeyboardEvent的实例(私有属性): -KeyboardEvent.prototype-UIEvent.prototype-Event.prototype-Object.prototype
+    没有clientX,clientY;多了keyCode,(IE中是which)-当前按键的键代码
+        不兼容
+        1.which: 当前按键的键代码
+            兼容处理:
+            e.which||e.keyCode
+            代码如下:
+                document.body.onkeydown = function(e){
+                    e = e || window.event;
+                    e.which||e.keyCode
+                };
+
+十二.常用按键的键盘码
+    1.空格键(Space): 32
+    3.回车键(Enter): 13
+    4.会退键(BackSpace): 8
+    5.删除键(Delete): 46
+    6.取消键(ESC): 27
+    7.制表符键(Tab): 9
+    8.shift: 16
+    9.ctrl: 17
+    10.alt: 18
+    11.CapsLock: 20
+    12.字母键: 65-90
+    13.数字键: 48-57
+    14.F5: 116
+
+十三.键盘事件案例: 禁止按F5刷新
+    代码如下:
+        document.body.onkeydown = document.onkeypress = document.onkeyup = function(e){
+            e = e || window.event;
+            var keyNum = e.which ||e.keyCode;
+            if(keyNum === 116){
+                //->F5
+                e.preventDefault = e.preventDefault || e.returnValue = false;
+                //->IE下还需要把keyCode设置为0才管用
+                e.keyCode = 0;
+            }
+        };
+
+十四.A标签的默认行为
+    A标签的默认行为有两个
+        1.超链接,点击跳转页面
+        代码展示:
+            <a href="htt://www.baidu.com">珠峰培训</a>
+            <a href="htt://www.baidu.com" target="_parent">珠峰培训</a>
+            //->target="_parent": 在新窗口打开需要跳转的页面,不加是本窗口跳转
+        2.HASH定位
+            原理: 当点击A标签的时候,会在当前页面URL地址后面加#box
+            //->http://.../link.html#box
+            //->在URL地址栏#后面出现的值,我们把它称之为HASH值(哈希值),出现了HASH值,浏览器在渲染完成页面后,会直接定位到ID为HASH值盒子所在的位置;
+            //->有时候,也会出现URL后面有HASH值,但是页面中并没有ID为它的盒子,此时我们利用HASH值可能是为了实现前端路由;
+            代码展示1:
+                <a href="#box">HASH定位</a>
+                <div id="box"></div>
+            //->当我们点击A标签的时候,可以快速定位到当前页面ID为BOX盒子的位置;
+
+            代码展示2:
+                <a href="http://www.zhufengpeixun.com#course-list" target="_blank">珠峰培训最新全栈视频(广告)</a>
+            //->我们想当点击这个广告的时候,跳转到珠峰培训官网,并且直接定位到视频区域的位置,我们九可以在跳转URL地址的末尾加上对应的HASH值即可;
+
+            案例3:
+            //->在某些项目中,例如: 京东的楼层导航,当我们点击某个楼层按钮的时候,可以快速定位到对应楼层的位置,此时就可以基于HASH定位来做(没有动画效果);京东是基于JS动画来做的,自己可以思考一下如何处理?
+            //->想要动画效果,改变它的scrollTop值;
+
+十五.利用HASH值实现前端路由
+    在单页面应用中,我们经常使用HASH这种方式,来控制页面具体显示哪部分的内容,这就是前端路由的一个初步的体现;
+
+    在了解前端路由之前,先了解下单页面应用;
+
+十六.单页面应用
+    把很多页面内容汇总到一个页面,点击不同按钮实现在同一页面的切换即可;
+    案例:
+        http://kbs.sports.qq.com
+    原理: 在原始网站中,如果点击某个导航或者按钮,我们想看到不同的内容,需要跳转到新的页面来观看(弊端: 页面来回跳转体验度不好,而且每跳转到新页面,所有的内容都需要重新渲染)
+    //->后来随着互联网技术的发展,出现了一种新的模式"单页面应用": 它是把之前我们需要好多页面来展示的内容都汇总到一个页面中(在一个页面中集成了多个页面),我们通过一些机制控制不同区域内容的展示,不需要跳转页面;但是所有内容合在一起不是手动完成的,而是通过gulp/webpack等自动化平台合并到一起的;
+
+十七.阻止A标签的默认行为,三种方式
+    在项目中,有时候我们会使用A标签来实现一个按钮,点击按钮页面不跳转,也不会定位到其它的位置(既不是页面跳转,也不是HASH定位);
+    使用A标签实现按钮,我们可以充分利用A的hover兼容所有浏览器的机制,给予按钮好看的样式,语义化也不错,所以现在很多大型网站中的按钮,大部分都是基于A标签来做的;
+
+    此时当用户点击A的时候,我们需要把它所有的默认行为给阻止掉才可以;阻止A标签的默认行为有三种模式:
+        1.html直接处理
+            <a href="javascript:;">I am button</a>
+            //->javascript:;->相当于给a加了一个undefined;   只要返回一个false值;
+            //->javascript:void 0; ->这样也可以;
+
+        2.使用JS来处理
+            原理: 当我们点击A标签的时候,先触发A的click行为,然后才继续触发默认行为的;
+            oLink = document.getElementsByTagName("a");
+            oLink.onclick = function(){
+
+                return false;//->返回false,终止A标签继续执行默认行为的操作,阻止了默认行为(只有返回false才可以,其它都不行);
+            };
+
+        3.preventDefault阻止默认行为
+            oLink = document.getElementsByTagName("a");
+            oLink.onclick = function(e){
+                e = e || window.event;
+                e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            };
+
+十八.事件传播
+    Event.prototype原型上的属性:
+        1.AT_TARGET:2         //=>捕获阶段
+        2.BUBBLING_PHASE:3    //=>到达目标位置(目标阶段)
+        3.CAPTURING_PHASE:1   //=>冒泡阶段
+        完整的事件传播机制
+
+    1.捕获阶段
+
+
+    2.目标阶段
+
+
+    3.冒泡阶段
+
+
+    curEle.onXXX = function(){...};
+        这种方式是DOM0级事件绑定,依托于这种方式给行为绑定的方法,只有在冒泡传播阶段才会被触发执行;捕获阶段和这些绑定的方法没关系;
+
+    标准浏览器DOM2事件curEle.addEventListener("XXX",function(){...},false);
+    DOM2事件绑定(标准浏览器)最后一个参数写false,代表当前绑定的方法是在冒泡阶段被触发执行的,如果写的是true代表绑定的方法在捕获阶段被执行的
+
+    IE低版本DOM2事件
+    curEle.attachEvent("onXXX",function(){...});
+    IE低版本浏览器中的DOM2绑定方式也只能在冒泡阶段才会被触发执行;
 
 
 
+    三个阶段,项目中我们最常使用的是冒泡阶段,捕获阶段基本不处理任何事情;
+
+    冒泡传播
+        当前元素的某个事件行为被触发,那么其祖先元素的相关事件都会被依次触发,这种机制就是冒泡传播机制;
+
+        大部分事件行为天生就存在冒泡传播,不是事件行为是不存在冒泡传播的;
+        document.body.onclick = function(){
+            e.stopPropagation ? e.stopPropagation : e.cancelBubble = true;
+        };
+        我们可以基于e.stopPropagation ? e.stopPropagation : e.cancelBubble = true;来阻止事件的冒泡传播;
+
+十九.哪些事件行为不存在传播机制
+    不属于键盘,也不属于鼠标;
+    1.load
+    2.error
+    3.scroll
+        扩展的标签textarea
+        <textarea id="box">
+            先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。
+            宫中府中，俱为一体，陟罚臧否，不宜异同。若有作奸犯科及为忠善者，宜付有司论其刑赏，以昭陛下平明之理，不宜偏私，使内外异法也。
+            侍中、侍郎郭攸之、费祎、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下。愚以为宫中之事，事无大小，悉以咨之，然后施行，必得裨补阙漏，有所广益。
+        </textarea>
+    4.focus跟表单有关的事件行为没有冒泡传播的机制
+    5.blur(跟表单有关的事件行)
+        备注: 跟表单有关的事件行change,key系列的行为,存在传播的机制;
+    6.mouseenter不存在冒泡传播的机制;
+    7.mouseleave不存在冒泡传播的机制;
+
+二十.mouseenter和mouseover的区别?
+    mouseover: 滑入;有两个特点:
+        1.存在事件的冒泡传播
+        2.从容器子元素中重新滑入到父容器,也会重新触发父元素的mouseover行为
+        mouseover是滑入不是进入;
+    mouseenter: 移动;也有两个特点
+        1.默认阻止了冒泡传播机制
+        2.从子元素中重新进入到父容器,不会再重新触发父元素的mouseenter行为
+        mouseenter是进入;
+二十一.mouseleave和mouseout
+    mouseout和mouseleave也是同样的机制,mouseleave不存在冒泡传播,而mouseout存在冒泡传播;
+    从父元素进入到子元素,会触发父元素的mouseout,但是mouseleave不会被触发,因为鼠标还没有离开父容器,只是进入里面的小容器而已;
 
 
+    enter和leave(常用)
+    over和out(麻烦,可以自己回去绑定试试)
 
-
-
-
-
-
-
-
-
-
-
+二十二.放大镜案例: 京东放大镜
+    放大镜的原理:
+        1.左侧盒子和右侧盒子是相同大小的
+        2.左侧mark比上左侧盒子获取的比例和,左侧小图片比上右侧大图片是相等的;
+        3.当mark再左侧中移动的时候,我们同时控制大图片在右侧盒子中也移动,而且移动的距离正好是左侧mark的一定比例(mark/左侧盒子);
+    代码如下:
 
 
 

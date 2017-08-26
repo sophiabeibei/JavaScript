@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.magnifier放大镜</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .container {
+            margin: 50px auto;
+            width: 600px;
+            height: 600px;
+        }
+
+        .conLeft, .conRight {
+            position: relative;
+            float: left;
+            width: 300px;
+            height: 300px;
+        }
+
+        .conLeft img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container .mark {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: lightcoral;
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+            cursor: move;
+        }
+
+        .conRight {
+            display: none;
+            overflow: hidden;
+        }
+
+        .conRight img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 300%;
+            height: 300%;
+        }
+    </style>
+</head>
+<body>
+<div class="container clear" id="container">
+    <div class="conLeft" id="smallBox">
+        <img src="img/1.jpg" alt="">
+        <div class="mark" id="mark"></div>
+    </div>
+    <div class="conRight" id="bigBox">
+        <img src="img/2.jpg" alt="" id="bigImg">
+    </div>
+</div>
+<script type="text/javascript">
+    var smallBox = document.getElementById("smallBox"),
+        bigBox = document.getElementById("bigBox"),
+        mark = document.getElementById("mark"),
+        bigImg = document.getElementById("bigImg");
+    smallBox.onmouseenter = function (e) {
+        e = e || window.event;
+        bigBox.style.display = mark.style.display = "block";
+    };
+    smallBox.onmousemove = function () {
+        computedMark();
+    };
+    smallBox.onmouseleave = function (e) {
+        e = e || window.event;
+        bigBox.style.display = mark.style.display = "none";
+    };
+    //=>计算mark的位置
+    //1.鼠标进入和鼠标在small-box中移动的时候都要计算位置
+    //2.mark永远走不出smallBox的边界(边界判断);
+    function computedMark(e) {
+        e = e || window.event;
+        e.pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+        e.pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+
+        var smallOffset = offset(smallBox),
+            markW = mark.offsetWidth,
+            markH = mark.offsetHeight;
+        var markL = e.pageX - smallOffset.left - mark / 2,
+            markT = e.pageY - smallOffset.top - mark / 2;
+
+        //=>边界判断
+        var maxL = smallBox.offsetWidth - markW,
+            maxT = smallBox.offsetHeight - markH;
+        markL = markL < 0 ? 0 : (markL > maxL ? maxL : markL);
+        markT = markT < 0 ? 0 : (markT > maxT ? maxT : markT);
+
+        mark.style.left = -markL * 3 + "px";
+        mark.style.top = -markT * 3 + "px";
+
+    }
+    //->offset: 获取当前元素距离body的偏移量
+    function offset(curEle) {
+        var l = curEle.offsetLeft,
+            t = curEle.offsetTop,
+            p = curEle.offsetParent;
+        while (p && p !== document.body) {
+            if (!/MSIE 8.0/i.test(navigator.userAgent)) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {left: l, top: t};
+    }
+
+
+</script>
+</body>
+</html>

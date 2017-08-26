@@ -184,10 +184,10 @@ var bannerRender = (function () {
             bindData();
             initLoad();
             autoMove();
-            bindMouseEvent();
+            /*bindMouseEvent();
             bindFocusEvent();
             bindArrowEvent();
-
+*/
 
             //->接下来,浏览器打开的时候,让第一张图片加载显示,让第一个焦点被选中
             //lazyImg();
