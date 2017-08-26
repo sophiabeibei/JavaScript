@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        /*
+         *  左侧的盒子和右侧的盒子是相同宽高
+         *  -> A = MARK/SMALL-BOX   MARK和左侧盒子的比较比例
+         *  -> B = SMALL-IMG/BIG-IMG 左侧小图和右侧大图的比例
+         *
+         *  => A===B 才能保证左侧MARK移动过程中能把右侧大图全部看见
+         */
+        .smallBox, .bigBox {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 210px;
+            height: 210px;
+            box-shadow: 3px 3px 10px 0 #555;
+        }
+
+        .smallBox img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .smallBox .mark {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70px;
+            height: 70px;
+            background: red;
+            opacity: 0.4;
+            filter: alpha(opacity=40);
+            cursor: move;
+            border-radius: 50%;
+        }
+
+        .bigBox {
+            display: none;
+            left: 300px;
+            overflow: hidden;
+        }
+
+        .bigBox img {
+            position: absolute;
+            width: 300%;
+            height: 300%;
+        }
+    </style>
+</head>
+<body>
+<div class="smallBox">
+    <img src="img/1.jpg" alt="">
+    <div class="mark"></div>
+</div>
+<div class="bigBox">
+    <img src="img/2.jpg" alt="">
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/4.js"></script>
+</body>
+</html>
+<!--
+思考题：
+    类似于京东或者淘宝这样的放大镜，右侧盒子和左侧的盒子不是一样大的，这样的情况下我们的比例应该如何计算才好？
+-->

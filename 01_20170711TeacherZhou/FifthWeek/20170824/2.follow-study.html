@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.follow</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -150px 0 0 -150px;
+            width: 300px;
+            height: 300px;
+            background: green;
+        }
+        .box .mark{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -50px 0 0 -50px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="mark" id="mark"></div>
+</div>
+<script>
+    //=>mouseover/mouseout: 鼠标滑入和滑出事件
+    //->这两个事件存在冒泡传播机制,例如: 触发mark的mouseover/mouseout,那么box的相关事件行为也会被触发;
+    //->从子元素中把鼠标滑到父元素上,会重新触发父元素的mouseover(鼠标重新滑入到父元素上了)
+    //->滑入!==进入   滑出!==离开
+//    box.onmouseover = function () {
+//        console.log("I am box over");
+//    };
+//
+//    box.mouseout = function () {
+//        console.log("I am box out");
+//    }
+
+
+
+    //=>mouseenter/mouseleave
+    //鼠标进入/鼠标离开的特点:
+    //1.这两个事件自动屏蔽事件的冒泡传播机制;
+    //2.从子元素中把鼠标移出来,不会重新触发大盒子的mouseenter(它属于进入,从小盒子出来,不应算重新进入,因为我们始终没有出去大盒子)
+    //
+    //2.经过验证: 鼠标跟随案例应该用mouseenter/mouseleave;
+
+    box.mouseenter = function () {
+        console.log("I am box enter");
+    };
+    box.mouseleave = function () {
+        console.log("I am box leave");
+    }
+
+</script>
+</body>
+</html>

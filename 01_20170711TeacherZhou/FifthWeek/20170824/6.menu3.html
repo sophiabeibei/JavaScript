@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.menu购物车(用css实现)</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .menu{
+            margin: 50px auto;
+            width: 200px;
+        }
+        .menu a{
+            display: block;
+        }
+        .menu a span{
+            display: none;
+            padding: 0 10px;
+            line-height: 35px;
+            border: 1px solid #999;
+            font-size: 16px;
+            color: red;
+        }
+        .menu a .shop{
+            /*height: 120px;*/
+            height: 0;
+            border: 1px solid #999;
+            border-top: none;
+            border-width: 0;
+            overflow: hidden;
+
+            -webkit-transition: .3s;
+            transition: .3s;
+        }
+        .menu a .shop li{
+            padding-left: 15px;
+            line-height: 30px;
+        }
+        .menu .shop li:nth-child(even){
+            background: lightcoral;
+        }
+        .menu .shop li:hover{
+            background: lightgreen;
+        }
+
+        /* 控制shop的显示隐藏*/
+        .menu a:hover .shop{
+            height: 120px;
+            border-width: 1px;
+        }
+    </style>
+</head>
+<body>
+<!-- a标签的hover兼容所有浏览器-->
+<!-- border-width 边框-->
+<!-- 下拉效果    -webkit-transition: 0.3s;transition: 0.3s-->
+<div class="menu">
+    <a href="javascripot:;" class="menuLink">购物车</a>
+    <ul class="shop">
+        <li>玫瑰花</li>
+        <li>情侣表</li>
+        <li>电影票</li>
+        <li>LV包包</li>
+    </ul>
+</div>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+</body>
+</html>
+
+
+<!--
+本案例:
+    拿html和css实现-->

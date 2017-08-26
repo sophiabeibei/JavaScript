@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.follow鼠标跟随案例2</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .imgBox {
+            position: relative;
+            margin: 20px auto;
+            width: 500px;
+        }
+        .imgBox .imgList li {
+            float: left;
+            margin-right: 20px;
+            width: 100px;
+            height: 75px;
+            border: 1px solid #eee;
+        }
+        .imgBox .imgList li img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .imgBox .mark {
+            display: none;
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #eee;
+        }
+        .imgBox .mark img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $(document).ready(function () {
+            var $imgBox = $(".imgBox"),
+                $itemList = $imgBox.find(".imgList>li"),
+                $mark = null;
+            $itemList.on("mouseenter", function (e) {
+                //->e: 事件对象;JQ已经把鼠标事件对象处理到兼容所有的浏览器了;
+                //->this: 当前操作的这个li;[原生JS对象]
+                //->1.获取到大图地址
+                var bigImg = $(this).children("img").attr("data-big");
+
+                //->2.创建mark
+                //->如果还没有创建mark,我们则创建一个mark,如果已经存在,我们只需要把mark图片中的地址给修改过来即可;
+                if (!$mark) {
+                    $imgBox.append("<div class='mark'><img src='" + bigImg + "' alt=''></div>");//->JQ中的append除了增加JS元素对象外,还可以增加要给标签字符串,也相当于把字符串代表的元素增加到容器的末尾
+                    $mark = $imgBox.children(".mark");
+                    $mark.stop().show("fast");//->JQ中的快捷动画: show/hide/fadeIn/fadeOut/slideDown/slideUp...(参数: 数字事件,slow,fast...);
+                } else {
+                    //->mark存在的话,直接把地址给修改即可
+                    $mark.children("img").attr("src", bigImg);
+                }
+                //=>计算mark位置
+                markPosition.call(this, e);
+            }).on("mouseleave", function () {
+                //->把mark在容器中移除即可
+                $mark.remove();//->JQ中的remove就是把当前元素在所在容器中移除;
+                $mark = null;//->设置它的值为null,下一次进入到另外li中,我们再重新创建一个mark即可;
+            }).on("mousemove", markPosition);
+            //=>控制mark的位置
+            function markPosition(e) {
+                //->this: 当前操作的li
+                var obj = $imgBox.offset(),
+                    curL = e.pageX - obj.left,
+                    curT = e.pageY - obj.top;
+                $mark.css({
+                    left: curL + 20,
+                    top: curT + 20
+                })
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="imgBox">
+    <ul class="imgList clear">
+        <!-- 后期需要使用大图,我们把大图的地址放在自定义属性上data-big; -->
+        <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_1.jpg" data-big="img/apple_1_bigger.jpg" alt=""></li>
+        <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_2.jpg" data-big="img/apple_2_bigger.jpg" alt=""></li>
+        <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_3.jpg" data-big="img/apple_3_bigger.jpg" alt=""></li>
+        <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_4.jpg" data-big="img/apple_4_bigger.jpg" alt=""></li>
+    </ul>
+    <!--<div class="mark">
+        <img src="img/apple_1_bigger.jpg" alt="">
+    </div>-->
+</div>
+<!--
+思考题:
+    我们当前的案例还有另外一种实现的办法
+    1.首先每一个li中都有一个mark,事先准备好的,只是开始是隐藏的
+    2.鼠标进入这个li,控制mark显示即可,调整位置(鼠标移动的时候也调整位置)
+    3.鼠标离开,隐藏mark即可
+-->
+</body>
+</html>

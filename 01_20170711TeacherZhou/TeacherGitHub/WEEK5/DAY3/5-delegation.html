@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-DELEGATION</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #outer {
+            margin: 50px auto;
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+
+        #inner {
+            margin: 50px auto;
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+
+        #center {
+            margin: 50px auto;
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+
+        div {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+
+<script>
+    document.body.onclick = function (e) {
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+
+        if (e.target.id === 'center') {
+            console.log('I AM CENTER');
+        } else if (e.target.id === 'inner') {
+            console.log('I AM INNER');
+        } else if (e.target.id === 'outer') {
+            console.log('I AM OUTER');
+        } else if (e.target.tagName === 'BODY') {
+            console.log('I AM BODY');
+        }
+    }
+</script>
+</body>
+</html>
+<!--
+事件委托(事件代理)：
+    利用了事件的冒泡传播机制(当前元素的相关行为被触发,其所有父级元素的相关行为都会被触发,如果绑定了方法,对应的方法也会被执行[执行方法的时候也会把事件对象传递给对应的函数])
+
+    通过事件对象中的事件源,我们可以清楚的知道当前操作的是哪一个元素,也可以根据事件源的不同做不同的事情
+
+    利用上面的机制,如果我们一个容器中很多元素都要绑定点击事件,我们则不需要再一个个的绑定方法了,直接给最外层容器的点击事件绑定方法即可,这样不管点击的是哪一个后代元素,当前外层容器的CLICK行为都会被触发,绑定的方法也会被执行；我们通过区分事件源来处理不同的事情即可... =>这样的处理机制所消耗的性能比一个个绑定消耗的性能减少50%左右(约等于值)
+-->
+
+
+
+
+
+
+
+
+
+
+

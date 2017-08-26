@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.event事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            background: -webkit-linear-gradient(bottom right,lime,lightgreen,lightcoral,lightseagreen);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script src="js/1.1.js"></script>
+<script>
+    document.body.onclick = function (e) {
+        //->事件对象的兼容处理
+        e=e||window.event;
+        console.log(e);
+    }
+</script>
+</body>
+</html>

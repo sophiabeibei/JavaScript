@@ -8,6 +8,7 @@ for (var i = 0; i < pageList.length; i++) {
     item.index = i;
     item.onclick = function () {
         var index = utils.index(this);
+        if (index === prevIndex) return;
 
         //->让当前点击的这个有选中的样式
         utils.addClass(pageList[index],"select");

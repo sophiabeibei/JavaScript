@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4.magnifier</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        /*左侧的盒子和右侧的盒子是相同宽高
+            1.A = mark/smallBox    mark和左侧盒子的比较比例
+            2.B = smallImg/bigImg    左侧小图和右侧大图的比例
+
+            //=>A===B  才能保证左侧mark移动过程中能把右侧大图全部看见
+        */
+        .smallBox, .bigBox{
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 210px;
+            height: 210px;
+            box-shadow: 3px 3px 10px 0 #555;
+        }
+
+        .smallBox img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .smallBox .mark{
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 70px;
+            height: 70px;
+            background: red;
+            opacity: 0.4;
+            filter: alpha(opacity=40);
+            cursor: move;
+        }
+
+        .bigBox{
+            display: none;
+            left: 300px;
+            overflow: hidden;
+        }
+
+        .bigBox img{
+            position: absolute;
+            width: 300%;
+            height: 300%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="smallBox">
+    <img src="img/1.jpg" alt="">
+    <div class="mark"></div>
+</div>
+<div class="bigBox">
+    <img src="img/2.jpg" alt="">
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/4.1.js"></script>
+<!--<script src="js/4.2.js"></script>-->
+</body>
+</html>

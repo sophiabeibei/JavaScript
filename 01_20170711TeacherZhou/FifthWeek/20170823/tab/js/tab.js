@@ -13,21 +13,24 @@
         options = options || {};
         var preIndex = options.index||0;
 
-        // var $pageList = this.children(".page").children();
-        var $pageList = this.find(".page>*"),
-            $contentList = this.children(".content");
-
+        //->this: 当前要操作的那个容器[JQ对象](可能包含多个容器)
         //->如果传递的是多个容器,我们内置循环,一个个的处理即可
         this.each(function () {
             //->this: 当前循环的这一项;[JS对象];   each方法中的this都是[JS对象]
-//->让默认的选中
+            var $pageList = this.find(".page>*"),
+                $contentList = this.children(".content");
+            // var $pageList = this.children(".page").children();
+
+            //->让默认的选中
             $pageList.eq(prevIndex).addClass("select").siblings().removeClass("select");
             $contentList.eq(prevIndex).addClass("select").siblings(".content").removeClass("select");
+
             //->点击操作
             $pageList.click(function () {
                 //->this: 当前点击的li,[JS对象]
                 var curIndex = $(this).index();
                 if(preIndex===curIndex) return;
+
                 $(this).addClass("select");
                 $contentList.eq(curIndex).addClass("select");
 
@@ -45,8 +48,8 @@
 // $("#tab2").tabPlugin({
 //     index: 2
 // });
-$(".tab1").tabPlugin({
-    index: 2
+$(".tab").tabPlugin({
+    index: 1
 });
 
 

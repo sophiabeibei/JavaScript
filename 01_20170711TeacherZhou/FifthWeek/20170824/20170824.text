@@ -1,0 +1,215 @@
+一.事件传播
+    Event.prototype属性:
+        1.AT_TARGET:2         //=>捕获阶段
+        2.BUBBLING_PHASE:3    //=>到达目标位置(目标阶段)
+        3.CAPTURING_PHASE:1   //=>冒泡阶段
+        完整的事件传播机制
+
+二.事件传播的三个阶段
+    1.捕获阶段:
+          当前某一个元素的事件行为被触发,浏览器首先会从window开始想内查找,一直找到事件源;这个阶段叫做捕获阶段(缕清或者获取到传播的路径和层级)
+
+    2.目标阶段:
+
+    3.冒泡阶段:
+        当前元素的某一个事件行为被触发,那么其所有的父级元素(一直到window)的相关事件行为都会被依次的触发,顺序从里向外;(这个机制就是冒泡传播)
+        如果我们给其中某些父级元素绑定了方法,冒泡传播的时候,绑定方法会被执行,即使我们没绑定方法,事件行为也会被触发,只不过触发后不处理任何的操作而已;
+        冒泡传播,是浏览器天生自带的行为
+        IE6-8下只能传到到html
+        IE9+传播的时候没有document,最后到window;
+
+    DOM0事件绑定给事件行为绑定的那些方法,都是在冒泡传播阶段触发执行的,我们无法让其在捕获阶段触发执行;
+
+
+    1.e.stopPropagation 阻止浏览器的冒泡传播机制
+    //=>e.stopPropagation?e.stopPropagation():e.cancelBubble = true;//=>阻止浏览器的冒泡传播机制,此时传播到inner,就把传播链截断了
+
+三.标准浏览器DOM2事件绑定的方式:
+    可以控制在捕获阶段执行某个方法(但是这个没啥用,因为没有任何一个事件是在捕获阶段完成的)
+    center.addEventListener("click",function(){},false);最后一个参数如果是false,就是在冒泡阶段把函数执行,如果写true,就是在捕获阶段把函数执行;(可见最后一个参数,控制是在冒泡阶段执行,还是在捕获阶段执行函数;)前提: 必须是在DOM2事件绑定
+
+
+四.案例: 鼠标跟随
+    mouseover/mouseout/mouseenter/mouseleave
+    1.验证使用哪个属性:
+        1.mouseover/mouseout
+            box.onmouseover = function () {
+                console.log("I am box over");
+            };
+            box.mouseout = function () {
+                console.log("I am box out");
+            }
+            mouseover/mouseout: 鼠标滑入和滑出事件的特点:
+            1.这两个事件存在冒泡传播机制,例如: 触发mark的mouseover/mouseout,那么box的相关事件行为也会被触发;
+            2.从子元素中把鼠标滑到父元素上,会重新触发父元素的mouseover(鼠标重新滑入到父元素上了)
+            3.滑入!==进入   滑出!==离开
+
+        2.mouseenter/mouseleave
+            box.mouseenter = function () {
+                console.log("I am box enter");
+            };
+            box.mouseleave = function () {
+                console.log("I am box leave");
+            }
+            鼠标进入/鼠标离开的特点:
+            1.这两个事件自动屏蔽事件的冒泡传播机制;
+            2.从子元素中把鼠标移出来,不会重新触发大盒子的mouseenter(它属于进入,从小盒子出来,不应算重新进入,因为我们始终没有出去大盒子)
+
+    2.经过验证: 鼠标跟随案例应该用mouseenter/mouseleave;
+
+五.案例: 鼠标跟随2
+    代码:
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>3.follow鼠标跟随案例2</title>
+            <link rel="stylesheet" href="css/reset.min.css">
+            <style>
+                .imgBox {
+                    position: relative;
+                    margin: 20px auto;
+                    width: 500px;
+                }
+                .imgBox .imgList li {
+                    float: left;
+                    margin-right: 20px;
+                    width: 100px;
+                    height: 75px;
+                    border: 1px solid #eee;
+                }
+                .imgBox .imgList li img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+                .imgBox .mark {
+                    display: none;
+                    position: absolute;
+                    width: 400px;
+                    height: 300px;
+                    border: 1px solid #eee;
+                }
+                .imgBox .mark img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            </style>
+            <script src="js/jquery-1.11.3.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var $imgBox = $(".imgBox"),
+                        $itemList = $imgBox.find(".imgList>li"),
+                        $mark = null;
+                    $itemList.on("mouseenter", function (e) {
+                        //->e: 事件对象;JQ已经把鼠标事件对象处理到兼容所有的浏览器了;
+                        //->this: 当前操作的这个li;[原生JS对象]
+                        //->1.获取到大图地址
+                        var bigImg = $(this).children("img").attr("data-big");
+
+                        //->2.创建mark
+                        //->如果还没有创建mark,我们则创建一个mark,如果已经存在,我们只需要把mark图片中的地址给修改过来即可;
+                        if (!$mark) {
+                            $imgBox.append("<div class='mark'><img src='" + bigImg + "' alt=''></div>");//->JQ中的append除了增加JS元素对象外,还可以增加要给标签字符串,也相当于把字符串代表的元素增加到容器的末尾
+                            $mark = $imgBox.children(".mark");
+                            $mark.stop().show(fast);//->JQ中的快捷动画: show/hide/fadeIn/fadeOut/slideDown/slideUp...(参数: 数字事件,slow,fast...);
+                        } else {
+                            //->mark存在的话,直接把地址给修改即可
+                            $mark.children("img").attr("src", bigImg);
+                        }
+                        //=>计算mark位置
+                        markPosition.call(this, e);
+                    }).on("mouseleave", function () {
+                        //->把mark在容器中移除即可
+                        $mark.remove();//->JQ中的remove就是把当前元素在所在容器中移除;
+                        $mark = null;//->设置它的值为null,下一次进入到另外li中,我们再重新创建一个mark即可;
+                    }).on("mousemove", markPosition);
+                    //=>控制mark的位置
+                    function markPosition(e) {
+                        //->this: 当前操作的li
+                        var obj = $imgBox.offset(),
+                            curL = e.pageX - obj.left,
+                            curT = e.pageY - obj.top;
+                        $mark.css({
+                            left: curL + 20,
+                            top: curT + 20
+                        })
+                    }
+                });
+            </script>
+        </head>
+        <body>
+        <div class="imgBox">
+            <ul class="imgList clear">
+                <!-- 后期需要使用大图,我们把大图的地址放在自定义属性上data-big; -->
+                <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_1.jpg" data-big="img/apple_1_bigger.jpg" alt=""></li>
+                <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_2.jpg" data-big="img/apple_2_bigger.jpg" alt=""></li>
+                <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_3.jpg" data-big="img/apple_3_bigger.jpg" alt=""></li>
+                <li><img src="../../TeacherGitHub/WEEK5/DAY3/img/apple_4.jpg" data-big="img/apple_4_bigger.jpg" alt=""></li>
+            </ul>
+            <!--<div class="mark">
+                <img src="img/apple_1_bigger.jpg" alt="">
+            </div>-->
+        </div>
+        <!--
+        思考题:
+            我们当前的案例还有另外一种实现的办法
+            1.首先每一个li中都有一个mark,事先准备好的,只是开始是隐藏的
+            2.鼠标进入这个li,控制mark显示即可,调整位置(鼠标移动的时候也调整位置)
+            3.鼠标离开,隐藏mark即可
+        -->
+        </body>
+        </html>
+
+
+
+
+
+
+
+
+
+六.思考题1
+    我们当前的案例(五.鼠标跟随)还有另外一种实现的方法,思路如下:
+        1.首先每一个li种都有一个mark,事先准备好的,只是开始是隐藏的
+        2.鼠标进入这个li,控制mark显示即可,调整位置(鼠标移动的时候也调整位置)
+        3.鼠标离开,隐藏mark即可;
+
+
+
+七.案例: 放大镜
+
+
+
+
+
+
+    mark当前位置
+        curL=e.pageX-small的左偏移-mark宽度的一半
+        curT=e.pageY-small的上偏移-mark高度的一半
+
+    mark需要做边界判断
+        我们获取的left/top值需要在最大和最小边界值范围内,超过这个范围的,就让curL/curT等于最大或者最小的边界值即可;
+
+    最小top和left都是零
+    最大left=small的宽度-mark的宽度
+    最大top=small的高度-mark的高度
+
+
+八.思考题2
+    类似于京东或者淘宝这样的放大镜,右侧盒子和左侧盒子不是一样大的,这样的情况下我们的比例应该如何计算才好?
+
+
+九.事件委托
+    事件委托Delegation(事件代理):
+        利用了事件的冒泡传播机制(当前元素的相关行为被触发,其所有父级元素相关行为都会被触发;如果绑定了方法,对应的方法也会被执行[执行方法的时候也会把事件对象传递给对应的函数])
+
+        通过事件对象的事件源,我们可以清楚的知道当前操作的是哪个元素,也可以根据事件源的不同做不同的事情
+
+        利用上面的机制,如果我们一个容器中很多元素都要绑定点击事件,我们则不需要一个个的绑定方法了,直接给最外层容器的点击事件绑定方法即可;这样不管点击的是哪一个后代元素,当前外层容器的click行为都会被触发,绑定的方法也会被执行;我们通过区分事件源来处理不同的事情即可...这样的处理机制所消耗的性能比一个个绑定消耗的性能减少50%左右;(约等于值)
+
+
+十.有些项目,我们必须用事件委托才能把它实现;
+
+    范例:

@@ -1,0 +1,193 @@
+一.考试
+    CRM系统
+二.小组项目
+    1.小组或者个人项目的要求
+        个人或者小组长: 每周汇报任务进度(PM: 项目经理)
+        毕业之前项目必须完成(不完成不要毕业),至少要做两个项目(第二个项目是基于移动端和react框架开发的项目)
+        汇报进度:
+        //->开始做项目之前,把未来几周的开发量规定好:
+            1.个人: 汇报自己的进度
+            2.组长
+                1.整体项目进度
+                2.小组成员每个人负责的部分以及这周完成的内容
+                3.下周预计完成的开发量
+    2.基于gitHub发布自己的静态项目(无后台项目)
+        1.
+        2.基于当前的仓库,
+
+三.域名,服务器
+
+四.JS中事件及事件代理
+    1.什么是事件?
+        document.body.onclick = function(){
+            ....
+        };
+        不管绑定不绑定,元素天生自带的;事件都是存在的;是个行为
+        如果上面的代码不写,body也具备点击事件,当我们拿鼠标点击body的时候,同样会触发它的click行为;所以事件不是由我们的JS代码所创建的,而是元素天生就有的;
+
+        事件: 元素天生就具备的行为,当我们去操作某个行为的时候,元素的相关事件就会被触发
+
+五.JS中,元素天生具备的行为事件都有哪些?
+    常用的事件分类:
+        1)PC端
+            1.click: 点击     (一般在300ms之内触发一次);没有点击
+            2.dblclick: 双击  (一般都是300ms之内触发两次)
+            3.mouseover: 鼠标滑入
+            4.mouseout: 鼠标滑出
+            5.mouseenter: 鼠标进入
+            6.mouseleave: 鼠标离开
+            7.mousemove: 鼠标移动
+            8.mousedown: 鼠标摁下(左键)
+            9.mouseup: 鼠标抬起(左键)
+            10.mousewheel: 鼠标滚轮滚动
+            11.keydown: 键盘摁下
+            12.keypress: 键盘长摁  (600ms算是长摁)
+            13.keyup: 键盘抬起
+            14.scroll: 滚动条
+            15.load: 加载成功(window.onload: 当页面中的资源文件都加载完成,触发执行这个事件)
+            16.error: 加载失败
+            17.resize: 大小改变(window.onresize: 当浏览器的窗口大小发生了改变,触发执行这个事件)
+            18.focus: 表单获取焦点
+            19.blur: 表单失去焦点
+            20.change: 表单内容改变(案例: 省市县三级联动;用的就是change)
+
+            在元素对象的私有属性上用 onXXX 的属性,一般都是它的事件属性(有很多);例如想看body的: 在控制台输入console.dir(document.body);
+            PC端的鼠标事件,在移动端都不是很实用;因为手机不可能拿鼠标键盘操作,我们都使用手指来操作;所以移动端的事件大部分都是手指事件;
+            click在移动端也能用,但是有300ms延迟的问题(当我们点击一下,浏览器需要在300ms后再触发执行: 因为它要去看一下,在这个事件内是否触发了第二次点击,如果触发了,它认为click没触发,dblclick触发了;移动端认为click是单机事件而不是点击)
+
+        2)移动端(1-10事件行为也有,基本都不用,很难把它们触发;)
+            1-单手指操作事件
+                21.touchstart: 手指按到屏幕上
+                22.touchmove: 手指在屏幕上移动
+                23.touchend: 手指离开屏幕
+                24.touchcancel: 手指操作取消(一般都是以外状况导致操作取消)
+            2-多手指操作事件
+                25.gesturestart: 多手指按下
+                26.gesturechange: 手指改变位置
+                27.gestureend: 手指离开
+
+                我们平时的点击,双击,长按,滑动,拖拽,旋转,缩放等操作,都是基于上述事件模拟出来的效果
+            3-移动端的键盘和PC端不一样,手机一般都是虚拟的
+                1.键盘区别:
+                    移动端的keyup/keydown/keypress 等键盘事件,大部分手机都不兼容,如果需要监听表单内容的改变,我们需要使用input事件;
+
+        3)特殊(新版ES标准中增加的,不兼容)-PC端
+            28.dragstrat: 拖拽开始
+            29.drag: 拖动中
+            30.dragend: 拖拽结束
+
+六.事件绑定
+    我们之前写的JS代码: xxx.onclick = function(){};这样的操作,不是让其拥有事件行为(行为是天生自带的),而是给某个行为绑定一个方法,当行为触发的时候,浏览器会自动的把绑定的方法执行,这样我们就可以控制在触发某个行为的时候,实现一些需求或者功能;
+    代码: 给body的点击事件行为绑定了一个方法,当触发这个行为的时候,浏览器会把绑定的这个方法执行;
+        document.body.onclick = function(){
+            //->JS CODE
+        };
+
+    重点: 不仅仅把方法执行,而且还给方法传递了一个实参值,我们把这个e值称之为"事件对象";
+    代码:
+        document.body.onclick = function(e){
+            //->e: 设置一个形参(可以随意起名字,我们一般用e/ev来命名)接收当点击行为触发执行方法的时候,浏览器传递个方法的哪个实参;<=>arguments[0]也可以获取到这个结果
+        };
+
+七.事件对象
+    当元素的某个行为被触发,浏览器会把对应绑定的方法执行,而且会给方法传递一个实参值,这个实参就是"事件对象";
+
+    标准浏览器是这样的机制,但是在IE6-8浏览器中,浏览器执行绑定的方法时候,没有给传递"事件对象"这个实参值,如果我们想获取事件对象,我们使用"window.event";
+    代码:
+        document.body.onclick = function(e){
+            e = e || window.event;//->兼容IE678
+        };
+
+八.鼠标事件对象(实例)
+    标准浏览器: MouseEvent
+    IE浏览器: PointerEvent
+
+    1.实例(私有属性)-MouseEvent.prototype-UIEvent.prototype-Event.prototype-Object.prototype
+        兼容:
+        1.clientX: 当前鼠标操作的那个点,距离浏览器窗口的X轴坐标
+        2.clientY: 当前鼠标操作的那个点,距离浏览器窗口的Y轴坐标
+        IE678不兼容:
+        3.pageX: 当前鼠标操作这一点距离body的X轴坐标(浏览器第一屏)
+        4.pageY: 当前鼠标操作这一点距离body的Y轴坐标(包含卷去的高度)
+            处理兼容:
+            pageX = clientX+浏览器的scrollLeft
+            pageY = clientY+浏览器的scrollTop
+        兼容:
+        5.type: 当前操作的行为类型[String];例如: "click"...
+        IE678不兼容
+        6.target: 当前操作的事件源(当前鼠标是在哪个元素上触发的,这个元素就是事件源),想要获取事件源使用srcElement
+            兼容处理
+            target = e.target || window.srcElement;
+        IE678不兼容
+        7.preventDefault: 阻止当前元素的默认行为
+            默认行为:
+            A标签的默认行为有点击跳转页面的效果
+            input标签的默认行为: 当在文本框中输入内容的时候,内容填入到文本框中
+            所有浏览器天生给它规定的行为都是默认行为
+            IE678下没有这个属性方法,我们需要使用returnValue来阻止默认行为;
+            兼容处理:
+            preventDefault = e.preventDefault || returnValue=false;
+        8.stopPropagation: 阻止事件传播
+            兼容处理:
+            stopPropagation = e.stopPropagation || cancelBubble=true;
+        ...
+        以上仅仅是老师认为的一些常用的属性和方法,其它更多的属性方法,私下里可以逐一的查找和学习;
+
+九.常用事件对象兼容处理
+    如果当前的浏览器是IE678,我们把所有不兼容的属性处理兼容了,以后再使用的时候,我们只需按照标准的属性和方法执行即可;
+    代码如下:
+        document.body.onclick = function(e){
+            //->IE678: 让低版本浏览器仿照标准浏览器,把常用的事件对象属性和方法处理兼容了,这样以后按照标准浏览器的属性和方法使用即可
+            if(typeof e === "undefined"){
+                //->说明当前的浏览器是IE678
+                e = window.event;
+                e.target = e.srcElement;
+                e.pageX = clintX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+                e.pageY = clintY + (document.documentElement.scrollTop || document.body.scrollTop);
+                e.preventDefault = function(){
+                    e.returnValue = false;
+                };
+                e.stopPropagation = function(){
+                    e.cancelBubble = true;
+                };
+            }
+            //->兼容的按照标准浏览器使用即可;
+        }
+
+十.JQ中的事件对象
+    是JQ已经处理好兼容的,我们直接按照标准的方法来使用即可(原理和上面的相同)
+    代码如下:
+        $("body").on("click",function(e){
+            e.preventDefault();//->直接按照标准浏览器的属性使用即可(JQ完成了兼容的处理)
+        });
+
+
+十一.键盘事件对象
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

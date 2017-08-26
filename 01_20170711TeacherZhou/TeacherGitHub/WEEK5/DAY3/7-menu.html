@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .menu {
+            margin: 50px auto;
+            width: 200px;
+        }
+
+        .menu span {
+            display: block;
+            padding: 0 10px;
+            line-height: 35px;
+            border: 1px solid #999;
+            font-size: 16px;
+            color: lightcoral;
+        }
+
+        .menu .shop {
+            display: none;
+            border: 1px solid #999;
+            border-top: none;
+        }
+
+        .menu .shop li {
+            padding-left: 15px;
+            line-height: 30px;
+        }
+
+        /*--CSS3--*/
+        .menu .shop li:nth-child(even) {
+            background: lightgoldenrodyellow;
+        }
+
+        .menu .shop li:hover {
+            background: lightcyan;
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <span>购物车</span>
+    <ul class="shop">
+        <li>玫瑰花</li>
+        <li>情侣表</li>
+        <li>电影票</li>
+        <li>LV包包</li>
+    </ul>
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+        var $menu = $('.menu'),
+                $shop = $menu.children('.shop');
+        $menu.mouseenter(function () {
+            $shop.stop().slideDown(100);
+        }).mouseleave(function () {
+            $shop.stop().slideUp(100);
+        });
+
+/*    $('.menu').hover(function () {
+        $(this).children('.shop').stop().slideToggle(100);
+    });*/
+</script>
+</body>
+</html>

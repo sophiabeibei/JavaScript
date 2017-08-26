@@ -6,11 +6,9 @@ $(document).ready(function(){
         $contentList = $tab.children(".content");
     $pageList.click(function () {
         //->this: 当前点击的这个li,[JS对象][不能用JQ的方法,要转]
-        //->this: 当前点击的这个li,[JS对象][不能用JQ的方法,要转]
         $(this).addClass("select").siblings().removeClass("select");
         var curIndex = $(this).index();//->当前点击li的索引
         $contentList.eq(curIndex).addClass("select").siblings(".content").removeClass("select");
-
     });
     //这个绑定$pageList.on("click")<=>$pageList.click(function () {});他俩意思一样
 });
