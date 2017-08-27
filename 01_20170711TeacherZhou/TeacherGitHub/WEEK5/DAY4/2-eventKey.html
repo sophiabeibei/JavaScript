@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 1000%;
+            background: -webkit-linear-gradient(top left, lightblue, lightcoral);
+        }
+    </style>
+</head>
+<body>
+<script>
+    //=>禁止F5刷新(默认行为)
+    document.onkeydown = document.onkeypress = document.onkeyup = function (e) {
+        e = e || window.event;
+        var keyNum = e.which || e.keyCode;
+        if (keyNum === 116) {
+            //->F5
+            e.keyCode = 0;//->IE下还需要把KEY-CODE设置为零才管用
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        }
+    }
+</script>
+</body>
+</html>

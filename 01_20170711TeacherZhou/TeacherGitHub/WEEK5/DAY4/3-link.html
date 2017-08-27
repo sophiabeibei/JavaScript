@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        a {
+            font-size: 20px;
+        }
+
+        .box {
+            margin: 3000px auto;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<!--A默认行为:点击跳转页面-->
+<!--<a href="http://www.zhufengpeixun.cn/">珠峰培训</a>
+<a href="http://www.zhufengpeixun.cn/" target="_blank">珠峰培训</a>-->
+
+<!--
+  锚点定位(HASH定位)
+    HREF='#XXX' 当点击A标签的时候可以快速定位到ID为XXX的盒子的位置
+-->
+<!--<a href="#box">HASH定位</a>-->
+<!--<div class="box" id="box"></div>-->
+
+<a href="http://www.zhufengpeixun.cn/#course-list" target="_blank" id="link">珠峰培训最新全栈视频(广告)</a>
+<script>
+    link.onclick = function (e) {
+        console.log(e);
+        return false;
+    }
+</script>
+
+
+<a href='javascript:;'>I AM BUTTON</a>
+</body>
+</html>

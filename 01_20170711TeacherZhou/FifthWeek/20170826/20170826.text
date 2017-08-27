@@ -108,7 +108,7 @@
         2.clientY: 当前鼠标操作的那个点,距离浏览器窗口的Y轴坐标
         IE678不兼容:
         3.pageX: 当前鼠标操作这一点距离body的X轴坐标(浏览器第一屏)
-        4.pageY: 当前鼠标操作这一点距离body的Y轴坐标(包含卷去的高度)
+        4.pageY: 当前鼠标操作这一点距离body的Y轴坐标(浏览器第一屏)
             处理兼容:
             pageX = clientX+浏览器的scrollLeft
             pageY = clientY+浏览器的scrollTop

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: lightblue;
+            overflow: hidden;
+        }
+
+        #outer {
+            position: relative;
+            margin: 20px auto;
+            width: 300px;
+            height: 300px;
+            background: lightgreen;
+        }
+
+        #inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -50px 0 0 -50px;
+            width: 100px;
+            height: 100px;
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner"></div>
+</div>
+
+<script>
+    inner.onclick = function () {
+        console.log('INNER');
+    };
+
+    outer.onclick = function () {
+        console.log('OUTER');
+    };
+
+    document.body.onclick = function (e) {
+        console.log('BODY');
+        e.stopPropagation()
+    };
+</script>
+</body>
+</html>

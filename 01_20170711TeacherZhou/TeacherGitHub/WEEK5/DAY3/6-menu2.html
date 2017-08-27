@@ -62,7 +62,7 @@
     var $shop = $('.menu>.shop');
     $('body').click(function (e) {
         var target = e.target,
-            $target = $(target);
+                $target = $(target);
         if (target.tagName.toUpperCase() === 'A' && $target.hasClass('menuLink')) {
             $shop.stop().slideToggle(100);
             return;
