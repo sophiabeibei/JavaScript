@@ -1,15 +1,19 @@
-<!DOCTYPE html><html><head><title>DOM事件模型</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>
-.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+<!DOCTYPE html><html><head><title>DOM事件模型</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+
 
 </style></head><body><div id='preview-contents' class='note-content'>
                         
                     
+
+
 
 <h4 id="dom事件模型">DOM事件模型</h4>
 
 <blockquote>
   <p>在之前的学习中，我们想要给一个元素的某个行为绑定方法，我们都是 <code>xxx.onxxx=function...</code> 来操作的，除了这种绑定方式外，我们还有其它的绑定方式</p>
 </blockquote>
+
+
 
 <h5 id="dom0级事件绑定">DOM0级事件绑定</h5>
 
@@ -30,6 +34,8 @@
 
 <pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-built_in">window</span>.onload=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br><span class="hljs-comment line-number">2.</span>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'ok'</span>);<br><span class="hljs-comment line-number">3.</span>}<br><span class="hljs-comment line-number">4.</span><span class="hljs-built_in">window</span>.onload=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br><span class="hljs-comment line-number">5.</span>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'no'</span>);<br><span class="hljs-comment line-number">6.</span>}<br><span class="hljs-comment line-number">7.</span><span class="hljs-comment">//-&gt;当页面中的资源文件都加载完成后，触发load事件，此时只能把最后一次绑定的方法执行，所以window.onload在同一个页面中我们最好使用一次</span><br></code></pre>
 
+
+
 <h5 id="dom2级事件绑定">DOM2级事件绑定</h5>
 
 <blockquote>
@@ -42,7 +48,9 @@
   绑定和移除绑定的方法</p>
 </blockquote>
 
-<pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">//=&gt;addEventListener:标准浏览器中的DOM2事件绑定</span><br><span class="hljs-comment line-number">2.</span><span class="hljs-comment">//-&gt;[event type]:事件类型</span><br><span class="hljs-comment line-number">3.</span><span class="hljs-comment">//-&gt;[callBack]:当事件被触发的时候执行回调函数(也会传递事件对象进来)</span><br><span class="hljs-comment line-number">4.</span><span class="hljs-comment">//-&gt;[phase]:方法在哪个阶段执行 FALSE:冒泡阶段(最常用) TRUE:(捕获阶段)</span><br><span class="hljs-comment line-number">5.</span><span class="hljs-built_in">document</span>.body.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{<br><span class="hljs-comment line-number">6.</span><br><span class="hljs-comment line-number">7.</span>}, <span class="hljs-literal">false</span>);<br><span class="hljs-comment line-number">8.</span><br><span class="hljs-comment line-number">9.</span><span class="hljs-comment">//=&gt;attachEvent:IE低版本浏览器中的DOM2事件绑定</span><br><span class="hljs-comment line-number">10.</span><span class="hljs-comment">//-&gt;[event type]:事件类型(相对于标准来说需要加ON)</span><br><span class="hljs-comment line-number">11.</span><span class="hljs-comment">//-&gt;[callBack]:当事件被触发的时候执行回调函数(不会传递事件对象,需要使用window.event获取事件对象信息,和标准下还是有很多的兼容问题)</span><br><span class="hljs-comment line-number">12.</span><span class="hljs-comment">//-&gt;没有第三个参数,只能在冒泡阶段被触发执行</span><br><span class="hljs-comment line-number">13.</span><span class="hljs-built_in">document</span>.body.attachEvent(<span class="hljs-string">'onclick'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{<br><span class="hljs-comment line-number">14.</span>    e = <span class="hljs-built_in">window</span>.event;<br><span class="hljs-comment line-number">15.</span>});<br><span class="hljs-comment line-number">16.</span><br><span class="hljs-comment line-number">17.</span><br><span class="hljs-comment line-number">18.</span><span class="hljs-comment">//=&gt;ON:DOM2事件绑定兼容处理</span><br><span class="hljs-comment line-number">19.</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on</span>(<span class="hljs-params">curEle, type, fn</span>) </span>{<br><span class="hljs-comment line-number">20.</span>    <span class="hljs-keyword">if</span> (<span class="hljs-string">'addEventListener'</span> <span class="hljs-keyword">in</span> curEle) {<br><span class="hljs-comment line-number">21.</span>        curEle.addEventListener(type, fn, <span class="hljs-literal">false</span>);<br><span class="hljs-comment line-number">22.</span>        <span class="hljs-keyword">return</span>;<br><span class="hljs-comment line-number">23.</span>    }<br><span class="hljs-comment line-number">24.</span>    <span class="hljs-comment">//-&gt;IE6~8</span><br><span class="hljs-comment line-number">25.</span>    curEle.attachEvent(<span class="hljs-string">'on'</span> + type, fn);<br><span class="hljs-comment line-number">26.</span>}<br></code></pre>
+
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">//=&gt;addEventListener:标准浏览器中的DOM2事件绑定</span><br><span class="hljs-comment line-number">2.</span><span class="hljs-comment">//-&gt;[event type]:事件类型</span><br><span class="hljs-comment line-number">3.</span><span class="hljs-comment">//-&gt;[callBack]:当事件被触发的时候执行回调函数(也会传递事件对象进来)</span><br><span class="hljs-comment line-number">4.</span><span class="hljs-comment">//-&gt;[phase]:方法在哪个阶段执行 FALSE:冒泡阶段(最常用) TRUE:(捕获阶段)</span><br><span class="hljs-comment line-number">5.</span><span class="hljs-built_in">document</span>.body.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{<br><span class="hljs-comment line-number">6.</span><br><span class="hljs-comment line-number">7.</span>}, <span class="hljs-literal">false</span>);<br><span class="hljs-comment line-number">8.</span><br><span class="hljs-comment line-number">9.</span><span class="hljs-comment">//=&gt;attachEvent:IE低版本浏览器中的DOM2事件绑定</span><br><span class="hljs-comment line-number">10.</span><span class="hljs-comment">//-&gt;[event type]:事件类型(相对于标准来说需要加ON)</span><br><span class="hljs-comment line-number">11.</span><span class="hljs-comment">//-&gt;[callBack]:当事件被触发的时候执行回调函数(也会传递事件对象，但是和标准下的不一样，这里使用的是window.event，有很多的兼容问题)</span><br><span class="hljs-comment line-number">12.</span><span class="hljs-comment">//-&gt;没有第三个参数,只能在冒泡阶段被触发执行</span><br><span class="hljs-comment line-number">13.</span><span class="hljs-built_in">document</span>.body.attachEvent(<span class="hljs-string">'onclick'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{<br><span class="hljs-comment line-number">14.</span><br><span class="hljs-comment line-number">15.</span>});<br><span class="hljs-comment line-number">16.</span><br><span class="hljs-comment line-number">17.</span><br><span class="hljs-comment line-number">18.</span><span class="hljs-comment">//=&gt;ON:DOM2事件绑定兼容处理</span><br><span class="hljs-comment line-number">19.</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on</span>(<span class="hljs-params">curEle, type, fn</span>) </span>{<br><span class="hljs-comment line-number">20.</span>    <span class="hljs-keyword">if</span> (<span class="hljs-string">'addEventListener'</span> <span class="hljs-keyword">in</span> curEle) {<br><span class="hljs-comment line-number">21.</span>        curEle.addEventListener(type, fn, <span class="hljs-literal">false</span>);<br><span class="hljs-comment line-number">22.</span>        <span class="hljs-keyword">return</span>;<br><span class="hljs-comment line-number">23.</span>    }<br><span class="hljs-comment line-number">24.</span>    <span class="hljs-comment">//-&gt;IE6~8</span><br><span class="hljs-comment line-number">25.</span>    curEle.attachEvent(<span class="hljs-string">'on'</span> + type, fn);<br><span class="hljs-comment line-number">26.</span>}<br></code></pre>
 
 <blockquote>
   <p>原理：DOM2和DOM0不一样，用它做事件绑定，是给当前元素的某一个事件行为开辟了一个<code>事件池(事件队列)</code> [ 浏览器会自动开辟一个容器,把通过DOM2绑定的方法依次存储在事件池中 ]，所以依托DOM2方式可以<code>给当前元素的某一个事情行为绑定多个不同的方法</code>，当行为触发的时候，浏览器会把事件池中的方法<code>按照绑定的顺序依次执行</code>，而且<code>方法中的this是当前操作的元素</code></p>
@@ -60,4 +68,49 @@
   hover <br>
   delegate <br>
   …</p>
-</blockquote></div></body></html>
+</blockquote>
+
+<h5 id="dom2移除事件绑定">DOM2移除事件绑定</h5>
+
+<blockquote>
+  <p>DOM2绑定是把方法放在指定的事件池中，移除绑定也是把方法从事件池中移除掉，移除的时候需要指定具体要移除哪个方法，所以在绑定的时候我们一般都是绑定实名函数而不是匿名函数</p>
+</blockquote>
+
+
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>{}<br><span class="hljs-comment line-number">2.</span><span class="hljs-built_in">document</span>.body.addEventListener(<span class="hljs-string">'click'</span>,fn,<span class="hljs-literal">false</span>);<br><span class="hljs-comment line-number">3.</span><span class="hljs-comment">//-&gt;移除</span><br><span class="hljs-comment line-number">4.</span><span class="hljs-built_in">document</span>.body.removeEventListener(<span class="hljs-string">'click'</span>,fn,<span class="hljs-literal">false</span>);<br></code></pre>
+
+<blockquote>
+  <p>DOM0不需要这样处理，因为它要移除事件绑定只需要赋值为null即可 <br>
+  <code>document.body.onclick=null</code></p>
+</blockquote>
+
+<h5 id="dom2的兼容处理">DOM2的兼容处理</h5>
+
+<blockquote>
+  <p>DOM2事件绑定，标准浏览器和IE低版本浏览器中除了语法上的区别，还有其它方面的区别</p>
+</blockquote>
+
+<p><code>THIS问题</code> <br>
+[标准] <br>
+执行事件池中绑定的方法，方法中的THIS是当前操作的元素；会给方法传递事件对象进来，事件对象中存在TARGET等属性； <br>
+[IE低版本] <br>
+执行方法的时候，方法中的THIS是WINDOW而不是当前元素；事件对象也传递进来了，但是传递进来的值和window.event一样（和标准浏览器中的事件对象是有区别的）</p>
+
+<p><code>重复问题</code> <br>
+[标准] <br>
+如果我们绑定的方法重复了，浏览器不会把重复的方法添加到事件池中 <br>
+[IE低版本] <br>
+如果我们绑定的方法重复了，浏览器没有内置识别重复的机制，导致事件中有重复的方法，执行的时候，一个方法可能会被执行多次</p>
+
+<p><code>顺序问题</code> <br>
+[标准] <br>
+执行的顺序是按照绑定的顺序（事件池中方法排列的顺序：标准浏览器中会把后面绑定的方法放在事件池的末尾）依次执行的 <br>
+[IE低版本] <br>
+绑定的方法过多的时候，不知道是由于向事件池中增加的时候顺序混乱了，还是执行的时候顺序混乱了，总之执行的顺序和绑定的顺序是没关系的</p>
+
+<blockquote>
+  <p>我们DOM2事件兼容处理，其实就是想把IE低版本浏览器中的机制，改变成为和标准浏览器一模一样的机制（只需要处理IE低版本浏览器即可，高版本或者标准浏览器不去做任何特殊处理，按照浏览器默认的机制来运行即可）</p>
+</blockquote>
+
+<p>IE低版本浏览器之所以出现这些问题，都是内置的事件池机制惹得祸，如果我们想让他和标准的机制一样，我们无法修改内置的东西，只能自己虚造出一个事件池，让虚造的事件池和标准一样，让IE低版本浏览器走我们自己虚造的事件池</p></div></body></html>
