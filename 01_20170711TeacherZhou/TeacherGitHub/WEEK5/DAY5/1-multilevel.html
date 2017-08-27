@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 0 10px;
+            width: 200px;
+            height: 100%;
+            background: -webkit-linear-gradient(top left, lightcyan, lightgoldenrodyellow, linen);
+            overflow: auto;
+        }
+
+        .container li {
+            position: relative;
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        .container span {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .container i {
+            position: absolute;
+            top: 7px;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            background: url("img/icon.png") no-repeat -59px -28px;
+            cursor: pointer;
+        }
+
+        .container i.show {
+            background-position: -42px -29px;
+        }
+
+        .level2, .level3, .level4 {
+            display: none;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="multiLevel">
+    <!--LEVEL 1-->
+    <ul class="level1">
+        <li>
+            <i></i>
+            <span>产品技术部门</span>
+            <!--LEVEL 2-->
+            <ul class="level2">
+                <li><span>产品小组</span></li>
+                <li>
+                    <i></i>
+                    <span>设计小组</span>
+                    <!--LEVEL 3-->
+                    <ul class="level3">
+                        <li><span>UI设计团队</span></li>
+                        <li><span>UE交互体验团队</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <i></i>
+                    <span>开发小组</span>
+                    <!--LEVEL 3-->
+                    <ul class="level3">
+                        <li>
+                            <i></i>
+                            <span>前端开发</span>
+                            <!--LEVEL 4-->
+                            <ul class="level4">
+                                <li><span>写页面的</span></li>
+                                <li><span>写JS框架的</span></li>
+                                <li><span>做APP的</span></li>
+                                <li><span>做后台的</span></li>
+                            </ul>
+                        </li>
+                        <li><span>后台开发</span></li>
+                        <li><span>数据分析挖掘</span></li>
+                        <li><span>测试团队</span></li>
+                    </ul>
+                </li>
+                <li><span>服务器运维小组</span></li>
+            </ul>
+        </li>
+
+        <li>
+            <i></i>
+            <span>产品技术部门</span>
+            <!--LEVEL 2-->
+            <ul class="level2">
+                <li><span>产品小组</span></li>
+                <li>
+                    <i></i>
+                    <span>设计小组</span>
+                    <!--LEVEL 3-->
+                    <ul class="level3">
+                        <li><span>UI设计团队</span></li>
+                        <li><span>UE交互体验团队</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <i></i>
+                    <span>开发小组</span>
+                    <!--LEVEL 3-->
+                    <ul class="level3">
+                        <li><span>前端开发</span></li>
+                        <li><span>后台开发</span></li>
+                        <li><span>数据分析挖掘</span></li>
+                        <li><span>测试团队</span></li>
+                    </ul>
+                </li>
+                <li><span>服务器运维小组</span></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/1-multilevel.js"></script>
+</body>
+</html>

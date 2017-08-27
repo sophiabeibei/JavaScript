@@ -25,8 +25,8 @@
       <file leaf-file-name="20170827.text" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FifthWeek/20170827/20170827.text">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="98" column="21" lean-forward="true" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+            <state relative-caret-position="420">
+              <caret line="99" column="24" lean-forward="true" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -472,12 +472,12 @@
       <workItem from="1503444294611" duration="289000" />
       <workItem from="1503452112113" duration="100678000" />
       <workItem from="1503752771808" duration="5000" />
-      <workItem from="1503797727255" duration="12915000" />
+      <workItem from="1503797727255" duration="13012000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1059974000" />
+    <option name="totallyTimeSpent" value="1060071000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -489,7 +489,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15773809" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -941,8 +941,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FifthWeek/20170827/20170827.text">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="98" column="21" lean-forward="true" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+        <state relative-caret-position="420">
+          <caret line="99" column="24" lean-forward="true" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
           <folding />
         </state>
       </provider>
