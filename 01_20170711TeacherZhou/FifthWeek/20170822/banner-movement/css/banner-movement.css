@@ -44,26 +44,17 @@ background
     background: url("../img/default.gif") no-repeat center center #EEE;
 }
 
-.banner .imgBox li a{
-    display: block;
-}
-
 .banner .imgBox li a, .banner .imgBox li a img{
+    display: block;
     width: 100%;
     height: 100%;
 }
 
 
-.banner .imgBox li a img{
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-
 /*焦点区域*/
 
 .banner .focus{
     position: absolute;
-    left: 0;
     bottom: 20px;
     z-index: 999;
     width: 100%;
@@ -76,8 +67,8 @@ background
     margin: 0 5px;
     width: 25px;
     height: 25px;
-    border-radius: 50%;
     background: lightblue;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -88,7 +79,6 @@ background
 /*左右按钮*/
 
 .banner .arrow{
-    display: none;
     position: absolute;
     top: 50%;
     margin-top: -22.5px;/*高度的一半*/
@@ -98,6 +88,7 @@ background
     background: url("../img/pre.png") no-repeat;
     opacity: 0.2;
     filter: alpha(opacity=20);
+    display: none;
 }
 
 .banner .arrow:hover{
