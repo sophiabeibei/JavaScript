@@ -1,10 +1,18 @@
 一.事件
     on方法
         相当于addEventListener方法: 绑定
+
     off方法
         相当于removeEventListener方法: 移除
+
     run方法
-        按照顺序执行
+        让自定义事件池中的方法按照顺序执行;
+
+二.setCapture
+    让其执行,解决鼠标丢失的问题;this.setCapture();
+    兼容google的方法:
+
+
 
 
 
