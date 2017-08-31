@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: red;
+            cursor: move;
+            -webkit-user-select: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>一</div>
+<div style="left:150px">二</div>
+<div style="left:300px">三</div>
+<div style="left:450px"><img src="img1.jpg" alt=""style="height: 100px
+width: 100px;"/></div>
+<script src="事件库.js"></script>;
+<script>
+//    <!--拖拽部分-->
+var oDiv=document.getElementsByTagName('div');
+console.log(oDiv)
+var zIndex=0;
+for(var i=0;i<oDiv.length;i++){
+    on(oDiv[i],'mousedown',down);
+    on(oDiv[i],'selfabcd1',function(){this.style.zIndex=+zIndex});
+    on(oDiv[i],'selfabcd1',clearEffect);
+    on(oDiv[i],'selfabcd2',getSpeed);
+    on(oDiv[i],'selfabcd3',drop);
+    on(oDiv[i],'selfabcd3',fly);
+
+}
+function down(e){
+    this.x=this.offsetLeft;
+    this.y=this.offsetTop;
+    this.mx= e.pageX;
+    this.my= e.pageY;
+    if(this.setCapture){
+        this.setCapture();
+        on(this,'mousemove',move);
+        on(this,'mouseup',up);
+    }else{
+        this.MOVE=move.bind(this);
+        this.UP=up.bind(this);
+        on(document,'mousemove',this.MOVE);
+        on(document,'mouseup',this.UP);
+    }
+    e.preventDefault();
+    selfRun.call(this,'selfabcd1',e)
+};
+function move(e){
+    this.style.left=(e.pageX-this.mx)+this.x+'px';
+    this.style.top=(e.pageY-this.mx)+this.y+'px';
+    selfRun.call(this,'selfabcd2',e)
+};
+function up(e){
+    if(this.releaseCapture){
+        this.releaseCapture();
+        off(this,'mousemove',move);
+        off(this,'mouseup',up);
+    }else{
+        off(document,'mousemove',this.MOVE);
+        off(document,'mouseup',this.UP);
+    }
+    selfRun.call(this,'selfabcd3',e)
+};
+
+
+    //动画部分
+function clearEffect(){
+    clearTimer(this,flyTimer);
+    clearTimeout(this,dropTimer);
+};
+ function getSpeed(e){
+     if(this.prevPosi){
+         this.speed= e.pageX-this.prevPosi;
+         this.prevPosi= e.pageX;
+     }else{
+         this.prevPosi= e.pageX;
+     }
+ };
+function fly(){
+    this.speed*=.98;
+     var maxRight=(document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+    var current=this.speed+this.offsetLeft;
+    if(current>=maxRight){
+        this.style.left=maxRight;
+        this.speed*=-1;
+    }else if(current<=0){
+        this.style.left=0;
+        this.speed*=-1;
+    }else{
+        this.style.left=current+'px';
+    }
+    if(Math.abs(this.speed)>=.5){
+        this.flyTimer=window.setTimeout(processThis(fly,this),20);
+    }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

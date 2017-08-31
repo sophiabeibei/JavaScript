@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; position:absolute; top:0; left:0; background:red; cursor:move; -webkit-user-select:none;}
+
+</style>
+</head>
+
+<body>
+<div id="div1" draggable="true" ></div>
+</body>
+</html>
+<script>
+var ele=document.getElementById("div1");
+//只暴露了接口，未实现任何具体功能
+ele.ondragstart=function(e){
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	//下面和mousemove相关的事件绑定，是事件接口的范畴，不需要使用者实现
+	
+	
+}
+ele.ondrag=function(e){
+	this.style.left=this.x+(e.pageX-this.mx)+"px";
+	this.style.top=this.y+(e.pageY-this.my)+"px";
+}
+
+ele.ondragend=function(e){
+	this.style.left=this.x+(e.pageX-this.mx)+"px";
+	this.style.top=this.y+(e.pageY-this.my)+"px";
+}
+
+
+
+</script>

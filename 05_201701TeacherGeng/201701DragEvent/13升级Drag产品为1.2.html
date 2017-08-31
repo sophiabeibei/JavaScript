@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; background:red; position:absolute; top:0;
+ left:0; cursor:move;}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2" style="left:100px; top:100px; background:blue;"></div>
+
+<div id="div3" style="left:300px; top:300px; background:yellow;"></div>
+<div id="div4" style="left:500px; top:150px; background:purple"></div>
+<div id="div5" style="left:330px; top:220px;"> <img src="sea.jpg" width="100" height="100px"></div>
+</body>
+</html>
+<script src="event3.js"></script>
+<script src="Drag_oop.js"></script>
+<script src="effect.js"></script>
+<script >
+//1、给Drag类增加“限定拖拽范围”的功能
+//2、给Drag类增加“拖拽时有边框”的功能
+
+Drag.prototype.addRange=function(obj){//这个addRange方法负责把参数得到
+	this.oRange=obj;
+	this.on("dragging",this.range);//然后把负责重新计算盒子坐标的方法绑定在"dragging"事件上，这样就会使原来move方法失效，而使用现在的range方法逻辑
+	
+	
+}
+Drag.prototype.range=function(e){//这个方法才负责限定范围拖拽的逻辑呢
+  var  oRange=this.oRange;
+ var x= e.pageX-this.mx+this.x;
+ var y=e.pageY-this.my+this.y;
+ //{left:0,right:500,top:0,bottom:300}
+	if(x>=oRange.right){
+		this.ele.style.left=oRange.right+"px";
+	}else if(x<=oRange.left){
+		this.ele.style.left=oRange.left+"px";
+	}else{
+		this.ele.style.left=x+"px";
+	}
+	
+	if(y>=oRange.bottom){
+		this.ele.style.top=oRange.bottom+"px";
+	}else if(y<=oRange.top){
+		this.ele.style.top=oRange.top+"px";
+	}else{
+		this.ele.style.top=y+"px";
+	}
+}
+Drag.prototype.border=function(){
+	this.on("dragstart",this.addBorder);
+	this.on("dragend",this.removeBorder);
+}
+Drag.prototype.addBorder=function(){
+	this.ele.style.border="2px dashed gray";
+}
+Drag.prototype.removeBorder=function(){
+	this.ele.style.border="";
+}
+
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+
+	var obj=new Drag(eles.item(i)).on("dragstart",dex).on("dragstart",clearTimer).on("dragging",getSpeed).on("dragend",fly).on("dragend",drop);
+	if(i==0)
+		//obj.on("dragging",obj.range);
+		obj.addRange({left:0,right:500,top:0,bottom:300});
+	if(i==1)
+		obj.border();//给第二个div在拖拽的时候出现一个边框
+}
+
+</script>

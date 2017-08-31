@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+ul{
+	margin:100px auto; padding:5px; position:relative; list-style:none; 
+	background:#6F9;
+	width:480px; height:640px;	
+}
+li{
+	width:150px; height:150px; margin:5px; float:left; background:#FF6; cursor:move; padding:0; overflow:hidden;
+}
+img{
+	width:150px; height:150px;
+}
+</style>
+</head>
+
+<body>
+<ul>
+	<li><img src="img/1.png"></li>
+    <li><img src="img/2.png"></li>
+    <li><img src="img/3.png"></li>
+    <li><img src="img/4.png"></li>
+    <li><img src="img/5.png"></li>
+    <li><img src="img/6.png"></li>
+    <li><img src="img/7.png"></li>
+    <li><img src="img/8.png"></li>
+    <li><img src="img/9.png"></li>
+    <li><img src="img/10.png"></li>
+    <li><img src="img/11.png"></li>
+    <li><img src="img/12.png"></li>
+</ul>
+</body>
+</html>
+<script src="event3.js"></script>
+<script src="Drag_oop1.3.js"></script>
+<script src="tween.js"></script>
+<script>
+var oLis=document.getElementsByTagName("li");
+/*
+for(var i=0;i<oLis.length;i++){
+	var oLi=oLis.item(i);
+	//oLi.style.position="absolute";
+	oLi.style.left=oLi.offsetLeft+"px";
+	oLi.style.top=oLi.offsetTop+"px";
+	
+}
+
+for(var i=0;i<oLis.length;i++){
+	var oLi=oLis.item(i);
+	oLi.style.position="absolute";
+	//不写下一行代码，Li就会向下向右多偏移5px，因为offsetLeft它是包含margin值的，
+	//比如说第一个盒子的offsetLeft是10,把10赋给了style.left，这个10已包含margin的值了，然后绝对定位的left是从margin外边开始计算的，结果外边的10这个值包括了margin，里面还有一个margin，就出现了margin被重复计算的问题了。
+	//oLi.style.margin=0;//所以，在把offsetLeft的值赋给left之后，需要给margin归0；
+	
+	
+}
+*/
+for(var i=oLis.length-1;i>=0;i--){
+	var oLi=oLis.item(i);
+	//oLi.style.position="absolute";
+	oLi.style.left=(oLi.l=oLi.offsetLeft)+"px";
+	oLi.style.top=(oLi.t=oLi.offsetTop)+"px";
+	oLi.style.position="absolute";
+	oLi.style.margin=0;
+	new Drag(oLi).on("dragstart",increaseIndex).on("dragend",goHome);
+}
+var index=0;
+function increaseIndex(){
+	this.ele.style.zIndex=++index;
+}
+function goHome(){
+	animate(this.ele,{left:this.ele.l,top:this.ele.t},700,3);
+}
+</script>

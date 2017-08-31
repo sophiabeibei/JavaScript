@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; position:absolute; left:150px; top:150px; background:green; cursor:move;  overflow:hidden;}
+div img{ width:100px; height:100px; border:none;}
+</style>
+</head>
+
+<body>
+<div id="div1" style="left:0; top:0;"><img src="../img/13.png"></div>
+<div id="div2"><img src="../img/11.png"></div>
+<div id="div3" style="top:300px; left:0;"><img src="../img/12.png"></div>
+</body>
+</html>
+<script src="event2自定义事件的.js"></script>
+<script>
+//确定结构
+//确定一些原则：this的原则 .
+//在事件绑定中，this要指向被绑定的DOM元素。但是在面向对象的方法里，this要指向这个类当前的实例。这是原则，如果违背了这个原则，强制执行这个原则
+//理解构造函数的作用：初始化的作用，要把以后这个类的实例要用到的私有的属性、方法准备好
+
+function Drag(ele){//参数ele是被拖拽的元素
+	this.x=null;
+	this.y=null;
+	this.mx=null;
+	this.my=null;
+	this.obj=ele;//把构造函数运行时得到的这个被拖拽的元素保存this的obj中，这样就确保其它Drag类上的方法中都可以访问被拖拽的元素了
+	
+	//on(ele,"mousedown",this.down);
+	this.DOWN=processThis(this.down,this);
+	this.MOVE=processThis(this.move,this);
+	this.UP=processThis(this.up,this);
+	on(this.obj,"mousedown",this.DOWN);
+	
+	
+	
+}
+
+Drag.prototype.down=function(e){
+	//一个方法里的this是谁，不是由定义的时候决定的，是由执行的时候决定的。
+	//如果这个方法被绑定到元素的事件上执行的，则这里的this是元素
+	//如果这个方法是这样执行的：var obj=new Drag();obj.down()，则这里的this是obj
+	//但是按着类上的方法都要指向当前类实例这一原则，我们应该强制这个方法在任何情况下，都让this指向当前类的实例
+	//var obj=new Drag(div1);
+	//new Drag(div2);//这样会产生一个匿名实例
+	
+	this.x=this.obj.offsetLeft;
+	this.y=this.obj.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY
+	if(this.obj.setCapture){
+		this.obj.setCapture();
+		on(this.obj,"mousemove",this.MOVE);
+		on(this.obj,"mouseup",this.UP);
+	}else{
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);
+	}
+	e.preventDefault();
+}
+	
+
+Drag.prototype.move=function(e){
+	this.obj.style.left=this.x+e.pageX-this.mx+"px";
+	this.obj.style.top=this.y+e.pageY-this.my+"px";
+}
+
+Drag.prototype.up=function(e){
+	if(this.obj.releaseCapture){
+		this.obj.releaseCapture();
+		off(this.obj,"mousemove",this.MOVE);
+		off(this.obj,"mouseup",this.UP);
+	}else{
+		off(document,"mousemove",this.MOVE)
+		off(document,"mouseup",this.UP);
+	}
+	
+}
+new Drag(div1);
+new Drag(div2);
+new Drag(div3);
+
+//你怎么理解JS中的面向对象
+//先从对象说起，对象这样数据类型的特点（复合的数据载体，它承载的数据又描述了它，并且它承载的这些数据之间还存在着关系），
+//对象描述世界，对象也是世界的基本组成
+//对象就是编程里操作的数据
+
+//再引申出生产“对象”方式的变化
+//单例模式（基于对象的）
+//工厂模式--构造模式--原型模式（创建型设计模式），这些模式是生产对象的不断的升级过程
+//所谓的面向对象是基本对象这种数据类型的特点，来用不同的方式生产（创建）对象方式
+
+//面向对象也是一种管理方式
+</script>

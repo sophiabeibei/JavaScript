@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; background:red; position:absolute; top:0;
+ left:0; cursor:move;}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2" style="left:100px; top:100px; background:blue;"></div>
+
+<div id="div3" style="left:300px; top:300px; background:yellow;"></div>
+<div id="div4" style="left:500px; top:150px; background:purple"></div>
+<div id="div5" style="left:330px; top:220px;"> <img src="sea.jpg" width="100" height="100px"></div>
+</body>
+</html>
+<script src="event3.js"></script>
+<script src="Drag_oop.js"></script>
+<script src="effect.js"></script>
+<script >
+
+
+/*var obj1=new Drag(div1);
+obj1.on("dragstart",dex);
+obj1.on("dragstart",clearTimer);
+obj1.on("dragging",getSpeed);
+obj1.on("dragend",fly);
+obj1.on("dragend",drop);
+new Drag(div2);
+new Drag(div3);
+new Drag(div4);
+new Drag(div5);*/
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	/*var obj=new Drag(eles.item(i));
+	obj.on("dragstart",dex);
+	obj.on("dragstart",clearTimer);
+	obj.on("dragging",getSpeed);
+	obj.on("dragend",fly);
+	obj.on("dragend",drop);
+	
+	obj.on("dragstart",dex).on("dragstart",clearTimer).on("dragging",getSpeed).on("dragend",fly).on("dragend",drop);*/
+	new Drag(eles.item(i)).on("dragstart",dex).on("dragstart",clearTimer).on("dragging",getSpeed).on("dragend",fly).on("dragend",drop);
+}
+
+</script>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+img{ width:100px; height:100px; overflow:hidden; border:none;}
+div{ position:absolute; left:200px; top:200px; background:red; width:100px; height:100px; cursor:move; -webkit-user-select:none;}
+</style>
+</head>
+
+<body>
+<div style="left:0; top:0"  >div1</div>
+<div style="top:200px; left:0;" ><img src="img1.jpg" width="100" height="100"></div>
+<div ><img src="img2.jpg" width="100" height="100"></div>
+</body>
+</html>
+<script src="event1.js"></script>
+<script>
+
+//以下方法中的this都是指向的当前被拖拽的元素，这是原则，这是原则是由事件绑定的原则决定的：把方法绑定给那个元素，则方法在执行的时候，方法里的this就会指向这个元素
+function down(e){//准备拖拽
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	
+	if(this.setCapture){
+		this.setCapture();//这是mousemove事件的专有方法，专门用来处理当mousemove事件连续触发时，元素会丢失鼠标的问题的。
+		//元素会掉丢鼠标，是由于浏览器的性能问题造成的。
+		//this.setCapture是IE专用的方法，后来fireFox也实现了
+		//mousemove事件大约8ms
+		on(this,"mousemove",move);
+		on(this,"mouseup",up);
+	}else{
+		/*
+		function processThis(fn,obj){
+			return function(e){fn.call(obj,e)}	
+		}
+		*/
+		this.MOVE=processThis(move,this);
+		/*
+		processThis的执行相当于以下两行
+		var obj=this;
+		this.MOVE=function(e){move.call(obj,e)}
+		*/
+		
+		this.UP=processThis(up,this);
+		
+		//H5中也实现的processThis功能的方法，叫Function.prototype.bind
+		this.MOVE=move.bind(this);
+		this.UP=up.bind(this);
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);
+	}
+	
+	e.preventDefault();//如果被拖拽的盒子中，包含了文字、图片等inline属性的内容，当鼠标按下去的时候，会默认产生一个选中的动作，将其它事件破坏掉
+
+}
+
+function move(e){//拖拽进行
+	this.style.left=this.x+(e.pageX-this.mx)+"px";
+	this.style.top=this.y+(e.pageY-this.my)+"px";
+	
+	//mousemove事件每触发一次，Move方法就执行一次
+	//当前move方法执行的时候的时间戳
+	//上一次move方法执行的时候戳
+	//两次时间之差，就是性能
+	new Date//当次的时间，
+	//上一次的时间怎么算？
+	this.prevTime//用这个属性来记录上一次的时间戳
+	if(this.prevTime){
+		var curTime=new Date
+		console.log(curTime-this.prevTime);
+		this.prevTime=curTime;
+	}else{
+		this.prevTime=new Date;
+	}
+	
+	//以上的目的是为了得到一个相对固定的时间单位（单位时间），接下来计算在这个单位时间内产生的位移：速度
+	
+	//这一次的位置-上一次的位置，就可以当成速度
+	e.pageX//鼠标的位置就是当次的位置，this.offsetLeft也可以做为当次的位置
+	
+	this.prevPosi;//用这个自定义属性保存上一次的位置
+	if(this.prevPosi){
+		this.speed=e.pageX-this.prevPosi;
+		this.prevPosi=e.pageX;
+		console.log(this.speed);
+	}else{
+		this.prevPosi=e.pageX;	
+	}
+	
+}
+
+function up(e){//拖拽结束
+	if(this.releaseCapture){
+		this.releaseCapture();
+		off(this,"mousemove",move);
+		off(this,"mouseup",up);
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);	
+	}
+	
+	fly.call(this);
+}
+
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	on(eles[i],"mousedown",down);	
+	
+}
+
+
+function fly(){
+	
+	this.speed*=.98;//摩擦系数，使速度不断衰减
+	//左边界就是0，右边界是浏览器的宽-盒子本身的宽
+	var maxRight=(document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+	var current=this.offsetLeft+this.speed;
+	if(current>=maxRight){//右边界判断
+		this.style.left=maxRight+"px";
+		this.speed*=-1;//弹回来，让速度向向反的方向运动
+	}else if(current<=0){//左边界判断
+		this.style.left=0;
+		this.speed*=-1;
+	}else{
+		this.style.left=current+"px";
+	}
+	
+	window.setTimeout(processThis(fly,this),25);
+	
+}
+</script>

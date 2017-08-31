@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(red, yellow, green);
+            position: absolute;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div ></div>
+<div ></div>
+<div ></div>
+<script src="练习事件绑定.js"></script>
+<script src="拖拽效果.js"></script>
+<script src="动画效果.js"></script>
+<script>
+    var odiv=document.getElementsByTagName('div')
+    var zIndex=0
+    for(var i= 0;i<odiv.length;i++){
+        on(odiv[i],"mousedown",down)
+        on(odiv[i],'selfabcd1',function(){
+            this.style.zIndex=++zIndex
+
+        });
+		on(odiv[i],"selfabcd1",clearEffect);
+		on(odiv[i],"selfabcd2",getSpeed);
+		on(odiv[i],"selfabcd3",fly);
+		on(odiv[i],"selfabcd3",drop);
+		
+    }
+</script>
+</body>
+</html>

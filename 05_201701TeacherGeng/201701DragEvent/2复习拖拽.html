@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; background:red; position:absolute; top:0;
+ left:0; cursor:move;}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2" style="left:100px; top:100px; background:blue;"></div>
+
+<div id="div3" style="left:300px; top:300px; background:yellow;"></div>
+<div id="div4" style="left:500px; top:150px; background:purple"></div>
+</body>
+</html>
+<script src="event.js"></script>
+<script>
+var div1 = document.getElementById('div1');
+on(div4, 'mousedown', down);
+function down(e){
+	this.l = e.clientX - this.offsetLeft;
+	this.t = e.clientY - this.offsetTop;
+	if (this.setCapture) {
+		this.setCapture();
+		on(this, 'mousemove', move);
+		on(this, 'mouseup', up);
+	} else {
+		on(document, 'mousemove', move);
+		on(document, 'mouseup', up);
+	}
+	
+}
+
+function move(e){
+	var l = e.clientX - this.l;
+	var t = e.clientY - this.t;
+	this.style.left = l + 'px';
+	this.style.t = l + 'px';
+	
+}
+
+
+function up(e){
+	if (e.releaseCapture) {
+		e.releaseCapture();
+		off(this, 'mousemove', move);
+		off(this, 'mouseup' , up);
+	} else { 
+		off(document, 'mousemove', move);
+		off(document, 'mouseup', up);
+	}
+}
+</script>

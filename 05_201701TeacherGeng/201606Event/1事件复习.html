@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<h1></h1>
+<h6></h6>
+<p></p>
+<ul></ul>
+<zhufeng>自已定义的，自行扩展的标签</zhufeng>
+</body>
+</html>
+<script>
+//bind,unbind,on,run,off五个方法
+
+//事件兼容性问题复习一下
+//1、获得事件对象的方式不一样，在IE里中是当事件触发的时候，会有一个window.event对象，是事件对象。标准浏览器是给绑定在事件上的方法自动传一个参数做为事件对象
+function fn(ev){
+	
+}
+//2、事件源不一样：ie中的事件源是e.srcElement,标准浏览器是e.target
+//3、阻止事件的默认行为的方式方法不一样：IE是e.returnValue=false;标准浏览器是e.preventDefault();
+//4、阻止事件传播的方式的不一样：IE中是e.cancelBubble=true;标准浏览器中是e.stopPropagation();
+//5、e.pageX,e.pageY 这两个属性IE不支持。
+
+//6、DOM2级事件的一些差异（兼容问题）
+	//6.1
+	//IE中用attachEvent,detachEvent
+	//标准浏览器用ele.addEventListener,ele.removeEventListener
+	
+	//6.2
+	//当事件触发的时候，方法中的this，在IE里是指向window，标准浏览器是指向当前元素
+	//6.3
+	//执行顺序问题，标准浏览器是先绑定的先执行，IE浏览器是乱序执行
+	//6.4
+	//在IE中有明显的bug，就是一个方法可以重复的被绑定在某一个事件上
+	
+
+//DOM0事件里，this指向的都是当前的元素
+//2、this指向不一样
+ele.onclick=fn;
+
+//DOM0，在DOM出现之前，HTML本身有一套操作元素的方法属性，叫DHTML（就是用JS来控制网页的规范，叫动态网页）
+
+document.forms;
+document.images;
+document.body;
+document.body.id
+document.all["div1"];//IE专用的，相当于document.getElementById("div");
+
+
+//前端JS由什么构成 ecma(ecmaScript,语法格式,es)，BOM，DOM
+//后台JS，没有BOM,没有window,
+//DOM1 xml html,XHTML  DOM core,DOM是晚于HTML出现的
+
+//DOM2 事件，
+//DOM3  
+
+
+/*div--HTMLDivElement-->HTMLElement-->Element-->Node--->EventTarget--Object
+document.addEventListener("DOMNodeInserted",function(){alert("insert");},false)*/
+</script>

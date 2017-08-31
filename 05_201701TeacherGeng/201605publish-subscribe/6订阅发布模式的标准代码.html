@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//心行处，灭，言语道断
+
+//烧水，--喝点热水，泡包面，洗 澡
+//扫个地，前女友打个电话，看会书
+
+		//当A方准备完成之后，通知B方来执行--报警器（它是一个独立的第三方的组件）
+//A左边：烧水      B右边：喝，泡方便面，洗澡
+
+function EventEmitter(){//这是EventTarget类的原型
+	
+	};
+EventEmitter.prototype.on=function(type,fn){
+	if(!this["aEmitter"+type]){
+		this["aEmitter"+type]=[];	
+	}
+	var a=this["aEmitter"+type];
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	
+	}
+	a.push(fn);
+	
+}
+EventEmitter.prototype.run=function(type){
+	var a=this["aEmitter"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(typeof a[i]=="function"){
+				a[i].call(this);	
+			}else{
+				a.splice(i,1);
+				i--;	
+			}
+		}
+	}
+}
+
+EventEmitter.prototype.off=function(type,fn){
+	var a=this["aEmitter"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				a[i]=null;
+				return;	
+			}
+		}
+			
+	}
+}
+	//需要把上边的报警器安装到水壶上，使下边的水壶具体报警的功能
+
+function Kettle(){}
+Kettle.prototype=new EventEmitter;//这是传统的继承方式，但是这种继承方式会把Kettle类上原有的原型属性破坏掉。使用这种继承方式，代码只能写在原型方法定义之前。
+//Kettle.prototype.__proto__=EventEmitter.prototype;//这是更安全的继承方式，这种方式不会破坏原有的prototype属性。使用这种继承方式，写在原型方法之后也没关系 
+//Kettle.prototype.__proto__在未做继承之前，它指向谁
+
+//继承EventEmitter类之后，Kettle就有了on,run,off这三个方法。这会还需要为boiling这个方法定义（规定、指定）此行为的标识符（事件类型，其实就是一个字符串，就是利用这个字符串来表示这个boiling行为的发生），比如说用"abcde"来表示boiling行为的发生
+Kettle.prototype.boiling=function(){
+	console.log("开始烧水");
+	var that=this;
+	window.setTimeout(function(){
+		console.log("水开了");
+		that.run("abcde");//关键要理解run的作用是干什么：是去一个叫aEmitterabcde的数组里，遍历执行已经保存好的那些方法。为什么需要这个abcde,这个abcde在run方法和on方法里起了什么作用？
+	},5000);	
+}
+
+//Kettle.prototype=new EventEmitter;//这是传统的继承方式，但是这种继承方式会把Kettle类上原有的原型属性破坏掉。使用这种继承方式，代码只能写在原型方法
+var k=new Kettle;
+
+//如果想让水开之后，执行drink,noodles,bath,这里应该先约定
+k.on("abcde",drink);
+//on方法在k这个实例的k.__proto__.__proto__属性上
+k.on("abcde",noodles);
+k.on("abcde",bath);
+//如果你理解了以上代码，我们再去理解DOM类上的EventTarget类，及Node在继承EventTarget类的时候，干了什么事，就好理解了
+
+k.boiling();
+
+
+function drink(){
+	console.log("喝开水");
+}
+function noodles(){
+	console.log("煮面条");
+}
+
+function bath(){
+	console.log("泡澡");
+}
+
+
+
+
+
+</script>

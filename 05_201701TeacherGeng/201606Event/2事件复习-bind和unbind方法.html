@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="div1" style=" height:200px; background:red;"></div>
+<div id="div1" style=" height:200px; background:red;"></div>
+<h1></h1>
+<h6></h6>
+<p></p>
+<ul></ul>
+<zhufeng>自已定义的，自行扩展的标签</zhufeng>
+</body>
+</html>
+<script>
+//bind,unbind,on,run,off五个方法
+function bind(curEle,eventType,eventFn){
+	if('addEventListener' in window){
+		curEle.addEventListener(eventType,eventFn,false);
+		return;
+		}
+		var tmpFn=function(){
+			eventFn.call(curEle)
+			}
+			tmpFn.name=eventFn;
+			if(!curEle['myBind'+eventType]){
+				curEle['myBind'+eventType]=[];
+				}
+				var ary=curEle['myBind'+eventType];
+				for(var i=0;i<ary.length;i++){
+					var cur=ary[i]
+					if(cur.name===eventFn){
+							return;
+						}
+	
+					}
+					ary.push(tmpFn);
+					curEle.attachEvent('on'+eventType,tmpFn)
+	
+	}
+function unbind(curEle,eventType,eventFn){
+	if('addEventListener' in window){
+		curEle.removeEventListener(eventType,eventFn,false);
+		return;
+		}
+		var ary=curEle['myBind'+eventType];
+		for(var i=0;i<ary.length;i++){
+			var cur=ary[i]
+			if(cur.name===eventFn){
+				ary.splice(i,1)
+				curEle.detachEvent('on'+eventType,cur)
+			}
+		}
+	}
+function on(curEle,eventType,eventFn){
+	curEle[eventType+eventFn]=eventFn;
+	bind(curEle,eventType,run)
+	
+	}
+	function off(curEle,eventType,eventFn){
+		if('addEventListener' in window){
+			delete curEle[eventType+eventFn]
+			}
+			curEle.removeAttribute(eventType+eventFn)
+		}
+		function run(e){
+			e=e||window.event;
+			e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+e.clientX;
+			e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;
+			e.preventDefault=function(){
+				e.returnValue=false;
+				}
+				e.stopPropagetion=function(){
+					e.cancelBubble=true
+					}
+			
+			
+			for(var attr in this){
+				//可枚举属性，不可枚举属性
+				var reg=new RegExp("^"+e.type+"\\S+")
+				if(reg.test(attr)){
+					this[reg.exec(attr).input].call(this,e)
+				}
+				}
+			}
+			
+			
+			on(div1[0],"click",function(){alert("fn1") });
+			on(div1[0],"click",function(){alert("fn1")});
+			on(div1[0],"click",function(){alert("fn1")});
+</script>

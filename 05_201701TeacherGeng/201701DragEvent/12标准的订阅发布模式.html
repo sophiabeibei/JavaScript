@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//事件发射类，它是订阅发布模式的标准写法
+function Emitter(){};
+Emitter.prototype.on=function(type,fn){
+	if(!this["aEmitter"+type]){
+		this["aEmitter"+type]=[];	
+	}
+	var a=this["aEmitter"+type];
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	
+	}
+	a.push(fn);	
+}
+Emitter.prototype.run=function(type){
+	var a=this["aEmitter"+type];
+	if(a&&a.length){
+		for(var i=0;i<a.length;i++){
+			if(typeof a[i]=="function"){
+				a[i].call(this);
+			}else{
+				a.splice(i,1);
+				i--;
+			}
+		}
+	}
+}
+Emitter.prototype.off=function(type,fn){
+	var a=this["aEmitter"+type];
+	if(a&&a.length){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				a[i]=null;
+				return;	
+			}
+		}
+	}
+}
+
+
+function Kettle(){};
+Kettle.prototype=new Emitter;
+Kettle.prototype.boiling=function(){
+	console.log("开始烧水");
+	var that=this;
+	window.setTimeout(function(){
+		alert(1);                                                                                 
+	},13000)
+	window.setTimeout(function(){
+		
+		console.log("水已沸腾");
+		that.run("abcdefg");
+		//this.run("");
+	},5000);
+	//this.run("boiling");
+}
+//Kettle.prototype=new Emitter;//这样的继承不能写在定义原型方法之后
+//Kettle.prototype.__proto__=Emitter.prototype;
+var obj1=new Kettle;
+obj1.on("abcdefg",drink);
+obj1.on("abcdefg",noodles);
+obj1.on("abcdefg",bath);
+
+obj1.boiling();
+
+function drink(){
+	console.log("喝点开水补补");
+}
+function noodles(){
+	console.log("开水泡个方便面补补");	
+}
+function bath(){
+	console.log("开水泡个澡享受一下");	
+}
+
+</script>

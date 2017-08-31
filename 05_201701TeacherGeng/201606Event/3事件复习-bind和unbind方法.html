@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="div1" style=" height:200px; background:red;"></div>
+
+<h1></h1>
+<h6></h6>
+<p></p>
+<ul></ul>
+<zhufeng>自已定义的，自行扩展的标签</zhufeng>
+</body>
+</html>
+<script>
+//bind,unbind,on,run,off五个方法
+/*function bind(curEle,eventType,eventFn){
+	if('addEventListener' in window){
+		curEle.addEventListener(eventType,eventFn,false);
+		return;
+		}
+		var tmpFn=function(){
+			eventFn.call(curEle)
+			}
+			tmpFn.name=eventFn;//1
+			if(!curEle['myBind'+eventType]){
+				curEle['myBind'+eventType]=[];//2
+				}
+				var ary=curEle['myBind'+eventType];
+				for(var i=0;i<ary.length;i++){
+					var cur=ary[i]
+					if(cur.name===eventFn){
+							return;
+						}
+	
+					}
+					ary.push(tmpFn);//3
+					curEle.attachEvent('on'+eventType,tmpFn)
+	
+	}
+function unbind(curEle,eventType,eventFn){
+	if('addEventListener' in window){
+		curEle.removeEventListener(eventType,eventFn,false);
+		return;
+		}
+		var ary=curEle['myBind'+eventType];
+		for(var i=0;i<ary.length;i++){
+			var cur=ary[i]
+			if(cur.name===eventFn){
+				ary.splice(i,1)
+				curEle.detachEvent('on'+eventType,cur)
+			}
+		}
+	}
+	*/
+	//解决绑定的方法的执行顺序问题的：
+	//事件池、程序池的概念，它是事件实现的原理
+	//事件的实现分为三部分：
+		//一、约定、绑定、订阅-->on,addEventListener,attachEvent-->指把需要绑定的方法预先保存下来
+		
+		//二、通知：当主行为发生的时候（比如说click行为发生的时候），通知绑定在click事件上的那些方法
+		
+		//三、移除通知、解除绑定--->off,removeEventListener,detachEvent;
+		
+	function on(curEle,eventType,eventFn){
+		
+		if(curEle.addEventListener){
+			curEle.addEventListener(eventType,eventFn,false);
+			return;	
+		}
+		
+		
+		if(!curEle['myEvent'+eventType]){
+			curEle['myEvent'+eventType]=[];
+			//只有这个判断里面，无论在同一个元素的同一个事件上，on执行多少次，这里的代码只会被执行一次。
+			
+			//大家要明确的问题是
+			//我们要干什么？就是我们在解决什么问题。
+			//解决：不用bind来绑定run方法（bind和unbind就不要了，直接在on里写代码实现把run方法绑定到相应的事件上。
+			//那这代码怎么写呢？要注意那些问题呢？1、run的this要指向curEle;2、run不能被重复绑定到curEle上
+			//1、解决this指向是把run重新定义成一个新的方法
+				//function(){run.call(curEle)}
+			//2、让此方法不会被重复绑定，则把绑定写在这里就可以了。
+		curEle.attachEvent("on"+eventType,function(){run.call(curEle)});
+			//这里是先把run绑定的，然后再把eventFn这些方法保存到数组里
+			}
+			//zhufengpeixun,88888888
+			//on方法把eventFn绑定到curEle的eventType事件上，其实这是个“假”绑定，也就是并非真的把eventFn绑定到了事件上，而是只把这此方法保存到了数组里
+			//真正绑定的方法是run方法，当事件触发的时候，执行run，run再去遍历执行已经保存到数组里的那些方法
+			var ary=curEle['myEvent'+eventType];
+			for(var i=0;i<ary.length;i++){
+				var cur=ary[i];
+				if(cur===eventFn){//判断eventFn是否已经被保存数组里了，
+					return;
+				}
+			}
+			ary.push(eventFn)
+			//bind(curEle,eventType,run);	//真正绑定的方法是run，也就是说当事件触发，执行的是run方法。run方法不需要移除，既然是这样，则bind方法可以不要。如果bind方法不要，如何把run方法绑定在curEle的eventType事件上呢？（run的this要指向curEle,并且这个run不能被重复绑定）
+			//var tempFn=function(){
+//				run.call(curEle)
+//				}
+//			curEle.attachEvent("on"+eventType,tempFn);
+			//curEle.attachEvent("on"+eventType,function(){run.call(curEle)});
+	}
+	
+		var i=0;
+		function fn1(){alert("fn1")}
+		function fn2(){alert("fn2")}
+		function fn3(){
+			alert("fn3");
+			i++;
+			if(i==2){//当fn3第二次运行的时候，把fn1，fn2，fn3移除了
+				off(this,"click",fn1);
+				off(this,"click",fn2);
+				off(this,"click",fn3);
+			}
+			//curEle['myEvent'+eventType]；
+		  //  0   1   2   3   4   5   6
+			[fn1,fn2,fn3,fn4,fn5,fn6,fn7];
+		//run方法遍历，当i==2的时候，要执行fn3，则执行三次off，当fn3执行完成之后
+		    [fn4,fn5,fn6,fn7];
+			//执行完fn3之后，i要再次累加，i==3，此时的数组的第索引3项是fn7了
+			
+			
+		
+		}
+		function fn4(){alert("fn4")}
+		function fn5(){alert("fn5")}
+		function fn6(){alert("fn6")}
+		function fn7(){alert("fn7")}
+		
+	on(div1,"click",fn1);
+	on(div1,"click",fn2);
+	on(div1,"click",fn3);
+	on(div1,"click",fn4);
+	on(div1,"click",fn5);
+	on(div1,"click",fn6);
+	on(div1,"click",fn7);
+	//on执行了四次，则“变形的”run方法也会被绑定在ele的click事件上四次，
+	//则当click事件触发的时候，有四个run方法被执行
+	//则每次run执行，都会去遍历var ary=curEle['myEvent'+eventType]这个数组并且执行里面的方法
+	
+	
+	function run(e){
+		e=e||window.event;
+		if(!e.target){
+			e.target=e.scrElement;
+			e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+e.clientX;
+			e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;
+			e.preventDefault=function(){
+				e.returnValue=false;
+				}
+			e.stopPropagation=function(){
+				e.cancelBubble=true;
+				}
+		}
+		var ary=this['myEvent'+e.type]
+			for(var i=0;i<ary.length;i++){
+				var cur=ary[i];
+				if(typeof cur =="function"){
+					cur.call(this,e);//fn3执行
+				}else{
+					ary.splice(i,1);
+					i--;	
+				}
+		}
+	}
+		
+function off(curEle,eventType,eventFn){
+	if(curEle.removeEventListener){
+		curEle.removeEventListener(eventType,eventFn,false);
+		return;
+	}
+		var ary=curEle['myEvent'+eventType];
+		for(var i=0;i<ary.length;i++){
+			var cur=ary[i]
+			if(cur===eventFn){
+				//ary.splice(i,1);
+				//i--;
+				ary[i]=null;//把方法从数组中去掉，但是位置还留着
+				break;
+			}
+		}
+	}
+
+			
+			/*on(div1[0],"click",function(){alert("fn1") });
+			on(div1[0],"click",function(){alert("fn1")});
+			on(div1[0],"click",function(){alert("fn1")});*/
+</script>

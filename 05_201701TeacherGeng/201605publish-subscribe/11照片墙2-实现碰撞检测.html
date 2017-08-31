@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+ul{ list-style:none; padding:5px; margin:50px auto; background:#FC6; width:480px; height:640px; position:relative; }
+li{ margin:5px; width:150px; height:150px; overflow:hidden;  background:#3CC; cursor:move; float:left; }
+img{ width:150px; height:150px; border:none;}
+
+</style>
+</head>
+
+<body>
+<ul>
+	<li><img src="img/1.png"></li>
+    <li><img src="img/2.png"></li>
+    <li><img src="img/3.png"></li>
+    <li><img src="img/4.png"></li>
+    <li><img src="img/5.png"></li>
+    <li><img src="img/6.png"></li>
+    <li><img src="img/7.png"></li>
+    <li><img src="img/8.png"></li>
+    <li><img src="img/9.png"></li>
+    <li><img src="img/10.png"></li>
+    <li><img src="img/11.png"></li>
+    <li><img src="img/12.png"></li>
+    
+
+</ul>
+</body>
+</html>
+<script src="event1.js"></script>
+<script src="drag_oop2.js"></script>
+<script src="tween.js"></script>
+<script>
+//把浮动布局改造成绝对定位布局，才可以实现拖拽
+var oLis=document.getElementsByTagName("li");
+
+
+for(var i=oLis.length-1;i>=0;i--){
+	var oLi=oLis.item(i);
+	oLi.style.left=(oLi.l=oLi.offsetLeft)+"px";
+	oLi.style.top=(oLi.t=oLi.offsetTop)+"px";	
+	oLi.style.position="absolute";//必须把这一行写在最后
+	oLi.style.margin=0;
+	
+	new Drag(oLi).on("dragstart",increaseIndex).on("dragend",changePosition).on("drag",hitedTest);;
+/*	var obj=new Drag(oLi);
+	obj.on();
+	obj.on();*/
+	
+}
+var zIndex=0;
+function increaseIndex(){
+	this.obj.style.zIndex=++zIndex;
+}
+function goHome(){
+	animate(this.obj,{left:this.obj.l,top:this.obj.t},600,3);
+}
+
+//接下来分两步实现把撞上的元素保存下来
+//1碰撞检测的算法
+//2碰撞检测的进行（代码的实现）
+function test(a,b){//碰撞检测的算法。a和b是两个元素，如果这两个元素撞上了，则返回true,没撞上返回false
+	if(a.offsetLeft+a.offsetWidth<b.offsetLeft||a.offsetTop+a.offsetHeight<b.offsetTop||a.offsetLeft>b.offsetLeft+b.offsetWidth||a.offsetTop>b.offsetTop+b.offsetHeight){
+		return false
+	}else{
+		return true;
+	}
+	
+}
+
+function hitedTest(){//使用test方法把撞上的元素设成红背景，并且将其保存下来
+	this.aHited=[];//用来保存撞上的元素
+	for(var i=0;i<oLis.length;i++){
+		var oLi=oLis.item(i);
+		if(this.obj==oLi)continue;
+		oLi.style.backgroundColor="";//恢复每个li有可能被置为红色的背景
+		if(test(this.obj,oLi)){
+			this.aHited.push(oLi);//把撞上的保存
+			oLi.style.backgroundColor="red";//把撞上的背景设为红色
+		}
+	}
+}
+
+function changePosition(){
+	
+	var a=this.aHited;
+	if(a&&a.length){
+		for(var i=0;i<a.length;i++){
+			var oLi=a[i];
+			//oLi.c自定义属性表示斜边的距离 
+			oLi.c=Math.sqrt(Math.pow(this.obj.offsetLeft-oLi.offsetLeft,2)+Math.pow(this.obj.offsetTop-oLi.offsetTop,2));
+			
+		}
+		
+		a.sort(function(a,b){return a.c-b.c});//排序
+		var shortestLi=a[0];//把和拖拽元素距离最短得到
+		
+		animate(this.obj,{left:shortestLi.l,top:shortestLi.t},700,4);
+		animate(shortestLi,{left:this.obj.l,top:this.obj.t},600,3)
+		
+		var tempL=this.obj.l;
+		var tempT=this.obj.t;
+		
+		this.obj.l=shortestLi.l;
+		this.obj.t=shortestLi.t;
+		shortestLi.l=tempL;
+		shortestLi.t=tempT;
+	}else{
+		goHome.call(this);
+	}
+	
+}
+
+</script>

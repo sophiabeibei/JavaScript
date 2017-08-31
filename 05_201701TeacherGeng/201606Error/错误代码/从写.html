@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:0;
+            left:0;
+            background: red;
+            cursor:move;
+            font-size: 30px;
+            -webkit-user-select: none;
+            border-radius:50%;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div>百</div>
+<div style="left: 150px">事</div>
+<div style="left: 300px;">可</div>
+<div style="left: 450px">乐</div>
+<div style="left: 600px"><img src="img1.jpg" alt=""style="width: 100px;height: 100px"/></div>
+<script src="event_self.js"></script>
+<script src="clear.js"></script>
+<script>
+    var oBox=document.getElementsByTagName('div');
+
+    function down(e){
+        this.x= this.offsetLeft;
+        this.y= this.offsetTop;
+        this.mx=e.pageX;
+        this.my=e.pageY;
+        if(this.setCapture){
+            this.setCapture();
+            on(oBox,'mouse',move);
+            on(oBox,'mouse',up);
+        }else{
+            this.MOVE=move.bind(this);
+            this.UP=up.bind(this);
+            on(document,'mousemove',this.MOVE);
+            on(document,'mouseup',this.UP);
+        }
+        e.preventDefault();
+        selfRun.call(this,'selfabcd1',e)
+    }
+    function move(e){
+        this.style.left=this.x+(e.pageX-this.mx)+"px";
+        this.style.top=this.y+(e.pageY-this.my)+"px";
+        selfRun.call(this,'selfabcd2',e)
+    }
+    function up(e){
+    if(this.releaseCapture){
+        this.releaseCapture();
+        off(oBox,'mousemove',move);
+        off(oBox,'mouseup',up);
+    }else{
+        off(document,'mousemove',this.MOVE);
+        off(document,'mouseup',this.UP);
+    }
+        selfRun.call(this,'selfabcd3',e)
+    }
+    var zIndex=0;
+    for(var i=0;i<oBox.length;i++){
+        on(oBox[i],'mousedown',down);
+        on(oBox[i],'selfabcd1',function(){
+            this.style.zIndex=++zIndex;
+        });
+        on(oBox[i],'selfabcd1',clearEffect);
+        on(oBox[i],'selfabcd2',clearEffect);
+        on(oBox[i],'selfabcd3',drop);
+        on(oBox[i],'selfabcd3',fly);
+    }
+</script>
+</body>
+</html>

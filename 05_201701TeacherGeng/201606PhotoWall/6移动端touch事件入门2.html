@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<title>无标题文档</title>
+<style type="text/css">
+#outer{ width:80%; height:200px; margin:50px auto; background:#ccc; overflow:hidden;}
+#inner{ width:500%; height:100%; overflow:hidden; transition-duration:0.5s;}
+#inner div{ float:left; width:20%; height:100%; text-align:center; line-height:200px; float:left; font-size:100px; font-weight:bold; background:red; color:white;}
+
+</style>
+</head>
+
+<body>
+<div id="outer">
+	<div id="inner">
+    	<div>一</div>
+        <div style="background:green; ">二</div>
+        <div style="background:black; ">三</div>
+        <div style="background:orange;">四</div>
+        <div  style="background:purple; ">五</div>
+    </div>
+
+</div>
+</body>
+</html>
+<script >
+function start(e){
+	this.mx=e.changedTouches[0].pageX;
+}
+function move(e){
+	var x=this.index*-this.offsetWidth+e.changedTouches[0].pageX-this.mx;
+	this.parentNode.style.transform="translate("+x+"px,0)";
+}
+function end(e){
+	var current=e.changedTouches[0].pageX;
+	if(current<this.mx){
+		var next=this.index+1;	
+	}else if(current>this.mx){
+		var next=this.index-1;
+	}
+	if(next>=eles.length){
+		next=eles.length-1;	
+	}else if(next<=-1){
+		next=0;	
+	}
+	var x=next*-this.offsetWidth;
+	this.parentNode.style.transform="translate("+x+"px,0)";
+}
+
+var eles=document.getElementById("inner").getElementsByTagName("div");
+
+[].forEach.call(eles,function(ele,i){
+	ele.index=i;
+	ele.addEventListener("touchstart",start,false);
+	ele.addEventListener("touchmove",move,false);
+	ele.addEventListener("touchend",end,false);
+});
+</script>

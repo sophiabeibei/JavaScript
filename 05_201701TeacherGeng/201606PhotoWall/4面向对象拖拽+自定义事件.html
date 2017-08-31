@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; position:absolute; top:0; left:0; background:red; cursor:move; -webkit-user-select:none;}
+
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+ <div id="div2" style="background:green; top:100px; left:150px;"></div>
+ <div id="div3" style="background:blue; top:200px; left:400px;"></div>
+</body>
+</html>
+<script src="../event2.js"></script>
+<script src="drag_oop.js"></script>
+<script>
+var zIndex=0;
+function increaseIndex(){
+	this.ele.style.zIndex=++zIndex;
+}
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	var obj=new Drag(eles[i]).on("dragstart",increaseIndex).on("dragstart",clearEffect).on("drag",getSpeed).on("dragend",fly).on("dragend",drop);	
+	obj.on("dragstart",increaseIndex);
+	obj.on("dragstart",clearEffect);
+	obj.on("drag",getSpeed);
+	obj.on("dragend",fly);
+	obj.on("dragend",drop);
+}
+function clearEffect(){
+	clearTimeout(this.flyTimer);
+	clearTimeout(this.dropTimer);
+}
+
+function getSpeed(e){
+	if(this.prevPosi){
+		this.speed=e.pageX-this.prevPosi;
+		this.prevPosi=e.pageX;
+	}else{
+		this.prevPosi=e.pageX;
+	}
+}
+function fly(){
+	this.speed*=.98;
+	var maxRight=document.documentElement.clientWidth-this.ele.offsetWidth;
+	var current=this.ele.offsetLeft+this.speed;
+	if(current<=0){
+		this.ele.style.left=0;
+		this.speed*=-1;
+	}else if(current>=maxRight){
+		this.ele.style.left=maxRight+"px";
+		this.speed*=-1;
+	}else{
+		this.ele.style.left=current+"px";
+	}
+	
+	if(Math.abs(this.speed)>=.5){
+			this.flyTimer=window.setTimeout(processThis(fly,this),20);
+	}
+}
+
+
+function drop(){
+	this.dropSpeed?this.dropSpeed+=9:this.dropSpeed=9;
+	this.dropSpeed*=.97;
+	
+	var maxBottom=document.documentElement.clientHeight-this.ele.offsetHeight;
+	var current=this.ele.offsetTop+this.dropSpeed;
+	
+	if(current>=maxBottom){
+		this.ele.style.top=maxBottom+"px";
+		this.dropSpeed*=-1;
+		this.flag++;
+	}else{
+		this.ele.style.top=current+"px";
+		this.flag=0;
+	}
+	if(this.flag<2){
+		this.dropTimer=window.setTimeout(processThis(drop,this),20);	
+	}
+	
+}
+
+
+</script>

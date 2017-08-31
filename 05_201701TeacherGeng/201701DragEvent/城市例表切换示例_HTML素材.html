@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<style type="text/css">
+.change{ float:left;}
+.togglecity{ cursor:pointer; height:24px;line-height:24px; padding:0 10px; }
+.citylist{ position:absolute; z-index:11111; padding:5px; background:#515151; width:280px; display:none;}
+ul{ list-style:none; padding:0; margin:0;}
+ul.listcity li{ float:left; width:70px;}
+ul.listcity a{ display:block; text-align:center; padding:2px 5px; color:#fff; font-size:14px;}
+ul.listcity a:hover{ background:#666; color:#CF0;}
+</style>
+
+<script type="text/javascript" language="javascript">
+document.body.onclick=function(e){
+	e=e||window.event;
+	var target=e.target||e.srcElement;
+	if(target.id=="togglecity"){
+			citylist.style.display="block"
+	}else if(target.id=="citylist"){
+		citylist.style.display="block";
+	}else if(target.tagName=="A"&&target.parentNode.parentNode.parentNode.id=="citylist"){
+		city.innerHTML=target.innerHTML;
+		citylist.style.display="none";
+	}else{
+		citylist.style.display="none";	
+	}
+
+}
+ </script>
+
+<body>
+
+ <div class="city" style="position:relative; z-index:11111;">
+        	<h2><span id="city">北京</span></h2>
+            <!--切换城市开始--> 
+             <div class="change">
+             	<span id="togglecity"  class="togglecity">切换城市</span>
+                <div id="citylist" class="citylist">
+                	<ul class="listcity">
+                    	<li><a href="">澳门</a></li>
+                        <li><a href="">北京</a></li>
+                        <li><a href="">长春</a></li>
+                        <li><a href="">长沙</a></li>
+                        <li><a href="">澳门</a></li>
+                        <li><a href="">北京</a></li>
+                        <li><a href="">长春</a></li>
+                        <li><a href="">长沙</a></li>
+                    </ul>
+                </div>
+             </div>             
+             <!--切换城市结束-->
+        </div>
+        
+</body>
+</html>

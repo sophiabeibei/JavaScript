@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; background:red; margin:20px auto; transition-duration:1s; transform-origin:center;  }
+.div1{ transform:translate(200px,200px) rotate(405deg) skew(15deg,15deg);}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+
+</body>
+</html>
+<script>
+//transform;变形，transformer
+div1.onclick=function(){
+	this.className="div1";	
+}
+div2.onclick=function(){
+	//this.style.opacity=0;	
+	this.style.height="400px";
+}
+
+</script>

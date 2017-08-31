@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; position:absolute; top:0; left:0; background:red; cursor:move; -webkit-user-select:none;}
+
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+ <div id="div2" style="background:green; top:100px; left:150px;"></div>
+ <div id="div3" style="background:blue; top:200px; left:400px;"></div>
+</body>
+</html>
+<script src="../event2.js"></script>
+<script>
+//面向对象：它是一种看待世界（编程）的方式（世界观）
+
+//所有方法（行为）和属性，它依赖一个主体的（上下文）。每一个方法和属性不再是孤立的了
+
+//行为的载体，某个对象就是这些行为的载体，被拖拽的div只是这个载体上的一个属性
+
+//方法论
+//一个类的实例，是管理一系列方法或属性的组织者。
+//多例模式和单例模式
+
+var DOM={};//基于对象的
+//提出对象的概念，然后根据对象这种数据类型的特点，完成的工作，叫基于对象的编程
+//对象这种数据类型的特点是：它是复合的数据承载体（就是说它可以承载很多的数据），这个数据载体就可以把世界描述的更完整更准确
+DOM.fn1=function(){};
+DOM.fn2=function(){};
+
+//以下面向对象的
+//面向对象其实是“生产对象的方式的升级”
+var a1=new Array;
+var a2=new Array;
+
+
+///面向对象更多强调的是组织和管理的功能，只是实现一个逻辑，它毫无优势可言。
+//在使用面向对象的方式写代码之前，先确定几个原则：
+//一、this是谁（当前实例，承载所有的这个类上的方法和属性的那个载体）
+//二、要规划一个基本的类的结构（先要对这个类进行抽象，然后再封装成一个类）
+	//动作也可以是“数据”（function也是数据类型）
+	
+//1.this都要指向当前类的实例(这个实例未必有变量名)。如果和这个原则冲突，则强制执行这个原则，让this指向当前类的实例。什么时候可能会冲突呢？和事件绑定的原则有时候就会冲突
+// 规划一个类的结构：需要构造函数，需要三个基本的方法：down,move,up
+/*var a=new Array;
+a.slice;
+ele.onclick=a.slice;
+//张三.二哥.小舅.三姑.请吃饭（）
+a.slice()
+new Array().slice();*/
+
+//构造函数：初始化的作用
+/*
+function  Drag(ele){//ele是指的被拖拽的元素
+	//this是整个拖拽行为的载体
+	//ele只是Drag类的实例上的一个属性
+	this.ele=ele;
+	this.abcd=ele;
+	
+	this.x=null;
+	this.y=null;
+	this.mx=null;
+	this.my=null;
+	
+	this.DOWN=processThis(this.down,this);
+	function processThis(fn,obj){
+		//返回一个新的方法，还是fn的功能，但当方法执行的时候fn的this被强制指向obj
+		return function(e){fn.call(obj,e);}	
+	}
+	
+	//上边processThis的执行相当于下边的代码
+	var that=this;
+	this.DOWN=function(e){that.down.call(that,e)};//把定义的函数里的this都要换成that才行
+	this.DOWN=function(e){this.down.call(that,e)};//在函数里写this是错的
+	//this.DOWN=this.down.bind(this);
+	
+	on(this.ele,"mousedown",this.DOWN);
+	
+}
+
+function Drag(ele){
+	this.ele=ele;
+	this.x=null
+	this.y=null;
+	this.mx=null;
+	this.my=null;
+	
+	on(this.ele,"mousedown",this.down);//事件的原则是down绑定给了ele，则down执行的时候，down里的this会指向ele。这和面向对象的this原则冲突了。所以下边的要强制改变
+	
+	//原则是：让this.__proto__.down在运行的时候，功能不能变，但this无论如何也要指让这里的this：就是实例
+	this.DOWN=function (e){this.down.call(this,e)};//让Drag类实例的down指向Drag类的实例
+	var _this=this;
+	this.DOWN=function(){this;_this.down.call(_this,e)};//要理解DOWN里的this是谁，小写的down里的this又是谁，这是两码事
+	
+	//基于以上的原则，所以才抽象出一个新的方法
+	function processThis(fn,obj){
+		//返回一个新的方法，还是fn的功能，但当方法执行的时候fn的this被强制指向obj
+		return function(e){fn.call(obj,e);}	
+	}
+	on(this.ele,"mousedown",this.DOWN);
+	on(this.ele,"mousedown",_this.down);//这样的绑定和下边的绑定一样的，前边的this或_this是找到down方法地址的路径
+	on(this.ele,"mousedown",this.down);
+	
+		
+	
+}
+*/
+function Drag(ele){
+	this.ele=ele;
+	this.x=null;
+	this.y=null;
+	this.mx=null;
+	this.my=null;
+	
+	this.DOWN=processThis(this.down,this);
+	
+	this.MOVE=processThis(this.move,this);
+	this.UP=processThis(this.up,this);
+	on(this.ele,"mousedown",this.DOWN);	
+	
+}
+
+Drag.prototype.down=function(e){
+	this.x=this.ele.offsetLeft;
+	this.y=this.ele.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	
+	if(this.ele.setCapture){
+		this.ele.setCapture();
+		on(this.ele,"mousemove",this.MOVE);
+		on(this.ele,"mouseup",this.UP);
+	}else{
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);
+	}
+	e.preventDefault();
+}
+
+Drag.prototype.move=function(e){
+	this.ele.style.left=this.x+(e.pageX-this.mx)+"px";
+	this.ele.style.top=this.y+(e.pageY-this.my)+"px";
+	
+}
+
+
+Drag.prototype.up=function(e){
+	if(this.ele.releaseCapture){
+		this.ele.releaseCapture();
+		off(this.ele,"mousemove",this.MOVE);
+		off(this.ele,"mouseup",this.UP);
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);
+	}
+	
+}
+
+
+var obj1=new Drag(div1);//当使用new关键字去创建一个实例的时候，浏览器做了那些事
+//1.创建一个这个类的实例（这会构造函数被当成一个类来对待的）
+//2.返回了这个实例
+//3.以这个实例为上下文运行构造函数，就是说这Drag方法还会被当成一个普通的函数来执行，只不过是这函数的上下文是这个类的实例了
+//4.这个实例上天生就会有__proto__属性，使这个实例自动具有（共享）这个类的原型上的所有的方法和属性
+
+
+new Drag(div2);
+new Drag(div3);
+
+</script>

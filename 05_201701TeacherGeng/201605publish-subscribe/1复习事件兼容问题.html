@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+1、事件对象的获得方式不一样
+	IE是window.event;标准浏览器里是浏览器自动给方法传一个事件对象参数
+    e=e||window.event;
+    chrome浏览器里两种事件对象的获得方式都支持
+2、绑定事件的方式，在DOM2里是不一样的
+	IE用ele.attachEvent,标准浏览器是用ele.addEventListener
+    IE的DOM2事件模型中还一系列的问题
+    被绑定的方法当事件触发时，this关键字指向的问题-->window
+    可以重复一个方法
+    执行顺序是无序的
+    在DOM2的版本里，还增加了很多新的事件类型，新增加的这些事件类型，老版的IE基本上都不支持
+3、事件源不一样，IE是srcElement，标准浏览是用e.target
+4、事件传播的方式不一样，IE只有冒泡传播这一个阶段，标准浏览器是两个阶段：捕获、冒泡（其实还有第三个阶段，目标阶段，现在不是考虑这个阶段）
+5、阻止事件传播方式不一样、IE是e.cancelBubble=true;,标准浏览器是e.stopPropagation();
+6、阻止事件的默认行为的方式：IE是e.returnValue=false;标准浏览器是e.preventDefault();
+
+7、IE不支持e.pageX,e.pageY
+
+    
+
+<div id="div1" style="height:100px; background:red; "> div1</div>
+</body>
+</html>
+<script>
+//
+
+document.body.addEventListener
+"DOMContentLoaded"
+
+function bind(ele,type,fn){//第一解决的问题是二者在绑定事件上用的方法不统一的问题，方法主要解决this关键字，次要解决了fn被重复绑定的问题
+	if(ele.addEventListener){
+		ele.addEventListener(type,fn,false);
+	}else if(ele.attachEvent){
+		if(!ele["aBind"+type]){
+			ele["aBind"+type]=[];	
+		}
+		var a=ele["aBind"+type];
+		
+		for(var i=0;i<a.length;i++){
+			if(a[i].photo==fn){
+				return;	
+			}
+				
+		}
+		
+		function fnTemp(){fn.apply(ele);this};//在fnTemp里有this，在fn里也有this,这两个this不一样
+		fnTemp.photo=fn;
+		a.push(fnTemp);
+		ele.attachEvent("on"+type,fnTemp);
+		
+		
+	}
+	
+}
+function unbind(ele,type,fn){
+	
+	if(ele.removeEventListener){
+		ele.removeEventListener(type,fn,false);
+	}else if(ele.detachEvent){
+		var a=ele["aBind"+type];
+		
+		for(var i=0;i<a.length;i++){
+			if(a[i].photo==fn){
+				ele.detachEvent("on"+type,a[i]);
+				a.splice(i,1);
+				return;
+			}
+		
+		}
+		
+	}
+	
+}
+
+
+//实现on,run,off方法的原则是什么
+//既然IE的事件模式是无序的，则我们把它推翻，不用它了，然后自己写一套可以按顺序执行的机制
+function on(ele,type,fn){
+	//在bind方法里的数组，是用来保存真正绑定在事件上的那些经过改造的方法
+	//这里的数组，保存的方法，它们没有真正的被绑定在事件上，保存在这个数组方法是：事件触发的时候，则run来统一按顺序执行。
+	//也就是说on方法的“事件绑定”，其实是个“假”绑定
+	
+	if(!ele["aEvent"+type]){
+		ele["aEvent"+type]=[];//创建事件池
+		ele.attachEvent("on"+type,function (){run.call(ele)});
+	}
+	
+	var a=ele["aEvent"+type];
+	
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	//确保方法不会被重复的“绑定”到事件池里
+	}
+	
+	a.push(fn);//核心代码：就是将fn保存到事件池中（相当于绑定上了）
+	
+	//按理说：通知的工作是在主行为发生的时候，在主行为里执行run，但是主行为（click,mousemove,mouseup）是浏览器已经封装好的方法，我们改变不了，那怎么能让run执行呢，那就要借助浏览器的事件绑定的模型，把run绑定在这儿，以实现事件触发的时候，执行run
+	//bind(ele,type,run);
+	//ele.attachEvent("on"+type,function (){run.call(ele)});
+	
+}
+
+
+function run(){
+	var e=window.event;
+	var type=e.type;
+	var a=this["aEvent"+type];//this是指绑定run方法的那个元素
+	if(a)
+		for(var i=0;i<a.length;i++){
+			if(typeof a[i]=="function"){
+				a[i].call(this,e);	
+			}else{
+				a.splice(i,1);//这样是为了把数组中多余的null项给清理掉，这个else也可不要，只不过是这个数组可能会null项越来越多
+				i--;	
+			}
+		}
+	
+}
+
+
+function off(ele,type,fn){
+	var a=ele["aEvent"+type]
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				//a.splice(i,1,null);//也可以这样写
+				//a[i]=null;//可以这样写
+				a.splice(i,1);//只要是用splice这样删除，则会出现数组塌陷
+				break;
+				//return ;//更绝情	
+			}
+		}
+		
+		//
+	}
+	
+}
+
+
+var ele=document.getElementById("div1");
+function fn1(){alert(1)};
+function fn2(){alert(2)};
+var i=0;
+function fn3(){
+	i++;
+	if(i==2){
+		off(this,"click",fn1);
+		off(this,"click",fn2);
+		off(this,"click",fn3);	
+		/*
+			当把这七个方法都绑定到click事件上的时候，数组是：
+			[fn1,fn2,fn3,fn4,fn5,fn6,fn7]
+			//当click事件第二次触发的时候，当run里的i==2的时候，是在执行fn3这个方法，在执行fn3方法的时候，以下事情发生了:把fn1,fn2,fn3删掉了
+			数组变成了[fn4,fn5,fn6,fn7]
+			fn3执行完成之后,run里的i是3了
+			接下来执行这个数组的a[3]个方法,这会的a[3]是fn7,结果fn4,fn5,fn6就没机会执行了。这就是问题出现的原因
+			
+			为什么会出现这个原因：是off方法在执行的时候，影响到run方法的执行了
+		*/
+	}
+	alert(3)
+	};
+function fn4(){alert(4)};
+function fn5(){alert(5)};
+function fn6(){alert(6)};
+function fn7(){alert(7)};
+
+
+on(ele,"click",fn1);
+on(ele,"click",fn2);
+on(ele,"click",fn3);
+on(ele,"click",fn4);
+on(ele,"click",fn5);
+on(ele,"click",fn6);
+on(ele,"click",fn7);
+on(ele,"click",fn2);
+
+</script>

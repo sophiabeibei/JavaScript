@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; position:absolute; left:150px; top:150px; background:green; cursor:move;  overflow:hidden;}
+div img{ width:100px; height:100px; border:none;}
+</style>
+</head>
+
+<body>
+<div id="div1" style="left:0; top:0;"><img src="../img/13.png"></div>
+<div id="div2"><img src="../img/11.png"></div>
+<div id="div3" style="top:300px; left:0;"><img src="../img/12.png"></div>
+</body>
+</html>
+<script src="event1.js"></script>
+<script>
+//mousedown,mousemove,mouseup
+//down,     move,    ,up
+function down(e){//拖拽开始，准备拖拽的阶段
+//把拖拽的准备工作做好，把元素的原始坐标和鼠标的原始坐标保存下来，并且在这个阶段给mousemove事件绑定move方法，表示鼠标按下去的时候才让元素随着鼠标移动而移动
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	
+	if(this.setCapture){
+		
+		this.setCapture();//这个方法是IE专有的方法，后来火狐也实现这个方法，它功能是专用处理mousemove事件，确保mousemove事件不会丢失鼠标
+		on(this,"mousemove",move);
+		on(this,"mouseup",up);
+	}else{
+		this.MOVE=move.bind(this);
+		this.UP=up.bind(this);//它会返回一个方法，返回的这个方法里还是调用up，但是让up在执行的时候，this指向bind的第一个参数。这是H5标准中的方法，chrome支持这个方法
+		//它的实现原理如下：
+		/*
+		Function.prototype.bind=function(context){
+			var _this=this;
+			return function(e){_this.call(context,e);}	
+		}
+		
+		function processThis(fn,context){
+			return function(e){fn.call(context,e)}	
+		}
+		*/
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);	
+	}
+	
+	e.preventDefault();
+	
+}
+
+function move(e){//拖拽中，拖拽正在进行的阶段
+	//盒子的新位置=盒子的原始位置+（鼠标移动的距离=现在鼠标的位置-原始的鼠标的位置)
+	this.style.left=this.x+e.pageX-this.mx+"px";
+	this.style.top=this.y+(e.pageY-this.my)+"px";
+	
+	
+}
+
+function up(e){//拖拽结束的阶段,当mouseup事件触发的时候，让move方法不再执行，也就是说在up的时候，把mousemove上绑定的move方法移除
+	
+	if(this.releaseCapture){
+		this.releaseCapture();
+		off(this,"mousemove",move);
+		off(this,"mouseup",up);
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);
+	}
+	
+}
+
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	var ele=eles.item(i);
+	on(ele,"mousedown",down);
+	//ele.onmousedown=down;
+	//ele.addEventListener("mousedown",down,false);
+	//ele.aEventmousedown.push(down);
+	//当事件触发的时候，执行run
+	//run方法去this.aEventmousedown遍历执行a[0]这个方法（这个方法就是down方法）
+	
+}
+
+</script>

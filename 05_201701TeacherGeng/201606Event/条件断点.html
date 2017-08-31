@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+function outer(){
+	var flag=0;
+	
+	function inner(){
+		for(var i=0;i<10000;i++){
+			flag+=i;	
+			
+		}
+	}
+	
+	for(var i=0;i<10;i++){
+		inner();	
+	}
+	
+	return flag;
+	
+	
+}
+
+for(var i=0;i<10;i++)//外边的for可以不加花括号
+	for(var j=0;j<100;j++){
+			
+	}
+
+</script>

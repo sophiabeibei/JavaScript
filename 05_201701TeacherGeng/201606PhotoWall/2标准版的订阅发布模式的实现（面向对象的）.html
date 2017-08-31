@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+//烧水--->喝，泡方便面，洗澡
+//打扫卫生，打电话
+//烧水的同时，打扫卫生和打电话---烧开水之后（报警器，回调机制）--
+
+//回调 ，通知 ，报警器的机制
+//先要约定（订阅）主行为（烧水，坐公交车）
+//主行为发生，有通知的机制
+
+//主行为模块和通知（报警）的模块是完全独立的
+
+function EventEmitter(){}//EventTarget
+EventEmitter.prototype.on=function(type,fn){
+	if(!this["aEmitter"+type]){
+		this["aEmitter"+type]=[];	
+	}
+	var a=this["aEmitter"+type];
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	
+	}
+	a.push(fn);
+}
+EventEmitter.prototype.run=function(type,e){//type是自己发布事件类型；e是系统的事件对象，是可选参数
+	
+	var a=this["aEmitter"+type];
+	if(a&&a.length){
+		for(var i=0;i<a.length;i++){
+			//a[i].call(this);	//最基本的遍历数组里的方法并且让其执行的方式
+			//a[i].call(this,e);//可以把系统的事件也传进来
+			a[i].apply(this,[].slice.call(arguments,1));//可以把更多的参数都传进来
+		}
+	}
+	
+}
+EventEmitter.prototype.off=function(type,fn){
+	var a=this["aEmitter"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				a.splice(i,1);
+				return;	
+			}
+		}
+	}
+	
+	
+}
+
+
+function Kettle(){
+	this;
+	};
+
+Kettle.prototype=new EventEmitter;//这是有危害有危险的继承方式，但是所有的浏览器都支持
+//Kettle.prototype.__proto__=EventEmitter.prototype;//IE是不支持这种写法的。
+
+Kettle.prototype.boiling=function(){
+	var that=this;
+	window.setTimeout(function(){
+		console.log("水烧开了！！");
+		that.run("abcd");//发布的事件叫abcd，这句决定了用on绑定事件时的事件类型必须是abcd
+	},5000);
+}
+var k1=new Kettle;
+k1.on("abcd",drink);//所以这儿绑定的就是abcd，这里和第72行照应
+//思考：为什么这里发布的自定义事件，不需要以self开头呢？
+//k1.__proto__.__proto__.on
+k1.on("abcd",noodles);
+k1.on("abcd",shower);
+k1.boiling();
+
+function drink(){
+	console.log("我喝水");	
+}
+function noodles(){
+	console.log("我泡面");	
+}
+function shower(){
+	console.log("我洗澡");	
+}
+</script>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+function on(ele,type,handler){
+	if(ele.addEventListener){
+		ele.addEventListener(type,handler)
+		}else{
+			if(!ele['handler'+type]){
+				ele['handler'+type]=[];
+				ele.attachEvent('on'+type,function(){run.call(ele);})
+				}
+				var a=ele['handler'+type];
+				for(var i=0;i<a.length;i++){
+					if(a[i]===handler){
+						return;
+						}
+					}
+					a.push(handler);
+			}
+}
+
+function run(){
+	var e=window.event;
+	e.target=e.srcElement;
+	e.pagaX=e.clientX+(document.documentElement.srcollLeft||document.body.srcollLeft);
+	e.pagaY=e.clientY+(document.documentElement.srcollTop||document.body.srcollTop);
+	e.preventDefault=function(){e.returnValue=false; }
+	e.stopPropagation=function(){e.cancelBubble=true;}
+	var a=this['handler'+e.type];
+	if(a&&a.length)
+		for(var i=0;i<a.length;i++){
+			if(typeof a[i]==='function'){
+				a[i].call(this,e);
+			}else{
+				a.splice(i,1);
+				i--;
+			}
+		}
+}
+function off(ele,type,handler){
+	if(ele.removeEventListener){
+		ele.removeEventListener(type,handler);
+		}else{
+			var a=ele["handler"+type];
+			if(a && a.length){
+				for(var i=0;i<a.length;i++){
+					if(a[i]==handler){
+						a[i]=null;
+						break;
+						}
+					}
+				}
+			}
+}
+</script>

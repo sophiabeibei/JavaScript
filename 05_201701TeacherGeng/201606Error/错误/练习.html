@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:0;
+            left: 0;
+            background:red;
+            cursor: move;
+            -webkit-user-select: none;
+            font-size: 48px;
+            text-align: center;
+            line-height: 100px;;
+        }
+        img{
+            display: block;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div style="left: 150px"></div>
+    <div style="left: 300px;"></div>
+    <div style="left:450px"></div>
+    <div><img src="9.png" alt=""/></div>
+</body>
+<script src="eventmy.js"></script>
+<script src="tuozhuai.js"></script>
+<script src="effect.js"></script>
+<script>
+    var eles=document.getElementsByTagName('div');
+    var zIndex=0;
+    for(var i=0;i<eles.length;i++){
+        on(eles[i],'mousedown',down);
+        on(eles[i],'selfabcd1',function(){this.zIndex=++zIndex})
+        on(eles[i],'selfabcd1',clearEffect)
+        on(eles[i],'selfabcd2',getSpeed)
+        on(eles[i],'selfabcd3',drop)
+        on(eles[i],'selfabcd3',fly)
+    }
+</script>
+</html>

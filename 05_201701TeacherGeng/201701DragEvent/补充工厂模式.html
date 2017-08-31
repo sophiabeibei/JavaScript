@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+var obj={name:"rose",age:"23",height:"160"};
+function factory(){
+	
+	var obj={};
+	obj.name="rose";
+	obj.age="22";
+	obj.height="160";
+	obj.gender=false;
+	return obj;	
+}
+var obj1=factory();
+
+/*//事件就是“那件事”，现在需要让另一件事和“那件事”产生关联
+
+//让两个行为发生联系关联，要分成三个步来做
+//第一步：做计划，约定，订阅--->把这些做了约定的function保存到一个数组里
+ele.attachEvent("onclick",animate);
+ele.addEventListener("click",animate,false);
+rose.addEventListener("marry",drink);
+
+//第二步：当主行为发生的时候，通知约定主行为的事来执行。“通知”也是一个方法，它在主行为执行的时候执行
+// "通知"的核心思想是当主行为发生的时候，遍历原来保存方法的那个数组，并且将这些方法执行
+
+//第三步：还要有解除约定的方法
+ele.detachEvent,ele.removeEventListener
+//在对应的数组里，找到原来保存的方法，将其删除
+
+//我们还需要一个标识，用来把这三个方法对应到一个数组上，这
+ele.addEventListener("click",fn);
+ele.addEVenListener("点一下",fn);
+ele.removeEventListener("click",fn);*/
+
+var a=[1,2,4,function(){alert(this)}];
+a[3]();
+var fn=a[3];
+fn();
+var obj={};
+obj.fn=a[3];
+obj.fn();
+a[3]();
+a["length"]==a.length;
+a[3]==a.3;
+</script>

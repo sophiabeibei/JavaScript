@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//on方法的思路：
+//如果是标准浏览器，则直接用addEventListener来处理既可
+//如果是IE8及以下浏览器，则不用IE的事件机制，自已定义事件机制
+	//解决执行顺序问题的原理是：事件绑定的时候按顺序保存、事件触发的时候按顺序执行
+	//1、创建程序池（事件池，数组）
+	//2、按顺序保存（先绑定的先保存，后绑定的后保存）
+	//3、只保存到数组里还不够，因为它和浏览器的事件之间还不存在联系
+	var aEventType=[]
+function on(ele,type,handler){
+	if(ele.addEventListener){
+		ele.addEventListener(type,handler,false)
+	}else{//这是IE
+		if(!ele["handler"+type]){
+			 
+			ele["handler"+type]=[];
+		}
+		
+		var aEventType=[];
+		var a=ele["handler"+type];
+		for(var i=0;i<a.length;i++){
+			if(a[i]==handler){
+				return;//如果原来绑定过这个方法，则停止执行	
+			}
+		}
+		a.push(handler);
+		
+	}
+}
+
+</script>

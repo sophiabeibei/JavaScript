@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; position:absolute; left:150px; top:150px; background:green; cursor:move;  overflow:hidden;}
+div img{ width:100px; height:100px; border:none;}
+</style>
+</head>
+
+<body>
+<div id="div1" style="left:0; top:0;"><img src="../img/13.png"></div>
+<div id="div2"><img src="../img/11.png"></div>
+<div id="div3" style="top:300px; left:0;"><img src="../img/12.png"></div>
+</body>
+</html>
+<script src="event2自定义事件的.js"></script>
+<script src="drag_oop.js"></script>
+<script>
+//确定结构
+//确定一些原则：this的原则 .
+//在事件绑定中，this要指向被绑定的DOM元素。但是在面向对象的方法里，this要指向这个类当前的实例。这是原则，如果违背了这个原则，强制执行这个原则
+//理解构造函数的作用：初始化的作用，要把以后这个类的实例要用到的私有的属性、方法准备好
+
+
+var obj1=new Drag(div1)//.on("dragstart",clearEffect);
+obj1.on("dragstart",clearEffect)
+obj1.on("drag",getSpeed);
+obj1.on("dragend",fly);
+obj1.on("dragend",drop);
+
+var obj2=new Drag(div2);
+obj2.on("dragstart",clearEffect)
+obj2.on("drag",getSpeed);
+obj2.on("dragend",fly);
+obj2.on("dragend",drop);
+
+var obj3=new Drag(div3);
+obj3.on("dragstart",clearEffect)
+obj3.on("drag",getSpeed);
+obj3.on("dragend",fly);
+obj3.on("dragend",drop);
+
+
+function clearEffect(){
+	
+	clearTimeout(this.flyTimer);
+	clearTimeout(this.dropTimer);
+		
+}
+
+function getSpeed(e){
+		
+	
+	if(this.prevPosi){//this.prevPosi保存上一次鼠标的位置，当move方法第一次执行的时候，没有这个“上一次的位置”
+		this.speed=e.pageX-this.prevPosi;
+		this.prevPosi=e.pageX
+		
+	}else{
+		this.prevPosi=e.pageX;
+	}
+}
+
+function fly(){
+	
+	this.speed*=.98;//每运动一次都让速度衰减2%
+	var maxRight=(document.documentElement.clientWidth||document.body.clientWidth)-this.obj.offsetWidth;
+	var current=this.speed+this.obj.offsetLeft;
+	
+	if(current<=0){//左边界判断
+		this.obj.style.left=0;
+		this.speed*=-1;	//
+	}else if(current>=maxRight){//右边界判断
+		this.obj.style.left=maxRight+"px";
+		this.speed*=-1;	
+	}else{//正常情况下的运动
+		this.obj.style.left=current+"px";
+	}	
+	if(Math.abs(this.speed)>=0.5){//如果这个速度还是个有效速度，则让动画继续执行，如果是无效速度则什么也不干（停止）
+		this.flyTimer=window.setTimeout(processThis(fly,this),20);
+	}
+	
+}
+function drop(){
+	if(this.dropSpeed){
+		this.dropSpeed+=9.8;
+	}else{
+		this.dropSpeed=9.8;	
+	}
+	this.dropSpeed*=.98;
+	
+	var maxBottom=(document.documentElement.clientHeight||document.body.clientHeight)-this.obj.offsetHeight;
+	
+	var current=this.dropSpeed+this.obj.offsetTop;
+	if(current>=maxBottom){
+		this.obj.style.top=maxBottom+"px";
+		this.dropSpeed*=-1;
+		this.flag++
+		
+	}else{
+		this.obj.style.top=current+"px";
+		this.flag=0;
+	}
+	
+	if(this.flag<2)//这个flag一般情况下是什么值，什么情况下会>=2
+		this.dropTimer=window.setTimeout(processThis(drop,this),20);
+		
+	
+}
+
+//你怎么理解JS中的面向对象
+//先从对象说起，对象这样数据类型的特点（复合的数据载体，它承载的数据又描述了它，并且它承载的这些数据之间还存在着关系），
+//对象描述世界，对象也是世界的基本组成
+//对象就是编程里操作的数据
+
+//再引申出生产“对象”方式的变化
+//单例模式（基于对象的）
+//工厂模式--构造模式--原型模式（创建型设计模式），这些模式是生产对象的不断的升级过程
+//所谓的面向对象是基本对象这种数据类型的特点，来用不同的方式生产（创建）对象方式
+
+//面向对象也是一种管理方式
+</script>

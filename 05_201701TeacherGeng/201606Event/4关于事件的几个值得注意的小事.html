@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="div1" onClick="fn2.call(this,event)" style="height:200px; background-color:red;">
+	<a id="a1" href="http://www.zhufengpeixun.cn" target="_blank">珠峰培训</a>
+</div>
+</body>
+</html>
+<script>
+//function fn1(){alert(this.innerHTML);return false;}
+function fn1(e){alert(this.innerHTML);e.preventDefault();;}
+function fn2(e){
+	this.innerHTML=e.pageX
+	}
+a1.addEventListener("click",fn1,false);//如果用DOM2的方法来绑定一个事件，需要阻止事件的默认行，必须e.preventDefault()才行
+//div1.addEventListener("click",fn2,false);
+
+//写在HTML事件中的事件绑定，相当于
+//div1.onclick=function(event){fn2(event)}
+div1.onclick=fn2;
+</script>

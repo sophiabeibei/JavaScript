@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; background:red; position:absolute; top:0;
+ left:0; cursor:move;}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2" style="left:100px; top:100px; background:blue;"></div>
+
+<div id="div3" style="left:300px; top:300px; background:yellow;"></div>
+<div id="div4" style="left:500px; top:150px; background:purple"></div>
+<div id="div5" style="left:330px; top:220px;"> <img src="sea.jpg" width="100" height="100px"></div>
+</body>
+</html>
+<script src="event.js"></script>
+<script>
+var div1 = document.getElementById('div1');
+
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	on(eles.item(i),"mousedown",down);	
+}
+function down(e){//开始拖拽
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;//这两行是保存盒子原始位置
+	this.mx=e.pageX;
+	this.my=e.pageY;//这两行是保存鼠标的原始位置
+	if(this.setCapture){
+		this.setCapture();
+		on(this,"mousemove",move);
+		on(this,"mouseup",up);
+	}else{
+		/*
+		//on(document,"mousemove",move);
+		this;//这个this是down方法执行的时候的this
+		var that=this;
+		this.MOVE=function(e){move.call(that,e)};
+		on(document,"mousemove",this.MOVE);
+		this.UP=function(e){up.call(that,e);}
+		*/
+		function processThis(fn,context){
+			//此方法返回一个新的方法（闭包方法）：作用是使原fn方法的功能不变，但this被强制指向的context，其实就是对43行和45行的封装
+			return function(e){fn.call(context,e);};	
+		}
+		//on(document,"mousemove",function(e){move.call(that,e);this});
+		
+/*		function fn(e){alert(e.pageX);}
+		
+		//只有直接绑定到事件上的方法才会得到一个事件对象。
+		ele.onclick=function(ev){
+			alert(ev.pageX);
+			fn(ev);
+			}
+		//ele.onclick=fn;*/
+		//on(document,"mouseup",function(){up.call(that)});
+		this.MOVE=processThis(move,this);
+		this.UP=processThis(up,this);
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);
+	}
+	
+	e.preventDefault();
+}
+/*down:用自定义属性this.x,this.y保存盒子的原始位置；用this.mx,this.my保存鼠标的原始位置，再把move绑定到ele的mousemove事件上
+move主是用来不断计算盒子新位置的方法
+新位置=e.pageX-this.mx+this.x
+鼠标的新位置-鼠标的老位置+盒子原来的位置
+盒子的新位置=鼠标移动的距离+盒子原来的位置
+盒子的新位置=（鼠标的新坐标-鼠标的旧坐标）+盒子的原始位置
+move方法负责不断的计算盒子的新位置
+*/
+
+function move(e){//进行拖拽
+	//this.style.left=e.pageX-鼠标的原始位置+盒子的原始位置+"px";
+	this.style.left=e.pageX-this.mx+this.x+"px";
+	this.style.top=e.pageY-this.my+this.y+"px";
+}
+
+function up(e){//结束拖拽
+	if(this.releaseCapture){
+		this.releaseCapture();
+		off(this,"mousemove",move);
+		off(this,"mouseup",up);
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);	
+	}
+}
+</script>

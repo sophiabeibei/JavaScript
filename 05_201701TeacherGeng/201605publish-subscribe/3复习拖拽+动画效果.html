@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; position:absolute; left:150px; top:150px; background:green; cursor:move;  overflow:hidden;}
+div img{ width:100px; height:100px; border:none;}
+</style>
+</head>
+
+<body>
+<div id="div1" style="left:0; top:0;"><img src="../img/13.png"></div>
+<div id="div2"><img src="../img/11.png"></div>
+<div id="div3" style="top:300px; left:0;"><img src="../img/12.png"></div>
+</body>
+</html>
+<script src="event1.js"></script>
+<script>
+//mousedown,mousemove,mouseup
+//down,     move,    ,up
+function down(e){//拖拽开始，准备拖拽的阶段
+//把拖拽的准备工作做好，把元素的原始坐标和鼠标的原始坐标保存下来，并且在这个阶段给mousemove事件绑定move方法，表示鼠标按下去的时候才让元素随着鼠标移动而移动
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	
+	if(this.setCapture){
+		
+		this.setCapture();//这个方法是IE专有的方法，后来火狐也实现这个方法，它功能是专用处理mousemove事件，确保mousemove事件不会丢失鼠标
+		on(this,"mousemove",move);
+		on(this,"mouseup",up);
+	}else{
+		this.MOVE=move.bind(this);
+		this.UP=up.bind(this);//它会返回一个方法，返回的这个方法里还是调用up，但是让up在执行的时候，this指向bind的第一个参数。这是H5标准中的方法，chrome支持这个方法
+		//它的实现原理如下：
+		/*
+		Function.prototype.bind=function(context){
+			var _this=this;
+			return function(e){_this.call(context,e);}	
+		}
+		
+		function processThis(fn,context){
+			return function(e){fn.call(context,e)}	
+		}
+		*/
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);	
+	}
+	
+	e.preventDefault();
+	
+	clearTimeout(this.flyTimer);
+	clearTimeout(this.dropTimer);
+	
+}
+
+function move(e){//拖拽中，拖拽正在进行的阶段
+	//盒子的新位置=盒子的原始位置+（鼠标移动的距离=现在鼠标的位置-原始的鼠标的位置)
+	this.style.left=this.x+e.pageX-this.mx+"px";
+	this.style.top=this.y+(e.pageY-this.my)+"px";
+	
+	//mousemove的性能，8ms左右，浏览器会检测一下鼠标是不是移动了,如果移动了，则是mousemove事件发生了； 1/24
+	//我们可以把两次mousemove事件之间的时间看成一个单位时间（就是一个固定长度的时间），在这个单位时间内鼠标发生位移（产生的距离），当做速度。（单位时间内移动的距离就是速度）
+	//速度=这一次鼠标的位置-上一次鼠标的位置
+	e.pageX//当次的位置
+	e.pageX//上一次的位置是相对的概念，当这时的e.pageX到了move下一次执行的时候，它就是上一次的位置
+	if(this.prevPosi){//this.prevPosi保存上一次鼠标的位置，当move方法第一次执行的时候，没有这个“上一次的位置”
+		this.speed=e.pageX-this.prevPosi;
+		this.prevPosi=e.pageX
+		
+	}else{
+		this.prevPosi=e.pageX;
+	}
+	//mousemove事件触发和在这个事件上是否绑定了方法，这是两个事
+	
+	
+}
+
+function up(e){//拖拽结束的阶段,当mouseup事件触发的时候，让move方法不再执行，也就是说在up的时候，把mousemove上绑定的move方法移除
+	
+	if(this.releaseCapture){
+		this.releaseCapture();
+		off(this,"mousemove",move);
+		off(this,"mouseup",up);
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);
+	}
+	
+	fly.call(this);
+	drop.call(this);
+}
+
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	var ele=eles.item(i);
+	on(ele,"mousedown",down);
+	
+}
+
+//
+function fly(){
+	
+	this.speed*=.98;//每运动一次都让速度衰减2%
+	var maxRight=(document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+	var current=this.speed+this.offsetLeft;
+	
+	if(current<=0){//左边界判断
+		this.style.left=0;
+		this.speed*=-1;	//
+	}else if(current>=maxRight){//右边界判断
+		this.style.left=maxRight+"px";
+		this.speed*=-1;	
+	}else{//正常情况下的运动
+		this.style.left=current+"px";
+	}	
+	
+	//window.setTimeout(fly,20);//凡是用定时器驱动的方法，这个方法里的this都是window
+	//window.setTimeout(fly.bind(this),20);//如果不考虑兼容性问题，就这样写。关于this的问题：当这行代码执行的时候，this做实参传给了bind方法，也就是说fly.bind在fly方法执行了，bind的参数this就是fly里的对象
+	//this
+	//var _this=this;
+	
+	//window.setTimeout(function(){fly.call(this);this},20);//当此行代码在执行的时候，只是定义了一个匿名方法，但这个方法没有运行，当它运行的时候，这个匿名方法的this是谁，要看它执行的环境。并且这个匿名方法和fly方法在执行的时候不是一个作用域，所以就无法判断这两个作用域里的this是否有关系 。凡是用定时器驱动的方法，这个方法里的this都是window
+	//我们这里要实现当fly运行的时候，强制让fly里的this指向做动画的元素，也就是fly里的这个this,所以，需要在fly里把this赋值给一个非关键字变量_this,that,这个_this或that就不会再变了，所以要改成
+	
+	//window.setTimeout(function(){fly.call(_this);},20);
+	if(Math.abs(this.speed)>=0.5){//如果这个速度还是个有效速度，则让动画继续执行，如果是无效速度则什么也不干（停止）
+		this.flyTimer=window.setTimeout(processThis(fly,this),20);
+	}
+	
+}
+
+
+function drop(){
+	if(this.dropSpeed){
+		this.dropSpeed+=9.8;
+	}else{
+		this.dropSpeed=9.8;	
+	}
+	this.dropSpeed*=.98;
+	
+	var maxBottom=(document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+	
+	var current=this.dropSpeed+this.offsetTop;
+	if(current>=maxBottom){
+		this.style.top=maxBottom+"px";
+		this.dropSpeed*=-1;
+		this.flag++
+		
+	}else{
+		this.style.top=current+"px";
+		this.flag=0;
+	}
+	
+	if(this.flag<2)//这个flag一般情况下是什么值，什么情况下会>=2
+		this.dropTimer=window.setTimeout(processThis(drop,this),20);
+}
+
+</script>

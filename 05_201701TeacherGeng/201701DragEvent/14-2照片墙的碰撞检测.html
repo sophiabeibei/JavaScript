@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+ul{
+	margin:100px auto; padding:5px; position:relative; list-style:none; 
+	background:#6F9;
+	width:480px; height:640px;	
+}
+li{
+	width:150px; height:150px; margin:5px; float:left; background:#FF6; cursor:move; padding:0; overflow:hidden;
+}
+img{
+	width:150px; height:150px;
+}
+</style>
+</head>
+
+<body>
+<ul>
+	<li><img src="img/1.png"></li>
+    <li><img src="img/2.png"></li>
+    <li><img src="img/3.png"></li>
+    <li><img src="img/4.png"></li>
+    <li><img src="img/5.png"></li>
+    <li><img src="img/6.png"></li>
+    <li><img src="img/7.png"></li>
+    <li><img src="img/8.png"></li>
+    <li><img src="img/9.png"></li>
+    <li><img src="img/10.png"></li>
+    <li><img src="img/11.png"></li>
+    <li><img src="img/12.png"></li>
+</ul>
+</body>
+</html>
+<script src="event3.js"></script>
+<script src="Drag_oop1.3.js"></script>
+<script src="tween.js"></script>
+<script>
+var oLis=document.getElementsByTagName("li");
+
+for(var i=oLis.length-1;i>=0;i--){
+	var oLi=oLis.item(i);
+	oLi.style.left=(oLi.l=oLi.offsetLeft)+"px";
+	oLi.style.top=(oLi.t=oLi.offsetTop)+"px";
+	oLi.style.position="absolute";
+	oLi.style.margin=0;
+	new Drag(oLi).on("dragstart",increaseIndex).on("dragend",changePosi).on("dragging",test);
+}
+var index=0;
+function increaseIndex(){
+	this.ele.style.zIndex=++index;
+}
+function goHome(){
+	animate(this.ele,{left:this.ele.l,top:this.ele.t},700,3);
+}
+function isHited(r,b){
+	if(r.offsetLeft+r.offsetWidth<b.offsetLeft||r.offsetTop+r.offsetHeight<b.offsetTop||r.offsetLeft>b.offsetLeft+b.offsetWidth||r.offsetTop>b.offsetTop+b.offsetHeight){
+		return false;
+	}else{
+		return true;
+	}
+}
+function test(){//进行碰撞检测
+	this.aHited=[];
+	for(var i=0;i<oLis.length;i++){
+		if(oLis[i]==this.ele)continue;//如果当前循环到的元素是被拖拽的元素，则不必做检测，跳过然后执行下一次循环
+		if(isHited(this.ele,oLis[i])){//把撞上的保存到数组并将背景设为蓝色
+			this.aHited.push(oLis[i]);
+			oLis[i].style.background="blue";
+		}else{//如果没有撞上，则把背景色恢复
+			oLis[i].style.background="";	
+		}
+			
+	}
+}
+
+function changePosi(){
+	var a=this.aHited;
+	if(a&&a.length){
+		for(var i=0;i<a.length;i++){
+			var ele=a[i];
+			var cur=this.ele;
+			ele.distance=Math.pow(cur.offsetTop-ele.offsetTop,2)+Math.pow(cur.offsetLeft-ele.offsetLeft,2);
+			
+		}
+		a.sort(function(a,b){return a.distance-b.distance});
+		var shortest=a[0];
+		
+		animate(cur,{left:shortest.l,top:shortest.t},700,4);
+		animate(shortest,{left:cur.l,top:cur.t},800,3);
+		var l=cur.l;
+		var t=cur.t;
+		cur.l=shortest.l;
+		cur.t=shortest.t;
+		shortest.l=l;
+		shortest.t=t;
+	}
+	
+	
+}
+</script>

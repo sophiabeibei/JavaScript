@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+function EventEmitter(){};//事件发射器类，订阅发布模式或者叫观察者模式的实现原理
+EventEmitter.prototype.on=function(type,fn){
+	if(!this["aEmitter"+type]){
+		this["aEmitter"+type]=[];	
+	}
+	var a=this["aEmitter"+type];
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	
+	}
+	a.push(fn);
+	
+}
+
+EventEmitter.prototype.run=function(type){
+	var a=this["aEmitter"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(typeof a[i]=="function"){
+				a[i].apply(this,[].slice.call(arguments,1));	
+			}else{
+				a.splice(i,1);
+				i--;	
+			}
+		}
+	}
+}
+
+EventEmitter.prototype.off=function(type,fn){
+	var a=this["aEmitter"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				a[i]=null;
+				return;
+			}	
+		}
+	}
+}
+
+
+function Kettle(){};
+Kettle.prototype=new EventEmitter;
+Kettle.prototype.boiling=function(){
+	var that=this;
+	window.setTimeout(function(){
+		console.log("水开啦！");
+		that.run("boiling");
+	},5000);
+}
+
+function drink(){console.log("我要喝开水");}
+function noodles(){console.log("我要吃面条");}
+function tea(){console.log("沏杯茶");}
+
+var k1=new Kettle;
+k1.on("boiling",drink);
+k1.on("boiling",noodles);
+k1.on("boiling",tea);
+k1.boiling();
+</script>

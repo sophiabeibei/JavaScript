@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+#div1{
+	position:absolute; top:0; left:0; width:100px; height:100px; background:green;	
+}
+</style>
+</head>
+
+<body>
+<div id="div1" draggable="true"></div>
+</body>
+</html>
+<script>
+var ele=document.getElementById("div1");
+
+//系统的事件，只暴露了接口，没有实现具体的逻辑
+ele.ondragstart=function(e){
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+}
+ele.ondrag=function(e){
+	this.style.left=e.pageX-this.mx+this.x+"px";
+	this.style.top=e.pageY-this.my+this.y+"px";
+}
+
+ele.ondragend=function(e){
+	this.style.left=e.pageX-this.mx+this.x+"px";
+	this.style.top=e.pageY-this.my+this.y+"px";
+}
+</script>

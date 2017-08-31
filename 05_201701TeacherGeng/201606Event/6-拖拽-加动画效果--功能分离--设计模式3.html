@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+img{ width:100px; height:100px; overflow:hidden; border:none;}
+div{ position:absolute; left:200px; top:200px; background:red; width:100px; height:100px; cursor:move; -webkit-user-select:none;}
+</style>
+</head>
+
+<body>
+<div style="left:0; top:0"  >div1</div>
+<div style="top:200px; left:0;" ><img src="img1.jpg" width="100" height="100"></div>
+<div ><img src="img2.jpg" width="100" height="100"></div>
+</body>
+</html>
+<script src="event2.js"></script>
+<script>
+
+//以下方法中的this都是指向的当前被拖拽的元素，这是原则，这是原则是由事件绑定的原则决定的：把方法绑定给那个元素，则方法在执行的时候，方法里的this就会指向这个元素
+function down(e){//准备拖拽
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	
+	if(this.setCapture){
+		this.setCapture();
+		on(this,"mousemove",move);
+		on(this,"mouseup",up);
+	}else{
+		
+		//H5中也实现的processThis功能的方法，叫Function.prototype.bind
+		this.MOVE=move.bind(this);
+		this.UP=up.bind(this);
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);
+	}
+	
+	e.preventDefault();
+}
+
+function move(e){//拖拽进行
+	this.style.left=this.x+(e.pageX-this.mx)+"px";
+	this.style.top=this.y+(e.pageY-this.my)+"px";
+	selfRun.call(this,"selfdragging",e);
+}
+
+function up(e){//拖拽结束
+	if(this.releaseCapture){
+		this.releaseCapture();
+		off(this,"mousemove",move);
+		off(this,"mouseup",up);
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);	
+	}
+	
+	selfRun.call(this,"selfdragend",e);
+}
+/*------以上是拖拽的功能模块-------**/
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	on(eles[i],"mousedown",down);
+		
+}
+//动画模块
+function clearEffect(){
+	clearTimeout(this.flyTimer);
+	clearTimeout(this.dropTimer);	
+}
+function getSpeed(e){
+	if(this.prevPosi){
+		this.speed=e.pageX-this.prevPosi;
+		this.prevPosi=e.pageX;
+	}else{
+		this.prevPosi=e.pageX;	
+	}	
+}
+function fly(){
+	
+	this.speed*=.98;//
+	
+	var maxRight=(document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+	var current=this.offsetLeft+this.speed;
+	if(current>=maxRight){
+		this.style.left=maxRight+"px";
+		this.speed*=-1;	
+	}else if(current<=0){
+		this.style.left=0;
+		this.speed*=-1;	
+	}else{	
+		this.style.left=this.offsetLeft+this.speed+"px";
+	
+	}
+	//this.speed<0.5
+	if(Math.abs(this.speed)>=0.5){//在速度有效的情况下，再继续执行动画。
+		this.flyTimer=setTimeout(processThis(fly,this),20);
+	}
+	
+}
+
+//自由落体动画
+function drop(){
+	if(this.dropSpeed){
+		this.dropSpeed+=9.8;	
+	}else{
+		this.dropSpeed=9.8;	
+	}
+	this.dropSpeed*=.95;
+	var maxBottom=(document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+	
+	var current=this.offsetTop+this.dropSpeed;
+	if(current>=maxBottom){
+		this.style.top=maxBottom+"px";
+		this.dropSpeed*=-1;	
+		this.flag++;
+	}else{
+		this.style.top=current+"px";
+		this.flag=0;
+		//正常情况下，就是大多数是在执行这行代码，偶尔执行120行代码。
+		//如果盒子停在了下边界，说明一直在执行第120代码
+	}
+	if(this.flag<2){//当记数器大于2的时候动画就不要再执行了
+		this.dropTimer=setTimeout(processThis(drop,this),25);
+	}
+}
+
+
+//document.addEventListener("DOMNodeInserted");
+//document.addEventListener("DOMNodeRemoved",fn,false);
+//事件类型 "DOMNodeInserted"，是一个行为的标识符，它表示的是某个appendChild的发生
+	//1."click"，先要确定一个标识符，让它来表示某个行为
+	//用selfdragstart来表示拖拽开始，就是down方法的执行
+	//用selfdragging来表示拖拽进行，就是move方法的执行
+	//用selfdragend来表示拖拽结束，就是up方法的执行
+
+//2.主行为，"click"表示就是这个主行为（A方行为，左边的行为）   还要有辅行为（B方行为，右边的行）
+
+//ele.addEventListener("click",fn1,false);
+//3.让辅行为和主行为进行关联约定的一个方法，这个方法可以叫addEventListener,attachEvent,on。
+
+//4.通知，如何通知，什么时候通知
+//通知其实就是遍历执行已经记在数组中的那些行为
+//什么时候通知：主行为（或叫A行为）发生的时候，通知
+//通知的时候，怎么通知：通知的时候要按分类来通知，就是按事件类型来通知，就是按原来约定的时候那个标识来通知
+//run("事件类型")
+
+//把约定的那些人，提前记在了一个本子上（数组），通知的时候，从这个本子上，按顺序通知一个个的打电话，相当于我们写过的run方法
+//重点是run方法的实现和run方法在那儿运行
+
+"marry" 
+//on(张三丰,"marray",小龙女.drink);
+
+//run
+
+
+
+
+
+
+</script>

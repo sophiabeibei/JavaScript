@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+function on(ele,type,handler){
+	if(ele.addEventListener){
+		ele.addEventListener(type,handler,false);
+	}else{
+		if(!ele['handler' + type]){
+			ele['handler' + type] = [];//定义了一个事件池，把要绑定方法保存在这个事件池
+			//解决绑定在事件上的方法执行的顺序问题
+			//解决绑定在事件上的方法执行的时候，this指向的问题
+			
+			//ele.attachEvent('on' + type,handler);//问题
+			//真正绑定在事件上的方法是run
+			//ele.attachEvent('on'+ type,run);
+			ele.attachEvent("on"+type,function(){run.call(ele)});
+			//以上处理是为了让run方法里的this指向元素ele。为什么非要让run方法里的this指向ele呢？不处理不行嘛？
+		}
+		var handlerAry = ele['handler' + type];
+		
+		for(var i = 0;i < handlerAry.length;i++){
+			if(handler == handlerAry[i]){
+				return;
+			}
+		}
+		handlerAry.push(handler);
+	}
+}
+function run(e){
+	//由于on方法里的处理，这里的this指向被绑定的元素
+	//这样我们就可以通过this得到当前的元素了
+	e = e|| window.event;
+	e.target = e.target || e.srcEvent;
+	//var a = e['AAA'+type];
+	//var a=this['AAA'+type];
+	var a=this['handler'+type];
+	if(a){
+		
+		for(var i=0;i<a.length;i++){
+			//if(a[i] === fn){
+			if(typeof a[i] == "function"){
+				//a[i].call(ele);
+				//解决绑定在事件上的方法的this指向问题：this指向当前这个事件的元素
+				a[i].call(this,e);//这个e不需要嘛？
+				a.splice[i,1];
+				i--;
+				}
+		}
+}
+
+function off(ele,type,handler){
+	
+}
+
+
+</script>

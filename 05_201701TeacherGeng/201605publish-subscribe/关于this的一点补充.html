@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+var obj={};
+obj.fn=function (){
+	this;
+	window.setTimeout(function(){alert(this.innerHTML)})
+	return function(){alert(this.innerHTML)}
+	
+}
+obj.fn2=obj.fn();
+obj.fn2
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: red;
+            cursor: move;
+            -webkit-user-select: none;
+            font-size: 48px;
+            text-align: center;
+            line-height: 100px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div>一</div>
+    <div style="left: 150px">二</div>
+    <div style="left: 300px">三</div>
+<div style="left: 450px"><img src="11.jpg" alt="" width="100" height="100"></div>
+<script src="event3.0.js"></script>
+<script src="effect.js"></script>
+<script>
+    function down(e){
+        this.x=this.offsetLeft;
+        this.y=this.offsetTop;
+        this.mx= e.pageX;
+        this.my= e.pageY;
+        if(this.setCapture){
+            this.setCapture();
+            on(this,"mousemove",move);
+            on(this,"mouseup",up);
+        }else{
+            this.MOVE=move.bind(this);
+            this.UP=up.bind(this);
+            on(document,"mousemove",this.MOVE);
+            on(document,"mouseup",this.UP);
+        }
+        e.preventDefault();
+        selfRun.call(this,'selfabcd1',e);
+    }
+    function move(e){
+        //盒子的新位置=盒子原来的位置+（鼠标移动的距离=鼠标现在的位置-鼠标原来的位置）
+        this.style.left=this.x+(e.pageX-this.mx)+"px";
+        this.style.top=this.y+(e.pageY-this.my)+"px";
+        selfRun.call(this,'selfabcd2',e);
+    }
+    function up(e){
+        if(this.releaseCapture){
+            this.releaseCapture();
+            off(this,"mousemove",move);
+            off(this,"mouseup",up);
+        }else{
+            off(document,"mousemove",this.MOVE);
+            off(document,"mouseup",this.UP);
+        }
+        selfRun.call(this,'selfabcd3',e);
+    }
+    var eles=document.getElementsByTagName("div");
+    var zIndex=0;
+    for(var i=0;i<eles.length;i++){
+        on(eles[i],"mousedown",down);
+        on(eles[i],'selfabcd1',function(){
+			this.style.zIndex=++zIndex
+			});
+        on(eles[i],'selfabcd1',clearEffect);
+        on(eles[i],'selfabcd2',getSpeed);
+        on(eles[i],'selfabcd3',drop);
+        on(eles[i],'selfabcd3',fly);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+#div1{ top:0px; left:100px; position:absolute; width:100px; height:100px; background:red;}
+
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+</body>
+</html>
+<script src="../event3_self.js"></script>
+<script src="tween.js"></script>
+<script>
+var ele=document.getElementById("div1");
+ele.onclick=function(){
+	animate(this,{left:1000},1000,4);
+	}
+function fn1(){this.style.backgroundColor="orange";}
+function fn2(){
+	animate(this,{top:600},1000,4);
+	}
+function fn3(){}
+function fn4(){}
+on(ele,"selfanimate",fn1);
+on(ele,"selfanimate",fn2);
+on(ele,"selfanimate",fn3);
+on(ele,"selfanimate",fn4);
+</script>

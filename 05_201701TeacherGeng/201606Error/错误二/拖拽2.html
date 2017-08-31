@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;top: 0;left: 0;background: red;
+            cursor: move; -webkit-user-select: none;font-size: 40px;
+            text-align: center;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div>1</div>
+<div style="left: 150px">2</div>
+<div style="left: 300px"><img src="9348802_950496.jpg" alt=""/></div>
+<div style="left: 450px"><img src="9348793_737967.jpg" alt=""/></div>
+<script src="event.js"></script>
+<script src="effect.js"></script>
+<script >
+    function down(e){
+        this.x=this.offsetLeft
+        this.y=this.offsetTop
+        this.max= e.pageX
+        this.may= e.pageY
+       if(this.setCapture){
+           this.setCapture()
+           on(this,'mousemove',move)
+           on(this,'mouseup',up)
+       }else{
+           this.MOVE=move.bind(this)
+           this.UP=up.bind(this)
+           on(document,'mousemove',this.MOVE)
+           on(document,'mouseup',this.UP)
+       }
+        e.preventDefault()
+        selfRun.call(this,'aa1',e)
+    }
+    function move(e){
+        this.style.left=this.x+(e.pageX-this.max)+'px'
+        this.style.top=this.y+(e.pageY-this.may)+'px'
+        selfRun.call(this,'aa2',e)
+    }
+    function up(e){
+        if(this.releaseCapture){
+            this.releaseCapture()
+            off(this,'mousemove',move)
+            off(this,'mouseup',up)
+        }else{
+            off(document,'mousemove',this.MOVE);
+            off(document,'mouseup',this.UP)
+        }
+        selfRun.call(this,'aa3',e)
+    }
+    var aDiv=document.getElementsByTagName('div');
+    var zIndex=0;
+    for(var i=0;i<aDiv.length;i++){
+        on(aDiv[i],'mousedown',down)
+        on(aDiv[i],'aa1',function(){
+            this.style.zIndex=++zIndex
+        });
+        on(aDiv[i],'aa1',clearEffect);
+        on(aDiv[i],'aa2',getSpeed);
+        on(aDiv[i],'aa3',drop);
+        on(aDiv[i],'aa3',fly)
+    }
+</script>
+</body>
+</html>
