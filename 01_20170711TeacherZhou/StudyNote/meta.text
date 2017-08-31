@@ -1,0 +1,160 @@
+    各公司的meta信息
+    页面中常用的meat标签总结:
+    一.http-equiv *****
+        1.字符编码：声明文档使用的字符编码
+          <meta http-equiv="x-ua-compatible" content="IE=Edge, chrome=1"/>
+          <meta http-equiv="content-type" content="text/html; charset=utf-8;"/>
+        2.Expires  期限
+          <meta http-equiv="expires" content="Thu Jan 01 1970 00:00:00 GMT 或者 0"/>
+        3.Pragma  cache模式
+          <meta http-equiv="pragma" content="no-cache"/>
+          <meta http-equiv="cache-control" content="no-cache"/>
+        4.Refresh 刷新
+          <meta http-equiv="refresh" content="10"/>
+          <meta http-equiv="refresh" content="10; url=..."/>
+        5.Set-Cookie(cookie设定）
+          <meta http-equiv="set-cookie" content="[cookie名字]=[cookie值]; expires=[cookie过期时间];path=/;"/>
+        6.Window-target 显示窗口的设定
+          <meta http-equiv="window-target" content="_top"/>
+        7.声明使用的浏览器及版本
+           <meta http-equiv="x-ua-compatible" content="IE=7"/>
+           <meta http-equiv="x-ua-compatible" content="IE=4"/>
+           <meta http-equiv="x-ua-compatible" content="IE=50"/>
+
+    二、name属性
+        1.Keywords 关键字 *****
+          <meta name="keywords" content="javascript培训,js培训,HTML5培训,css培训,前端开发培训,node.js培训,nodeJS培训,移动端培训,北京珠峰培训"/>
+        2.description 网站内容描述 *****
+          <meta name="description" content="珠峰培训是中国前端开发知名品牌，七年JS前端培训，以专注立身；70%的同学来自老学员推荐，以诚信立业。先学习考试通过后交学费；四周内可无条件退学费；工资不到9千退学费。我们专注的特色培训有：javascript培训,node.JS培训,前端开发培训,HTML5培训,移动端培训"/>
+        3.robots 机器人向导
+           <meta name="robots" content="index,follow"/>
+           <meta name="google" content="index,follow"/>
+           ->下面是声明其它搜索引擎的搜索模式
+           <meta name="googlebot" content="index,follow"/>
+           <meta name="verify" content="index,follow"/>
+        4.声明搜索引擎抓取间隔
+          <meta name="revisit-after" content="10 days"/>
+        5.声明网页的作者信息 *****
+          <meta name="author" content="zhufeng,zhufengpeixun@qq.com"/>
+
+    三、声明viewport视口 *****
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    四、忽略数字自动识别为电话号码  *****
+        <meta name="format-detection" content="telephone=no"/>
+
+    五、禁止自动识别邮箱 *****
+        <meta name="format-detection" content="telephone=no,email=no"/>
+
+    六、把页面增加到桌面主屏幕
+    七、WebApp全屏模式  *****
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    九、设置状态栏颜色  *****
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    十、添加到主屏后的图标 *****
+        <link href="图片的地址" sizes="114x114" rel="apple-touch-icon-precomposed"/>
+
+    十一、添加到主屏后的标题
+        <meta name="apple-mobile-web-app-title" content="标题"/>
+
+    十二、添加智能App广告条 Smart App Banner(不常用)
+        <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL"/>
+
+    十三、QQ浏览器(X5内核)独有的META
+         <meta name="x5-orientation" content="portrait|landscape"/>//->设置屏幕方向
+         <meta name="x5-fullscreen" content="true"/> //->设置全屏
+
+    十四、UC浏览器独有的META
+        <meta name="screen-orientation" content="portrait|landscape"/>//->设置屏幕方向
+        <meta name="full-screen" content="true"/> //->设置全屏
+        <meta name="viewport" content="uc-fitscreen=no|yes"/> //->缩放不出现滚动条
+        <meta name="nightmode" content="enable|disable"/> //->夜间模式
+
+
+
+    <!-- 京东 -->
+    <head>
+        <title>专业网上购物平台品质保障！ -京东商城</title>
+        <meta name="author" content="m.jd.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+        <meta name="author" content="m.jd.com">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta name="description"
+              content="京东JD.COM-专业的综合网上购物商城,在线销售家电、数码、电脑、服装、母婴、图书、食品等数万个品牌商品.便捷、诚信的服务,为您提供愉悦的网上商城购物体验! "/>
+        <meta name="Keywords" content="网上购物,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,京东商城"/>
+    </head>
+
+    <!-- 淘宝 -->
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="data-spm" content="a215s"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="yes" name="apple-touch-fullscreen"/>
+        <meta content="telephone=no,email=no" name="format-detection"/>
+        <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+        <title>淘宝网触屏版</title>
+    </head>
+
+
+    <!-- 腾讯 -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <meta name="keywords" content="资讯,新闻,财经,房产,视频,NBA,科技,腾讯网,腾讯,QQ,Tencent,腾讯网触屏版"/>
+        <meta name="description"
+              content="腾讯网(www.QQ.com)是中国浏览量最大的中文门户网站，是腾讯公司推出的集新闻信息、互动社区、娱乐产品和基础服务为一体的大型综合门户网站。腾讯网服务于全球华人用户，致力成为最具传播力和互动性，权威、主流、时尚的互联网媒体平台。通过强大的实时新闻和全面深入的信息资讯服务，为中国数以亿计的互联网用户提供富有创意的网上新生活。"/>
+        <title>腾讯网触屏版首页</title>
+    </head>
+
+    <!-- 网易 -->
+    <head>
+        <meta charset="UTF-8">
+        <title>手机网易网</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        <meta content="telephone=no" name="format-detection" />
+        <meta name="keywords" content="网易,163,网易新闻,网易无线,网易邮箱,网易官网,网易wap" />
+        <meta name="description" content="网易是中国领先的互联网技术公司，为用户提供免费邮箱、游戏、搜索引擎服务，开设新闻、娱乐、体育、财经、科技等30多个内容频道，及博客、视频、论坛等互动交流，网聚人的力量。" />
+        <meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY" />
+        <!-- <meta name="theme-color" content="#DB1011"> -->
+        <meta name="msapplication-navbutton-color" content="#FFFFFF">
+    </head>
+
+    <!-- 凤凰 -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <base target="_self">
+        <meta name="keywords" content="凤凰,凤凰网,凤凰新媒体,凤凰卫视,凤凰卫视中文台,资讯台,电影台,欧洲台,美洲台,凤凰周刊,phoenix,phoenixtv" />
+        <meta name="description" content="凤凰网是中国领先的综合门户网站，提供含文图音视频的全方位综合新闻资讯、深度访谈、观点评论、财经产品、互动应用、分享社区等服务，同时与凤凰无线、凤凰宽频形成三屏联动，为全球主流华人提供互联网、无线通信、电视网三网融合无缝衔接的新媒体优质体验。" />
+    </head>
+
+    <!-- 新浪 -->
+    head>
+    	<meta charset="utf-8" />
+    	<title>手机新浪网</title>
+    	<meta name="keywords" content="手机新浪网,新浪首页,新闻资讯,新浪新闻,新浪无线" />
+    	<meta name="description" content="手机新浪网是新浪网的手机门户网站，为亿万用户打造一个手机联通世界的超级平台，提供24小时全面及时的中文资讯，内容覆盖国内外突发新闻事件、体坛赛事、娱乐时尚、产业资讯、实用信息等。手机新浪网触屏版 - sina.cn" />
+    	<meta content="always" name="referrer">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="viewport" />
+    	<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
+    	<meta http-equiv="Last-Modified" content="Wed, 26 Feb 1997 08:21:57 GMT" />
+    	<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    	<meta http-equiv="Pragma" content="no-cache" />
+    	<meta name="format-detection" content="telephone=no"/>
+    	<meta name="baidu-site-verification" content="YMo12k0sTT" />
+    	<meta name="shenma-site-verification" content="0c910b838092fac1fb183f3de2eeb30a" />
+    	<meta name="360-site-verification" content="578b668cdb6b12ac4fb31962106e53ab" />
+    </head>
