@@ -497,7 +497,7 @@
       <workItem from="1504059584046" duration="3005000" />
       <workItem from="1504077823351" duration="13714000" />
       <workItem from="1504099745659" duration="6000" />
-      <workItem from="1504143674854" duration="3108000" />
+      <workItem from="1504143674854" duration="3167000" />
     </task>
     <task id="LOCAL-00001" summary="mmm">
       <created>1504146579991</created>
@@ -513,11 +513,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504146746902</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="5555">
+      <created>1504146811664</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1504146811664</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1112908000" />
+    <option name="totallyTimeSpent" value="1112967000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -558,7 +565,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mmm" />
     <MESSAGE value="33332222" />
-    <option name="LAST_COMMIT_MESSAGE" value="33332222" />
+    <MESSAGE value="5555" />
+    <option name="LAST_COMMIT_MESSAGE" value="5555" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
