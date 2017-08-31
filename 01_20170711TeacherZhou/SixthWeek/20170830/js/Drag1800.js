@@ -1,4 +1,4 @@
-// ----------------------------------------------------裸码
+// -------------------------------------------------裸码
 var box = document.getElementById("box");
 var outer = document.getElementById("outer");
 function down(e) {

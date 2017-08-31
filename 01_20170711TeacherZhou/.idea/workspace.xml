@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="Drag拖拽">
+    <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,11 +20,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="1.drag animate.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="1.drag animate.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SixthWeek/20170831/1.drag animate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="135">
               <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Drag1800.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/js/Drag1800.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -136,12 +146,12 @@
         <option value="$PROJECT_DIR$/SixthWeek/20170830/Drag.html" />
         <option value="$PROJECT_DIR$/FifthWeek/20170822/banner-movement/js/banner-movement.js" />
         <option value="$PROJECT_DIR$/SixthWeek/20170831/20170831.text" />
-        <option value="$PROJECT_DIR$/SixthWeek/20170830/js/Drag1800.js" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/333.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/2222.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/111.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js" />
         <option value="$PROJECT_DIR$/SixthWeek/20170831/1.drag animate.html" />
+        <option value="$PROJECT_DIR$/SixthWeek/20170830/js/Drag1800.js" />
       </list>
     </option>
   </component>
@@ -238,7 +248,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="20170831" />
+              <option name="myItemId" value="20170830" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SixthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170830" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -465,7 +497,7 @@
       <workItem from="1504059584046" duration="3005000" />
       <workItem from="1504077823351" duration="13714000" />
       <workItem from="1504099745659" duration="6000" />
-      <workItem from="1504143674854" duration="5260000" />
+      <workItem from="1504143674854" duration="5766000" />
     </task>
     <task id="LOCAL-00001" summary="mmm">
       <created>1504146579991</created>
@@ -516,11 +548,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504147844361</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Drag animate拖拽动画">
+      <created>1504148989386</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1504148989386</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1115060000" />
+    <option name="totallyTimeSpent" value="1115566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -534,10 +573,10 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18318318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18318318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5672131" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5672131" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -602,7 +641,8 @@
     <MESSAGE value="111.text" />
     <MESSAGE value="gaibian" />
     <MESSAGE value="Drag拖拽" />
-    <option name="LAST_COMMIT_MESSAGE" value="Drag拖拽" />
+    <MESSAGE value="Drag animate拖拽动画" />
+    <option name="LAST_COMMIT_MESSAGE" value="Drag animate拖拽动画" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -923,14 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/js/Drag1800.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SixthWeek/20170902/333.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -973,8 +1005,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SixthWeek/20170831/1.drag animate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="135">
           <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/js/Drag1800.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding />
         </state>
       </provider>
