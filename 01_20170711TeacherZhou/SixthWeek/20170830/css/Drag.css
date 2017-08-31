@@ -1,0 +1,19 @@
+html,body{
+    position: relative;
+    -webkit-user-select: none;
+}
+#box{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: lightsalmon;
+    cursor: pointer;
+}
+#outer{
+    position: absolute;
+    top: 120px;
+    width: 100px;
+    height: 100px;
+    background: lightskyblue;
+    cursor: pointer;
+}
