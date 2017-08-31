@@ -8,11 +8,9 @@
 //     e.stopPropagation = function () {
 //         e.cancelBubble = true;
 //     }
-//
 // };
 // box.onmouseup = function (e) {
 //     e = e || window.event;
-//
 // };
 
 
