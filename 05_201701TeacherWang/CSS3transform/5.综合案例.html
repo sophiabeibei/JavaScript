@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        .wrap{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .wrap>img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top:0
+        }
+        .wrap ul{
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+            text-align: center;
+            z-index: 111111;
+        }
+        .wrap ul li{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border:10px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .wrap ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        :target{
+            z-index: 10;
+        }
+        @keyframes slideLeft {
+            0%{
+                transform: translate(-500px);
+            }
+            100%{
+                transform: translate(0);/*回到没有设置平移值的位置,也就是默认的位置*/
+            }
+        }
+        #bg1:target{/*当前的目标元素是bg1*/
+            animation:slideLeft 1s both;
+        }
+        @keyframes slideDown {
+            0%{
+                transform: translateY(-500px);
+            }
+            100%{
+                transform: translateY(0);
+            }
+        }
+        #bg2:target{
+            animation: slideDown 1s both;
+        }
+        @keyframes romate {
+            0%{
+                transform: scale(0.2);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        #bg3:target{
+            animation: romate 1s both;
+        }
+        @keyframes zoomIn {
+            0%{
+                transform: scale(3);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        #bg4:target{
+            animation: zoomIn 1s both;
+        }
+
+        @-webkit-keyframes rotate {
+            0%{
+                -webkit-transform: rotate(0deg) scale(0.2);
+                transform: rotate(0deg) scale(0.2);
+            }
+            100%{
+                -webkit-transform: rotate(360deg) scale(1);
+                transform: rotate(360deg) scale(1);
+            }
+        }
+        @keyframes rotate {
+            0%{
+                -webkit-transform: rotate(0deg) scale(0.2);
+                transform: rotate(0deg) scale(0.2);
+            }
+            100%{
+                -webkit-transform: rotate(360deg) scale(1);
+                transform: rotate(360deg) scale(1);
+            }
+        }
+        #bg5:target{
+            -webkit-animation: rotate 1s both;
+            animation: rotate 1s both;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <img src="images/1.jpg" id="bg1"/>
+    <img src="images/2.jpg" id="bg2"/>
+    <img src="images/3.jpg" id="bg3"/>
+    <img src="images/4.jpg" id="bg4"/>
+    <img src="images/5.jpg" id="bg5"/>
+    <ul>
+        <li><a href="#bg1"><img src="images/1.jpg" alt=""/></a></li>
+        <li><a href="#bg2"><img src="images/2.jpg" alt=""/></a></li>
+        <li><a href="#bg3"><img src="images/3.jpg" alt=""/></a></li>
+        <li><a href="#bg4"><img src="images/4.jpg" alt=""/></a></li>
+        <li><a href="#bg5"><img src="images/5.jpg" alt=""/></a></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div data-name-age="lily" id="div1"  hidden>11111</div>
+<textarea name="" id="" cols="30" rows="10" spellcheck="false"></textarea>
+    <input type="text" tabindex="2"/>
+<input type="text" tabindex="3"/>
+<input type="text" tabindex="1" autofocus/>
+<p contenteditable="false">aaaaaaaaaaaaaaa</p>
+<p>dbbbbbb</p>
+<div>cccccc</div>
+
+</body>
+</html>
+<script>
+    var oDiv = document.querySelector('#div1');
+
+  /*  oDiv.dataset.name = "lucy";
+    console.log(oDiv.dataset.name)*/
+    console.log(oDiv.dataset.nameAge)//从第二个单词开始首字母大写
+
+    //ele.classList下有三个方法 add()增加类名 remove()移除类名 toggle()有则移除,没有则添加
+    oDiv.classList.add("aa");
+    oDiv.classList.remove('aa');
+    oDiv.classList.toggle('cc');
+
+    window.document.designMode ="on" //页面上所有的标签都可以编辑
+
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--处理ie9以下标签的兼容性问题-->
+    <!--[if lt IE 9]>
+    <script  src="html5.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<mark>11111</mark>
+<progress><span>不支持进度条</span></progress>
+<p style="width: 100px">XXXXXaa<wbr>bXXXX</p>
+<input type="text"  list="shopcar" /> <!--list是用来关联提示列表信息-->
+<datalist id="shopcar">
+    <option value="aaa"></option>
+    <option value="aabb"></option>
+    <option value="cccc"></option>
+</datalist>
+
+<details open>
+    <summary>详细信息的标题</summary>
+    <ul>
+        <li>1111</li>
+        <li>2222</li>
+        <li>3333</li>
+    </ul>
+</details>
+
+<form oninput="c.value=parseInt(a.value)+parseInt(b.value)">
+    <input type="text" value="5" id="a"/>
+    <input type="text" value="10" id="b"/>
+    <output id="c">15</output>
+</form>
+</body>
+</html>

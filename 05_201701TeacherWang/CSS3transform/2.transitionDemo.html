@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        html,body{
+            height: 100%;
+        }
+        body{
+            background: #2192bc;
+        }
+        .div1{
+            width: 100px;
+            height: 100px;
+            background:#2b9cc3  url(images/img1.png) no-repeat center center;
+            border-radius: 50%;
+            margin: 50px auto;
+            box-shadow: 0 0 0 30px transparent;
+            transition:box-shadow 0.5s;
+        }
+        .div1:hover{
+            box-shadow: 0 0 0 0 rgba(255,255,255,0.5);
+        }
+        /*1.确定过渡属性
+          2.找到过渡属性的起始值和结束值
+          3.在合适的地方加transition属性
+
+          划出时是起始值,划过时是结束值
+          box-shadow        扩展半径   颜色
+          起始值                30px    transparent
+          结束值                0       white
+
+        */
+    </style>
+</head>
+<body >
+    <div class="div1"></div>
+</body>
+</html>

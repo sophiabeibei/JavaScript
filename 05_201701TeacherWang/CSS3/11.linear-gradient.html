@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div1{
+            width: 500px;
+            height: 300px;
+            /*background: -o-linear-gradient(0deg,red,green);/!*欧朋私有前缀*!/
+            background: -ms-linear-gradient(0deg,red,green);/!*ie私有前缀*!/
+            background: -moz-linear-gradient(0deg,red,green);/!*火狐私有前缀*!/*/
+
+
+           /* background: -webkit-linear-gradient(top,red 20%,green 70%);/!*谷歌私有前缀*!/
+            background: linear-gradient(top,red 20%,green 70%);*/
+
+           /* background: -webkit-linear-gradient(top,red 0%,red 20%,green 20%,green 70%);
+        background: linear-gradient(top,red 0%,red 20%,green 20%,green 70%);
+*/
+
+            /* 重复的线性渐变*/
+            background: -webkit-repeating-linear-gradient(top,red 0,red 10px,green 10px,green 30px,blue 30px,blue 50px);
+            background: repeating-linear-gradient(top,red 0,red 10px,green 10px,green 30px,blue 30px,blue 50px)
+
+        }
+        /*从red 20%到green 70% 渐变过渡区
+        如何去掉渐变过渡区?
+        对每个颜色设置下起始位置和结束位置
+
+
+        */
+
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            width: 600px;
+            margin: 0 auto;
+        }
+        ul li{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border:1px solid rgba(17,255,11,0.6);
+            padding: 10px;
+            margin: 10px;
+        }
+        ul li:nth-child(1){
+            box-shadow: 10px 0 10px 10px orange;
+        }
+        /*单阴影*/
+        ul li:nth-child(3){
+            box-shadow:0 15px 10px -5px orange ;
+        }
+        ul li:nth-child(4) {
+            box-shadow: 0 0 0 10px orange;
+        }
+        /*多层阴影*/
+        ul li:nth-child(5){
+            box-shadow: 1px 1px 2px 0 orange,2px 2px 5px 0 pink,3px 3px 10px 0 green,4px 4px 5px 0 deepskyblue;
+        }
+        /*内阴影与外阴影偏移方向相反*/
+        ul li:nth-child(6){
+            box-shadow:10px 5px 10px 0 orange inset ;
+        }
+        ul li:nth-child(7){
+            font-size: 50px;
+            text-shadow: 1px 2px 1px orange, 2px 2px 1px green;
+        }
+        ul li:nth-child(8){
+            font-size: 50px;
+            -webkit-text-stroke: 2px blue;
+            color: transparent;
+        }
+        ul li:nth-child(9){
+            background: url(img/pic.jpg) no-repeat;
+            background-size:cover;
+            width: 300px;
+            height: 300px;
+            -webkit-mask-image: url(img/mask.png);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: 30px 50px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>珠峰培训</li>
+    <li>zhufeng</li>
+    <li></li>
+</ul>
+</body>
+</html>

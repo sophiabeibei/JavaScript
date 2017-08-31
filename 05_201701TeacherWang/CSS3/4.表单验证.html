@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" >
+   <!-- <input type="text" name="text" id="text1" pattern="\d{2}"/>-->
+    <input type="url" name="url" id="text1" />
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>
+<script>
+    var oText = document.querySelector("#text1");
+
+   /* oText.addEventListener("invalid",function(){
+        //valid 只要验证不通过,值为false
+        console.log(this.validity.valueMissing);/!*配合required属性,如果为空,则这个值true*!/
+    },false)*/
+
+    /*oText.addEventListener("invalid",function(){
+        console.log(this.validity.customError)
+        if(this.validity.patternMismatch){
+            this.setCustomValidity("只能输入两位数字");//自定义验证提示信息
+            console.log(this.validity.customError)
+        }else{
+            this.setCustomValidity('');
+        }
+    },false)*/
+
+    oText.addEventListener("invalid",function(){
+      console.log(this.validity.typeMismatch)
+    },false)
+</script>

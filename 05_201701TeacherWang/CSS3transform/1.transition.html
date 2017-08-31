@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition:1s;/*动画运行两次*/
+        }
+        #div1:hover{
+            width: 300px;
+            height: 300px;
+           /*
+            opacity: 0.5;*/
+            /*transition-property: width;
+            transition-duration:1s;
+            transition-timing-function:cubic-bezier(0,1.55,.64,-0.17);
+            transition-delay: 1s;*/
+           /* transition:width 1s,height 2s;*/
+
+
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
+<script>
+    var oDiv = document.querySelector("#div1");
+    /*动画运行结束时会触发transitionend事件*/
+    oDiv.addEventListener("transitionend",function(){
+        console.log(1);
+    },false);
+
+</script>

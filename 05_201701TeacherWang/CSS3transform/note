@@ -1,0 +1,71 @@
+CSS2中所有的属性都是即时的效果
+ 1.transition过渡动画
+    语法:在一定时间内,css属性值由起始值向结束值之间实现平滑过渡的效果
+    注意点:1.只有两种状态,一个是起始状态,另一个结束状态
+          2.transition过渡动画执行需要触发条件,例如hover,js触发,媒体查询等
+    transition复合属性,细分属性有哪些?
+        transition-property 过渡属性 默认值all
+        transition-duration 动画执行的时间(必设)
+        transition-timing-function 动画运行的速度 ease(减速,默认值)|linear(匀速)|ease-in(开始时加速)|ease-out(结束时减速)|ease-in-out(先加速后减速)
+        transition-delay 延迟时间 (规定动画运行的先后顺序)
+        合并在一起写
+        transition:all 1s ease 0s;
+        有默认值的属性就用默认值,则可简写成如下这样
+        transition:1s;
+
+    transform
+    2D方法
+    rotate() 旋转  正->顺时针 负->逆时针
+    scale() 缩放 默认值是1 <1缩小 >1放大
+    skew(30deg) 水平:正->往左,负->往右  垂直:正->往下,负->往上
+    translate 移动的方向等同于left,top translate(0,0)默认值
+
+    rotate,scale,skew变形的默认基准点可以改变,但是translate默认的基准点不能发生改变,是元素的中心点
+     transform-origin:top|left|center|bottom|10px 10px
+     变形方法组合使用时,注意先后顺序,通常情况下是放在最后
+
+    帧动画
+    特征:1.可以有多种状态,可以制作复杂的动画效果
+         2.不需要触发条件,浏览器加载可直接运行
+    实现帧动画需要如下两个步骤:
+         1.通过@keyframes 动画名 声明帧动画->决定了帧动画的运行轨迹
+         @keyframes move{
+            0%{ 第一帧  在一定时间内的某个时间段
+               css样式  某个时间点的样式
+            }
+            20%{
+
+            }
+            50%{
+
+            }
+
+            100%{最后一帧
+
+            }
+
+         }
+         2.animation调用帧动画
+           animation-name:move 帧动画名称(必须)
+           animation-duration 动画执行的时间(必须)
+           animation-timing-function 动画运行的速度
+           animation-delay 动画延迟的时间
+
+           animation-direction:normal(默认值)|reverse(反方向)|alternate(交替)|alternate-reverse(反方向交替)
+           animation-iteration-count:1(默认值)|infinite(无数次) 动画执行的次数
+           animation-play-state:paused|running(默认值)动画运行的状态
+           animation-fill-mode:none(默认值)|backwards(第一帧开始)|forwards(停留在最后一帧)|both(从第一帧开始结束后停留在最后一帧)
+
+           复合写法
+           animation:move 1s ease 0s reverse 2 forwards;
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~````
+       3D变换
+       如果想要在3D空间里展示,一开始必须要设置两个属性
+        transform-style:flat|preserve-3d (3D空间里展示)  作用在变形元素的父标签上
+        perspective:2000px 景深(近大远小的效果) 视距(隔着多远去看物体) 作用在祖先标签(包含父标签的)
+        rotate3d(rx,ry,rz,a)rx,ry,rz向量坐标 a是角度
+        rotateX(45deg) 正->前翻 负->后翻 rotate3d(1,0,0,45deg)
+        rotateY(45deg) 正->右 负->左 rotate3d(0,1,0,45deg)
+        rotateZ(45deg) 效果等同于rotate()方法,但是这个是在Z轴上旋转的rotate3d(0,0,1,45deg)
+

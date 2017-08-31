@@ -1,0 +1,133 @@
+移动端开发
+原生App开发 web App开发(HTML5+CSS3+js) 混合(hybird)模式的开发
+HTML5标签和表单
+    结构标签
+       作用:更有利于搜索引擎,让页面的结构更加清晰,更能适应未来的浏览器
+       div,p,ul li,ol li,dl dt dd,h1~h6,a,span,img,em,i(表现形式的标签),strong,b,input,form,table,tr,td
+       语义化含义:用合理的标签做合适的事情
+        section 划分网页,表示内容的一个区块  范围最大
+        header 网页的头部或者一个区块的头部
+        nav  网页的导航
+        main 网页的主体部分
+        footer 网页的尾部或者一个区块的尾部
+        article 完整的独立区域 强调的是独立性  常用于一篇独立的文章
+        aside 1.主体内容的辅助信息(常用于侧边栏),2.与主体内容无关部分
+        figure 配图部分
+        figcaption 图例的说明
+
+    功能标签
+        datalist 提示信息列表 得配合着文本框一起使用
+        details  描述详细信息 标题(summary)
+
+    标签兼容性
+    html5.min.js来处理
+    ie专有的条件注释的写法
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    lt 小于
+    gt 大于
+    lte 小于等于
+    gte 大于等于
+
+    HTML5表单种类 (input)
+    html4表单:text radio checkbox submit button password reset file
+    search 搜索框 虚拟键盘右下角->标志变成搜索(search)
+    tel  变成数字键盘
+    url  url地址
+    email 邮箱地址
+    number 数字输入框
+    range 数值选择器
+    datetime-local  日期和时间 (本地时间)
+    month 月
+    week 周
+    time 时间
+
+    HTML5表单新特性
+    placeholder 设置输入前提示信息,当输入时提示信息消失
+    autocomplete 是否自动保存用户输入信息
+    autofocus 光标自动聚焦
+    required 必填不能为空
+    pattern 正则验证
+    form 将表单元素和form标签通过id名关联起来,这样表单元素不一样写在form标签里
+
+    HTML5表单验证
+    当表单元素验证不通过时,会触发invalid事件
+    如何判断表单元素有没有验证通过?
+     1)所有的表单元素上有个validity对象
+     2)validity对象上有一些属性:valid(false) valueMissing(true) patternMismatch(true)   typeMismatch(true)   customError(true)
+     注:括号里是验证不通过时的返回值
+     setCustomValidity() 设置自定义验证的提示信息
+
+     CSS2选择器
+     基本选择器:标记选择器 类选择器 id选择器
+     复合选择器:交集选择器 并集选择器 后代选择器 子选择器 相邻选择器(E~F E+F)
+     属性选择器:input[type="text"]
+     通配符选择器 *
+     伪类选择器 :hover :link :active :visited
+     伪元素 ::before ::after
+
+     结构选择器:
+        通过结构找到相对应的元素
+        :nth-child(n) 第n个子元素(不分标记名)
+        :nth-of-type(n) 1.先把所有的子元素按照标记名分类 2.从同种类型(标记名)中找出第几个子元素
+
+        :nth-child(1) == :first-child    :last-child
+        :nth-of-type(1) == :first-of-type 同种类型中的第一个子元素 :last-of-type
+
+        :only-child 只有一个子元素
+        :only-of-child 同种类型中的子元素只有一个
+        :empty 没有子元素(包含文本,换行,空格)
+
+    否定选择器
+    :not(选择器)用来排除某个元素
+
+    属性选择器
+    通过属性值筛选出某些元素
+    E[attr=val] input[type="submit"]
+    E[attr|=val] 只能等于val或者以val-开头
+    E[attr~=val] 可以有属性值,其中有一个是Val
+    E[attr*=val] 属性值中只要包含val字符即可
+    E[attr^=val] 以val开头
+    E[attr$=val] 以val结尾
+
+    目标伪类选择器
+    :target
+    练习手风琴效果http://sc.chinaz.com/jiaobendemo.aspx?downloadid=12016102203284
+
+    渐变是作用在background属性上
+    linear-gradient
+    渐变方向是沿着一条直线轴的方向
+    参数:
+    第一个参数是设置方向 top left right |0deg 90deg 180deg 130deg
+    从第二个参数开始设置颜色和位置
+
+    radial-gradient
+    由一个点向多个方向渐变
+    参数
+    第一个参数 径向渐变的形状
+    circle 圆
+    ellipse 椭圆
+    at top|10px 10px 来设置圆心的位置
+    自己可以设置水平半径和垂直半径 100px 50px
+    closest-corner at 50px 50px   也是设置形状的,也就是设置半径
+    从第二个参数开始设置颜色和位置
+
+    box-shadow
+    第一个参数:正->右 负->左
+    第二个参数:正->下 负->上
+    扩展半径 正->往外扩展 负->往内收缩
+    只设置扩展半径效果等同于设置边框,但是这个宽度不会计算在盒子模型里
+
+
+
+
+
+
+
+
+
+
+
+
+

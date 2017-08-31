@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" id="form1" >
+    <!--0<input type="range" value="10" id="input1"/>100-->
+    <!--<input type="text" name="text" placeholder="请输入姓名" autocomplete="off" autofocus required/>-->
+    <input type="text" name="text" pattern="\d{2}" required/>
+    <input type="submit" value="提交" />
+</form>
+<input type="email" name="email" form="form1"/>
+
+</body>
+</html>
+<script>
+   /* var oInput = document.querySelector("#input1");
+    oInput.onchange = function(){
+        console.log(this.value);
+    }*/
+</script>
