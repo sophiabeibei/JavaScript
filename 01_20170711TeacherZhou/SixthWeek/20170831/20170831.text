@@ -1,0 +1,36 @@
+一.事件
+    on方法
+        相当于addEventListener方法: 绑定
+    off方法
+        相当于removeEventListener方法: 移除
+    run方法
+        按照顺序执行
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
