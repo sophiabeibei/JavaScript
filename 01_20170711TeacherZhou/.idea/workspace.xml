@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SixthWeek/20170902/111.text" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SixthWeek/20170902/2222.text" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SixthWeek/20170902/333.text" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js" afterPath="$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,7 +20,18 @@
     <favorites_list name="01_20170711TeacherZhou" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Drag.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="110" column="35" lean-forward="false" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -130,10 +139,10 @@
         <option value="$PROJECT_DIR$/FifthWeek/20170822/banner-movement/js/banner-movement.js" />
         <option value="$PROJECT_DIR$/SixthWeek/20170831/20170831.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170830/js/Drag1800.js" />
-        <option value="$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/333.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/2222.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/111.text" />
+        <option value="$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js" />
       </list>
     </option>
   </component>
@@ -230,7 +239,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="20170902" />
+              <option name="myItemId" value="20170830" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01_20170711TeacherZhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SixthWeek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="20170830" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,7 +488,7 @@
       <workItem from="1504059584046" duration="3005000" />
       <workItem from="1504077823351" duration="13714000" />
       <workItem from="1504099745659" duration="6000" />
-      <workItem from="1504143674854" duration="3904000" />
+      <workItem from="1504143674854" duration="4078000" />
     </task>
     <task id="LOCAL-00001" summary="mmm">
       <created>1504146579991</created>
@@ -494,11 +525,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504147421390</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="gaibian">
+      <created>1504147655940</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1504147655940</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1113704000" />
+    <option name="totallyTimeSpent" value="1113878000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,7 +550,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18318318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18318318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5672131" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -578,7 +616,8 @@
     <MESSAGE value="5555" />
     <MESSAGE value="6666" />
     <MESSAGE value="111.text" />
-    <option name="LAST_COMMIT_MESSAGE" value="111.text" />
+    <MESSAGE value="gaibian" />
+    <option name="LAST_COMMIT_MESSAGE" value="gaibian" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -930,16 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SixthWeek/20170831/20170831.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -952,6 +981,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/js/Drag.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="110" column="35" lean-forward="false" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
           <folding />
         </state>
       </provider>

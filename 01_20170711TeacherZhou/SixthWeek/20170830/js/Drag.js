@@ -60,7 +60,6 @@ function move(e) {
     //->盒子当前最新的位置(box的left,top值)
     this.style.left = this.mx + changeL + "px";
     this.style.top = this.my + changeT + "px";
-
 }
 
 function up(e) {
@@ -109,4 +108,4 @@ outer.onmousedown = down;
 //鼠标离开时解决粘手的问题
 
 
-//本文件,处理了鼠标丢失问题
+//本文件,处理了鼠标丢失问题;   ----裸码文件Drag1800
