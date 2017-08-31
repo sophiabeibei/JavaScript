@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SixthWeek/20170830/Drag.html" afterPath="" />
+    <list default="true" id="b5181d24-25f7-4e3a-9395-d4f6a4d6fe02" name="Default" comment="reviewDOM2Compatible/Drag">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,41 +20,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="1.reviewWeek5.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/1.reviewWeek5.html">
+      <file leaf-file-name="20170831.text" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SixthWeek/20170831/20170831.text">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="123" column="18" lean-forward="true" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+            <state relative-caret-position="239">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2.reviewDOM2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/2.reviewDOM2.html">
+      <file leaf-file-name="meta.text" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StudyNote/meta.text">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="28" column="46" lean-forward="false" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+            <state relative-caret-position="780">
+              <caret line="30" column="38" lean-forward="false" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="3.reviewDOM2Compatible.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/3.reviewDOM2Compatible.html">
+      <file leaf-file-name="CSS3-transform.text" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/StudyNote/CSS3-transform.text">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="4.Drag.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/4.Drag.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -122,9 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FifthWeek/20170826/js/1.1.js" />
-        <option value="$PROJECT_DIR$/FifthWeek/20170826/1.event.html" />
-        <option value="$PROJECT_DIR$/FifthWeek/20170826/3.link.html" />
         <option value="$PROJECT_DIR$/FifthWeek/20170826/4.bubble.html" />
         <option value="$PROJECT_DIR$/FifthWeek/20170826/5.no bubble.html" />
         <option value="$PROJECT_DIR$/FifthWeek/20170826/6.magnifier.html" />
@@ -160,7 +146,6 @@
         <option value="$PROJECT_DIR$/SixthWeek/20170830/css/Drag.css" />
         <option value="$PROJECT_DIR$/SixthWeek/20170830/Drag.html" />
         <option value="$PROJECT_DIR$/FifthWeek/20170822/banner-movement/js/banner-movement.js" />
-        <option value="$PROJECT_DIR$/SixthWeek/20170831/20170831.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/333.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/2222.text" />
         <option value="$PROJECT_DIR$/SixthWeek/20170902/111.text" />
@@ -173,6 +158,10 @@
         <option value="$PROJECT_DIR$/SixthWeek/20170830/1.reviewWeek5.html" />
         <option value="$PROJECT_DIR$/SixthWeek/20170830/2.reviewDOM2.html" />
         <option value="$PROJECT_DIR$/SixthWeek/20170830/3.reviewDOM2Compatible.html" />
+        <option value="$PROJECT_DIR$/SixthWeek/20170831/2.html" />
+        <option value="$PROJECT_DIR$/SixthWeek/20170831/20170831.text" />
+        <option value="$PROJECT_DIR$/StudyNote/meta.text" />
+        <option value="$PROJECT_DIR$/StudyNote/CSS3-transform.text" />
       </list>
     </option>
   </component>
@@ -478,7 +467,7 @@
       <workItem from="1504059584046" duration="3005000" />
       <workItem from="1504077823351" duration="13714000" />
       <workItem from="1504099745659" duration="6000" />
-      <workItem from="1504143674854" duration="12624000" />
+      <workItem from="1504143674854" duration="18390000" />
     </task>
     <task id="LOCAL-00001" summary="mmm">
       <created>1504146579991</created>
@@ -564,11 +553,25 @@
       <option name="project" value="LOCAL" />
       <updated>1504164528017</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="reviewDOM2Compatible/Drag">
+      <created>1504164636757</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1504164636757</updated>
+    </task>
+    <task id="LOCAL-00014" summary="各公司的meta信息">
+      <created>1504165710883</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1504165710883</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1122424000" />
+    <option name="totallyTimeSpent" value="1128190000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -654,7 +657,9 @@
     <MESSAGE value="Drag 拖拽事件裸码" />
     <MESSAGE value="console/dataType/senior program three/变量和常量的区别" />
     <MESSAGE value="pushGitPic" />
-    <option name="LAST_COMMIT_MESSAGE" value="pushGitPic" />
+    <MESSAGE value="reviewDOM2Compatible/Drag" />
+    <MESSAGE value="各公司的meta信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="各公司的meta信息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -663,27 +668,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK5/DAY2/js/1-2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="55" selection-end-line="32" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TeacherGitHub/WEEK5/DAY2/js/1-1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/css/reset.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/js/Drag1740.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -826,14 +810,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SixthWeek/20170831/20170831.text">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1013,18 +989,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/1.reviewWeek5.html">
+    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/4.Drag.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="123" column="18" lean-forward="true" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/2.reviewDOM2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="28" column="46" lean-forward="false" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1037,10 +1005,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/4.Drag.html">
+    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/2.reviewDOM2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="305">
+          <caret line="28" column="46" lean-forward="false" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SixthWeek/20170830/1.reviewWeek5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="123" column="18" lean-forward="true" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SixthWeek/20170831/2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="169" column="3" lean-forward="true" selection-start-line="169" selection-start-column="3" selection-end-line="169" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SixthWeek/20170831/20170831.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudyNote/meta.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="30" column="38" lean-forward="false" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudyNote/CSS3-transform.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="17" />
           <folding />
         </state>
       </provider>
