@@ -1,0 +1,184 @@
+<!DOCTYPE html><html><head><title>移动端讲义案例</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+<h3 id="移动端讲义案例">移动端讲义案例</h3>
+
+<h4 id="移动端开发">移动端开发</h4>
+
+<blockquote>
+  <p>把我们做好的产品放在手机(PAD)上观看 =&gt;<code>响应式布局开发</code></p>
+  
+  <ul><li>基于现有的PC端产品做样式和布局的调整，让其在手机端也可以很好的观看 (一般情况下PC和移动端共用一套项目)</li>
+  <li>PC端和移动端是两套项目，PC就是PC的，不需要做响应式，而移动端需要做响应式也是一套单独的项目 <br>
+  <ul>
+  <li>基于手机的浏览器输入网址或者扫描二维码访问我们开发的页面</li>
+  <li>在微信/QQ/微博等第三方平台中运行</li>
+  <li>嵌入到自己公司的APP中（hybrid混合开发模式）</li></ul></li>
+  </ul>
+</blockquote>
+
+<p><a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115" target="_blank">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115</a></p>
+
+
+
+<h4 id="html5">HTML5</h4>
+
+<blockquote>
+  <p>HTML的第五套版本，在传统的HTML基础上新增加或者更新了一些新特性 (HTML5秘籍第二版)</p>
+</blockquote>
+
+<ul><li>对语义化标签的处理 <br>
+<ul>
+<li>新增加语义化标签：header、footer、nav、section、main、article、aside、figure、figcaption、hgroup、progress、time、mark(高亮选中)、datalist、summary…</li>
+<li>对传统标签的语义修改：small(附属细则)、strong(重点朗读)、hr(区域分割线)….</li>
+<li>删除一些标签：font、big…</li></ul></li>
+</ul>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-css hljs"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">/*以上标签不兼容，不兼容的情况下我们引入 html5.min.js来处理兼容*/</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>&lt;!<span class="hljs-selector-tag">--</span><span class="hljs-selector-attr">[if lt IE 9]</span>&gt;
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>&lt;<span class="hljs-selector-tag">script</span> <span class="hljs-selector-tag">src</span>='<span class="hljs-selector-tag">js</span>/<span class="hljs-selector-tag">html5</span><span class="hljs-selector-class">.min</span><span class="hljs-selector-class">.js</span>'&gt;&lt;/<span class="hljs-selector-tag">script</span>&gt;
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>&lt;!<span class="hljs-selector-attr">[endif]</span><span class="hljs-selector-tag">--</span>&gt;
+</div></code></pre>
+
+<ul><li>给传统的表单元素新增加了很多的类型 <br>
+<ul>
+<li>传统类型：text、password、radio、checkbox、submit、button、reset、file、hidden…</li>
+<li>新增加类型(不兼容IE低版本)：search、email、tel、number、range、color、date…</li></ul></li>
+</ul>
+
+
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs actionscript"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">/*
+</span></div><div class="hljs-line"><span class="hljs-comment line-number">2.</span> * 新增加类型的优势
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span> * 1、在手机端可以调取出最符合用户输入的键盘(例如：类型是number调取出来的就是数字键盘...)
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span> * 2、内置的验证机制(对于邮箱电话类型等，浏览器有内置的正则验证)
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span> * 3、提供了强大的功能组件，例如：日历、滑动杆、颜色选择面板等
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span> * 4、placeholder属性也是新增加的，默认显示提示文字
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>*/
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>input:valid{
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>    <span class="hljs-comment">//-&gt;合法的</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>input:invalid{
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>    <span class="hljs-comment">//-&gt;非法的</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>移动端的表单，没有keydown/keyup等事件（因为移动端的键盘是虚拟键盘），我们统一使用input事件来代替上述事件操作
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>oInput.addEventListener(<span class="hljs-string">'input'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>    <span class="hljs-comment">//&lt;js code&gt; 用户输入的过程中触发这个事件</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>},<span class="hljs-literal">false</span>);
+</div></code></pre>
+
+<ul><li>新增音视频处理 <br>
+<ul>
+<li>音频:audio</li>
+<li>视频:video</li>
+<li>在IE低版本中依然采用传统的FLASH播放</li>
+<li>真实项目中的音视频播放，我们都是采用别人写好的播放器插件来处理的(兼容VIDEO/兼容FLASH)</li></ul></li>
+<li>canvas / svg</li>
+<li>一些新兴的API(JS) <br>
+<ul>
+<li>本地存储：webStorage (localStorage、sessionStroage)</li>
+<li>检测地理位置信息的</li>
+<li>web scoket</li>
+<li>web works</li>
+<li>离线存储</li>
+<li>…</li></ul></li>
+</ul>
+
+<h4 id="css3">CSS3</h4>
+
+<blockquote>
+  <p>CSS第三个版本，在传统的CSS基础上新增加很多的属性和内容 (图解CSS3 -&gt;大漠) <br>
+  <a href="http://www.w3cplus.com/" target="_blank">http://www.w3cplus.com/</a></p>
+</blockquote>
+
+<ul><li>新增选择器 <br>
+<ul>
+<li>结构伪类选择器: <code>:nth-child、:nth-last-child、:nth-of-type、:nth-last-of-type、:not...</code></li>
+<li>目标伪类选择器：<code>:target</code></li>
+<li>属性选择器：<code>[attr=xxx]、[attr!=xxx]、[attr^=xxx]、[attr$=xxx]、[attr*=xxx]、[attr~=xxx]...</code></li>
+<li>…</li></ul></li>
+<li>新增一些基本的样式属性 <br>
+<ul>
+<li>border-radius</li>
+<li>box-shadow</li>
+<li>text-shadow</li>
+<li>…</li></ul></li>
+<li>对背景的改革 <br>
+<ul>
+<li>background-size</li>
+<li>background: linear-gradient / radial-gradient…</li>
+<li>background-clip</li>
+<li>background-origin</li>
+<li>background-attachment：fixed (背景图铺在第一屏幕下，页面滚动背景图始终定位在当前窗口下)</li>
+<li>…</li></ul></li>
+<li>transform <br>
+<ul>
+<li>transform-style：preserve-3d</li>
+<li>transform-origin</li>
+<li>translate(X|Y|Z)</li>
+<li>rotate(X|Y|Z)</li>
+<li>scale</li>
+<li>skew</li>
+<li>matrix</li>
+<li>…</li></ul></li>
+<li>transition <br>
+<ul>
+<li>transition-property：all…</li>
+<li>transition-duration</li>
+<li>transition-timing-function：linear、ease、ease-in、ease-out、ease-in-out…</li>
+<li>transition-delay</li></ul></li>
+<li>animation <br>
+<ul>
+<li>@keyframes 设置运动的轨迹</li>
+<li>animation-name</li>
+<li>animation-duration</li>
+<li>animation-timing-function</li>
+<li>animation-delay</li>
+<li>animation-iteration-count：<code>infinite无限次</code></li>
+<li>animation-fill-mode：<code>forwards(运动完成后停留在最后一帧)  backwards(在延迟等待时间内，元素始终处于当前动画的第一帧位置)  both(同时具备以上两个特点)</code></li>
+<li>animation-play-state：running、paused</li>
+<li>…</li></ul></li>
+<li>新盒子模型 <br>
+<ul>
+<li>box-sizing：border-box、content-box</li>
+<li>columns</li>
+<li>flexbox</li></ul></li>
+<li>@font-face：字体图标(导入外部字体)</li>
+<li>@media：媒体查询</li>
+<li>…</li>
+</ul>
+
+<h4 id="viewport">viewport</h4>
+
+<blockquote>
+  <p>常用手机的尺寸 <br>
+  苹果：320(&lt;=iphone5s)、375(iphone6)、414(iphone6 plus)… <br>
+  安卓：360、480、540、640…</p>
+  
+  <p>默认情况下手机上的HTML页面宽度默认都是980(1024)的宽度，和手机多宽没有关系</p>
+  
+  <p>如果想在320的手机上展示980的页面，需要把页面整体缩小大概三倍左右（需要放大自己使用手指缩放）</p>
+</blockquote>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs nix"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>&lt;meta <span class="hljs-attr">name="viewport"</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-attr">content="</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>    <span class="hljs-attr">width=device-width,</span> 
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>    <span class="hljs-attr">user-scalable=no,</span> 
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>    <span class="hljs-attr">initial-scale=1.0,</span> 
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>    <span class="hljs-attr">maximum-scale=1.0,</span> 
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>    <span class="hljs-attr">minimum-scale=1.0"&gt;</span>
+</div></code></pre>
+
+<p>真实项目中我们不想让页面缩小，也不想让用户手指缩放，此时我们需要让HTML页面的宽度和手机宽度保持一致：设置页面的 <code>viewport (layout viewport布局视口)</code> <br>
+<code>width=device-width：当前HTML页面的宽度等于手机设备的宽度</code> <br>
+<code>user-scalable=no：禁止用户手指手动缩放</code> <br>
+<code>initial-scale=1.0/maximum-scale=1.0/minimum-scale=1.0：初始、最大、最小缩放比例都是1:1，也就是当前页面既不会放大也不会缩小(兼容部分安卓机器)</code></p>
+
+<blockquote>
+  <p><strong>以后编写的HTML页面如果想在手机上访问，必须加 viewport</strong></p>
+</blockquote></div></body></html>

@@ -137,7 +137,9 @@ viewport 适口
     minimum-scale=1.0: 最小缩放比例1:1;也就是当前页面既不会放大也不会缩小,为了兼容部分安卓机器;
     以后编写的HTML页面如果想在手机上访问,必须加viewport;
 
-
+rem
+    给HTML设置font-size值100px;
+    因为浏览器识别最小的font-size值是12px;所以不设置10px;
 
 
 

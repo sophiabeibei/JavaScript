@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .inputBox {
+            position: relative;
+            margin: 20px auto;
+            width: 500px;
+            font-size: 14px;
+        }
+
+        .inputBox input {
+            padding: 0 10px;
+            width: 300px;
+            height: 35px;
+            line-height: 35px;
+            border: 1px solid #999;
+        }
+
+        .inputBox .tip {
+            display: none;
+            position: absolute;
+            top: 1px;
+            left: 12px;
+            width: 300px;
+            height: 35px;
+            line-height: 35px;
+            color: #999;
+            cursor: text;
+        }
+    </style>
+</head>
+<body>
+<div class="inputBox">
+    <input type="text" id="userEmail" placeholder="请输入您常用的邮箱~">
+    <span class="tip">请输入您常用的邮箱~</span>
+</div>
+
+<div class="inputBox">
+    <input type="text" id="userName" placeholder="请输入用户名~">
+    <span class="tip">请输入用户名~</span>
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function () {
+        if (navigator.userAgent.indexOf('MSIE') >= 0) {
+            var $inputBox = $('.inputBox');
+            $inputBox.each(function () {
+                var $input = $(this).find('input'),
+                        $tip = $(this).find('.tip');
+                $tip.css('display', 'block');
+                $input[0].placeholder = '';
+
+                //->点击TIP让文本框获取到焦点
+                $tip.click(function () {
+                    $input[0].focus();
+                });
+
+                //->用户在输入的过程中，如果文本框中有内容让SPAN隐藏
+                $input.on('keydown keypress keyup', function () {
+                    var val = $(this).val();
+                    if (val.length > 0) {
+                        $tip.css('display', 'none');
+                    } else {
+                        $tip.css('display', 'block');
+                    }
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>
