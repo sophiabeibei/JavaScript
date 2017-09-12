@@ -25,6 +25,20 @@
 </head>
 <body>
 <section class="container">
+    <!-- audio:
+            1.controls: 显示自带的播放器(不设置则默认不显示);
+            2.loop: 播放完成后循环播放;
+            3.autoplay: 页面进入的时候就开始自动播放;
+            4.preload: 设置音频的预加载方式;
+                none: 开始i加载页面的时候,音频不加载,只有设置播放的时候再加载
+                metadata: 开始只加载音频头部信息(时长/专辑...)
+                auto: 开始加载页面的时候就加载全部的信息;
+    -->
+    <audio src="img/myDream.m4a" preload="none" id="musicAudio"></audio>
+
+
+    <div class="backgroundImg"></div>
+    <div class="background"></div>
     <!-- header-->
     <!--header.header>(div.content>img+h2>span*2)+a.musicBtn[href="javascript:;"]-->
     <header class="header">
@@ -60,5 +74,6 @@
 
 </section>
 <script src="js/zepto.min.js"></script>
+<script src="js/QQMusic.js"></script>
 </body>
 </html>
