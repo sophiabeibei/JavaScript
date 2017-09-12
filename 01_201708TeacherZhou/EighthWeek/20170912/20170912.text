@@ -58,6 +58,60 @@ HTML5
         5.离线存储
         ....
 
+CSS3(推荐书: 图解CSS3->大漠写的 http://www.w3cplus.com/)
+    CSS第三个版本,在传统的CSS基础上新增加很多的属性和内容
+    1.新增选择器
+        1.结构伪类选择器: :nth-child,:nth-last-child,:nth-of-type,:nth-last-type,:not...
+        2.目标伪类选择器: :target
+        3.属性选择器: [attr=xxx],[attr!=xxx],[attr^=xxx],[attr$=xxx],[attr*=xxx],[attr~=xxx]....
+        4.新增一些基本的样式属性
+            border-radius
+            box-shadow
+            text-shadow
+            ...
+        5.对背景的改革
+            background-size
+            background: linear-gradient/radial-gradient...
+            background-clip
+            background-origin
+            background-attachment: fixed(背景图铺在第一屏下,页面滚动背景图始终定位在当前窗口下)
+            ....
+        6.transform 变形
+            transform-style: preserve-3d;  //->3D变形
+            transform-origin
+            translate(X|Y|Z)
+            rotate(X|Y|Z)
+            scale
+            skew
+            matrix 矩阵
+            ....
+        7.transition
+            transition-property: all....
+            transition-duration
+            transition-timing-function: linear, ease, ease-in, ease-out, ease-in-out...
+            transition-delay
+            ....
+        8.animation帧动画
+            @keyframes设置运动的轨迹
+            animation-name
+            animation-duration
+            animation-timing-function
+            animation-delay 延迟
+            animation-iteration-count: infinite 无限次
+            animation-fill-mode: forwards(运动完成后停留在最后一帧)
+            animation-fill-mode: backwards(在延迟等待时间内,元素始终处于当前动画的第一帧位置)   both(同时具备以上两个特点)
+            animation-fill-mode: both(同时具备以上两个特点)
+            animation-play-state: running;运动
+            animation-play-state: paused;暂停
+
+        9.新盒子模型
+            box-sizing: border-box;
+            box-sizing: content-box;默认
+            box-sizing: columns;多列布局
+            box-sizing: flexbox;弹性伸缩和模型
+            @font-face: 字体图标;导入web字体;
+            @media: 媒体查询
+
 
 
 
