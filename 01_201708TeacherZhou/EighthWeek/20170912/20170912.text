@@ -12,11 +12,51 @@
 HTML5
     HTML的第五套本本,在传统的HTML基础上新增加或者更新了一些新特性;
     1.对标签语义化的处理
-        新增加了语义化标签: header,footer,nav,section,main,article,aside,figure,figcaption,hgroup,progress,time,mark(高亮选中),datalist(二级下拉框),summary...
+        1.新增加了语义化标签: header,footer,nav,section,main,article,aside,figure,figcaption,hgroup,progress,time,mark(高亮选中),datalist(二级下拉框),summary...
+        2.对传统标签的语义修改: small(附属细则),strong(重点朗读),hr(区域分割线)
+        3.删除一些标签: font,big,center...(这是不建议再使用的标签)
+        以上标签不兼容,不兼容的情况下,我们引入html5.min.js来处理兼容
+        <--[if lt IE 9]>
+        <script src="js/html5.min.js"></script>
+        <![endif]>
 
+    2.给传统的表单元素新增加了很多的类型
+        1.传统类型: text,password,radio,checkbox,submit,button,resent,file,hidden...
+        2.新增加类型(不兼容IE低版本): search,email,tel,number,range,color,data...
+        新增类型的优势:
+            1.在手机端可以调取出最符合用户输入的键盘(例如: 类型是number调取出来的就是数字键盘...)
+            2.内置的验证机制(对于邮箱电话类型等,浏览器有内置的正则验证)
+            css中的
+            input: valid{
+                //->合法的
+            }
+            input: invalid{
+                //->非法的
+            }
+        3.提供了强大的功能组件,例如: 日历,滑动杆,颜色选择面板等;
+        4.placeholder属性也是新增加的,默认显示提示文字;
+        5.表单中还要记住一点
+            移动端的表单,没有keydown/keyup等事件(因为移动端的键盘是虚拟键盘),我们统一使用input事件来代替上述事件操作
+            oInput.addEventListener("input",function(){
+                //-><js code> 用户输入的过程中触发这个事件
+            },false);
 
+    3.新增音视频处理
+        1.音频: audio
+        2.视频: video
+        3.在IE低版本中依然采用传统的flash播放
+        真实项目中音视频播放,都是采用别人写好的播放器插件来处理的(兼容video/兼容flash)
 
+    4.canvas/svg
+        图形绘制
 
+    5.一些新兴的API(JS)
+        1.本地存储: webStorage(分为localStorage和sessionStroage)
+        2.检测地址位置信息的API结合第三方接口做地图推荐
+        3.web scoket 新的通讯方式
+        4.web works 新的通讯方式
+        5.离线存储
+        ....
 
 
 
