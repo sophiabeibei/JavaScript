@@ -1,28 +1,191 @@
 html{
     font-size: 100px;/*640设计稿: 1rem=100px*/
 }
+html,body,.container{
+    height: 100%;
+    overflow: hidden;
+    background: #f4f4f4;
+    background: black;
+}
 
+.container{
+    margin: 0 auto;
+    max-width: 640px;
+}
 
+/* --header-- */
+.header{
+    position: relative;
+    padding: 0.3rem;
+    background: rgba(0,0,0,0.2);
+}
 
+.header .content{
+    font-size: 0;
+}
 
+.header .content img{
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    vertical-align: top;
+}
 
+.header .content h2{
+    display: inline-block;
+    margin-left: 0.2rem;
+}
 
+.header .content h2 span{
+    display: block;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    color: #fff;
+    font-size: 0.36rem;
+}
 
+.header .content h2 span:nth-child(2){
+    font-size: 0.32rem;
+}
 
+.header .musicBtn{
+    position: absolute;
+    right: 0.3rem;
+    top: 50%;
+    margin-top: -0.3rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: url("../img/music.svg") no-repeat;
+    background-size: 100% 100%;
+}
 
+.header .musicBtn.move{
+    -webkit-animation: musicMove .5s linear infinite both;
+    animation: musicMove .5s linear infinite both;
+}
 
+@-webkit-keyframes musicMove{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
 
+@keyframes musicMove{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
 
+/* --footer--*/
+.footer{
+    margin: 0 0.2rem;
+    height: 2.2rem;
+}
 
+.footer .progress{
+    position: relative;
+    height: 0.8rem;
+    overflow: hidden;
+}
 
+.footer .progress span{
+    position: absolute;
+    top: 0;
+    width: 0.9rem;
+    height: 100%;
+    line-height: 0.8rem;
+    color: rgba(255,255,255,.5);
+    font-size: 0.24rem;
+    text-align: center;
+}
 
+.footer .progress span.current{
+    left: 0;
+}
 
+.footer .progress span.duration{
+    right: 0;
+}
 
+.footer .progress .proBg{
+    position: relative;
+    margin: 0.38rem 0.9rem 0 0.9rem;
+    height: 0.04rem;
+    background: rgba(255,255,255,.5);
+}
 
+.footer .progress .proBg .already{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: #31c27c;
 
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
 
+.footer .down{
+    display: block;
+    margin: 0 auto;
+    width: 4.4rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    text-align: center;
+    background: url("../img/sprite_play.png") no-repeat .2rem -5.86rem #31c27c;
+    background-size: 0.8rem 7rem;
+    border-radius: 0.45rem;
+    color: #fff;
+    font-size: 0.36rem;
+}
 
+/* --main-- */
+.main{
+    position: relative;
+    margin: 0.4rem 0.2rem;
+    height: 6.56rem;/*需要在js中处理: 用屏幕的高度-header-footer-80的margin对应的高度*/
+    overflow: hidden;
+}
 
+.main .wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.main .wrapper p{
+    height: 0.84rem;
+    line-height: 0.84rem;
+    text-align: center;
+    color: rgba(255,255,255,.5);
+    font-size: 0.32rem;
+    letter-spacing: 0.04rem;
+
+    /*文本超出一行自动折行*/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.main .wrapper p.select{
+    color: #31c27c;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
 
 
 
