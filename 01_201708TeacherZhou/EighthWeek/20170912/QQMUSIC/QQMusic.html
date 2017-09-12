@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>QQMusic音乐播放器</title>
+    <!-- import css-->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/QQMusic.css">
+
+    <!-- rem处理-->
+    <script>
+        ~function () {
+            computedFont();
+            window.addEventListener("resize",computedFont,false);
+            function computedFont() {
+                var deviceW = document.documentElement.clientWidth;
+                if (deviceW > 640) return;
+                document.documentElement.style.fontSize = deviceW / 640 * 100 + "px";
+            }
+        }();
+
+    </script>
+</head>
+<body>
+<section class="container">
+    <!-- header-->
+    <!--header.header>(div.content>img+h2>span*2)+a.musicBtn[href="javascript:;"]-->
+    <header class="header">
+        <div class="content"><img src="img/myDream.jpg" alt="">
+            <h2>
+                <span>我的梦</span>
+                <span>张靓颖</span>
+            </h2>
+        </div>
+        <a href="javascript:;" class="musicBtn"></a>
+    </header>
+
+    <!-- main-->
+    <!--main.main>div.wrapper>p-->
+    <main class="main">
+        <div class="wrapper">
+            <p></p>
+        </div>
+    </main>
+
+    <!-- footer-->
+    <!--footer.footer>(div.progress>span.current+span.duration+div.proBg>div.already)+a.down[href="javascript:;"]-->
+    <footer class="footer">
+        <div class="progress">
+            <span class="current">00:00</span>
+            <span class="duration">00:00</span>
+            <div class="proBg">
+                <div class="already"></div>
+            </div>
+        </div>
+        <a href="javascript:;" class="down">下载这首音乐</a>
+    </footer>
+
+</section>
+<script src="js/zepto.min.js"></script>
+</body>
+</html>
