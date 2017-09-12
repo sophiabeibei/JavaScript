@@ -6,7 +6,13 @@
             1.基于手机的流啊蓝旗输入网址或者扫描二维码访问我们开发的页面;
             2.在微信/QQ/微博等第三方平台当中运行;
             3.嵌入到自己公司的APP中;(这种模式叫混合开发模式--hybrid模式)
+            微信的2次开发
+            https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115
 
+HTML5
+    HTML的第五套本本,在传统的HTML基础上新增加或者更新了一些新特性;
+    1.对标签语义化的处理
+        新增加了语义化标签: header,footer,nav,section,main,article,aside,figure,figcaption,hgroup,progress,time,mark(高亮选中),datalist(二级下拉框),summary...
 
 
 
