@@ -113,10 +113,29 @@ CSS3(推荐书: 图解CSS3->大漠写的 http://www.w3cplus.com/)
             @media: 媒体查询
 
 
+viewport 适口
+    快捷方式: meta:vp(TAB键)
+    <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+
+    1.常用手机的尺寸
+        苹果: 320(<=iphone5s),375(iphone6),414(iphone6 plus)...
+        安卓: 360, 480, 540, 640...
+        iPad: 768*1024
+        默认情况下手机上的HTML页面宽度默认是980/1024的宽度;和手机有多宽没有关系;
+
+        如果想在320的手机上展示980的页面,需要把页面整体缩小大概3倍左右;
 
 
 
-
+    真实项目中我们不想页面缩小,也不想让用户手指缩放,此时我们需要让HTML页面的宽度和手机宽度保持一致: 设置页面的viewport(layout viewport布局适口);
+    width=device-width: 当前HTML页面的宽度等于手机设备的宽度
+    user-scalable=no: 禁止用户手指手动缩放
+    initial-scale=1.0: 初始缩放比例1:1;也就是当前页面既不会放大也不会缩小,为了兼容部分安卓机器;
+    maximum-scale=1.0: 最大缩放比例1:1;也就是当前页面既不会放大也不会缩小,为了兼容部分安卓机器;
+    minimum-scale=1.0: 最小缩放比例1:1;也就是当前页面既不会放大也不会缩小,为了兼容部分安卓机器;
+    以后编写的HTML页面如果想在手机上访问,必须加viewport;
 
 
 
