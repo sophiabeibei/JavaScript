@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #outer{
+            width :400px;
+            height:400px;
+            border: 1px solid #F9044E;
+            margin:20px auto;
+        }
+        #box{
+            width :50px;
+            height:50px;
+            background-color: green;
+            /*animation :帧动画*/
+            /*infinite：循环无数次*/
+            animation: mySlide 3s linear infinite;
+        }
+        /*@keyframes:定义动画*/
+        @-webkit-keyframes mySlide {
+            0%{
+                background: #9cff80;
+                transform:translate(0px,0px) rotate(0deg)
+            }
+            25%{
+                background: #008CD7;
+                transform:translate(350px,0px) rotate(360deg)
+            }
+            50%{
+                background: #ff44ff;
+                transform: translate(350px,350px) rotate(0deg);
+            }
+            75%{
+                background: #F9044E;
+                transform: translate(0px,350px) rotate(360deg);
+            }
+            100%{
+                background: #9cff80;
+                transform:translate(0px,0px) rotate(0deg);
+            }
+        }
+        @keyframes  mySlide{
+            0%{
+                background: #9cff80;
+                transform:translate(0px,0px) rotate(0deg)
+            }
+            25%{
+                background: #008CD7;
+                transform:translate(350px,0px) rotate(360deg)
+            }
+            50%{
+                background: #ff44ff;
+                transform: translate(350px,350px) rotate(0deg);
+            }
+            75%{
+                background: #F9044E;
+                transform: translate(0px,350px) rotate(360deg);
+            }
+            100%{
+                background: #9cff80;
+                transform:translate(0px,0px) rotate(0deg);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="box"></div>
+</div>
+<button id="btn">暂停/运行</button>
+<script>
+    var oBox = document.getElementById("box");
+    var oBtn = document.getElementById("btn");
+//    animationPlayState: 是控制当前盒子动画的 running运动 paused 停止
+    oBtn.onclick = function () {
+        var state = oBox.style.animationPlayState;
+        if(state=="paused"){
+            oBox.style.animationPlayState="running"
+        }else{
+            oBox.style.animationPlayState="paused"
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

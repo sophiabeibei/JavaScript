@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: #ff44ff;
+            border-radius: 50%;
+            cursor: move;
+        }
+        #box1{
+            position: absolute;
+            top:150px;
+            width:100px;
+            height:100px;
+            background: #ff44ff;
+            border-radius: 50%;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<script src="event.js"></script>
+<script src="aniamte.js"></script>
+<script src="drag.js"></script>
+<script>
+    // oBox 具有拖拽也有动画，oBox1只有拖拽
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+    on(oBox,"mousedown",down);
+    on(oBox1,"mousedown",down);
+
+
+
+    on(oBox,"selfDragStart",getSpeed)
+    on(oBox,"selfDragStarting",drop)
+    on(oBox,"selfDragStarting",fly)
+
+
+
+</script>
+</body>
+</html>

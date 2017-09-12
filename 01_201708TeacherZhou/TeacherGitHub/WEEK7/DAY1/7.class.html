@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var  function  let const import class
+    // class   : 声明一个类
+//    function Fn() {
+//        this.x = 1;
+//        this.y =2;
+//    }
+//    Fn()// undefined
+//    var f = new Fn; // f 是一个对象
+//    Fn.prototype.toString = function () {
+//
+//    }
+//    f.toString();
+
+    class Fn{
+        constructor(num){
+            // 接收参数
+            this.x =1;
+            this.y =2;
+            this.z = num;
+        }
+        aa(){
+            console.log(10)
+        }
+    }
+//    Fn.prototype.toString = function () {
+//        console.log(5)
+//    }
+    var f = new Fn(3);
+    console.log(f.aa());
+
+</script>
+</body>
+</html>

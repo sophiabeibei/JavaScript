@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: #008CD7;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="event.js"></script>
+<script>
+    var oBox = document.getElementById("box");
+
+    function fn1() {
+        alert(1)
+    }
+    function fn2() {
+        alert(2)
+    }
+    var count =1;
+    function fn3() {
+        alert(3)
+        count ++;
+        if(count==3){
+            // 数组长度发生变化，i 没有进行任何处理，导致数组塌陷
+            off(oBox,"click",fn1)
+            off(oBox,"click",fn2)
+        }
+    }
+    function fn4() {
+        alert(4)
+    }
+    function fn5() {
+        alert(5)
+    }
+    function fn6() {
+        alert(6)
+    }
+    function fn7() {
+        alert(7)
+    }
+    on(oBox,"click",fn1)
+    on(oBox,"click",fn2)
+    on(oBox,"click",fn3)
+    on(oBox,"click",fn4)
+    on(oBox,"click",fn5)
+    on(oBox,"click",fn6)
+    on(oBox,"click",fn7)
+</script>
+</body>
+</html>

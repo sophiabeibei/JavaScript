@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<input type="radio" name="sex" id="man"><label for="man">男</label>-->
+<!--<input type="radio" name="sex" id="woman"><label for="woman">女</label>-->
+<!--<input type="file">-->
+<!--<input type="range" max="100" min="20" value="80" id="tab">-->
+<!--<input type="color" id="box">-->
+<form action="" method="post">
+    <input type="text" id="box" autocomplete="off" autofocus placeholder="请输入用户名">
+    <input type="text" pattern="\d{5}">
+    <input type="submit">
+</form>
+<script>
+//    var a=1;
+    var tab = document.getElementById("tab");
+    var oBox = document.getElementById("box");
+    // input  : type 类型 
+    // text : 文本
+    // radio :单选
+    // checkbox : 复选框
+    //button ： 按钮
+    //submit : 提交按钮
+
+
+    // file : 打开本地文件
+    // range : 拖拽按钮（范围）
+    // color: 调用色板
+    //email : 邮箱
+    // tel : 电话
+    // number : 数字 ，只让输入数字
+    // week : 时间周
+
+    // 属性
+    // placeholder :默认提示语
+    // autofocus : 自动获取鼠标焦点事件
+    //autocomplete :默认值是on ,自动记录输入的值   off : 关闭自动记录功能
+     // pattern : 属性值是个正则，限制当前输入框的值格式
+
+
+
+    //form action: 提交的地址
+    //method : post get  : 提交方式
+
+    // oninput  : input 的value值发生变化，对应的方法就会触发
+    //onfocus : 获取光标事件
+    // onblur :失去光标事件
+
+//    tab.onchange = function () {
+//        oBox.value=this.value
+//    }
+//    oBox.onfocus = function () {
+//        alert(1)
+//    }
+//    oBox.onblur = function () {
+//        alert(2)
+//    }
+    var a = localStorage.getItem("username")
+    console.log(a);
+    var b = sessionStorage.getItem("user");
+console.log(b);
+
+
+</script>
+</body>
+</html>

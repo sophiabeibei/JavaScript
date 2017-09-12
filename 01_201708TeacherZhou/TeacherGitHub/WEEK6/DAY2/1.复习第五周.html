@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin:0;
+        }
+        #box{
+            padding:0;
+            margin:0 auto;
+            width:300px;
+            height:300px;
+            background: #000000;
+        }
+        #box1{
+            margin:10px auto;
+            width :150px;
+            height:150px;
+            background: #ff44ff;
+        }
+        #box2{
+            margin:10px auto;
+            width:80px;
+            height:80px;
+            background: #008CD7;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="box1">
+        <div id="box2"><a href="http:www.baidu.com"></a></div>
+    </div>
+</div>
+<script>
+    var oBox = document.getElementById("box");
+    var oBox1= document.getElementById("box1");
+    var oBox2 = document.getElementById("box2");
+      var body = document.body;
+    //1.点击box1的时候，打印出1，
+    // 2.点击box 的时候，打印出2；
+
+    //事件 ： 浏览器天生给元素对象的一种行为，当元素事件触发，相应的方法也会执行
+    // 事件对象 : 浏览器默认会传给当前方法一个参数，当前这个事件对象包含一些关于事件信息
+    // e.clientX : 指代当前鼠标距离浏览器可视窗口左边的距离
+    // e.clientY: 指代当前鼠标距离浏览器可视窗口上边的距离
+    // e.pageX : 当前鼠标点击距离页面body左边的距离
+    // e.pageY: 当前鼠标点击距离页面body上边的距离
+    // e.target :事件源
+
+
+    // 事件冒泡传播的机制
+    // 事件委托原理：利用了事件冒泡传播的机制，我们给最外层元素绑定相应的方法，根据不同的事件源，执行不同的代码
+//  body.onclick = function (e) {
+////      console.log(e.target);
+//      if(e.target.id === "box1"){
+//          console.log(1);
+//      }
+//      if(e.target.id==="box"){
+//          console.log(2);
+//      }
+//  };
+////  oBox1.onclick = function (e) {
+////      e.stopPropagation();
+//      console.log(1)
+//  }
+//  var body = document.body;
+//  body.onclick = function () {
+//      console.log(1);
+//  }
+//  function sum(event) {
+//
+//  }
+    // 事件分为三个阶段  ： 捕获阶段 目标阶段 冒泡阶段
+//      oBox1.onclick = function (e) {
+//          console.log(1)
+//      }
+//      oBox1.onclick = function (e) {
+//          console.log(2)
+//      }
+
+    // DOM2级事件
+    //addEventListener : 在eventTarget 这个类的原型上
+    // 三个参数 ： 1.事件类型 2,要绑定的方法，3，true/false  捕获 冒泡
+    function fn1() {
+        console.log("box 捕获")
+    }
+    function fn2() {
+        console.log("box 冒泡")
+    }
+
+    function fn3() {
+        console.log("box1 捕获")
+    }
+    function fn4() {
+        console.log("box1 冒泡")
+    }
+
+    function fn5() {
+        console.log("box2 捕获")
+    }
+    function fn6(e) {
+        e.stopPropagation();
+        e.cancelBubble = true;
+        console.log("box2 冒泡");
+    }
+    // 事件先进行捕获阶段，然后到目标元素成为目标阶段，目标上的事件执行顺序跟绑定顺序有关，然后进行冒泡阶段
+    oBox.addEventListener("click",fn1,true)
+    oBox.addEventListener("click",fn2,false)
+
+    oBox1.addEventListener("click",fn4,false)
+    oBox1.addEventListener("click",fn3,true)
+    oBox2.addEventListener("click",fn5,true)
+    oBox2.addEventListener("click",fn6,false)
+
+      // 捕获阶段
+//     box 捕获
+//     box1 捕获
+    // 目标阶段
+//     box2 捕获
+//     box2 冒泡
+    // 冒泡阶段
+//     box1 冒泡
+//     box 冒泡
+
+    // 阻止事件冒泡传播
+    //    e.stopPropagation();
+    //    e.cancelBubble = true;
+    // 阻止事件的默认行为
+    //    e.preventDefault();
+    //    e.returnValue = false;
+
+</script>
+
+
+
+
+</body>
+</html>

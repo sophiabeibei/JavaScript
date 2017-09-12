@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{
+            width:300px;
+            height:300px;
+            background: #008CD7;
+        }
+    </style>
+</head>
+<div id="box"></div>
+<body>
+<script>
+    // DOM2级事件
+    var oBox = document.getElementById("box");
+    //removeEventListener 移出事件 在IE678 不兼容的
+    //attachEvent()
+//    console.log(oBox.attachEvent)
+    function fn() {
+        console.log(this)// 元素对象
+        console.log(1)
+    }
+    function fn1() {
+        console.log(2)
+    }
+//    oBox.addEventListener("click",fn,false)
+//    oBox.addEventListener("click",fn,false)
+    oBox.attachEvent("onclick",fn)
+    oBox.attachEvent("onclick",fn1)
+    // DOM2级兼容问题
+    // 1. 顺序问题
+    //2.this问题 标准浏览器指向元素对象，ie678 指向window
+    // 3.重复绑定问题： 标准浏览器下绑定给一个元素的同一个事件绑定相同的方法，后面方法会把前面方法覆盖掉
+
+
+
+
+</script>
+
+
+</body>
+</html>

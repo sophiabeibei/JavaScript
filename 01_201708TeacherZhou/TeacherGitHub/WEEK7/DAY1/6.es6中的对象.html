@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 在es6 中允许变量直接写入对象
+    var foo = "bar";
+    // 在es6 中 如果对象属性名和属性值一样的话，可以省略
+    var obj  = {foo : foo};
+
+    var obj= {foo}  // {foo:"bar"}
+    console.log(obj)
+//    var obj = {foo:a}
+    var obj ={
+        method : function () {
+            console.log(1)
+        }
+    }
+    //
+    var obj = {
+        method(){
+          console.log(1)
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

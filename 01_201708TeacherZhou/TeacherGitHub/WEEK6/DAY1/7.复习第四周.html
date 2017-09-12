@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+
+    var oUl = document.getElementsByTagName("ul")[0];
+
+
+    var oLis = document.getElementsByTagName("li");
+
+//    console.log(oLis)
+    var li = document.createElement('li');
+    var li1 = document.createElement('li');
+
+    oUl.appendChild(li);
+    oUl.appendChild(li1);
+
+//    console.log(oLis)
+
+
+    // 动画
+    // 改变left
+    // 定时器
+    //    for(var i=0;i<1000;i++){
+    //
+    //    }
+    // 定时器是异步的
+    // 和递归结合 ： 在函数体中调用函数本身
+
+//    setTimeout(function () {
+//
+//    },2000);
+//    console.log(1)
+//    setInterval(function () {
+//
+//    },1000)
+    // 递归加上中止的条件
+    var i =0;
+    function sum() {
+        console.log(1);
+        i++;
+        if(i>9){
+            return;
+        }
+        sum()
+    }
+//    sum()
+    function linear(t,b,c,d){
+        return t/d*c +b;
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

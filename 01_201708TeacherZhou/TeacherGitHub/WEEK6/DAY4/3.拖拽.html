@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: #ff44ff;
+            border-radius: 50%;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<script>
+    var oBox = document.getElementById("box");
+    // 拖拽 ： 根据鼠标的位移计算出盒子的位移->获取鼠标的位移->鼠标的初始位置和鼠标最终的位置；
+    // 记录鼠标按下时鼠标的位置，盒子的初始位置
+    // 鼠标丢失问题
+
+    function down(e) {
+        this.x = e.clientX;
+        this.y = e.clientY;
+        this.mx = this.offsetLeft;
+        this.my = this.offsetTop;
+        // setCapture  : 这个IE和火狐浏览器提供给元素对象的捆绑方法，把鼠标和盒子绑定到一块
+        // releaseCapture : 解绑
+        if(this.setCapture){
+            this.setCapture();
+            this.onmousemove = move;
+            this.onmouseup = up;
+        }else{
+            var _this = this;
+        //利用事件委托的原理，给最外层document绑定onmousemove
+        document.onmousemove = function (e) {
+            move.call(_this,e)
+        };
+        document.onmouseup = function (e) {
+            up.call(_this,e)
+        };
+        }
+    }
+    // 获取鼠标当前最新的位置
+    function move(e) {
+        // 鼠标的位移
+        this.style.left = this.mx + e.clientX -this.x + "px";
+        this.style.top = this.my + e.clientY -this.y + "px";
+    }
+    // 当鼠标抬起，移出onmousemove事件的move和onmouseup的up方法
+    function up() {
+        if(this.releaseCapture){
+            this.releaseCapture();
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }else{
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+//        oBox.onmousemove =null;
+//        oBox.onmouseup =null;
+    }
+    oBox.onmousedown = down;
+
+
+
+</script>
+</body>
+</html>

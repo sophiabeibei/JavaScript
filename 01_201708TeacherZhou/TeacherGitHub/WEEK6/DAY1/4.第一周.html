@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 预解释
+    console.log(num);// undefined
+    var num =1;
+
+    console.log(total)// 函数本身
+    function total() {
+
+    }
+    // 几种特殊情况
+    // 1. if条件中的预解释,最新版本浏览器，不管条件成立，只进行变量提升
+    // 2. 只对=左边的进行预解释
+    // 3. 自执行函数不进行预解释
+    // 4.return  出去的内容不进行预解释,return 下面的代码需要进行预解释
+    // 5变量名和函数名相同，会重新定义，不会再次声明
+    function sum() {
+        return function () {
+
+        };
+        var num =19;
+    }
+    (function () {
+
+    })()
+    var aa = function () {
+
+    }
+    console.log(sum);
+    if(false){
+        function sum() {
+
+        }
+    };
+    var b =11;
+//    function sum() {
+//        console.log(b);
+//        var a =12;
+//        return a;
+//    }
+//    console.log(a);// a  is not defined
+
+       var total = 100;
+       function fn() {
+           var total = 10;
+           return function () {
+               console.log(total);
+           };
+       }
+       var f = fn();
+       f();
+
+    // 原型
+    function aa() {
+        console.log(this)
+    }
+    var ary =[1,2,3]
+    ary.sort() //Array.prototype ;
+    // ary.sort() 在数组的原型上
+    //1.所有函数数据类型（普通函数，类（自定义类/内置类））天生自带一个prototype属性
+    // 2. prototype 是一个对象数据类型，里面有一个constructor,属性值是当前原型对应的那个类
+    // 3.所有的对象数据类型天生自带一个__proto__ 属性
+  //  4.所有的函数都是Function的实例
+    // Function Object
+    //ary.aa()
+    // 内置类
+    //Number  String  Boolean Null Undefined Object Array Date RegExp  Function
+    console.log(Array);
+    function Fn() {// 自定义类
+
+    }
+    var f = new Fn;
+    //$("#div1").hasClass()
+    var ary = [1,2,3];
+    ary.slice(0).pop().sort();
+
+    ary.slice()
+    ary.toString()
+    // typeof  instanceof  constructor
+    Object.prototype.toString.call(ary) // [object Array]
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: #008CD7;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oBox = document.getElementById("box");
+     // 事件 ：
+//    oBox.onclick = function () {
+//        console.log(1)
+//    }
+//    oBox.onclick = function () {
+
+//        console.log(2)
+//    }
+    function fn1() {
+        console.log(this)
+        console.log(1);
+    }
+    function fn2() {
+
+        console.log(2);
+    }
+    // DOM2级事件绑定 addEventListener
+    // DOM2 级移出removeEventListener
+    //参数 ： 事件类型 方法 FALSE；
+//    oBox.addEventListener("click",fn1,false);
+//    oBox.addEventListener("click",fn1,false);
+    // 移出事件上方法，必须保证三个参数完全一致
+//    oBox.removeEventListener("click",fn2,false);
+    // IE 给DOM2事件绑定方法的方法
+    // attachEvent  detachEvent
+
+    // DOM2级兼容问题
+    // 1.顺序问题
+    //2.this问题 ： addEventListener 绑定this指向元素对象，attachEvent this指向window
+    // 3.重复绑定问题
+    oBox.attachEvent("onclick",fn1)
+    oBox.attachEvent("onclick",fn1);
+    // 事件委托 ：利用了事件冒泡传播机制，给元素的最外层元素绑定方法，当触发里面元素事件对应的方法时，最外层元素对应的事件也会被触发，通过事件源，做不同处理；
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

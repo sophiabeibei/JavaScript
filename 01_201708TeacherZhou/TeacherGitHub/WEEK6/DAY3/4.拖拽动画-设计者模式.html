@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: #008CD7;
+            -webkit-user-select: none;
+        }
+        #box1{
+            position: absolute;
+            width:100px;
+            height:100px;
+            top:150px;
+            background: #008CD7;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<div id="box"></div>
+<div id="box1"></div>
+<body>
+<script src="event.js"></script>
+<script src="eventdrag.js"></script>
+<script src="eventAnimate.js"></script>
+<script>
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+    // oBox 不仅有拖拽还有动画，oBox 仅仅有拖拽就可以
+    on(oBox,"mousedown",down);
+    on(oBox1,"mousedown",down);
+    //通过设计者模式绑定动画；
+    // 给元素对象的selfDragStart，订阅了getSpeed
+    // 凡是以"self"开头的都是自定义的
+    // 订阅的过程
+
+    on(oBox,"selfDragStart",getSpeed)
+    on(oBox,"selfDragStarting",fly)
+    on(oBox,"selfDragStarting",drop)
+    // 思考题：
+    // 利用面向对象思想，new Fn(oBox)
+
+
+
+
+
+
+</script>
+</body>
+</html>

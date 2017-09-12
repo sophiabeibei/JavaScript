@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var oLis = document.getElementsByTagName("li");
+
+    // es5   var
+//    console.log(a)
+//    var a = 11;
+
+//    var a =16;
+//    console.log(window.a)
+    // let
+    // 1.定义变量不存在变量提升
+    // 2.不能重复声明
+    // 3.在全局下，通过var定义的变量相当于给window增加一个属性，通过let定义变量，没有给window新增属性
+    // 4.在不同的作用域中，通过let定义的变量名字是可以相同的；
+    // 5.通过let定义的变量只在当前的作用域内有效
+//    let num = 12;
+//    let num =15;
+//    console.log(window.num)
+//    function sum() {
+//        let num =12;
+//    }
+//    function sum1() {
+//        let num =11;
+//    }
+//    sum();
+//    sum1();
+//    if(true){
+//        var a ="zhufeng"
+//        let num =12;
+//    }
+//    if(false){
+//        function sum() {
+//        }
+//    }
+//    console.log(a)// "zhufeng"
+//    console.log(num)//num is not defined
+    // 在es5只有全局作用域和私有作用域，在es6中新增块级作用域；
+    // if　　for  while  switch 执行会形成块级作用域
+
+//    for(var i=0;i<6;i++){
+//        oLis[i].index = i;
+//        oLis[i].onclick = function () {
+//
+//            console.log(i)// 6
+//        }
+//    }
+//
+//    console.log(i)// 6
+
+    for(let j =0;j<oLis.length;j++){
+//        let j =13;
+        // for 循环每循环一次，都会形成一个块级作用域，并且保存当前的j
+        // 当循环第一次，会把j=0保存在当前的作用域中
+        oLis[j].onclick = function () {
+            console.log(j)
+        }
+    }
+    // a =undefined;
+    //
+//    a  // undefined
+//    var a =1;
+//
+//    let num =10;
+//    let num =19;
+
+    // const  : 经常用于定义一个常量 ，不变的量
+    // 定义好之后不能改变存储的值；
+//    let x = 1;
+    //    x=10;
+//    console.log(PI);
+//    const PI = 3.14;
+
+    var s = "zhufeng";
+    if(true){
+        console.log(s);
+        s ="peixun"// let 定义的变量只声明，不进行变量提升
+    }
+//    console.log(s);
+    // let 需要进行预解释，并且声明的，但是不进行变量提升；
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

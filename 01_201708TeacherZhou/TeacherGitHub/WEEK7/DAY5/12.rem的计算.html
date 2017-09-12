@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        html{
+            font-size: 100px;
+        }
+        div{
+            width :1rem;
+            height:1rem;
+            background: #F9044E;
+            float:left;
+            margin-left:1px;
+            font-size:0.12rem;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    导航一
+</div>
+<div id="box1">
+    导航一
+</div>
+<div id="box2">
+    导航一
+</div><div id="box3">
+    导航一
+</div>
+
+<script>
+
+    // px :表示长宽单位
+    //rem :  相对根元素的font-size的一个比值
+    // 设计稿  ： 一般设计稿宽度750   640
+    var winW = 750; // li :150px
+    // 750  font-size : 100  li :1.5rem;
+    // 414  font-size :100*414/750    li : 1.5rem
+    var wid = document.documentElement.clientWidth;  // 414        82.8px   750/414 = 150/82.8
+//    console.log(wid);
+    var fontZise = 100*wid/winW;
+    document.documentElement.style.fontSize = fontZise+"px";
+
+
+</script>
+</body>
+</html>

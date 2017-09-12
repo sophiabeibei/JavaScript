@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    function Fn(x,y){
+//        this.x = x;
+//        this.y = y;
+//    }
+//    Fn.prototype.sum = function () {
+//        console.log(1)
+//    }
+////    Fn()
+//    var f=new Fn(1,2);
+////    console.log(f);
+//    f.sum()
+
+    // class
+    class Point{
+
+        constructor(x,y){
+            //
+            this.x = x;
+            this.y = y;
+
+        };
+        sum(){
+            console.log(4)
+        }
+    }
+
+//    var f = new Point(1,2)
+//    console.log(f);
+   class sizePoint extends Point{
+        constructor(x,y,z){
+            super(x,y);//父类的构造函数
+            this.z =z;
+        }
+   }
+   var f = new sizePoint(1,2,3);
+   console.log(f);
+
+
+</script>
+</body>
+</html>

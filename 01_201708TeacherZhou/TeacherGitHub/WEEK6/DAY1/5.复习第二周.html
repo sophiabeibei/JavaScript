@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  call  apply  bind 在Function的原型上
+    var ary = []
+    function sum() {
+        // this -->window
+    }
+    function sum1() {
+        sum()
+    }
+    sum1()
+    sum();
+    sum.bind(ary)
+    // apply  传参 把参数放进数组一块传进去
+    // bind  预处理this
+    //  点前面是谁，this指向谁
+    // 自执行函数中的this是window，fn() 里面也是window
+    // 给元素对象事件绑定方法，this指向当前的元素对象
+    // 类中的this指向实例
+
+
+    // DOM 的映射 ：
+    // DOM 回流：
+        // 解决DOM的回流文档碎片
+    // DOM 的重绘
+    // sort
+
+    // 正则 ：是处理字符串的；
+
+    var reg = /\d+?/g;
+    var str ="zhufeng123zhufeng456";
+    console.log(reg.exec(str));//["123", index: 7, input: "zhufeng123zhufeng123"]
+    console.log(reg.exec(str));
+   // 在量词的后面加一个问号取消捕获的贪婪性
+    // 捕获
+    // test   返回值 true  false    exec 捕获
+    // \d  : 0-9
+    // \w :数字 字母 下划线
+    // +  : 出现一次或多次
+    // ? : 出现0次 或一次
+    // * : 出现0 次 或多次
+    // {n} : 出现N次
+    // ^ : 以什么开头
+    //[^xyz] :除了（取反）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        ul{
+            width:480px;
+            height:640px;
+            margin:0 auto;
+            padding:10px;
+            background: yellow;
+            position: relative;
+        }
+        ul li{
+            list-style: none;
+            float : left;
+            width:150px;
+            height:150px;
+            margin:5px;
+            cursor: move;
+            -webkit-user-select: none;
+            background: greenyellow;
+        }
+        ul li img{
+            -webkit-user-select: none;
+            border: none;
+            width:150px;
+            height:150px;
+        }
+
+
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="img/1.png" alt=""></li>
+    <li><img src="img/2.png" alt=""></li>
+    <li><img src="img/3.png" alt=""></li>
+    <li><img src="img/4.png" alt=""></li>
+    <li><img src="img/5.png" alt=""></li>
+    <li><img src="img/6.png" alt=""></li>
+    <li><img src="img/7.png" alt=""></li>
+    <li><img src="img/8.png" alt=""></li>
+    <li><img src="img/9.png" alt=""></li>
+    <li><img src="img/10.png" alt=""></li>
+    <li><img src="img/11.png" alt=""></li>
+    <li><img src="img/12.png" alt=""></li>
+</ul>
+<script src="event.js"></script>
+<script src="eventDrag.js"></script>
+<script>
+    // 1 .实现动画 盒子必须绝对定位
+    var oLis = document.getElementsByTagName("li");
+    for(var i=oLis.length-1;i>=0;i--){
+        var cur = oLis[i];
+        // 元素对象
+        cur.style.left = cur.offsetLeft + "px";
+        cur.style.top = cur.offsetTop + "px";
+        cur.style.position = "absolute";
+        // offsetLeft : 值从当前盒子的边框外面开始计算
+        // position : 定位 ： 设置当前位置是从margin开始的
+        cur.style.margin = 0+"px";
+        new Drag(cur).on("dragStart",inceaseIndex).on("dragStarting",test).on("dragEnd",changePosition);
+    }
+    // b： 当前的元素对象 r: 另一个LI
+    function isHit(b,r) {
+        if(b.offsetLeft+b.offsetWidth<r.offsetLeft || b.offsetTop+b.offsetHeight < r.offsetTop || b.offsetLeft>r.offsetLeft + r.offsetWidth || b.offsetTop>r.offsetTop +r.offsetHeight){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    // 通过循环判断当前盒子和其他盒子的位置关系；
+    function test() {
+        this["hited"] = [];
+        // 只要让当前方法中的this指向实例 this.ele
+        for(var i=0;i<oLis.length;i++){
+            var cur = oLis[i];
+            if(this.ele === cur)continue;
+            //检测的判断方法
+            if(isHit(this.ele,oLis[i])){
+                cur.style.background = "pink"
+                this["hited"].push(cur);
+
+            }else{
+                cur.style.background = "";
+            }
+        }
+    }
+    function changePosition() {
+        var ary = this["hited"];
+        if(ary && ary.length){
+            for(var i=0;i<ary.length;i++){
+                var cur = ary[i];// li
+                cur.distance = Math.pow(this.ele.offsetTop-cur.offsetTop,2) + Math.pow(this.ele.offsetLeft -cur.offsetLeft,2)
+                cur.style.background = "";
+            }
+            ary.sort(function (a,b) {
+                return a.distance-b.distance;
+            });
+            this.ele.style.left = ary[0].offsetLeft + "px";
+            this.ele.style.top = ary[0].offsetTop + "px";
+            ary[0].style.left = this.mx + "px";
+            ary[0].style.top = this.my+"px"
+
+        }else{
+            this.ele.style.left = this.mx + "px"
+            this.ele.style.top = this.my + "px"
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: #ff44ff;
+            border-radius: 50%;
+            cursor: move;
+        }
+        #box1{
+            position: absolute;
+            top:150px;
+            width:100px;
+            height:100px;
+            background: #ff44ff;
+            border-radius: 50%;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<script>
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+
+    // 拖拽 ： 根据鼠标的位移计算出盒子的位移->获取鼠标的位移->鼠标的初始位置和鼠标最终的位置；
+    // 记录鼠标按下时鼠标的位置，盒子的初始位置
+    // 鼠标丢失问题
+
+    function down(e) {
+        this.x = e.clientX;
+        this.y = e.clientY;
+        this.mx = this.offsetLeft;
+        this.my = this.offsetTop;
+        // setCapture  : 这个IE和火狐浏览器提供给元素对象的捆绑方法，把鼠标和盒子绑定到一块
+        // releaseCapture : 解绑
+        if(this.setCapture){
+            this.setCapture();
+            this.onmousemove = move;
+            this.onmouseup = up;
+        }else{
+            var _this = this;
+        //利用事件委托的原理，给最外层document绑定onmousemove
+        document.onmousemove = function (e) {
+            move.call(_this,e)
+        };
+        document.onmouseup = function (e) {
+            up.call(_this,e)
+        };
+        }
+    }
+    // 获取鼠标当前最新的位置
+    function move(e) {
+        // 鼠标的位移
+        // move 方法是每隔一段时间执行一次，跟盒子运动的距离没有任何的关系
+//        console.log(1);
+        // 鼠标up之前的盒子位置和up时盒子位置有个位移差，这个值表示鼠标离开盒子那一刻盒子运动的快慢
+        var  changeL = e.clientX -this.x;
+        var changeT = e.clientY -this.y;
+        var maxL = (document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+        var maxT = (document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+        if(this.mx+changeL>maxL){
+            this.style.left = maxL + "px";
+        }else  if(this.my + changeT >maxT){
+            this.style.top = maxT + "px";
+        }else{
+            this.style.left = this.mx + changeL + "px";
+            this.style.top = this.my + changeT + "px";
+        }
+        getSpeed.call(this)
+    }
+    // 当鼠标抬起，移出onmousemove事件的move和onmouseup的up方法
+    function up() {
+        if(this.releaseCapture){
+            this.releaseCapture();
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }else{
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        drop.call(this);
+        fly.call(this);
+    }
+    // 获取速度的方法
+    function getSpeed() {
+        if(!this.prevPosi){
+//            this.flySpeed =1;
+            this.prevPosi = this.offsetLeft;
+        }else{
+            this.flySpeed = this.offsetLeft - this.prevPosi;
+            this.prevPosi = this.offsetLeft;
+        }
+    }
+    // 自由落体 垂直方向的速度
+    function drop() {
+        if(!this.dropSpeed){
+            this.dropSpeed =2;
+        }else{
+            // 速度是像素
+            this.dropSpeed+=9.8;
+            // drop 10次  100
+            //90.2
+            clearTimeout(this.dropTimer)
+        };
+        this.dropSpeed*=0.98;
+        var curPosi = this.offsetTop + this.dropSpeed;
+        var maxBottom = (document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+       if(curPosi >= maxBottom){
+           this.style.top = maxBottom+"px";
+           this.dropSpeed *= -1;
+           this.flag ++;
+       }else{
+           this.style.top = curPosi+"px";
+           this.flag =0;
+       }
+        if(this.flag<2){
+            this.dropTimer = setTimeout(handThis(this,drop),18)
+        }
+    }
+    // 水平方向动画
+    function fly() {
+        clearTimeout(this.flyTimer);
+        var maxRight = (document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+        this.flySpeed*=0.98;
+        var curPosi= this.offsetLeft + this.flySpeed;
+        if(curPosi >= maxRight){
+            this.style.left = maxRight+"px";
+            this.flySpeed *= -1;
+        }else if(curPosi<=0){
+            this.style.left = 0+"px";
+            this.flySpeed *= -1;
+        }else{
+            this.style.left = curPosi+ "px";
+        }
+        if(Math.abs(this.flySpeed)>0.5){
+            this.flyTimer = setTimeout(handThis(this,fly),18)
+        }
+    }
+    oBox.onmousedown = down;
+    oBox1.onmousedown = down;
+    // 改变this关键字
+    // 第一个参数，就是想让方法中的this指向谁,第二个参数是方法
+    function handThis(obj,fn){
+        return function () {
+            fn.call(obj)
+        }
+    }
+
+
+</script>
+</body>
+</html>

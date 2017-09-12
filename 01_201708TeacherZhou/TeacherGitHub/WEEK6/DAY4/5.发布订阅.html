@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">上学</button>
+<button id="btn2">结婚</button>
+<script>
+    // 发布订阅 / 自定义事件
+    // onclick  onmousedown
+    var study = document.getElementById("btn1");
+    var marry= document.getElementById("btn2");
+    //study["selfstudy"] = [];
+    // 往元素对象自定义属性添加方法过程 ---》 订阅
+    // 让里面方法执行 --》 发布
+    // on --> 订阅
+    function on(curEle,type,fn) {
+        if(!curEle[type+"Pool"]){
+            curEle[type+"Pool"] = [];
+        }
+        var ary = curEle[type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            if(ary[i]===fn){
+                return;
+            }
+        }
+        ary.push(fn);
+    }
+    // 发布 通知
+    function selfrun(type) {
+        var ary = this[type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            if(typeof ary[i]==="function"){
+                ary[i]();
+            }
+        }
+    }
+    // 取消订阅；
+    function off(curEle,type,fn) {
+        var ary = curEle[type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            if(fn ===ary[i]){
+                ary[i] =null;
+                break;
+            }
+        }
+    }
+    on(oBox,"click",fn);
+    on(study,"selfStudy",fn1)
+    on(study,"selfStudy",fn2)
+    on(study,"selfStudy",fn3);
+    off(study,"selfStudy",fn3)
+    on(marry,"selfMarry",fn4);
+    on(marry,"selfMarry",fn5);
+    study.onclick = function () {
+        selfrun.call(this,"selfStudy")
+    }
+    marry.onclick = function () {
+        selfrun.call(this,"selfMarry")
+    }
+    function fn1() {
+        console.log("学习js")
+    }
+    function fn2() {
+        console.log("学习框架")
+    }
+    function fn3() {
+        console.log("学习NODE");
+    }
+    function fn4() {
+        console.log("喝喜酒")
+    }
+    function fn5() {
+        console.log("发红包")
+    }
+
+
+</script>
+</body>
+</html>

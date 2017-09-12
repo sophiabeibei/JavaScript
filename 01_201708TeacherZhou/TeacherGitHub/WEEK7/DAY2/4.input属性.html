@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    <!--<input type="hidden" id="box" autofocus required autocomplete="off" pattern="\w{6}">-->
+    <!--<input type="password" id="box1" >-->
+    <!--<input type="submit">-->
+</form>
+<input type="range" max=100 min=0 value= 50 id="box">
+<input type="text" id="box1">
+<script>
+
+    // 获取元素中内容一般用innerHTML,但是input框不可以通过innerHTML 属性获取，通过value获取；
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+    console.log(oBox.value);
+    // text : 文本
+    // radio  : 单选框
+    //checkbox : 复选框 checked="true" 默认选中
+    // number : 数字
+    // file : 选择文件
+    // button : 按钮
+    //submit : 提交
+    //password : 密码，输入的内容默认的隐藏
+    // email : 邮箱
+    // tel : 电话
+    // url : 地址
+    // hidden:隐藏
+
+
+
+    // placeholder : input 框默认值，当鼠标获取到鼠标焦点，默认值不起作用
+    // autocomplete: 是否默认保存输入值，默认on ,关闭设置成off
+    // autofocus: 自动获取鼠标focus
+    // required : 当前input不能为空
+    //pattern : 正则，对当前input框输入内容格式的要求
+//  oBox.onchange = function () {
+//      oBox1.value = oBox.value;
+//  }
+//    oBox1.value = oBox.value;
+    //oninput 当input的value值发生变化，会立即出发该方法；
+
+//    oBox.oninput = function () {
+//        oBox1.value = oBox.value;
+//    }
+    // onfocus : 获取鼠标焦点事件
+    oBox1.onfocus = function () {
+       console.log("你很帅")
+    }
+    // onblur : 失去鼠标焦点的事件
+    oBox1.onblur = function () {
+        console.log("true")
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 盒子模型 ： 图片延迟加载
+    //  offsetWidth  offsetHeight
+    // clientLeft clientTop
+    // offsetLeft  offsetTop  : 偏移量
+    // clientWidth  clientHeight
+    // scrollLeft  scrollTop  : 滚动条去取跨度高度
+    // scrollHeight scrollWidth : 真实内容+ 一个padding
+    // offsetParent
+    // 获取屏幕可视窗口的高度
+
+    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+    var winT  = document.documentElement.scrollTop;
+    if(winH +winT>curEle.offsetTop ){
+        //图片开始加载
+        var img = document.createElement("img")
+        img.src = "";
+        img.load = function () {
+
+        }
+    }
+
+    var utils = {// 单例模式
+        toArray : function  toArray(likeAry) {
+            var ary = []
+            for(var i=0;i<likeAry.length;i++){
+                ary.push(likeAry[i]);
+            }
+            return ary;
+        }
+    }
+    (function () {
+        function ary() {
+
+        };
+        function sum() {
+
+        }
+    })()
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var oLis = document.getElementsByTagName("li");
+//    console.log(num)  // undefined
+    // es6  : es5的下一个版本的规范
+    // ECMAScript 6
+//    var num =10;
+//    console.log(num);
+//    num = 14;
+//    console.log(num);
+//    console.log(num);
+
+    //新增一个定义变量的语法
+    //let : 1) 没有进行变量的提升
+            //2) 用let定义的变量，没有给window新增任何的属性
+            //3) let定义的变量名字不可以相同
+//           4)let 定义的变量只在当前作用域内可以访问
+    //       5) 函数中的的用let 声明的变量不能和形参重复
+//    var num =1;
+//    var num =10;
+//    console.log(window.num) // 1
+//    let str="zhufeng";
+//    let str="peixun";
+//    console.log(str)//
+//   在es6中新增一个块级作用域，if for循环 while
+//   在es6之前，一个全局作用域，一个私有作用域
+
+//    if(true){
+//        var num =10;
+//    }
+//    console.log(num) // 10
+//    if(true){
+//        let str="a";
+//    }
+//    console.log(str);
+//   for(let i=0;i<10;i++){
+//       // 每一轮循环会重新声明一下当前的i;子作用域声明i这个过程看不到的
+//       let i=1;
+//   }
+   // for 首先会形成一个父作用域，每一轮循环都会形成一个子作用域
+//    for(var i=0;i<5;i++){
+//        oLis.index = i
+//        oLis[i].onclick = function () {
+//            console.log(this.index) // 5
+//        }
+//    }
+//    console.log(i)// 5
+//    for(let i=0;i<oLis.length;i++){
+//        // 查找会向上查找当前子作用域
+//        oLis[i].onclick = function () {
+//            console.log(i)
+//            //1.首先要当前看i是否是私有变量
+//            // 2.如果不是，会往上一级查找
+//        }
+//    }
+//    function total(num1,num2) {
+//        let num1 =10;
+//        console.log(num1)
+//    }
+//    total()
+    // const :1) 声明一个常量,定义的变量的值不能进行修改
+    //2)const 定义的变量初始化必须有值
+    let num;
+    num=19;
+    console.log(a)
+    const a=0;
+
+    // import 导入  class定义类
+
+
+
+
+
+</script>
+</body>
+</html>

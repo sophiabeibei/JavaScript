@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:300px;
+            height:260px;
+            margin: 20px auto;
+            border: 1px solid #008CD7;
+        }
+        #box ul li{
+            width:80px;
+            margin:5px;
+            list-style: none;
+            height:100px;
+            border: 1px dashed #ff44ff;
+            float :left;
+        }
+        /*nth-child(n) 设置第n个元素，是从1开始*/
+        /*2n : 表示所有的2的倍数的li*/
+        /*ul :nth-child(1){*/
+            /*background: #000000;*/
+        /*}*/
+        /*nth-of-type: 同类型，当前这个元素是在兄弟节点中类型出现*/
+        /*ul :nth-of-type(1){*/
+            /*background: #000000;*/
+        /*}*/
+        /*.oDiv{*/
+            /*width:50px;*/
+            /*height:50px;*/
+            /*border: 1px solid #000000;*/
+        /*}*/
+        /*only-child: 获取唯一的子元素*/
+        /*#oUl div:only-child{*/
+            /*background: #008CD7;*/
+            /*color:red;*/
+        /*}*/
+        /*#oUl div:empty{*/
+            /*background: #ff44ff;*/
+        /*}*/
+        /*empty: 当前这个盒子内容为空*/
+     /*div:empty{*/
+         /*width : 100px;*/
+         /*height:100px;*/
+         /*border:1px solid #ff44ff;*/
+     /*}*/
+        /*div[name*="feng"]{*/
+            /*width : 100px;*/
+            /*height:100px;*/
+            /*border:1px solid #ff44ff;*/
+        /*}*/
+        /*E[attr=val] 属性选择器 ，属性是自定义的
+*/
+    /*ul :nth-child(2){*/
+        /*background: #ff44ff;*/
+    /*}*/
+        /*.oDiv{*/
+            /*width:10px;*/
+            /*height:10px;*/
+            /*border: 1px solid #000000;*/
+        /*}*/
+        /*ul :nth-of-type(2){*/
+            /*background: #ff44ff;*/
+        /*}*/
+        /*：not ：排除*/
+        /*#oUl :not(){*/
+        /**/
+        /*}*/
+        /*:not(div){*/
+
+         /*}*/
+    </style>
+</head>
+<div id="box">
+    <ul id="oUl">
+        <div class="oDiv"></div>
+        <div class="oDiv"></div>
+        <div class="oD"></div>
+        <li></li>
+        <li></li>
+        <li></li>
+
+    </ul>
+    <ul id="oUl1">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<!--<div id="box" name="zhufeng peixun">-->
+    <!--<div class="first"></div>-->
+    <!--<div class="first"></div>-->
+    <!--<div class="second"></div>-->
+<!--</div>-->
+<!--<div id="box1" name="peixun">-->
+    <!--<p>wode de</p>-->
+<!--</div>-->
+<script>
+    // class  id  标签  *
+    // .not() 否定选择器
+
+
+
+</script>
+<body>
+<script>
+
+
+
+
+</script>
+</body>
+</html>

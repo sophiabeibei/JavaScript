@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+
+        }
+        #oDiv{
+            width :300px;
+            height:300px;
+            border-radius: 50%;
+            background-image: url(0.jpg);
+            background-size: cover;
+            /*-webkit-transition: all 2s linear;*/
+            /*-moz-transition: all 2s linear;*/
+            /*-ms-transition:all 2s linear;*/
+            /*-o-transition: all 2s linear;*/
+            /*transition: all 2s linear;*/
+            /*过渡时间*/
+            /*过渡效果：linear ease-in  ease-out ease-in-out*/
+            -webkit-transition: all 2s ease-out;
+            -moz-transition: all 2s ease-out;
+            -ms-transition: all 2s ease-out;
+            -o-transition: all 2s ease-out;
+            transition: all 2s ease-out;
+        }
+        #oDiv.active{
+            /*translate : 移动*/
+            /*rotate: 旋转*/
+            /*skew : 倾斜*/
+            /*scale:缩放*/
+            /*IE9以上的版本*/
+            /*-webkit-transform: translate(200px,200px) scale(0.5);*/
+            /*transform : translate(200px,200px) scale(0.5);*/
+            -webkit-transform: translate(200px,200px) scale(0.5);
+            -moz-transform: translate(200px,200px) scale(0.5);
+            -ms-transform: translate(200px,200px) scale(0.5);
+            -o-transform: translate(200px,200px) scale(0.5);
+            transform: translate(200px,200px) scale(0.5);
+
+
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script>
+    var oBox = document.getElementById("oDiv");
+    oDiv.onclick = function () {
+        this.className="active";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="tab"></div>
+<script src="1.event.js"></script>
+<script>
+
+     var oTab = document.getElementById("tab");
+     //烧一壶水 水开了 咱们可以泡面，可以泡咖啡
+     //
+     // 都必须得等到水烧开之后
+    function noodles() {
+         console.log("可以泡面了")
+    }
+    function coffee() {
+        console.log("可以泡咖啡了")
+    }
+    function clean() {
+        console.log("可以扫地")
+    }
+    function watch() {
+        console.log("可以看电视")
+    }
+    // 订阅
+    on(oTab,"boiling",noodles)
+    on(oTab,"boiling",coffee)
+     on(oTab,"quickly",clean)
+     on(oTab,"quickly",watch)
+    setTimeout(function () {
+        //发布,通知
+        fire.call(oTab,"boiling")
+    },5000)
+    fire.call(oTab,"quickly");
+
+
+
+
+
+</script>
+</body>
+</html>

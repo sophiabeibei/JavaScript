@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // es6新增的方法
+    //includes : 检测当前字符串是否包含某个字符/某段字符，返回Boolean值
+    var str="dibaqi";
+//    console.log(str.includes("di"));
+
+    // startsWith : 检测字符串以什么开头,返回布尔
+//    console.log(str.startsWith("ib"));
+    // endsWith
+//    ["zhufengshitang","zhufengcahoshi","zhufengjiaoshi","huoying","huilongguan"]
+//    console.log(str.endsWith("i"));
+
+     // repeat : 重复,原有的字符串不发生改变
+//    var str = "zhufeng";
+//    console.log(str.repeat(3),str);
+
+    //模板字符串
+    var ary=["珠峰","培训","回龙观东大街"];
+    var str = ary[0] +ary[1] +"现在上课" +
+        "地址是" +ary[2];
+    var str =`${ary[0]}${ary[1]}现在上课地址
+    是${ary[2]}`;
+    console.log(str)
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+//    var num;
+//    let str;
+//    str="zhufeng";
+//    const PI=3.14;
+    // 1.
+//    if(true){
+//        let a =10;// let 是在当前作用域内有效；
+//    }
+//    a=29;
+    // for 会形成一个父作用域
+    // 每一轮循环会形成一个自作用域
+//    for(let i=0;i<10;i++){
+//        let i=12;
+//        console.log(i)
+//    }
+//    if(true){
+//        let a=10;
+//        if(true){
+//            console.log(a)
+////            let a =1;
+//        }
+//    }
+    // 箭头函数；
+    function sum() {
+
+    }
+    var sum = function (num1,num2) {
+//        console.log(a);
+        return num1
+    }
+    var sum =(num1,num2)=>num1;
+
+    // 1.函数中没有arguments
+    // 2函数中没有this，
+    // 3.不能作为构造函数
+
+    // 解构赋值
+
+//   let [a,...c] = [1,2,3]
+
+//    let [a,[b],c] = [1,[2],3];
+   //let {a,b} = {b:16,a:0}
+    // 当前对象的属性名和属性值名字一样，那么可以省略
+    let a = 10;
+    let obj ={a}
+    let  obj = {a:a}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{
+            width:300px;
+            height:300px;
+            background: #008CD7;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<script>
+    // 解决DOM2级兼容 ，自定义一个事件池
+    var oBox = document.getElementById("box");
+    var obj={}
+//    obj.name = "";
+//    obj['name'] = ""
+    function fn1() {
+        console.log(1)
+    }
+    function fn2() {
+        console.log(2)
+    }
+    // 给事件绑定方法
+    function on(curEle,type,fn) {
+        // curEle : 当前元素对象
+        // type : 事件类型
+        // fn ： 方法
+        if('addEventListener' in curEle){
+            curEle.addEventListener(type,fn,false);
+            return;
+        }
+        //curEle[’clickPool']
+        if(!curEle[type+'Pool']){
+            // 把方法放到这个数组里面
+            curEle[type+'Pool']=[];
+            curEle.attachEvent("on"+type,function (event) {
+                run.call(curEle,event)
+            })
+//            oBox['clickPool'] = [];
+//            oBox.clickPool = []
+        }
+        var ary = curEle[type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            if(ary[i]===fn){
+                return;
+            }
+        }
+        ary.push(fn);
+
+    }
+   //让自定义事件池中的方法执行
+    function run(e){
+        // 获取对应元素的自定义事件池
+        //想让run中的this指向curEle
+        e = window.event;
+        e.target = e.srcElement;
+        e.pageX = e.clientX + (document.documentElement.scrollLeft ||document.body.scrollLeft)
+        e.pageY = e.clientY +(document.documentElement.scrollTop ||document.body.scrollTop);
+        e.preventDefault = function () {
+            e.returnValue = false;
+        }
+        e.stopPropagation = function () {
+            e.cancelBubble = true;
+        }
+        var ary = this[e.type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            var cur =ary[i]
+            if(!cur){
+                ary.splice(i,1);
+                i--;
+                continue;
+            }
+            cur.call(this,e);
+        }
+    }
+    // 移出事件的方法
+    function off(curEle,type,fn) {
+        if('removeEventListener' in curEle){
+            curEle.removeEventListener(type,fn,false)
+            return;
+        }
+        // 首先拿到自定义事件池
+        var ary = curEle[type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            if(ary[i] === fn){
+                ary[i] = null;
+            }
+        }
+    }
+
+    on(oBox,"click",fn1)
+    on(oBox,"click",fn2)
+    // clickPool  fn1  fn2
+    off(oBox,"click",fn1)
+
+//oBox.onclick = function () {
+//    console.log(arguments)
+//}
+
+
+</script>
+</body>
+</html>

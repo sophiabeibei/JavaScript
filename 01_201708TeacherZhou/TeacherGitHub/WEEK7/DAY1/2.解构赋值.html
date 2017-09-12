@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 解构赋值： 在es6中，可以对数组，对象中的数据进行遍历，依次拿出其中的值；
+//    var a =1;
+//    var b =2;
+//    var c =3;
+//    let [a,b,c] = [1,2,3];
+//    console.log(a,b,c)// 1,2,3
+//    let [a,b,c] = [1,2];
+//    console.log(a,b,c)
+    // 1.如果当前变量解构不成功，则是undefined
+//    let [a,b,c] = [1,,2];
+//    console.log(a,b,c)//1 undefined 2
+    // ...这个必须放在解构变量中的最后一项
+//    let [a,...b] = [1,2,4,6];
+//    console.log(a,b) // 1  [2, 4, 6]
+    // 解构报错
+//    let [e] =1 ;
+//    let [a] =false;
+//    let [b] =null;
+//    let [c] =undefined;
+//    let [d] =NaN;
+//    console.log(a)
+
+    // 对象的解构: 变量的名字和对象的名字相同的进行解构，跟顺序没有任何的关系，解构不成功，返回undefined
+
+//    let {a,b} = {c:1,d:20};
+//    console.log(a,b) //undefined undefined
+//    let {a,b} = {a:1,b:20};
+//    console.log(a,b) // 1 20
+    // 对象解构不支持...这个语法
+//    let {a,b,c} = {b:1,a:20};
+//    console.log(a,b,c) // 20 1 undefined
+//   let [a] =1;
+    // 解构的值一定是可以进行遍历的；
+//    let [a,b,c] = "str";
+//    console.log(a,b,c) // s t r
+
+    // 函数的参数
+    // 函数参数赋值，如果有默认值，实参会进行覆盖;
+
+//    function sum(num1=1,num2=2,num3) {
+//        // 在函数作用域中，对形参进行声明
+////        let num1 =10;
+//        console.log(num1,num2,num3)
+//        console.log(arguments)
+//    }
+//    sum();
+//    function sum([num1,num2,num3]) {
+//        return num1+num2+num3;
+//    }
+//    console.log(sum([1, 2, 3,4,6]));
+
+
+
+</script>
+</body>
+</html>

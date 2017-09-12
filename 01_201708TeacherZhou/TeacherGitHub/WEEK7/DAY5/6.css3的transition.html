@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #div1{
+            width:50px;
+            height:50px;
+            border: 1px solid #9cff80;
+            /*-webkit-transition: ;*/
+            /*-moz-transition: ;*/
+            /*-ms-transition:;*/
+            /*-o-transition: ;*/
+            /*transition: all 1s linear;*/
+
+            /*-webkit-transition: prop time;*/
+            /*-moz-transition: prop time;*/
+            /*-ms-transition: prop time;*/
+            /*-o-transition: prop time;*/
+            /*transition: prop time;*/
+
+            /*过渡动画*/
+            /*transtion-property:all;*/
+            /*transition-duration: 1s;*/
+            /*transition-timing-function: linear;*/
+        }
+         #div1.animate{
+             width:100px;
+             height:100px;
+         }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    var div = document.getElementById("div1");
+    div.onclick = function () {
+        this.className="animate"
+    }
+</script>
+</body>
+</html>

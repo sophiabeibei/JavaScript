@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="box">sssss</div>
+<script>
+    var oBox = document.getElementById("box")
+    // es6 中的函数可以对形参进行默认赋值；
+//    function log(x, y) {
+//        // 逻辑或给形参赋默认值；
+//        y = y || 'World';
+//        console.log(x, y);
+//    }
+//
+//    log('Hello') // Hello World
+//    log('Hello', 'China') // Hello China
+//    log('Hello', '') // Hello World
+//    function log(x, y = 'World') {
+//        console.log(x, y);
+//    }
+//
+//    log('Hello') // Hello World
+//    log('Hello', 'China') // Hello China
+//    log('Hello', '') // Hello
+    // 解构赋值
+//    function sum([a,b,...c]) {
+//        console.log(c)// [3,4,5]
+//    }
+//    sum([1,2,3,4,5])
+//    console.log(sum.name) // "sum";
+    //参数变量是默认声明的，所以不能用let或const再次声明
+//    function sum(a,b) {
+//        let a = 12;
+//    }
+
+    // 箭头函数
+//    let [a,b] = [1,2]
+//    function total(num1,num2) {
+//
+//        return total;
+//    }
+//   var total =(num1,num2)=>{
+//       console.log(num1+num2)
+//   }
+//   total(1,2);
+//    var t =()=>{if(true){}};
+    // 匿名函数
+//    var t = function (a) {
+    //        return a;
+    //}
+//    console.log(t(1)); // undefined
+    // 1.在箭头函数中，如果箭头只有一条语句，那么大括号可以省略
+    // 2.当只有一个参数，小括号也可以省略；
+    // 3.如果需要返回对象，那么需要大括号外面加括号({})//
+    //   箭头函数和普通的函数的区别
+    // 4.在箭头函数中，不存在arguments;
+    // 5.箭头函数中this，和函数执行没有任何的关系，只看当前函数定义所在的作用域中this
+    // 6.箭头函数不能作为构造函数，不能被new
+//    var sum =()=>{
+//        console.log(this)
+////        console.log(arguments)
+//    }
+//    function sum() {
+//
+//    }
+
+    //var f =new sum;//sum is not a constructor
+//    sum(1,2,3)
+//      console.log(this)
+//    oBox.onclick = ()=>{
+//        console.log(this)
+//    }
+//    setTimeout(()=>{
+//        return ()=>{
+//
+//        }
+//    },120)
+
+    let obj={
+        fn:()=>{
+            console.log(this);// window
+        },
+        ff:function () {
+            let f=()=>{
+                console.log(this);
+            };
+            f();
+        }
+    };
+    obj.fn()//window
+    obj.ff()// obj
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

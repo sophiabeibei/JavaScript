@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 发布/订阅
+    // 订阅   发布
+    // on 就是一个订阅的过程
+    // 发布订阅的核心 ：把方法通过on 放到当前元素的自定义属性上，这是订阅的过程；当发布时，执行fire方法，让当前元素自定义属性上的方法执行； 取消订阅，从当前的自定义事件池中移出该方法；
+    var oBox = document.getElementById("box");
+    function fn() {
+        console.log(1)
+    }
+    function fn1() {
+        console.log(2)
+    }
+    function on(curEle,type,fn) {
+        if(!curEle[type+"Pool"]){
+            curEle[type+"Pool"] = [];
+        }
+        var ary = curEle[type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            if(ary[i] === fn)return;
+        }
+        ary.push(fn)
+
+    };
+    // 发布过程 ： 让函数执行的过程
+    function fire(type) {
+        var ary = this[type+"Pool"];
+        for(var i=0;i<ary.length;i++){
+            if(!ary[i]){
+                ary.splice(i,1);
+                i--;
+                continue;
+            }
+            ary[i]();
+        }
+    };
+    // 取消订阅
+    function off(curEle,type,fn) {
+        var ary = curEle[type+"Pool"];
+        if(ary){
+            for(var i=0;i<ary.length;i++){
+                if(ary[i]===fn){
+                    ary[i] = null;
+                    break;
+                }
+            }
+        }
+    }
+    // 传进去的类型起到了一个标识的作用；
+    on(oBox,"selfMarry",fn);
+    on(oBox,"selfEnd",fn1);
+    setTimeout(function () {
+        fire.call(oBox,"selfEnd");
+    },3000)
+    setTimeout(function () {
+        fire.call(oBox,"selfMarry");
+    },5000)
+    //发布订阅的作用：可以让两个不同模块之间协调配合，
+
+
+
+
+
+</script>
+</body>
+</html>

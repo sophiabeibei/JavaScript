@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box,#box1{
+            position:absolute;
+            width:100px;
+            height:100px;
+            background: #ff44ff;
+        }
+        #box1{
+            top:150px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<script src="event.js"></script>
+<script>
+    var oBox = document.getElementById("box");
+    var oBox1 = document.getElementById("box1");
+    // 首先定义一个拖拽类
+    // 通过面向封装方法，类的原型的方法中的this要指向当前的实例
+    function Drag(ele) {
+
+        // ele 是元素对象
+        // this --> 当前的实例  this.down
+        //把元素对象给当前实例的一个自定义属性
+        this.ele = ele;
+        // 处理实例上的down方法中的this关键字，让他指向实例
+        this.DOWN = handThis(this,this.down);
+        this.MOVE = handThis(this,this.move);
+        this.UP = handThis(this,this.up);
+        on(this.ele,"mousedown",this.DOWN);
+    };
+//    Array.prototype.slice = function () {
+//        this->[1,2]
+//    }
+//    [1,2].slice()
+    Drag.prototype.down = function (e) {
+
+        // this --> 实例
+        this.x = e.pageX;
+        this.y = e.pageY;
+        this.mx = this.ele.offsetLeft;
+        this.my = this.ele.offsetTop;
+        on(document,"mousemove",this.MOVE)
+        on(document,"mouseup",this.UP)
+    }
+    Drag.prototype.move = function (e) {
+        var changeX = e.pageX-this.x;
+        var changeY = e.pageY -this.y;
+        this.ele.style.left = this.mx + changeX + "px";
+        this.ele.style.top = this.my + changeY+ "px";
+    }
+    Drag.prototype.up = function (e) {
+        off(document,"mousemove",this.MOVE)
+        off(document,"mouseup",this.UP)
+    }
+    function handThis(obj,fn) {
+        return function (e) {
+            return fn.call(obj,e)
+        }
+    }
+
+    new Drag(oBox);
+    new Drag(oBox1);
+
+
+
+
+</script>
+</body>
+</html>

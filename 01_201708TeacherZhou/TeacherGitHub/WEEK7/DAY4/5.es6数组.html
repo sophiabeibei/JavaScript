@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary =[1,2,3];
+    //1.Array.from// 将类数组转数组
+//    function sum() {
+////        console.log( typeof arguments) // "object"
+//        var a = Array.from(arguments)
+//        console.log(a instanceof Array)
+//    }
+//    sum(1,2,3,4,7,8)
+    // Array.of : 将一组数转换成一个数组
+//    1234
+//    var b = Array.of(1,2,3,7,9)
+//    console.log(b);//[1,2,3,7,9]
+    //new Array : 参数一个，代表数组的length；
+    // 参数大于一个，把参数当做数组的每一项，把数组返回
+//    var c =new Array(1,2);
+//    console.log(c);
+    // find : 查找满足条件的第一项，找到直接把这一项返回；
+    // 如果没有符合条件的项，返回undefined
+//    var a = [1,2,3,4,5,6];
+//    console.log(a.find(function (value) {
+//        return value > 8;
+//    }));
+
+    //获取数组每一项： for  map  forEach  for of
+    //for of : 遍历每一项
+    var a = [1,2,"zhufeng",4,"baqi",6];
+//    for(var val of a){
+//        console.log(val)
+//    }
+    // 遍历每一项的索引
+//    for(var val of a.keys()){
+    //        console.log(val)
+    //    }
+   // 遍历数组的索引和数组项
+    for(var val of a.entries()){
+        console.log(val)
+    }
+
+
+
+
+</script>
+</body>
+</html>

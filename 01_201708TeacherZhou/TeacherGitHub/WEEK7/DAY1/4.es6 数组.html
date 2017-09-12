@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // [] :
+    //toArray  : 类数组转数组；
+//    function toArray(likeAry) {
+//        var ary =[];
+//        try{
+//            ary = [].slice.call(likeAry)
+//        }catch (e){
+//            for(var i=0;i<likeAry.length;i++){
+//                ary[ary.length] = likeAry[i]
+//            }
+//        }
+//        return ary;
+//    }
+
+    //1.Array.from()  : 把一个类数组转换一个真正的数组
+//    function sum() {
+//        //console.log(typeof arguments)// "object"
+//        var a = Array.from(arguments);
+//        console.log(a instanceof Array);
+//    }
+//    sum(1,2,3,4)
+//    new sum
+//    sum.a =19;  对象
+//    function Array() {
+//
+//    }
+    // Array.of(): 把一组数转换成一个数组；
+//    console.log(Array.of(1, 2, 3));
+//    console.log(Array.of(2));
+
+    //for map  forEach  for of
+    // for in 遍历对象
+//    var obj = {name:"zhufeng",age:8}
+//    for(var key in obj){
+//        console.log(obj[key])
+//    }
+    // for of 遍历数组的方法
+//    var ary = [1,2,3,4,5]
+//    for(var val of ary){
+//        console.log(val)
+//    }
+    // find  : 查找满足条件的第一项数组成员，并且把当前项返回
+
+    var ary = [1,2,3,4,5];
+    console.log(ary.find(function (item, index) {
+        return item > 3
+    }));
+
+
+</script>
+</body>
+</html>

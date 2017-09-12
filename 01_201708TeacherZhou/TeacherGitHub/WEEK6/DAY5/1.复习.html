@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+//    console.log(this)
+//    function fn() {
+//
+//    }
+//    fn()
+//    var obj = {
+//        fn: function () {
+//            console.log(this)
+//        }
+//    }
+//    var a =obj.fn;
+//    obj.fn();
+//    window.a();
+
+     // .的运算符优先级高，代码从右向左
+    var a = b ={n:1};
+    a.x = a = {z:2};
+    console.log(a) // {z:2}
+    console.log(b) // {n：1，x:{z:2}}
+
+
+</script>
+</body>
+</html>

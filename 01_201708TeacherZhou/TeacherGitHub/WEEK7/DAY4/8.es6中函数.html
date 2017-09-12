@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // foo =xxxfff111;
+    // 定义 执行 形参 return arguments
+//    function foo(num1,num2) {
+//
+//    };
+//    foo(1,2);
+//    function foo(num1=1,num2=2) {
+        // 变量不能参数名字一样，形参是私有变量
+//        let num1 =12;
+//    };
+//    foo();
+
+//    function foo([a,b,c]) {
+//
+//    }
+//    foo([3,4,5])
+//    function foo(num1=num2,num2=9) { // num2 is not defined
+//
+//    }
+//    foo()
+//    function foo(a,b,...c) {
+//        console.log(a);//1
+//        console.log(c)//[3,4,5,6]
+//    }
+//    foo(1,2,3,4,5,6)
+
+    // es6 中的箭头函数
+//    var foo = function (num) {
+//        console.log(num);
+//    }
+//    foo(2);
+    //1. 参数是一个，那么参数括号可以省略
+    // 2.参数大于一个,括号不可以省
+
+   // 3.箭头后面如果只有一条语句，大括号也可以省略
+   // 4.大括号后面如果一个值，代表当前函数的返回值
+    // 5.return {},在{}加上小括号
+
+
+    // 1.箭头函数中没有arguments；
+    // 2.箭头函数不能作为构造函数
+    // 3.箭头函数中没有this，看当前箭头函数定义时所在的作用域的this，跟箭头函数在哪执行没有任何的关系；
+
+//    var foo = (num,num1) =>{
+////        console.log(arguments)
+//        console.log(this)
+//        let i=0;
+//        return i;
+//    };
+//    foo()
+    var obj = {
+        fn:()=>{
+            console.log(this)
+        },
+        fn1:function () {
+            console.log(this)
+        }
+    }
+    obj.fn()//
+    obj.fn1()
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box"></div>
+<script>
+//    var oBox = document.getElementsByClassName("box1")[0];
+//    console.log(oBox);
+    //Uncaught TypeError: Cannot read property 'style' of undefined
+//    oBox.style.left = 10+"px";
+    // 数据类型  基本数据类型 ： 操作值
+    // 引用数据类型 ： 操作空间地址  函数数据类型和对象数据类型
+     // number    parseFloat  parseInt  Number  isNaN  toFixed
+    // isNaN 判断是否是有效数字
+    //toFixed   保留小数点位数的，返回值是一个字符串
+//    var a = 1;
+//    console.log(a)//1
+//    // 大家总结bug
+//    var a = b; // b is not defined
+//    console.log(a)//
+//
+//
+//    var obj = {};
+//    function fn1() {
+//
+//    }
+//    var ary =[0,2,3] // 存储了一个地址  [1,2,3]
+//    function fn(ary) {// 形参传进去一个地址
+//        console.log(this);// window
+//        ary[0] =1;
+//        // 在js中遇到{}、[]开辟了一个新的空间地址
+//        ary = [100];
+//        return ary;
+//    }
+//    //
+//    console.log(fn(ary));// [100]
+//    console.log(ary);//[1,2,3]
+    // 字符串
+    //在js中，被双引号或者单引号包起来的数值
+//    var a = 1;
+//    var a = "b";
+//    var c = "[12,34]" //typeof c  --> "string"
+    //toUpperCase   转大写
+    // toLowerCase
+    // charCodeAt
+    // charAt
+    // split : 把字符串按照指定的分隔符分为数组中的每一项
+    // replace: 字符串替换
+    // indexOf： 获去对应字符的第一次出现的索引
+    // lastIndexOf：获去对应字符的第一次出现的索引
+    // substr： 截取字符串 substr(n,m)// 从索引n开始截取m个字符
+
+    // substring：substring(n,m)从索引n开始截取到索引m,不包含m
+    // slice :slice(n,m)从索引n开始截取到索引m,不包含m
+    // match : 匹配字符
+
+    // 布尔值  true  false
+    //只有0 NaN  ""  null undefined 这五个值转布尔是FALSE
+    // 判断
+//    var  a;
+//    if(a==a){//
+//        //undefined == undefined // true
+//        console.log(1);//
+//    }
+    // !  取反
+    // 数据类型比较
+    // 对象== 对象 ： 比较地址
+    // 对象 == 布尔 ： 对象先转字符串，然后再转数字，布尔直接转数字
+    // 对象 == 字符串 ： 转数字
+    // 对象== 数字 ：
+    //布尔 == 字符串：
+    //字符串 == 数字：
+    // switch case  绝对比较
+//    var num =1;
+//    switch (num){
+//        case 1:
+//        case 2:
+//            console.log(1)
+//            break;
+//        case 2:
+//            console.log(2);
+//            break;
+//    }
+     // === 绝对比较
+    // 三元运算符
+//    var num =0;
+//    [] == [] ? num =1:num =0;
+
+//    var num1 = true;
+//    Boolean() : 转布尔值
+
+    // null  和 undefined
+    // null ： 空对象指针
+    //
+
+
+//    for(var i =0;i<7000000;i++){
+//        //
+//        console.log(i); // 7
+//    }
+//    console.log(i); // 7000000
+//    for(var i=1;i<10;i++){
+//        console.log(i);//
+//    }
+    // continue : 结束本轮循环
+    // break ： 结束整个循环
+//    for(var i=0;i<8;i++){
+//        if(i<3){
+//            continue;
+//            i++;
+//        }
+//        if(i>6){
+//            i+=2;
+//            break; // 遇到break 不再进行上面的i++
+//        }
+//    }
+//    console.log(i);
+//    var ary = [1,2,34,6]
+//    for(var i=0;i<ary.length;i++){
+//        var cur = ary[i];
+//    }
+//    var obj ={name:"zhufeng",age : 8};
+    //console.log(obj.length);// undefined
+
+    // for in  遍历对象的
+//    for(var key in obj){
+//        console.log(obj[key])
+//    }
+
+    //for of es6循环遍历的方法
+//    for(var val of ary){
+//        console.log(ary[val])
+//    }
+    // forEach map
+
+
+
+</script>
+</body>
+</html>
