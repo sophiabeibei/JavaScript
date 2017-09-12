@@ -95,11 +95,11 @@ CSS3(推荐书: 图解CSS3->大漠写的 http://www.w3cplus.com/)
             @keyframes设置运动的轨迹
             animation-name
             animation-duration
-            animation-timing-function
+            animation-timing-function 运动的方式
             animation-delay 延迟
             animation-iteration-count: infinite 无限次
             animation-fill-mode: forwards(运动完成后停留在最后一帧)
-            animation-fill-mode: backwards(在延迟等待时间内,元素始终处于当前动画的第一帧位置)   both(同时具备以上两个特点)
+            animation-fill-mode: backwards(在延迟等待时间内,元素始终处于当前动画的第一帧位置)
             animation-fill-mode: both(同时具备以上两个特点)
             animation-play-state: running;运动
             animation-play-state: paused;暂停
