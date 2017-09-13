@@ -37,8 +37,110 @@
             <div class="already"></div>
         </div>
     </section>
-</main>
 
+    <!-- phone-->
+    <!--section.phone>(div.title>img+span)+(div.listen>div.move+div.touch)+(div.detail>div.touch)+audio*2-->
+    <section class="phone">
+        <div class="title"><img src="img/zf_phoneLogo.png" alt="">
+            <span>00:00</span>
+        </div>
+        <div class="listen">
+            <div class="move"></div>
+            <div class="touch"></div>
+        </div>
+        <div class="detail">
+            <div class="touch"></div>
+        </div>
+        <audio src="audio/bell.mp3" id="bellAudio" loop></audio>
+        <!-- loop: 一直循环播放-->
+        <audio src="audio/say.mp3" id="sayAudio" preload="none"></audio>
+        <!-- preload="none": 刚开始进来的时候音频文件不加载,只有播放的时候,才加载-->
+    </section>
+
+    <!-- message-->
+    <!--section.message>(ul.wrapper>li>img.headImg+i.arrow)+(div.keyboard>span.text+a.submit[href="javascript:;"])-->
+    <section class="message">
+        <ul class="wrapper">
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                唉,毕业了,工作还遥遥无期,好愁啊!
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                怎么会?认识我的毕业生一个月都拿一万多的好工作呢!
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                是不是没学HTML5和移动端?
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                都学了啊,可我还是找不到工作?
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                那就是HTML5的核心基础JS编程学的不够扎实，只顾花哨的效果了。原生JavaScript功夫是王道啊!
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                还有就是现在的前端开发已经工程化了，像angular、react、node、webpack这些也要学，这些才是现在互联网开发的大势所趋！
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                原生JavaScript编程基础要精，像react之类的前端高级框架要熟，所以认识我的同学，工资普遍在12K以上！
+            </li>
+            <li class="student">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                啊？竟然有这么大差距呢！
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                啊?竟然有这么大差距呢!
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                这些东西我都不知道呢！真高兴认识了你！那我应该怎么办呢？
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                来珠峰培训学这些知识！
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                珠峰培训七年专注前端培训，全国闻名的HTML5培训学校。
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                详细的信息你看接下来的介绍吧。
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                好的！
+            </li>
+        </ul>
+        <div class="keyboard">
+            <span class="text">都学了啊,可我还是找不到好工作</span>
+            <a href="javascript:;" class="submit"></a>
+        </div>
+    </section>
+
+
+
+</main>
 
 <script src="js/zepto.min.js"></script>
 <script src="js/resume.js"></script>
