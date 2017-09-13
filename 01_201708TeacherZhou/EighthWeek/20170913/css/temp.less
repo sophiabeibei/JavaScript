@@ -1,0 +1,55 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+div{
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+
+
+@color:red;
+.box{
+  background: @color;
+}
+
+@h: 100;
+@p: 20;
+.box{
+  padding: unit(@p,px);
+  width: unit((@h) - (@p*2),px);
+  height: unit((@h) - (@p*2),px);
+}
+
+
+
+@h: 100;
+.box{
+  .progress{
+    @h: 200;
+    a{
+      height: unit(@h,px);     /*200*/
+    }
+  }
+}
+
+
+.box{
+  a{
+    &:hover{
+
+    }
+  }
+}
+.box{
+  width: 100px;
+  height: 100px;
+}
+.mark{
+  .box;/*直接.box就把函数执行了*/
+}
+
+
+

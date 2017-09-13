@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+.box {
+  background: red;
+}
+.box {
+  padding: 20px;
+  width: 60px;
+  height: 60px;
+}
+.box .progress a {
+  height: 200px;
+  /*200*/
+}
+.box {
+  width: 100px;
+  height: 100px;
+}
+.mark {
+  background: red;
+  padding: 20px;
+  width: 60px;
+  height: 60px;
+  width: 100px;
+  height: 100px;
+  /*直接.box就把函数执行了*/
+}
+.mark .progress a {
+  height: 200px;
+  /*200*/
+}

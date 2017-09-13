@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>resume简历-H5场景创意简历</title>
+    <link rel="stylesheet/less" href="css/resume.less">
+    <!-- 注意一定要加stylesheet/less      less   less不能忘记-->
+    <script src="js/less-2.5.3.min.js"></script>
+    <!-- less-2.5.3.min.js: 起到实时编译的作用-->
+
+    <!-- 处理rem-->
+    <script>
+        ~(function () {
+            window.addEventListener("resize",computed,false);
+            computed();
+            function computed() {
+                var deviceW = document.documentElement.clientWidth;
+                if (deviceW > 640) return;
+                document.documentElement.style.fontSize = deviceW / 640 * 100 + "px";
+            }
+        })();
+
+    </script>
+</head>
+<body>
+<main class="container">
+    <!-- loading-->
+    <!--section.loading>(div.title>h2+h3)+(div.progress>div.already)-->
+    <section class="loading">
+        <div class="title">
+            <h2>珠峰培训</h2>
+            <h3>H5场景创意交互型简历</h3>
+        </div>
+        <div class="progress">
+            <div class="already"></div>
+        </div>
+    </section>
+</main>
+
+
+<script src="js/zepto.min.js"></script>
+<script src="js/resume.js"></script>
+</body>
+</html>

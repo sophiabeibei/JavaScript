@@ -6,3 +6,194 @@ H5交互简历开发的全部视频(第7章第1节第2节)
 http://video.zhufengpeixun.cn/kecheng/detail_1076241 （王燕老师录制的）
 H5交互简历开发的全部视频
 配合"设计稿标注"文件夹素材去实验;
+
+
+-------------------------------------------------------------------------------------
+
+CSS预处理器
+    css是标记语言,不是编程语言,所以不具备编程语言的特点(编程语言的特点: 变量存储,判断和循环的逻辑操作,函数的封装继承和多态...),如果具备以上编程语言的特点,开发css的时候将会非常的方便
+
+    css预处理编译语言的宗旨就是把css变为编程语言来开发,提高开发效率,实现组件化的封装;
+
+    市面上常用的编程语言: 1.less; 2.sass; 3.stylus;....
+
+    之所以叫做预编译语言是因为: 我们使用上述语言编写完成的代码,浏览器不能识别,我们需要把代码编译成为正常能识别的css代码才可以,所以叫做预编译;
+
+less的编译
+    1.less编译方法一:
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>less编译</title>
+            <link rel="stylesheet/less" href="css/temp.less">
+            <script src="js/less-2.5.3.min.js"></script>
+        </head>
+        <body>
+        <div></div>
+        </body>
+        </html>
+
+        如上:
+        导入JS编译
+            1.首先导入我们需要的less文件,重点记住[rel="stylesheet/less"];
+            2.导入[less-2.5.3.min.js]它会自动去识别[rel="stylesheet/less"]中的文件,把less编译成正常的ss,然后再进行页面的渲染;
+
+            问题: 在开发的时候可以导入JS编译这样处理;但是项目上线的时候,我们不用这种方式(使用这种方式耗性能: 用户访问页面需要把less现编译成css才可以渲染,耽误页面渲染时间),项目上线我们引入的肯定是已经编译完成的css文件;
+
+    2.less编译方法二:
+        在线编译工具: Koala,......
+
+    3.less编译方法三:
+        基于NODE编译;
+            1.需要安装node;
+            2.在node全局环境中安装less;
+                安装less的方法:
+                1.win+R打开,输入cmd;
+                2.执行命令: npm install less -g     /   npm install --global less;(这俩都可以)
+                3.安装成功后,会在目录:
+                    C:\Users\iBei\AppData\Roaming\npm
+                4.文件夹中出现lessc.cmd文件,说明1.我们可以使用lessc这个命令了;2.命令名称是lessc;
+                    查看当前less版本号,执行命令: lessc -v
+            3.找到less所在的目录,在这个目录中编译less文件即可;
+                1.less文件的位置:
+                D:\Study\JavaScript\01_201708TeacherZhou\EighthWeek\20170913\css
+                2.在当前文件夹的地址栏输入"cmd"
+                3.把less文件编译成css文件;执行命令: lessc temp.less temp.min.css -x;(把temp.less文件编译成temp.css文件,并进行了min压缩)
+
+
+
+less的基础语法
+    1.变量
+        @color:red;
+        .box{
+            background: @color;
+        }
+
+        @h: 100;
+        .boc{
+            padding: unit(@p,px);
+            height: unit(@h - @p*2,px);
+        }
+
+
+    2.作用域和层级嵌套
+        @h: 100;
+        .box{
+            .progress{
+                @h: 200;
+                a{
+                    height: unit(@h,px);     /*200*/
+                }
+            }
+        }
+
+
+    3.&连字符
+        .box a:hover{
+            background: red;
+        }
+        .box{
+            a{
+                &:hover{
+
+                }
+            }
+        }
+
+    4.函数
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        .mark{
+            .box;/*直接.box就把函数执行了*/
+        }
+
+    5.继承
+        .mark:extend(.box){
+            background: red;
+        }
+        .box,
+        .mark{
+            width: 100px;
+            height: 100px;
+        }
+        .mark{
+            background: red;
+        }
+
+    6.传参
+        .transition(@property:all,@duration:1s,@timing-function:ease,@delay:0s,@count:1,@fill-mode:both){
+            -webkit-transition: @arguments;
+            -moz-transition: @arguments;
+            -ms-transition: @arguments;
+            -o-transition: @arguments;
+            transition: @arguments;
+        }
+        .box{
+            /*.transition(@duration: .5s,@delay: 1s);*/
+            .transition(all 1s linear 0s);
+        }
+
+    7.提供一些方法
+        1.unit方法;
+        2.darken和lighten方法;
+            .box{
+                a{
+                    @c: red;
+                    background: @c;
+                    &:hover{
+                        background: darken(@c,15%);/*在原有基础上变深15%*/
+                        background: lighten(@c,15%);/*在原有基础上变浅15%*/
+                    }
+                }
+            }
+
+
+    8.导入所依赖的文件
+        比如: 公共的方法库文件;reset,utils等文件...
+        @import "reset.min.css";
+        @import "public";/*在当前文件中导入public,编译的时候会把public的代码也编译*/
+        @import (reference) "public";/*在当前文件中导入public,编译的时候不会把public的代码也编译,只是导入*/
+
+
+ES6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+node安装babelrc:
+    创建.babelrc 文件 这是一个json格式的文件
+         内容 {"presets":[],"plugins":[]}
+
+         npm init -y 初始化配置文件 package.json
+
+         npm install --save-dev babel-preset-latest  按装最新的转码规则
+         npm install --save-dev babel-preset-react : 安装react转码规则
+
+        npm install --save-dev babel-preset-stage-2 //安装不同阶段语法提案的转码规则（共有4个阶段），选装一个
+
+         配置.babelrc  "latest","react", "stage-2"
+         安装babel命令工具
+         npm install --global babel-cli

@@ -1,0 +1,106 @@
+@import "reset";
+/*reset样式*/
+@import (reference) "common"; /*reference: 不需要编译,只是引用即可*/
+
+html {
+  font-size: 100px; /*640 design: 1rem = 100px*/
+}
+
+html, body {
+  .fullPage;
+}
+
+.container {
+  .fullPage;
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+/*--loading--*/
+.loading {
+  display: none;
+  .fullPage;
+  background: #000;
+  position: relative;
+
+  .title {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -2.2rem;
+    width: 100%;
+    height: 1.4rem;
+
+    h2, h3 {
+      text-align: center;
+      color: #fff;
+      letter-spacing: .04rem;
+    }
+    h2 {
+      margin-bottom: .2rem;
+      line-height: .75rem;
+      font-size: .5rem;
+    }
+    h3 {
+      line-height: .45rem;
+      font-size: .26rem;
+    }
+  }
+
+  .progress {
+    /*让当前元素处于正中间的位置;*/
+    .middleFn(4.6, .3);
+    margin-top: .85rem;
+    width: 4.6rem;
+    height: .3rem;
+    background: #fff;
+    border-radius: .06rem;
+
+    .already{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: -webkit-linear-gradient(45deg,#5cb85c 25%,#74c274 25%,#5cb85c 50%,#74c274 50%,#5cb85c 75%,#74c274 75%);
+      background: linear-gradient(45deg,#5cb85c 25%,#74c274 25%,#5cb85c 50%,#74c274 50%,#5cb85c 75%,#74c274 75%);
+      background-size: .3rem .3rem;
+      border-radius: .06rem;
+
+      .animation(@name: loadingMove,@timing-function: linear,@count: infinite);
+      .transition(@duration: 3s)
+    }
+  }
+}
+
+@-webkit-keyframes loadingMove {
+  0%{
+    background-position: 0 .3rem;
+  }
+  100%{
+    background-position: 0 0;
+  }
+}
+
+@keyframes loadingMove {
+  0%{
+    background-position: 0 .3rem;
+  }
+  100%{
+    background-position: 0 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
