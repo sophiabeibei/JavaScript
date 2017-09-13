@@ -191,7 +191,13 @@ let messageRender = (function () {
     }
 })();
 
+
+
+loadingRender.init();
+
 phoneRender.init();
+
+messageRender.init();
 
 
 
