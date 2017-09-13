@@ -1,0 +1,224 @@
+@import "reset";
+@import (reference) "common";
+
+html {
+  font-size: 100px; /*640 DESIGN：1REM=100PX*/
+}
+
+html, body {
+  .full-page;
+  position: relative;
+  z-index: -4;
+}
+
+.container {
+  .full-page;
+  position: relative;
+  z-index: -3;
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+/*--LOADING--*/
+.loading {
+  display: none;
+  .full-page;
+  background: #000;
+  position: relative;
+
+  .title {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -2.2rem;
+    width: 100%;
+    height: 1.4rem;
+
+    h2, h3 {
+      text-align: center;
+      color: #FFF;
+      letter-spacing: .04rem;
+    }
+
+    h2 {
+      margin-bottom: .2rem;
+      line-height: .75rem;
+      font-size: .5rem;
+    }
+
+    h3 {
+      line-height: .45rem;
+      font-size: .26rem;
+    }
+  }
+
+  .progress {
+    .middle(4.6, .3);
+    margin-top: .85rem;
+    width: 4.6rem;
+    height: .3rem;
+    background: #FFF;
+    border-radius: .06rem;
+
+    .already {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      border-radius: .06rem;
+
+      background: -webkit-linear-gradient(45deg, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%);
+      background: linear-gradient(45deg, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%);
+      background-size: .3rem .3rem;
+
+      .animation(@name: loadingMove,@timing-function: linear,@count: infinite,@duration: .5s);
+
+      .transition(@duration: .3s);
+    }
+  }
+}
+
+@-webkit-keyframes loadingMove {
+  0% {
+    background-position: 0 .3rem;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes loadingMove {
+  0% {
+    background-position: 0 .3rem;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/*--PHONE--*/
+.phone {
+  .full-page;
+  display: none;
+  position: relative;
+  z-index: -2;
+  background: url("../img/zf_phoneBg.jpg") no-repeat;
+  background-size: cover;
+
+  .title {
+    margin-top: .5rem;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 2.62rem;
+      height: 1.25rem;
+    }
+
+    span {
+      display: none;
+      margin-top: .1rem;
+      line-height: .3rem;
+      text-align: center;
+      color: #FFF;
+      font-size: .3rem;
+      letter-spacing: .05rem;
+    }
+  }
+
+  .listen {
+    position: absolute;
+    left: 50%;
+    margin-left: -2.6rem;
+    bottom: .3rem;
+    width: 5.2rem;
+    height: 3.6rem;
+    background: url("../img/zf_phoneListen.png") no-repeat;
+    background-size: 100% 100%;
+
+    .touch {
+      box-sizing: border-box;
+      position: absolute;
+      right: -.06rem;
+      bottom: .48rem;
+      z-index: 999;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    .move {
+      .touch;
+      border: .03rem solid #0F0;
+      border-radius: 50%;
+      z-index: -1;
+
+      .animation(@name: phoneMove,@timing-function: linear,@count: infinite);
+    }
+  }
+
+  .detail {
+    position: absolute;
+    bottom: .3rem;
+    left: 50%;
+    margin-left: -2.6rem;
+    width: 5.2rem;
+    height: 6.59rem;
+    background: url("../img/zf_phoneDetail.png") no-repeat;
+    background-size: 100% 100%;
+
+    -webkit-transform: translateY(6.89rem);
+    transform: translateY(6.89rem);
+    .transition(@duration: .3s);
+
+    .touch {
+      position: absolute;
+      bottom: .28rem;
+      left: 50%;
+      margin-left: -.8rem;
+      z-index: 999;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+}
+
+@-webkit-keyframes phoneMove {
+  0% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+@keyframes phoneMove {
+  0% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

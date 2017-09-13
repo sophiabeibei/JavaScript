@@ -1,0 +1,22 @@
+.full-page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.middle(@w,@h) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: unit(-(@h/2), rem);
+  margin-left: unit(-(@w/2), rem);
+}
+
+.animation(@name,@duration:1s,@timing-function:ease,@delay:0s,@count:1,@fill-mode:both) {
+  -webkit-animation: @arguments;
+  animation: @arguments;
+}
+
+.transition(@property:all,@duration:1s,@timing-function:linear,@delay:0s) {
+  -webkit-transition: @arguments;
+  transition: @arguments;
+}
