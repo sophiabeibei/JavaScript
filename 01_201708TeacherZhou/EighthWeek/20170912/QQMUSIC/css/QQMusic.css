@@ -1,6 +1,7 @@
 html{
     font-size: 100px;/*640设计稿: 1rem=100px*/
 }
+
 html,body,.container{
     height: 100%;
     overflow: hidden;
@@ -13,7 +14,7 @@ html,body,.container{
     max-width: 640px;
 }
 
-.container .backgroundImg,.container .backgroundImg{
+.container .backgroundImg,.container .background{
     position: absolute;
     left: 0;
     top: 0;
