@@ -8,13 +8,11 @@ html {
 
 html, body {
   .fullPage;
-  position: relative;
   z-index: -4;
 }
 
 .container {
   .fullPage;
-  position: relative;
   z-index: -3;
   margin: 0 auto;
   max-width: 640px;
@@ -99,7 +97,6 @@ html, body {
 .phone {
   .fullPage;
   display: none;
-  position: relative;
   z-index: -2;
   background: url("../img/zf_phoneBg.jpg") no-repeat;
   background-size: cover;
@@ -147,7 +144,7 @@ html, body {
       //background: rgba(255,134,156,.3);/*调试的时候用的背景色*/
     }
 
-    .move{
+    .move {
       .touch;
       border: .03rem solid #0f0;
       border-radius: 50%;
@@ -157,7 +154,7 @@ html, body {
     }
   }
 
-  .detail{
+  .detail {
     position: absolute;
     bottom: .3rem;
     left: 50%;
@@ -171,7 +168,7 @@ html, body {
     transform: translateY(6.89rem);
     .transition(@duration: .3s);
 
-    .touch{
+    .touch {
       position: absolute;
       bottom: .28rem;
       left: 50%;
@@ -206,9 +203,217 @@ html, body {
   }
 }
 
+/*--message--*/
+.message {
+  display: none;
+  .fullPage;
+  background: #eaeaea;
 
+  .keyboard {
+    position: absolute;
+    left: 0;
+    bottom: -.54rem;
+    width: 100%;
+    height: 5.16rem;
+    background: url("../img/zf_messageKeyboard.png") no-repeat;
+    background-size: 100% 100%;
 
+    .translate(@y:3.7rem);
+    .transition(@duration:.3s);
 
+    .text {
+      position: absolute;
+      top: .35rem;
+      left: .9rem;
+      width: 4.2rem;
+      height: .4rem;
+      line-height: .4rem;
+      font-size: .25rem;
+    }
+
+    .submit {
+      display: none;
+      position: absolute;
+      right: .1rem;
+      bottom: .6rem;
+      z-index: 999;
+      width: 1.47rem;
+      height: .74rem;
+      background: url("../img/zf_messageChat.png") no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+
+  .wrapper{
+    position: absolute;
+    top: .2rem;
+    left: 0;
+    width: 100%;
+    .transition(@duration: .3s);
+
+    li{
+      position: relative;
+      margin-bottom: .4rem;
+      padding: .25rem;
+      max-width: 3.6rem;
+      line-height: .4rem;
+      font-size: .26rem;
+      border-radius: .1rem;
+
+      .transition(@duration: .3s);
+      .translate(@y: .1rem);
+      .opacity(0);
+
+      img{
+        position: absolute;
+        top: 0;
+        width: .82rem;
+        height: .82rem;
+        border-radius: 50%;
+      }
+
+      i{
+        position: absolute;
+        top: .2rem;
+        width: .1rem;
+        height: .2rem;
+      }
+
+      &.student{
+        float: left;
+        margin-left: 1.25rem;
+        background: #fff;
+        border: .02rem solid #cacaca;
+
+        img{
+          left: -1rem;
+        }
+
+        i{
+          left: -.1rem;
+          background: url("../img/zf_messageArrow1.png") no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+
+      &.teacher{
+        float: right;
+        margin-right: 1.25rem;
+        background: #a2e45c;
+        border: .02rem solid #96b474;
+
+        img{
+          right: -1rem;
+        }
+
+        i{
+          right: -.1rem;
+          background: url("../img/zf_messageArrow2.png") no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+    }
+
+  //  能用css3搞定的绝对别用js解决;
+  //  能用原生解决的,绝对不用其它插件
+
+  }
+}
+
+/*--cube--*/
+.cube{
+  .fullPage;
+  display: none;
+  background: url("../img/zf_cubeBg.jpg") no-repeat;
+  background-size: cover;
+
+  .tip{
+    position: absolute;
+    bottom: .5rem;
+    left: 50%;
+    margin-left: -1.97rem;
+    width: 3.94rem;
+    height: .44rem;
+  }
+
+  ul{
+    .middleFn(5.1, 5.1);
+    width: 5.1rem;
+    height: 5.1rem;
+
+    li{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      img{
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  /*3D动画*/
+  /*CSS3的3D变形
+    1.给当前需要3D变形(UL)元素所在的舞台(cube)设置视距(perspective:1000-2000): 虚拟出人眼距离舞台的距离(不设置的话会出现一叶障目)
+    2.给当前需要3D变形元素的变形效果设置3D变形: transform-style: preserve-3d;
+    3.想变成啥就变成啥(在我们当前案例中,我们需要把六个页面拼成一个魔方)
+  */
+
+  perspective: 2000px;
+
+  ul{
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    //->设置初始的旋转角度: 让开始的时候就可以看出魔方的效果
+    -webkit-transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
+    transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
+
+    .transition(@duration: .3s);
+
+    li{
+      &:nth-child(1){
+        -webkit-transform: translateZ(2.55rem);
+        transform: translateZ(2.55rem);
+      }
+
+      &:nth-child(2){
+        -webkit-transform: translateZ(-2.55rem) rotateY(180deg);
+        transform: translateZ(-2.55rem) rotateY(180deg);
+
+      }
+
+      &:nth-child(3){
+        -webkit-transform: translateX(-2.55rem) rotateY(90deg);
+        transform: translateX(-2.55rem) rotateY(90deg);
+
+      }
+
+      &:nth-child(4){
+        -webkit-transform: translateX(-2.55rem) rotateY(-90deg);
+        transform: translateX(-2.55rem) rotateY(-90deg);
+
+      }
+
+      &:nth-child(5){
+        -webkit-transform: translateY(-2.55rem) rotateX(90deg);
+        transform: translateY(-2.55rem) rotateX(90deg);
+
+      }
+
+      &:nth-child(6){
+        -webkit-transform: translateY(-2.55rem) rotateX(-90deg);
+        transform: translateY(-2.55rem) rotateX(-90deg);
+
+      }
+    }
+  }
+
+}
 
 
 

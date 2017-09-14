@@ -39,7 +39,7 @@ let loadingRender = (function () {
         'img/zf_style3.jpg',
         'img/zf_styleTip1.png',
         'img/zf_styleTip2.png',
-        'img/zf_teacher100.png',/*没有这张图片,无法加载完成,loading不会消失,已经做了相关的处理;*/
+        'img/zf_teacher100.png', /*没有这张图片,无法加载完成,loading不会消失,已经做了相关的处理;*/
         'img/zf_teacher2.png',
         'img/zf_teacher3.jpg',
         'img/zf_teacher4.png',
@@ -68,7 +68,7 @@ let loadingRender = (function () {
                 if (n >= m) {
                     setTimeout(() => {
                         //->加载完成,loading消失,phone操作;
-                        if(isEnter) return;
+                        if (isEnter) return;
                         isEnter = true;
                         clearTimeout(timer);
                         $loading.remove();
@@ -82,19 +82,19 @@ let loadingRender = (function () {
 
     return {
         init: function () {
-            $loading.css("display","block");
+            $loading.css("display", "block");
             loadImg();
             /*无法加载完成,loading不会消失的相关处理如下*/
             //->给一个限定的时间(超过10s,如果有个别图片无法加载(已经加载一半以上了),我们也直接进入到下一个操作了)
             timer = setTimeout(() => {
                 if (n < m && n >= m / 2) {
-                    if(isEnter) return;
+                    if (isEnter) return;
                     isEnter = true;
                     $already.css("width", "100%");
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         $loading.remove();
                         phoneRender.init();
-                    },2000);
+                    }, 2000);
                 }
             }, 10000);//10s
         }
@@ -104,15 +104,15 @@ let loadingRender = (function () {
 /*--phone--*/
 //以后phone做什么事情就写到这里来;
 let phoneRender = (function () {
-    let $phone=$(".phone"),
-        $listen=$phone.find(".listen"),
-        $listenTouch=$listen.find(".touch"),
-        $detail=$phone.find(".detail"),
-        $detailTouch=$detail.find(".touch"),
-        $time=$phone.find("span");
+    let $phone = $(".phone"),
+        $listen = $phone.find(".listen"),
+        $listenTouch = $listen.find(".touch"),
+        $detail = $phone.find(".detail"),
+        $detailTouch = $detail.find(".touch"),
+        $time = $phone.find("span");
 
-    let bellAudio=$("#bellAudio")[0],
-        sayAudio=$("#sayAudio")[0];
+    let bellAudio = $("#bellAudio")[0],
+        sayAudio = $("#sayAudio")[0];
 
     function listenTouch() {
         $listenTouch.singleTap(function () {//singleTap: 单击
@@ -120,13 +120,13 @@ let phoneRender = (function () {
             $(bellAudio).remove();
 
             $listen.remove();
-            $detail.css("transform","translateY(0)");
+            $detail.css("transform", "translateY(0)");
 
             //->让面板出来之后,
-            $detail.on("webkitTransitionEnd",function () {
+            $detail.on("webkitTransitionEnd", function () {
                 //->transition动画结束的时候(JS中控制css3,只写一套加前缀的即可);
                 //->让time显示
-                $time.css("display","block");
+                $time.css("display", "block");
 
                 //->播放say音乐;
                 sayAudio.play();
@@ -138,21 +138,21 @@ let phoneRender = (function () {
     let watchTimer = null;
 
     function watchTime() {
-        watchTimer = setInterval(()=>{
+        watchTimer = setInterval(() => {
             //->this: 上级作用域中的this是谁,箭头函数中的this就是谁;
             var curTime = sayAudio.currentTime,
                 durTime = sayAudio.duration;
-            if(curTime>=durTime){
+            if (curTime >= durTime) {
                 //->已经播放的时间大于等于总时间,说明播放完成,播放完成之后执行以下
                 message();
                 return;
             }
-            var minute=Math.floor(curTime/60),
-                second=Math.ceil(curTime-minute*60);
-            minute<10?minute="0"+minute:null;
-            second<10?second="0"+second:null;
-            $time.html(minute+":"+second);
-        },1000);
+            var minute = Math.floor(curTime / 60),
+                second = Math.ceil(curTime - minute * 60);
+            minute < 10 ? minute = "0" + minute : null;
+            second < 10 ? second = "0" + second : null;
+            $time.html(minute + ":" + second);
+        }, 1000);
     }
 
     function message() {
@@ -165,7 +165,7 @@ let phoneRender = (function () {
 
     return {
         init: function () {
-            $phone.css("display","block");
+            $phone.css("display", "block");
 
             //->paly bell
             bellAudio.play();
@@ -183,21 +183,125 @@ let phoneRender = (function () {
 
 /*--message--*/
 let messageRender = (function () {
+    let $message = $(".message"),
+        musicAudio = $("#musicAudio")[0],
+        $wrapper = $message.find(".wrapper"),
+        $messageList = $wrapper.find("li"),
+        $keyboard = $message.find(".keyboard"),
+        $text = $keyboard.find(".text"),
+        $submit = $keyboard.find(".submit");
+
+    let autoTimer = null,
+        step = -1,
+        initTranslateY = 0;
+
+    function messageMove() {
+        let $cur = $messageList.eq(++step);
+        //->显示每条消息
+        $cur.css({
+            transform: "translateY(0)",
+            opacity: 1
+        });
+        //->当第3条消息完成(transition动画完成了),展示键盘;此时停止自动出消息;
+        if (step === 2) {
+            clearInterval(autoTimer);
+            //->当我们需要操作两个样式执行过渡动画,事件被执行两次(webkitTransitionEnd: 有几个样式需要执行过渡动画,事件就会被触发执行几次)
+
+            //->保证只执行一次;
+            let fn = function () {
+                $(this).off("webkitTransitionEnd", fn);//(this): cur
+                keyboard();
+            };
+            $cur.on("webkitTransitionEnd", fn);
+            /*()=>{
+             //->this: 上级作用域中的this是谁,这里的this就是谁;
+             //->箭头函数没有自己的主体,继承父级;
+             }*/
+        }
+
+        //->从第五条展示开始,消息列表要整体上移了(当前这条消息高度的基础上+10是上移的距离);
+        if (step >= 4) {
+            initTranslateY -= $cur[0].offsetHeight + 10;
+            $wrapper.css("transform", "translateY(" + initTranslateY + "px)");
+        }
+
+        ///->结束: 结束音频,干掉当前页,进入下一个页面
+        if (step >= $messageList.length - 1) {
+            clearInterval(autoTimer);
+            musicAudio.pause();
+            $(musicAudio).remove();
+            setTimeout(() => {
+                $message.remove();
+                cubeRender.init();
+            }, 2000)
+        }
+    }
+
+    function keyboard() {
+        //->让键盘显示
+        $keyboard.css("transform", "translateY(0)");
+
+        //->显示文字: 文字打印机
+        //->JQ中的"one"方法也是绑定事件,只不是只绑定一次而已,触发一次后自动把绑定的方法移除;
+        $keyboard.one("webkitTransitionEnd", () => {
+            let str = "都学了啊,可我还是找不到好工作!",
+                textTimer = null,
+                n = -1;
+            textTimer = setInterval(() => {
+                if (n >= str.length - 1) {
+                    clearInterval(textTimer);
+                    //->不仅如此,当文字打印时显示提交按钮
+                    $submit.css("display", "block");
+                    return;
+                }
+                let textVal = $text.html();
+                textVal += str[++n];
+                $text.html(textVal);
+            }, 100);
+        });
+    }
+
+    //->给"发送"绑定事件
+    function submitEvent() {
+        $submit.singleTap(function () {
+            $text.html("");
+            $keyboard.css("transform", "translateY(3.7rem)");
+
+            messageMove();
+            autoTimer = setInterval(messageMove, 1500);
+        });
+    }
+
 
     return {
         init: function () {
+            $message.css("display", "block");
+            musicAudio.play();
+            autoTimer = setInterval(messageMove, 1500);
+            submitEvent();
+        }
+    }
+})();
 
+/*-- cube--*/
+let cubeRender = (function () {
+    let $cube = $(".cube");
+
+    return {
+        init: function () {
+            $cube.css("display", "block");
         }
     }
 })();
 
 
+// loadingRender.init();
 
-loadingRender.init();
-
-phoneRender.init();
+// phoneRender.init();
 
 messageRender.init();
+
+cubeRender.init();
 
 
 
