@@ -18,7 +18,7 @@ var musicRender = (function () {
      */
 
     var $plan = $.Callbacks(),
-        autoTimer = none,
+        autoTimer = null,
         step = 0,
         curTop = 0;
 
@@ -71,6 +71,10 @@ var musicRender = (function () {
             // musicAudio.volume = 0.2;//->设置音量
             $musicBtn.css("display", "block").addClass("move");
             // console.log(musicAudio.duration);//->总时长
+
+            //->计算播放量
+            computedAlready();
+            autoTimer = setInterval(computedAlready,1000);
         }, false)
     });
 
@@ -81,11 +85,12 @@ var musicRender = (function () {
             if (musicAudio.paused) {//->musicAudio.paused: 说明是暂停的
                 musicAudio.play();
                 $musicBtn.addClass("move");
+                autoTimer = setInterval(computedAlready, 1000);
                 return;
             }
             musicAudio.pause();
             $musicBtn.removeClass("move");
-
+            clearInterval(autoTimer);
         });
     });
 
@@ -96,13 +101,13 @@ var musicRender = (function () {
             durTime = musicAudio.duration;
         if(curTime>=durTime){
             clearInterval(autoTimer);
-            $duration.html(formatTime(duration));
-            $current.html(formatTime(curTime));
+            $duration.html(formatTime(durTime));
+            $current.html(formatTime(durTime));
             $already.css("width", "100%");
             $musicBtn.removeClass("move");
             return;
         }
-        $duration.html(formatTime(duration));
+        $duration.html(formatTime(durTime));
         $current.html(formatTime(curTime));
         $already.css("width", curTime / durTime * 100 + "%");
 
@@ -124,7 +129,7 @@ var musicRender = (function () {
         }
     }
 
-    //->格式化事件
+    //->格式化时间
     function formatTime(time) {//->time: 秒
         var minute = Math.floor(time / 60),
             second = Math.ceil(time - minute * 60);
@@ -162,44 +167,8 @@ var musicRender = (function () {
                     $plan.fire(lyric);
                 }
             });
-            // formatTime();
         }
     }
 })();
 musicRender.init();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
