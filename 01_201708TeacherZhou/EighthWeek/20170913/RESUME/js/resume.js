@@ -1,3 +1,9 @@
+//->如果一个页面中需要滑动出阿里,我们需要阻止页面默认滑动的行为
+//->例如:
+$(document).on("touchstart touchmove touchend", function (e) {
+    e.preventDefault();
+}, false);
+
 let loadingRender = (function () {
 
     //->需要预先加载的所有图片;
@@ -39,7 +45,8 @@ let loadingRender = (function () {
         'img/zf_style3.jpg',
         'img/zf_styleTip1.png',
         'img/zf_styleTip2.png',
-        'img/zf_teacher100.png', /*没有这张图片,无法加载完成,loading不会消失,已经做了相关的处理;*/
+        //'img/zf_teacher100.png', /*没有这张图片,无法加载完成,loading不会消失,已经做了相关的处理;*/
+        'img/zf_teacher1.png',
         'img/zf_teacher2.png',
         'img/zf_teacher3.jpg',
         'img/zf_teacher4.png',
@@ -285,23 +292,92 @@ let messageRender = (function () {
 
 /*-- cube--*/
 let cubeRender = (function () {
-    let $cube = $(".cube");
+    let $cube = $(".cube"),
+        $box = $cube.children("ul");
+
+    //->起始X轴或者Y轴的旋转角度,手指松开的时候,是基于这个角度继续旋转的
+    $box.attr({
+        rotateX: -30,
+        rotateY: 45
+    });
+
+    function start(e) {
+        let point = e.changedTouches[0];
+        $box.attr({//->attr设置的自定义属性值都是字符串
+            strX: point.pageX,
+            strY: point.pageY,
+            isMove: false,
+            changeX: 0,
+            changeY: 0
+        });
+    }
+
+    function move(e) {
+        let point = e.changedTouches[0];
+        let changeX = point.pageX - $box.attr("strX"),
+            changeY = point.pageY - $box.attr("strY");
+        if (Math.abs(changeX) > 10 || Math.abs(changeY) > 10) {
+            let rotateX = parseFloat($box.attr("rotateX")),
+                rotateY = parseFloat($box.attr("rotateY"));
+            //->changeY对应的是rotateX   changeX对应的是rotateY
+            rotateX = rotateX - changeY / 3;
+            rotateY = rotateY + changeX / 3;
+            $box.css(`transform`, `scale(0.6) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+            /*.one("webkitTransitionEnd", function () {
+             $box.attr({
+             rotateX: rotateX,
+             rotateY: rotateY
+             });
+             });*/
+            $box.attr({
+                isMove: true,
+                rotateX: rotateX,
+                rotateY: rotateY
+            });
+        }
+    }
+
+    function end(e) {
+        let isMove = $box.attr("isMove");
+        if (isMove !== "true") return;
+        let rotateX = parseFloat($box.attr("rotateX")),
+            rotateY = parseFloat($box.attr("rotateY")),
+            changeX = parseFloat($box.attr("changeX")),
+            changeY = parseFloat($box.attr("changeY"));
+        //->changeY对应的是rotateX   changeX对应的是rotateY
+        rotateX = rotateX - changeY / 3;
+        rotateY = rotateY + changeX / 3;
+        $box.css(`transform`, `scale(0.6) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+        $box.attr({
+            rotateX: rotateX,
+            rotateY: rotateY
+        });
+    }
+
 
     return {
         init: function () {
-            $cube.css("display", "block");
+            //->给cube的三个事件绑定三个方法
+            $cube.css("display", "block")
+                .on("touchstart", start)
+                .on("touchmove", move)
+                .on("touchend", end);
+
+            $box.find("li").tap(function () {
+                let index = $(this).index();
+            })
         }
     }
 })();
 
 
+
+
+
+
 // loadingRender.init();
-
+loadingRender.init();
 // phoneRender.init();
-
-messageRender.init();
-
-cubeRender.init();
-
-
+// messageRender.init();
+// cubeRender.init();
 
