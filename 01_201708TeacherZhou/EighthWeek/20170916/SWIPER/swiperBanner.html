@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>swiper的应用案例: banner轮播图</title>
+
+    <!--import css-->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/swiperBanner.css">
+
+    <!--计算rem的处理-->
+    <script>
+        ~(function () {
+            let computed = ()=>{
+                let deviceW=document.documentElement.clientWidth;
+                if(deviceW>640) return;
+                document.documentElement.style.fontSize = deviceW/640*100+"px";
+            };
+            computed();
+            window.addEventListener("resize",computed,false);
+        })();
+    </script>
+</head>
+<body>
+<main class="container">
+<!-- 结构上的说明
+        1.实现滑动区域的最外层一定是"swiper-container",名字不能改;
+        2.里层包含好几个部分:
+            1.-->
+    <section class="swiper-container banner">
+        <!--把需要切换的内容放在"swiper-wrapper"-->
+        <div class="swiper-wrapper">
+            <!--每一个切换的内容都是一个"swiper-slide"(具体展示内容自行处理)-->
+            <div class="swiper-slide">
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/3.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- 分页器pagination-->
+        <!--分页器有三种: 1.焦点;2.百分比;3.进度条,需要分页器的时候,就要加上这个结构-->
+        <div class="swiper-pagination"></div>
+
+        <!--导航按钮: 其实就是左右切换按钮-->
+        <!--<div class="swiper-button-prev"></div>-->
+        <!--<div class="swiper-button-next"></div>-->
+    </section>
+</main>
+
+<!-- import JS-->
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper-3.4.2.min.js"></script>
+<script src="js/swiperBanner.js"></script>
+</body>
+</html>
