@@ -1,0 +1,358 @@
+<!DOCTYPE html><html><head><title>学习笔记</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h3 id="学习笔记">学习笔记</h3>
+
+
+
+<h4 id="es6">ES6</h4>
+
+<blockquote>
+  <p>ECMAScript 6.0（以下简称ES6）是JavaScript语言的下一代标准，已经在2015年6月正式发布了。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+  
+  <ul><li>在学习ES6之前需要熟练掌握ES3/ES5</li>
+  <li>ES6在目前的很多环境中都不支持，我们需要使用Babel(JS编译器)将ES6编译为ES5，这样就可以在目前的环境中执行了’</li>
+  <li>ES6中提供了很多新的语法，掌握一些常用的(20%左右)即可，剩下的看具体的工作需求以及个人的爱好了</li>
+  </ul>
+</blockquote>
+
+
+
+<h5 id="1局部变量let和常量const">1、局部变量let和常量const</h5>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs javascript"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">//let定义的变量不会污染window属性上的值</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-keyword">var</span> a=<span class="hljs-number">12</span>; <span class="hljs-built_in">window</span>.a-&gt;<span class="hljs-number">12</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-keyword">let</span> b=<span class="hljs-number">13</span>; <span class="hljs-built_in">window</span>.b-&gt;<span class="hljs-literal">undefined</span> 
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span><span class="hljs-comment">//-----------------------------------------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span><span class="hljs-comment">//let定义的变量不能重复被定义</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span><span class="hljs-keyword">let</span> a=<span class="hljs-number">12</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span><span class="hljs-keyword">let</span> a=<span class="hljs-number">13</span>; <span class="hljs-comment">//-&gt;报错</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span><span class="hljs-comment">//------------------------------------------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span><span class="hljs-comment">//-&gt;LET定义的变量只能在当前的块级作用域中起到作用</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>    <span class="hljs-built_in">console</span>.log(i);
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span><span class="hljs-built_in">console</span>.log(i);<span class="hljs-comment">//-&gt;Uncaught ReferenceError:i is not defined</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span><span class="hljs-comment">//-----------------------------------------------------  </span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span><span class="hljs-keyword">let</span> oBox = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'box'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>    boxList = oBox.getElementsByTagName(<span class="hljs-string">'li'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span>    boxContainers = oBox.getElementsByTagName(<span class="hljs-string">'div'</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span><span class="hljs-comment">/*
+</span></div><div class="hljs-line"><span class="hljs-comment line-number">22.</span>for (var i = 0; i &lt; boxList.length; i++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span>    boxList[i].onclick = function () {
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span>        for (var j = 0; j &lt; boxList.length; j++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>            boxList[j].className = boxContainers[j].className = '';
+</div><div class="hljs-line"><span class="hljs-comment line-number">26.</span>        }
+</div><div class="hljs-line"><span class="hljs-comment line-number">27.</span>        boxList[i].className = boxContainers[i].className = 'cur';
+</div><div class="hljs-line"><span class="hljs-comment line-number">28.</span>    }
+</div><div class="hljs-line"><span class="hljs-comment line-number">29.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">30.</span>//-&gt;Uncaught TypeError: Cannot set property 'className' of undefined 说明这种方式不可以
+</div><div class="hljs-line"><span class="hljs-comment line-number">31.</span>*/
+</div><div class="hljs-line"><span class="hljs-comment line-number">32.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">33.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">34.</span><span class="hljs-comment">/*
+</span></div><div class="hljs-line"><span class="hljs-comment line-number">35.</span>//-&gt;解决办法套一层作用域
+</div><div class="hljs-line"><span class="hljs-comment line-number">36.</span>for (var i = 0; i &lt; boxList.length; i++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">37.</span>    boxList[i].onclick =(function (i) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">38.</span>        return function () {
+</div><div class="hljs-line"><span class="hljs-comment line-number">39.</span>            for (var j = 0; j &lt; boxList.length; j++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">40.</span>                boxList[j].className = boxContainers[j].className = '';
+</div><div class="hljs-line"><span class="hljs-comment line-number">41.</span>            }
+</div><div class="hljs-line"><span class="hljs-comment line-number">42.</span>            boxList[i].className = boxContainers[i].className = 'cur';
+</div><div class="hljs-line"><span class="hljs-comment line-number">43.</span>        }
+</div><div class="hljs-line"><span class="hljs-comment line-number">44.</span>    })(i);
+</div><div class="hljs-line"><span class="hljs-comment line-number">45.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">46.</span>*/
+</div><div class="hljs-line"><span class="hljs-comment line-number">47.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">48.</span><span class="hljs-comment">//-&gt;使用LET定义变量，自然就把这个问题解决了</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">49.</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; boxList.length; i++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">50.</span>    boxList[i].onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">51.</span>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; boxList.length; j++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">52.</span>            boxList[j].className = boxContainers[j].className = <span class="hljs-string">''</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">53.</span>        }
+</div><div class="hljs-line"><span class="hljs-comment line-number">54.</span>        boxList[i].className = boxContainers[i].className = <span class="hljs-string">'cur'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">55.</span>    }
+</div><div class="hljs-line"><span class="hljs-comment line-number">56.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">57.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">58.</span><span class="hljs-comment">//-----------------------------------------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">59.</span><span class="hljs-keyword">let</span> a = <span class="hljs-number">12</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">60.</span>a = <span class="hljs-number">13</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">61.</span><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">//-&gt;13</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">62.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">63.</span><span class="hljs-keyword">const</span> b = <span class="hljs-number">12</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">64.</span>b = <span class="hljs-number">13</span>;<span class="hljs-comment">//-&gt;常量的值不能被修改，而且起名也有默认的规范：字母大写中间用_隔开</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">65.</span><span class="hljs-built_in">console</span>.log(b);
+</div></code></pre>
+
+
+
+<h5 id="2解构赋值">2、解构赋值</h5>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs javascript"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-keyword">var</span> ary = [<span class="hljs-string">'鼠'</span>, <span class="hljs-string">'牛'</span>, <span class="hljs-string">'虎'</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-keyword">var</span> [a]=ary;
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-keyword">var</span> [,b]=ary;
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span><span class="hljs-keyword">var</span> [c,d,e,f]=ary;
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span><span class="hljs-comment">//-&gt;解析后的结果</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span><span class="hljs-keyword">var</span> ary = [<span class="hljs-string">'鼠'</span>, <span class="hljs-string">'牛'</span>, <span class="hljs-string">'虎'</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span><span class="hljs-keyword">var</span> a = ary[<span class="hljs-number">0</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span><span class="hljs-keyword">var</span> b = ary[<span class="hljs-number">1</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span><span class="hljs-keyword">var</span> c = ary[<span class="hljs-number">0</span>],
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>    d = ary[<span class="hljs-number">1</span>],
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>    e = ary[<span class="hljs-number">2</span>],
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>    f = ary[<span class="hljs-number">3</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span><span class="hljs-comment">//-----------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span><span class="hljs-keyword">var</span> ary = [<span class="hljs-string">'鼠'</span>, [<span class="hljs-string">'牛'</span>, <span class="hljs-string">'虎'</span>]];
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span><span class="hljs-keyword">var</span> [a,[b,c]]=ary;
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span><span class="hljs-built_in">console</span>.log(b);<span class="hljs-comment">//-&gt;牛</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span><span class="hljs-comment">//----------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span><span class="hljs-keyword">var</span> obj = {
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span>    <span class="hljs-attr">a</span>: <span class="hljs-number">12</span>,
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span>    <span class="hljs-attr">b</span>: [<span class="hljs-string">'鼠'</span>, [<span class="hljs-string">'虎'</span>, <span class="hljs-string">'牛'</span>]],
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span>    c(){}
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>};
+</div><div class="hljs-line"><span class="hljs-comment line-number">26.</span><span class="hljs-keyword">var</span> {a, b, c}=obj;
+</div><div class="hljs-line"><span class="hljs-comment line-number">27.</span><span class="hljs-built_in">console</span>.log(c);
+</div><div class="hljs-line"><span class="hljs-comment line-number">28.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">29.</span><span class="hljs-keyword">var</span> [,[,niu]]=b;
+</div><div class="hljs-line"><span class="hljs-comment line-number">30.</span><span class="hljs-built_in">console</span>.log(niu);
+</div><div class="hljs-line"><span class="hljs-comment line-number">31.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">32.</span><span class="hljs-keyword">var</span> {a,b,fn}=obj;
+</div><div class="hljs-line"><span class="hljs-comment line-number">33.</span><span class="hljs-built_in">console</span>.log(fn);<span class="hljs-comment">//-&gt;undefined 但是可以按照如下的修改</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">34.</span><span class="hljs-keyword">var</span> {a,b,<span class="hljs-attr">c</span>:fn}=obj;
+</div><div class="hljs-line"><span class="hljs-comment line-number">35.</span><span class="hljs-built_in">console</span>.log(fn);<span class="hljs-comment">//-&gt;这样就有值了</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">36.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">37.</span><span class="hljs-keyword">var</span> {a,<span class="hljs-attr">b</span>:[,[,x]]}=obj;
+</div><div class="hljs-line"><span class="hljs-comment line-number">38.</span><span class="hljs-built_in">console</span>.log(x);<span class="hljs-comment">//-&gt;牛 这种情况属于解构赋值嵌套</span>
+</div></code></pre>
+
+
+
+<h5 id="3拓展运算符">3、拓展运算符</h5>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs lsl"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>var arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>var [a,...<span class="hljs-type">key</span>]=arr;
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-comment">/*
+</span></div><div class="hljs-line"><span class="hljs-comment line-number">4.</span> var arr = [1, 2, 3, 4];
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span> var a = arr[0],
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>     key = arr.slice(1);
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>*/
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span><span class="hljs-comment">//----------------------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>var fn = (parm1, ...keys)=&gt; {
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>    console.log(keys);
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>};
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>fn(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span><span class="hljs-comment">/*
+</span></div><div class="hljs-line"><span class="hljs-comment line-number">15.</span> var fn = function fn(parm1) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>     for (var _len = arguments.length, keys = Array(_len &gt; 1 ? _len - 1 : 0), _key = 1; _key &lt; _len; _key++) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>         keys[_key - 1] = arguments[_key];
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>     }
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>     console.log(keys);
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span> };
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span> fn(1, 2, 3, 4, 5, 6);
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span> */
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span><span class="hljs-comment">//-----------------------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>var arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">22</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">26.</span>var newArr = [...arr2, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">27.</span>console.log(Math.max(...newArr));
+</div><div class="hljs-line"><span class="hljs-comment line-number">28.</span><span class="hljs-comment">/*
+</span></div><div class="hljs-line"><span class="hljs-comment line-number">29.</span> var arr2 = [1, 22, 3, 4];
+</div><div class="hljs-line"><span class="hljs-comment line-number">30.</span> var newArr = [].concat(arr2, [100, 0]);
+</div><div class="hljs-line"><span class="hljs-comment line-number">31.</span> console.log(Math.max.apply(Math, _toConsumableArray(newArr)));
+</div><div class="hljs-line"><span class="hljs-comment line-number">32.</span>*/
+</div></code></pre>
+
+
+
+<h5 id="4箭头函数">4、箭头函数</h5>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs javascript"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-keyword">var</span> fn=<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>{}
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-keyword">var</span> fn=<span class="hljs-function"><span class="hljs-params">a</span>=&gt;</span>a;
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-keyword">var</span> fn=<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>a+b;
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span><span class="hljs-keyword">var</span> fn=<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>    <span class="hljs-keyword">return</span> a*<span class="hljs-number">100</span>+b*<span class="hljs-number">100</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span><span class="hljs-comment">//-&gt;箭头函数没有上下文(context)，函数中的this继承父级的this</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span><span class="hljs-keyword">var</span> obj={
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>   <span class="hljs-attr">name</span>:<span class="hljs-string">'zhufeng'</span>,
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>   <span class="hljs-attr">fn</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>      <span class="hljs-keyword">var</span> f=<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>          <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>      }
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>      f();
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>   }
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>obj.fn(); <span class="hljs-comment">//-&gt; obj,f中的this继承了fn中的this</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span><span class="hljs-comment">//-&gt;也可以直接的赋值给对象</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span><span class="hljs-keyword">var</span> fn = <span class="hljs-function">(<span class="hljs-params">a, b</span>)=&gt;</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span>    <span class="hljs-built_in">console</span>.log(a + b);
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span>};
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span><span class="hljs-keyword">var</span> obj = {<span class="hljs-attr">name</span>: <span class="hljs-string">'珠峰'</span>, fn};
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>obj.fn(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">26.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">27.</span><span class="hljs-comment">//------------------------------------------------</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">28.</span><span class="hljs-comment">//-&gt;参数默认值</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">29.</span><span class="hljs-keyword">var</span> fn = <span class="hljs-function">(<span class="hljs-params">a, b</span>)=&gt;</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">30.</span>    a = a || <span class="hljs-number">0</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">31.</span>    b = b || <span class="hljs-number">0</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">32.</span>    <span class="hljs-built_in">console</span>.log(a + b);
+</div><div class="hljs-line"><span class="hljs-comment line-number">33.</span>};
+</div><div class="hljs-line"><span class="hljs-comment line-number">34.</span>fn(<span class="hljs-number">1</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">35.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">36.</span><span class="hljs-keyword">var</span> fn2 = <span class="hljs-function">(<span class="hljs-params">a = <span class="hljs-number">0</span>, b = <span class="hljs-number">0</span></span>)=&gt;</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">37.</span>    <span class="hljs-built_in">console</span>.log(a + b);
+</div><div class="hljs-line"><span class="hljs-comment line-number">38.</span>};
+</div><div class="hljs-line"><span class="hljs-comment line-number">39.</span>fn2();
+</div></code></pre>
+
+
+
+<h5 id="5类和继承">5、类和继承</h5>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs javascript"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>    <span class="hljs-keyword">constructor</span>(name, age) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>        <span class="hljs-keyword">this</span>.name = name;
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>        <span class="hljs-keyword">this</span>.age = age;
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>    }
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>    say() {}
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>    fn() {}
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>    <span class="hljs-keyword">static</span> eat() {}
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span><span class="hljs-built_in">console</span>.dir(Person);<span class="hljs-comment">//-&gt; 其中name/age是当前类实例的私有属性；say/fn写在了Person.prototype上；eat写在了Person上；</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ManPerson</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>    <span class="hljs-keyword">constructor</span>(name, age) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>        <span class="hljs-keyword">super</span>(name, age);<span class="hljs-comment">//-&gt;supper就是继承的类,这里相当于Person.prototype.constructor.call(this, name,age) 或者 Person.call(this,name,age);</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>        <span class="hljs-keyword">this</span>.sex = <span class="hljs-string">'男'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>    }
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>    moneyFn() {
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'男人要赚钱养家!'</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>    }
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span><span class="hljs-built_in">console</span>.dir(ManPerson);
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span><span class="hljs-comment">//-&gt;ManPerson 继承了 Person </span>
+</div></code></pre>
+
+
+
+<h5 id="6模板字符串">6、模板字符串</h5>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs javascript"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-keyword">var</span> name = <span class="hljs-string">'zhufeng'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-keyword">var</span> age = <span class="hljs-number">8</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-keyword">var</span> tempStr = <span class="hljs-string">`<span class="hljs-subst">${name}</span> is <span class="hljs-subst">${age}</span> years old.`</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span><span class="hljs-built_in">console</span>.log(tempStr);
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span><span class="hljs-comment">//-&gt;编译后</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span><span class="hljs-keyword">var</span> name = <span class="hljs-string">'zhufeng'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span><span class="hljs-keyword">var</span> age = <span class="hljs-number">8</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span><span class="hljs-keyword">var</span> tempStr = name + <span class="hljs-string">' is '</span> + age + <span class="hljs-string">' years old.'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span><span class="hljs-built_in">console</span>.log(tempStr);
+</div></code></pre>
+
+
+
+<h4 id="babel">Babel</h4>
+
+<blockquote>
+  <p>Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行</p>
+</blockquote>
+
+
+
+<h5 id="1安装">1、安装</h5>
+
+<blockquote>
+  <p>npm install babel-cli -g     安装到全局(可以通过命令行的方式执行babel)</p>
+  
+  <p>npm install babel-cli –save-dev   安装到当前项目目录下(并且在项目的package.json中记录安装的版本)</p>
+</blockquote>
+
+
+
+<h5 id="2命令行使用">2、命令行使用</h5>
+
+<blockquote>
+  <p>在命令行中执行：npm -help 可以查看babel中提供的操作命令</p>
+  
+  <ul><li>-V(–version) 查看安装的babel的版本号</li>
+  <li>-o(–out-file) 单独编译某一个文件</li>
+  <li>-d(–out-dir) 编译整个文件夹中的文件</li>
+  <li>…</li>
+  </ul>
+  
+  <p>例如：babel A.js -o B.js  把A.js中的ES6代码编译成为ES5，然后输出在B.js中</p>
+</blockquote>
+
+
+
+<h5 id="3解析预设">3、解析预设</h5>
+
+<blockquote>
+  <p>在本地项目中创建 ‘.babelrc’ 文件，在文件中配置插件和转码规则</p>
+</blockquote>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs q"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>  <span class="hljs-string">"presets"</span>: [<span class="hljs-string">"es2015"</span>], <span class="hljs-comment">//-&gt;设置转码规则，官方提供以下的规则集，你可以根据需要安装：</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>   /*
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>    # ES2015转码规则
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-es2015
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>    # ES2016转码规则
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-es2016
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>    # ES2017转码规则
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-es2017
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>    # react转码规则
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-react
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>    # ES7不同阶段语法提案的转码规则（共有<span class="hljs-number">4</span>个阶段），选装一个
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-stage<span class="hljs-number">-0</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-stage<span class="hljs-number">-1</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-stage<span class="hljs-number">-2</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span>    $ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> babel-preset-stage<span class="hljs-number">-3</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span>    ...
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span>    http:<span class="hljs-comment">//babeljs.io/docs/plugins/</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span>   */
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">26.</span>  <span class="hljs-string">"plugins"</span>: []
+</div><div class="hljs-line"><span class="hljs-comment line-number">27.</span>}
+</div></code></pre>
+
+
+
+<h5 id="4在babel中解析-react-jsx-语法">4、在Babel中解析 React jsx 语法</h5>
+
+<blockquote>
+  <p>安装 babel-preset-react</p>
+</blockquote>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs scala"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-keyword">import</span> <span class="hljs-type">React</span>, {<span class="hljs-type">Component</span>} from <span class="hljs-symbol">'tem</span>p';
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-keyword">import</span> <span class="hljs-type">ReactDOM</span>, {render} from <span class="hljs-symbol">'tem</span>p';
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>    render() {
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>        <span class="hljs-keyword">return</span> &lt;h1&gt; <span class="hljs-type">HELLO</span> &lt;/h1&gt;;
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>    }
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>render(&lt;<span class="hljs-type">MyComponent</span>/&gt;, document.getElementById(<span class="hljs-symbol">'ap</span>p')); 
+</div></code></pre>
+
+<blockquote>
+  <p>完成后一样去执行 npm run build 即可</p>
+</blockquote></div></body></html>
