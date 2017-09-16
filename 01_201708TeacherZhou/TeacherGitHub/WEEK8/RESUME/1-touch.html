@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<script>
+    box.addEventListener('touchstart', function (e) {
+        var point = e.changedTouches[0];
+
+        //->记录起始的X/Y坐标
+        this.strX = point.pageX;
+        this.strY = point.pageY;
+        this.isMove = false;
+    }, false);
+
+    box.addEventListener('touchmove', function (e) {
+        var point = e.changedTouches[0];
+
+        //->随时获取最新的坐标,验证一下是否发生了滑动
+        var changeX = point.pageX - this.strX;
+        var changeY = point.pageY - this.strY;
+        if (Math.abs(changeX) > 10 || Math.abs(changeY) > 10) {
+            this.isMove = true;
+        }
+    }, false);
+
+    box.addEventListener('touchend', function (e) {
+        if (!this.isMove) {
+            //->点击
+            console.log('ok');
+        }
+    }, false);
+</script>
+</body>
+</html>

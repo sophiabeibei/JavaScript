@@ -1,0 +1,49 @@
+移动端的事件
+    ->移动端没有鼠标(mousexxx在移动端都不用)
+    ->移动端没有实体的键盘(keyxxx在移动端也用不了 =>input事件代替)
+
+1、click
+  click在pc端是点击（不管是点击一下还是快速点击两下，都是触发点击事件，快速点击两下属于双击也会触发两次click）
+
+  click在移动端是单击（手指快速点击两次触发的是双击，不是单击click），在移动端使用click的时候会有300MS延迟（因为：在第一次操作结束后，浏览器会等待300MS看是否有下一次操作，300MS内没有下一次的操作，属于单击，有下一次操作属于双击...）
+
+  =>如果已经使用了click，如何解决300MS延迟：引入fastClick.min.js
+  <script src='js/fastClick.min.js'></script>
+  <script>
+     FastClick.attach(document.body);//=>把BODY中的所有click事件委托给FastClick处理
+  </script>
+
+2、移动端事件分为两种
+  touch:单手指事件模型
+    touchstart  touchmove  touchend  touchcancel
+  gesture:多手指操作事件模型
+    gesturestart gesturechange gestureend gesturecancel
+
+  =>我们平时 单击、双击、点击、长按、滑动(四个方向滑动)、缩放、旋转、拖拽... 等操作都是以上事件模拟出来的效果
+
+
+  box.addEventListener('touchstart', function (e) {
+      TouchEvent:手指事件对象
+         changedTouches：手指改变就会记录相关信息(平时和touches信息一样,当手指离开屏幕后,changedTouches会记录离开前位置的信息,touches此时记录的信息是空的)
+         touches：手指在屏幕上才会记录信息
+             0:第一根手指的坐标信息
+               clientX/clientY/pageX/pageY...
+             length:1  存储每一根手指的坐标信息
+  }, false);
+
+
+3、移动端常用的事件类库
+  ZEPTO中提供了移动端常用的事件:
+    tap、singleTap(300MS)、doubleTap、longTap(750MS)
+    swipe、swipeLeft/Right/Up/Down
+    pinchIn、pinchOut
+    ...
+
+  FastClick：解决click的300ms延迟的
+  touch.min.js：百度云手势事件库(百度停止维护)
+  hammer.min.js：国际通用的手势事件库
+  ...
+
+
+
+

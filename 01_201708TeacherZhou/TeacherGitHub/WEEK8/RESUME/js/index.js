@@ -1,3 +1,10 @@
+//->如果一个页面中需要滑动处理,我们需要阻止页面默认滑动的行为
+//例如：微信中的上下滑动会出现一个把整个页面下拉出现微信背景的效果，浏览器的滑动有可能是页卡的切换...
+$(document).on('touchstart touchmove touchend', function (ev) {
+    ev.preventDefault();
+}, false);
+
+/*--LOADING--*/
 let loadingRender = (function () {
     //->需要预先加载的所有图片
     let imgList = ['img/icon.png',
@@ -168,11 +175,163 @@ let phoneRender = (function () {
 
 /*--MESSAGE--*/
 let messageRender = (function () {
+    let $message = $('.message'),
+        musicAudio = $('#musicAudio')[0],
+        $wrapper = $message.find('.wrapper'),
+        $messageList = $wrapper.find('li'),
+        $keyboard = $message.find('.keyboard'),
+        $text = $keyboard.find('.text'),
+        $submit = $keyboard.find('.submit');
+
+    let autoTimer = null,
+        step = -1,
+        initTranslateY = 0;
+
+    function messageMove() {
+        let $cur = $messageList.eq(++step);
+        //->显示每一条消息
+        $cur.css({
+            transform: 'translateY(0)',
+            opacity: 1
+        });
+
+        //->当第三条消息完成后(TRANSITION动画完成了),展示键盘(此时停止自动出消息)
+        if (step === 2) {
+            clearInterval(autoTimer);
+            //->我们需要操作两个样式执行过渡动画,事件被执行两次(webkitTransitionEnd:有几个样式需要执行过渡动画,事件就会被触发执行几次)
+            let fn = function () {
+                $cur.off('webkitTransitionEnd', fn);
+                keyboard();
+            };
+            $cur.on('webkitTransitionEnd', fn);
+        }
+
+        //->从第五条展示开始,消息列表要整体上移了(当前这条消息高度的基础上+10是上移的距离)
+        if (step >= 4) {
+            initTranslateY -= $cur[0].offsetHeight + 10;
+            $wrapper.css('transform', 'translateY(' + initTranslateY + 'px)');
+        }
+
+        //->结束:结束音频,干掉当前页,进入下一个页面
+        if (step >= $messageList.length - 1) {
+            clearInterval(autoTimer);
+            musicAudio.pause();
+            $(musicAudio).remove();
+            setTimeout(()=> {
+                $message.remove();
+                cubeRender.init();
+            }, 2000);
+        }
+    }
+
+    function keyboard() {
+        //->让键盘显示
+        $keyboard.css('transform', 'translateY(0)');
+
+        //->显示文字：文字打印机
+        //JQ中的ONE也是绑定事件,只不过只绑定一次而已,触发一次后自动把绑定的方法移除
+        $keyboard.one('webkitTransitionEnd', ()=> {
+            let str = '都学了啊，可我还是找不到好工作！',
+                textTimer = null,
+                n = -1;
+            textTimer = setInterval(()=> {
+                if (n >= str.length - 1) {
+                    clearInterval(textTimer);
+                    //->显示提交按钮
+                    $submit.css('display', 'block');
+                    return;
+                }
+                let textVal = $text.html();
+                textVal += str[++n];
+                $text.html(textVal);
+            }, 100);
+        });
+    }
+
+    function submitEvent() {
+        $submit.singleTap(function () {
+            $text.html('');
+            $keyboard.css('transform', 'translateY(3.7rem)');
+
+            messageMove();
+            autoTimer = setInterval(messageMove, 1500);
+        });
+    }
+
     return {
         init: function () {
-
+            $message.css('display', 'block');
+            musicAudio.play();
+            autoTimer = setInterval(messageMove, 1500);
+            submitEvent();
         }
     }
 })();
 
-messageRender.init();
+/*--CUBE--*/
+let cubeRender = (function () {
+    let $cube = $('.cube'),
+        $box = $cube.children('ul');
+
+    //->起始X轴或者Y轴的旋转角度,手指松开的时候,是基于这个角度继续旋转的
+    $box.attr({
+        rotateX: -30,
+        rotateY: 45
+    });
+
+    function start(ev) {
+        let point = ev.changedTouches[0];
+        $box.attr({//->ATTR设置的自定属性值都是字符串
+            strX: point.pageX,
+            strY: point.pageY,
+            isMove: false,
+            changeX: 0,
+            changeY: 0
+        });
+    }
+
+    function move(ev) {
+        let point = ev.changedTouches[0];
+        let changeX = point.pageX - $box.attr('strX'),
+            changeY = point.pageY - $box.attr('strY');
+        if (Math.abs(changeX) > 10 || Math.abs(changeY) > 10) {
+            $box.attr({
+                isMove: true,
+                changeX: changeX,
+                changeY: changeY
+            });
+        }
+    }
+
+    function end() {
+        let isMove = $box.attr('isMove');
+        if (isMove !== 'true') return;
+        let rotateX = parseFloat($box.attr('rotateX')),
+            rotateY = parseFloat($box.attr('rotateY')),
+            changeY = parseFloat($box.attr('changeY')),
+            changeX = parseFloat($box.attr('changeX'));
+        rotateX = rotateX - changeY / 3;
+        rotateY = rotateY + changeX / 3;
+        $box.css(`transform`, `scale(0.6) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+        $box.attr({
+            rotateX: rotateX,
+            rotateY: rotateY
+        });
+    }
+
+    return {
+        init: function () {
+            $cube.css('display', 'block')
+                .on('touchstart', start)
+                .on('touchmove', move)
+                .on('touchend', end);
+
+            $box.find('li').tap(function () {
+                let index = $(this).index();
+                
+            });
+        }
+    }
+})();
+
+cubeRender.init();
