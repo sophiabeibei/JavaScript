@@ -297,19 +297,17 @@ $(document).on("touchstart touchmove touchen",function (e) {
 });
 
 let cubeRender = (function () {
-    let $cube = $(".cube"),
-        $box = $cube.children("ul");
+    let $cube = $('.cube'),
+        $box = $cube.children('ul');
 
-    //->记录起始的旋转角度,每一次的欢动都是在上一次角度基础上继续旋转的
-    $box.attr({//->JQ中的attr记录的都是字符串
+    //->记录起始的旋转角度,每一次的滑动都是在上一次角度基础上继续旋转的
+    $box.attr({
         rotateX: -30,
         rotateY: 45
     });
 
-    function start(e) {
-        //->记录手指的坐标位置
-        // console.log(e);
-        let point = e.changedTouches[0];
+    function start(ev) {
+        let point = ev.changedTouches[0];
         $(this).attr({
             strX: point.pageX,
             strY: point.pageY,
@@ -319,11 +317,10 @@ let cubeRender = (function () {
         });
     }
 
-    function move(e) {
-        let point = e.changedTouches[0];
-        //->用当前值-起始值
-        let changeX = point.pageX - $(this).attr("strX"),//->得到的结果是字符串,
-            changeY = point.pageY - $(this).attr("strY");
+    function move(ev) {
+        let point = ev.changedTouches[0];
+        let changeX = point.pageX - $(this).attr('strX'),
+            changeY = point.pageY - $(this).attr('strY');
         if (Math.abs(changeX) > 10 || Math.abs(changeY) > 10) {
             $(this).attr({
                 changeX: changeX,
@@ -331,43 +328,66 @@ let cubeRender = (function () {
                 isMove: true
             });
         }
-
-
     }
 
-    function end(e) {
-        let isMove = $(this).attr("isMOve");
-        if (isMove !== "true") return;
+    function end(ev) {
+        let isMove = $(this).attr('isMove');
+        if (isMove !== 'true') return;
 
-        let changeX = parseFloat($(this).attr("changeX")),
-            changeY = parseFloat($(this).attr("changeY")),
-            rotateX = parseFloat($(this).attr("rotateX")),
-            rotateY = parseFloat($(this).attr("rotateY"));
-        rotateX = rotateX - changeY/3;//->滑动多少,除以3/1
-        rotateY = rotateY + changeX/3;
-        $(this).css("transform",`scal(0.6) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+        let changeX = parseFloat($(this).attr('changeX')),
+            changeY = parseFloat($(this).attr('changeY')),
+            rotateX = parseFloat($(this).attr('rotateX')),
+            rotateY = parseFloat($(this).attr('rotateY'));
+        rotateX = rotateX - changeY / 3;
+        rotateY = rotateY + changeX / 3;
+        $(this).css('transform', `scale(0.6) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+        $box.attr({
+            rotateX: rotateX,
+            rotateY: rotateY
+        });
     }
 
     return {
         init: function () {
-            $cube.css("display", "block");
-            $box.on("touchstart", start)
-                .on("touchstart", move)
-                .on("touchstart", end).find("li").tap(function () {
-                    //->ZP中提供了一些快捷的移动操作方法: tap,singleTap,doubleTap,longTap,swipe,swipeLeft/Right/Top/Bottom...
-                    //->获取它的索引
-                let index =$(this).index();
-                //->有了索引,打开详情页....
-
-            });//->.tap: 点击;
+            $cube.css('display', 'block');
+            $box.on('touchstart', start)
+                .on('touchmove', move)
+                .on('touchend', end)
+                .find('li').tap(function () {
+                //->ZP中提供了一些快捷的移动操作方法:tap、singleTap、doubleTap、longTap、swipe、swipeLeft...
+                let index = $(this).index();
+                swiperRender.init(index);
+            });
         }
     }
 })();
 
+let swiperRender = (function () {
+    let $swiperContainer = $('.swiper-container'),
+        example = null;
+
+    function change(ex) {
+
+    }
+
+    return {
+        init: function (index) {
+            index = index || 0;
+            $swiperContainer.css('display', 'block');
+            example = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                onInit: change,
+                onTransitionEnd: change
+            });
+            example.slideTo(index, 0);
+        }
+    }
+})();
 
 // loadingRender.init();
 // loadingRender.init();
 // phoneRender.init();
 // messageRender.init();
-cubeRender.init();
+// cubeRender.init();
+swiperRender.init(2);
 

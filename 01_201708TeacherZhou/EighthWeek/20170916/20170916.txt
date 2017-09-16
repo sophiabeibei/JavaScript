@@ -25,6 +25,71 @@
     iscol跟swiper差不多的插件
     swiper中文网: http://www.swiper.com.cn
 
+    1.开始使用
+        第1步: 导入需要使用的css和js
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport"
+                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            <title>swiper的应用案例: banner轮播图</title>
+
+            <!--import css-->
+            <link rel="stylesheet" href="css/reset.min.css">
+            <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+        </head>
+        <body>
+
+        <!-- import JS-->
+        <script src="js/zepto.min.js"></script>
+        <script src="js/swiper-3.4.2.min.js"></script>
+        <script src="js/swiperBanner.js"></script>
+        </body>
+        </html>
+
+        第2步: 严格按照要求搭建html
+        <section class="swiper-container">
+            <!--把需要切换的内容放在"swiper-wrapper"-->
+            <div class="swiper-wrapper"></div>
+            <!--每一个切换的内容都是一个"swiper-slide"(具体展示内容自行处理)-->
+            <div class="swiper-slide">
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/3.jpg" alt="">
+            </div>
+            <!-- 分页器pagination-->
+            <!--分页器有三种: 1.焦点;2.百分比;3.进度条,需要分页器的时候,就要加上这个结构-->
+            <div class="swiper-pagination"></div>
+
+            <!--导航按钮: 其实就是左右切换按钮-->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        </section>
+
+        第3步: 为滑屏写简单的样式
+        .banner{
+            height: 2.86rem;
+        }
+
+        .swiper-container .swiper-slide{
+            height: 2.86rem;
+        }
+
+        .swiper-container .swiper-slide img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        第4步: 写js实现效果
+
+
 
 
 
