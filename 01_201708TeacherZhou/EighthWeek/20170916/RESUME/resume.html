@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>resume简历-H5场景创意简历</title>
+    <link rel="stylesheet/less" href="css/resume.less">
+    <!-- 注意一定要加stylesheet/less      less   less不能忘记-->
+    <script src="js/less-2.5.3.min.js"></script>
+    <!-- less-2.5.3.min.js: 起到实时编译的作用-->
+
+    <!-- 处理rem-->
+    <script>
+        ~(function () {
+            window.addEventListener("resize",computed,false);
+            computed();
+            function computed() {
+                var deviceW = document.documentElement.clientWidth;
+                if (deviceW > 640) return;
+                document.documentElement.style.fontSize = deviceW / 640 * 100 + "px";
+            }
+        })();
+
+    </script>
+</head>
+<body>
+<main class="container">
+    <!-- loading-->
+    <!--section.loading>(div.title>h2+h3)+(div.progress>div.already)-->
+    <section class="loading">
+        <div class="title">
+            <h2>珠峰培训</h2>
+            <h3>H5场景创意交互型简历</h3>
+        </div>
+        <div class="progress">
+            <div class="already"></div>
+        </div>
+    </section>
+
+    <!-- phone-->
+    <!--section.phone>(div.title>img+span)+(div.listen>div.move+div.touch)+(div.detail>div.touch)+audio*2-->
+    <section class="phone">
+        <div class="title"><img src="img/zf_phoneLogo.png" alt="">
+            <span>00:00</span>
+        </div>
+        <div class="listen">
+            <div class="move"></div>
+            <div class="touch"></div>
+        </div>
+        <div class="detail">
+            <div class="touch"></div>
+        </div>
+        <audio src="audio/bell.mp3" id="bellAudio" loop></audio>
+        <!-- loop: 一直循环播放-->
+        <audio src="audio/say.mp3" id="sayAudio" preload="none"></audio>
+        <!-- preload="none": 刚开始进来的时候音频文件不加载,只有播放的时候,才加载-->
+    </section>
+
+    <!-- message-->
+    <!--section.message>(ul.wrapper>li>img.headImg+i.arrow)+(div.keyboard>span.text+a.submit[href="javascript:;"])-->
+    <section class="message">
+        <ul class="wrapper clearfix">
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                唉,毕业了,工作还遥遥无期,好愁啊!
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                怎么会?认识我的毕业生一个月都拿一万多的好工作呢!
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                是不是没学HTML5和移动端?
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                都学了啊,可我还是找不到工作?
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                那就是HTML5的核心基础JS编程学的不够扎实，只顾花哨的效果了。原生JavaScript功夫是王道啊!
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                还有就是现在的前端开发已经工程化了，像angular、react、node、webpack这些也要学，这些才是现在互联网开发的大势所趋！
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                原生JavaScript编程基础要精，像react之类的前端高级框架要熟，所以认识我的同学，工资普遍在12K以上！
+            </li>
+            <li class="student">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                啊？竟然有这么大差距呢！
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                啊?竟然有这么大差距呢!
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                这些东西我都不知道呢！真高兴认识了你！那我应该怎么办呢？
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                来珠峰培训学这些知识！
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                珠峰培训七年专注前端培训，全国闻名的HTML5培训学校。
+            </li>
+            <li class="teacher">
+                <img src="img/zf_messageLogo.png" alt="">
+                <i></i>
+                详细的信息你看接下来的介绍吧。
+            </li>
+            <li class="student">
+                <img src="img/zf_messageStudent.png" alt="">
+                <i></i>
+                好的！
+            </li>
+        </ul>
+        <div class="keyboard">
+            <span class="text"></span>
+            <a href="javascript:;" class="submit"></a>
+        </div>
+
+        <audio src="audio/music.mp3" preload="none" loop id="musicAudio"></audio>
+    </section>
+
+    <!-- cube-->
+    <!--section.cube>(ul>li*6>img[src='img/zf_cube$.png'])+img.tip[src='img/zf_cubeTip.png']-->
+    <section class="cube">
+        <ul>
+            <li><img src="img/zf_cube1.png" alt=""></li>
+            <li><img src="img/zf_cube2.png" alt=""></li>
+            <li><img src="img/zf_cube3.png" alt=""></li>
+            <li><img src="img/zf_cube4.png" alt=""></li>
+            <li><img src="img/zf_cube5.png" alt=""></li>
+            <li><img src="img/zf_cube6.png" alt=""></li>
+        </ul>
+        <img src="img/zf_cubeTip.png" alt="" class="tip">
+    </section>
+
+
+</main>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/resume.js"></script>
+</body>
+</html>

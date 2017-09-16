@@ -1,0 +1,51 @@
+.fullPage{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.middleFn(@w,@h){
+  /*让当前元素处于正中间的位置;*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: unit(-(@h/2),rem);
+  margin-left: unit(-(@w/2),rem);
+}
+
+.animation(@name,@duration:1s,@timing-function:ease,@delay:0s,@count:1,@fill-mode:both){
+  -webkit-transition: @arguments;
+  animation: @arguments;
+}
+
+.transition(@property:all,@duration:1s,@timing-function:linear,@delay:0s){
+  -webkit-transition: @arguments;
+  transition: @arguments;
+}
+
+.translate(@x:0,@y:0,@z:0){
+  -webkit-transform: translate3d(@x,@y,@z);
+  transform: translate3d(@x,@y,@z);
+}
+
+.opacity(@val){
+  @val2: @val*100;
+  opacity: @val;
+  filter: ~'alpha(opacity=@{val2})';
+//  alpha在less中有特殊含义,不能封装写进库里;用单引号包起来可避免;可使用;
+//  less语法: 在一个字符串中嵌入变量,我们使用@{}来处理即可;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

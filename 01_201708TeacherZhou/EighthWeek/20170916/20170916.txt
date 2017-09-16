@@ -21,6 +21,83 @@
 
 
 三.swiper
+    swiper是一款移动端的JS插件: 实现页面或者区域滑动的插件;类似于"轮播图","H5场景应用"....
+    iscol跟swiper差不多的插件
+    swiper中文网: http://www.swiper.com.cn
+
+
+
+
+
+四.perspective
+    http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/
+
+
+
+五.es6
+    1.箭头函数
+        es6中的箭头函数跟普通函数的区别
+        1.es6写法简单,可以给形参设置默认值
+
+
+        let fn=()=>{};
+        let fn=()=>{ return a+b};
+        let fn=(a,b)=>a+b;
+        let fn=(a=0,b=0)=>a+b;
+
+        let fn=(a,b)={
+            console.log(a+b);
+            return a+b;
+        };
+        let fn=function(){};
+
+
+        2.es6不支持arguments
+
+        let fn=()=>{
+            console.log(arguments);//->Uncaught ReferenceError: arguments is not defined
+        };
+        fn(100,200,300);
+
+
+        3.虽然不支持arguments,我们可以使用拓展运算符处理(而且拓展运算符获取的结果还是一个数组)
+        let fn=(...arg)=>{
+            console.log(arg);//->
+        };
+        fn(100,200,300);
+
+
+        4.es6中箭头函数中的this是和所在宿主环境中的this保持一致的(没有独立的执行主体);
+        let fn=(a,...arg)=>{
+            console.log(arg);//->[200,300] 拓展运算符是获取除了前面形参以外的其它参数的值
+        };
+        fn(100,200,300);
+
+
+        5.这种情况是不建议使用箭头函数的
+        box.onclick=()=>{
+            //->this: window(不是box)
+        };//->这里用箭头函数不好;
+
+
+        6.这种情况可以使用箭头函数;比起之前var _this=this;这个简单多了;
+        function sortTab(){
+            //->this: oTh
+            arr.sort(()={
+                //->this: oTh
+            })
+        }
+        sortTab.call(oTh);
+
+        7.总结: 箭头函数不要乱用(合适的时候再用);
+
+
+
+
+
+
+
+
 
 
 

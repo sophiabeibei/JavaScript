@@ -313,4 +313,4 @@
 案例: resume简历-H5场景创意简历
 readImg.js--NodeJS遍历文件生产文件列表
 less编译
-Swiper插件
+Swiper插件 滑动.轮播..
