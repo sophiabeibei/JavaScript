@@ -1,4 +1,6 @@
 @import "reset";
+@import "swiper";
+@import "animate";
 @import (reference) "common";
 
 html {
@@ -368,7 +370,7 @@ html, body {
     -webkit-transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
     transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
 
-    .transition(@duration: .3s);
+    .transition(@duration: .5s);
 
     li {
       &:nth-child(1) {
@@ -404,19 +406,13 @@ html, body {
   }
 }
 
+/*--SWIPER--*/
+.swiper-container {
+  .full-page;
+  display: none;
 
+  .swiper-slide {
+    .full-page;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

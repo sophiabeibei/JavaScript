@@ -1,9 +1,3 @@
-//->如果一个页面中需要滑动处理,我们需要阻止页面默认滑动的行为
-//例如：微信中的上下滑动会出现一个把整个页面下拉出现微信背景的效果，浏览器的滑动有可能是页卡的切换...
-$(document).on('touchstart touchmove touchend', function (ev) {
-    ev.preventDefault();
-}, false);
-
 /*--LOADING--*/
 let loadingRender = (function () {
     //->需要预先加载的所有图片
@@ -269,11 +263,16 @@ let messageRender = (function () {
 })();
 
 /*--CUBE--*/
+//=>移动端设备中的浏览器或者是微信等,当手指滑动的时候都会有一些属于自己的默认行为(浏览器滑动有切换页卡的默认行为),为了保证我们的滑动能正常,我们需要阻止这些默认行为
+$(document).on('touchstart touchmove touchend', function (ev) {
+    ev.preventDefault();
+});
+
 let cubeRender = (function () {
     let $cube = $('.cube'),
         $box = $cube.children('ul');
 
-    //->起始X轴或者Y轴的旋转角度,手指松开的时候,是基于这个角度继续旋转的
+    //->记录起始的旋转角度,每一次的滑动都是在上一次角度基础上继续旋转的
     $box.attr({
         rotateX: -30,
         rotateY: 45
@@ -281,38 +280,39 @@ let cubeRender = (function () {
 
     function start(ev) {
         let point = ev.changedTouches[0];
-        $box.attr({//->ATTR设置的自定属性值都是字符串
+        $(this).attr({
             strX: point.pageX,
             strY: point.pageY,
-            isMove: false,
             changeX: 0,
-            changeY: 0
+            changeY: 0,
+            isMove: false
         });
     }
 
     function move(ev) {
         let point = ev.changedTouches[0];
-        let changeX = point.pageX - $box.attr('strX'),
-            changeY = point.pageY - $box.attr('strY');
+        let changeX = point.pageX - $(this).attr('strX'),
+            changeY = point.pageY - $(this).attr('strY');
         if (Math.abs(changeX) > 10 || Math.abs(changeY) > 10) {
-            $box.attr({
-                isMove: true,
+            $(this).attr({
                 changeX: changeX,
-                changeY: changeY
+                changeY: changeY,
+                isMove: true
             });
         }
     }
 
-    function end() {
-        let isMove = $box.attr('isMove');
+    function end(ev) {
+        let isMove = $(this).attr('isMove');
         if (isMove !== 'true') return;
-        let rotateX = parseFloat($box.attr('rotateX')),
-            rotateY = parseFloat($box.attr('rotateY')),
-            changeY = parseFloat($box.attr('changeY')),
-            changeX = parseFloat($box.attr('changeX'));
+
+        let changeX = parseFloat($(this).attr('changeX')),
+            changeY = parseFloat($(this).attr('changeY')),
+            rotateX = parseFloat($(this).attr('rotateX')),
+            rotateY = parseFloat($(this).attr('rotateY'));
         rotateX = rotateX - changeY / 3;
         rotateY = rotateY + changeX / 3;
-        $box.css(`transform`, `scale(0.6) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+        $(this).css('transform', `scale(0.6) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
         $box.attr({
             rotateX: rotateX,
             rotateY: rotateY
@@ -321,17 +321,43 @@ let cubeRender = (function () {
 
     return {
         init: function () {
-            $cube.css('display', 'block')
-                .on('touchstart', start)
+            $cube.css('display', 'block');
+            $box.on('touchstart', start)
                 .on('touchmove', move)
-                .on('touchend', end);
-
-            $box.find('li').tap(function () {
+                .on('touchend', end)
+                .find('li').tap(function () {
+                //->ZP中提供了一些快捷的移动操作方法:tap、singleTap、doubleTap、longTap、swipe、swipeLeft...
                 let index = $(this).index();
-                
+                swiperRender.init(index);
             });
         }
     }
 })();
 
-cubeRender.init();
+/*--SWIPER--*/
+let swiperRender = (function () {
+    let $swiperContainer = $('.swiper-container'),
+        example = null;
+
+    function change(ex) {
+
+    }
+
+    return {
+        init: function (index) {
+            index = index || 0;
+            $swiperContainer.css('display', 'block');
+            example = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                onInit: change,
+                onTransitionEnd: change
+            });
+            example.slideTo(index, 0);
+        }
+    }
+})();
+
+
+swiperRender.init(2);
+
+
