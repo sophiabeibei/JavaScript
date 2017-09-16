@@ -384,10 +384,10 @@ let swiperRender = (function () {
     }
 })();
 
-// loadingRender.init();
-// loadingRender.init();
-// phoneRender.init();
-// messageRender.init();
-// cubeRender.init();
+loadingRender.init();
+loadingRender.init();
+phoneRender.init();
+messageRender.init();
+cubeRender.init();
 swiperRender.init(2);
 
