@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训-swiper</title>
+
+    <!--IMPORT CSS-->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/banner.css">
+
+    <!--REM-->
+    <script>
+        ~function () {
+            let computed = ()=> {
+                let deviceW = document.documentElement.clientWidth;
+                if (deviceW > 640) return;
+                document.documentElement.style.fontSize = deviceW / 640 * 100 + 'px';
+            };
+            computed();
+            window.addEventListener('resize', computed, false);
+        }();
+    </script>
+</head>
+<body>
+<main class="container">
+    <!--实现滑动区域的最外层一定是:SWIPER-CONTAINER-->
+    <section class="swiper-container banner">
+        <!--把需要切换的内容放在SWIPER-WRAPPER-->
+        <div class="swiper-wrapper">
+            <!--每一个需要切换的内容都放在SWIPER-SLIDE中(具体内容自行处理)-->
+            <div class="swiper-slide">
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/3.jpg" alt="">
+            </div>
+        </div>
+
+        <!--分页器:焦点、百分比、进度条，需要分页器就需要加上这个结构-->
+        <div class="swiper-pagination"></div>
+
+        <!--导航按钮:左右切换按钮-->
+        <!--<div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>-->
+    </section>
+</main>
+
+<!--IMPORT JS-->
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper-3.4.2.jquery.min.js"></script>
+<script src="js/banner.js"></script>
+</body>
+</html>
