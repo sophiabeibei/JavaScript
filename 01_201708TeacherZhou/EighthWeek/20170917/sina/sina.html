@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <!--telephone=no: 禁止识别为电话号码;email=no: 禁止识别邮箱(一般不禁止email)-->
+    <meta name="apple-mobile-web-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <title>sina客户端案例</title>
+    <!--import css-->
+    <link rel="stylesheet/less" href="css/sina.less">
+    <script src="js/less-2.5.3.min.js"></script>
+
+    <!--计算rem的处理    rem等比缩放布局-->
+    <script>
+        ~(function () {
+            var deviceW = document.documentElement.clientWidth;
+            if (deviceW > 640) return;
+            document.documentElement.style.fontSize = deviceW / 640 * 100 + "px";
+        })();
+    </script>
+</head>
+<body>
+    <!--meta中的小知识: -->
+    <!--在页面中点"联系我"就可以打电话-->
+    <!--<a href="tel:13810363110">联系我</a>-->
+    <!--在页面中点"联系我"就可以发信息-->
+    <!--<a href="sms:13810363110">发信息</a>-->
+
+
+    <!--main-->
+    <main class="container">
+
+        <!-- header-->
+        <!--header.headerBox>(h1>a)+a.weather+a.user+a.menu-->
+        <header class="headerBox clearfix">
+            <h1>新浪网<a href="" class="icon-logo"></a></h1>
+            <a href="" class="menu icon-menu"></a>
+            <a href="" class="user icon-user"></a>
+            <a href="" class="weather"></a>
+        </header>
+
+        <!-- nav-->
+        <!--nav.navBox>ul>li>a-->
+        <nav class="navBox">
+            <ul class="clearfix">
+                <li><a href="">新闻</a></li>
+                <li><a href="">财经</a></li>
+                <li><a href="">体育</a></li>
+                <li><a href="">娱乐</a></li>
+                <li><a href="">军事</a></li>
+                <li><a href="">汽车</a></li>
+                <li><a href="">科技</a></li>
+                <li><a href="">视频</a></li>
+                <li><a href="">美图</a></li>
+                <li><a href="">NBA</a></li>
+                <li><a href="">博客</a></li>
+
+                <!--为了适应弹性布局(弹性盒和模型),加一个空的元素-->
+                <li><a href=""></a></li>
+
+            </ul>
+        </nav>
+
+
+        <!--swiper-->
+        <!--section.swiper-container>(div.swiper-wrapper>div.swiper-slide*4)+div.swiper-pagination-->
+        <section class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="images/1.jpg" alt="">
+                        <span>标题一标题一标题一标题一标题一</span>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </section>
+
+
+        <!-- aside广告-->
+        <!--aside.asideBox-->
+        <aside class="asideBox">
+            <!--div.flag+ul.list>li>a-->
+            <div class="flag"></div>
+            <ul class="list">
+                <!--<li><a href="">广告一</a></li>-->
+            </ul>
+        </aside>
+
+
+
+        <!--news-->
+        <!--section.news>(ul.item>li>a>img+div>p+span>i)+div.image>p+(div>img*3)+span>i-->
+        <section class="news">
+            <ul class="item">
+                <li>
+                    <a href="">
+                        <img src="images/news.jpg" alt="">
+                        <div>
+                            <p>文字标题文字标题文字标题文字标题</p>
+                            <span>
+                                <i class="icon-comment"></i>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="image">
+                <p></p>
+                <div><img src="" alt=""><img src="" alt=""><img src="" alt=""></div>
+                <span><i></i></span>
+            </div>
+        </section>
+
+
+
+        <!---->
+
+
+
+
+
+    </main>
+
+    <!-- import js-->
+    <script src="js/zepto.min.js"></script>
+    <script src="js/swiper-3.4.2.min.js"></script>
+    <script src="js/sina.js"></script>
+
+</body>
+</html>

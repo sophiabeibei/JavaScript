@@ -1,0 +1,322 @@
+@import "reset";
+@import "swiper";
+@import "font";
+
+.transition(@property: all,@duration: 1s,@timing-function: linear,@delay: 0s){
+  //-webkit-transform: ;
+}
+
+html{
+  font-size: 100px;
+}
+
+html,body{
+  background: #e1e1e1;
+}
+
+/*container*/
+.container{
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+/*header*/
+.headerBox{
+  @text: #fff;
+
+  padding: 0 .2rem;
+  background: #129bf0;
+
+  h1{
+    float: left;
+    width: .8rem;
+    height: 1rem;
+    font-size: 0;
+
+    a{
+      display: block;
+      height: 100%;
+      line-height: 1rem;
+      font-size: .8rem;
+      color: @text;
+    }
+  }
+
+  .menu, .user, .weather{
+    float: right;
+    margin-left: .32rem;
+    width: .44rem;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: .44rem;
+    color: @text;
+  }
+
+  .weather{
+    background: url("../images/cloud.gif") no-repeat center center;
+    background-size: 100%;
+  }
+}
+
+/*nav  百分比布局*/
+/*.navBox{
+  box-sizing: border-box;
+  padding: .16rem 0;
+  height: 1.6rem;
+  background: #fff;
+  overflow: hidden;
+
+  li{
+    float: left;
+    width: 16%;
+    height: .64rem;
+    line-height: .64rem;
+    text-align: center;
+    font-size: .32rem;
+
+    a{
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: #555;
+    }
+
+    &:nth-of-type(6n+1){!*6n+1: 以6各为一组*!
+      margin-left: 2%;
+    }
+  }
+  !*svg 也可以实现*!
+}*/
+
+/*nav flexbox布局: 弹性布局(弹性盒和模型)*/
+.navBox{
+  box-sizing: border-box;
+  //padding: .16rem 0;
+  //height: 1.6rem;
+  //height: 2.6rem;  /*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
+  /*最初的高度和padding都为0;不显示;*/
+  background: #fff;
+  overflow: hidden;
+
+  ul{
+    height: 100%;/*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
+    align-content: center;/*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      //flex-grow: 1;/*把剩余的空间沾满;  li每个都为1,同等分配;*/
+      width: 16%;
+      height: .64rem;
+      line-height: .64rem;
+      text-align: center;
+      font-size: .32rem;
+    }
+  }
+}
+
+/*swiper*/
+.swiper-container{
+  position: relative;
+  height: 3.4rem;
+  overflow: hidden;
+
+  .swiper-slide{
+    position: relative;
+    height: 3.4rem;
+
+    img{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    span{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: .6rem;
+      line-height: .6rem;
+      color: #fff;
+      font-size: .28rem;
+      background: rgba(0,0,0,.5);
+      text-indent: .2rem;
+    }
+  }
+
+  .swiper-pagination-fraction{
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 1rem;
+    height: .6rem;
+    line-height: .6rem;
+    text-align: center;
+    color: rgba(255,255,255,.7);
+    font-size: .28rem;
+
+    .swiper-pagination-current{
+      color: #fff;
+      font-weight: bold;
+      font-size: .3rem;
+    }
+  }
+}
+
+
+/*aside*/
+.asideBox{
+  @H: .8rem;
+  position: relative;
+  margin: .16rem 0;
+  height: @H;
+  background: #fff;
+  //overflow: hidden;
+
+  .flag{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: @H;
+    line-height: @H;
+    font-size: .24rem;
+
+    &:after{
+      padding: 0 .6rem;
+      content: "直播";
+      background: #fa4e46;
+      color: #fff;
+      font-size: .3rem;
+    }
+  }
+
+  .list{
+    margin-left: 1rem;
+    //overflow: hidden;
+    .transition(@duration: .3s);
+
+    li{
+      height: @H;
+      line-height: @H;
+
+      a{
+        display: block;
+        height: 100%;
+        color: #555;
+        font-size: .28rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+/*news*/
+.news{
+  padding: 0 .2rem;
+  background: #fff;
+
+  .item{
+    li{
+      padding: .2rem 0;
+      border: .02rem solid #ddd;
+      a{
+        display: block;
+        position: relative;
+
+        img{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 2rem;
+          height: 1.34rem;
+        }
+
+        div{
+          margin-left: 2.2rem;
+
+          p{
+            line-height: .48rem;
+            color: #555;
+            font-size: .34rem;
+          }
+
+          span{
+            display: block;
+            line-height: .3rem;
+            text-align: right;
+            color: #888;
+            font-size: .22rem;
+            vertical-align: middle;
+
+            i{
+              margin-left: .1rem;
+              font-size: .24rem;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .img{
+    padding: .2rem 0;
+    border-bottom: .02rem solid #ddd;
+
+    p{
+      font-size: .34rem;
+      line-height: .48rem;
+      color: #555;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    div{
+      margin: .3rem 0;
+
+      img{
+        /*别忘记请浮动*/
+        float: left;
+        width: 32%;
+        height: 1.24rem;
+
+        &:not(:nth-last-of-type(1)){
+          margin-right: 2%;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
