@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>base64</title>
+</head>
+<body>
+<!--
+    IMG标签(或者设置背景图)是如何加载图片的:
+        1.首先通过SRC(URL)到指定的服务器上找到对应的图片资源
+        2.通过传输协议把图片资源下载到客户端浏览器本地
+        3.浏览器会把获取到的图片进行编码(base64码);
+        4.浏览器渲染编码从而呈现给用户一张图片
+
+    为啥我们的HTML/CSS/JS可以呈现为一个页面?
+        浏览器引擎决定的;
+        1.W3C: 万维网联盟(制定规则和标准的)
+        2.作用开发者,我们按照标准来实现我们的代码(优秀编程人员需要具备特点: 熟练掌握W3C规范,编写优质代码)
+        3.浏览器开发商开发浏览器的时候会给浏览器实现一套渲染引擎(浏览器内核): 引擎能够按照W3C标准识别我们的代码,并且使用电脑的GPU(显卡)把需要的图形进行绘制;
+        常用的浏览器引擎:
+        1.v8引擎
+            1.chrome: webkit内核(也叫v8引擎: 最快的引擎);
+            2.safari: (v8);
+            3.大部分国产浏览器: (v8);例如: 360,搜狗,QQ,百度,猎豹,UC....
+            4.最新版本的欧朋浏览器14+: (v8);opera
+            5.大部分安卓和ios手机上的浏览器: (v8)  手机的内核是webkit;
+            6.web view: (v8)
+            7.node虽不叫浏览器,但用的也是v8引擎渲染的;
+        2.gecko内核
+            1.火狐(firefox): Gecko
+        3.trident内核
+            1.IE浏览器: trident
+        4.presto内核
+            1.欧朋(opera): 老版本的opera使用的是presto内核
+
+        浏览器兼容
+            1.W3C规定获取元素样式用getComputedStyle,谷歌和火狐使用的都是这个,IE非要与众不同,它也实现这个功能,但是方法名是currentStyle....
+              各大浏览器厂商因为要突出自己的特点,所导致的浏览器兼容;
+            2.有的浏览器团队逼格较高,能够引领W3C发展.例如google,不仅把标准都实现了,而且为了方便开发者提高效率,提供了一些标准外的方法(例如: 假设border-radius);
+              -webkit-border-radius: xxx;//->加前缀,指定只有在v8浏览器中才识别这个样式,其余内核浏览器遇到它会自动跳过;
+              后期火狐也发现这个挺好用,也实现了这个功能,除了加-webkit-之外,再加一个
+              -moz-border-radius: xxx
+              再后来IE也加了
+              -ms-border-radius: xxx
+
+              W3C发现浏览器都加了,那么就把它指定为标准;指定标准之前,有个过渡期;
+              过渡期: 我们还是要加上前缀,浏览器还没有升级
+              -webkit-border-radius: xxx;
+              -moz-border-radius: xxx;
+              -ms-border-radius: xxx;
+              border-radius: xxx;
+
+              当浏览器都已经更新完成后,直接
+              border-radius: xxx;
+-->
+
+
+
+
+<img src="zf_outline.png" alt="">
+
+</body>
+</html>
