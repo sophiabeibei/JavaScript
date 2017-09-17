@@ -414,5 +414,149 @@ html, body {
   .swiper-slide {
     .full-page;
   }
-
 }
+
+.page1 {
+  perspective: 2000px;
+
+  dl {
+    .middle(5.4, 7.2);
+    width: 5.4rem;
+    height: 7.2rem;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    @bg: #8FBB4C;
+    dt {
+      height: .6rem;
+      line-height: .6rem;
+      text-align: center;
+      font-size: .4rem;
+      color: yellow;
+      background: @bg;
+    }
+
+    dd {
+      position: relative;
+      box-sizing: border-box;
+      height: .6rem;
+      line-height: .6rem;
+      border-top: .02rem dashed rgba(255, 255, 255, .3);
+      background: @bg;
+
+      em {
+        position: absolute;
+        left: .15rem;
+        top: 50%;
+        z-index: 100;
+        margin-top: -.21rem;
+        width: .36rem;
+        height: .42rem;
+        line-height: .42rem;
+        text-align: center;
+        font-style: normal;
+        color: #FFF;
+        font-size: .2rem;
+        background: url("../img/zf_outline.png") no-repeat;
+        background-size: 100% 100%;
+      }
+
+      a {
+        position: relative;
+        z-index: 100; /*防止折叠过程中把文字覆盖掉*/
+        display: block;
+        margin-left: .66rem;
+        font-size: .28rem;
+        color: #000;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.page2 {
+  background: #FFF9C1;
+
+  h2 {
+    position: absolute;
+    top: .8rem;
+    left: 0;
+    width: 100%;
+    height: .9rem;
+    line-height: .9rem;
+    text-align: center;
+    font-size: .6rem;
+    font-weight: normal;
+    font-family: Microsoft JhengHei;
+    .opacity(0);
+  }
+
+  img {
+    .middle(1, 1);
+    width: 1rem;
+    height: 1rem;
+    .opacity(0);
+
+    &:nth-last-of-type(1) {
+      .middle(1.32, 1.7);
+      width: 1.32rem;
+      height: 1.7rem;
+    }
+  }
+}
+
+#page2 {
+  h2 {
+    .animation(@name: bounceInLeft);
+  }
+
+  img {
+    &:nth-last-of-type(1) {
+      .opacity(0);
+      .animation(@name: shake,@delay: .5s);
+    }
+
+    .transition(@duration: .3s,@delay: 1s);
+    .opacity(1);
+
+    &:nth-of-type(1) {
+      margin-top: -2.9rem;
+    }
+
+    &:nth-of-type(2) {
+      margin-top: -1.7rem;
+      margin-left: 1.5rem;
+    }
+
+    &:nth-of-type(3) {
+      margin-top: .7rem;
+      margin-left: 1.5rem;
+    }
+
+    &:nth-of-type(4) {
+      margin-top: 1.9rem;
+    }
+
+    &:nth-of-type(5) {
+      margin-top: .7rem;
+      margin-left: -2.5rem;
+    }
+
+    &:nth-of-type(6) {
+      margin-top: -1.7rem;
+      margin-left: -2.5rem;
+    }
+
+    &:not(:nth-last-of-type(1)) {
+      .animation(@name: tada,@delay: 1.3s,@count: infinite);
+    }
+  }
+}
+
+/*
+  把每一页的动画都写在#PAGE?下,在JS中判断,到达当前页面的时候给当前的页面设置对应的ID,之前在CSS中设置的动画都会有效果了,离开页面移除对应的ID
+
+  所有需要运动元素初始透明度为0，修改动画公式，在运动完成后让元素的透明度为1
+*/

@@ -1,0 +1,16 @@
+.nav {
+    background: #F4F4F4;
+    padding: 10px 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav a {
+    display: block;
+    width: 16%;
+    line-height: 30px;
+    text-align: center;
+    flex-grow: 1;
+}
