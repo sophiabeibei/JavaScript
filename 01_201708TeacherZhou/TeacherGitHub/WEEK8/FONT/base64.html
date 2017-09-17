@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训</title>
+</head>
+<body>
+<!--
+IMG标签(或者设置背景图)是如何加载图片的:
+    1、首先通过SRC(URL)到指定的服务器上找到对应的图片资源
+    2、通过传输协议把图片资源下载到客户端浏览器本地
+    3、浏览器会把获取到的图片进行编码(BASE64)
+    4、浏览器渲染编码从而呈现给用户一张图片
+
+为啥我们的HTML/CSS/JS可以呈现为一个页面?
+    1、W3C：万维网联盟(制定规则和标准的)
+    2、作为开发者我们按照标准来实现我们的代码(优秀编程人员:熟练掌握W3C相关规范,编写优质代码)
+    3、浏览器开发商开发浏览器的时候会给浏览器实现一套渲染引擎(浏览器内核)：引擎能够按照W3C的标准识别我们的代码,并且使用电脑的GPU(显卡)把需要的图形进行绘制
+    谷歌(chrome)：webkit(v8:最快的引擎)
+        safari、大部分国产浏览器现在都是使用v8引擎(360、搜狗、QQ、百度、猎豹、UC...)、最新版本的opera(14+)、大部分安卓和IOS手机上的浏览器、web view、node...
+    火狐(firefox)：gecko
+    IE浏览器：trident
+    欧朋(opera)：老版本的opera使用的是presto内核
+
+    浏览器兼容
+      1)W3C规定获取元素样式用getComputedStyle，谷歌和火狐使用的都是这个方法,IE非要与众不同,它也实现这个功能,但是方法名是currentStyle...  =>各大浏览器厂商因为要突出自己的特点,所导致的浏览器兼容
+      2)有的浏览器团队逼格较高,能够引领W3C,例如:谷歌团队不仅把标准都实现了,而且为了方便开发者提高效率,提供了一些标准外的方法(border-radius)
+      -webkit-border-radius:xxx 指定只有在V8浏览器中才识别这个样式，其余内核的浏览器遇到它会自动跳过
+
+      后期火狐也发现这个挺好用的，也实现了这个功能
+      -moz-border-radius:xxx
+
+      再后来IE也加了
+      -ms-border-radius:xxx
+
+      W3C发现浏览器都加了，那么我们把它制定为标准吧
+        过渡期：我们还是要加上前缀,浏览器还没有升级
+        -webkit-border-radius:xxx
+        -moz-border-radius:xxx
+        -ms-border-radius:xxx
+        border-radius:xxx
+
+        当浏览器都已经更新完成后
+        border-radius:xxx
+
+
+http://tool.css-js.com/ ：实现代码压缩等常用操作的网站
+    BASE64：把图片先进行BASE64编码,我们在页面中需要的时候,直接使用编码而不是之前的图片地址
+    [好处]
+      ->不需要再向服务器发送请求了(减少了HTTP请求,有助于页面的性能优化)
+      ->直接渲染不需要浏览器在单独编译(图片渲染出来的速度加快很多)
+    [弊端]
+      ->大图片生成的代码太多,不方便开发和维护
+-->
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAqCAYAAADbCvnoAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFODVBQTI4NzgyRkExMUU2QjIwOURFODQ2RkQ2REJCNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFODVBQTI4ODgyRkExMUU2QjIwOURFODQ2RkQ2REJCNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkU4NUFBMjg1ODJGQTExRTZCMjA5REU4NDZGRDZEQkI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkU4NUFBMjg2ODJGQTExRTZCMjA5REU4NDZGRDZEQkI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Yz3vTQAAAThJREFUeNrs2L0OAUEQB/DdqzVKifIe4rwBvRdAoSIRpQKFUiRUCryAnjewD6GUKK/xAP4jW8g657gPU8wkk4lL3P243U1mtEoZl2bTR1nZj73qfn9Ocz+dAlJCmSDbyLK9HCK3dB2wW2EgYFoo8yeIGwQbArXLFQRIgLJABgm/YpADwEymIEAqKDNk68c3TP/UCLBrKpBdJ126WczrSRqh/VHruPWlYzANlCXSV9kG7cI+UIdEoKdtXFf5xjHqmNAftnHe8XJM6ITbuAjY45jQwJy+2MZ5h/EYYSgCTzELAQlIQAISkIAEJCABCegzyDDyGA+tR832YuEfIfTsNlncRnGM7Py9UWTZSrMdNjgoPuMYB8ZjYBUB4zHSi4DxGHpGrC/3mCDIBjktdCz85phQKoPB+V2AAQC2FoGQdpwz/AAAAABJRU5ErkJggg==" alt="">
+
+</body>
+</html>

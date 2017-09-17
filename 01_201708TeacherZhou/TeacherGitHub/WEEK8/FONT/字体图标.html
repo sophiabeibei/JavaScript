@@ -1,0 +1,145 @@
+<!DOCTYPE html><html><head><title>字体图标</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>
+.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h2 id="字体图标">字体图标</h2>
+
+<blockquote>
+  <p>目前很多页面中的图标都是使用<code>字体图标</code>完成的</p>
+  
+  <p><strong>[优势]</strong></p>
+  
+  <ul><li>矢量化：字体是矢量格式，因此能够轻松的适配不同的设备，而不必为不同分辨率的屏幕准备不同的图片资源;</li>
+  <li>轻量性：一个图标字体比一系列的图像（特别是在Retina屏中使用双倍图像）要小。一旦图标字体加载了，图标就会马上渲染出来，不需要下载一个图像。可以减少HTTP请求，还可以配合HTML5离线存储做性能优化;</li>
+  <li>可扩展性：图标字体可以用过font-size属性设置其任何大小。这使您能够随时输出不同大小的图标，然而，使用位图，你必须得为每个不同大小的图像输出一个不同文件。</li>
+  <li>灵活性：文字效果可以很容易地应用到你的图标上，包括颜色，阴影和翻转等效果。他们还可以在任何背景下显示。 </li>
+  <li>兼容性：网页字体支持所有现代浏览器，包括IE低版。[ <a href="http://caniuse.com/#feat=fontface" target="_blank">http://caniuse.com/#feat=fontface</a> ]</li>
+  </ul>
+  
+  <p><strong>[弊端]</strong></p>
+  
+  <ul><li>图标字体只能被渲染成单色或者CSS3的渐变色，由于此限制使得它不能广泛使用。</li>
+  <li>使用版权上有限制，有好多字体是收费的。当然也有很多免费开源的精美字体图标供下载使用。</li>
+  <li>创作自已的字体图标很费时间，重构人员后期维护的成本偏高。</li>
+  </ul>
+</blockquote>
+
+
+
+<h3 id="常用的字体图标">常用的字体图标</h3>
+
+<p>[阿里字体图标库] <br>
+<a href="http://iconfont.cn/" target="_blank">http://iconfont.cn/</a>  <br>
+先选择自己需要的图标,下载下来(SVG) <br>
+在网站的个人中心，创建一个字体图标库，把自己刚才下载的图标都上传到图标库中，然后提交阿里审核</p>
+
+<p>[Font Awesome] <br>
+<a href="http://fontawesome.dashgame.com/" target="_blank">http://fontawesome.dashgame.com/</a></p>
+
+<p>[icomoon] <br>
+<a href="http://icomoon.io/app/" target="_blank">http://icomoon.io/app/</a></p>
+
+<p>[fontello] <br>
+<a href="http://fontello.com/" target="_blank">http://fontello.com/</a></p>
+
+<p>…</p>
+
+<h3 id="使用方式">使用方式</h3>
+
+
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-css hljs"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>@<span class="hljs-keyword">font-face</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'YourWebFontName'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>  <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'YourWebFontName.eot'</span>); <span class="hljs-comment">/* IE9 Compat Modes */</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>  <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'YourWebFontName.eot?#iefix'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'embedded-opentype'</span>), <span class="hljs-comment">/* IE6-IE8 */</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>  <span class="hljs-built_in">url</span>(<span class="hljs-string">'YourWebFontName.woff'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'woff'</span>), <span class="hljs-comment">/* Modern Browsers */</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>  <span class="hljs-built_in">url</span>(<span class="hljs-string">'YourWebFontName.ttf'</span>)  <span class="hljs-built_in">format</span>(<span class="hljs-string">'truetype'</span>), <span class="hljs-comment">/* Safari, Android, iOS */</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>  <span class="hljs-built_in">url</span>(<span class="hljs-string">'YourWebFontName.svg#YourWebFontName'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'svg'</span>); <span class="hljs-comment">/* Legacy iOS */</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>}
+</div></code></pre>
+
+<p>举例即将开发的新浪页面</p>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="language-css hljs"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>@<span class="hljs-keyword">font-face</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'SinaHomeFont'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/SinaHomeFont.eot'</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/SinaHomeFont.eot?#iefix'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'embedded-opentype'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>    <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/SinaHomeFont.woff'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'woff'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>    <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/SinaHomeFont.ttf'</span>)  <span class="hljs-built_in">format</span>(<span class="hljs-string">'truetype'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>    <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/SinaHomeFont.svg#SinaHomeFont'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'svg'</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span><span class="hljs-selector-attr">[class^='icon_']</span>,<span class="hljs-selector-attr">[class*='icon_']</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'SinaHomeFont'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>    <span class="hljs-attribute">font-weight</span>:normal;
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>    <span class="hljs-attribute">font-style</span>:normal;
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>    <span class="hljs-comment">/*解决字体图标锯齿和不清晰的情况*/</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>    <span class="hljs-attribute">-webkit-font-smoothing</span>: antialiased;
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>    <span class="hljs-attribute">-moz-osx-font-smoothing</span>: grayscale
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span><span class="hljs-comment">/*通过伪元素before(after)加属性名content通过\让编码转化为图标字体*/</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span><span class="hljs-selector-class">.icon_logo</span><span class="hljs-selector-pseudo">:before</span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span>    <span class="hljs-attribute">content</span>:<span class="hljs-string">"\e60e"</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span>}
+</div></code></pre>
+
+<p><strong>自定义字体格式</strong> <br>
+1).ttf(TrueType格式) <br>
+是Windows和Mac的最常见的字体，是一种RAW格式，因此他不为网站优化,支持这种字体的浏览器有 <br>
+IE9+,Firefox3.5+,Chrome4+,Safari3+,Opera10+,iOS Mobile Safari4.2+</p>
+
+<p>2).otf字体 <br>
+被认为是一种原始的字体格式，其内置在TureType的基础上，所以也提供了更多的功能,支持这种字体的浏览器有Firefox3.5+,Chrome4.0+,Safari3.1+,Opera10.0+,iOS Mobile Safari4.2+</p>
+
+<p>3).woff (Web Open Font格式): 针对网页进行特殊优化，Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离,支持这种字体的浏览器有 <br>
+IE9+,Firefox3.5+,Chrome6+,Safari3.6+,Opera11.1+</p>
+
+<p>4).eot(Embedded Open Type格式)：字体是IE专用字体，可以从TrueType创建此格式字体,支持这种字体的浏览器有 <br>
+IE4+</p>
+
+<p>5).svg(SVG格式)：是基于SVG字体渲染的一种格式,支持这种字体的浏览器有 <br>
+Chrome4+,Safari3.1+,Opera10.0+,iOS Mobile Safari3.2+</p>
+
+
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs css"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>【网易】
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>@<span class="hljs-keyword">font-face</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'iconfont'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(http://img2.cache.netease.com/f2e/wap/common/font/iconfont_14.eot);
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(http://img2.cache.netease.com/f2e/wap/common/font/iconfont_14.eot?#iefix) <span class="hljs-built_in">format</span>(<span class="hljs-string">'embedded-opentype'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>    <span class="hljs-built_in">url</span>(http://img2.cache.netease.com/f2e/wap/common/font/iconfont_14.woff) <span class="hljs-built_in">format</span>(<span class="hljs-string">'woff'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>    <span class="hljs-built_in">url</span>(http://img2.cache.netease.com/f2e/wap/common/font/iconfont_14.ttf) <span class="hljs-built_in">format</span>(<span class="hljs-string">'truetype'</span>),
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>    <span class="hljs-built_in">url</span>(http://img2.cache.netease.com/f2e/wap/common/font/iconfont_14.svg#iconfont) <span class="hljs-built_in">format</span>(<span class="hljs-string">'svg'</span>)
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span><span class="hljs-selector-class">.iconfont</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"iconfont"</span> <span class="hljs-meta">!important</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>    <span class="hljs-attribute">font-style</span>: normal;
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>    <span class="hljs-attribute">-webkit-font-smoothing</span>: antialiased;
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>    <span class="hljs-attribute">-webkit-text-stroke-width</span>: .<span class="hljs-number">2px</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>    <span class="hljs-attribute">-moz-osx-font-smoothing</span>: grayscale
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span>【爱奇艺】
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span>@<span class="hljs-keyword">font-face</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span>    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'iconography'</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span>    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'http://static.iqiyi.com/ext/common/iconography/iconfont.eot'</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span>    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'http://static.iqiyi.com/ext/common/iconography/iconfont.ttf'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'truetype'</span>), <span class="hljs-built_in">url</span>(<span class="hljs-string">'http://static.iqiyi.com/ext/common/iconography/iconfont.svg#iconfont'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'svg'</span>)
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>}
+</div></code></pre>
+
+
+
+<h3 id="fontcreator">FontCreator</h3>
+
+<blockquote>
+  <p>通过这工具可以制作新的字体图标库或者查看现有字体图标库中的信息</p>
+</blockquote></div></body></html>
