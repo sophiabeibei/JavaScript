@@ -314,3 +314,5 @@
 readImg.js--NodeJS遍历文件生产文件列表
 less编译
 Swiper插件 滑动.轮播..
+熟练掌握W3C标准
+了解浏览器内核
