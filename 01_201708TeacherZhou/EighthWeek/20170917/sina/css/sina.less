@@ -3,7 +3,8 @@
 @import "font";
 
 .transition(@property: all,@duration: 1s,@timing-function: linear,@delay: 0s){
-  //-webkit-transform: ;
+  -webkit-transform: @arguments;
+  transform: @arguments;
 }
 
 html{
@@ -76,7 +77,6 @@ html,body{
 
     a{
       display: block;
-      width: 100%;
       height: 100%;
       color: #555;
     }
@@ -95,16 +95,19 @@ html,body{
   //height: 1.6rem;
   //height: 2.6rem;  /*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
   /*最初的高度和padding都为0;不显示;*/
+  padding: 0;
+  height: 0;
   background: #fff;
   overflow: hidden;
+  .transition(@duration: .3s);
 
   ul{
-    height: 100%;/*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
-    align-content: center;/*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
     display: -webkit-flex;
     display: flex;
     flex-wrap: wrap;
+    height: 100%;/*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
     justify-content: center;
+    align-content: center;/*为了适应弹性布局(弹性盒和模型),测试垂直对齐*/
 
     li {
       //flex-grow: 1;/*把剩余的空间沾满;  li每个都为1,同等分配;*/
@@ -113,6 +116,12 @@ html,body{
       line-height: .64rem;
       text-align: center;
       font-size: .32rem;
+
+      a{
+        display: block;
+        height: 100%;
+        color: #555;
+      }
     }
   }
 }
@@ -176,7 +185,7 @@ html,body{
   margin: .16rem 0;
   height: @H;
   background: #fff;
-  //overflow: hidden;
+  overflow: hidden;
 
   .flag{
     position: absolute;
@@ -185,10 +194,10 @@ html,body{
     width: 1rem;
     height: @H;
     line-height: @H;
-    font-size: .24rem;
+    text-align: center;
 
     &:after{
-      padding: 0 .6rem;
+      padding: 0 .06rem;
       content: "直播";
       background: #fa4e46;
       color: #fff;
@@ -198,7 +207,6 @@ html,body{
 
   .list{
     margin-left: 1rem;
-    //overflow: hidden;
     .transition(@duration: .3s);
 
     li{
@@ -267,9 +275,13 @@ html,body{
     }
   }
 
-  .img{
+  .image{
     padding: .2rem 0;
     border-bottom: .02rem solid #ddd;
+
+    a{
+      display: block;
+    }
 
     p{
       font-size: .34rem;
@@ -294,29 +306,20 @@ html,body{
         }
       }
     }
+
+    span{
+      display: block;
+      line-height: .3rem;
+      text-align: center;
+      color: #888;
+      font-size: .22rem;
+      vertical-align: middle;
+
+      i{
+        margin-left: .1rem;
+        font-size: .24rem;
+        vertical-align: middle;
+      }
+    }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

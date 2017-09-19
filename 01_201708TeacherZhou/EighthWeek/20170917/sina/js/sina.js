@@ -14,6 +14,7 @@ let headerRender = (() => {
                     height: "1.6rem",
                     padding: ".16rem 0"
                 });
+                $menu.attr("isShow", true);
                 return;
             }
             //->当前是展示的,我们让其隐藏
@@ -103,28 +104,27 @@ let asideRender = (() => {
 
     //->实现动画
     let asideH = $asideBox[0].offsetHeight,
-        step = -1,
+        step = 0,
         autoTimer = null,
         interval = 1000;
-    $plan.add(()=>{
-        autoTimer = setInterval(()=>{
-            $list.css("transitionDuration","0.3s");
+    $plan.add(() => {
+        autoTimer = setInterval(() => {
+            $list.css("transitionDuration", "0.3s");
             step++;
             //->控制transiform
-            $list.css(`transform`,`translateY(${-step*asideH}px)`).on("webkitTransitionEnd",function () {
-                if(step===3){
+            $list.css(`transform`, `translateY(${-step * asideH}px)`).on("webkitTransitionEnd", function () {
+                if (step === 3) {
                     //->已经运动到克隆的那一条信息
-                    $list.css("transitionDuration","0s");
-                    $list.css(`transform`,`translateY(${0})`);
-                    step=0;
+                    $list.css("transitionDuration", "0s");
+                    $list.css(`transform`, `translateY(0)`);
+                    step = 0;
                 }
             });
-        },interval);
+        }, interval);
     });
 
     return {
         init(){
-
             $.ajax({
                 url: "aside.json",
                 method: "get",
@@ -135,20 +135,21 @@ let asideRender = (() => {
         }
     }
 })();
+asideRender.init();
 
 /*news*/
-let newsRender = (()=>{
-    let $news=$(".news"),
-        $plan=$.Callbacks();
+let newsRender = (() => {
+    let $news = $(".news"),
+        $plan = $.Callbacks();
 
     //->数据绑定
-    let fn=(result)=>{
-        let newsList=result["newsList"],
-            imgList=result["imgList"];
-        let str=``;
-        str+=`<ul class="item">`;
-        $.each(newsList,function () {
-            str+=`<li>
+    let fn = (result) => {
+        let newsList = result["newsList"],
+            imgList = result["imgList"];
+        let str = ``;
+        str += `<ul class="item">`;
+        $.each(newsList, function () {
+            str += `<li>
                     <a href="${this.link}">
                         <img src="${this.img}" alt="">
                         <div>
@@ -160,35 +161,37 @@ let newsRender = (()=>{
                     </a>
                 </li>`;
         });
-        str+=`</ul>`;
+        str += `</ul>`;
 
-        str+=`<div class="image">`;
-        str+=`<a href="${imgList.link}">`;
-        str+=`<p>${imgList.title}</p>`;
-        str+=`<div class="clearfix">`;
-        str+=`</div>`;
-        str+=`<span>
+        str += `<div class="image">`;
+        str += `<a href="${imgList.link}">`;
+        str += `<p>${imgList.title}</p>`;
+        str += `<div class="clearfix">`;
+        $.each(imgList.img, function () {
+            str += `<img src="${this}" alt="">`;
+        });
+        str += `</div>`;
+        str += `<span>
                 ${imgList.count}
                 <i class="icon-comment"></i>
                 </span>`;
-        str+=`</a>`;
-        str+=`</div>`;
+        str += `</a>`;
+        str += `</div>`;
 
         $news.append(str);
-        $(window).on("scroll",loadMore);
+        $(window).on("scroll", loadMore);
     };
-    $plan.add(fn);
 
     //->滚动到底部加载更多的数据
-    let loadMore=()=>{
-        let clientH=document.documentElement.clientWidth,
-            scrollT=document.documentElement.scrollTop || document.body.scrollTop,
-            winH=document.documentElement.scrollHeight || document.body.scrollHeight;
-        if(clientH+scrollT+20>winH){
+    let loadMore = () => {
+        let clientH = document.documentElement.clientWidth,
+            scrollT = document.documentElement.scrollTop || document.body.scrollTop,
+            winH = document.documentElement.scrollHeight || document.body.scrollHeight;
+        if (clientH + scrollT + 10 > winH) {
             //->加载更多数据
-            $(window).off("scroll",loadMore);
+            $(window).off("scroll", loadMore);
             $.ajax({
-                url: "aside.json",
+                url: "news.json",
                 method: "get",
                 dataType: "json",
                 cache: false,
@@ -196,11 +199,13 @@ let newsRender = (()=>{
             });
         }
     };
+    $plan.add(fn);
+
 
     return {
         init(){
             $.ajax({
-                url: "aside.json",
+                url: "news.json",
                 method: "get",
                 dataType: "json",
                 cache: false,

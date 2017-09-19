@@ -1,17 +1,17 @@
 [
   {
-  "id":1,
-  "title":"广告一广告一广告一",
-  "link":"http://www.baidu.com"
+    "id": 1,
+    "title": "广告一广告一广告一",
+    "link": ""
   },
   {
-    "id":2,
-    "title":"广告二广告二广告二二二",
-    "link":"http://www.baidu.com"
+    "id": 2,
+    "title": "广告二广告二广告二二二",
+    "link": ""
   },
   {
-    "id":3,
-    "title":"广告三广告三广告三",
-    "link":"http://www.baidu.com"
+    "id": 3,
+    "title": "广告三广告三广告三",
+    "link": ""
   }
 ]
