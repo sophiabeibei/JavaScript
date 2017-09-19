@@ -316,3 +316,43 @@ less编译
 Swiper插件 滑动.轮播..
 熟练掌握W3C标准
 了解浏览器内核
+
+2.权威网站
+        https://stackoverflow.com/
+        全球权威专业技术问答网站
+
+        https://insghts.stackoverflow.com/survey/2016
+        2016年度全世界技术发展的总结报告
+
+        github: https://github.com/
+        全世界一款非常权威的开源社区(代码托管平台),前端开发中你所知道的框架或者类库等,他们的源代码99.99999%在github中都能找到
+        以后当大家有所能力后,写一些开源的类库或者插件供别人使用,如果被人用的好,你的github粉丝会越来越多,当达到一定量的时候,在国内你就寂寞了...
+        现在回去后,先做一件事情: 把一些自己知道的框架都找到,然后把源代码fork到自己的仓库中;
+
+        https://codding.net/
+        中文版(国内)的github
+
+        http://www.csdn.net/
+        中国技术论坛(社区)
+
+        https://juejin.im/
+        掘金
+
+        http://www.w3school.com.cn/
+        w3school
+
+        http://www.w3cplus.com/
+        w3cplus
+
+        http://www.qdfuns.com/
+        w3cfuns(qdfuns)
+
+        http://www.webhek.com/
+        骇客
+
+        http://www.css88.com/
+        css88
+
+        名人博客: 廖雪峰,阮一峰,张鑫旭,大漠,崔世峰....
+
+        慕课视频
