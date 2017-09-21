@@ -1,0 +1,20 @@
+{
+  "name": "NODE-BASE-INFO",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel ES6 -d ES5",
+    "less": "node lessRender.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "less": "^2.7.2",
+    "webpack": "^1.15.0"
+  }
+}
