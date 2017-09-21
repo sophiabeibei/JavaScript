@@ -1,0 +1,313 @@
+一.在一个空的项目中
+    1.安装less,babel-cli两个模块
+        npm install less babel-cli --save-dev
+    2.配置模块的运行命令
+        npm init -y
+    2.ES6转换成ES5
+        npm install babel-preset-latest babel-preset-stage-2 --save-dev
+    3.语言解析包
+        在这个空文件中,创建一个.babelrc文件,这是语言解析包;
+
+
+二.安装指定版本的模块
+    1.查询当前模块的版本号
+        npm view webpack 查看webpack的版本号
+
+    2.安装指定的版本号
+        npm install webpack@1.15.0 --save-dev
+
+    3.生成一个文件,便于存放信息供我们查看;
+        生成的窗口太多,它会给截取了;我们这么办?  由于查看版本号的时候信息太多,命令窗口中放不下,此时我们把查看的信息放在version.webpack这个文件中(文件名可以自定义,不一定叫version.webpack);
+        npm view webpack > version.webpack
+        举例: 生成一个lessVersion.txt的文件
+        npm view less > lessVersion.txt
+
+
+-------------------------------------------------------------------------------------------------
+node是做后台开发的,node安装在服务器上;node是基于v8引擎运行js;换句话说就是拿js写后台程序了;接下来以下学的都是跟后台有关,学后台的知识;
+
+三.node中的自定义模块
+    1.自定义模块
+        在node环境中,拿js写后台的时候,我们在项目当中创建某一个js文件来实现后台的一些业务逻辑处理,此时新创建的js被称为"自定义模块";
+
+        而且模块和模块之间是独立的,里面的方法不会产生冲突;当然也可以基于node提供的语法实现模块和模块之间的调用;
+
+        举例:
+            一个js文件就是一个模块;test1和test2中各自创建的fn是没有关系;
+
+    2.怎样实现模块和模块之间的相互调用?
+        范例:
+        test1模块   =>test1.js
+            let fn=()=>{
+                console.log("text1");
+            };
+
+            let sum = () => {
+
+            };
+
+            //->把test模块中的sum方法导出,自定义一个名字sumFn,导出的目的: 提供给其它的模块使用;
+            module.exports.sumFn= sum;
+            module.exports.fn = fn;
+
+            //->合并一起,一下导出两个(多个)
+            module.exports = {
+                sum: sum,
+                fn: fn
+            };
+
+            //->合并一起,一下导出两个(多个): module可以省略;但个人习惯不省略;
+            // exports = {
+            //     sum: sum,
+            //     fn: fn
+            // };
+
+
+        test2模块   =>test2.js
+            let fn=()=>{
+                console.log("text2");
+            };
+
+            //->需求: 在test2模块中调用test1模块中的某一个方法  (后台没有html页面一说;后台也不叫test1.js,叫test1模块);
+            //->导入test1模块,用require,定义一个变量接收返回值;
+            let temp = require("./test1");
+
+            //->导入"内置模块"和导入"已经安装的第三方模块"不用加./(点杠目录)
+            require("less");
+            temp.sum(1,200);
+
+            //->光导入还不够,还要在test1中导出;
+
+    3.配置node代码提示包;
+        基于node环境js开发后台程序需要的语言提示;(文件中有相关的图片)
+
+    4.讲解require(根据上面范例讲解)
+        1.不加./(目录-路径): 导入已经安装的第三方模块或者导入node内置的模块;
+        require("");导入某个模块,这样写是导入已经安装的第三方模块或者导入node内置的模块;这样写完后,它首先会到本地项目的node_modules中查找这个模块,如果有就是已经安装的第三方模块,如果没有继续查找node的内置模块,如果再没有就会报错(错误: 模块不存在);
+
+        2.加./(目录-路径): 导入自定义模块;
+            require("./xxx") 或者 require("../xxx");这类模式都属于在引入模块的时候指定了路径;此时它的意思是: 导入自定义模块(需要注意的是: 路径地址一定要指定好);
+
+            /    当前项目根目录
+            ./   当前目录
+            ../  上级目录
+
+        3.定义一个变量接收导入进来的模块的返回值
+
+        4.执行xxx模块(xxx.js)
+            执行方法1: 把当前写好的代码在node环境中运行(执行): 鼠标右键选择"Run "xxx.js";
+                因为WebStorm中嵌套了node.exe这个执行文件;右键执行相当于使用node把js代码执行;
+
+            执行方法2: 在xxx.js文件所在的文件夹中,打开DOS命令窗口,在DOS命令中执行"node xxx.js";也相当于执行了;
+
+        5.module对象: 用来导出模块;
+            module是node环境中天生自带的一个对象,用来进行node模块管理;它里面有一个对象叫做exports,把模块中的部分方法导出,提供给其它的模块调取使用;
+
+
+
+四.综合练习
+    有三个自定义模块: A,B,C
+    A中提供一个sum方法,实现任意数求和
+    B中提供一个avg方法,实现求一堆数的平均数(先求和,再求平均,求和需要用到A中的sum);---在B中导入A
+    C中准备一些数字,调取B中的avg方法,获取需要的平均数;
+
+    周啸天-班主任(1282347298)  11:38:24
+    function sum() {
+        var total = null;
+        for (var i = 0; i < arguments.length; i++) {
+            total += arguments[i];
+        }
+        return total;
+    }
+    function sum() {
+        var ary = Array.prototype.slice.call(arguments);
+        return eval(ary.join('+'));
+    }
+    周啸天-班主任(1282347298)  11:40:20
+    function sum() {
+        arguments.__proto__ = Array.prototype;
+        return eval(arguments.join('+'));
+    }
+    function sum() {
+        var total = null;
+        arguments.__proto__ = Array.prototype;
+        arguments.forEach(function (item, index) {
+            total += item;
+        });
+        return total;
+    }
+    周啸天-班主任(1282347298)  11:46:47
+    var temp = require('./A');
+    function avg() {
+        return temp.sum.apply(undefined, arguments) / arguments.length;
+    }
+    module.exports = {
+        avg: avg
+    };
+    周啸天-班主任(1282347298)  11:47:56
+    var temp = require('./B');
+    console.log(temp.avg(12, 23, 34, 45));
+    周啸天-班主任(1282347298)  11:56:59
+    --------------
+    module.exports = {
+        sum: (...arg)=> eval(arg.join('+'))
+    };
+    let temp = require('./A');
+    module.exports = {
+        avg: (...arg)=> temp.sum(...arg) / arg.length
+    };
+    let temp = require('./B');
+    console.log(temp.avg(12, 23, 34, 45));
+
+
+五.node中的内置模块
+    当js在node中运行的时候,node也会给js提供一些内置的属性和方法,这些属性和方法都存储在node的内置模块中;node的内置模块有好多好多;这次是初步入门;
+    我们讲三个内置模块: 1.http;2.url;3.fs;
+
+    1.http内置模块
+        作为后台开发工程师,我们需要创建一个服务,用来接收客户端请求,并且把需要的内容准备好,最后返回给客户端;而HTTP内置模块中提供了做这些事情的属性和方法;
+
+        举例:
+            let http = require("http"),
+                url = require("url"),
+                fs = require("fs");
+
+            //->1.首先创建一个服务;2.并监听端口号;
+            let server = http.createServer((req,res)=>{//->http.createServer: 这个方法是创建服务;
+                //->这个回调函数()=>{},并不是创建成功执行;而是当客户端向当前服务器的这个服务(端口号1990这个服务)发送请求的时候才会被触发执行;而且客户端发送几次请求,这个回调函数就会被触发执行几次;
+                //->如何向1990端口号发送请求?1.都是基于浏览器来完成,在客户端浏览器的地址栏中输入http://localhost:1990/后面是请求资源的名称,问号传参等东西...;(访问本机服务)
+                //->2.查看ip: DOS窗口输入ipconfig -all;找到IP地址: http://172.18.1.0:19990/...(局域网IP或者外网IP访问某台主机上的服务,真实项目中是通过域名访问的);
+                console.log("ok");
+
+                //->回调函数在客户端请求的时候不仅被执行了,而且还传递了两个参数值:
+                //req: request  对象,里面存储了客户端发送过来的全部请求信息,例如: req.url,存储的是当前客户端请求资源的路径名称以及传递的问号参数值;
+                //ers: response  对象,里面提供了很多方法;可以让服务器端把内容返回给客户端;例如: res.end([content内容])就是把指定内容返回给客户端的浏览器;
+            });
+
+            //->还需要给创建的服务安排端口号(一台服务器上可能有很多的服务,需要使用端口号来区分)
+            server.listen(1990, () => {//->server.listen: 这个方法用来监听端口号1-65535之间都可以
+                //=>当服务创建成功,端口号也已经正常分配的时候,会触发此回调函数执行;
+                console.log("server is success,listening on 1990 port!");//->当前服务正在用"80"端口
+                /*
+                 * Error: listen EACCES 0.0.0.0:80
+                 * Error: listen EACCES ...:80
+                 * 类似于这样的报错信息都说明当前的80端口已经被其它的服务占用了,我们要不然结束其它正在使用这个端口号的服务,要不然自己换一个其它的端口号
+                 * */
+            });
+
+
+
+    2.url
+
+
+
+    3.fs内置模块
+        fs模块中提供了一些属性和方法供js在服务器上node环境中进行I/O工作;
+            I/O: input/output;输入/输出;所谓的I/O操作: 对文件的增删改查等处理;
+        都哪些需要增删改查
+
+
+        js在客户端浏览器运行的时候,能否对客户端的本地文件进行I/O操作?
+            不能!如果可以的话,对客户端的电脑会造成极大的安全隐患;但是有些操作是可以的,例如上传文件或者图片(input type="file"),但是需要用户手动去选择本地文件上传;
+
+        js在服务器端node环境运行的时候,能否对服务器上的文件进行I/O操作?
+            肯定能!fs模块提供的方法就是做这些事情的;
+
+        都提供哪些方法供我们使用?
+            let fs = require("fs");
+
+        第一,二个方法: 读取文件内容
+            fs.readFile   异步读取某个文件中的内容;
+            fs.readFileSync    同步读取某个文件中的内容;    Sync: 阻塞I/O      Sync: 同步
+
+            相对于异步来说,同步操作是把内容读取完成后,才会执行后续操作;而异步操作是读取过程中不管是否读取完成,都会执行后续的操作;
+
+            语法1:
+                fs.readFileSync([pathname],[encode编码],[encode读取出来的内容]);
+
+                fs.readFile("./lessVersion.txt",(error,value)=>{
+                    console.log(value.toString());
+                });
+
+        第三,四个方法: 向指定文件中写入内容
+            fs.writeFile([pathname],[content],[encode],[callBack]);
+            fs.writeFileSync([pathname],[content],[encode写入内容的编码格式])
+            //=>我们的内容写入是覆盖式的: 新写入的内容会把之前的内容都覆盖掉(之前的内容都没有了);如果不想覆盖,先把之前的内容获取,和最新的内容进行拼接,把拼接后的内容整体写进去,类似于xxx.innerHTML+=``;
+
+        第五,六个方法: 读取文件夹中的文件目录(把当前文件夹下面的所有目录都读取到)
+            fs.readdir([pathname],(error,value)=>{});
+            fs.readdirSync([pathname])   返回的结果是一个数组,包含当前目录下的文件列表信息;
+
+
+            fs.readdir("./lessVersion.txt",(error,value)=>{
+            //=>当前查找完成后执行回调函数,value存储的值就是找到的全部文件目录信息(数组);
+            });
+
+
+六.fs综合案例
+    自己编写一个模块,能够批量编译less文件;并且配置在项目的命令当中;
+
+    最后只要执行"npm run less"即可把lessRender.js进行编译;
+
+七.
+    把一个url地址进行解析,解析出每一部分的内容
+    //=>url.parse([str],true/false)
+
+    let url = require("url");
+    let str = "http://www.zhufengpeixun.cn:80/stu/index.html?name=sh&age=18#video";
+
+    console.log(url.parse(str,false));
+    /*
+    url{
+        protocol:"http:",
+        slashes:true,
+        auth:null,
+        host:"www.zhufengpeixun.cn:80",
+        hash:"#video",
+        search:"?name=sh&age=18",
+        query:"name=sh&age=18",
+        path: "/stu/index.html?name=sh&age=18"
+
+    }
+    */
+
+    ---------------------------------------
+    console.log(url.parse(str,true));
+        /*
+        url{
+            protocol:"http:",
+            slashes:true,
+            auth:null,
+            host:"www.zhufengpeixun.cn:80",
+            hash:"#video",
+            search:"?name=sh&age=18",
+            query:{name: "sh",age: "18"},
+            和写false的时候对比,其他值一样,知识query的值不再是一个字符串而是一个对象,它默认会把问号传递参数的值以对象键值对的方式来存储,方便后期的操作(最常用)
+            1
+        }
+        */
+
+在webstorm中打开html文件,自动生成一个63342的端口,webstorm是拿c语言写的;
+node.js
+
+预习任务:
+    第8章: AJAX
+        第2节: AJAX基础知识
+            课件1: HTTP报文....周六不讲了
+            课件2: 预习
+            课件3: AJAX兼容....已经好几期不讲了
+            课件4: 预习
+            课件5: 预习
+            课件6: 预习
+    2.需要完成的练习作业:
+        2014vote效果图;
+        回家之后把页面布局做完了;用photoshop;
+        使用rem响应式布局;
+        这套设计稿是京东的;京东的原版项目;
+
+    3.今天练习了一个小东西(A/B/C),加油吧!
+
+各个组长: 这周,总结;从B模块开始,哪些知识点薄弱,统计;下周,四天;决定是复习,还是讲新的;
+
+今天的课程:
+    node中安装指定版本的模块/node中的自定义模块/模块和模块之间的相互调用/node3个中的内置模块(http/url/fs)
