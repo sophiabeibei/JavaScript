@@ -254,6 +254,166 @@ HTTP网路状态码(AJAX基础知识)
         分为6开头的: 很少见;
 
 
+-------------------------------------------------------------------------------------
+案例:
+    ajax-base-info: ajax基础知识(head请求(只获取响应头请求)/状态4改成2(减少从服务器获取时间和真实时间的差值)/为啥要获取服务器时间而不获取客户端时间/每间隔一秒钟,我们怎样在原始服务器的时间上累加1000ms)
+
+    html代码:
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>倒计时</title>
+    </head>
+    <body>
+    <div id="box">距离开抢还剩:<span id="time">00:00:00</span></div>
+    <script src="js/time.js"></script>
+    </body>
+    </html>
+
+
+
+    JS代码:
+    //->首先获取服务器端时间(以服务器时间为准,不能以客户端时间为准)
+    //->向服务器端发送请求,用ajax
+    let serverTime = null;
+    let autoTimer = null;
+    let timeDiv = document.getElementById("time");
+
+
+    let xhr = new XMLHttpRequest;
+    //->head: 只获取响应头请求;因为只需要获取响应头信息就够我们使用了;
+    xhr.open("head", "temp.xml");
+    xhr.onreadystatechange = function () {
+        //->优化一: 为了减少从服务器获取时间和真实时间的差值,我们在状态为2的时候就可以获取到服务器的时间了(通过响应头获取);没必要等到4的时候;
+        if (xhr.readyState === 2 && xhr.status === 200) {
+            //->通过响应头获取的服务器时间是"格林尼治时间GMT";"北京时间GMT+8"
+            serverTime = xhr.getResponseHeader("date");
+
+            //->这样转以下就变成北京时间
+            serverTime = new Date(serverTime);
+
+            computedTime();
+            autoTimer = setInterval(computedTime, 1000);
+        }
+    };
+    xhr.send(null);
+
+
+    let computedTime = () => {
+        //->获取当前客户端本机的时间(这样是不对的,不应该获取当前客户端时间,要获取服务器时间)
+        // let nowTime = new Date();
+
+        //->获取服务器时间
+        let nowTime = serverTime;
+        //->获取目标时间
+        let tarTime = new Date("2017-09-23 16:10:00");
+        //->算出两者之间的差值时间
+        let spanTime = tarTime - nowTime;
+
+
+        //->每间隔一秒钟,我们需要在原始服务器的时间上累加1000ms
+        //serverTime.getTime();//->获取当前时间举例1970年1月1日...的毫秒差;再new Date一下;
+        serverTime = new Date(serverTime.getTime() + 1000);
+
+
+        if (spanTime <= 0) {
+            //->已经过了抢购时间
+            clearInterval(autoTimer);
+            timeDiv.innerHTML = "00:00:00";
+            return;
+        }
+
+        let hours = Math.floor(spanTime / (1000 * 60 * 60));
+        spanTime = spanTime - (hours * 60 * 60 * 1000);
+        let minutes = Math.floor(spanTime / (1000 * 60));
+        spanTime = spanTime - (minutes * 60 * 1000);
+        let seconds = Math.floor(spanTime / 1000);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timeDiv.innerHTML = `${hours}:${minutes}:${seconds}`;
+    };
+-------------------------------------------------------------------------------------
+
+=====================================================================================
+jQuery中的ajax方法
+    代码:
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport"
+                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            <title>jQuery中的ajax方法</title>
+        </head>
+        <body>
+        <script src="js/jquery-1.11.3.js"></script>
+        <script>
+            /*ajax常用的属性(7个): url,method,dataType,data,async,cache,success*/
+            $.ajax({
+                url: "",//->url: 我们当前需要请求的url地址
+                method: "",//->method: 请求的方式(get系列/post系列)  jQ中老版本使用的不是method,而是type;(现在使用type和使用method是一样的)zepto中只支持type,不支持method
+                dataType: "",//->可以传text/json/xml....;默认是text;dataType: 预设值服务器返回的数据格式(此处输入的属性值,并不会影响服务器的返回结果,服务器返回给客户端的数据依然是商定好的;可能是字符串,可能xml数据....),而预设值是把服务器返回的结果再次转换为我们需要的数据格式;(特殊注意: 无论写什么格式,返回的都是字符串)
+                data: "",//->data: 可以传对象,也可以传字符串;即使传递的是一个对象,它也会把对象转换成字符串("name=zxt&age=27");它的作用是向服务器传递内容;而且如果请求的方式是get系列,jQ会把字符串放在url的末尾传递服务器,如果是post系列,jQ会把内容放在请求体中传递给服务器;
+
+                /*客户端向服务器传递内容的方式有三种
+                 1.问号传参
+                 2.设置请求头
+                 3.设置请求主体
+                 */
+                async: "",//->async: true(默认异步)/false同步;
+                cache: "",//->cache: true(默认不清除缓存)/false(清除缓存);注意: 只有在get请求系列下,设置cache才有作用;和我们之前提到的方式一样,jQ也是在请求的url末尾追加一个随机数来清除的缓存;
+                success: function(result){}//->success: 值是回调函数;当客户端已经从服务器端把数据获取完成了(ready-state===4),会触发这个回调函数执行,result就是从服务器端获取的内容(当前内容经过了处理jQ按照data-type预设值,把服务器端返回的数据已经解析为我们想要的格式了);
+            })
+        </script>
+        </body>
+        </html>
+
+
+课后作业:
+    参考jQ的API文档或者其它文献,总结jQ中ajax方法可配置的属性及其含义,按照咱们后续写的ajax方法库思想,自己使用原生js封装一款类似于jQ的ajax库;
+=====================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 创建AJAX对象,看视频:
@@ -261,26 +421,6 @@ HTTP网路状态码(AJAX基础知识)
         第八周： Ajax/JSONP/Node基础及项目实战开发
             第2节： AJAX基础知识
                 课件3 : AJAX兼容处理及惰性思想
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
