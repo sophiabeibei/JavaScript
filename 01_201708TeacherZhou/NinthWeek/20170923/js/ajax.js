@@ -11,7 +11,7 @@
 // xhr.send(null);
 //把上面四步封装成一个方法
 
-//在讲封装之前,看jQ中的ajax请求是怎样的;看文件: ajax-jq.html;
+//在讲封装之前,看"jQ中的ajax请求"是怎样的;看文件: ajax-jq.html;
 
 ~function () {
     //->ES6格式写
