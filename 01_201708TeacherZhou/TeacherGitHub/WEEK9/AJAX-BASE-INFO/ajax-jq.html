@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $.ajax({
+        url: '',//->我们当前需要请求的URL地址
+        method: '',//->请求的方式(GET系列/POST系列) 老版本JQ中使用的不是METHOD,而是TYPE(现在使用TYPE和使用METHOD是一样的)；ZEPTO中只支持TYPE,不支持METHOD；
+        dataType: 'json',//->'TEXT(默认)/JSON/XML...' 预设置服务器返回的数据格式(此处输入的属性值并不会影响服务器的返回结果,服务器返回给客户端的数据依然是事先商定好的,可能是字符串,可能是XML数据)，而预设的值是把服务器返回的结果再次转换为我们需要的数据格式
+        data: {
+            name: 'zxt',
+            age: 27
+        },//->DATA：可以传递一个对象，也可以传递一个字符串，即使传递的是一个对象，它也会把对象转换为字符串('name=zxt&age=27')；它的作用是向服务器传递内容，而且如果请求的方式是GET系，JQ会把字符串放在URL的末尾传递给服务器，如果是POST系，JQ会把内容放在请求主体中传递给服务器；
+        async: true,//->设置同步异步：默认是TRUE异步，FALSE是同步
+        cache: true,//->在GET系请求下，我们可以通过CACHE设置是否清除缓存，TRUE是默认值代表不清除，FALSE代表清除(和我们之前提到的方式一样,JQ也是在请求的URL末尾追加一个随机数来清除的缓存)
+        success: function (result) {
+
+        }//->SUCCESS：当客户端已经从服务器端把数据获取完成了(READY-STATE===4)，会触发这个回调函数执行，RESULT就是从服务器端获取的内容(当前内容经过了处理,JQ按照DATA-TYPE预设的值,把服务器返回的数据已经解析为我们想要的格式了)
+    });
+
+    //=>回去后：参考JQ的API文档或者其它文献，总结JQ中AJAX方法可配置的属性及其含义，按照咱们后续写的AJAX方法库思想，自己使用原生JS封装一款类似于JQ的AJAX库
+</script>
+</body>
+</html>

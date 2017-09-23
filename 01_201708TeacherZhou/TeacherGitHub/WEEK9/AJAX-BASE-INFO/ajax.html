@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script src="js/ajax.js"></script>
+<script>
+    ajax({
+        url: 'temp.json',
+        method: 'post',
+        dataType: 'json',
+        async: true,
+        data: {
+            name: '张三',
+            age: 16
+        },
+        cache: false,
+        success: function (result) {
+            console.log(result);
+        }
+    });
+</script>
+</body>
+</html>
