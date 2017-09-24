@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "voterId": 12,
+    "participantId": 3,
+    "time": 1506175700677
+  },
+  {
+    "id": 2,
+    "voterId": 3,
+    "participantId": 12,
+    "time": 1506175719272
+  }
+]

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训-投票注册页面</title>
+
+    <!--IMPORT CSS-->
+    <link rel="stylesheet/less" href="css/register.less">
+    <script src="js/less-2.5.3.min.js"></script>
+
+    <!--REM-->
+    <script>
+        ~function () {
+            window.addEventListener('resize', computed, false);
+            computed();
+            function computed() {
+                var deviceW = document.documentElement.clientWidth;
+                if (deviceW > 640) return;
+                document.documentElement.style.fontSize = deviceW / 640 * 100 + 'px';
+            }
+        }();
+    </script>
+</head>
+<body>
+<main class="mainBox">
+    <header class="headerBox">
+        <img src="img/title.png" alt="">
+    </header>
+    <section class="registerBox">
+        <div class="item">
+            <h3>用户名：</h3>
+            <input type="text" placeholder="请填写您的真实姓名">
+            <span></span>
+        </div>
+        <div class="item">
+            <h3>手机号码：</h3>
+            <input type="tel" placeholder="请填写您常用的手机号">
+            <span></span>
+        </div>
+        <div class="item">
+            <h3>密码：</h3>
+            <input type="password" placeholder="由6~12位数字和字母组成">
+            <span></span>
+        </div>
+        <div class="item">
+            <h3>确认密码：</h3>
+            <input type="password">
+            <span></span>
+        </div>
+        <div class="item">
+            <h3>自我描述：</h3>
+            <textarea placeholder="限制在100字以内"></textarea>
+            <span></span>
+        </div>
+        <div class="item">
+            <h3>性别：</h3>
+            <input type="radio" id="man" name="sex" checked>
+            <label for="man">男</label>
+
+            <input type="radio" id="woman" name="sex">
+            <label for="woman">女</label>
+        </div>
+        <a href="javascript:;" class="submit">提交注册信息</a>
+    </section>
+</main>
+
+</body>
+</html>
