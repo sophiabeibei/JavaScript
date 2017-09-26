@@ -26,7 +26,7 @@
 <body>
 <main class="mainBox">
     <header class="headerBox">
-        <div class="userInfo">
+        <!--<div class="userInfo">
             <img src="img/man.png" alt="" class="picture">
             <p class="info">
                 <span>canfoo</span>
@@ -37,11 +37,11 @@
             <div class="vote">7</div>
         </div>
         <div class="slogan">同一个世界同一个梦想，同一个世界同一个梦想同一个世界同一个梦想</div>
-        <a href="javascript:;" class="voteBtn">投他一票</a>
+        <a href="javascript:;" class="voteBtn">投他一票</a>-->
     </header>
 
-    <section class="voteList">
-        <div class="title clearfix">
+    <section class="voteList" id="myVote">
+       <!-- <div class="title clearfix">
             <div class="left">
                 <span></span>
                 <span></span>
@@ -75,10 +75,10 @@
                     <a href="javascript:;" class="voteBtn">投他一票</a>
                 </div>
             </li>
-        </ul>
+        </ul>-->
     </section>
 
-    <section class="voteList">
+    <section class="voteList" id="voteMy">
         <div class="title clearfix">
             <div class="left">
                 <span></span>
@@ -116,5 +116,10 @@
         </ul>
     </section>
 </main>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/detail.js"></script>
 </body>
 </html>

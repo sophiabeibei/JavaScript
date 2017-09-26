@@ -22,6 +22,7 @@
             }
         }();
     </script>
+    <script src="js/dialog.js"></script>
 </head>
 <body>
 <main class="mainBox">
@@ -31,28 +32,28 @@
     <section class="registerBox">
         <div class="item">
             <h3>用户名：</h3>
-            <input type="text" placeholder="请填写您的真实姓名">
-            <span></span>
+            <input type="text" id="userName" placeholder="请填写您的真实姓名">
+            <span id="spanName"></span>
         </div>
         <div class="item">
             <h3>手机号码：</h3>
-            <input type="tel" placeholder="请填写您常用的手机号">
-            <span></span>
+            <input type="tel" id="userPhone" placeholder="请填写您常用的手机号">
+            <span id="spanPhone"></span>
         </div>
         <div class="item">
             <h3>密码：</h3>
-            <input type="password" placeholder="由6~12位数字和字母组成">
-            <span></span>
+            <input type="password" id="userPass" placeholder="由6~12位数字和字母组成">
+            <span id="spanPass"></span>
         </div>
         <div class="item">
             <h3>确认密码：</h3>
-            <input type="password">
-            <span></span>
+            <input type="password" id="userPassConfirm">
+            <span id="spanPassConfirm"></span>
         </div>
         <div class="item">
             <h3>自我描述：</h3>
-            <textarea placeholder="限制在100字以内"></textarea>
-            <span></span>
+            <textarea id="userBio" placeholder="限制在10-100字之间"></textarea>
+            <span id="spanBio"></span>
         </div>
         <div class="item">
             <h3>性别：</h3>
@@ -62,9 +63,15 @@
             <input type="radio" id="woman" name="sex">
             <label for="woman">女</label>
         </div>
-        <a href="javascript:;" class="submit">提交注册信息</a>
+        <a href="javascript:;" class="submit" id="submit">提交注册信息</a>
     </section>
 </main>
+
+
+<script src="js/zepto.min.js"></script>
+<script src="js/md5.min.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/register.js"></script>
 
 </body>
 </html>

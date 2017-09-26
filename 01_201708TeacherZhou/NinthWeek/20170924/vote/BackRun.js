@@ -343,6 +343,49 @@ http.createServer((req, res)=> {
         return;
     }
 
+    //->match
+    if (pathname === '/match') {
+        let userAry = $.queryAllUser(),
+            {userId, slogan}=query,
+            result = {
+                code: 1,
+                message: 'no'
+            };
+        userId = parseFloat(userId);
+
+        let maxMatchId = 0;
+        userAry.forEach((item)=> {
+            if (parseFloat(item['isMatch']) === 1) {
+                maxMatchId = parseFloat(item['matchId']) > maxMatchId ? parseFloat(item['matchId']) : maxMatchId;
+            }
+        });
+        maxMatchId++;
+        if (maxMatchId < 10) {
+            maxMatchId = '00' + maxMatchId;
+        } else if (maxMatchId < 100) {
+            maxMatchId = '0' + maxMatchId;
+        } else {
+            maxMatchId = '' + maxMatchId;
+        }
+
+        userAry.forEach((item)=> {
+            if (parseFloat(item['id']) === userId) {
+                item['isMatch'] = 1;
+                item['matchId'] = maxMatchId;
+                item['slogan'] = slogan;
+                result = {
+                    code: 0,
+                    message: 'ok'
+                };
+            }
+        });
+
+        fs.writeFileSync('./BACK/JSON/USER.JSON', JSON.stringify(userAry), 'utf-8');
+
+        $.responseData(res, JSON.stringify(result));
+        return;
+    }
+
     //->404
     $.responseData(res, 'NOT FOUND!', 404, 'text/plain');
 }).listen(8888);
