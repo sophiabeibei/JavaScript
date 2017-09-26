@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训-参加比赛</title>
+
+    <!--IMPORT CSS-->
+    <link rel="stylesheet/less" href="css/register.less">
+    <script src="js/less-2.5.3.min.js"></script>
+
+    <!--REM-->
+    <script>
+        ~function () {
+            window.addEventListener('resize', computed, false);
+            computed();
+            function computed() {
+                var deviceW = document.documentElement.clientWidth;
+                if (deviceW > 640) return;
+                document.documentElement.style.fontSize = deviceW / 640 * 100 + 'px';
+            }
+        }();
+    </script>
+</head>
+<body>
+<main class="mainBox">
+    <header class="headerBox">
+        <img src="img/title.png" alt="">
+    </header>
+    <section class="registerBox">
+        <div class="item">
+            <h3>参赛标语：</h3>
+            <textarea placeholder="限制字数在100字以内 [一但输入就不能更改了哦]" style="line-height: .4rem; height: 3rem;"></textarea>
+            <span></span>
+        </div>
+        <a href="javascript:;" class="submit">确认参赛</a>
+    </section>
+</main>
+<!--
+<div class="mark">
+    <div class="box">
+        <h3>系统提示</h3>
+        <div class="content">用户名密码错误</div>
+    </div>
+</div>-->
+</body>
+</html>
